@@ -94,6 +94,10 @@
 		59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				59C7664B2A497E8400D4BDD3 /* Common */,
+				59C7664A2A497E7D00D4BDD3 /* Service */,
+				59C766492A497E7300D4BDD3 /* Resource */,
+				59C766472A49736000D4BDD3 /* Modules */,
 				59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */,
 				59C7661F2A496E5F00D4BDD3 /* ContentView.swift */,
 				59C766212A496E6000D4BDD3 /* Assets.xcassets */,
@@ -125,6 +129,42 @@
 				59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */,
 			);
 			path = QRArtGeneratorUITests;
+			sourceTree = "<group>";
+		};
+		59C766472A49736000D4BDD3 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				59C766482A497E6A00D4BDD3 /* ScanQR */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		59C766482A497E6A00D4BDD3 /* ScanQR */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScanQR;
+			sourceTree = "<group>";
+		};
+		59C766492A497E7300D4BDD3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		59C7664A2A497E7D00D4BDD3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		59C7664B2A497E8400D4BDD3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
