@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30511F50193A4959F89B3A8A /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */; };
+		55A72A218713257382CFB921 /* Pods_QRArtGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E5BDC5B5105537F2E9B41 /* Pods_QRArtGeneratorTests.framework */; };
 		59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */; };
 		59C766202A496E5F00D4BDD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7661F2A496E5F00D4BDD3 /* ContentView.swift */; };
 		59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C766212A496E6000D4BDD3 /* Assets.xcassets */; };
@@ -14,6 +16,11 @@
 		59C7662F2A496E6000D4BDD3 /* QRArtGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7662E2A496E6000D4BDD3 /* QRArtGeneratorTests.swift */; };
 		59C766392A496E6000D4BDD3 /* QRArtGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */; };
 		59C7663B2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */; };
+		9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5102A4973490075FCE0 /* R.generated.swift */; };
+		9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ADEE5162A4973C40075FCE0 /* Localizable.strings */; };
+		9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE51D2A497E360075FCE0 /* Constants.swift */; };
+		9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */; };
+		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000E5BDC5B5105537F2E9B41 /* Pods_QRArtGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C7661A2A496E5F00D4BDD3 /* QRArtGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRArtGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRArtGeneratorApp.swift; sourceTree = "<group>"; };
 		59C7661F2A496E5F00D4BDD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +53,22 @@
 		59C766342A496E6000D4BDD3 /* QRArtGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRArtGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRArtGeneratorUITests.swift; sourceTree = "<group>"; };
 		59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRArtGeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator_QRArtGeneratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		69E53AB083F0BA1F5231B969 /* Pods-QRArtGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		9ADEE5102A4973490075FCE0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		9ADEE5152A4973C40075FCE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADEE5172A497DC10075FCE0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADEE5182A497DD80075FCE0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADEE5192A497DDF0075FCE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADEE51A2A497DEB0075FCE0 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9ADEE51B2A497DF50075FCE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADEE51D2A497E360075FCE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
+		D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.release.xcconfig"; sourceTree = "<group>"; };
+		F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A72A218713257382CFB921 /* Pods_QRArtGeneratorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30511F50193A4959F89B3A8A /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +102,13 @@
 		59C766112A496E5F00D4BDD3 = {
 			isa = PBXGroup;
 			children = (
+				9ADEE5102A4973490075FCE0 /* R.generated.swift */,
 				59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */,
 				59C7662D2A496E6000D4BDD3 /* QRArtGeneratorTests */,
 				59C766372A496E6000D4BDD3 /* QRArtGeneratorUITests */,
 				59C7661B2A496E5F00D4BDD3 /* Products */,
+				704E9C9B993E1DD8EA8AD92E /* Pods */,
+				FCC724D2989396EBCABE6A42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,7 +131,9 @@
 				59C766472A49736000D4BDD3 /* Modules */,
 				59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */,
 				59C7661F2A496E5F00D4BDD3 /* ContentView.swift */,
-				59C766212A496E6000D4BDD3 /* Assets.xcassets */,
+				9ADEE5202A497E640075FCE0 /* Manager */,
+				9ADEE51F2A497E3A0075FCE0 /* Constant */,
+				9ADEE51C2A497DFE0075FCE0 /* Resource */,
 				59C766232A496E6000D4BDD3 /* Preview Content */,
 			);
 			path = QRArtGenerator;
@@ -146,13 +179,6 @@
 			path = ScanQR;
 			sourceTree = "<group>";
 		};
-		59C766492A497E7300D4BDD3 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		59C7664A2A497E7D00D4BDD3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +191,54 @@
 			children = (
 			);
 			path = Common;
+            sourceTree = "<group>";
+        };
+		704E9C9B993E1DD8EA8AD92E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */,
+				D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */,
+				D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */,
+				6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */,
+				F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */,
+				69E53AB083F0BA1F5231B969 /* Pods-QRArtGeneratorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9ADEE51C2A497DFE0075FCE0 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				59C766212A496E6000D4BDD3 /* Assets.xcassets */,
+				9ADEE5162A4973C40075FCE0 /* Localizable.strings */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		9ADEE51F2A497E3A0075FCE0 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				9ADEE51D2A497E360075FCE0 /* Constants.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		9ADEE5202A497E640075FCE0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FCC724D2989396EBCABE6A42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */,
+				62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */,
+				000E5BDC5B5105537F2E9B41 /* Pods_QRArtGeneratorTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59C7663E2A496E6000D4BDD3 /* Build configuration list for PBXNativeTarget "QRArtGenerator" */;
 			buildPhases = (
+				C1A065075B5AD15C7A22D183 /* [CP] Check Pods Manifest.lock */,
+				9ADEE50F2A4972C30075FCE0 /* ShellScript */,
 				59C766162A496E5F00D4BDD3 /* Sources */,
 				59C766172A496E5F00D4BDD3 /* Frameworks */,
 				59C766182A496E5F00D4BDD3 /* Resources */,
+				53320F09AD5C0A0573360B87 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +268,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59C766412A496E6000D4BDD3 /* Build configuration list for PBXNativeTarget "QRArtGeneratorTests" */;
 			buildPhases = (
+				2BBB18C959B6C2745B22DC41 /* [CP] Check Pods Manifest.lock */,
 				59C766262A496E6000D4BDD3 /* Sources */,
 				59C766272A496E6000D4BDD3 /* Frameworks */,
 				59C766282A496E6000D4BDD3 /* Resources */,
@@ -209,9 +287,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59C766442A496E6000D4BDD3 /* Build configuration list for PBXNativeTarget "QRArtGeneratorUITests" */;
 			buildPhases = (
+				CD316BBF4FBCFA966E851B29 /* [CP] Check Pods Manifest.lock */,
 				59C766302A496E6000D4BDD3 /* Sources */,
 				59C766312A496E6000D4BDD3 /* Frameworks */,
 				59C766322A496E6000D4BDD3 /* Resources */,
+				081735AC2C76453BA6D44D9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,12 +327,17 @@
 				};
 			};
 			buildConfigurationList = 59C766152A496E5F00D4BDD3 /* Build configuration list for PBXProject "QRArtGenerator" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				vi,
+				es,
+				fr,
+				"pt-PT",
+				de,
 			);
 			mainGroup = 59C766112A496E5F00D4BDD3;
 			productRefGroup = 59C7661B2A496E5F00D4BDD3 /* Products */;
@@ -272,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */,
+				9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */,
 				59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,13 +378,138 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		081735AC2C76453BA6D44D9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BBB18C959B6C2745B22DC41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRArtGeneratorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53320F09AD5C0A0573360B87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9ADEE50F2A4972C30075FCE0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/R.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		C1A065075B5AD15C7A22D183 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRArtGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD316BBF4FBCFA966E851B29 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRArtGenerator-QRArtGeneratorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		59C766162A496E5F00D4BDD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				59C766202A496E5F00D4BDD3 /* ContentView.swift in Sources */,
+				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
+				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
+				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +544,22 @@
 			targetProxy = 59C766352A496E6000D4BDD3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9ADEE5162A4973C40075FCE0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ADEE5152A4973C40075FCE0 /* en */,
+				9ADEE5172A497DC10075FCE0 /* vi */,
+				9ADEE5182A497DD80075FCE0 /* es */,
+				9ADEE5192A497DDF0075FCE0 /* fr */,
+				9ADEE51A2A497DEB0075FCE0 /* pt-PT */,
+				9ADEE51B2A497DF50075FCE0 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		59C7663C2A496E6000D4BDD3 /* Debug */ = {
@@ -451,6 +678,7 @@
 		};
 		59C7663F2A496E6000D4BDD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -463,8 +691,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -480,6 +708,7 @@
 		};
 		59C766402A496E6000D4BDD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -492,8 +721,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,6 +738,7 @@
 		};
 		59C766422A496E6000D4BDD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,6 +759,7 @@
 		};
 		59C766432A496E6000D4BDD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69E53AB083F0BA1F5231B969 /* Pods-QRArtGeneratorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -549,6 +780,7 @@
 		};
 		59C766452A496E6000D4BDD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -567,6 +799,7 @@
 		};
 		59C766462A496E6000D4BDD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
