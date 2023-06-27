@@ -16,6 +16,17 @@
 		59C7662F2A496E6000D4BDD3 /* QRArtGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7662E2A496E6000D4BDD3 /* QRArtGeneratorTests.swift */; };
 		59C766392A496E6000D4BDD3 /* QRArtGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */; };
 		59C7663B2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */; };
+		9AD522812A4A86A300A947B5 /* R+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522802A4A86A300A947B5 /* R+.swift */; };
+		9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */; };
+		9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */; };
+		9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522892A4AA09200A947B5 /* Urbanist-ExtraLight.ttf */; };
+		9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD5228B2A4AA09200A947B5 /* Urbanist-Bold.ttf */; };
+		9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD5228C2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf */; };
+		9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD5228D2A4AA09200A947B5 /* Urbanist-SemiBold.ttf */; };
+		9AD522A12A4AA09200A947B5 /* Urbanist-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD5228F2A4AA09200A947B5 /* Urbanist-Black.ttf */; };
+		9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522902A4AA09200A947B5 /* Urbanist-Italic.ttf */; };
+		9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */; };
+		9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */; };
 		9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5102A4973490075FCE0 /* R.generated.swift */; };
 		9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ADEE5162A4973C40075FCE0 /* Localizable.strings */; };
 		9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE51D2A497E360075FCE0 /* Constants.swift */; };
@@ -57,6 +68,18 @@
 		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		69E53AB083F0BA1F5231B969 /* Pods-QRArtGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
 		8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		9AD522802A4A86A300A947B5 /* R+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R+.swift"; sourceTree = "<group>"; };
+		9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
+		9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Light.ttf"; sourceTree = "<group>"; };
+		9AD522892A4AA09200A947B5 /* Urbanist-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraLight.ttf"; sourceTree = "<group>"; };
+		9AD5228B2A4AA09200A947B5 /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Bold.ttf"; sourceTree = "<group>"; };
+		9AD5228C2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraBold.ttf"; sourceTree = "<group>"; };
+		9AD5228D2A4AA09200A947B5 /* Urbanist-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-SemiBold.ttf"; sourceTree = "<group>"; };
+		9AD5228F2A4AA09200A947B5 /* Urbanist-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Black.ttf"; sourceTree = "<group>"; };
+		9AD522902A4AA09200A947B5 /* Urbanist-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic.ttf"; sourceTree = "<group>"; };
+		9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Thin.ttf"; sourceTree = "<group>"; };
+		9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Regular.ttf"; sourceTree = "<group>"; };
+		9AD522A72A4AA0EB00A947B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9ADEE5102A4973490075FCE0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9ADEE5152A4973C40075FCE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9ADEE5172A497DC10075FCE0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -125,9 +148,9 @@
 		59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				9AD522A72A4AA0EB00A947B5 /* Info.plist */,
 				59C7664B2A497E8400D4BDD3 /* Common */,
 				59C7664A2A497E7D00D4BDD3 /* Service */,
-				59C766492A497E7300D4BDD3 /* Resource */,
 				59C766472A49736000D4BDD3 /* Modules */,
 				59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */,
 				59C7661F2A496E5F00D4BDD3 /* ContentView.swift */,
@@ -189,10 +212,11 @@
 		59C7664B2A497E8400D4BDD3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9AD5227F2A4A869300A947B5 /* Extension */,
 			);
 			path = Common;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		704E9C9B993E1DD8EA8AD92E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,9 +230,35 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9AD5227F2A4A869300A947B5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9AD522802A4A86A300A947B5 /* R+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9AD522822A4AA08100A947B5 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				9AD5228F2A4AA09200A947B5 /* Urbanist-Black.ttf */,
+				9AD5228B2A4AA09200A947B5 /* Urbanist-Bold.ttf */,
+				9AD5228C2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf */,
+				9AD522892A4AA09200A947B5 /* Urbanist-ExtraLight.ttf */,
+				9AD522902A4AA09200A947B5 /* Urbanist-Italic.ttf */,
+				9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */,
+				9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */,
+				9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */,
+				9AD5228D2A4AA09200A947B5 /* Urbanist-SemiBold.ttf */,
+				9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		9ADEE51C2A497DFE0075FCE0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9AD522822A4AA08100A947B5 /* Font */,
 				59C766212A496E6000D4BDD3 /* Assets.xcassets */,
 				9ADEE5162A4973C40075FCE0 /* Localizable.strings */,
 			);
@@ -356,8 +406,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD522A12A4AA09200A947B5 /* Urbanist-Black.ttf in Resources */,
 				59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */,
+				9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */,
 				9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */,
+				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
+				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
+				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
+				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
+				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
+				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
+				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
+				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
 				59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +508,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -507,6 +567,7 @@
 			files = (
 				59C766202A496E5F00D4BDD3 /* ContentView.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
+				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
@@ -688,9 +749,11 @@
 				DEVELOPMENT_TEAM = 63ZK7FQ2ND;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QRArtGenerator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -718,9 +781,11 @@
 				DEVELOPMENT_TEAM = 63ZK7FQ2ND;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QRArtGenerator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
