@@ -5,6 +5,7 @@
 //  Created by Quang Ly Hoang on 26/06/2023.
 //
 
+import Foundation
 import UIKit
 
 var Rlocalizable: _R.string.localizable {

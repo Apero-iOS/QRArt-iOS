@@ -18,3 +18,9 @@
 "content_onboarding_1" = "Mit der AI -QR -App können Sie QR -Codes einfach und effizient erstellen, scannen und verwalten.";
 "content_onboarding_2" = "Genießen Sie eine personalisierte Erfahrung mit der Fähigkeit, die Vorlage Ihrer QR -Codes zu bearbeiten.";
 "content_onboarding_3" = "Jeder Ihre Kunden schnell und bequem mit anderen per E -Mail, Nachrichten oder beliebten Social -Media -Plattformen.";
+"choose_a_template" = "Wählen Sie eine Vorlage";
+"select_qr_type" = "Wählen Sie QR -Typ";
+"basic" = "Basic";
+"social_media" = "Sozialen Medien";
+"other" = "Andere";
+"done" = "Erledigt";

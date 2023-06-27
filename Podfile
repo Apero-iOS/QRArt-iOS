@@ -12,6 +12,7 @@ target 'QRArtGenerator' do
   pod 'RealmSwift', '10.40.2'
   pod 'Alamofire', '5.7.1'
   pod 'lottie-ios', '4.2.0'
+  pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
 
   target 'QRArtGeneratorTests' do
     inherit! :search_paths

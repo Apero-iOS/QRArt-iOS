@@ -18,3 +18,9 @@
 "content_onboarding_1" = "With AI QR App, you can easily create, scan, and manage QR codes smartly and efficiently.";
 "content_onboarding_2" = "Enjoy a personalized experience with the ability to edit the template of your QR codes.";
 "content_onboarding_3" = "Each your customers quickly and conveniently with others via email, messages, or popular social media platforms.";
+"choose_a_template" = "Choose a template";
+"select_qr_type" = "Select QR type";
+"basic" = "Basic";
+"social_media" = "Social Media";
+"other" = "Other";
+"done" = "Done";

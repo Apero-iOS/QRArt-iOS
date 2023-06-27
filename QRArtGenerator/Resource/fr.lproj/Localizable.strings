@@ -18,3 +18,9 @@
 "content_onboarding_1" = "Avec l'application AI QR, vous pouvez facilement créer, numériser et gérer les codes QR intelligemment et efficacement.";
 "content_onboarding_2" = "Profitez d'une expérience personnalisée avec la possibilité de modifier le modèle de vos codes QR.";
 "content_onboarding_3" = "Chacun vos clients rapidement et commodément avec les autres par e-mail, messages ou plateformes de médias sociaux populaires.";
+"choose_a_template" = "Choisissez un modèle";
+"select_qr_type" = "Sélectionnez le type QR";
+"basic" = "Basique";
+"social_media" = "Réseaux sociaux";
+"other" = "Autre";
+"done" = "Fait";
