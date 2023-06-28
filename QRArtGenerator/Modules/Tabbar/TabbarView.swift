@@ -39,6 +39,7 @@ struct TabbarView: View {
                         .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                 }
                 .ignoresSafeArea()
+                .hideNavigationBar()
             }
         }
     }

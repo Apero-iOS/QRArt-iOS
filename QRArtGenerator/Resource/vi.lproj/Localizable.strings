@@ -24,3 +24,8 @@
 "social_media" = "Truyền thông xã hội";
 "other" = "Khác";
 "done" = "Xong";
+"history" = "Lịch sử";
+"artify_your_qr_codes" = "CÔNG CỤ QR của bạn";
+"no_qrs_created_yet" = "Chưa có QRS nào được tạo ra? Đừng lo lắng, QR đầy nghệ thuật đang chờ đợi!";
+"create_qr" = "Tạo QR";
+"search_qr_name" = "Tìm kiếm tên QR";

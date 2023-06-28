@@ -11,16 +11,28 @@ import Lottie
 struct TabbarPrimaryButton: View {
     
     private let size: CGFloat = 56
+    @State private var isRotating = 0.0
     
     var body: some View {
         ZStack {
             Circle()
                 .stroke(
                     LinearGradient(colors: [R.color.color_6427C8.color, R.color.color_E79CB7.color], startPoint: .bottomLeading, endPoint: .topTrailing),
-                    lineWidth: 4
+                    lineWidth: 5
                 )
                 .background(Color.white)
                 .cornerRadius(size / 2)
+                .rotationEffect(.degrees(isRotating))
+                .onAppear {
+                    withAnimation(
+                        .linear(duration: 1)
+                        .speed(1)
+                        .repeatForever(autoreverses: false))
+                    {
+                        isRotating = 360.0
+                    }
+                }
+            
             LottieView(lottieFile: R.file.ai_tabJson.name)
                 .frame(width: size * 0.6)
         }

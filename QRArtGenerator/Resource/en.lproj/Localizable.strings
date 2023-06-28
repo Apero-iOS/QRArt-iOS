@@ -24,3 +24,8 @@
 "social_media" = "Social Media";
 "other" = "Other";
 "done" = "Done";
+"history" = "History";
+"artify_your_qr_codes" = "Artify your QR Codes";
+"no_qrs_created_yet" = "No QRs created yet? Don't worry, the art-filled QR awaits!";
+"create_qr" = "Create QR";
+"search_qr_name" = "Search QR name";
