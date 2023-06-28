@@ -19,8 +19,7 @@ struct InputNameView: View {
             TextField(placeholder, text: $name)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .frame(maxHeight: 42)
-                .border(R.color.color_EAEAEA.color, width: 0.5)
-                .cornerRadius(8)
+                .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
         }
     }
 }
