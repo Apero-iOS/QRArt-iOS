@@ -18,3 +18,9 @@
 "content_onboarding_1" = "Với ứng dụng AI QR, bạn có thể dễ dàng tạo, quét và quản lý mã QR một cách thông minh và hiệu quả.";
 "content_onboarding_2" = "Tận hưởng trải nghiệm cá nhân hóa với khả năng chỉnh sửa mẫu mã QR của bạn.";
 "content_onboarding_3" = "Mỗi khách hàng của bạn một cách nhanh chóng và thuận tiện với những người khác thông qua email, tin nhắn hoặc nền tảng truyền thông xã hội phổ biến.";
+"choose_a_template" = "Chọn một mẫu";
+"select_qr_type" = "Chọn loại QR";
+"basic" = "Nền tảng";
+"social_media" = "Truyền thông xã hội";
+"other" = "Khác";
+"done" = "Xong";
