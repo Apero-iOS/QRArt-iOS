@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct QRArtGeneratorApp: App {
+        
     var body: some Scene {
         WindowGroup {
-            TabbarView()
+            SplashView()
         }
     }
 }
