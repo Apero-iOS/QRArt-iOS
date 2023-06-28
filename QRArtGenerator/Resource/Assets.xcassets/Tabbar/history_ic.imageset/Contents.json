@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "uis_clock-ten.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

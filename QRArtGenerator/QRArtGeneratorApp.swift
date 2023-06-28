@@ -11,7 +11,7 @@ import SwiftUI
 struct QRArtGeneratorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabbarView()
         }
     }
 }

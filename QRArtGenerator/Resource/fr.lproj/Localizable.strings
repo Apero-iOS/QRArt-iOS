@@ -7,3 +7,8 @@
 */
 
 "ok" = "OK";
+"home" = "Maison";
+"scan" = "Analyse";
+"create" = "Créer";
+"history" = "Histoire";
+"settings" = "Paramètres";
