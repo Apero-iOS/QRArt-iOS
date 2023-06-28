@@ -16,6 +16,8 @@
 		59C7662F2A496E6000D4BDD3 /* QRArtGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7662E2A496E6000D4BDD3 /* QRArtGeneratorTests.swift */; };
 		59C766392A496E6000D4BDD3 /* QRArtGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */; };
 		59C7663B2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */; };
+		9ABC4DA12A4BD54D002646DA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA02A4BD54D002646DA /* HistoryView.swift */; };
+		9ABC4DA52A4BDF51002646DA /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA42A4BDF51002646DA /* ai_tab.json */; };
 		9AD522812A4A86A300A947B5 /* R+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522802A4A86A300A947B5 /* R+.swift */; };
 		9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */; };
 		9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */; };
@@ -27,6 +29,13 @@
 		9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522902A4AA09200A947B5 /* Urbanist-Italic.ttf */; };
 		9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */; };
 		9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */; };
+		9AD522AA2A4ABE1E00A947B5 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522A92A4ABE1E00A947B5 /* TabbarView.swift */; };
+		9AD522AC2A4AC21A00A947B5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522AB2A4AC21A00A947B5 /* TabItem.swift */; };
+		9AD522AF2A4ADC7100A947B5 /* TabbarEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522AE2A4ADC7100A947B5 /* TabbarEnum.swift */; };
+		9AD522B22A4ADE2400A947B5 /* TabbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522B12A4ADE2400A947B5 /* TabbarViewModel.swift */; };
+		9AD522B42A4AE93A00A947B5 /* TabbarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522B32A4AE93A00A947B5 /* TabbarShape.swift */; };
+		9AD522B62A4AECCF00A947B5 /* TabbarPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522B52A4AECCF00A947B5 /* TabbarPrimaryButton.swift */; };
+		9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522B72A4B0E8C00A947B5 /* LottieView.swift */; };
 		9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5102A4973490075FCE0 /* R.generated.swift */; };
 		9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ADEE5162A4973C40075FCE0 /* Localizable.strings */; };
 		9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE51D2A497E360075FCE0 /* Constants.swift */; };
@@ -71,6 +80,8 @@
 		84F3C1A35E93DC48B9FF8923 /* Pods-QRArtGeneratorTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.staging.xcconfig"; sourceTree = "<group>"; };
 		8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		8872CAFFF07151FDDAC4D66B /* Pods-QRArtGenerator.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.staging.xcconfig"; sourceTree = "<group>"; };
+		9ABC4DA02A4BD54D002646DA /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		9ABC4DA42A4BDF51002646DA /* ai_tab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ai_tab.json; sourceTree = "<group>"; };
 		9AD522802A4A86A300A947B5 /* R+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R+.swift"; sourceTree = "<group>"; };
 		9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
 		9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Light.ttf"; sourceTree = "<group>"; };
@@ -83,6 +94,13 @@
 		9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Thin.ttf"; sourceTree = "<group>"; };
 		9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Regular.ttf"; sourceTree = "<group>"; };
 		9AD522A72A4AA0EB00A947B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9AD522A92A4ABE1E00A947B5 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		9AD522AB2A4AC21A00A947B5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		9AD522AE2A4ADC7100A947B5 /* TabbarEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarEnum.swift; sourceTree = "<group>"; };
+		9AD522B12A4ADE2400A947B5 /* TabbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewModel.swift; sourceTree = "<group>"; };
+		9AD522B32A4AE93A00A947B5 /* TabbarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarShape.swift; sourceTree = "<group>"; };
+		9AD522B52A4AECCF00A947B5 /* TabbarPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarPrimaryButton.swift; sourceTree = "<group>"; };
+		9AD522B72A4B0E8C00A947B5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		9ADEE5102A4973490075FCE0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9ADEE5152A4973C40075FCE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9ADEE5172A497DC10075FCE0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -193,6 +211,8 @@
 		59C766472A49736000D4BDD3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9ABC4D9F2A4BD537002646DA /* History */,
+				9AD522A82A4ABE0F00A947B5 /* Tabbar */,
 				59C766482A497E6A00D4BDD3 /* ScanQR */,
 			);
 			path = Modules;
@@ -216,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				9AD5227F2A4A869300A947B5 /* Extension */,
+				9AD522B72A4B0E8C00A947B5 /* LottieView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -234,6 +255,24 @@
 				84F3C1A35E93DC48B9FF8923 /* Pods-QRArtGeneratorTests.staging.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9ABC4D9E2A4BD51F002646DA /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				9AD522AB2A4AC21A00A947B5 /* TabItem.swift */,
+				9AD522B32A4AE93A00A947B5 /* TabbarShape.swift */,
+				9AD522B52A4AECCF00A947B5 /* TabbarPrimaryButton.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		9ABC4D9F2A4BD537002646DA /* History */ = {
+			isa = PBXGroup;
+			children = (
+				9ABC4DA02A4BD54D002646DA /* HistoryView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		9AD5227F2A4A869300A947B5 /* Extension */ = {
@@ -261,9 +300,45 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		9AD522A82A4ABE0F00A947B5 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				9ABC4D9E2A4BD51F002646DA /* CustomView */,
+				9AD522B02A4ADE1100A947B5 /* ViewModel */,
+				9AD522AD2A4ADC6700A947B5 /* Model */,
+				9AD522A92A4ABE1E00A947B5 /* TabbarView.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		9AD522AD2A4ADC6700A947B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AD522AE2A4ADC7100A947B5 /* TabbarEnum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9AD522B02A4ADE1100A947B5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AD522B12A4ADE2400A947B5 /* TabbarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9AD522B92A4B0F2A00A947B5 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				9ABC4DA42A4BDF51002646DA /* ai_tab.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
 		9ADEE51C2A497DFE0075FCE0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9AD522B92A4B0F2A00A947B5 /* Json */,
 				9AD522822A4AA08100A947B5 /* Font */,
 				59C766212A496E6000D4BDD3 /* Assets.xcassets */,
 				9ADEE5162A4973C40075FCE0 /* Localizable.strings */,
@@ -421,6 +496,7 @@
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
 				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
 				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
+				9ABC4DA52A4BDF51002646DA /* ai_tab.json in Resources */,
 				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
 				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
 				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
@@ -514,7 +590,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -572,10 +648,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				59C766202A496E5F00D4BDD3 /* ContentView.swift in Sources */,
+				9AD522AA2A4ABE1E00A947B5 /* TabbarView.swift in Sources */,
+				9AD522B22A4ADE2400A947B5 /* TabbarViewModel.swift in Sources */,
+				9AD522B42A4AE93A00A947B5 /* TabbarShape.swift in Sources */,
+				9AD522B62A4AECCF00A947B5 /* TabbarPrimaryButton.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
+				9ABC4DA12A4BD54D002646DA /* HistoryView.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
+				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
+				9AD522AC2A4AC21A00A947B5 /* TabItem.swift in Sources */,
+				9AD522AF2A4ADC7100A947B5 /* TabbarEnum.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

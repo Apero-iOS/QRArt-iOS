@@ -11,6 +11,7 @@ target 'QRArtGenerator' do
   pod 'IQKeyboardManagerSwift', '6.5.12'
   pod 'RealmSwift', '10.40.2'
   pod 'Alamofire', '5.7.1'
+  pod 'lottie-ios', '4.2.0'
 
   target 'QRArtGeneratorTests' do
     inherit! :search_paths
