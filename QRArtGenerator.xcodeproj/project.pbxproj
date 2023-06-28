@@ -16,6 +16,10 @@
 		59C766392A496E6000D4BDD3 /* QRArtGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */; };
 		59C7663B2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */; };
 		9ABC4DA52A4BDF51002646DA /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA42A4BDF51002646DA /* ai_tab.json */; };
+		9ABC4DA92A4C354E002646DA /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA82A4C354E002646DA /* View+.swift */; };
+		9ABC4DAB2A4C4076002646DA /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ABC4DAA2A4C4076002646DA /* crown.json */; };
+		9ABC4DAE2A4C58A7002646DA /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DAD2A4C58A7002646DA /* HistoryListView.swift */; };
+		9ABC4DB02A4C5936002646DA /* HistoryCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DAF2A4C5936002646DA /* HistoryCategoryListView.swift */; };
 		9AD522812A4A86A300A947B5 /* R+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522802A4A86A300A947B5 /* R+.swift */; };
 		9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */; };
 		9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */; };
@@ -97,6 +101,11 @@
 		8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		8872CAFFF07151FDDAC4D66B /* Pods-QRArtGenerator.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.staging.xcconfig"; sourceTree = "<group>"; };
 		9ABC4DA42A4BDF51002646DA /* ai_tab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ai_tab.json; sourceTree = "<group>"; };
+		9ABC4DA62A4C27B3002646DA /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
+		9ABC4DA82A4C354E002646DA /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		9ABC4DAA2A4C4076002646DA /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
+		9ABC4DAD2A4C58A7002646DA /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
+		9ABC4DAF2A4C5936002646DA /* HistoryCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCategoryListView.swift; sourceTree = "<group>"; };
 		9AD522802A4A86A300A947B5 /* R+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R+.swift"; sourceTree = "<group>"; };
 		9AD522832A4AA09200A947B5 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
 		9AD522872A4AA09200A947B5 /* Urbanist-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Light.ttf"; sourceTree = "<group>"; };
@@ -277,10 +286,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9ABC4DAC2A4C5894002646DA /* ChildView */ = {
+			isa = PBXGroup;
+			children = (
+				9ABC4DAD2A4C58A7002646DA /* HistoryListView.swift */,
+				9ABC4DAF2A4C5936002646DA /* HistoryCategoryListView.swift */,
+			);
+			path = ChildView;
+			sourceTree = "<group>";
+		};
 		9AD5227F2A4A869300A947B5 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				9AD522802A4A86A300A947B5 /* R+.swift */,
+				9ABC4DA82A4C354E002646DA /* View+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -305,6 +324,7 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				9ABC4DAA2A4C4076002646DA /* crown.json */,
 				9ABC4DA42A4BDF51002646DA /* ai_tab.json */,
 			);
 			path = Json;
@@ -446,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				A4A761B42A4AFC2B00CA65A3 /* OnboardingModel.swift */,
+				9ABC4DA62A4C27B3002646DA /* crown.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,10 +499,10 @@
 		A4BAA2642A4C3141006371B1 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				A4BAA2652A4C3141006371B1 /* ViewModel */,
 				A4BAA2672A4C3141006371B1 /* TabbarView.swift */,
+				A4BAA2652A4C3141006371B1 /* ViewModel */,
 				A4BAA2682A4C3141006371B1 /* Model */,
-				A4BAA26A2A4C3141006371B1 /* CustomView */,
+				A4BAA26A2A4C3141006371B1 /* ChildView */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -502,20 +523,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		A4BAA26A2A4C3141006371B1 /* CustomView */ = {
+		A4BAA26A2A4C3141006371B1 /* ChildView */ = {
 			isa = PBXGroup;
 			children = (
 				A4BAA26B2A4C3141006371B1 /* TabItem.swift */,
 				A4BAA26C2A4C3141006371B1 /* TabbarPrimaryButton.swift */,
 				A4BAA26D2A4C3141006371B1 /* TabbarShape.swift */,
 			);
-			path = CustomView;
+			path = ChildView;
 			sourceTree = "<group>";
 		};
 		A4BAA2742A4C3163006371B1 /* History */ = {
 			isa = PBXGroup;
 			children = (
 				A4BAA2752A4C3163006371B1 /* HistoryView.swift */,
+				9ABC4DAC2A4C5894002646DA /* ChildView */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -696,6 +718,7 @@
 				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
 				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
 				9ABC4DA52A4BDF51002646DA /* ai_tab.json in Resources */,
+				9ABC4DAB2A4C4076002646DA /* crown.json in Resources */,
 				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
 				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
 				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
@@ -861,11 +884,14 @@
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				C88A2B612A4C4319003A93B6 /* QRType.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
+				9ABC4DB02A4C5936002646DA /* HistoryCategoryListView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				C88A2B622A4C4319003A93B6 /* InputType.swift in Sources */,
 				A4766E702A4ADDD50002FEF6 /* HomeView.swift in Sources */,
+				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
 				A4A761B52A4AFC2B00CA65A3 /* OnboardingModel.swift in Sources */,
+				9ABC4DAE2A4C58A7002646DA /* HistoryListView.swift in Sources */,
 				A4BAA2722A4C3142006371B1 /* TabbarPrimaryButton.swift in Sources */,
 				A4BAA25E2A4BDAE5006371B1 /* OnboardingRowView.swift in Sources */,
 				A4BAA2732A4C3142006371B1 /* TabbarShape.swift in Sources */,

@@ -24,3 +24,8 @@
 "social_media" = "Medios de comunicación social";
 "other" = "Otro";
 "done" = "Hecho";
+"history" = "Historia";
+"artify_your_qr_codes" = "Artifique sus códigos QR";
+"no_qrs_created_yet" = "¿Todavía no se creó QRS? ¡No te preocupes, el QR lleno de arte te espera!";
+"create_qr" = "Crear QR";
+"search_qr_name" = "Buscar nombre QR";
