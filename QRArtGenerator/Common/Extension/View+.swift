@@ -27,6 +27,9 @@ extension View {
     @ViewBuilder func clearBackgroundColorList() -> some View {
         if #available(iOS 16, *) {
             scrollContentBackground(.hidden)
+        } else {
+            UITableView.appearance().backgroundColor = .clear
+            return background(Color.clear)
         }
     }
 }

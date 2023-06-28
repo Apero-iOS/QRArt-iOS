@@ -77,6 +77,30 @@
 		A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C412A4D90580076CF48 /* SettingRowView.swift */; };
 		A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C482A4D90690076CF48 /* LanguageView.swift */; };
 		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
+		A4766E7B2A4AEBD90002FEF6 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E7A2A4AEBD90002FEF6 /* OnboardingViewModel.swift */; };
+		A4A761B52A4AFC2B00CA65A3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A761B42A4AFC2B00CA65A3 /* OnboardingModel.swift */; };
+		A4BAA25E2A4BDAE5006371B1 /* OnboardingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA25D2A4BDAE5006371B1 /* OnboardingRowView.swift */; };
+		A4BAA26E2A4C3142006371B1 /* TabbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA2662A4C3141006371B1 /* TabbarViewModel.swift */; };
+		A4BAA26F2A4C3142006371B1 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA2672A4C3141006371B1 /* TabbarView.swift */; };
+		A4BAA2702A4C3142006371B1 /* TabbarEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA2692A4C3141006371B1 /* TabbarEnum.swift */; };
+		A4BAA2712A4C3142006371B1 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA26B2A4C3141006371B1 /* TabItem.swift */; };
+		A4BAA2722A4C3142006371B1 /* TabbarPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA26C2A4C3141006371B1 /* TabbarPrimaryButton.swift */; };
+		A4BAA2732A4C3142006371B1 /* TabbarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA26D2A4C3141006371B1 /* TabbarShape.swift */; };
+		A4BAA2762A4C3163006371B1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BAA2752A4C3163006371B1 /* HistoryView.swift */; };
+		C88A2B612A4C4319003A93B6 /* QRType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B562A4C4319003A93B6 /* QRType.swift */; };
+		C88A2B622A4C4319003A93B6 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B572A4C4319003A93B6 /* InputType.swift */; };
+		C88A2B632A4C4319003A93B6 /* CreateQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B592A4C4319003A93B6 /* CreateQRView.swift */; };
+		C88A2B642A4C4319003A93B6 /* QRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B5A2A4C4319003A93B6 /* QRTypeView.swift */; };
+		C88A2B652A4C4319003A93B6 /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B5B2A4C4319003A93B6 /* InputNameView.swift */; };
+		C88A2B662A4C4319003A93B6 /* SelectQRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B5C2A4C4319003A93B6 /* SelectQRTypeView.swift */; };
+		C88A2B672A4C4319003A93B6 /* ItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B5D2A4C4319003A93B6 /* ItemTemplateView.swift */; };
+		C88A2B682A4C4319003A93B6 /* InputPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B5E2A4C4319003A93B6 /* InputPhoneNumberView.swift */; };
+		C88A2B692A4C4319003A93B6 /* SelectQRDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B5F2A4C4319003A93B6 /* SelectQRDetailView.swift */; };
+		C88A2B6A2A4C4319003A93B6 /* ChooseTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B602A4C4319003A93B6 /* ChooseTemplateView.swift */; };
+		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
+		C88A2B6F2A4C4534003A93B6 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B6E2A4C4534003A93B6 /* Country.swift */; };
+		C88A2B712A4C458F003A93B6 /* CountriesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */; };
+		C88A2B732A4C46A6003A93B6 /* SecurityModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88A2B722A4C46A6003A93B6 /* SecurityModeView.swift */; };
 		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +213,40 @@
 		A4C69C412A4D90580076CF48 /* SettingRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
 		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
+		A4766E7A2A4AEBD90002FEF6 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		A4A761B42A4AFC2B00CA65A3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		A4BAA25D2A4BDAE5006371B1 /* OnboardingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRowView.swift; sourceTree = "<group>"; };
+		A4BAA2662A4C3141006371B1 /* TabbarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarViewModel.swift; sourceTree = "<group>"; };
+		A4BAA2672A4C3141006371B1 /* TabbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		A4BAA2692A4C3141006371B1 /* TabbarEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarEnum.swift; sourceTree = "<group>"; };
+		A4BAA26B2A4C3141006371B1 /* TabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		A4BAA26C2A4C3141006371B1 /* TabbarPrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarPrimaryButton.swift; sourceTree = "<group>"; };
+		A4BAA26D2A4C3141006371B1 /* TabbarShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarShape.swift; sourceTree = "<group>"; };
+		A4BAA2752A4C3163006371B1 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		C8197F7E2A4AC95200A727A7 /* CreateQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQRView.swift; sourceTree = "<group>"; };
+		C8197F802A4ACB2300A727A7 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
+		C8197F822A4ACE0100A727A7 /* ItemTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTemplateView.swift; sourceTree = "<group>"; };
+		C8197F842A4ADAA400A727A7 /* SelectQRDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQRDetailView.swift; sourceTree = "<group>"; };
+		C8197F862A4ADFC000A727A7 /* SelectQRTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectQRTypeView.swift; sourceTree = "<group>"; };
+		C8197F882A4AE9AC00A727A7 /* QRType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRType.swift; sourceTree = "<group>"; };
+		C8197F8A2A4AF2D400A727A7 /* QRTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRTypeView.swift; sourceTree = "<group>"; };
+		C88A2B4C2A4C17A4003A93B6 /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		C88A2B4E2A4C17F5003A93B6 /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
+		C88A2B502A4C3B3C003A93B6 /* InputPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberView.swift; sourceTree = "<group>"; };
+		C88A2B562A4C4319003A93B6 /* QRType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRType.swift; sourceTree = "<group>"; };
+		C88A2B572A4C4319003A93B6 /* InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
+		C88A2B592A4C4319003A93B6 /* CreateQRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRView.swift; sourceTree = "<group>"; };
+		C88A2B5A2A4C4319003A93B6 /* QRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRTypeView.swift; sourceTree = "<group>"; };
+		C88A2B5B2A4C4319003A93B6 /* InputNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		C88A2B5C2A4C4319003A93B6 /* SelectQRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRTypeView.swift; sourceTree = "<group>"; };
+		C88A2B5D2A4C4319003A93B6 /* ItemTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTemplateView.swift; sourceTree = "<group>"; };
+		C88A2B5E2A4C4319003A93B6 /* InputPhoneNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberView.swift; sourceTree = "<group>"; };
+		C88A2B5F2A4C4319003A93B6 /* SelectQRDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRDetailView.swift; sourceTree = "<group>"; };
+		C88A2B602A4C4319003A93B6 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
+		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		C88A2B6E2A4C4534003A93B6 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesFetcher.swift; sourceTree = "<group>"; };
+		C88A2B722A4C46A6003A93B6 /* SecurityModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityModeView.swift; sourceTree = "<group>"; };
 		D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -477,6 +535,7 @@
 		59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				C88A2B6D2A4C4513003A93B6 /* Helper */,
 				A4766E672A4AD40A0002FEF6 /* MainSystem */,
 				59C7664B2A497E8400D4BDD3 /* Common */,
 				59286C972A4D31F100EBBEBF /* Helper */,
@@ -570,9 +629,9 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				59286C3A2A4D30C900EBBEBF /* ai_tab.json */,
-				59286C3B2A4D30C900EBBEBF /* countries.json */,
-				59286C3C2A4D30CA00EBBEBF /* crown.json */,
+				9ABC4DAA2A4C4076002646DA /* crown.json */,
+				C88A2B6B2A4C43D4003A93B6 /* countries.json */,
+				9ABC4DA42A4BDF51002646DA /* ai_tab.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -767,8 +826,35 @@
 		C88A2B532A4C4319003A93B6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C88A2B562A4C4319003A93B6 /* QRType.swift */,
+				C88A2B572A4C4319003A93B6 /* InputType.swift */,
+				C88A2B6E2A4C4534003A93B6 /* Country.swift */,
 			);
-			path = Resource;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C88A2B582A4C4319003A93B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C88A2B592A4C4319003A93B6 /* CreateQRView.swift */,
+				C88A2B5A2A4C4319003A93B6 /* QRTypeView.swift */,
+				C88A2B5B2A4C4319003A93B6 /* InputNameView.swift */,
+				C88A2B5C2A4C4319003A93B6 /* SelectQRTypeView.swift */,
+				C88A2B5D2A4C4319003A93B6 /* ItemTemplateView.swift */,
+				C88A2B5E2A4C4319003A93B6 /* InputPhoneNumberView.swift */,
+				C88A2B5F2A4C4319003A93B6 /* SelectQRDetailView.swift */,
+				C88A2B602A4C4319003A93B6 /* ChooseTemplateView.swift */,
+				C88A2B722A4C46A6003A93B6 /* SecurityModeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C88A2B6D2A4C4513003A93B6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		FCC724D2989396EBCABE6A42 /* Frameworks */ = {
@@ -901,6 +987,7 @@
 				59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */,
 				59286C3E2A4D30CA00EBBEBF /* countries.json in Resources */,
 				9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */,
+				C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */,
 				9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
 				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
