@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		30511F50193A4959F89B3A8A /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */; };
 		55A72A218713257382CFB921 /* Pods_QRArtGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E5BDC5B5105537F2E9B41 /* Pods_QRArtGeneratorTests.framework */; };
-		59286C3D2A4D30CA00EBBEBF /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = 59286C3A2A4D30C900EBBEBF /* ai_tab.json */; };
-		59286C3E2A4D30CA00EBBEBF /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 59286C3B2A4D30C900EBBEBF /* countries.json */; };
-		59286C3F2A4D30CA00EBBEBF /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = 59286C3C2A4D30CA00EBBEBF /* crown.json */; };
 		59286C772A4D31D300EBBEBF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C432A4D31D300EBBEBF /* HomeView.swift */; };
 		59286C782A4D31D300EBBEBF /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C462A4D31D300EBBEBF /* SplashView.swift */; };
 		59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C492A4D31D300EBBEBF /* TabbarViewModel.swift */; };
@@ -23,15 +20,6 @@
 		59286C7F2A4D31D300EBBEBF /* QRType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C532A4D31D300EBBEBF /* QRType.swift */; };
 		59286C802A4D31D300EBBEBF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C542A4D31D300EBBEBF /* Country.swift */; };
 		59286C812A4D31D300EBBEBF /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C552A4D31D300EBBEBF /* InputType.swift */; };
-		59286C822A4D31D300EBBEBF /* SecurityModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C572A4D31D300EBBEBF /* SecurityModeView.swift */; };
-		59286C832A4D31D300EBBEBF /* CreateQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C582A4D31D300EBBEBF /* CreateQRView.swift */; };
-		59286C842A4D31D300EBBEBF /* QRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C592A4D31D300EBBEBF /* QRTypeView.swift */; };
-		59286C852A4D31D300EBBEBF /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C5A2A4D31D300EBBEBF /* InputNameView.swift */; };
-		59286C862A4D31D300EBBEBF /* SelectQRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C5B2A4D31D300EBBEBF /* SelectQRTypeView.swift */; };
-		59286C872A4D31D300EBBEBF /* ItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C5C2A4D31D300EBBEBF /* ItemTemplateView.swift */; };
-		59286C882A4D31D300EBBEBF /* InputPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C5D2A4D31D300EBBEBF /* InputPhoneNumberView.swift */; };
-		59286C892A4D31D300EBBEBF /* SelectQRDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C5E2A4D31D300EBBEBF /* SelectQRDetailView.swift */; };
-		59286C8A2A4D31D300EBBEBF /* ChooseTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C5F2A4D31D300EBBEBF /* ChooseTemplateView.swift */; };
 		59286C8B2A4D31D300EBBEBF /* HistoryCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C622A4D31D300EBBEBF /* HistoryCategoryListView.swift */; };
 		59286C8C2A4D31D300EBBEBF /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C632A4D31D300EBBEBF /* HistoryListView.swift */; };
 		59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C642A4D31D300EBBEBF /* HistoryView.swift */; };
@@ -77,6 +65,23 @@
 		A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C412A4D90580076CF48 /* SettingRowView.swift */; };
 		A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C482A4D90690076CF48 /* LanguageView.swift */; };
 		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
+		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
+		C8AA3E302A4DAF140077DCC3 /* CreateQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E222A4DAF140077DCC3 /* CreateQRView.swift */; };
+		C8AA3E312A4DAF140077DCC3 /* SecurityModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E242A4DAF140077DCC3 /* SecurityModeView.swift */; };
+		C8AA3E322A4DAF140077DCC3 /* SliderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E252A4DAF140077DCC3 /* SliderSettingView.swift */; };
+		C8AA3E332A4DAF140077DCC3 /* QRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E262A4DAF140077DCC3 /* QRTypeView.swift */; };
+		C8AA3E342A4DAF140077DCC3 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E272A4DAF140077DCC3 /* AdvancedSettingsView.swift */; };
+		C8AA3E352A4DAF140077DCC3 /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E282A4DAF140077DCC3 /* InputNameView.swift */; };
+		C8AA3E362A4DAF140077DCC3 /* ItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E292A4DAF140077DCC3 /* ItemTemplateView.swift */; };
+		C8AA3E372A4DAF140077DCC3 /* InputPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E2A2A4DAF140077DCC3 /* InputPhoneNumberView.swift */; };
+		C8AA3E382A4DAF140077DCC3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E2B2A4DAF140077DCC3 /* PromptView.swift */; };
+		C8AA3E392A4DAF140077DCC3 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E2C2A4DAF140077DCC3 /* DescriptionView.swift */; };
+		C8AA3E3A2A4DAF140077DCC3 /* ChooseTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E2D2A4DAF140077DCC3 /* ChooseTemplateView.swift */; };
+		C8AA3E3B2A4DAF140077DCC3 /* SelectQRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E2E2A4DAF140077DCC3 /* SelectQRTypeView.swift */; };
+		C8AA3E3C2A4DAF140077DCC3 /* SelectQRDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E2F2A4DAF140077DCC3 /* SelectQRDetailView.swift */; };
+		C8AA3E3F2A4DAF1A0077DCC3 /* CreateQRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E3E2A4DAF1A0077DCC3 /* CreateQRViewModel.swift */; };
+		C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E402A4DAF320077DCC3 /* ai_tab.json */; };
+		C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E412A4DAF320077DCC3 /* crown.json */; };
 		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,15 +119,6 @@
 		59286C532A4D31D300EBBEBF /* QRType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRType.swift; sourceTree = "<group>"; };
 		59286C542A4D31D300EBBEBF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		59286C552A4D31D300EBBEBF /* InputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
-		59286C572A4D31D300EBBEBF /* SecurityModeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityModeView.swift; sourceTree = "<group>"; };
-		59286C582A4D31D300EBBEBF /* CreateQRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRView.swift; sourceTree = "<group>"; };
-		59286C592A4D31D300EBBEBF /* QRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRTypeView.swift; sourceTree = "<group>"; };
-		59286C5A2A4D31D300EBBEBF /* InputNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
-		59286C5B2A4D31D300EBBEBF /* SelectQRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRTypeView.swift; sourceTree = "<group>"; };
-		59286C5C2A4D31D300EBBEBF /* ItemTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTemplateView.swift; sourceTree = "<group>"; };
-		59286C5D2A4D31D300EBBEBF /* InputPhoneNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberView.swift; sourceTree = "<group>"; };
-		59286C5E2A4D31D300EBBEBF /* SelectQRDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRDetailView.swift; sourceTree = "<group>"; };
-		59286C5F2A4D31D300EBBEBF /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
 		59286C622A4D31D300EBBEBF /* HistoryCategoryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCategoryListView.swift; sourceTree = "<group>"; };
 		59286C632A4D31D300EBBEBF /* HistoryListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		59286C642A4D31D300EBBEBF /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -178,17 +174,31 @@
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavibarView.swift; sourceTree = "<group>"; };
-		A4BAA27C2A4C34A9006371B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A4BAA27E2A4C3CF1006371B1 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		A4BAA2802A4C40BF006371B1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		A4BAA2832A4C4ABD006371B1 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
-		A4C69C372A4D3BB90076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C3B2A4D90580076CF48 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		A4C69C3D2A4D90580076CF48 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		A4C69C3F2A4D90580076CF48 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A4C69C412A4D90580076CF48 /* SettingRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
 		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
+		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesFetcher.swift; sourceTree = "<group>"; };
+		C8AA3E1B2A4D61030077DCC3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		C8AA3E222A4DAF140077DCC3 /* CreateQRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRView.swift; sourceTree = "<group>"; };
+		C8AA3E242A4DAF140077DCC3 /* SecurityModeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityModeView.swift; sourceTree = "<group>"; };
+		C8AA3E252A4DAF140077DCC3 /* SliderSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderSettingView.swift; sourceTree = "<group>"; };
+		C8AA3E262A4DAF140077DCC3 /* QRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRTypeView.swift; sourceTree = "<group>"; };
+		C8AA3E272A4DAF140077DCC3 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
+		C8AA3E282A4DAF140077DCC3 /* InputNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		C8AA3E292A4DAF140077DCC3 /* ItemTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTemplateView.swift; sourceTree = "<group>"; };
+		C8AA3E2A2A4DAF140077DCC3 /* InputPhoneNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberView.swift; sourceTree = "<group>"; };
+		C8AA3E2B2A4DAF140077DCC3 /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
+		C8AA3E2C2A4DAF140077DCC3 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		C8AA3E2D2A4DAF140077DCC3 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
+		C8AA3E2E2A4DAF140077DCC3 /* SelectQRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRTypeView.swift; sourceTree = "<group>"; };
+		C8AA3E2F2A4DAF140077DCC3 /* SelectQRDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRDetailView.swift; sourceTree = "<group>"; };
+		C8AA3E3E2A4DAF1A0077DCC3 /* CreateQRViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRViewModel.swift; sourceTree = "<group>"; };
+		C8AA3E402A4DAF320077DCC3 /* ai_tab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ai_tab.json; sourceTree = "<group>"; };
+		C8AA3E412A4DAF320077DCC3 /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
 		D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -310,8 +320,9 @@
 		59286C512A4D31D300EBBEBF /* CreateQR */ = {
 			isa = PBXGroup;
 			children = (
+				C8AA3E3D2A4DAF1A0077DCC3 /* ViewModels */,
+				C8AA3E212A4DAF140077DCC3 /* Views */,
 				59286C522A4D31D300EBBEBF /* Models */,
-				59286C562A4D31D300EBBEBF /* Views */,
 			);
 			path = CreateQR;
 			sourceTree = "<group>";
@@ -324,22 +335,6 @@
 				59286C552A4D31D300EBBEBF /* InputType.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		59286C562A4D31D300EBBEBF /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				59286C572A4D31D300EBBEBF /* SecurityModeView.swift */,
-				59286C582A4D31D300EBBEBF /* CreateQRView.swift */,
-				59286C592A4D31D300EBBEBF /* QRTypeView.swift */,
-				59286C5A2A4D31D300EBBEBF /* InputNameView.swift */,
-				59286C5B2A4D31D300EBBEBF /* SelectQRTypeView.swift */,
-				59286C5C2A4D31D300EBBEBF /* ItemTemplateView.swift */,
-				59286C5D2A4D31D300EBBEBF /* InputPhoneNumberView.swift */,
-				59286C5E2A4D31D300EBBEBF /* SelectQRDetailView.swift */,
-				59286C5F2A4D31D300EBBEBF /* ChooseTemplateView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		59286C602A4D31D300EBBEBF /* History */ = {
@@ -375,9 +370,6 @@
 			children = (
 				59286C672A4D31D300EBBEBF /* QRScannerDelegate.swift */,
 				59286C682A4D31D300EBBEBF /* ScannerViewModel.swift */,
-				A4C69C342A4D3B960076CF48 /* Language */,
-				C88A2B532A4C4319003A93B6 /* Resource */,
-				A4BAA2772A4C345D006371B1 /* Settings */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -461,6 +453,7 @@
 				59C7661B2A496E5F00D4BDD3 /* Products */,
 				704E9C9B993E1DD8EA8AD92E /* Pods */,
 				FCC724D2989396EBCABE6A42 /* Frameworks */,
+				C8AA3E202A4DAEE30077DCC3 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -477,6 +470,7 @@
 		59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				C88A2B6D2A4C4513003A93B6 /* Helper */,
 				A4766E672A4AD40A0002FEF6 /* MainSystem */,
 				59C7664B2A497E8400D4BDD3 /* Common */,
 				59286C972A4D31F100EBBEBF /* Helper */,
@@ -546,6 +540,7 @@
 			children = (
 				9AD522802A4A86A300A947B5 /* R+.swift */,
 				9ABC4DA82A4C354E002646DA /* View+.swift */,
+				C8AA3E1B2A4D61030077DCC3 /* Double+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -570,9 +565,9 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				59286C3A2A4D30C900EBBEBF /* ai_tab.json */,
-				59286C3B2A4D30C900EBBEBF /* countries.json */,
-				59286C3C2A4D30CA00EBBEBF /* crown.json */,
+				C8AA3E402A4DAF320077DCC3 /* ai_tab.json */,
+				C8AA3E412A4DAF320077DCC3 /* crown.json */,
+				C88A2B6B2A4C43D4003A93B6 /* countries.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -646,65 +641,6 @@
 			path = NavibarView;
 			sourceTree = "<group>";
 		};
-		A4BAA2772A4C345D006371B1 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				A4BAA27B2A4C3490006371B1 /* Model */,
-				A4BAA27A2A4C3480006371B1 /* ViewModel */,
-				A4BAA2782A4C3473006371B1 /* View */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		A4BAA2782A4C3473006371B1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A4BAA2822A4C4AA1006371B1 /* RowView */,
-				A4BAA27C2A4C34A9006371B1 /* SettingsView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A4BAA27A2A4C3480006371B1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A4BAA2802A4C40BF006371B1 /* SettingsViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A4BAA27B2A4C3490006371B1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A4BAA27E2A4C3CF1006371B1 /* SettingsModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A4BAA2822A4C4AA1006371B1 /* RowView */ = {
-			isa = PBXGroup;
-			children = (
-				A4BAA2832A4C4ABD006371B1 /* SettingRowView.swift */,
-			);
-			path = RowView;
-			sourceTree = "<group>";
-		};
-		A4C69C342A4D3B960076CF48 /* Language */ = {
-			isa = PBXGroup;
-			children = (
-				A4C69C362A4D3BA70076CF48 /* View */,
-			);
-			path = Language;
-			sourceTree = "<group>";
-		};
-		A4C69C362A4D3BA70076CF48 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A4C69C372A4D3BB90076CF48 /* LanguageView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		A4C69C392A4D90570076CF48 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,11 +700,58 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C88A2B532A4C4319003A93B6 /* Resource */ = {
+		C88A2B6D2A4C4513003A93B6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */,
 			);
-			path = Resource;
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		C8AA3E202A4DAEE30077DCC3 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				59286C3A2A4D30C900EBBEBF /* ai_tab.json */,
+				59286C3B2A4D30C900EBBEBF /* countries.json */,
+				59286C3C2A4D30CA00EBBEBF /* crown.json */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C8AA3E212A4DAF140077DCC3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E222A4DAF140077DCC3 /* CreateQRView.swift */,
+				C8AA3E232A4DAF140077DCC3 /* Subviews */,
+				C8AA3E2E2A4DAF140077DCC3 /* SelectQRTypeView.swift */,
+				C8AA3E2F2A4DAF140077DCC3 /* SelectQRDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C8AA3E232A4DAF140077DCC3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E242A4DAF140077DCC3 /* SecurityModeView.swift */,
+				C8AA3E252A4DAF140077DCC3 /* SliderSettingView.swift */,
+				C8AA3E262A4DAF140077DCC3 /* QRTypeView.swift */,
+				C8AA3E272A4DAF140077DCC3 /* AdvancedSettingsView.swift */,
+				C8AA3E282A4DAF140077DCC3 /* InputNameView.swift */,
+				C8AA3E292A4DAF140077DCC3 /* ItemTemplateView.swift */,
+				C8AA3E2A2A4DAF140077DCC3 /* InputPhoneNumberView.swift */,
+				C8AA3E2B2A4DAF140077DCC3 /* PromptView.swift */,
+				C8AA3E2C2A4DAF140077DCC3 /* DescriptionView.swift */,
+				C8AA3E2D2A4DAF140077DCC3 /* ChooseTemplateView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		C8AA3E3D2A4DAF1A0077DCC3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E3E2A4DAF1A0077DCC3 /* CreateQRViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FCC724D2989396EBCABE6A42 /* Frameworks */ = {
@@ -897,17 +880,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD522A12A4AA09200A947B5 /* Urbanist-Black.ttf in Resources */,
-				59286C3D2A4D30CA00EBBEBF /* ai_tab.json in Resources */,
 				59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */,
-				59286C3E2A4D30CA00EBBEBF /* countries.json in Resources */,
 				9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */,
+				C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */,
 				9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */,
+				C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */,
+				C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
 				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
 				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
 				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
-				59286C3F2A4D30CA00EBBEBF /* crown.json in Resources */,
 				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
 				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
 				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
@@ -1059,53 +1042,58 @@
 			buildActionMask = 2147483647;
 			files = (
 				59286C7D2A4D31D300EBBEBF /* TabbarView.swift in Sources */,
+				C8AA3E382A4DAF140077DCC3 /* PromptView.swift in Sources */,
 				59286C912A4D31D300EBBEBF /* ScannerView.swift in Sources */,
 				59286C7B2A4D31D300EBBEBF /* TabbarPrimaryButton.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
 				59286C812A4D31D300EBBEBF /* InputType.swift in Sources */,
+				C8AA3E3C2A4DAF140077DCC3 /* SelectQRDetailView.swift in Sources */,
 				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
 				59286C7F2A4D31D300EBBEBF /* QRType.swift in Sources */,
-				59286C822A4D31D300EBBEBF /* SecurityModeView.swift in Sources */,
 				59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */,
+				C8AA3E312A4DAF140077DCC3 /* SecurityModeView.swift in Sources */,
 				59286C942A4D31D300EBBEBF /* OnboardingModel.swift in Sources */,
 				59286C7C2A4D31D300EBBEBF /* TabbarShape.swift in Sources */,
+				C8AA3E3B2A4DAF140077DCC3 /* SelectQRTypeView.swift in Sources */,
 				59286C802A4D31D300EBBEBF /* Country.swift in Sources */,
 				A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */,
+				C8AA3E392A4DAF140077DCC3 /* DescriptionView.swift in Sources */,
 				A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */,
 				A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */,
+				C8AA3E3A2A4DAF140077DCC3 /* ChooseTemplateView.swift in Sources */,
 				A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */,
-				59286C872A4D31D300EBBEBF /* ItemTemplateView.swift in Sources */,
 				59286C902A4D31D300EBBEBF /* ScannerModel.swift in Sources */,
-				59286C892A4D31D300EBBEBF /* SelectQRDetailView.swift in Sources */,
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
+				C8AA3E372A4DAF140077DCC3 /* InputPhoneNumberView.swift in Sources */,
 				59286C7E2A4D31D300EBBEBF /* TabbarEnum.swift in Sources */,
 				59286C952A4D31D300EBBEBF /* OnboardingRowView.swift in Sources */,
+				C8AA3E332A4DAF140077DCC3 /* QRTypeView.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */,
-				59286C862A4D31D300EBBEBF /* SelectQRTypeView.swift in Sources */,
-				59286C842A4D31D300EBBEBF /* QRTypeView.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
+				C8AA3E342A4DAF140077DCC3 /* AdvancedSettingsView.swift in Sources */,
 				A4C69C442A4D90580076CF48 /* SettingsView.swift in Sources */,
-				59286C832A4D31D300EBBEBF /* CreateQRView.swift in Sources */,
-				59286C882A4D31D300EBBEBF /* InputPhoneNumberView.swift in Sources */,
 				59286C8C2A4D31D300EBBEBF /* HistoryListView.swift in Sources */,
+				C8AA3E322A4DAF140077DCC3 /* SliderSettingView.swift in Sources */,
+				C8AA3E3F2A4DAF1A0077DCC3 /* CreateQRViewModel.swift in Sources */,
 				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
-				59286C8A2A4D31D300EBBEBF /* ChooseTemplateView.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
-				59286C852A4D31D300EBBEBF /* InputNameView.swift in Sources */,
 				59286C782A4D31D300EBBEBF /* SplashView.swift in Sources */,
 				A4C69C422A4D90580076CF48 /* SettingsViewModel.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
 				59286C772A4D31D300EBBEBF /* HomeView.swift in Sources */,
+				C8AA3E362A4DAF140077DCC3 /* ItemTemplateView.swift in Sources */,
 				59286C8F2A4D31D300EBBEBF /* ScannerViewModel.swift in Sources */,
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
+				C8AA3E352A4DAF140077DCC3 /* InputNameView.swift in Sources */,
 				59286C8E2A4D31D300EBBEBF /* QRScannerDelegate.swift in Sources */,
+				C8AA3E302A4DAF140077DCC3 /* CreateQRView.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				59286C992A4D31F100EBBEBF /* CountriesFetcher.swift in Sources */,
 				59286C8B2A4D31D300EBBEBF /* HistoryCategoryListView.swift in Sources */,

@@ -20,6 +20,8 @@ struct InputNameView: View {
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .frame(maxHeight: 42)
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
+                .font(R.font.urbanistRegular.font(size: 14))
+                .foregroundColor(R.color.color_1B232E.color)
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QRTypeView: View {
     var type: QRType = .facebook
-    @Binding var selectedType: QRType?
+    @Binding var selectedType: QRType
     
     var isSelected: Bool {
         selectedType == type
@@ -33,12 +33,9 @@ struct QRTypeView: View {
                 
         }
         .frame(maxHeight: 52)
-        .padding(.leading, 16)
-        .padding(.trailing, 16)
+        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         .onTapGesture {
-            if isSelected {
-                selectedType = nil
-            } else {
+            if !isSelected {
                 selectedType = type
             }
         }

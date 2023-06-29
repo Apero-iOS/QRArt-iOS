@@ -10,6 +10,7 @@ import SwiftUI
 struct InputPhoneNumberView: View {
     var title: String = "Name"
     var placeholder: String = "Input your Name"
+    var type: QRType = .contact
     @State var name: String = ""
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
@@ -18,7 +19,8 @@ struct InputPhoneNumberView: View {
                 .font(R.font.urbanistMedium.font(size: 14))
             HStack {
                 HStack(spacing: 8) {
-                    Image(R.image.ic_text)
+                    type.image
+                        .shadow(color: type.shadowColor, radius: type.radiusShadow, x: type.positionShadow.x, y: type.positionShadow.y)
                     Image(R.image.ic_dropdown)
                 }
                 .frame(maxHeight: 42, alignment: .center)
@@ -28,6 +30,8 @@ struct InputPhoneNumberView: View {
                     .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                     .frame(maxHeight: 42)
                     .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
+                    .font(R.font.urbanistRegular.font(size: 14))
+                    .foregroundColor(R.color.color_6A758B.color)
             }
             
         }
