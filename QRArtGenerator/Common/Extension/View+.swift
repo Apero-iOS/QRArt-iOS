@@ -37,10 +37,10 @@ extension View {
     }
     
     @ViewBuilder func setColorSlider(color: Color) -> some View {
-        if #available(iOS 14, *) {
-            accentColor(color)
-        } else {
+        if #available(iOS 16, *) {
             tint(color)
+        } else {
+            accentColor(color)
         }
     }
     
