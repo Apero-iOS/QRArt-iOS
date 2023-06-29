@@ -14,46 +14,47 @@ struct TabbarView: View {
     var body: some View {
         GeometryReader { geo in
             NavigationView {
-                VStack(spacing: 0) {
-                    Spacer()
-                    
+                ZStack(alignment: .bottom) {
                     contentView
+                        .padding(.bottom, geo.safeAreaInsets.bottom + 64)
                     
-                    Spacer()
-                    
-                    ZStack(alignment: .bottom) {
-                        TabBarShape()
-                            .fill(Color.white)
-                            .frame(height: 64)
-                            .shadow(color: R.color.color_D3D3D3_30.color, radius: 20, x: 0, y: -4)
+                    VStack {
+                        Spacer()
                         
-                        HStack(alignment: .bottom, spacing: 0) {
-                            ForEach(viewModel.tabs, id: \.self) { tab in
-                                TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { tab in
-                                    switch tab {
-                                    case .scan:
-                                        viewModel.showScan.toggle()
-                                    case .ai:
-                                        viewModel.showCreateQR.toggle()
-                                    default:
-                                        break
+                        ZStack(alignment: .bottom) {
+                            TabBarShape()
+                                .fill(Color.white)
+                                .frame(height: 64)
+                                .shadow(color: R.color.color_D3D3D3_30.color, radius: 20, x: 0, y: -4)
+                            
+                            HStack(alignment: .bottom, spacing: 0) {
+                                ForEach(viewModel.tabs, id: \.self) { tab in
+                                    TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { _ in
+                                        switch tab {
+                                        case .scan:
+                                            viewModel.showScan.toggle()
+                                        case .ai:
+                                            viewModel.showCreateQR.toggle()
+                                        default:
+                                            break
+                                        }
                                     }
                                 }
+                                .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                             }
+                            
+                            Color.white
+                                .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                         }
-                        .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                     }
-                    
-                    Color.white
-                        .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
+                    .ignoresSafeArea()
+                    .hideNavigationBar()
                 }
-                .ignoresSafeArea()
-                .hideNavigationBar()
+            }.fullScreenCover(isPresented: $viewModel.showScan) {
+                ScannerView()
+            }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
+                CreateQRView()
             }
-        }.fullScreenCover(isPresented: $viewModel.showScan) {
-            ScannerView()
-        }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
-            CreateQRView()
         }
     }
     

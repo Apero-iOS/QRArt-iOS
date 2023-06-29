@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct HistoryView: View {
+    // MARK: - Variables
+    @StateObject var viewModel = HistoryViewModel()
+    
+    
+    // MARK: - Body
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
                 HStack {
                     Image(R.image.history_logo_ic)
-                        .padding(.leading, 20)
                     
                     Spacer()
                     
                     LottieView(lottieFile: R.file.crownJson.name)
                         .frame(width: 24, height: 24)
-                        .padding(.trailing, 20)
                         .onTapGesture {
                             // TODO: Show iap
                         }
@@ -29,16 +32,19 @@ struct HistoryView: View {
                 Text(Rlocalizable.history())
                     .font(R.font.urbanistBold.font(size: 28))
                     .foregroundColor(R.color.color_1B232E.color)
-                    .padding(.leading, 20)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
 //                emptyView
                 listView
             }
+            .padding(.horizontal, 20)
             .hideNavigationBar()
+        }.onAppear {
+            viewModel.getCategories()
         }
     }
     
+    // MARK: - ViewBuilder
     @ViewBuilder var emptyView: some View {
         Spacer()
             .frame(height: HEIGHT_SCREEN / 20)
@@ -54,7 +60,6 @@ struct HistoryView: View {
                 
                 Text(Rlocalizable.no_qrs_created_yet)
                     .font(R.font.urbanistRegular.font(size: 16))
-                    .padding(.horizontal, 20)
                     .foregroundColor(R.color.color_6A758B.color)
                     .multilineTextAlignment(.center)
             }
@@ -68,6 +73,7 @@ struct HistoryView: View {
             .background(R.color.color_653AE4.color)
             .clipShape(Capsule())
         }
+        .padding(.horizontal, 40)
         .opacity(1)
         
         Spacer()
@@ -90,15 +96,18 @@ struct HistoryView: View {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(R.color.color_EAEAEA.color)
         )
-        .padding(.horizontal, 20)
         .onTapGesture {
             // TODO: show search
         }
         
-        Spacer()
+//        HistoryCategoryListView(caterories: $viewModel.categories, selectedIndex: viewModel.selectedCate)
+//            .padding(.horizontal, -20)
+        
+        HistoryListView(items: $viewModel.filteredItems)
     }
 }
 
+// MARK: - PreviewProvider
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         HistoryView()
