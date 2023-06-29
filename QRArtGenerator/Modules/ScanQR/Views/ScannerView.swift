@@ -10,65 +10,93 @@ import AVKit
 import BottomSheet
 
 struct ScannerView: View {
-    private var sizeRectangle = 0.05
-    @State private var isScanning: Bool = false
-    @State private var session: AVCaptureSession = .init()
-    @State private var qrOutput: AVCaptureMetadataOutput = .init()
-    @State private var cameraPermission: CameraPermission = .idle
-    @State private var errorMessage: String = ""
-    @State private var showError: Bool = false
-    @StateObject private var qrDelegate = QRScannerDelegate()
-    @StateObject private var viewModel = ScannerViewModel()
-    @State private var scannerCode: String?
-    @State var cameraSize: CGSize = .zero
-    @State var showSheet: Bool = false
+    
+    @StateObject var qrDelegate = QRScannerDelegate()
+    @StateObject var viewModel = ScannerViewModel()
     
     var body: some View {
-        GeometryReader {
-            let size = $0.size
-            ZStack(alignment: .center) {
-                makeCameraView(size: size)
-             
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.black.opacity(0.5))
-                        .ignoresSafeArea()
-                    Rectangle()
-                        .frame(width: size.width-50, height: size.width-50)
-                        .blendMode(.destinationOut)
-                        .overlay {
-                            rectangleView
-                        }
-                  
-                }.compositingGroup()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+        ZStack {
+            GeometryReader {
+                let size = $0.size
+                let heightRectangle = size.width - viewModel.paddinRectangle*2
+                
+                ZStack(alignment: .center) {
+                    CameraView(frameSize: size, cameraLayer: viewModel.cameraLayer, session: $viewModel.session)
+                    
+                    // Mask
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.black.opacity(0.5))
+                            .ignoresSafeArea()
+                        Rectangle()
+                            .frame(width: heightRectangle, height: heightRectangle)
+                            .blendMode(.destinationOut)
+                    }.compositingGroup()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    rectangleView.frame(width: heightRectangle, height: heightRectangle)
+                    
+                }.onAppear {
+                    viewModel.cameraSize = size
+                }
+            }
+            .ignoresSafeArea()
+            .onAppear {
+                checkCameraPermission()
+            }
+            .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
                 
             }
-        }
-        .ignoresSafeArea()
-        .onAppear {
-            checkCameraPermission()
-        }
-        .alert(errorMessage, isPresented: $showError) {
             
-        }
-        .onChange(of: qrDelegate.scannerCode) { newValue in
-            if let code = newValue {
-                if scannerCode != code {
-                    scannerCode = code
-                    showSheet.toggle()
-                    print(code)
-                } 
+            VStack(spacing: 10) {
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "arrow.backward.circle")
+                            .foregroundColor(.white)
+                    }.frame(width: 40, height: 40)
+                    Spacer()
+                }
+                
+                Spacer()
+                Button {
+                    viewModel.tourchClick()
+                } label: {
+                    Image(systemName: "flashlight.off.fill").foregroundColor(.white)
+                }
+                .frame(width: 48, height: 48)
+                .background(.white.opacity(0.3))
+                .cornerRadius(30)
+                
+                // Zoom
+                HStack(spacing: 8) {
+                    Image(systemName: "minus.magnifyingglass")
+                        .foregroundColor(.white)
+                        .frame(width: 24, height: 24)
+                    Slider(value: $viewModel.zoomValue, in: 1...5) { editing in }
+                        .tint(.white)
+                    Image(systemName: "plus.magnifyingglass")
+                        .foregroundColor(.white)
+                        .frame(width: 24, height: 24)
+                }
             }
-            
+            .padding()
+            .onChange(of: viewModel.zoomValue) { newValue in
+                viewModel.zoomCamera(value: CGFloat(newValue))
+            }
+            .onChange(of: viewModel.torchMode) { newValue in
+                viewModel.updateTorchMode(mode: newValue)
+            }
+            .onChange(of: qrDelegate.scannerCode) { newValue in
+                viewModel.handleQRResult(text: newValue)
+            }
+            .bottomSheet(isPresented: $viewModel.showSheet, height: 200, onDismiss: {
+                qrDelegate.scannerCode = nil
+            }) {
+                EmptyView()
+            }
         }
-        .bottomSheet(isPresented: $showSheet, height: 200) {
-            EmptyView()
-        }
-    }
-    
-    func makeCameraView(size: CGSize) -> some View {
-        return CameraView(frameSize: size, session: $session)
     }
     
     var rectangleView: some View {
@@ -77,31 +105,19 @@ struct ScannerView: View {
             ZStack(alignment: .top) {
                 ForEach(0...4, id: \.self) { index in
                     let rotation = Double(index)*90
-                    RoundedRectangle(cornerRadius: 2, style: .circular)
-                        .trim(from: 0.625 - sizeRectangle, to: 0.625 + sizeRectangle)
+                    RoundedRectangle(cornerRadius: 1.5, style: .circular)
+                        .trim(from: 0.625 - viewModel.sizeRectangle, to: 0.625 + viewModel.sizeRectangle)
                         .stroke(Color.white, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
                         .rotationEffect(.init(degrees: rotation))
-                       
+                    
                 }
                 Rectangle()
                     .fill(Color.white)
                     .frame(height: 2.5)
                     .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: 15)
-                    .offset(y: isScanning ? size.width : 0)
-                    
+                    .offset(y: viewModel.isScanning ? size.width : 0)
+                
             }
-        }.blendMode(.destinationOver)
-    }
-    
-    func activeScannerAnimation() {
-        withAnimation(.easeInOut(duration: 0.85).delay(0.1).repeatForever(autoreverses: true)) {
-            isScanning = true
-        }
-    }
-    
-    func deActiveScannerAnimation() {
-        withAnimation(.easeInOut(duration: 0.85)) {
-            isScanning = false
         }
     }
     
@@ -109,19 +125,19 @@ struct ScannerView: View {
         Task {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
-                cameraPermission = .approve
+                viewModel.cameraPermission = .approve
                 setupCamera()
             case .notDetermined:
                 if await AVCaptureDevice.requestAccess(for: .video) {
-                    /// Permission granted
-                    cameraPermission = .approve
+                    /// permission granted
+                    viewModel.cameraPermission = .approve
                     setupCamera()
                 } else {
                     /// permission Denied
-                    cameraPermission = .denied
+                    viewModel.cameraPermission = .denied
                 }
             case .denied, .restricted:
-                cameraPermission = .denied
+                viewModel.cameraPermission = .denied
             default: break
             }
         }
@@ -130,48 +146,32 @@ struct ScannerView: View {
     func setupCamera() {
         do {
             guard let deveice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
-                presentError("Unknown error")
+                viewModel.presentError("Unknown error")
                 return
             }
             let input = try AVCaptureDeviceInput(device: deveice)
-            guard session.canAddInput(input), session.canAddOutput(qrOutput) else {
-                presentError("Unknown error")
+            
+            guard viewModel.session.canAddInput(input), viewModel.session.canAddOutput(viewModel.qrOutput) else {
+                viewModel.presentError("Unknown error")
                 return
             }
-            session.beginConfiguration()
-            session.addInput(input)
-            session.addOutput(qrOutput)
-            qrOutput.metadataObjectTypes = [.qr]
-            qrOutput.setMetadataObjectsDelegate(qrDelegate, queue: .main)
-            qrOutput.rectOfInterest = rectOfInterestConverted()
-            session.commitConfiguration()
+            viewModel.session.beginConfiguration()
+            viewModel.session.addInput(input)
+            viewModel.session.addOutput(viewModel.qrOutput)
+            viewModel.qrOutput.metadataObjectTypes = [.qr]
+            let fromLayerRect = CGRect(x: 0, y: (viewModel.cameraSize.height-viewModel.cameraSize.width)/2, width: viewModel.cameraSize.width, height: viewModel.cameraSize.width)
+            viewModel.qrOutput.rectOfInterest = viewModel.cameraLayer.metadataOutputRectConverted(fromLayerRect: fromLayerRect)
+            viewModel.qrOutput.setMetadataObjectsDelegate(qrDelegate, queue: .main)
+            viewModel.session.commitConfiguration()
             DispatchQueue.global(qos: .background).async {
-                session.startRunning()
+                viewModel.session.startRunning()
             }
-            activeScannerAnimation()
+            viewModel.activeScannerAnimation()
         } catch {
-            presentError(error.localizedDescription)
+            viewModel.presentError(error.localizedDescription)
         }
     }
     
-    func rectOfInterestConverted() -> CGRect {
-        let parentRect = CGRect(origin: .zero, size: cameraSize)
-        let fromLayerRect = CGRect(x: 0, y: (cameraSize.height-cameraSize.width)/2, width: cameraSize.width, height: cameraSize.width)
-        let parentWidth = parentRect.width
-        let parentHeight = parentRect.height
-        let newX = (parentWidth - fromLayerRect.maxX)/parentWidth
-        let newY = 1 - (parentHeight - fromLayerRect.minY)/parentHeight
-        let width = 1 - (fromLayerRect.minX/parentWidth + newX)
-        let height = (fromLayerRect.maxY/parentHeight) - newY
-
-        return CGRect(x: newX, y: newY, width: width, height: height)
-    }
-    
-    
-    func presentError(_ message: String) {
-        errorMessage = message
-        showError.toggle()
-    }
 }
 
 struct ScannerView_Previews: PreviewProvider {

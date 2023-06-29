@@ -15,7 +15,16 @@ enum CameraPermission: String {
 }
 
 enum QRScanType: String {
-case wifi  = "WIFI"
-case mail = "MATMSG"
-    
+    case wifi  = "WIFI:"
+    case mail = "MATMSG:"
+    case text = "TEXT:"
+    case phone = "PHONE:"
+    case url = "url"
+}
+
+
+struct ResultQR {
+    var type: QRScanType
+    var dictionary: [String: String] = [:]
+    var content: String
 }
