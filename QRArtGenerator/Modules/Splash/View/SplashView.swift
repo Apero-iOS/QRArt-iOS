@@ -15,7 +15,7 @@ struct SplashView: View {
         VStack {
             Image(R.image.image_splash)
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .onReceive(timer) { _ in
                     Router.showOnboarding()
                 }

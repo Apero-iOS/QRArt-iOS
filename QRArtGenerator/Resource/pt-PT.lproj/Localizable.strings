@@ -29,3 +29,11 @@
 "no_qrs_created_yet" = "Nenhum QRS ainda criou? Não se preocupe, o QR cheio de arte aguarda!";
 "create_qr" = "Crie QR";
 "search_qr_name" = "Pesquise o nome QR";
+"language" = "Linguagem";
+"privacy_policy" = "política de Privacidade";
+"rate_app" = "App de taxa";
+"share_app" = "Compartilhe o aplicativo";
+"version" = "Versão";
+"upgrade_to_qr" = "Atualize para QR";
+"content_banner_setting" = "Acesso ilimitado a tudo";
+"try_it_out" = "Experimente";

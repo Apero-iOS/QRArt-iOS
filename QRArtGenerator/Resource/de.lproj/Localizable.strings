@@ -29,3 +29,11 @@
 "no_qrs_created_yet" = "Noch keine QRs erstellt? Mach dir keine Sorgen, das mit Kunst gefüllte QR wartet!";
 "create_qr" = "Qr erstellen";
 "search_qr_name" = "Suchen Sie den QR -Namen";
+"language" = "Sprache";
+"privacy_policy" = "Datenschutz-Bestimmungen";
+"rate_app" = "Bewertungs App";
+"share_app" = "App teilen";
+"version" = "Ausführung";
+"upgrade_to_qr" = "Upgrade auf QR";
+"content_banner_setting" = "Unbegrenzter Zugang zu allem";
+"try_it_out" = "Versuch es";
