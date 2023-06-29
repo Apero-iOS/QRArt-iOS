@@ -16,7 +16,7 @@ struct CameraView: UIViewRepresentable {
     @Binding var session: AVCaptureSession
     func makeUIView(context: Context) -> UIView {
         let view = UIViewType(frame: CGRect(origin: .zero, size: frameSize))
-        view.backgroundColor = .clear
+        view.backgroundColor = .black
         cameraLayer.session = session
         cameraLayer.frame = CGRect(origin: .zero, size: frameSize)
         cameraLayer.videoGravity = .resizeAspectFill

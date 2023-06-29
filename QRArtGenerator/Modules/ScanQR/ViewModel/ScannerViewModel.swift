@@ -14,6 +14,7 @@ class ScannerViewModel: ObservableObject {
     var sizeRectangle = 0.05
     var paddinRectangle: CGFloat = 25
     let cameraLayer = AVCaptureVideoPreviewLayer()
+    lazy var deveice: AVCaptureDevice? = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
     
     @Published var isScanning: Bool = false
     @Published var session: AVCaptureSession = .init()
@@ -24,8 +25,10 @@ class ScannerViewModel: ObservableObject {
     @Published var scannerCode: String?
     @Published var cameraSize: CGSize = .zero
     @Published var showSheet: Bool = false
-    @Published var zoomValue = 1.0
+    @Published var zoomValue = 1.5
     @Published var torchMode: AVCaptureDevice.TorchMode = .off
+    @Published var frameCamera: CGRect = .zero
+    @Published var qrItem: ResultQR = ResultQR(type: .text, content: "")
   
     func tourchClick() {
         if torchMode == .off {
@@ -38,8 +41,8 @@ class ScannerViewModel: ObservableObject {
     func handleQRResult(text: String?) {
         scannerCode = text
         if let code = text {
-            let _ = parseResultQR(text: code)
-            showSheet.toggle()
+            qrItem = parseResultQR(text: code)
+            showSheet = true
         }
     }
     
@@ -65,7 +68,7 @@ class ScannerViewModel: ObservableObject {
 extension ScannerViewModel {
     
     func updateTorchMode(mode: AVCaptureDevice.TorchMode) {
-        guard let deveice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
+        guard let deveice = deveice else {
             presentError("Unknown error")
             return
         }
@@ -82,12 +85,12 @@ extension ScannerViewModel {
     }
     
     func zoomCamera(value: CGFloat) {
-        guard let deveice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
+        guard let deveice = deveice else {
             presentError("Unknown error")
             return
         }
         do {
-            if value <= deveice.maxAvailableVideoZoomFactor ,
+            if value <= deveice.maxAvailableVideoZoomFactor,
                value >= deveice.minAvailableVideoZoomFactor {
                 try deveice.lockForConfiguration()
                 deveice.videoZoomFactor = value
@@ -158,7 +161,7 @@ extension ScannerViewModel {
             }
         }
         print("type \(result.type)")
-        print("\(result.dictionary)")
+        print("\(result.dictionary) - content: \(result.content)")
         return result
     }
 }

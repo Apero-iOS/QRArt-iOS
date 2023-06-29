@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class CountriesFetcher {
     
@@ -16,5 +17,28 @@ class CountriesFetcher {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let countries = try! decoder.decode([Country].self, from: data)
         return countries
+    }
+}
+
+private struct SafeAreaInsetsKey: EnvironmentKey {
+    static var defaultValue: EdgeInsets {
+        (UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first(where: { $0.isKeyWindow })?.safeAreaInsets ?? .zero).insets
+    }
+}
+
+extension EnvironmentValues {
+    
+    var safeAreaInsets: EdgeInsets {
+        self[SafeAreaInsetsKey.self]
+    }
+}
+
+private extension UIEdgeInsets {
+    
+    var insets: EdgeInsets {
+        EdgeInsets(top: top, leading: left, bottom: bottom, trailing: right)
     }
 }
