@@ -10,10 +10,6 @@ import SwiftUI
 struct SelectQRTypeView: View {
     @State private var selectedType: QRType? = .facebook
     
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             ZStack {
@@ -36,40 +32,22 @@ struct SelectQRTypeView: View {
                 .padding(.trailing, 16)
             }
             .frame(maxHeight: 29)
-            if #available(iOS 16, *) {
-                List {
-                    ForEach(QRGroupType.allCases, id:  \.self) { section in
-                        Section(header: Text(section.title)
-                            .font(R.font.urbanistSemiBold.font(size: 16))
-                            .foregroundColor(R.color.color_1B232E.color)
-                            .padding(EdgeInsets())) {
-                            ForEach(section.items, id: \.self) { item in
-                                QRTypeView(type: item, selectedType: $selectedType)
-                                    .listRowInsets(EdgeInsets())
-                            }
-        
+            List {
+                ForEach(QRGroupType.allCases, id:  \.self) { section in
+                    Section(header: Text(section.title)
+                        .font(R.font.urbanistSemiBold.font(size: 16))
+                        .foregroundColor(R.color.color_1B232E.color)
+                        .padding(EdgeInsets())) {
+                        ForEach(section.items, id: \.self) { item in
+                            QRTypeView(type: item, selectedType: $selectedType)
+                                .listRowInsets(EdgeInsets())
                         }
+    
                     }
                 }
-                .listStyle(.insetGrouped)
-                .scrollContentBackground(.hidden)
-            } else {
-                List {
-                    ForEach(QRGroupType.allCases, id:  \.self) { section in
-                        Section(header: Text(section.title)
-                            .font(R.font.urbanistSemiBold.font(size: 16))
-                            .foregroundColor(R.color.color_1B232E.color)
-                            .padding(EdgeInsets())) {
-                            ForEach(section.items, id: \.self) { item in
-                                QRTypeView(type: item, selectedType: $selectedType)
-                                    .listRowInsets(EdgeInsets())
-                            }
-        
-                        }
-                    }
-                }
-                .listStyle(.insetGrouped)
             }
+            .listStyle(.insetGrouped)
+            .clearBackgroundColorList()
         }
         .background(R.color.color_F7F7F7.color)
     }

@@ -9,10 +9,14 @@ import SwiftUI
 
 @main
 struct QRArtGeneratorApp: App {
+    
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
         
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            SelectQRDetailView()
         }
     }
 }

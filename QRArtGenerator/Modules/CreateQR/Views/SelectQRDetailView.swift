@@ -11,6 +11,7 @@ import BottomSheet
 struct SelectQRDetailView: View {
     @State var showSelectQR: Bool = false
     @State var name: String = ""
+    var type: QRType = .text
     
     var body: some View {
         ZStack {
@@ -27,15 +28,28 @@ struct SelectQRDetailView: View {
                 .frame(maxHeight: 44)
                 .padding(.leading, 16)
                 .padding(.trailing, 16)
-                .border(R.color.color_EAEAEA.color, width: 0.5)
-                .cornerRadius(8)
+                .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 .onTapGesture {
                     showSelectQR = true
                 }
-
-                
+                VStack(spacing: 12) {
+                    InputNameView(title: "Name", placeholder: "", name: "ok")
+                    switch type {
+                    case .website:
+                        InputNameView(title: "Website Link", placeholder: "", name: "https://www.pinterest.com/pin/672021575660808069/")
+                    case .contact:
+                        InputNameView(title: "Contact Name", placeholder: "Enter Conntact Name", name: "")
+                        InputPhoneNumberView()
+                    case .text:
+                        InputNameView(title: "Text", placeholder: "Enter a text here", name: "")
+                    default:
+                        VStack {
+                            InputNameView()
+                            SecurityModeView()
+                        }
+                    }
                     
-                
+                }
             }
             .padding(.leading, 20)
             .padding(.trailing, 20)
@@ -45,7 +59,7 @@ struct SelectQRDetailView: View {
                     .padding(.trailing, 0)
             }
         }
-
+        
     }
 }
 
