@@ -12,7 +12,7 @@ struct TabItem: View {
     let width: CGFloat
     @State var tab: TabbarEnum
     @Binding var selectedTab: TabbarEnum
-    
+    var scanCallBack: (() -> Void)?
     var body: some View {
         ZStack {
             VStack {
@@ -43,7 +43,12 @@ struct TabItem: View {
             .frame(width: width)
             .padding(.bottom, 8)
             .onTapGesture {
-                selectedTab = tab
+                if tab == .scan {
+                    scanCallBack?()
+                } else {
+                    selectedTab = tab
+                }
+               
             }
         }
     }

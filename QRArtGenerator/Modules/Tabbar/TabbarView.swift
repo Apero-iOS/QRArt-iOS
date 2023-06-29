@@ -29,7 +29,9 @@ struct TabbarView: View {
                         
                         HStack(alignment: .bottom, spacing: 0) {
                             ForEach(viewModel.tabs, id: \.self) { tab in
-                                TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab)
+                                TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) {
+                                    viewModel.showScan.toggle()
+                                }
                             }
                         }
                         .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
@@ -41,6 +43,8 @@ struct TabbarView: View {
                 .ignoresSafeArea()
                 .hideNavigationBar()
             }
+        }.fullScreenCover(isPresented: $viewModel.showScan) {
+            ScannerView()
         }
     }
     

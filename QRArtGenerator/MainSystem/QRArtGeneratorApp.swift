@@ -16,7 +16,7 @@ struct QRArtGeneratorApp: App {
         
     var body: some Scene {
         WindowGroup {
-            SelectQRDetailView()
+            SplashView()
         }
     }
 }
