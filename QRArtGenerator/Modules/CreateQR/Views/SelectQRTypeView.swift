@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SelectQRTypeView: View {
-    @State private var selectedType: QRType? = .facebook
+    @Binding var selectedType: QRType
+    @Binding var showingSelectQRTypeView: Bool
     
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
@@ -22,7 +23,7 @@ struct SelectQRTypeView: View {
                 HStack(alignment: .center) {
                     Spacer()
                     Button {
-                        
+                        showingSelectQRTypeView = false
                     } label: {
                         Text(Rlocalizable.done)
                             .font(R.font.urbanistMedium.font(size: 14))
@@ -55,6 +56,6 @@ struct SelectQRTypeView: View {
 
 struct SelectQRTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectQRTypeView()
+        SelectQRTypeView(selectedType: .constant(.facebook), showingSelectQRTypeView: .constant(false))
     }
 }

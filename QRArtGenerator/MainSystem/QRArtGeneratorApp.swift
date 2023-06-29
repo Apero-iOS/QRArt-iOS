@@ -12,11 +12,12 @@ struct QRArtGeneratorApp: App {
     
     init() {
         UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().tableFooterView = UIView()
     }
         
     var body: some Scene {
         WindowGroup {
-            SelectQRDetailView()
+            SplashView()
         }
     }
 }

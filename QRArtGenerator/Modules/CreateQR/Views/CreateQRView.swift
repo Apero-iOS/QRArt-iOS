@@ -8,20 +8,68 @@
 import SwiftUI
 
 struct CreateQRView: View {
+    @ObservedObject var viewModel = CreateQRViewModel()
+    @State var showingSelectQRTypeView: Bool = false
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                ChooseTemplateView()
-                SelectQRDetailView()
+        VStack {
+            naviView
+            ScrollView {
+                LazyVStack {
+                    templateView
+                    qrDetailView
+                    advancedSettingsView
+                }
             }
-            
-            
-            
+            VStack {
+                Button("Generate QR") {
+                    
+                }
+                .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
+                .clipShape(Capsule())
+                .background(R.color.color_653AE4.color)
+                .foregroundColor(Color.white)
+                .font(R.font.urbanistSemiBold.font(size: 14))
+                .cornerRadius(20)
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            }
         }
-        .navigationTitle("OK")
-        .font(.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .bottomSheet(isPresented: $showingSelectQRTypeView,
+                     height: HEIGHT_SCREEN/2,
+                     topBarBackgroundColor: R.color.color_F7F7F7.color,
+                     onDismiss: {
+            showingSelectQRTypeView = false
+        }) {
+            qrSelectView
+        }
+        .hideNavigationBar()
+        
     }
+    
+    
+    @ViewBuilder var templateView: some View {
+        ChooseTemplateView()
+    }
+    
+    @ViewBuilder var qrDetailView: some View {
+        SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView, type: viewModel.typeQR)
+    }
+    
+    @ViewBuilder var advancedSettingsView: some View {
+        AdvancedSettingsView()
+    }
+    
+    @ViewBuilder var qrSelectView: some View {
+        SelectQRTypeView(selectedType: $viewModel.typeQR, showingSelectQRTypeView: $showingSelectQRTypeView)
+    }
+    
+    @ViewBuilder var naviView: some View {
+        NavibarView(title: "QR Creation with", isImageTitle: true, isRightButton: true) {
+            // TODO
+        }
+    }
+    
 }
 
 struct CreateQRView_Previews: PreviewProvider {

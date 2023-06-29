@@ -29,4 +29,28 @@ extension View {
             scrollContentBackground(.hidden)
         }
     }
+    
+    @ViewBuilder func hideSeparatorLine() -> some View {
+        if #available(iOS 15, *) {
+            listRowSeparator(.hidden)
+        }
+    }
+    
+    @ViewBuilder func setColorSlider(color: Color) -> some View {
+        if #available(iOS 14, *) {
+            accentColor(color)
+        } else {
+            tint(color)
+        }
+    }
+    
+    @ViewBuilder func disableScroll() -> some View {
+        if #available(iOS 16, *) {
+            scrollDisabled(true)
+        } else {
+            onAppear {
+                UITableView.appearance().isScrollEnabled = false
+            }
+        }
+    }
 }

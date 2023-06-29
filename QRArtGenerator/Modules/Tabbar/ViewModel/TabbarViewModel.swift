@@ -10,5 +10,6 @@ import SwiftUI
 class TabbarViewModel: ObservableObject {
     @Published var selectedTab: TabbarEnum = .home
     @Published var showScan: Bool = false
+    @Published var showCreateQR: Bool = false
     var tabs: [TabbarEnum] = TabbarEnum.allCases
 }

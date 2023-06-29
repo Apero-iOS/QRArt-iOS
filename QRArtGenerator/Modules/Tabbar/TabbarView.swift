@@ -29,8 +29,15 @@ struct TabbarView: View {
                         
                         HStack(alignment: .bottom, spacing: 0) {
                             ForEach(viewModel.tabs, id: \.self) { tab in
-                                TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) {
-                                    viewModel.showScan.toggle()
+                                TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { tab in
+                                    switch tab {
+                                    case .scan:
+                                        viewModel.showScan.toggle()
+                                    case .ai:
+                                        viewModel.showCreateQR.toggle()
+                                    default:
+                                        break
+                                    }
                                 }
                             }
                         }
@@ -45,6 +52,8 @@ struct TabbarView: View {
             }
         }.fullScreenCover(isPresented: $viewModel.showScan) {
             ScannerView()
+        }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
+            CreateQRView()
         }
     }
     
