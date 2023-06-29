@@ -18,10 +18,11 @@ extension View {
     }
     
     @ViewBuilder func border(radius: CGFloat, color: Color, width: CGFloat) -> some View {
-        self.overlay(
+        overlay(
             RoundedRectangle(cornerRadius: radius)
-                .inset(by: 0.5)
+                .inset(by: 1)
                 .stroke(color, lineWidth: width))
+        .cornerRadius(radius)
     }
     
     @ViewBuilder func clearBackgroundColorList() -> some View {
