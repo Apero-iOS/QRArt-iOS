@@ -12,10 +12,12 @@ struct OnboardingRowView: View {
     let model: OnboardingModel
     
     var body: some View {
-            VStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 12) {
                 model.image?
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: HEIGHT_SCREEN*(485/812))
+                    .clipped()
                 Text(model.title ?? "")
                     .font(R.font.urbanistBold.font(size: 18))
                     .foregroundColor(R.color.color_1B232E.color)

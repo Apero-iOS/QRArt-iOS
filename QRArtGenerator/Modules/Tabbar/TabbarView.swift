@@ -50,10 +50,14 @@ struct TabbarView: View {
     
     @ViewBuilder var contentView: some View {
         switch viewModel.selectedTab {
-        case .history:
-            HistoryView()
-        default:
-            Text(String(describing: viewModel.selectedTab))
+            case .history:
+                HistoryView()
+            case .home:
+                HomeView()
+            case .settings:
+                SettingsView()
+            default:
+                Text(String(describing: viewModel.selectedTab))
         }
     }
 }

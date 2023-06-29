@@ -70,6 +70,13 @@
 		9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */; };
 		A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E692A4ADCB20002FEF6 /* Router.swift */; };
 		A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */; };
+		A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */; };
+		A4C69C422A4D90580076CF48 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C3B2A4D90580076CF48 /* SettingsViewModel.swift */; };
+		A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C3D2A4D90580076CF48 /* SettingsModel.swift */; };
+		A4C69C442A4D90580076CF48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C3F2A4D90580076CF48 /* SettingsView.swift */; };
+		A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C412A4D90580076CF48 /* SettingRowView.swift */; };
+		A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C482A4D90690076CF48 /* LanguageView.swift */; };
+		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
 		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +177,18 @@
 		9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavibarView.swift; sourceTree = "<group>"; };
+		A4BAA27C2A4C34A9006371B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A4BAA27E2A4C3CF1006371B1 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		A4BAA2802A4C40BF006371B1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A4BAA2832A4C4ABD006371B1 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
+		A4C69C372A4D3BB90076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		A4C69C3B2A4D90580076CF48 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A4C69C3D2A4D90580076CF48 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		A4C69C3F2A4D90580076CF48 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A4C69C412A4D90580076CF48 /* SettingRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
+		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +225,8 @@
 		59286C402A4D31D300EBBEBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A4C69C462A4D90690076CF48 /* Language */,
+				A4C69C392A4D90570076CF48 /* Settings */,
 				59286C412A4D31D300EBBEBF /* Home */,
 				59286C442A4D31D300EBBEBF /* Splash */,
 				59286C472A4D31D300EBBEBF /* Tabbar */,
@@ -354,6 +375,9 @@
 			children = (
 				59286C672A4D31D300EBBEBF /* QRScannerDelegate.swift */,
 				59286C682A4D31D300EBBEBF /* ScannerViewModel.swift */,
+				A4C69C342A4D3B960076CF48 /* Language */,
+				C88A2B532A4C4319003A93B6 /* Resource */,
+				A4BAA2772A4C345D006371B1 /* Settings */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -422,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				59286C982A4D31F100EBBEBF /* CountriesFetcher.swift */,
+				A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -599,6 +624,7 @@
 		A4766E752A4AE2F20002FEF6 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				A49D14FC2A4D9AB800CA5FE9 /* NavibarView */,
 				A4766E762A4AE30E0002FEF6 /* CircularProgressView */,
 			);
 			path = CustomView;
@@ -610,6 +636,139 @@
 				A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */,
 			);
 			path = CircularProgressView;
+			sourceTree = "<group>";
+		};
+		A49D14FC2A4D9AB800CA5FE9 /* NavibarView */ = {
+			isa = PBXGroup;
+			children = (
+				A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */,
+			);
+			path = NavibarView;
+			sourceTree = "<group>";
+		};
+		A4BAA2772A4C345D006371B1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4BAA27B2A4C3490006371B1 /* Model */,
+				A4BAA27A2A4C3480006371B1 /* ViewModel */,
+				A4BAA2782A4C3473006371B1 /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A4BAA2782A4C3473006371B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4BAA2822A4C4AA1006371B1 /* RowView */,
+				A4BAA27C2A4C34A9006371B1 /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4BAA27A2A4C3480006371B1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4BAA2802A4C40BF006371B1 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A4BAA27B2A4C3490006371B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4BAA27E2A4C3CF1006371B1 /* SettingsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4BAA2822A4C4AA1006371B1 /* RowView */ = {
+			isa = PBXGroup;
+			children = (
+				A4BAA2832A4C4ABD006371B1 /* SettingRowView.swift */,
+			);
+			path = RowView;
+			sourceTree = "<group>";
+		};
+		A4C69C342A4D3B960076CF48 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C362A4D3BA70076CF48 /* View */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		A4C69C362A4D3BA70076CF48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C372A4D3BB90076CF48 /* LanguageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4C69C392A4D90570076CF48 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C3A2A4D90570076CF48 /* ViewModel */,
+				A4C69C3C2A4D90580076CF48 /* Model */,
+				A4C69C3E2A4D90580076CF48 /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A4C69C3A2A4D90570076CF48 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C3B2A4D90580076CF48 /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A4C69C3C2A4D90580076CF48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C3D2A4D90580076CF48 /* SettingsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A4C69C3E2A4D90580076CF48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C402A4D90580076CF48 /* RowView */,
+				A4C69C3F2A4D90580076CF48 /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4C69C402A4D90580076CF48 /* RowView */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C412A4D90580076CF48 /* SettingRowView.swift */,
+			);
+			path = RowView;
+			sourceTree = "<group>";
+		};
+		A4C69C462A4D90690076CF48 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C472A4D90690076CF48 /* View */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		A4C69C472A4D90690076CF48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4C69C482A4D90690076CF48 /* LanguageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C88A2B532A4C4319003A93B6 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		FCC724D2989396EBCABE6A42 /* Frameworks */ = {
@@ -905,13 +1064,17 @@
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
 				59286C812A4D31D300EBBEBF /* InputType.swift in Sources */,
+				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
 				59286C7F2A4D31D300EBBEBF /* QRType.swift in Sources */,
 				59286C822A4D31D300EBBEBF /* SecurityModeView.swift in Sources */,
 				59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */,
 				59286C942A4D31D300EBBEBF /* OnboardingModel.swift in Sources */,
 				59286C7C2A4D31D300EBBEBF /* TabbarShape.swift in Sources */,
 				59286C802A4D31D300EBBEBF /* Country.swift in Sources */,
+				A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */,
+				A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */,
 				A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */,
+				A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */,
 				59286C872A4D31D300EBBEBF /* ItemTemplateView.swift in Sources */,
 				59286C902A4D31D300EBBEBF /* ScannerModel.swift in Sources */,
 				59286C892A4D31D300EBBEBF /* SelectQRDetailView.swift in Sources */,
@@ -925,15 +1088,18 @@
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
+				A4C69C442A4D90580076CF48 /* SettingsView.swift in Sources */,
 				59286C832A4D31D300EBBEBF /* CreateQRView.swift in Sources */,
 				59286C882A4D31D300EBBEBF /* InputPhoneNumberView.swift in Sources */,
 				59286C8C2A4D31D300EBBEBF /* HistoryListView.swift in Sources */,
 				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
+				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
 				59286C8A2A4D31D300EBBEBF /* ChooseTemplateView.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				59286C852A4D31D300EBBEBF /* InputNameView.swift in Sources */,
 				59286C782A4D31D300EBBEBF /* SplashView.swift in Sources */,
+				A4C69C422A4D90580076CF48 /* SettingsViewModel.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
 				59286C772A4D31D300EBBEBF /* HomeView.swift in Sources */,
 				59286C8F2A4D31D300EBBEBF /* ScannerViewModel.swift in Sources */,

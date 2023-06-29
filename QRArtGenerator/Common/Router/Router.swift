@@ -29,7 +29,10 @@ final class Router {
                               completion: nil)
             return
         }else {
-            if let keyWindow = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
+            if let keyWindow = (UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .first(where: { $0.isKeyWindow })) {
                 keyWindow.rootViewController = UIHostingController(rootView: view)
                 UIView.transition(with: keyWindow,
                                   duration: 0.35,

@@ -35,7 +35,7 @@ struct OnboardingView: View {
                             .renderingMode(.original)
                     }
                 }
-                .padding(.bottom, 60.0)
+                .padding(.bottom, 50.0)
                 
             }
         }.ignoresSafeArea()
