@@ -59,6 +59,23 @@ extension View {
         clipShape(RoundedCorner(radius: radius, corners: corners) )
     }
     
+    func toast(message: String,
+               isShowing: Binding<Bool>,
+               config: Toast.Config) -> some View {
+        self.modifier(Toast(message: message,
+                            isShowing: isShowing,
+                            config: config))
+    }
+    
+    func toast(message: String,
+               isShowing: Binding<Bool>,
+               duration: TimeInterval = 2,
+               position: ToastPosition = .center) -> some View {
+        self.modifier(Toast(message: message,
+                            isShowing: isShowing,
+                            config: .init(duration: duration, position: position)))
+    }
+    
 }
 
 

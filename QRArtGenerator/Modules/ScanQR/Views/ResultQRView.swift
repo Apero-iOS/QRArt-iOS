@@ -8,58 +8,73 @@
 import SwiftUI
 
 struct ResultQRView: View {
-    
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Binding var result: ResultQR
-    
+    @StateObject var viewModel: ScannerViewModel
     var body: some View {
-        VStack(spacing: 16) {
-            Spacer()
-            HStack {
-                Image(R.image.ic_link)
+        GeometryReader { geo in
+            VStack(spacing: 16) {
                 HStack {
-                    Text(result.content)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .padding(.horizontal, 10)
-                        .lineLimit(2)
-                }
-                .background(R.color.color_262930.color)
-                .cornerRadius(12)
-                Button {
-                    // copy
-                } label: {
-                    Image(R.image.ic_copy)
-                }
-                Button {
-                    // share
-                } label: {
-                    Image(R.image.ic_share)
-                }
-            }.frame(height: 44)
-            
-            HStack {
-                ForEach(result.type.actions, id: \.self) { action in
-                    Button {
-                        
-                    } label: {
-                        Text(action.title)
+                    Image(R.image.ic_link)
+                    HStack {
+                        Text(result.title)
+                            .font(
+                                Font.custom("Urbanist", size: 14)
+                                    .weight(.medium)
+                            )
                             .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                            .padding(.horizontal, 10)
+                            .truncationMode(.tail)
+                            .lineLimit(2)
                     }
-                    .frame(height: 42)
-                    .frame(maxWidth: .infinity)
-                    .background(R.color.color_653AE4.color)
-                    .cornerRadius(21)
+                    .background(R.color.color_262930.color)
+                    .cornerRadius(12)
+                    Button {
+                        viewModel.copyText(text: viewModel.qrItem.content)
+                    } label: {
+                        Image(R.image.ic_copy)
+                    }
+                    Button {
+                        viewModel.isShowShareActivity.toggle()
+                    } label: {
+                        Image(R.image.ic_share)
+                    }
+                }.frame(height: 44)
+                
+                HStack {
+                    ForEach(result.type.actions, id: \.self) { action in
+                        Button {
+                            viewModel.handleResult(item: result, actiontype: action)
+                        } label: {
+                            Text(action.title)
+                                .foregroundColor(.white)
+                                .font(
+                                    Font.custom("Urbanist", size: 14)
+                                        .weight(.semibold)
+                                )
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        .frame(height: 42)
+                        .frame(maxWidth: .infinity)
+                        .background(R.color.color_653AE4.color)
+                        .cornerRadius(21)
+                    }
                 }
+                Spacer()
             }
+            .padding()
         }
-        .padding(.horizontal)
+        .ignoresSafeArea()
         .background(R.color.color_191A1F.color)
     }
+    
 }
 
 struct ResultQRView_Previews: PreviewProvider {
-    @State static var qrResult = ResultQR(type: .phone, content: "Apero")
+    @State static var qrResult = ResultQR(type: .phone, content: "Apero", title: "Apero")
+    @StateObject static var vm = ScannerViewModel()
     static var previews: some View {
-        ResultQRView(result: $qrResult)
+        ResultQRView(result: $qrResult, viewModel: vm)
     }
 }

@@ -105,14 +105,32 @@ struct ScannerView: View {
             .onChange(of: qrDelegate.scannerCode) { newValue in
                 viewModel.handleQRResult(text: newValue)
             }
-            .bottomSheet(isPresented: $viewModel.showSheet, height: 200,
+            .bottomSheet(isPresented: $viewModel.showSheet, height: 156+safeAreaInsets.bottom,
+                         topBarHeight: 20,
                          contentBackgroundColor: .clear,
                          topBarBackgroundColor: Color.clear,
                          onDismiss: {
                 qrDelegate.scannerCode = nil
             }) {
-                ResultQRView(result: $viewModel.qrItem)
+                ResultQRView(result: $viewModel.qrItem, viewModel: viewModel).cornerRadius(24, corners: [.topLeft, .topRight]).ignoresSafeArea()
             }
+            .sheet(isPresented: $viewModel.isShowSendMessage) {
+                MessageComposeView(recipients: [viewModel.qrItem.title], body: "") { messageSent in
+                    print("MessageComposeView with message sent? \(messageSent)")
+                }
+            }
+            .sheet(isPresented: $viewModel.isShowWebView, content: {
+                NavigationView{
+                    WebView(url: URL(string: viewModel.qrItem.content)!)
+                        .ignoresSafeArea()
+                        .navigationTitle(viewModel.qrItem.content)
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+            })
+            .sheet(isPresented: $viewModel.isShowShareActivity, content: {
+                ActivityView(url: viewModel.qrItem.content, showing: $viewModel.isShowShareActivity)
+            })
+            .toast(message: viewModel.toastMessage ?? "", isShowing: $viewModel.isShowToast, position: .bottom)
         }
     }
     

@@ -67,4 +67,38 @@ struct ResultQR {
     var type: QRScanType
     var dictionary: [String: String] = [:]
     var content: String
+    var title: String
+}
+
+struct MailData {
+    var subject: String
+    var body: String
+    var to: String
+    
+    init(dict: [String: String]) {
+        self.init(subject: dict["SUB"] ?? "", body: dict["BODY"] ?? "", to: dict["TO"] ?? "")
+    }
+    
+    init(subject: String, body: String, to: String) {
+        self.subject = subject
+        self.body = body
+        self.to = to
+    }
+}
+
+struct WifiData {
+    var ssid: String
+    var password: String
+    var type: String
+    
+    init(dict: [String: String]) {
+        self.init(ssid: dict["S"] ?? "", password: dict["P"] ?? "", type: dict["T"] ?? "")
+    }
+    
+    init(ssid: String, password: String, type: String) {
+        self.ssid = ssid
+        self.password = password
+        self.type = type
+    }
+   
 }
