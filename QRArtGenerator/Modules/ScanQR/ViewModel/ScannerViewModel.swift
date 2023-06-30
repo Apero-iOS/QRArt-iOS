@@ -161,7 +161,7 @@ extension ScannerViewModel {
     }
     
     func showToast(message: String) {
-        self.toastMessage = message
-        self.isShowToast.toggle()
+        toastMessage = message
+        isShowToast.toggle()
     }
 }
