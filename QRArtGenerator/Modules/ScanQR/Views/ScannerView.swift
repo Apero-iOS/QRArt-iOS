@@ -126,14 +126,13 @@ struct ScannerView: View {
                         .trim(from: 0.625 - viewModel.sizeRectangle, to: 0.625 + viewModel.sizeRectangle)
                         .stroke(Color.white, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
                         .rotationEffect(.init(degrees: rotation))
-                    
                 }
+                
                 Rectangle()
                     .fill(Color.white)
                     .frame(height: 2.5)
                     .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: 15)
                     .offset(y: viewModel.isScanning ? size.width : 0)
-                
             }
         }
     }

@@ -37,6 +37,10 @@
 		59C7662F2A496E6000D4BDD3 /* QRArtGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7662E2A496E6000D4BDD3 /* QRArtGeneratorTests.swift */; };
 		59C766392A496E6000D4BDD3 /* QRArtGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */; };
 		59C7663B2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */; };
+		59F74C2D2A4E845800AD8CBA /* Shape+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C2C2A4E845800AD8CBA /* Shape+.swift */; };
+		59F74C312A4E85D800AD8CBA /* EdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */; };
+		59F74C332A4E85F500AD8CBA /* Enviroment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C322A4E85F500AD8CBA /* Enviroment+.swift */; };
+		59F74C352A4E869500AD8CBA /* CommonShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C342A4E869500AD8CBA /* CommonShape.swift */; };
 		9ABC4DA92A4C354E002646DA /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA82A4C354E002646DA /* View+.swift */; };
 		9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DC912A4D396B00FB3119 /* InputType.swift */; };
 		9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAB2A4D3E9500FB3119 /* QRItem.swift */; };
@@ -141,6 +145,10 @@
 		59C766342A496E6000D4BDD3 /* QRArtGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRArtGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C766382A496E6000D4BDD3 /* QRArtGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRArtGeneratorUITests.swift; sourceTree = "<group>"; };
 		59C7663A2A496E6000D4BDD3 /* QRArtGeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRArtGeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		59F74C2C2A4E845800AD8CBA /* Shape+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shape+.swift"; sourceTree = "<group>"; };
+		59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets+.swift"; sourceTree = "<group>"; };
+		59F74C322A4E85F500AD8CBA /* Enviroment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enviroment+.swift"; sourceTree = "<group>"; };
+		59F74C342A4E869500AD8CBA /* CommonShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonShape.swift; sourceTree = "<group>"; };
 		5D8FA71CBCF848EE6FFC2673 /* Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator_QRArtGeneratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -506,6 +514,7 @@
 				A4766E682A4ADC960002FEF6 /* Router */,
 				9AD5227F2A4A869300A947B5 /* Extension */,
 				9AD522B72A4B0E8C00A947B5 /* LottieView.swift */,
+				59F74C342A4E869500AD8CBA /* CommonShape.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -605,6 +614,9 @@
 				9ABC4DA82A4C354E002646DA /* View+.swift */,
 				C8AA3E1B2A4D61030077DCC3 /* Double+.swift */,
 				9AC7DCAF2A4D405F00FB3119 /* Date+.swift */,
+				59F74C2C2A4E845800AD8CBA /* Shape+.swift */,
+				59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */,
+				59F74C322A4E85F500AD8CBA /* Enviroment+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1068,6 +1080,7 @@
 			files = (
 				59286C7D2A4D31D300EBBEBF /* TabbarView.swift in Sources */,
 				59286C912A4D31D300EBBEBF /* ScannerView.swift in Sources */,
+				59F74C312A4E85D800AD8CBA /* EdgeInsets+.swift in Sources */,
 				9AC7DCB52A4DB30300FB3119 /* SelectQRDetailView.swift in Sources */,
 				59286C7B2A4D31D300EBBEBF /* TabbarPrimaryButton.swift in Sources */,
 				9AC7DCCE2A4DB6C600FB3119 /* InputPhoneNumberView.swift in Sources */,
@@ -1078,6 +1091,7 @@
 				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
 				59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */,
 				59286C942A4D31D300EBBEBF /* OnboardingModel.swift in Sources */,
+				59F74C332A4E85F500AD8CBA /* Enviroment+.swift in Sources */,
 				59286C7C2A4D31D300EBBEBF /* TabbarShape.swift in Sources */,
 				A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */,
 				A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */,
@@ -1104,6 +1118,7 @@
 				A4C69C442A4D90580076CF48 /* SettingsView.swift in Sources */,
 				9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */,
 				59286C8C2A4D31D300EBBEBF /* HistoryListView.swift in Sources */,
+				59F74C352A4E869500AD8CBA /* CommonShape.swift in Sources */,
 				9AC7DCCD2A4DB6C600FB3119 /* ItemTemplateView.swift in Sources */,
 				9AC7DCC82A4DB6C600FB3119 /* SecurityModeView.swift in Sources */,
 				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
@@ -1111,7 +1126,6 @@
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				592DBDB72A4D8ED000AF79EE /* ResultQRView.swift in Sources */,
-				59286C852A4D31D300EBBEBF /* InputNameView.swift in Sources */,
 				59286C782A4D31D300EBBEBF /* SplashView.swift in Sources */,
 				A4C69C422A4D90580076CF48 /* SettingsViewModel.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
@@ -1120,6 +1134,7 @@
 				59286C8F2A4D31D300EBBEBF /* ScannerViewModel.swift in Sources */,
 				9AC7DCD72A4DB72800FB3119 /* HistoryCell.swift in Sources */,
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
+				59F74C2D2A4E845800AD8CBA /* Shape+.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AC7DCD02A4DB6C600FB3119 /* DescriptionView.swift in Sources */,
 				59286C8E2A4D31D300EBBEBF /* QRScannerDelegate.swift in Sources */,
