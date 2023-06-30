@@ -83,3 +83,6 @@
 "advanced_settings" = "Réglages avancés";
 "generate_qr" = "Générer QR";
 "picker" = "Cueilleur";
+"would_you_like_to_delete" = "Souhaitez-vous supprimer ce QR?";
+"delete" = "Supprimer";
+"cancel" = "Annuler";

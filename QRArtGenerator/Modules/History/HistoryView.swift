@@ -34,13 +34,17 @@ struct HistoryView: View {
                     .foregroundColor(R.color.color_1B232E.color)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-//                emptyView
-                listView
+                if viewModel.items.isEmpty {
+                    emptyView
+                } else {
+                    listView
+                }
             }
             .padding(.horizontal, 20)
             .hideNavigationBar()
         }.onAppear {
             viewModel.getCategories()
+            viewModel.select(category: viewModel.categories.first)
         }
     }
     
@@ -100,10 +104,16 @@ struct HistoryView: View {
             // TODO: show search
         }
         
-//        HistoryCategoryListView(caterories: $viewModel.categories, selectedIndex: viewModel.selectedCate)
-//            .padding(.horizontal, -20)
+        HistoryCategoryListView(caterories: $viewModel.categories, selectedCate: $viewModel.selectedCate, onSelectCategory: { cate in
+            viewModel.select(category: cate)
+        })
+        .padding(.horizontal, -20)
         
-        HistoryListView(items: $viewModel.filteredItems)
+        HistoryListView(items: $viewModel.filteredItems, onDelete: { item in
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                viewModel.delete(item: item)
+            }
+        })
     }
 }
 

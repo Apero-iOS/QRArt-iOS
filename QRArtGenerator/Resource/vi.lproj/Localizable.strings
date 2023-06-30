@@ -83,3 +83,6 @@
 "advanced_settings" = "Cài đặt nâng cao";
 "generate_qr" = "Tạo QR";
 "picker" = "Người chọn";
+"would_you_like_to_delete" = "Bạn có muốn xóa QR này không?";
+"delete" = "Xóa bỏ";
+"cancel" = "Hủy bỏ";

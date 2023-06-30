@@ -83,3 +83,6 @@
 "advanced_settings" = "Advanced Settings";
 "generate_qr" = "Generate QR";
 "picker" = "Picker";
+"would_you_like_to_delete" = "Would you like to delete  this QR?";
+"delete" = "Delete";
+"cancel" = "Cancel";

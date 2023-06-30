@@ -9,13 +9,16 @@ import SwiftUI
 
 struct HistoryListView: View {
     @Binding var items: [QRItem]
+    var onDelete: ((QRItem) -> Void)?
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
                 ForEach(items, id: \.id) { item in
-                    HistoryCell(item: item)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                    HistoryCell(item: item, onDelete: {
+                        onDelete?(item)
+                    })
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                 }
             }
         }
