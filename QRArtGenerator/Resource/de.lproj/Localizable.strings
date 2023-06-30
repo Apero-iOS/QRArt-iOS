@@ -86,3 +86,7 @@
 "would_you_like_to_delete" = "Möchten Sie dieses QR löschen?";
 "delete" = "Löschen";
 "cancel" = "Stornieren";
+"copy_success" = "Erfolg kopieren!";
+"unknow_error" = "Unbekannter Fehler!";
+"connected" = "In Verbindung gebracht!";
+"no_connected" = "Kein verbunden!"; 

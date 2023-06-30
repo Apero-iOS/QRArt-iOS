@@ -40,6 +40,10 @@
 		59F74C312A4E85D800AD8CBA /* EdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */; };
 		59F74C332A4E85F500AD8CBA /* Enviroment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C322A4E85F500AD8CBA /* Enviroment+.swift */; };
 		59F74C352A4E869500AD8CBA /* CommonShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C342A4E869500AD8CBA /* CommonShape.swift */; };
+		59F74C392A4EB2B900AD8CBA /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C382A4EB2B900AD8CBA /* ToastView.swift */; };
+		59F74C3B2A4EB97200AD8CBA /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C3A2A4EB97200AD8CBA /* MessageView.swift */; };
+		59F74C3F2A4EC1CE00AD8CBA /* QRHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */; };
+		59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C402A4EC4C200AD8CBA /* WebView.swift */; };
 		9ABC4DA92A4C354E002646DA /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA82A4C354E002646DA /* View+.swift */; };
 		9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DC912A4D396B00FB3119 /* InputType.swift */; };
 		9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAB2A4D3E9500FB3119 /* QRItem.swift */; };
@@ -163,6 +167,10 @@
 		59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets+.swift"; sourceTree = "<group>"; };
 		59F74C322A4E85F500AD8CBA /* Enviroment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enviroment+.swift"; sourceTree = "<group>"; };
 		59F74C342A4E869500AD8CBA /* CommonShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonShape.swift; sourceTree = "<group>"; };
+		59F74C382A4EB2B900AD8CBA /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		59F74C3A2A4EB97200AD8CBA /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRHelper.swift; sourceTree = "<group>"; };
+		59F74C402A4EC4C200AD8CBA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5D8FA71CBCF848EE6FFC2673 /* Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator_QRArtGeneratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -467,6 +475,7 @@
 			children = (
 				59286C982A4D31F100EBBEBF /* CountriesFetcher.swift */,
 				A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */,
+				59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -544,6 +553,9 @@
 				9AD5227F2A4A869300A947B5 /* Extension */,
 				9AD522B72A4B0E8C00A947B5 /* LottieView.swift */,
 				59F74C342A4E869500AD8CBA /* CommonShape.swift */,
+				59F74C382A4EB2B900AD8CBA /* ToastView.swift */,
+				59F74C3A2A4EB97200AD8CBA /* MessageView.swift */,
+				59F74C402A4EC4C200AD8CBA /* WebView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1194,6 +1206,7 @@
 				9AC7DCD42A4DB6E500FB3119 /* CreateQRViewModel.swift in Sources */,
 				C8AA3E512A4E80B40077DCC3 /* Configuration.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
+				59F74C3F2A4EC1CE00AD8CBA /* QRHelper.swift in Sources */,
 				9AC7DCD62A4DB71D00FB3119 /* Country.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
 				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
@@ -1207,6 +1220,7 @@
 				9AC7DCB92A4DB3BB00FB3119 /* SelectQRTypeView.swift in Sources */,
 				C8AA3E6A2A4E85E50077DCC3 /* FailureResponse.swift in Sources */,
 				C8AA3E472A4E730C0077DCC3 /* CountryCodeView.swift in Sources */,
+				59F74C3B2A4EB97200AD8CBA /* MessageView.swift in Sources */,
 				A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */,
 				A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */,
 				9AC7DCCA2A4DB6C600FB3119 /* QRTypeView.swift in Sources */,
@@ -1219,6 +1233,7 @@
 				C8AA3E5F2A4E81CD0077DCC3 /* AFError+.swift in Sources */,
 				9AC7DCD12A4DB6C600FB3119 /* ChooseTemplateView.swift in Sources */,
 				C8AA3E632A4E82690077DCC3 /* TemplateRepository.swift in Sources */,
+				59F74C392A4EB2B900AD8CBA /* ToastView.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */,
 				9AC7DCCF2A4DB6C600FB3119 /* PromptView.swift in Sources */,
@@ -1229,6 +1244,7 @@
 				59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
+				59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				A4C69C442A4D90580076CF48 /* SettingsView.swift in Sources */,
 				9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */,
