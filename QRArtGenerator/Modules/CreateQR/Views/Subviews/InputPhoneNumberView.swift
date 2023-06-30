@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct InputPhoneNumberView: View {
-    var title: String = "Name"
-    var placeholder: String = "Input your Name"
+    var title: String = ""
+    var placeholder: String = ""
     var type: QRType = .contact
     @State var name: String = ""
     @Binding var showingSelectCountryView: Bool
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
-            Text("Phone Number")
+            Text(Rlocalizable.phone_number())
                 .foregroundColor(R.color.color_1B232E.color)
                 .font(R.font.urbanistMedium.font(size: 14))
             HStack {

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct InputNameView: View {
-    var title: String = "Name"
-    var placeholder: String = "Input your Name"
+    var title: String = ""
+    var placeholder: String = ""
     @State var name: String = ""
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {

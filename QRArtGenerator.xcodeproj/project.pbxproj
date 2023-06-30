@@ -92,6 +92,19 @@
 		C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E412A4DAF320077DCC3 /* crown.json */; };
 		C8AA3E452A4E72640077DCC3 /* SelectCountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E442A4E72640077DCC3 /* SelectCountryCodeView.swift */; };
 		C8AA3E472A4E730C0077DCC3 /* CountryCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E462A4E730C0077DCC3 /* CountryCodeView.swift */; };
+		C8AA3E4E2A4E809F0077DCC3 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E4D2A4E809F0077DCC3 /* BaseAPI.swift */; };
+		C8AA3E512A4E80B40077DCC3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E502A4E80B40077DCC3 /* Configuration.swift */; };
+		C8AA3E532A4E80BE0077DCC3 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E522A4E80BE0077DCC3 /* TargetType.swift */; };
+		C8AA3E562A4E80E80077DCC3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E552A4E80E80077DCC3 /* APIError.swift */; };
+		C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E582A4E81210077DCC3 /* AFNetworking.swift */; };
+		C8AA3E5C2A4E81910077DCC3 /* AlamofireLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E5B2A4E81910077DCC3 /* AlamofireLogger.swift */; };
+		C8AA3E5F2A4E81CD0077DCC3 /* AFError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E5E2A4E81CD0077DCC3 /* AFError+.swift */; };
+		C8AA3E612A4E81E00077DCC3 /* BaseAPI+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E602A4E81E00077DCC3 /* BaseAPI+.swift */; };
+		C8AA3E632A4E82690077DCC3 /* TemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E622A4E82690077DCC3 /* TemplateRepository.swift */; };
+		C8AA3E682A4E85DD0077DCC3 /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E672A4E85DD0077DCC3 /* SuccessResponse.swift */; };
+		C8AA3E6A2A4E85E50077DCC3 /* FailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E692A4E85E50077DCC3 /* FailureResponse.swift */; };
+		C8AA3E6C2A4E86A70077DCC3 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E6B2A4E86A70077DCC3 /* TemplateModel.swift */; };
+		C8AA3E6E2A4E86EC0077DCC3 /* TemplateNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */; };
 		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
@@ -210,12 +223,24 @@
 		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
-		C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesFetcher.swift; sourceTree = "<group>"; };
 		C8AA3E1B2A4D61030077DCC3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		C8AA3E402A4DAF320077DCC3 /* ai_tab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ai_tab.json; sourceTree = "<group>"; };
 		C8AA3E412A4DAF320077DCC3 /* crown.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crown.json; sourceTree = "<group>"; };
 		C8AA3E442A4E72640077DCC3 /* SelectCountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryCodeView.swift; sourceTree = "<group>"; };
 		C8AA3E462A4E730C0077DCC3 /* CountryCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeView.swift; sourceTree = "<group>"; };
+		C8AA3E4D2A4E809F0077DCC3 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		C8AA3E502A4E80B40077DCC3 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C8AA3E522A4E80BE0077DCC3 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		C8AA3E552A4E80E80077DCC3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		C8AA3E582A4E81210077DCC3 /* AFNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFNetworking.swift; sourceTree = "<group>"; };
+		C8AA3E5B2A4E81910077DCC3 /* AlamofireLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireLogger.swift; sourceTree = "<group>"; };
+		C8AA3E5E2A4E81CD0077DCC3 /* AFError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AFError+.swift"; sourceTree = "<group>"; };
+		C8AA3E602A4E81E00077DCC3 /* BaseAPI+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseAPI+.swift"; sourceTree = "<group>"; };
+		C8AA3E622A4E82690077DCC3 /* TemplateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRepository.swift; sourceTree = "<group>"; };
+		C8AA3E672A4E85DD0077DCC3 /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
+		C8AA3E692A4E85E50077DCC3 /* FailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureResponse.swift; sourceTree = "<group>"; };
+		C8AA3E6B2A4E86A70077DCC3 /* TemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateModel.swift; sourceTree = "<group>"; };
+		C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateNetworking.swift; sourceTree = "<group>"; };
 		D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -471,7 +496,7 @@
 		59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */ = {
 			isa = PBXGroup;
 			children = (
-				C88A2B6D2A4C4513003A93B6 /* Helper */,
+				C8AA3E4B2A4E80950077DCC3 /* Network */,
 				A4766E672A4AD40A0002FEF6 /* MainSystem */,
 				59C7664B2A497E8400D4BDD3 /* Common */,
 				59286C972A4D31F100EBBEBF /* Helper */,
@@ -569,8 +594,6 @@
 			isa = PBXGroup;
 			children = (
 				9AC7DC942A4D396B00FB3119 /* CreateQRView.swift */,
-				9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */,
-				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
 				9AC7DCBD2A4DB6C600FB3119 /* Subviews */,
 			);
 			path = Views;
@@ -587,6 +610,8 @@
 		9AC7DCBD2A4DB6C600FB3119 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */,
+				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
 				9AC7DCBE2A4DB6C600FB3119 /* SecurityModeView.swift */,
 				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
 				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
@@ -779,19 +804,95 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C88A2B6D2A4C4513003A93B6 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				C88A2B702A4C458F003A93B6 /* CountriesFetcher.swift */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		C8AA3E202A4DAEE30077DCC3 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C8AA3E4B2A4E80950077DCC3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E4F2A4E80A50077DCC3 /* Repository */,
+				C8AA3E4C2A4E80950077DCC3 /* Base */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C8AA3E4C2A4E80950077DCC3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E662A4E85D50077DCC3 /* Model */,
+				C8AA3E542A4E80DD0077DCC3 /* API Error */,
+				C8AA3E5D2A4E81BF0077DCC3 /* Extension */,
+				C8AA3E5A2A4E81880077DCC3 /* Logger */,
+				C8AA3E572A4E81190077DCC3 /* Custom Session */,
+				C8AA3E4D2A4E809F0077DCC3 /* BaseAPI.swift */,
+				C8AA3E502A4E80B40077DCC3 /* Configuration.swift */,
+				C8AA3E522A4E80BE0077DCC3 /* TargetType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C8AA3E4F2A4E80A50077DCC3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E652A4E82F20077DCC3 /* Template */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		C8AA3E542A4E80DD0077DCC3 /* API Error */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E552A4E80E80077DCC3 /* APIError.swift */,
+			);
+			path = "API Error";
+			sourceTree = "<group>";
+		};
+		C8AA3E572A4E81190077DCC3 /* Custom Session */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E582A4E81210077DCC3 /* AFNetworking.swift */,
+			);
+			path = "Custom Session";
+			sourceTree = "<group>";
+		};
+		C8AA3E5A2A4E81880077DCC3 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E5B2A4E81910077DCC3 /* AlamofireLogger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		C8AA3E5D2A4E81BF0077DCC3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E5E2A4E81CD0077DCC3 /* AFError+.swift */,
+				C8AA3E602A4E81E00077DCC3 /* BaseAPI+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C8AA3E652A4E82F20077DCC3 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E622A4E82690077DCC3 /* TemplateRepository.swift */,
+				C8AA3E6B2A4E86A70077DCC3 /* TemplateModel.swift */,
+				C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		C8AA3E662A4E85D50077DCC3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8AA3E672A4E85DD0077DCC3 /* SuccessResponse.swift */,
+				C8AA3E692A4E85E50077DCC3 /* FailureResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FCC724D2989396EBCABE6A42 /* Frameworks */ = {
@@ -1088,6 +1189,7 @@
 				59286C7B2A4D31D300EBBEBF /* TabbarPrimaryButton.swift in Sources */,
 				9AC7DCCE2A4DB6C600FB3119 /* InputPhoneNumberView.swift in Sources */,
 				9AC7DCD42A4DB6E500FB3119 /* CreateQRViewModel.swift in Sources */,
+				C8AA3E512A4E80B40077DCC3 /* Configuration.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
 				9AC7DCD62A4DB71D00FB3119 /* Country.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
@@ -1097,8 +1199,10 @@
 				59F74C332A4E85F500AD8CBA /* Enviroment+.swift in Sources */,
 				59286C7C2A4D31D300EBBEBF /* TabbarShape.swift in Sources */,
 				A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */,
+				C8AA3E532A4E80BE0077DCC3 /* TargetType.swift in Sources */,
 				A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */,
 				9AC7DCB92A4DB3BB00FB3119 /* SelectQRTypeView.swift in Sources */,
+				C8AA3E6A2A4E85E50077DCC3 /* FailureResponse.swift in Sources */,
 				C8AA3E472A4E730C0077DCC3 /* CountryCodeView.swift in Sources */,
 				A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */,
 				A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */,
@@ -1109,12 +1213,15 @@
 				9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */,
 				9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */,
 				59286C952A4D31D300EBBEBF /* OnboardingRowView.swift in Sources */,
+				C8AA3E5F2A4E81CD0077DCC3 /* AFError+.swift in Sources */,
 				9AC7DCD12A4DB6C600FB3119 /* ChooseTemplateView.swift in Sources */,
+				C8AA3E632A4E82690077DCC3 /* TemplateRepository.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */,
 				9AC7DCCF2A4DB6C600FB3119 /* PromptView.swift in Sources */,
 				9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */,
 				9AC7DCCC2A4DB6C600FB3119 /* InputNameView.swift in Sources */,
+				C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */,
 				59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
@@ -1130,23 +1237,30 @@
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				592DBDB72A4D8ED000AF79EE /* ResultQRView.swift in Sources */,
+				C8AA3E6C2A4E86A70077DCC3 /* TemplateModel.swift in Sources */,
 				59286C782A4D31D300EBBEBF /* SplashView.swift in Sources */,
+				C8AA3E6E2A4E86EC0077DCC3 /* TemplateNetworking.swift in Sources */,
 				A4C69C422A4D90580076CF48 /* SettingsViewModel.swift in Sources */,
 				9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */,
+				C8AA3E4E2A4E809F0077DCC3 /* BaseAPI.swift in Sources */,
 				9AC7DCD52A4DB70F00FB3119 /* QRType.swift in Sources */,
 				59286C772A4D31D300EBBEBF /* HomeView.swift in Sources */,
 				59286C8F2A4D31D300EBBEBF /* ScannerViewModel.swift in Sources */,
 				9AC7DCD72A4DB72800FB3119 /* HistoryCell.swift in Sources */,
+				C8AA3E612A4E81E00077DCC3 /* BaseAPI+.swift in Sources */,
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AC7DCD02A4DB6C600FB3119 /* DescriptionView.swift in Sources */,
 				59286C8E2A4D31D300EBBEBF /* QRScannerDelegate.swift in Sources */,
+				C8AA3E5C2A4E81910077DCC3 /* AlamofireLogger.swift in Sources */,
+				C8AA3E682A4E85DD0077DCC3 /* SuccessResponse.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AC7DCC92A4DB6C600FB3119 /* SliderSettingView.swift in Sources */,
 				59286C992A4D31F100EBBEBF /* CountriesFetcher.swift in Sources */,
 				59286C8B2A4D31D300EBBEBF /* HistoryCategoryListView.swift in Sources */,
 				C8AA3E452A4E72640077DCC3 /* SelectCountryCodeView.swift in Sources */,
 				9AC7DCBC2A4DB62600FB3119 /* CreateQRView.swift in Sources */,
+				C8AA3E562A4E80E80077DCC3 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

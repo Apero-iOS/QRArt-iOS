@@ -14,7 +14,7 @@ struct SelectCountryCodeView: View {
         VStack(alignment: .center, spacing: 12) {
             ZStack {
                 Spacer()
-                Text("Select country code")
+                Text(Rlocalizable.select_country_code())
                     .font(R.font.urbanistSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                     .frame(maxWidth: WIDTH_SCREEN, maxHeight: 29, alignment: .center)

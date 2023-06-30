@@ -23,7 +23,7 @@ struct CreateQRView: View {
                 }
             }
             VStack {
-                Button("Generate QR") {
+                Button(Rlocalizable.generate_qr()) {
                     
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
@@ -55,10 +55,9 @@ struct CreateQRView: View {
         .hideNavigationBar()
         .onAppear {
             viewModel.fetchCountry()
+            viewModel.fetchTemplate()
         }
-        
     }
-    
     
     @ViewBuilder var templateView: some View {
         ChooseTemplateView()
@@ -81,7 +80,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var naviView: some View {
-        NavibarView(title: "QR Creation with", isImageTitle: true, isRightButton: true) {
+        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: true) {
             // TODO
         }
     }
