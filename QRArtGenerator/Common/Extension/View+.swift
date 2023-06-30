@@ -37,6 +37,12 @@ extension View {
         }
     }
     
+    @ViewBuilder func hideScrollIndicator() -> some View {
+        if #available(iOS 16.0, *) {
+            scrollIndicators(.hidden)
+        }
+    }
+    
     @ViewBuilder func setColorSlider(color: Color) -> some View {
         if #available(iOS 16, *) {
             tint(color)

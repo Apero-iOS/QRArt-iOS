@@ -24,12 +24,14 @@ struct TabbarPrimaryButton: View {
                 .cornerRadius(size / 2)
                 .rotationEffect(.degrees(isRotating))
                 .onAppear {
-                    withAnimation(
-                        .linear(duration: 1)
-                        .speed(1)
-                        .repeatForever(autoreverses: false))
-                    {
-                        isRotating = 360.0
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        withAnimation(
+                            .linear(duration: 1)
+                            .speed(1)
+                            .repeatForever(autoreverses: false))
+                        {
+                            isRotating = 360.0
+                        }
                     }
                 }
             

@@ -10,13 +10,17 @@ import SwiftUI
 struct TabbarView: View {
     
     @StateObject private var viewModel = TabbarViewModel()
+    @StateObject private var historyViewModel = HistoryViewModel()
+    
+    private let settingsView = SettingsView()
+    private let homeView = HomeView()
     
     var body: some View {
         GeometryReader { geo in
             NavigationView {
                 ZStack(alignment: .bottom) {
                     contentView
-                        .padding(.bottom, geo.safeAreaInsets.bottom + 64)
+                        .padding(.bottom, geo.safeAreaInsets.bottom)
                     
                     VStack(spacing: 0) {
                         Spacer()
@@ -48,7 +52,7 @@ struct TabbarView: View {
                             .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                     }
                 }
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .bottom)
                 .hideNavigationBar()
             }.fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
@@ -61,11 +65,11 @@ struct TabbarView: View {
     @ViewBuilder var contentView: some View {
         switch viewModel.selectedTab {
             case .history:
-                HistoryView()
+                HistoryView(viewModel: historyViewModel)
             case .home:
-                HomeView()
+                homeView
             case .settings:
-                SettingsView()
+                settingsView
             default:
                 Text(String(describing: viewModel.selectedTab))
         }

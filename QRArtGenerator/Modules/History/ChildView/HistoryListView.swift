@@ -12,25 +12,30 @@ struct HistoryListView: View {
     var onDelete: ((QRItem) -> Void)?
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack {
+        List {
+            Section(content: {
                 ForEach(items, id: \.id) { item in
                     HistoryCell(item: item, onDelete: {
                         onDelete?(item)
                     })
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                    .hideSeparatorLine()
                 }
+            }, footer: {
+                Color.clear
+                    .frame(height: 70)
             }
+            )
+            .hideSeparatorLine()
         }
-        .safeAreaInset(edge: .bottom) {
-            Color.clear
-                .frame(height: 40)
-        }
+        .hideScrollIndicator()
+        .listStyle(.plain)
+        
     }
 }
 
 struct HistoryListView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        HistoryView(viewModel: HistoryViewModel())
     }
 }

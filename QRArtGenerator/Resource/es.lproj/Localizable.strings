@@ -90,3 +90,4 @@
 "unknow_error" = "¡Error desconocido!";
 "connected" = "¡Conectado!";
 "no_connected" = "¡No conectado!";
+"no_qr_found" = "No se encontró QR";
