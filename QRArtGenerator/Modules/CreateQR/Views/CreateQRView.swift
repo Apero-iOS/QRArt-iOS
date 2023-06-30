@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateQRView: View {
     @ObservedObject var viewModel = CreateQRViewModel()
     @State var showingSelectQRTypeView: Bool = false
+    @State var showingSelectCountryView: Bool = false
     
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct CreateQRView: View {
                 }
             }
             VStack {
-                Button("Generate QR") {
+                Button(Rlocalizable.generate_qr()) {
                     
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
@@ -43,17 +44,27 @@ struct CreateQRView: View {
         }) {
             qrSelectView
         }
+        .bottomSheet(isPresented: $showingSelectCountryView,
+                     height: HEIGHT_SCREEN/2,
+                     topBarBackgroundColor: R.color.color_F7F7F7.color,
+                     onDismiss: {
+            showingSelectCountryView = false
+        }) {
+            countrySelectView
+        }
         .hideNavigationBar()
-        
+        .onAppear {
+            viewModel.fetchCountry()
+            viewModel.fetchTemplate()
+        }
     }
-    
     
     @ViewBuilder var templateView: some View {
         ChooseTemplateView()
     }
     
     @ViewBuilder var qrDetailView: some View {
-        SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView, type: viewModel.typeQR)
+        SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView, showingSelectCountryView: $showingSelectCountryView, type: viewModel.typeQR)
     }
     
     @ViewBuilder var advancedSettingsView: some View {
@@ -64,8 +75,12 @@ struct CreateQRView: View {
         SelectQRTypeView(selectedType: $viewModel.typeQR, showingSelectQRTypeView: $showingSelectQRTypeView)
     }
     
+    @ViewBuilder var countrySelectView: some View {
+        SelectCountryCodeView(countries: $viewModel.countries, selectedCountry: $viewModel.countrySelect)
+    }
+    
     @ViewBuilder var naviView: some View {
-        NavibarView(title: "QR Creation with", isImageTitle: true, isRightButton: true) {
+        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: true) {
             // TODO
         }
     }

@@ -18,7 +18,7 @@ struct AdvancedSettingsView: View {
     var body: some View {
         LazyVStack(alignment: .leading) {
             HStack {
-                Text("Advanced Settings")
+                Text(Rlocalizable.advanced_settings())
                     .font(R.font.urbanistSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                 Spacer()
@@ -50,9 +50,12 @@ struct AdvancedSettingsView: View {
         VStack {
             PromptView()
             PromptView()
-            SliderSettingView(title: "Guidance", desc: "Show the influence of prompts on image generation.")
-            SliderSettingView(title: "ControNet scale", desc: "ControNet scale measures the ability of an AI generation system to produce outputs with higher levels of co ntrol.")
-            SliderSettingView(title: "Steps", desc: "The number of steps required to generate an image. The higher steps, the more quality.")
+            SliderSettingView(title: Rlocalizable.guidance(),
+                              desc: Rlocalizable.guidance_desc())
+            SliderSettingView(title: Rlocalizable.controlnet_scale(),
+                              desc: Rlocalizable.controlnet_scale_desc())
+            SliderSettingView(title: Rlocalizable.steps(),
+                              desc: Rlocalizable.steps_desc())
         }
     }
     

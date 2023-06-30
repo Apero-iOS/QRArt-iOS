@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Country: Decodable {
+struct Country: Decodable, Hashable {
     public var flag: String {
         
         return code
@@ -26,7 +26,7 @@ struct Country: Decodable {
         
         String(format: "%@ %@", self.flag, self.name)
     }
-    public let dialCode: String?
+    public let dialCode: String
     
     public static func getCurrentCountry() -> Country? {
         let locale: NSLocale = NSLocale.current as NSLocale
