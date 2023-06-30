@@ -41,69 +41,56 @@ struct SelectQRDetailView: View {
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 VStack(spacing: 12) {
                     InputNameView(title: Rlocalizable.name(),
-                                  placeholder: "",
-                                  name: "ok")
+                                  placeholder: "")
                     switch type {
                     case .website:
                         InputNameView(title: Rlocalizable.website_link(),
-                                      placeholder: "",
-                                      name: "https://www.pinterest.com/pin/672021575660808069/")
+                                      placeholder: "")
                     case .contact:
                         InputNameView(title: Rlocalizable.contact_name(),
-                                      placeholder: Rlocalizable.enter_contact_name(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_contact_name())
                         InputPhoneNumberView(type: type,
                                              showingSelectCountryView: $showingSelectCountryView)
                     case .text:
                         InputNameView(title: Rlocalizable.text(),
-                                      placeholder: Rlocalizable.enter_text_here(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_text_here())
                     case .email:
                         InputNameView(title: Rlocalizable.email_to(),
-                                      placeholder: "example@gmail.com",
-                                      name: "")
+                                      placeholder: "example@gmail.com")
                         InputNameView(title: Rlocalizable.subject(),
-                                      placeholder: Rlocalizable.enter_subject(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_subject())
                         DescriptionView(title: Rlocalizable.email_desc(),
                                         placeHolder: "",
                                         desc: "AAAA")
                     case .whatsapp:
                         InputNameView(title: Rlocalizable.contact_name(),
-                                      placeholder: Rlocalizable.enter_contact_name(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_contact_name())
                         InputPhoneNumberView(type: type,
                                              showingSelectCountryView: $showingSelectCountryView)
                     case .instagram:
                         InputNameView(title: Rlocalizable.instagram_url(),
-                                      placeholder: "",
-                                      name: "")
+                                      placeholder: "")
                     case .facebook:
                         InputNameView(title: Rlocalizable.facebook_url(),
-                                      placeholder: "", name: "")
+                                      placeholder: "")
                     case .twitter:
                         InputNameView(title: Rlocalizable.twitter_url(),
-                                      placeholder: "",
-                                      name: "")
+                                      placeholder: "")
                     case .spotify:
                         InputNameView(title: Rlocalizable.spotify_url(),
-                                      placeholder: "", name: "")
+                                      placeholder: "")
                     case .youtube:
                         InputNameView(title: Rlocalizable.youtube_url(),
-                                      placeholder: "",
-                                      name: "")
+                                      placeholder: "")
                     case .wifi:
                         InputNameView(title: Rlocalizable.ssid(),
-                                      placeholder: Rlocalizable.enter_wifi_name(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_wifi_name())
                         InputNameView(title: Rlocalizable.password(),
-                                      placeholder: Rlocalizable.enter_password(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_password())
                         SecurityModeView()
                     case .paypal:
                         InputNameView(title: Rlocalizable.paypal_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      name: "")
+                                      placeholder: Rlocalizable.enter_link_here())
                         DescriptionView(title: Rlocalizable.desc(),
                                         placeHolder: Rlocalizable.note_payment())
                     }

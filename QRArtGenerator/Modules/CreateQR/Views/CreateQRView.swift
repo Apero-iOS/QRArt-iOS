@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateQRView: View {
-    @ObservedObject var viewModel = CreateQRViewModel()
+    @StateObject var viewModel = CreateQRViewModel()
     @State var showingSelectQRTypeView: Bool = false
     @State var showingSelectCountryView: Bool = false
     
@@ -20,6 +20,9 @@ struct CreateQRView: View {
                     templateView
                     qrDetailView
                     advancedSettingsView
+                        .onChange(of: viewModel.indexSelectQR) { newValue in
+                                
+                        }
                 }
             }
             VStack {
@@ -32,7 +35,7 @@ struct CreateQRView: View {
                 .foregroundColor(Color.white)
                 .font(R.font.urbanistSemiBold.font(size: 14))
                 .cornerRadius(20)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
             }
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -60,7 +63,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var templateView: some View {
-        ChooseTemplateView()
+        ChooseTemplateView(templateQR: $viewModel.templateQR, indexSelectStyle: $viewModel.indexSelectQR)
     }
     
     @ViewBuilder var qrDetailView: some View {
@@ -68,7 +71,10 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var advancedSettingsView: some View {
-        AdvancedSettingsView()
+        if !viewModel.templateQR.isEmpty {
+            AdvancedSettingsView(negativePromt: $viewModel.templateQR[viewModel.indexSelectQR].config.negativePrompt,
+                                 positivePrompt: $viewModel.templateQR[viewModel.indexSelectQR].config.positivePrompt)
+        }
     }
     
     @ViewBuilder var qrSelectView: some View {

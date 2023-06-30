@@ -13,6 +13,12 @@ class CreateQRViewModel: ObservableObject {
     @Published var typeQR: QRType = .contact
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "VN", dialCode: "+84")
+    @Published var templateQR: [TemplateModel] =  [] {
+        didSet {
+            print("zxczxcxzc: \(self.templateQR.count)")
+        }
+    }
+    @Published var indexSelectQR: Int = .zero
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -33,7 +39,9 @@ class CreateQRViewModel: ObservableObject {
                 print("tuanlt: \(error)")
             }
         } receiveValue: { templates in
-            print("tuanlt: \(templates)")
+            if let templateQR = templates?.items {
+                self.templateQR = templateQR
+            }
         }.store(in: &cancellable)
     }
 }

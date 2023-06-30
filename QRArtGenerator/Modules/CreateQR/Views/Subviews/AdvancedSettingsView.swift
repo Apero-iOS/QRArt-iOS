@@ -15,6 +15,8 @@ enum AdvancedSettingsMode {
 struct AdvancedSettingsView: View {
     @State var mode: AdvancedSettingsMode = .collapse
     @State var rotate: Double = 0
+    @Binding var negativePromt: String
+    @Binding var positivePrompt: String
     var body: some View {
         LazyVStack(alignment: .leading) {
             HStack {
@@ -48,8 +50,8 @@ struct AdvancedSettingsView: View {
     
     @ViewBuilder var descView: some View {
         VStack {
-            PromptView()
-            PromptView()
+            PromptView(text: negativePromt)
+            PromptView(text: positivePrompt)
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc())
             SliderSettingView(title: Rlocalizable.controlnet_scale(),
@@ -67,6 +69,6 @@ struct AdvancedSettingsView: View {
 
 struct AdvancedSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdvancedSettingsView()
+        AdvancedSettingsView(negativePromt: .constant(""), positivePrompt: .constant(""))
     }
 }
