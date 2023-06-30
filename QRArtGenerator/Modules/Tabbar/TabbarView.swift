@@ -18,7 +18,7 @@ struct TabbarView: View {
                     contentView
                         .padding(.bottom, geo.safeAreaInsets.bottom + 64)
                     
-                    VStack {
+                    VStack(spacing: 0) {
                         Spacer()
                         
                         ZStack(alignment: .bottom) {
@@ -40,16 +40,16 @@ struct TabbarView: View {
                                         }
                                     }
                                 }
-                                .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                             }
-                            
-                            Color.white
-                                .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
+                            .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                         }
+                        
+                        Color.white
+                            .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                     }
-                    .ignoresSafeArea()
-                    .hideNavigationBar()
                 }
+                .ignoresSafeArea()
+                .hideNavigationBar()
             }.fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
             }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
