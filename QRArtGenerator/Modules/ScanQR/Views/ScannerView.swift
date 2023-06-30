@@ -13,6 +13,8 @@ struct ScannerView: View {
     
     @StateObject var qrDelegate = QRScannerDelegate()
     @StateObject var viewModel = ScannerViewModel()
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     var body: some View {
         ZStack {
@@ -27,17 +29,65 @@ struct ScannerView: View {
                     ZStack {
                         Rectangle()
                             .foregroundColor(.black.opacity(0.5))
-                            .ignoresSafeArea()
-                        Rectangle()
-                            .frame(width: heightRectangle, height: heightRectangle)
-                            .blendMode(.destinationOut)
-                    }.compositingGroup()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        VStack(spacing: 0) {
+                            Spacer().frame(height: safeAreaInsets.top)
+                            
+                            HStack {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    Image(R.image.ic_close)
+                                        .foregroundColor(.white)
+                                }.frame(width: 40, height: 40)
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            
+                            Spacer().frame(height: size.width/5)
+                            GeometryReader { geometry in
+                                let frame = geometry.frame(in: CoordinateSpace.global)
+                                Rectangle()
+                                    .frame(width: heightRectangle, height: heightRectangle)
+                                    .blendMode(.destinationOut)
+                                    .overlay {
+                                        rectangleView
+                                    }.onAppear {
+                                        viewModel.frameCamera = frame
+                                    }
+                            }.frame(width: heightRectangle, height: heightRectangle)
+                            
+                            // Flash
+                            Button {
+                                viewModel.tourchClick()
+                            } label: {
+                                Image(viewModel.torchMode == .on ? R.image.ic_flash_on : R.image.ic_flash_off)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(width: 48, height: 48)
+                            .background(.white.opacity(0.3))
+                            .cornerRadius(30)
+                            .padding(.vertical, 24)
+                            
+                            // Zoom
+                            HStack(spacing: 16) {
+                                Image(R.image.ic_zoom_in)
+                                    .foregroundColor(.white)
+                                    .frame(width: 24, height: 24)
+                                Slider(value: $viewModel.zoomValue, in: 1...5) { editing in }
+                                    .tint(.white)
+                                Image(R.image.ic_zoom_out)
+                                    .foregroundColor(.white)
+                                    .frame(width: 24, height: 24)
+                            }
+                            .padding(.horizontal)
+                            
+                            Spacer()
+                            
+                        }
+                    }
+                    .compositingGroup()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
-                    rectangleView.frame(width: heightRectangle, height: heightRectangle)
-                    
-                }.onAppear {
-                    viewModel.cameraSize = size
                 }
             }
             .ignoresSafeArea()
@@ -45,43 +95,7 @@ struct ScannerView: View {
                 checkCameraPermission()
             }
             .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
-                
             }
-            
-            VStack(spacing: 10) {
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "arrow.backward.circle")
-                            .foregroundColor(.white)
-                    }.frame(width: 40, height: 40)
-                    Spacer()
-                }
-                
-                Spacer()
-                Button {
-                    viewModel.tourchClick()
-                } label: {
-                    Image(systemName: "flashlight.off.fill").foregroundColor(.white)
-                }
-                .frame(width: 48, height: 48)
-                .background(.white.opacity(0.3))
-                .cornerRadius(30)
-                
-                // Zoom
-                HStack(spacing: 8) {
-                    Image(systemName: "minus.magnifyingglass")
-                        .foregroundColor(.white)
-                        .frame(width: 24, height: 24)
-                    Slider(value: $viewModel.zoomValue, in: 1...5) { editing in }
-                        .tint(.white)
-                    Image(systemName: "plus.magnifyingglass")
-                        .foregroundColor(.white)
-                        .frame(width: 24, height: 24)
-                }
-            }
-            .padding()
             .onChange(of: viewModel.zoomValue) { newValue in
                 viewModel.zoomCamera(value: CGFloat(newValue))
             }
@@ -91,10 +105,13 @@ struct ScannerView: View {
             .onChange(of: qrDelegate.scannerCode) { newValue in
                 viewModel.handleQRResult(text: newValue)
             }
-            .bottomSheet(isPresented: $viewModel.showSheet, height: 200, onDismiss: {
+            .bottomSheet(isPresented: $viewModel.showSheet, height: 200,
+                         contentBackgroundColor: .clear,
+                         topBarBackgroundColor: Color.clear,
+                         onDismiss: {
                 qrDelegate.scannerCode = nil
             }) {
-                EmptyView()
+                ResultQRView(result: $viewModel.qrItem)
             }
         }
     }
@@ -109,14 +126,13 @@ struct ScannerView: View {
                         .trim(from: 0.625 - viewModel.sizeRectangle, to: 0.625 + viewModel.sizeRectangle)
                         .stroke(Color.white, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
                         .rotationEffect(.init(degrees: rotation))
-                    
                 }
+                
                 Rectangle()
                     .fill(Color.white)
                     .frame(height: 2.5)
                     .shadow(color: .black.opacity(0.8), radius: 8, x: 0, y: 15)
                     .offset(y: viewModel.isScanning ? size.width : 0)
-                
             }
         }
     }
@@ -145,9 +161,14 @@ struct ScannerView: View {
     
     func setupCamera() {
         do {
-            guard let deveice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
+            guard let deveice = viewModel.deveice else {
                 viewModel.presentError("Unknown error")
                 return
+            }
+            if viewModel.zoomValue <= deveice.maxAvailableVideoZoomFactor {
+                try deveice.lockForConfiguration()
+                deveice.videoZoomFactor = viewModel.zoomValue
+                deveice.unlockForConfiguration()
             }
             let input = try AVCaptureDeviceInput(device: deveice)
             
@@ -155,11 +176,12 @@ struct ScannerView: View {
                 viewModel.presentError("Unknown error")
                 return
             }
+            
             viewModel.session.beginConfiguration()
             viewModel.session.addInput(input)
             viewModel.session.addOutput(viewModel.qrOutput)
             viewModel.qrOutput.metadataObjectTypes = [.qr]
-            let fromLayerRect = CGRect(x: 0, y: (viewModel.cameraSize.height-viewModel.cameraSize.width)/2, width: viewModel.cameraSize.width, height: viewModel.cameraSize.width)
+            let fromLayerRect = viewModel.frameCamera
             viewModel.qrOutput.rectOfInterest = viewModel.cameraLayer.metadataOutputRectConverted(fromLayerRect: fromLayerRect)
             viewModel.qrOutput.setMetadataObjectsDelegate(qrDelegate, queue: .main)
             viewModel.session.commitConfiguration()
