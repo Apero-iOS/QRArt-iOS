@@ -12,6 +12,8 @@ struct InputPhoneNumberView: View {
     var placeholder: String = "Input your Name"
     var type: QRType = .contact
     @State var name: String = ""
+    @Binding var showingSelectCountryView: Bool
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
             Text("Phone Number")
@@ -26,6 +28,9 @@ struct InputPhoneNumberView: View {
                 .frame(maxHeight: 42, alignment: .center)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
+                .onTapGesture {
+                    showingSelectCountryView = true
+                }
                 TextField(placeholder, text: $name)
                     .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                     .frame(maxHeight: 42)
@@ -40,7 +45,7 @@ struct InputPhoneNumberView: View {
 
 struct InputPhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        InputPhoneNumberView()
+        InputPhoneNumberView(showingSelectCountryView: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }

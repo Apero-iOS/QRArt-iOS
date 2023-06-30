@@ -11,6 +11,7 @@ import BottomSheet
 struct SelectQRDetailView: View {
     @State var name: String = ""
     @Binding var showingSelectQRTypeView: Bool
+    @Binding var showingSelectCountryView: Bool
     var type: QRType
     
     var body: some View {
@@ -45,7 +46,7 @@ struct SelectQRDetailView: View {
                         InputNameView(title: "Website Link", placeholder: "", name: "https://www.pinterest.com/pin/672021575660808069/")
                     case .contact:
                         InputNameView(title: "Contact Name", placeholder: "Enter Conntact Name", name: "")
-                        InputPhoneNumberView(type: type)
+                        InputPhoneNumberView(type: type, showingSelectCountryView: $showingSelectCountryView)
                     case .text:
                         InputNameView(title: "Text", placeholder: "Enter a text here", name: "")
                     case .email:
@@ -54,7 +55,7 @@ struct SelectQRDetailView: View {
                         DescriptionView(title: "E-mail Description", placeHolder: "", desc: "AAAA")
                     case .whatsapp:
                         InputNameView(title: "Contact Name", placeholder: "Enter Conntact Name", name: "")
-                        InputPhoneNumberView(type: type)
+                        InputPhoneNumberView(type: type, showingSelectCountryView: $showingSelectCountryView)
                     case .instagram:
                         InputNameView(title: "Instagram URL", placeholder: "", name: "")
                     case .facebook:
@@ -86,7 +87,7 @@ struct SelectQRDetailView: View {
 
 struct SelectQRDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectQRDetailView(showingSelectQRTypeView: .constant(false), type: .website)
+        SelectQRDetailView(showingSelectQRTypeView: .constant(false), showingSelectCountryView: .constant(false), type: .website)
             .previewLayout(.sizeThatFits)
     }
 }
