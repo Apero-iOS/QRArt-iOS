@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HistoryCell: View {
     @State var item: QRItem
+    @State private var showingDelete = false
+    var onDelete: VoidBlock?
     
     var body: some View {
         VStack {
@@ -61,9 +63,14 @@ struct HistoryCell: View {
                 Image(R.image.trash_ic)
                     .frame(width: 20, height: 20)
                     .onTapGesture {
-                        // TODO: Delete item
+                        showingDelete = true
                     }
                     .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
+                    .confirmationDialog(Rlocalizable.would_you_like_to_delete(), isPresented: $showingDelete, titleVisibility: .visible) {
+                        Button(Rlocalizable.delete(), role: .destructive) {
+                            onDelete?()
+                        }
+                    }
             }
             .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
         }

@@ -8,29 +8,37 @@
 import Foundation
 
 class HistoryViewModel: ObservableObject {
-    @Published var categories: [Int : String] = [:]
+    @Published var categories: [HistoryCategory] = []
     @Published var items: [QRItem] = itemTest
     @Published var filteredItems: [QRItem] = []
-    @Published var selectedCate: QRGroupType?
+    @Published var selectedCate: HistoryCategory?
     
     func getCategories() {
-        categories[0] = Rlocalizable.all() + " (\(items.count))"
-        var index = 1
+        categories = [HistoryCategory(type: nil, count: items.count)]
         for type in QRGroupType.allCases {
             let count = items.filter({ $0.groupType == type }).count
             if count > 0 {
-                categories[index] = type.title + " (\(count))"
-                index += 1
+                categories.append(HistoryCategory(type: type, count: count))
             }
         }
     }
     
-    func select(category: QRGroupType?) {
-        if let cate = category {
-            filteredItems = items.filter({ $0.groupType == cate })
+    func select(category: HistoryCategory?) {
+        if let cate = category, let type = cate.type {
+            filteredItems = items.filter({ $0.groupType == type })
         } else {
             filteredItems = items
         }
+        selectedCate = category
+    }
+    
+    func delete(item: QRItem) {
+        items.removeAll(where: { $0.id == item.id })
+        select(category: selectedCate)
+        if filteredItems.isEmpty {
+            select(category: categories.first)
+        }
+        getCategories()
     }
 }
 

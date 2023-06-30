@@ -44,3 +44,6 @@
 "copy_text" = "Copier le texte";
 "open_mail" = "Courrier ouvert";
 "access_wifi" = "Accès wift";
+"would_you_like_to_delete" = "Souhaitez-vous supprimer ce QR?";
+"delete" = "Supprimer";
+"cancel" = "Annuler";

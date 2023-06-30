@@ -44,3 +44,6 @@
 "copy_text" = "Text kopieren";
 "open_mail" = "Offene Mail";
 "access_wifi" = "Zugang zu Fift";
+"would_you_like_to_delete" = "Möchten Sie dieses QR löschen?";
+"delete" = "Löschen";
+"cancel" = "Stornieren";
