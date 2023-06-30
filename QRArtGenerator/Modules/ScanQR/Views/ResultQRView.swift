@@ -52,9 +52,8 @@ struct ResultQRView: View {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
         .background(R.color.color_191A1F.color)
-        
     }
 }
 

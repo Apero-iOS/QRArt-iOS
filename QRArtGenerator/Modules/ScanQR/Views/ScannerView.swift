@@ -106,7 +106,6 @@ struct ScannerView: View {
                 viewModel.handleQRResult(text: newValue)
             }
             .bottomSheet(isPresented: $viewModel.showSheet, height: 200,
-                         topBarHeight: 20,
                          contentBackgroundColor: .clear,
                          topBarBackgroundColor: Color.clear,
                          onDismiss: {
