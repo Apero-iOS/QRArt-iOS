@@ -13,7 +13,7 @@ struct SecurityModeView: View {
             Text(Rlocalizable.security_mode())
                 .foregroundColor(R.color.color_1B232E.color)
                 .font(R.font.urbanistMedium.font(size: 14))
-            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
+            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text(Rlocalizable.picker())) {
                 textDesc(text: "WEP").tag(1)
                 textDesc(text: "WPA").tag(2)
                 textDesc(text: "WPA2").tag(3)
