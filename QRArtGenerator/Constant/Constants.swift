@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+public typealias VoidBlock = () -> Void
+public typealias BoolBlock = (Bool) -> Void
+public typealias StringBlock = (String) -> Void
+public typealias UrlBlock = (URL?) -> Void
+public typealias FloatBlock = (Float) -> Void
+public typealias IntBlock = (Int) -> Void
+
 var Rlocalizable: _R.string.localizable {
     get {
         return R.string.localizable(preferredLanguages: [LocalizationSystem.sharedInstance.getLanguage()])

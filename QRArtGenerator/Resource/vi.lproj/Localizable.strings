@@ -44,3 +44,6 @@
 "copy_text" = "Sao chép văn bản";
 "open_mail" = "Mở thư";
 "access_wifi" = "Truy cập wift";
+"would_you_like_to_delete" = "Bạn có muốn xóa QR này không?";
+"delete" = "Xóa bỏ";
+"cancel" = "Hủy bỏ";
