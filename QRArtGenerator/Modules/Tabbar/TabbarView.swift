@@ -47,15 +47,35 @@ struct TabbarView: View {
                         Color.white
                             .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                     }
+                    
                 }
                 .ignoresSafeArea(edges: .bottom)
-                .hideNavigationBar()
-            }.fullScreenCover(isPresented: $viewModel.showScan) {
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal, content: {
+                        HStack {
+                            Image(R.image.history_logo_ic)
+                            
+                            Spacer()
+                            
+                            LottieView(lottieFile: R.file.crownJson.name)
+                                .frame(width: 24, height: 24)
+                                .onTapGesture {
+                                    // TODO: Show iap
+                                }
+                        }
+                        .frame(width: WIDTH_SCREEN - 32, height: 48)
+                    })
+                }
+                .hideNavigationBar(isHidden: viewModel.selectedTab == .settings)
+            }
+            .fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
             }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
                 CreateQRView()
             }
         }
+       
     }
     
     @ViewBuilder var contentView: some View {
@@ -66,7 +86,6 @@ struct TabbarView: View {
             
             SettingsView().tag(TabbarEnum.settings)
         }
-        .tabViewStyle(.page)
     }
 }
 

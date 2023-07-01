@@ -52,7 +52,7 @@ struct CreateQRView: View {
         }) {
             countrySelectView
         }
-        .hideNavigationBar()
+        .hideNavigationBar(isHidden: true)
         .onAppear {
             viewModel.fetchCountry()
             viewModel.fetchTemplate()

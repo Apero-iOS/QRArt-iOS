@@ -16,19 +16,6 @@ struct HistoryView: View {
     // MARK: - Body
     var body: some View {
         VStack(spacing: 16) {
-            HStack {
-                Image(R.image.history_logo_ic)
-                
-                Spacer()
-                
-                LottieView(lottieFile: R.file.crownJson.name)
-                    .frame(width: 24, height: 24)
-                    .onTapGesture {
-                        // TODO: Show iap
-                    }
-            }
-            .frame(height: 48)
-            
             Text(Rlocalizable.history())
                 .font(R.font.urbanistBold.font(size: 28))
                 .foregroundColor(R.color.color_1B232E.color)
@@ -41,7 +28,6 @@ struct HistoryView: View {
             }
         }
         .padding(.horizontal, 20)
-        .hideNavigationBar()
         .onAppear {
             viewModel.setupData()
         }

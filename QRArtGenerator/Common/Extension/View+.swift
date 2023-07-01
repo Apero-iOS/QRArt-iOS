@@ -9,11 +9,11 @@ import SwiftUI
 import UIKit
 
 extension View {
-    @ViewBuilder func hideNavigationBar() -> some View {
+    @ViewBuilder func hideNavigationBar(isHidden: Bool) -> some View {
         if #available(iOS 16, *) {
-            toolbar(.hidden)
+            toolbar(isHidden ? .hidden : .visible)
         } else {
-            navigationBarHidden(true)
+            navigationBarHidden(isHidden)
         }
     }
     
