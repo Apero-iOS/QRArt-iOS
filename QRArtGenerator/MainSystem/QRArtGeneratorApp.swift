@@ -14,6 +14,7 @@ struct QRArtGeneratorApp: App {
     init() {
         configTableView()
         configKeyboard()
+        FileManagerUtil.shared.createFolder(folder: FileManagerUtil.shared.photoFolderName)
     }
         
     var body: some Scene {

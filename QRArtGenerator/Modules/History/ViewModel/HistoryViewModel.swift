@@ -10,14 +10,17 @@ import Combine
 
 class HistoryViewModel: ObservableObject {
     @Published var categories: [HistoryCategory] = []
-    @Published var items: [QRItem] = itemTest
+    @Published var items: [QRItem] = []
     @Published var filteredItems: [QRItem] = []
     @Published var selectedCate: HistoryCategory?
     
-    func setupData() {
-        if categories.isEmpty {
-            getCategories()
-            select(category: categories.first)
+    init() {
+        QRItemService.shared.setObserver { [weak self] items in
+            self?.items = items
+            self?.getCategories()
+            if self?.selectedCate == nil {
+                self?.select(category: self?.categories.first)
+            }
         }
     }
     
@@ -42,6 +45,7 @@ class HistoryViewModel: ObservableObject {
     
     func delete(item: QRItem) {
         items.removeAll(where: { $0.id == item.id })
+        QRItemService.shared.deleteQR(item)
         select(category: selectedCate)
         if filteredItems.isEmpty {
             select(category: categories.first)
@@ -49,14 +53,3 @@ class HistoryViewModel: ObservableObject {
         getCategories()
     }
 }
-
-let itemTest = [QRItem(id: "1", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().yesterday, groupType: .basic, type: .email),
-                QRItem(id: "2", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date(), groupType: .other, type: .facebook),
-                QRItem(id: "3", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().lastMonth, groupType: .social, type: .instagram),
-                QRItem(id: "4", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date(), groupType: .basic, type: .paypal),
-                QRItem(id: "5", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().yesterday, groupType: .social, type: .spotify),
-                QRItem(id: "6", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().yesterday, groupType: .basic, type: .text),
-                QRItem(id: "7", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date(), groupType: .basic, type: .twitter),
-                QRItem(id: "8", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().yesterday, groupType: .social, type: .instagram),
-                QRItem(id: "9", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().yesterday, groupType: .other, type: .paypal),
-                QRItem(id: "10", qrImage: R.image.image_test.image, name: "QR Art for Youtube Alec benjamin", createdDate: Date().yesterday, groupType: .basic, type: .youtube)]

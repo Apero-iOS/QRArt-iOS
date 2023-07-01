@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftUI
+import RealmSwift
 
-enum QRType {
+enum QRType: Int, PersistableEnum {
     case website
     case contact
     case email
@@ -123,7 +124,7 @@ enum QRType {
     }
 }
 
-enum QRGroupType: CaseIterable {
+enum QRGroupType: Int, CaseIterable, PersistableEnum {
     case basic
     case social
     case other
