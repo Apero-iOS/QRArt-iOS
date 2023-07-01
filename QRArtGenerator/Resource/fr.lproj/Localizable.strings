@@ -97,3 +97,4 @@
 "content_banner_home" = "Rendez votre code QR de devenir plus spécial avec notre service AI -!";
 "view_more" = "Voir plus";
 "ai_art" = "Art de l'IA";
+"cannot_be_empty" = "Ce champ ne peut pas être vide.";

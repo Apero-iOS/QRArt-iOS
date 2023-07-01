@@ -20,16 +20,14 @@ struct CreateQRView: View {
                     templateView
                     qrDetailView
                     advancedSettingsView
-                        .onChange(of: viewModel.indexSelectQR) { newValue in
-                                
-                        }
                 }
             }
             VStack {
                 Button(Rlocalizable.generate_qr()) {
-                    
+                    viewModel.generateQR()
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
+                
                 .clipShape(Capsule())
                 .background(R.color.color_653AE4.color)
                 .foregroundColor(Color.white)
@@ -67,7 +65,10 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var qrDetailView: some View {
-        SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView, showingSelectCountryView: $showingSelectCountryView, type: viewModel.typeQR)
+        SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView,
+                           showingSelectCountryView: $showingSelectCountryView,
+                           validInput: $viewModel.validInput,
+                           type: viewModel.input.type)
     }
     
     @ViewBuilder var advancedSettingsView: some View {
@@ -78,7 +79,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var qrSelectView: some View {
-        SelectQRTypeView(selectedType: $viewModel.typeQR, showingSelectQRTypeView: $showingSelectQRTypeView)
+        SelectQRTypeView(selectedType: $viewModel.input.type, showingSelectQRTypeView: $showingSelectQRTypeView)
     }
     
     @ViewBuilder var countrySelectView: some View {

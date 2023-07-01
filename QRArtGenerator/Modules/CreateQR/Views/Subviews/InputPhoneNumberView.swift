@@ -13,6 +13,7 @@ struct InputPhoneNumberView: View {
     var type: QRType = .contact
     @State var name: String = ""
     @Binding var showingSelectCountryView: Bool
+    @Binding var validInput: Bool
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
@@ -45,7 +46,7 @@ struct InputPhoneNumberView: View {
 
 struct InputPhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        InputPhoneNumberView(showingSelectCountryView: .constant(true))
+        InputPhoneNumberView(showingSelectCountryView: .constant(true), validInput: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }
