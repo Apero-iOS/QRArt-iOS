@@ -16,7 +16,7 @@ struct TabbarView: View {
             NavigationView {
                 ZStack(alignment: .bottom) {
                     contentView
-                        .padding(.bottom, geo.safeAreaInsets.bottom + 64)
+                        .padding(.bottom, geo.safeAreaInsets.bottom)
                     
                     VStack(spacing: 0) {
                         Spacer()
@@ -48,7 +48,7 @@ struct TabbarView: View {
                             .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                     }
                 }
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .bottom)
                 .hideNavigationBar()
             }.fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
@@ -59,16 +59,14 @@ struct TabbarView: View {
     }
     
     @ViewBuilder var contentView: some View {
-        switch viewModel.selectedTab {
-            case .history:
-                HistoryView()
-            case .home:
-                HomeView()
-            case .settings:
-                SettingsView()
-            default:
-                Text(String(describing: viewModel.selectedTab))
+        TabView(selection: $viewModel.selectedTab) {
+            HistoryView().tag(TabbarEnum.history)
+
+            HomeView().tag(TabbarEnum.home)
+            
+            SettingsView().tag(TabbarEnum.settings)
         }
+        .tabViewStyle(.page)
     }
 }
 

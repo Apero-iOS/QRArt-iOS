@@ -6,12 +6,20 @@
 //
 
 import Foundation
+import Combine
 
 class HistoryViewModel: ObservableObject {
     @Published var categories: [HistoryCategory] = []
     @Published var items: [QRItem] = itemTest
     @Published var filteredItems: [QRItem] = []
     @Published var selectedCate: HistoryCategory?
+    
+    func setupData() {
+        if categories.isEmpty {
+            getCategories()
+            select(category: categories.first)
+        }
+    }
     
     func getCategories() {
         categories = [HistoryCategory(type: nil, count: items.count)]

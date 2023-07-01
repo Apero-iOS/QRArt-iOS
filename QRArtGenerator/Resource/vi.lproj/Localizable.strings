@@ -90,3 +90,6 @@
 "unknow_error" = "Lỗi không rõ!";
 "connected" = "Kết nối!";
 "no_connected" = "Không có kết nối!";
+"no_qr_found" = "Không tìm thấy QR";
+"results" = "kết quả";
+"result" = "kết quả";

@@ -90,3 +90,6 @@
 "unknow_error" = "Erreur inconnue!";
 "connected" = "Connecté!";
 "no_connected" = "Pas connecté!";
+"no_qr_found" = "Aucun QR trouvé";
+"results" = "résultats";
+"result" = "résultat";

@@ -8,43 +8,42 @@
 import SwiftUI
 
 struct HistoryView: View {
+    
     // MARK: - Variables
     @StateObject var viewModel = HistoryViewModel()
     
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
-            VStack(spacing: 16) {
-                HStack {
-                    Image(R.image.history_logo_ic)
-                    
-                    Spacer()
-                    
-                    LottieView(lottieFile: R.file.crownJson.name)
-                        .frame(width: 24, height: 24)
-                        .onTapGesture {
-                            // TODO: Show iap
-                        }
-                }
-                .frame(height: 48)
+        VStack(spacing: 16) {
+            HStack {
+                Image(R.image.history_logo_ic)
                 
-                Text(Rlocalizable.history())
-                    .font(R.font.urbanistBold.font(size: 28))
-                    .foregroundColor(R.color.color_1B232E.color)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
                 
-                if viewModel.items.isEmpty {
-                    emptyView
-                } else {
-                    listView
-                }
+                LottieView(lottieFile: R.file.crownJson.name)
+                    .frame(width: 24, height: 24)
+                    .onTapGesture {
+                        // TODO: Show iap
+                    }
             }
-            .padding(.horizontal, 20)
-            .hideNavigationBar()
-        }.onAppear {
-            viewModel.getCategories()
-            viewModel.select(category: viewModel.categories.first)
+            .frame(height: 48)
+            
+            Text(Rlocalizable.history())
+                .font(R.font.urbanistBold.font(size: 28))
+                .foregroundColor(R.color.color_1B232E.color)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            if viewModel.items.isEmpty {
+                emptyView
+            } else {
+                listView
+            }
+        }
+        .padding(.horizontal, 20)
+        .hideNavigationBar()
+        .onAppear {
+            viewModel.setupData()
         }
     }
     
@@ -68,12 +67,15 @@ struct HistoryView: View {
                     .multilineTextAlignment(.center)
             }
             
-            Button(Rlocalizable.create_qr()) {
+            Button {
                 // TODO: show create QR
+            } label: {
+                Text(Rlocalizable.create_qr())
+                    .font(R.font.urbanistSemiBold.font(size: 14))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundColor(Color.white)
             }
-            .font(R.font.urbanistSemiBold.font(size: 14))
             .frame(width: 156, height: 34)
-            .foregroundColor(Color.white)
             .background(R.color.color_653AE4.color)
             .clipShape(Capsule())
         }
@@ -84,32 +86,35 @@ struct HistoryView: View {
     }
     
     @ViewBuilder var listView: some View {
-        HStack(spacing: 12) {
-            Image(R.image.search_ic)
-                .frame(width: 24)
-                .padding(.leading, 12)
-            
-            Text(Rlocalizable.search_qr_name())
-                .font(R.font.urbanistRegular.font(size: 14))
-                .foregroundColor(R.color.color_6A758B.color)
-            
-            Spacer()
+        NavigationLink {
+            SearchView()
+        } label: {
+            HStack(spacing: 12) {
+                Image(R.image.search_ic)
+                    .frame(width: 24)
+                    .padding(.leading, 12)
+                
+                Text(Rlocalizable.search_qr_name())
+                    .font(R.font.urbanistRegular.font(size: 14))
+                    .foregroundColor(R.color.color_6A758B.color)
+                
+                Spacer()
+            }
+            .frame(height: 40)
+            .background(.white)
+            .overlay (
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(R.color.color_EAEAEA.color)
+            )
         }
-        .frame(height: 40)
-        .overlay (
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(R.color.color_EAEAEA.color)
-        )
-        .onTapGesture {
-            // TODO: show search
-        }
+        .buttonStyle(.plain)
         
         HistoryCategoryListView(caterories: $viewModel.categories, selectedCate: $viewModel.selectedCate, onSelectCategory: { cate in
             viewModel.select(category: cate)
         })
         .padding(.horizontal, -20)
         
-        HistoryListView(items: $viewModel.filteredItems, onDelete: { item in
+        HistoryListView(items: $viewModel.filteredItems, isInHistory: true, onDelete: { item in
             withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                 viewModel.delete(item: item)
             }

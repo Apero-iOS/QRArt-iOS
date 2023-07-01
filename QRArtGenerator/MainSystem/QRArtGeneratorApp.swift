@@ -6,21 +6,32 @@
 //
 
 import SwiftUI
+import IQKeyboardManagerSwift
 
 @main
 struct QRArtGeneratorApp: App {
     
     init() {
-        UITableView.appearance().backgroundColor = .clear
-        UITableView.appearance().tableFooterView = UIView()
-        UITableView.appearance().showsVerticalScrollIndicator = false
-        UITableView.appearance().showsHorizontalScrollIndicator = false
-        UITableView.appearance().separatorStyle = .none
+        configTableView()
+        configKeyboard()
     }
         
     var body: some Scene {
         WindowGroup {
             TabbarView()
         }
+    }
+    
+    private func configTableView() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().tableFooterView = UIView()
+        UITableView.appearance().showsVerticalScrollIndicator = false
+        UITableView.appearance().showsHorizontalScrollIndicator = false
+        UITableView.appearance().separatorStyle = .none
+    }
+    
+    private func configKeyboard() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }

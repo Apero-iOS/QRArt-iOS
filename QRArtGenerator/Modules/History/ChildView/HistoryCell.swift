@@ -10,6 +10,7 @@ import SwiftUI
 struct HistoryCell: View {
     @State var item: QRItem
     @State private var showingDelete = false
+    var canDelete: Bool
     var onDelete: VoidBlock?
     
     var body: some View {
@@ -60,17 +61,19 @@ struct HistoryCell: View {
                 
                 Spacer(minLength: 20)
                 
-                Image(R.image.trash_ic)
-                    .frame(width: 20, height: 20)
-                    .onTapGesture {
-                        showingDelete = true
-                    }
-                    .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
-                    .confirmationDialog(Rlocalizable.would_you_like_to_delete(), isPresented: $showingDelete, titleVisibility: .visible) {
-                        Button(Rlocalizable.delete(), role: .destructive) {
-                            onDelete?()
+                if canDelete {
+                    Image(R.image.trash_ic)
+                        .frame(width: 20, height: 20)
+                        .onTapGesture {
+                            showingDelete = true
                         }
-                    }
+                        .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
+                        .confirmationDialog(Rlocalizable.would_you_like_to_delete(), isPresented: $showingDelete, titleVisibility: .visible) {
+                            Button(Rlocalizable.delete(), role: .destructive) {
+                                onDelete?()
+                            }
+                        }
+                }
             }
             .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
         }
@@ -79,6 +82,6 @@ struct HistoryCell: View {
 
 struct HistoryCell_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryCell(item: itemTest[0])
+        HistoryCell(item: itemTest[0], canDelete: true)
     }
 }
