@@ -44,6 +44,9 @@
 		59F74C3B2A4EB97200AD8CBA /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C3A2A4EB97200AD8CBA /* MessageView.swift */; };
 		59F74C3F2A4EC1CE00AD8CBA /* QRHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */; };
 		59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C402A4EC4C200AD8CBA /* WebView.swift */; };
+		59F74C452A4FBE8B00AD8CBA /* AdBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C442A4FBE8B00AD8CBA /* AdBannerView.swift */; };
+		59F74C472A4FC24D00AD8CBA /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C462A4FC24D00AD8CBA /* AdViewController.swift */; };
+		59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C492A4FC79900AD8CBA /* AdNativeView.swift */; };
 		9ABC4DA92A4C354E002646DA /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA82A4C354E002646DA /* View+.swift */; };
 		9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DC912A4D396B00FB3119 /* InputType.swift */; };
 		9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAB2A4D3E9500FB3119 /* QRItem.swift */; };
@@ -171,6 +174,9 @@
 		59F74C3A2A4EB97200AD8CBA /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRHelper.swift; sourceTree = "<group>"; };
 		59F74C402A4EC4C200AD8CBA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		59F74C442A4FBE8B00AD8CBA /* AdBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerView.swift; sourceTree = "<group>"; };
+		59F74C462A4FC24D00AD8CBA /* AdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
+		59F74C492A4FC79900AD8CBA /* AdNativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdNativeView.swift; sourceTree = "<group>"; };
 		5D8FA71CBCF848EE6FFC2673 /* Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator_QRArtGeneratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 		59286C402A4D31D300EBBEBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				59F74C482A4FC78400AD8CBA /* Admob */,
 				A4C69C462A4D90690076CF48 /* Language */,
 				A4C69C392A4D90570076CF48 /* Settings */,
 				9AC7DC8D2A4D396B00FB3119 /* CreateQR */,
@@ -558,6 +565,16 @@
 				59F74C402A4EC4C200AD8CBA /* WebView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		59F74C482A4FC78400AD8CBA /* Admob */ = {
+			isa = PBXGroup;
+			children = (
+				59F74C442A4FBE8B00AD8CBA /* AdBannerView.swift */,
+				59F74C492A4FC79900AD8CBA /* AdNativeView.swift */,
+				59F74C462A4FC24D00AD8CBA /* AdViewController.swift */,
+			);
+			path = Admob;
 			sourceTree = "<group>";
 		};
 		704E9C9B993E1DD8EA8AD92E /* Pods */ = {
@@ -933,6 +950,7 @@
 				59C766172A496E5F00D4BDD3 /* Frameworks */,
 				59C766182A496E5F00D4BDD3 /* Resources */,
 				53320F09AD5C0A0573360B87 /* [CP] Embed Pods Frameworks */,
+				5F3127345C536A1A297A3F2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -971,6 +989,7 @@
 				59C766312A496E6000D4BDD3 /* Frameworks */,
 				59C766322A496E6000D4BDD3 /* Resources */,
 				081735AC2C76453BA6D44D9D /* [CP] Embed Pods Frameworks */,
+				6FC5D32CBB6DFCD76613FB7A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1127,6 +1146,40 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5F3127345C536A1A297A3F2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FC5D32CBB6DFCD76613FB7A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9ADEE50F2A4972C30075FCE0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1216,6 +1269,7 @@
 				59286C7C2A4D31D300EBBEBF /* TabbarShape.swift in Sources */,
 				A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */,
 				C8AA3E532A4E80BE0077DCC3 /* TargetType.swift in Sources */,
+				59F74C472A4FC24D00AD8CBA /* AdViewController.swift in Sources */,
 				A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */,
 				9AC7DCB92A4DB3BB00FB3119 /* SelectQRTypeView.swift in Sources */,
 				C8AA3E6A2A4E85E50077DCC3 /* FailureResponse.swift in Sources */,
@@ -1228,6 +1282,7 @@
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
 				59286C7E2A4D31D300EBBEBF /* TabbarEnum.swift in Sources */,
 				9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */,
+				59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */,
 				9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */,
 				59286C952A4D31D300EBBEBF /* OnboardingRowView.swift in Sources */,
 				C8AA3E5F2A4E81CD0077DCC3 /* AFError+.swift in Sources */,
@@ -1242,6 +1297,7 @@
 				9AC7DCCC2A4DB6C600FB3119 /* InputNameView.swift in Sources */,
 				C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */,
 				59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */,
+				59F74C452A4FBE8B00AD8CBA /* AdBannerView.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
 				59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */,
@@ -1675,6 +1731,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = test;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
