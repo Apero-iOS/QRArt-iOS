@@ -78,7 +78,6 @@ struct SettingsView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .listStyle(.grouped)
-        .hideNavigationBar()
     }
 }
 

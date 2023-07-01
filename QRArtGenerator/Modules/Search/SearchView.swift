@@ -54,7 +54,7 @@ struct SearchView: View {
             
             Spacer()
         }
-        .hideNavigationBar()
+        .hideNavigationBar(isHidden: true)
         .onAppear {
             isFocusSearch = true
         }
