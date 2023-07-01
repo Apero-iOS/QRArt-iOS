@@ -69,6 +69,7 @@
 		9AC7DCD72A4DB72800FB3119 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCB12A4D605800FB3119 /* HistoryCell.swift */; };
 		9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCA92A4D3A3600FB3119 /* HistoryViewModel.swift */; };
 		9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAF2A4D405F00FB3119 /* Date+.swift */; };
+		9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */; };
 		9AD373702A4E78F600FCF934 /* HistoryCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD3736F2A4E78F600FCF934 /* HistoryCategory.swift */; };
 		9AD373732A4EBB3400FCF934 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD373722A4EBB3400FCF934 /* SearchView.swift */; };
 		9AD522812A4A86A300A947B5 /* R+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522802A4A86A300A947B5 /* R+.swift */; };
@@ -207,6 +208,7 @@
 		9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
 		9AC7DCD32A4DB6E500FB3119 /* CreateQRViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRViewModel.swift; sourceTree = "<group>"; };
+		9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9AD3736F2A4E78F600FCF934 /* HistoryCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCategory.swift; sourceTree = "<group>"; };
 		9AD373722A4EBB3400FCF934 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		9AD522802A4A86A300A947B5 /* R+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R+.swift"; sourceTree = "<group>"; };
@@ -671,9 +673,18 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		9AD2B8EF2A4FCAAA003B7C1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9AD373712A4EBB1100FCF934 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				9AD2B8EF2A4FCAAA003B7C1F /* ViewModel */,
 				9AD373722A4EBB3400FCF934 /* SearchView.swift */,
 			);
 			path = Search;
@@ -1338,6 +1349,7 @@
 				C8AA3E612A4E81E00077DCC3 /* BaseAPI+.swift in Sources */,
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
+				9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */,
 				9AC7DCD02A4DB6C600FB3119 /* DescriptionView.swift in Sources */,
 				59286C8E2A4D31D300EBBEBF /* QRScannerDelegate.swift in Sources */,
 				C8AA3E5C2A4E81910077DCC3 /* AlamofireLogger.swift in Sources */,
@@ -1536,6 +1548,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1573,6 +1586,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1749,6 +1763,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

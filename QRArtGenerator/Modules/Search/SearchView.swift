@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchView: View {
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel = SearchViewModel()
+    @FocusState private var isFocusSearch: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -18,9 +20,10 @@ struct SearchView: View {
                         .frame(width: 24)
                         .padding(.leading, 12)
                     
-                    TextField(Rlocalizable.search_qr_name(), text: .constant(""))
-                        .font(R.font.urbanistRegular.font(size: 14))
-                        .foregroundColor(R.color.color_1B232E.color)
+                    TextField(Rlocalizable.search_qr_name(), text: $viewModel.searchKey)
+                    .font(R.font.urbanistRegular.font(size: 14))
+                    .foregroundColor(R.color.color_1B232E.color)
+                    .focused($isFocusSearch)
                 }
                 .frame(height: 40)
                 .overlay (
@@ -29,6 +32,7 @@ struct SearchView: View {
                 )
                 
                 Button(Rlocalizable.cancel()) {
+                    isFocusSearch = false
                     dismiss()
                 }
                 .font(R.font.urbanistMedium.font(size: 14))
@@ -38,11 +42,22 @@ struct SearchView: View {
             R.color.color_EAEAEA.color
                 .frame(width: WIDTH_SCREEN, height: 1)
             
-            emptyView
+            if viewModel.searchItems.isEmpty {
+                if !viewModel.searchKey.isEmpty {
+                    emptyView
+                } else {
+                    Color.white
+                }
+            } else {
+                listView
+            }
             
             Spacer()
         }
         .hideNavigationBar()
+        .onAppear {
+            isFocusSearch = true
+        }
     }
     
     @ViewBuilder var emptyView: some View {
@@ -59,6 +74,21 @@ struct SearchView: View {
             
             Spacer()
         }
+    }
+    
+    @ViewBuilder var listView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(countText)
+                .font(R.font.urbanistRegular.font(size: 12))
+                .foregroundColor(R.color.color_77778E.color)
+            
+            HistoryListView(items: $viewModel.searchItems, isInHistory: false, onDelete: nil)
+        }
+        .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+    }
+    
+    var countText: String {
+        return "\(viewModel.searchItems.count) " + (viewModel.searchItems.count > 1 ? Rlocalizable.results() : Rlocalizable.result())
     }
 }
 

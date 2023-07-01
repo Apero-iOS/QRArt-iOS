@@ -10,10 +10,6 @@ import SwiftUI
 struct TabbarView: View {
     
     @StateObject private var viewModel = TabbarViewModel()
-    @StateObject private var historyViewModel = HistoryViewModel()
-    
-    private let settingsView = SettingsView()
-    private let homeView = HomeView()
     
     var body: some View {
         GeometryReader { geo in
@@ -63,16 +59,14 @@ struct TabbarView: View {
     }
     
     @ViewBuilder var contentView: some View {
-        switch viewModel.selectedTab {
-            case .history:
-                HistoryView(viewModel: historyViewModel)
-            case .home:
-                homeView
-            case .settings:
-                settingsView
-            default:
-                Text(String(describing: viewModel.selectedTab))
+        TabView(selection: $viewModel.selectedTab) {
+            HistoryView().tag(TabbarEnum.history)
+
+            HomeView().tag(TabbarEnum.home)
+            
+            SettingsView().tag(TabbarEnum.settings)
         }
+        .tabViewStyle(.page)
     }
 }
 

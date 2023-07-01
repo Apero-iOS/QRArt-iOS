@@ -10,7 +10,7 @@ import SwiftUI
 struct HistoryView: View {
     
     // MARK: - Variables
-    @StateObject var viewModel: HistoryViewModel
+    @StateObject var viewModel = HistoryViewModel()
     
     
     // MARK: - Body
@@ -114,7 +114,7 @@ struct HistoryView: View {
         })
         .padding(.horizontal, -20)
         
-        HistoryListView(items: $viewModel.filteredItems, onDelete: { item in
+        HistoryListView(items: $viewModel.filteredItems, isInHistory: true, onDelete: { item in
             withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                 viewModel.delete(item: item)
             }
@@ -125,7 +125,7 @@ struct HistoryView: View {
 // MARK: - PreviewProvider
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(viewModel: HistoryViewModel())
+        HistoryView()
             .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
     }
 }

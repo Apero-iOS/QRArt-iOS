@@ -91,3 +91,5 @@
 "connected" = "Conectado!";
 "no_connected" = "Sem conectado!";  
 "no_qr_found" = "Nenhum QR encontrado";
+"results" = "resultados";
+"result" = "resultado";
