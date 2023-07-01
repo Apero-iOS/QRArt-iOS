@@ -98,3 +98,5 @@
 "view_more" = "Veja mais";
 "ai_art" = "Ai art";
 "cannot_be_empty" = "Este campo não pode estar vazio.";
+"negative_prompt" = "Prompt negativo (opcional)";
+"negative_prompt_desc" = "Solicite que avise a IA para fingir";

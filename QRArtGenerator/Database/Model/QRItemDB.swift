@@ -15,34 +15,34 @@ class QRItemDB: Object {
     @Persisted var type: QRType
     @Persisted var groupType: QRGroupType
     @Persisted var templateId: String = ""
-    @Persisted var urlString: String?
+    @Persisted var urlString: String
     
     // Contact
-    @Persisted var contactName: String?
-    @Persisted var phoneNumber: String?
+    @Persisted var contactName: String
+    @Persisted var phoneNumber: String
     
     // Text
-    @Persisted var text: String?
+    @Persisted var text: String
     
     // Email
-    @Persisted var emailAddress: String?
-    @Persisted var emailSubject: String?
-    @Persisted var emailDescription: String?
+    @Persisted var emailAddress: String
+    @Persisted var emailSubject: String
+    @Persisted var emailDescription: String
     
     // Wifi
-    @Persisted var wfSsid: String?
-    @Persisted var wfPassword: String?
-    @Persisted var wfSecurityMode: WifiSecurityMode?
+    @Persisted var wfSsid: String
+    @Persisted var wfPassword: String
+    @Persisted var wfSecurityMode: WifiSecurityMode
     
     // Paypal
-    @Persisted var paypalAmount: Double?
+    @Persisted var paypalAmount: Double
     
     // Advanced
-    @Persisted var prompt: String?
-    @Persisted var negativePrompt: String?
-    @Persisted var guidance: Int?
-    @Persisted var contronetScale: Int?
-    @Persisted var steps: Int?
+    @Persisted var prompt: String
+    @Persisted var negativePrompt: String
+    @Persisted var guidance: Int
+    @Persisted var contronetScale: Int
+    @Persisted var steps: Int
     
     
     

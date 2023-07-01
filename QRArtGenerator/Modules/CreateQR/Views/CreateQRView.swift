@@ -10,6 +10,7 @@ import SwiftUI
 enum CreateQRViewSource {
     case create
     case template
+    case regenerate
 }
 
 struct CreateQRView: View {

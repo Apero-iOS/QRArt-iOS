@@ -98,3 +98,5 @@
 "view_more" = "View more";
 "ai_art" = "AI Art";
 "cannot_be_empty" = "This field cannot be empty.";
+"negative_prompt" = "Negative Prompt (Optional)";
+"negative_prompt_desc" = "Prompt that warn AI to pretend";

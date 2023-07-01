@@ -50,8 +50,8 @@ struct AdvancedSettingsView: View {
     
     @ViewBuilder var descView: some View {
         VStack {
-            PromptView(text: negativePromt)
-            PromptView(text: positivePrompt)
+            PromptView(text: negativePromt, title: Rlocalizable.prompt(), subTitle: Rlocalizable.prompt_desc())
+            PromptView(text: positivePrompt, title: Rlocalizable.negative_prompt(), subTitle: Rlocalizable.negative_prompt_desc())
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc())
             SliderSettingView(title: Rlocalizable.controlnet_scale(),

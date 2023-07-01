@@ -8,41 +8,41 @@
 import SwiftUI
 
 struct QRDetailItem: QRItem {
-    var id: String
-    var name: String
-    var createdDate: Date
-    var qrImage: UIImage
-    var type: QRType
-    var groupType: QRGroupType
-    var templateId: String
-    var urlString: String?
+    var id: String = ""
+    var name: String = ""
+    var createdDate: Date = Date()
+    var qrImage: UIImage = UIImage()
+    var type: QRType = .website
+    var groupType: QRGroupType = .basic
+    var templateId: String = ""
+    var urlString: String = ""
     
     // Contact
-    var contactName: String?
-    var phoneNumber: String?
+    var contactName: String = ""
+    var phoneNumber: String = ""
     
     // Text
-    var text: String?
+    var text: String = ""
     
     // Email
-    var emailAddress: String?
-    var emailSubject: String?
-    var emailDescription: String?
+    var emailAddress: String = ""
+    var emailSubject: String = ""
+    var emailDescription: String = ""
     
     // Wifi
-    var wfSsid: String?
-    var wfPassword: String?
-    var wfSecurityMode: WifiSecurityMode?
+    var wfSsid: String = ""
+    var wfPassword: String = ""
+    var wfSecurityMode: WifiSecurityMode = .wep
     
     // Paypal
-    var paypalAmount: Double?
+    var paypalAmount: Double = .zero
     
     // Advanced
-    var prompt: String?
-    var negativePrompt: String?
-    var guidance: Int?
-    var contronetScale: Int?
-    var steps: Int?
+    var prompt: String = ""
+    var negativePrompt: String = ""
+    var guidance: Int = .zero
+    var contronetScale: Int = .zero
+    var steps: Int = .zero
     
     func convertToDB(isNew: Bool = true) -> QRItemDB {
         let object = QRItemDB()

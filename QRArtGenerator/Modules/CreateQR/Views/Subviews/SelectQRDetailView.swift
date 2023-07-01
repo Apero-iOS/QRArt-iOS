@@ -13,7 +13,7 @@ struct SelectQRDetailView: View {
     @Binding var showingSelectQRTypeView: Bool
     @Binding var showingSelectCountryView: Bool
     @Binding var validInput: Bool
-    @Binding var input: CreateQRInput
+    @Binding var input: QRDetailItem
     @Binding var countrySelect: Country
     
     var type: QRType
@@ -46,12 +46,14 @@ struct SelectQRDetailView: View {
                 VStack(spacing: 12) {
                     InputNameView(title: Rlocalizable.name(),
                                   placeholder: "",
-                                  name: $input.name, validInput: $validInput)
+                                  name: $input.name,
+                                  validInput: $validInput)
                     switch type {
                     case .website:
                         InputNameView(title: Rlocalizable.website_link(),
                                       placeholder: "",
-                                      name: $input.link, validInput: $validInput)
+                                      name: $input.urlString,
+                                      validInput: $validInput)
                     case .contact:
                         InputNameView(title: Rlocalizable.contact_name(),
                                       placeholder: Rlocalizable.enter_contact_name(),
@@ -70,15 +72,15 @@ struct SelectQRDetailView: View {
                     case .email:
                         InputNameView(title: Rlocalizable.email_to(),
                                       placeholder: "example@gmail.com",
-                                      name: $input.emailTo,
+                                      name: $input.emailAddress,
                                       validInput: $validInput)
                         InputNameView(title: Rlocalizable.subject(),
                                       placeholder: Rlocalizable.enter_subject(),
-                                      name: $input.subject,
+                                      name: $input.emailSubject,
                                       validInput: $validInput)
                         DescriptionView(title: Rlocalizable.email_desc(),
                                         placeHolder: "",
-                                        desc: $input.emailDesc,
+                                        desc: $input.emailDescription,
                                         validInput: $validInput)
                     case .whatsapp:
                         InputNameView(title: Rlocalizable.contact_name(),
@@ -132,15 +134,5 @@ struct SelectQRDetailView: View {
     
     @ViewBuilder var imageDropDown: some View {
         Image(R.image.ic_left)
-    }
-}
-
-struct SelectQRDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectQRDetailView(showingSelectQRTypeView: .constant(false),
-                           showingSelectCountryView: .constant(false),
-                           validInput: .constant(true),
-                           input: .constant(CreateQRInput()), countrySelect: .constant(Country(code: "VN", dialCode: "+84")), type: .website)
-        .previewLayout(.sizeThatFits)
     }
 }

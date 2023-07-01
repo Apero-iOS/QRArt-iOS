@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PromptView: View {
-    @State var text: String = ""
+    @Binding var text: String
     var title: String = ""
     var subTitle: String = ""
     
@@ -24,7 +24,13 @@ struct PromptView: View {
                         .foregroundColor(R.color.color_6A758B.color)
                 }
                 Spacer()
-                R.image.ic_pen.image
+                Button {
+                    
+                } label: {
+                    R.image.ic_pen.image
+                }
+
+                
             }
             TextField(Rlocalizable.enter_prompt(), text: $text)
                 .frame(height: 100, alignment: .top)

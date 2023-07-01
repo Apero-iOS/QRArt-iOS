@@ -27,7 +27,5 @@ let APP_NAME = "QR_Art_Generator_IOS"
 
 
 struct Constants {
-    static let dummyQRs = [QRDetailItem(id: "0", name: "QR Art for Youtube Alec benjamin", createdDate: Date().lastMonth, qrImage: R.image.image_test()!, type: .text, groupType: .basic, templateId: "0"),
-                           QRDetailItem(id: "1", name: "Make your QR code become more special with our AI - service!", createdDate: Date().yesterday, qrImage: R.image.image_test()!, type: .email, groupType: .social, templateId: "0"),
-                           QRDetailItem(id: "2", name: "Show the influence of prompts on image generation.", createdDate: Date(), qrImage: R.image.image_test()!, type: .instagram, groupType: .other, templateId: "0")]
+    static let dummyQRs = [QRDetailItem()]
 }

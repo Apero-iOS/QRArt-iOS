@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum TemplateType {
+    case basic
+    case normal
+}
+
 struct TemplateModel: Codable, Identifiable {
     let id: String
     var styles: [Style]
