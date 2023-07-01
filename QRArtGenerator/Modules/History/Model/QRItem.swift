@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct QRItem {
-    let id: String
-    let qrImage: Image
-    let name: String
-    let createdDate: Date
-    let groupType: QRGroupType
-    let type: QRType
+protocol QRItem {
+    var id: String { get }
+    var qrImage: UIImage { get }
+    var name: String { get }
+    var createdDate: Date { get }
+    var groupType: QRGroupType { get }
+    var type: QRType { get }
 }

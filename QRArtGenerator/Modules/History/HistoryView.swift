@@ -28,9 +28,7 @@ struct HistoryView: View {
             }
         }
         .padding(.horizontal, 20)
-        .onAppear {
-            viewModel.setupData()
-        }
+        .hideNavigationBar(isHidden: true)
     }
     
     // MARK: - ViewBuilder

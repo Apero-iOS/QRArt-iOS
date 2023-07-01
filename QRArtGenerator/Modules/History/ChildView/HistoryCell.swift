@@ -17,7 +17,7 @@ struct HistoryCell: View {
         VStack {
             HStack(alignment: .top, spacing: 0) {
                 HStack(alignment: .top, spacing: 12) {
-                    item.qrImage
+                    Image(uiImage: item.qrImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60, height: 60)
@@ -82,6 +82,6 @@ struct HistoryCell: View {
 
 struct HistoryCell_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryCell(item: itemTest[0], canDelete: true)
+        HistoryCell(item: Constants.dummyQRs[0], canDelete: true)
     }
 }

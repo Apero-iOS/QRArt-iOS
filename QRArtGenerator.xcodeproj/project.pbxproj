@@ -70,6 +70,12 @@
 		9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCA92A4D3A3600FB3119 /* HistoryViewModel.swift */; };
 		9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAF2A4D405F00FB3119 /* Date+.swift */; };
 		9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */; };
+		9AD2B8F42A500735003B7C1F /* QRItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F32A500735003B7C1F /* QRItemDB.swift */; };
+		9AD2B8F62A500F63003B7C1F /* QRDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */; };
+		9AD2B8F82A501093003B7C1F /* WifiSecurityMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F72A501093003B7C1F /* WifiSecurityMode.swift */; };
+		9AD2B8FA2A5017F7003B7C1F /* FileManagerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F92A5017F7003B7C1F /* FileManagerUtil.swift */; };
+		9AD2B8FC2A501A73003B7C1F /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8FB2A501A73003B7C1F /* URL+.swift */; };
+		9AD2B9002A501E6E003B7C1F /* QRItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8FF2A501E6E003B7C1F /* QRItemService.swift */; };
 		9AD373702A4E78F600FCF934 /* HistoryCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD3736F2A4E78F600FCF934 /* HistoryCategory.swift */; };
 		9AD373732A4EBB3400FCF934 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD373722A4EBB3400FCF934 /* SearchView.swift */; };
 		9AD522812A4A86A300A947B5 /* R+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD522802A4A86A300A947B5 /* R+.swift */; };
@@ -212,6 +218,12 @@
 		9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
 		9AC7DCD32A4DB6E500FB3119 /* CreateQRViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRViewModel.swift; sourceTree = "<group>"; };
 		9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		9AD2B8F32A500735003B7C1F /* QRItemDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemDB.swift; sourceTree = "<group>"; };
+		9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailItem.swift; sourceTree = "<group>"; };
+		9AD2B8F72A501093003B7C1F /* WifiSecurityMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiSecurityMode.swift; sourceTree = "<group>"; };
+		9AD2B8F92A5017F7003B7C1F /* FileManagerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerUtil.swift; sourceTree = "<group>"; };
+		9AD2B8FB2A501A73003B7C1F /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
+		9AD2B8FF2A501E6E003B7C1F /* QRItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemService.swift; sourceTree = "<group>"; };
 		9AD3736F2A4E78F600FCF934 /* HistoryCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCategory.swift; sourceTree = "<group>"; };
 		9AD373722A4EBB3400FCF934 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		9AD522802A4A86A300A947B5 /* R+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R+.swift"; sourceTree = "<group>"; };
@@ -528,8 +540,9 @@
 		59C7661C2A496E5F00D4BDD3 /* QRArtGenerator */ = {
 			isa = PBXGroup;
 			children = (
-				C8AA3E4B2A4E80950077DCC3 /* Network */,
 				A4766E672A4AD40A0002FEF6 /* MainSystem */,
+				9AD2B8F22A5004C5003B7C1F /* Database */,
+				C8AA3E4B2A4E80950077DCC3 /* Network */,
 				59C7664B2A497E8400D4BDD3 /* Common */,
 				59286C972A4D31F100EBBEBF /* Helper */,
 				9ADEE5202A497E640075FCE0 /* Manager */,
@@ -632,6 +645,8 @@
 				9AC7DC8F2A4D396B00FB3119 /* QRType.swift */,
 				9AC7DCB32A4DB2DA00FB3119 /* Country.swift */,
 				9AC7DC912A4D396B00FB3119 /* InputType.swift */,
+				9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */,
+				9AD2B8F72A501093003B7C1F /* WifiSecurityMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -690,6 +705,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9AD2B8F22A5004C5003B7C1F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				9AD2B8FE2A501E57003B7C1F /* Model */,
+				9AD2B8FD2A501E51003B7C1F /* Service */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		9AD2B8FD2A501E51003B7C1F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9AD2B8FF2A501E6E003B7C1F /* QRItemService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9AD2B8FE2A501E57003B7C1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AD2B8F32A500735003B7C1F /* QRItemDB.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9AD373712A4EBB1100FCF934 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +748,7 @@
 				9AC7DCAF2A4D405F00FB3119 /* Date+.swift */,
 				59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */,
 				59F74C322A4E85F500AD8CBA /* Enviroment+.swift */,
+				9AD2B8FB2A501A73003B7C1F /* URL+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -763,6 +804,7 @@
 			isa = PBXGroup;
 			children = (
 				9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */,
+				9AD2B8F92A5017F7003B7C1F /* FileManagerUtil.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1346,6 +1388,7 @@
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
 				59286C7E2A4D31D300EBBEBF /* TabbarEnum.swift in Sources */,
 				9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */,
+				9AD2B8F62A500F63003B7C1F /* QRDetailItem.swift in Sources */,
 				59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */,
 				9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */,
 				59286C952A4D31D300EBBEBF /* OnboardingRowView.swift in Sources */,
@@ -1354,14 +1397,18 @@
 				C8AA3E632A4E82690077DCC3 /* TemplateRepository.swift in Sources */,
 				59F74C392A4EB2B900AD8CBA /* ToastView.swift in Sources */,
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
+				9AD2B9002A501E6E003B7C1F /* QRItemService.swift in Sources */,
 				9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */,
 				9AC7DCCF2A4DB6C600FB3119 /* PromptView.swift in Sources */,
 				9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */,
 				9AD373702A4E78F600FCF934 /* HistoryCategory.swift in Sources */,
 				9AC7DCCC2A4DB6C600FB3119 /* InputNameView.swift in Sources */,
+				9AD2B8FA2A5017F7003B7C1F /* FileManagerUtil.swift in Sources */,
 				C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */,
+				9AD2B8FC2A501A73003B7C1F /* URL+.swift in Sources */,
 				59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */,
 				59F74C452A4FBE8B00AD8CBA /* AdBannerView.swift in Sources */,
+				9AD2B8F42A500735003B7C1F /* QRItemDB.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
 				59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */,
@@ -1373,6 +1420,7 @@
 				59F74C352A4E869500AD8CBA /* CommonShape.swift in Sources */,
 				9AC7DCCD2A4DB6C600FB3119 /* ItemTemplateView.swift in Sources */,
 				9AC7DCC82A4DB6C600FB3119 /* SecurityModeView.swift in Sources */,
+				9AD2B8F82A501093003B7C1F /* WifiSecurityMode.swift in Sources */,
 				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
