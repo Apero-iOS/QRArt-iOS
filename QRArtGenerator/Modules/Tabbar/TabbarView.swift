@@ -72,7 +72,7 @@ struct TabbarView: View {
             .fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
             }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
-                CreateQRView()
+                CreateQRView(source: .create)
             }
         }
        

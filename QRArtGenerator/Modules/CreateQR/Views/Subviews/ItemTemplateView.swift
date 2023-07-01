@@ -17,7 +17,7 @@ struct ItemTemplateView: View {
     
     var body: some View {
         VStack {
-            if let url = URL(string: template.key) {
+            if let url = URL(string: template.styles[0].key) {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
@@ -42,7 +42,7 @@ struct ItemTemplateView: View {
                 }
             }
             
-            Text(template.name)
+            Text(template.styles[0].name)
                 .font(R.font.urbanistMedium.font(size: 12))
         }
         .frame(maxWidth: 103, maxHeight: 124)
@@ -51,8 +51,7 @@ struct ItemTemplateView: View {
 
 struct ItemTemplateView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemTemplateView(template: .constant(TemplateModel(id: "", project: "", name: "", key: "", prompt: "", config: Config(negativePrompt: "", positivePrompt: ""), version: "", createdAt: "", updatedAt: "", v: 0)), indexSelect: .constant(0))
-            .previewLayout(.sizeThatFits)
+        ItemTemplateView(template: .constant(TemplateModel(id: "", styles: [], category: Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 1))), indexSelect: .constant(0))
         
     }
 }

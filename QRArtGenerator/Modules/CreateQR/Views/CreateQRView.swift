@@ -17,6 +17,10 @@ struct CreateQRView: View {
     @State var showingSelectQRTypeView: Bool = false
     @State var showingSelectCountryView: Bool = false
     
+    init(source: CreateQRViewSource) {
+        viewModel.source = source
+    }
+    
     var body: some View {
         VStack {
             naviView
@@ -81,8 +85,8 @@ struct CreateQRView: View {
     
     @ViewBuilder var advancedSettingsView: some View {
         if !viewModel.templateQR.isEmpty {
-            AdvancedSettingsView(negativePromt: $viewModel.templateQR[viewModel.indexSelectQR].config.negativePrompt,
-                                 positivePrompt: $viewModel.templateQR[viewModel.indexSelectQR].config.positivePrompt)
+            AdvancedSettingsView(negativePromt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.negativePrompt,
+                                 positivePrompt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.positivePrompt)
         }
     }
     
@@ -104,6 +108,6 @@ struct CreateQRView: View {
 
 struct CreateQRView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateQRView()
+        CreateQRView(source: .create)
     }
 }

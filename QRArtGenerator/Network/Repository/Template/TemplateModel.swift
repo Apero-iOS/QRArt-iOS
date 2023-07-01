@@ -9,7 +9,7 @@ import Foundation
 
 struct TemplateModel: Codable, Identifiable {
     let id: String
-    let styles: [Style]
+    var styles: [Style]
     let category: Category
 
     enum CodingKeys: String, CodingKey {
@@ -37,7 +37,7 @@ struct Style: Codable, Identifiable {
     let key: String
     let category: String
     let prompt: String
-    let config: Config
+    var config: Config
     let version: String
     let createdAt, updatedAt: String
     let v: Int
@@ -50,7 +50,7 @@ struct Style: Codable, Identifiable {
 }
 
 struct Config: Codable {
-    let negativePrompt: String
-    let positivePrompt: String
+    var negativePrompt: String
+    var positivePrompt: String
 }
 

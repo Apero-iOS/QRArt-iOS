@@ -18,6 +18,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var input: CreateQRInput = CreateQRInput()
     @Published var validInput: Bool = false
     @Published var qrImage: UIImage?
+    @Published var source: CreateQRViewSource = .create
     
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
@@ -39,7 +40,7 @@ class CreateQRViewModel: ObservableObject {
                 print("tuanlt: \(error)")
             }
         } receiveValue: { templates in
-            if let templateQR = templates?.items {
+            if let templateQR = templates {
                 self.templateQR = templateQR
             }
         }.store(in: &cancellable)
@@ -84,9 +85,6 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func genQR(text: String) {
-        DispatchQueue.main.async {
-            self.qrImage = QRHelper.genQR(text: text)
-        }
-        
+        qrImage = QRHelper.genQR(text: text)
     }
 }
