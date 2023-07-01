@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import NetworkExtension
+import MobileAds
 
 struct AppHelper {
     
@@ -53,3 +54,10 @@ struct ActivityView: UIViewControllerRepresentable {
     }
 }
 
+extension AdUnitID {
+    static let inter_splash = AdUnitID(rawValue: true ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-4973559944609228/1577128674")
+    static let native_language = AdUnitID(rawValue: true ? SampleAdUnitID.adFormatNativeAdvanced : "ca-app-pub-4973559944609228/2271279159")
+    static let open_app = AdUnitID(rawValue: true ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-4973559944609228/4134971263")
+    static let banner_home = AdUnitID(rawValue: true ? SampleAdUnitID.adFormatBanner : "ca-app-pub-4973559944609228/1508807921")
+    static let reward_upload = AdUnitID(rawValue: true ? SampleAdUnitID.adFormatRewarded : "ca-app-pub-4973559944609228/3392789133")
+}

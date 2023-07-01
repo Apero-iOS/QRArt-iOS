@@ -13,7 +13,7 @@ target 'QRArtGenerator' do
   pod 'Alamofire', '5.7.1'
   pod 'lottie-ios', '4.2.0'
   pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
-
+  pod 'MobileAds' , :git => "https://github.com/AperoVN/MobileAds.git"
   target 'QRArtGeneratorTests' do
     inherit! :search_paths
     # Pods for testing
@@ -23,4 +23,12 @@ target 'QRArtGenerator' do
     # Pods for testing
   end
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+    end
+  end
 end
