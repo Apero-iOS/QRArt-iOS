@@ -10,7 +10,7 @@ import SwiftUI
 struct InputNameView: View {
     var title: String = ""
     var placeholder: String = ""
-    @State var name: String = ""
+    @Binding var name: String
     @Binding var validInput: Bool
     @FocusState var isFocused: Bool
     
@@ -54,7 +54,7 @@ struct InputNameView: View {
 
 struct InputNameView_Previews: PreviewProvider {
     static var previews: some View {
-        InputNameView(validInput: .constant(true))
+        InputNameView(name: .constant(""), validInput: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }

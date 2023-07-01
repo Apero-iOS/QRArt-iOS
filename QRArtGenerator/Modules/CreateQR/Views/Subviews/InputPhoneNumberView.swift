@@ -11,9 +11,10 @@ struct InputPhoneNumberView: View {
     var title: String = ""
     var placeholder: String = ""
     var type: QRType = .contact
-    @State var name: String = ""
+    @Binding var phoneNumber: String
     @Binding var showingSelectCountryView: Bool
     @Binding var validInput: Bool
+    @Binding var country: Country
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
@@ -22,8 +23,9 @@ struct InputPhoneNumberView: View {
                 .font(R.font.urbanistMedium.font(size: 14))
             HStack {
                 HStack(spacing: 8) {
-                    type.image
-                        .shadow(color: type.shadowColor, radius: type.radiusShadow, x: type.positionShadow.x, y: type.positionShadow.y)
+                    AsyncImage(url: country.flagUrl)
+                        .frame(width: 24, height: 24)
+                        .cornerRadius(12)
                     Image(R.image.ic_dropdown)
                 }
                 .frame(maxHeight: 42, alignment: .center)
@@ -32,7 +34,7 @@ struct InputPhoneNumberView: View {
                 .onTapGesture {
                     showingSelectCountryView = true
                 }
-                TextField(placeholder, text: $name)
+                TextField(placeholder, text: $phoneNumber)
                     .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                     .frame(maxHeight: 42)
                     .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
@@ -46,7 +48,7 @@ struct InputPhoneNumberView: View {
 
 struct InputPhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
-        InputPhoneNumberView(showingSelectCountryView: .constant(true), validInput: .constant(true))
+        InputPhoneNumberView(phoneNumber: .constant(""), showingSelectCountryView: .constant(true), validInput: .constant(true), country: .constant(Country(code: "VN", dialCode: "+84")))
             .previewLayout(.sizeThatFits)
     }
 }

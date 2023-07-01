@@ -9,15 +9,17 @@ import SwiftUI
 
 struct PromptView: View {
     @State var text: String = ""
+    var title: String = ""
+    var subTitle: String = ""
     
     var body: some View {
         VStack(spacing: 8) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(Rlocalizable.prompt())
+                    Text(title)
                         .font(R.font.urbanistSemiBold.font(size: 14))
                         .foregroundColor(R.color.color_1B232E.color)
-                    Text(Rlocalizable.prompt_desc())
+                    Text(subTitle)
                         .font(R.font.urbanistMedium.font(size: 12))
                         .foregroundColor(R.color.color_6A758B.color)
                 }

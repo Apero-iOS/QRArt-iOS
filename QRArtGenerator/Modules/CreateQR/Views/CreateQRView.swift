@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum CreateQRViewSource {
+    case create
+    case template
+}
+
 struct CreateQRView: View {
     @StateObject var viewModel = CreateQRViewModel()
     @State var showingSelectQRTypeView: Bool = false
@@ -16,7 +21,7 @@ struct CreateQRView: View {
         VStack {
             naviView
             ScrollView {
-                LazyVStack {
+                VStack {
                     templateView
                     qrDetailView
                     advancedSettingsView
@@ -57,6 +62,7 @@ struct CreateQRView: View {
         .onAppear {
             viewModel.fetchCountry()
             viewModel.fetchTemplate()
+            viewModel.genQR(text: "assadasd")
         }
     }
     
@@ -68,6 +74,8 @@ struct CreateQRView: View {
         SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView,
                            showingSelectCountryView: $showingSelectCountryView,
                            validInput: $viewModel.validInput,
+                           input: $viewModel.input,
+                           countrySelect: $viewModel.countrySelect,
                            type: viewModel.input.type)
     }
     
@@ -83,7 +91,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var countrySelectView: some View {
-        SelectCountryCodeView(countries: $viewModel.countries, selectedCountry: $viewModel.countrySelect)
+        SelectCountryCodeView(countries: $viewModel.countries, selectedCountry: $viewModel.countrySelect, showingSelectCountryView: $showingSelectCountryView)
     }
     
     @ViewBuilder var naviView: some View {

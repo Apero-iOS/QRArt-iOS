@@ -24,7 +24,7 @@ struct CountryCodeView: View {
                 .font(R.font.urbanistMedium.font(size: 16))
                 .foregroundColor(R.color.color_1B232E.color)
             Spacer()
-            AsyncImage(url: URL(string: "https://flagcdn.com/48x36/\(country.code.lowercased()).png"))
+            AsyncImage(url: country.flagUrl)
                 .frame(width: 28, height: 28)
                 .cornerRadius(14)
         }
