@@ -93,3 +93,5 @@
 "no_qr_found" = "No se encontró QR";
 "results" = "resultados";
 "result" = "resultado";
+"title_banner_home" = "Creación de QR con";
+"content_banner_home" = "Haga que su código QR se vuelva más especial con nuestro servicio AI.";

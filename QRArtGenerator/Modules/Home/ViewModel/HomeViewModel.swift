@@ -1,27 +1,24 @@
 //
-//  CreateQRViewModel.swift
+//  HomeViewModel.swift
 //  QRArtGenerator
 //
-//  Created by Le Tuan on 29/06/2023.
+//  Created by Đinh Văn Trình on 30/06/2023.
 //
 
 import Foundation
-import SwiftUI
 import Combine
+import SwiftUI
 
-class CreateQRViewModel: ObservableObject {
-    @Published var typeQR: QRType = .contact
-    @Published var countries: [Country] = []
-    @Published var countrySelect: Country = Country(code: "VN", dialCode: "+84")
+final class HomeViewModel: ObservableObject, Identifiable {
+    
+    @Published var listStyle: [TemplateModel] = []
+    @Published var isActive = false
+    
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    deinit {
-        cancellable.removeAll()
-    }
-    
-    func fetchCountry() {
-        countries = CountriesFetcher().fetch()
+    init() {
+        fetchTemplate()
     }
     
     func fetchTemplate() {
@@ -32,8 +29,10 @@ class CreateQRViewModel: ObservableObject {
             case .failure(let error):
                 print("tuanlt: \(error)")
             }
-        } receiveValue: { templates in
-            print("tuanlt: \(templates)")
+        } receiveValue: { [weak self] templates in
+            if let templates = templates {
+                self?.listStyle = templates
+            }
         }.store(in: &cancellable)
     }
 }

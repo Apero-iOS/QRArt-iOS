@@ -8,7 +8,7 @@
 import Foundation
 
 enum TemplateNetworking {
-    case fetchTemplate(page: Int, limit: Int)
+    case fetchTemplate
 }
 
 extension TemplateNetworking: TargetType {
@@ -32,10 +32,8 @@ extension TemplateNetworking: TargetType {
     
     var params: Param {
         switch self {
-        case .fetchTemplate(let page, let limit):
-            return .requestParms(path: "/qr-styles", params: ["project": APP_NAME,
-                                                              "page": page,
-                                                              "limit": limit])
+        case .fetchTemplate:
+            return .requestParms(path: "/qr-styles/group-by-category", params: ["project": APP_NAME])
         }
     }
     

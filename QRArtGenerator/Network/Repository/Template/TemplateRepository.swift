@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 protocol TemplateRepositoryProtocol {
-    func fetchTemplate(page: Int, limit: Int) -> AnyPublisher<Template?, APIError>
+    func fetchTemplate() -> AnyPublisher<[TemplateModel]?, APIError>
 }
 
 class TemplateRepository: BaseAPI<TemplateNetworking>, TemplateRepositoryProtocol {
-    func fetchTemplate(page: Int, limit: Int) -> AnyPublisher<Template?, APIError> {
-        fetch(target: .fetchTemplate(page: page, limit: limit), responseClass: Template.self)
+    func fetchTemplate() -> AnyPublisher<[TemplateModel]?, APIError> {
+        fetch(target: .fetchTemplate, responseClass: [TemplateModel].self)
     }
 }

@@ -11,7 +11,7 @@ struct OnboardingView: View {
     
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var pageIndex: Int = .zero
-    @State var progress: Double = .zero
+    @State private var progress: Double = .zero
     
     var body: some View {
         VStack {

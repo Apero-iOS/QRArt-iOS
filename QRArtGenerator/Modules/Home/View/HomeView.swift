@@ -8,8 +8,64 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @StateObject private var viewModel = HomeViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(spacing: 16) {
+                bannerView
+                ForEach(viewModel.listStyle) { category in
+                    HomeSectionView(headerName: "Technology", listItem: category.styles)
+                }
+                Spacer()
+            }
+        }
+    }
+    
+    @ViewBuilder var bannerView: some View {
+        ZStack {
+            Color(R.color.color_E5F3FF)
+                .cornerRadius(11)
+                .frame(height: 140, alignment: .bottom)
+                .padding(.top)
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text(Rlocalizable.title_banner_home())
+                            .font(R.font.urbanistSemiBold.font(size: 16))
+                            .foregroundColor(R.color.color_1B232E.color)
+                        Image(R.image.ic_shine_ai)
+                            .frame(width: 28, height: 24)
+                            .offset(y: -3)
+                    }
+                    Text(Rlocalizable.content_banner_home())
+                        .font(R.font.urbanistRegular.font(size: 11))
+                        .foregroundColor(R.color.color_1B232E.color)
+                    Button {
+                        //TODOs
+                    } label: {
+                        HStack {
+                            Text(Rlocalizable.try_it_out())
+                                .font(R.font.urbanistBold.font(size: 12))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                            Image(R.image.ic_shine)
+                        }
+                        .fixedSize()
+                    }
+                    .frame(width: 100, height: 24)
+                    .background(Color(R.color.color_653AE4))
+                    .clipShape(Capsule())
+                    .padding(.top, 8)
+                }
+                .padding(.horizontal, 16)
+                Spacer()
+                Image(R.image.frame_banner_home)
+            }
+        }
+        .frame(height: 152)
+        .padding(.horizontal, 20)
     }
 }
 
