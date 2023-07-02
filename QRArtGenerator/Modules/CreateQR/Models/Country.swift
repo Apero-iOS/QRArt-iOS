@@ -8,14 +8,8 @@
 import Foundation
 
 struct Country: Decodable, Hashable {
-    public var flag: String {
-        
-        return code
-            .unicodeScalars
-            .map({ 127397 + $0.value })
-            .compactMap(UnicodeScalar.init)
-            .map(String.init)
-            .joined()
+    public var flagUrl: URL? {
+        return URL(string: "https://flagcdn.com/48x36/\(code.lowercased()).png")
     }
     public let code: String
     public var name: String {
@@ -24,7 +18,7 @@ struct Country: Decodable, Hashable {
     
     public var title: String {
         
-        String(format: "%@ %@", self.flag, self.name)
+        return name
     }
     public let dialCode: String
     
@@ -33,4 +27,5 @@ struct Country: Decodable, Hashable {
         let currentCode: String? = locale.countryCode
         return CountriesFetcher().fetch().first(where: { $0.code ==  currentCode})
     }
+    
 }

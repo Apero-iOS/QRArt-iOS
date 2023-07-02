@@ -10,7 +10,8 @@ import SwiftUI
 struct DescriptionView: View {
     var title: String = ""
     var placeHolder: String = ""
-    @State var desc: String = ""
+    @Binding var desc: String
+    @Binding var validInput: Bool
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
@@ -28,6 +29,6 @@ struct DescriptionView: View {
 
 struct EmailDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionView()
+        DescriptionView(desc: .constant(""), validInput: .constant(true))
     }
 }

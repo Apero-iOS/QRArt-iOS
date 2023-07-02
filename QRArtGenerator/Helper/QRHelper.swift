@@ -108,5 +108,18 @@ struct QRHelper {
         QRHelper.openUrl(urlString: urlString)
     }
     
+    static func genQR(text: String) -> Data? {
+        let data = text.data(using: .ascii)
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+            if let output = filter.outputImage?.transformed(by: transform) {
+                let data = UIImage(ciImage: output).pngData()
+                return data
+            }
+        }
+        return nil
+    }
+    
 }
 

@@ -8,23 +8,30 @@
 import SwiftUI
 
 struct PromptView: View {
-    @State var text: String = ""
+    @Binding var prompt: String
+    var oldPrompt: String
+    var title: String = ""
+    var subTitle: String = ""
     
     var body: some View {
         VStack(spacing: 8) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(Rlocalizable.prompt())
+                    Text(title)
                         .font(R.font.urbanistSemiBold.font(size: 14))
                         .foregroundColor(R.color.color_1B232E.color)
-                    Text(Rlocalizable.prompt_desc())
+                    Text(subTitle)
                         .font(R.font.urbanistMedium.font(size: 12))
                         .foregroundColor(R.color.color_6A758B.color)
                 }
                 Spacer()
-                R.image.ic_pen.image
+                Button {
+                    prompt = oldPrompt
+                } label: {
+                    R.image.ic_pen.image
+                }
             }
-            TextField(Rlocalizable.enter_prompt(), text: $text)
+            TextField(Rlocalizable.enter_prompt(), text: $prompt)
                 .frame(height: 100, alignment: .top)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
@@ -35,6 +42,6 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView()
+        PromptView(prompt: .constant(""), oldPrompt: "")
     }
 }

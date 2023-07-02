@@ -97,3 +97,11 @@
 "content_banner_home" = "Haga que su código QR se vuelva más especial con nuestro servicio AI.";
 "view_more" = "Ver más";
 "ai_art" = "Arte de IA";
+"cannot_be_empty" = "Este campo no puede estar vacío.";
+"negative_prompt" = "Aviso negativo (opcional)";
+"negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
+"negative_prompt" = "Invite négative (facultative)";
+"negative_prompt_desc" = "Invite à avertir l'IA de faire semblant";
+"negative_prompt" = "Aviso negativo (opcional)";
+"negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
+"basic" = "Básico";

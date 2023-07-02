@@ -97,3 +97,7 @@
 "content_banner_home" = "Machen Sie Ihren QR -Code mit unserem KI - Service mehr zu einem besonderen Wert!";
 "view_more" = "Mehr sehen";
 "ai_art" = "KI -Kunst";
+"cannot_be_empty" = "Dieses Feld kann nicht leer sein.";
+"negative_prompt" = "Negative Eingabeaufforderung (optional)";
+"negative_prompt_desc" = "Auffordern Sie, dass die Ki vorgibt";
+"basic" = "Basic";

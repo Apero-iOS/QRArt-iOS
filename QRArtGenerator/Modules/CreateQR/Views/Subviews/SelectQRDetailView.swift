@@ -12,6 +12,10 @@ struct SelectQRDetailView: View {
     @State var name: String = ""
     @Binding var showingSelectQRTypeView: Bool
     @Binding var showingSelectCountryView: Bool
+    @Binding var validInput: Bool
+    @Binding var input: QRDetailItem
+    @Binding var countrySelect: Country
+    
     var type: QRType
     
     var body: some View {
@@ -42,70 +46,85 @@ struct SelectQRDetailView: View {
                 VStack(spacing: 12) {
                     InputNameView(title: Rlocalizable.name(),
                                   placeholder: "",
-                                  name: "ok")
+                                  name: $input.name,
+                                  validInput: $validInput)
                     switch type {
                     case .website:
                         InputNameView(title: Rlocalizable.website_link(),
                                       placeholder: "",
-                                      name: "https://www.pinterest.com/pin/672021575660808069/")
+                                      name: $input.urlString,
+                                      validInput: $validInput)
                     case .contact:
                         InputNameView(title: Rlocalizable.contact_name(),
                                       placeholder: Rlocalizable.enter_contact_name(),
-                                      name: "")
+                                      name: $input.contactName,
+                                      validInput: $validInput)
                         InputPhoneNumberView(type: type,
-                                             showingSelectCountryView: $showingSelectCountryView)
+                                             phoneNumber: $input.phoneNumber,
+                                             showingSelectCountryView: $showingSelectCountryView,
+                                             validInput: $validInput,
+                                             country: $countrySelect)
                     case .text:
                         InputNameView(title: Rlocalizable.text(),
                                       placeholder: Rlocalizable.enter_text_here(),
-                                      name: "")
+                                      name: $input.text,
+                                      validInput: $validInput)
                     case .email:
                         InputNameView(title: Rlocalizable.email_to(),
                                       placeholder: "example@gmail.com",
-                                      name: "")
+                                      name: $input.emailAddress,
+                                      validInput: $validInput)
                         InputNameView(title: Rlocalizable.subject(),
                                       placeholder: Rlocalizable.enter_subject(),
-                                      name: "")
+                                      name: $input.emailSubject,
+                                      validInput: $validInput)
                         DescriptionView(title: Rlocalizable.email_desc(),
                                         placeHolder: "",
-                                        desc: "AAAA")
+                                        desc: $input.emailDescription,
+                                        validInput: $validInput)
                     case .whatsapp:
                         InputNameView(title: Rlocalizable.contact_name(),
                                       placeholder: Rlocalizable.enter_contact_name(),
-                                      name: "")
+                                      name: $input.name,
+                                      validInput: $validInput)
                         InputPhoneNumberView(type: type,
-                                             showingSelectCountryView: $showingSelectCountryView)
+                                             phoneNumber: $input.phoneNumber,
+                                             showingSelectCountryView: $showingSelectCountryView,
+                                             validInput: $validInput,
+                                             country: $countrySelect)
                     case .instagram:
                         InputNameView(title: Rlocalizable.instagram_url(),
                                       placeholder: "",
-                                      name: "")
+                                      name: $input.name,
+                                      validInput: $validInput)
                     case .facebook:
                         InputNameView(title: Rlocalizable.facebook_url(),
-                                      placeholder: "", name: "")
+                                      placeholder: "", name: $input.name,
+                                      validInput: $validInput)
                     case .twitter:
                         InputNameView(title: Rlocalizable.twitter_url(),
                                       placeholder: "",
-                                      name: "")
+                                      name: $input.name, validInput: $validInput)
                     case .spotify:
                         InputNameView(title: Rlocalizable.spotify_url(),
-                                      placeholder: "", name: "")
+                                      placeholder: "",
+                                      name: $input.name, validInput: $validInput)
                     case .youtube:
                         InputNameView(title: Rlocalizable.youtube_url(),
                                       placeholder: "",
-                                      name: "")
+                                      name: $input.name, validInput: $validInput)
                     case .wifi:
                         InputNameView(title: Rlocalizable.ssid(),
                                       placeholder: Rlocalizable.enter_wifi_name(),
-                                      name: "")
+                                      name: $input.name, validInput: $validInput)
                         InputNameView(title: Rlocalizable.password(),
                                       placeholder: Rlocalizable.enter_password(),
-                                      name: "")
+                                      name: $input.name, validInput: $validInput)
                         SecurityModeView()
                     case .paypal:
                         InputNameView(title: Rlocalizable.paypal_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: "")
-                        DescriptionView(title: Rlocalizable.desc(),
-                                        placeHolder: Rlocalizable.note_payment())
+                                      name: $input.name, validInput: $validInput)
                     }
                 }
             }
@@ -115,12 +134,5 @@ struct SelectQRDetailView: View {
     
     @ViewBuilder var imageDropDown: some View {
         Image(R.image.ic_left)
-    }
-}
-
-struct SelectQRDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectQRDetailView(showingSelectQRTypeView: .constant(false), showingSelectCountryView: .constant(false), type: .website)
-            .previewLayout(.sizeThatFits)
     }
 }

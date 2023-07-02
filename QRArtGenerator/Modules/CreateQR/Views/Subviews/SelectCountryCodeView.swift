@@ -10,6 +10,8 @@ import SwiftUI
 struct SelectCountryCodeView: View {
     @Binding var countries: [Country]
     @Binding var selectedCountry: Country
+    @Binding var showingSelectCountryView: Bool
+    
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
             ZStack {
@@ -22,7 +24,7 @@ struct SelectCountryCodeView: View {
                 HStack(alignment: .center) {
                     Spacer()
                     Button {
-                        
+                        showingSelectCountryView = false
                     } label: {
                         Text(Rlocalizable.done)
                             .font(R.font.urbanistMedium.font(size: 14))
@@ -46,6 +48,6 @@ struct SelectCountryCodeView: View {
 
 struct SelectCountryCodeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCountryCodeView(countries: .constant([]), selectedCountry: .constant(Country(code: "", dialCode: "")))
+        SelectCountryCodeView(countries: .constant([]), selectedCountry: .constant(Country(code: "", dialCode: "")), showingSelectCountryView: .constant(true))
     }
 }
