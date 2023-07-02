@@ -104,3 +104,4 @@
 "negative_prompt_desc" = "Invite à avertir l'IA de faire semblant";
 "negative_prompt" = "Aviso negativo (opcional)";
 "negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
+"basic" = "Básico";

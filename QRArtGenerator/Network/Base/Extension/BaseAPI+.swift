@@ -31,7 +31,8 @@ extension BaseAPI {
         }
     }
     
-    func upwrapStringData(string: String) -> Data {
-        string.data(using: .utf8) ?? Data()
+    func convertToData<T>(_ value: T) -> Data {
+        var value = value
+        return withUnsafeBytes(of: &value) { Data($0) }
     }
 }

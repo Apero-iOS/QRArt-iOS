@@ -38,7 +38,9 @@ struct QRDetailItem: QRItem {
     var paypalAmount: Double = .zero
     
     // Advanced
+    var oldPrompt: String = ""
     var prompt: String = ""
+    var oldNegativePrompt: String = ""
     var negativePrompt: String = ""
     var guidance: Int = .zero
     var contronetScale: Int = .zero

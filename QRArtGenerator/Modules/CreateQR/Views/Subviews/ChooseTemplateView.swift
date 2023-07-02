@@ -10,6 +10,7 @@ import SwiftUI
 struct ChooseTemplateView: View {
     @Binding var templateQR: [TemplateModel]
     @Binding var indexSelectStyle: Int
+    @State var isSelecBasicQR: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,10 +20,19 @@ struct ChooseTemplateView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(0..<templateQR.count, id: \.self) { index in
-                        ItemTemplateView(template: $templateQR[index], indexSelect: $indexSelectStyle, index: index)
-                            .onTapGesture {
-                                indexSelectStyle = index
-                            }
+                        if index == 0 {
+                            BasicItemTemplateView(isSelecBasicQR: $isSelecBasicQR)
+                                .onTapGesture {
+                                    isSelecBasicQR = true
+                                    indexSelectStyle = index
+                                }
+                        } else {
+                            ItemTemplateView(template: $templateQR[index], indexSelect: $indexSelectStyle, index: index)
+                                .onTapGesture {
+                                    indexSelectStyle = index
+                                    isSelecBasicQR = false
+                                }
+                        }
                     }
                 }
             }

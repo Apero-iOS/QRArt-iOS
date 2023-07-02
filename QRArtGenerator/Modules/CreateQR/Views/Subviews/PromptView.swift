@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct PromptView: View {
-    @Binding var text: String
+    @Binding var prompt: String
+    var oldPrompt: String
     var title: String = ""
     var subTitle: String = ""
     
@@ -25,14 +26,12 @@ struct PromptView: View {
                 }
                 Spacer()
                 Button {
-                    
+                    prompt = oldPrompt
                 } label: {
                     R.image.ic_pen.image
                 }
-
-                
             }
-            TextField(Rlocalizable.enter_prompt(), text: $text)
+            TextField(Rlocalizable.enter_prompt(), text: $prompt)
                 .frame(height: 100, alignment: .top)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
@@ -43,6 +42,6 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView()
+        PromptView(prompt: .constant(""), oldPrompt: "")
     }
 }

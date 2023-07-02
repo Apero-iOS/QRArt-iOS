@@ -100,3 +100,4 @@
 "cannot_be_empty" = "Ce champ ne peut pas être vide.";
 "negative_prompt" = "Invite négative (facultative)";
 "negative_prompt_desc" = "Invite à avertir l'IA de faire semblant";
+"basic" = "Basique";

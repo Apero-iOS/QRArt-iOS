@@ -17,6 +17,9 @@ struct AdvancedSettingsView: View {
     @State var rotate: Double = 0
     @Binding var negativePromt: String
     @Binding var positivePrompt: String
+    @Binding var oldNegativePromt: String
+    @Binding var oldPositivePrompt: String
+
     var body: some View {
         LazyVStack(alignment: .leading) {
             HStack {
@@ -50,8 +53,14 @@ struct AdvancedSettingsView: View {
     
     @ViewBuilder var descView: some View {
         VStack {
-            PromptView(text: negativePromt, title: Rlocalizable.prompt(), subTitle: Rlocalizable.prompt_desc())
-            PromptView(text: positivePrompt, title: Rlocalizable.negative_prompt(), subTitle: Rlocalizable.negative_prompt_desc())
+            PromptView(prompt: $negativePromt,
+                       oldPrompt: oldNegativePromt,
+                       title: Rlocalizable.prompt(),
+                       subTitle: Rlocalizable.prompt_desc())
+            PromptView(prompt: $positivePrompt,
+                       oldPrompt: oldPositivePrompt,
+                       title: Rlocalizable.negative_prompt(),
+                       subTitle: Rlocalizable.negative_prompt_desc())
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc())
             SliderSettingView(title: Rlocalizable.controlnet_scale(),
@@ -69,6 +78,6 @@ struct AdvancedSettingsView: View {
 
 struct AdvancedSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdvancedSettingsView(negativePromt: .constant(""), positivePrompt: .constant(""))
+        AdvancedSettingsView(negativePromt: .constant(""), positivePrompt: .constant(""), oldNegativePromt: .constant(""), oldPositivePrompt: .constant(""))
     }
 }

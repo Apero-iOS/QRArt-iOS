@@ -58,30 +58,36 @@ class BaseAPI<T: TargetType> {
         }.eraseToAnyPublisher()
     }
     
-//    func uploadFile(body: PresignLinkResponse, fileData: Data, fileName: String, fileType: FileType) -> AnyPublisherResult<Void> {
-//        return FutureResult<Void> { promise in
-//            self.networking.session.upload(multipartFormData: { multipartFromData in
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.bucket), withName: "bucket")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.contentType), withName: "Content-Type")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.contentDisposition), withName: "Content-Disposition")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.key), withName: "key")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.xAmzAlgorithm), withName: "X-Amz-Algorithm")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.xAmzCredential), withName: "X-Amz-Credential")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.xAmzDate), withName: "X-Amz-Date")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.policy), withName: "Policy")
-//                multipartFromData.append(self.upwrapStringData(string: body.fields.xAmzSignature), withName: "X-Amz-Signature")
-//                multipartFromData.append(fileData, withName: "file", fileName: fileName, mimeType: fileType.mimiType)
-//            }, to: URL(string: body.url)!, method: .post).response { response in
-//                switch response.result {
-//                case .success:
-//                    return promise(.success(()))
-//                case .failure(let error):
-//                    guard !error.isTimeout else { return promise(.failure(.Time_Out)) }
-//                    guard !error.isConnectedToTheInternet else { return promise(.failure(.No_Network)) }
-//                    return promise(.failure(.General))
-//                }
-//            }
-//        }.eraseToAnyPublisher()
-//    }
-
+    func uploadFile(target: T) -> AnyPublisherResult<Data> {
+        let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
+        let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
+        let targetPath = buildPath(param: target.params)
+        let urlString = target.baseURL.desc + targetPath
+        return FutureResult<Data> { promise in
+            guard let url = URL(string: urlString) else {return promise(.failure(.General))}
+            self.networking.session.upload(multipartFormData: { multipartFromData in
+                switch target.body {
+                case .requestPlainBody:
+                    break
+                case .requestBody(let body):
+                    body.forEach { key, value in
+                        if let data = value as? Data {
+                            multipartFromData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
+                        } else {
+                            multipartFromData.append(self.convertToData(value), withName: key)
+                        }
+                    }
+                }
+            }, to: url, method: method, headers: headers).response { response in
+                switch response.result {
+                case .success(let data):
+                    return promise(.success(data))
+                case .failure(let error):
+                    guard !error.isTimeout else { return promise(.failure(.Time_Out)) }
+                    guard !error.isConnectedToTheInternet else { return promise(.failure(.No_Network)) }
+                    return promise(.failure(.General))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }

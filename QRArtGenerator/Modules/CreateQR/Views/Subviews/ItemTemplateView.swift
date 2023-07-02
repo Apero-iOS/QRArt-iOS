@@ -48,10 +48,3 @@ struct ItemTemplateView: View {
         .frame(maxWidth: 103, maxHeight: 124)
     }
 }
-
-struct ItemTemplateView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemTemplateView(template: .constant(TemplateModel(id: "", styles: [], category: Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 1))), indexSelect: .constant(0))
-        
-    }
-}

@@ -9,6 +9,7 @@ import Foundation
 
 enum TemplateNetworking {
     case fetchTemplate
+    case genQR(data: Data, qrText: String, seed: Int?, positivePrompt: String?, negativePrompt: String?)
 }
 
 extension TemplateNetworking: TargetType {
@@ -27,6 +28,8 @@ extension TemplateNetworking: TargetType {
         switch self {
         case .fetchTemplate:
             return .get
+        case .genQR:
+            return .post
         }
     }
     
@@ -34,6 +37,8 @@ extension TemplateNetworking: TargetType {
         switch self {
         case .fetchTemplate:
             return .requestParms(path: "/qr-styles/group-by-category", params: ["project": APP_NAME])
+        case .genQR:
+            return .plainParams(path: "/api/v1/qr")
         }
     }
     
@@ -41,6 +46,12 @@ extension TemplateNetworking: TargetType {
         switch self {
         case .fetchTemplate:
             return .requestPlainBody
+        case .genQR(data: let data, qrText: let qrText, seed: let seed, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt):
+            return .requestBody(body: ["file": data,
+                                       "qrText": qrText,
+                                       "seed": seed,
+                                       "positivePrompt": positivePrompt,
+                                       "negativePrompt": negativePrompt])
         }
     }
     

@@ -18,8 +18,10 @@ struct CreateQRView: View {
     @State var showingSelectQRTypeView: Bool = false
     @State var showingSelectCountryView: Bool = false
     
-    init(source: CreateQRViewSource) {
+    init(source: CreateQRViewSource, indexSelect: Int?, list: [TemplateModel]) {
         viewModel.source = source
+        viewModel.indexSelectQR = indexSelect ?? 0
+        viewModel.templateQR = list
     }
     
     var body: some View {
@@ -34,7 +36,7 @@ struct CreateQRView: View {
             }
             VStack {
                 Button(Rlocalizable.generate_qr()) {
-                    viewModel.generateQR()
+                    viewModel.genQR()
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
                 
@@ -67,7 +69,6 @@ struct CreateQRView: View {
         .onAppear {
             viewModel.fetchCountry()
             viewModel.fetchTemplate()
-            viewModel.genQR(text: "assadasd")
         }
     }
     
@@ -86,8 +87,10 @@ struct CreateQRView: View {
     
     @ViewBuilder var advancedSettingsView: some View {
         if !viewModel.templateQR.isEmpty {
-            AdvancedSettingsView(negativePromt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.negativePrompt,
-                                 positivePrompt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.positivePrompt)
+            AdvancedSettingsView(negativePromt: $viewModel.negativePromt,
+                                 positivePrompt: $viewModel.positivePromt,
+                                 oldNegativePromt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.negativePrompt,
+                                 oldPositivePrompt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.positivePrompt)
         }
     }
     
@@ -109,6 +112,6 @@ struct CreateQRView: View {
 
 struct CreateQRView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateQRView(source: .create)
+        CreateQRView(source: .create, indexSelect: 0, list: [])
     }
 }
