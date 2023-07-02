@@ -121,7 +121,7 @@ struct ScannerView: View {
             }
             .sheet(isPresented: $viewModel.isShowWebView, content: {
                 NavigationView{
-                    WebView(url: URL(string: viewModel.qrItem.content)!)
+                    WebView(urlString: viewModel.qrItem.content)
                         .ignoresSafeArea()
                         .navigationTitle(viewModel.qrItem.content)
                         .navigationBarTitleDisplayMode(.inline)

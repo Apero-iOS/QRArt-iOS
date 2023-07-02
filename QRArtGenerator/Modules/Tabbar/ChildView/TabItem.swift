@@ -20,15 +20,13 @@ struct TabItem: View {
                     TabbarPrimaryButton()
                         .padding(.bottom, 16)
                     
-                    LinearGradient(
-                        colors: [R.color.color_6427C8.color, R.color.color_E79CB7.color],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                    .mask(
-                        Text(tab.title)
-                            .font(R.font.urbanistBold.font(size: 14))
-                    )
+                    Text(tab.title)
+                        .font(R.font.urbanistBold.font(size: 14))
+                        .foregroundStyle(
+                            .linearGradient(colors: [R.color.color_6427C8.color, R.color.color_E79CB7.color],
+                                            startPoint: .leading,
+                                            endPoint: .trailing)
+                        )
                     
                 } else {
                     (tab == selectedTab ? tab.selectedIcon : tab.icon)

@@ -46,6 +46,7 @@ struct OnboardingView: View {
             pageIndex += 1
             progress = Double(pageIndex)
         } else {
+            UserDefaults.standard.didShowOnboarding = true
             Router.showTabbar()
         }
     }

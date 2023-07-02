@@ -28,18 +28,26 @@ extension View {
     @ViewBuilder func clearBackgroundColorList() -> some View {
         if #available(iOS 16, *) {
             scrollContentBackground(.hidden)
+        } else {
+            onAppear()
         }
     }
     
     @ViewBuilder func hideSeparatorLine() -> some View {
         if #available(iOS 15, *) {
             listRowSeparator(.hidden)
+        } else {
+            onAppear()
         }
     }
     
     @ViewBuilder func hideScrollIndicator() -> some View {
         if #available(iOS 16.0, *) {
             scrollIndicators(.hidden)
+        } else {
+            onAppear {
+                UIScrollView.appearance().showsVerticalScrollIndicator = false
+            }
         }
     }
     
