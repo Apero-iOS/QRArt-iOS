@@ -27,8 +27,10 @@ struct HomeSectionView: View {
             Text(header)
                 .font(R.font.urbanistSemiBold.font(size: 16))
             Spacer()
-            Button(action: onViewMore ?? {}) {
-                Text("View more")
+            NavigationLink {
+                DetailStylesView(styles: listItem)
+            } label: {
+                Text(Rlocalizable.view_more())
                     .font(R.font.urbanistMedium.font(size: 14))
                     .foregroundColor(R.color.color_653AE4.color)
             }
