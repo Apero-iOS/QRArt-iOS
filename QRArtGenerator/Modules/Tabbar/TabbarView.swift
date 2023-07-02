@@ -55,13 +55,14 @@ struct TabbarView: View {
                     ToolbarItem(placement: .principal, content: {
                         HStack {
                             Image(R.image.history_logo_ic)
+                                .padding(.leading, 4)
                             
                             Spacer()
                             
                             LottieView(lottieFile: R.file.crownJson.name)
                                 .frame(width: 24, height: 24)
                                 .onTapGesture {
-                                    // TODO: Show iap
+                                    viewModel.showIAP.toggle()
                                 }
                         }
                         .frame(width: WIDTH_SCREEN - 32, height: 48)
@@ -73,6 +74,8 @@ struct TabbarView: View {
                 ScannerView()
             }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
                 CreateQRView(source: .create, indexSelect: nil, list: [])
+            }.fullScreenCover(isPresented: $viewModel.showIAP) {
+                IAPView()
             }
         }
        

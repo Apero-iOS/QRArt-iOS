@@ -37,7 +37,7 @@ struct HistoryCell: View {
                             
                             Circle()
                                 .frame(width: 2, height: 2)
-                                .background(R.color.color_6A758B.color)
+                                .foregroundColor(R.color.color_6A758B.color)
                             
                             Text(item.createdDate.toString(format: "MMMM dd yyyy"))
                                 .font(R.font.urbanistRegular.font(size: 12))

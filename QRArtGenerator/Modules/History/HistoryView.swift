@@ -16,6 +16,9 @@ struct HistoryView: View {
     // MARK: - Body
     var body: some View {
         VStack(spacing: 16) {
+            Color.clear
+                .frame(height: 0)
+            
             Text(Rlocalizable.history())
                 .font(R.font.urbanistBold.font(size: 28))
                 .foregroundColor(R.color.color_1B232E.color)

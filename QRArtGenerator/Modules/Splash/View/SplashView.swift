@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SplashView: View {
     
     let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    @StateObject private var viewModel = SplashViewModel()
+    @State private var subscriptions = Set<AnyCancellable>()
     
     var body: some View {
         VStack {
@@ -17,9 +20,23 @@ struct SplashView: View {
                 .resizable()
                 .scaledToFit()
                 .onReceive(timer) { _ in
-                    Router.showOnboarding()
+                    viewModel.isTimerDone.send(true)
                 }
         }
+        .onAppear {
+            setupObserver()
+            viewModel.prepareData()
+        }
+    }
+    
+    private func setupObserver() {
+        Publishers
+            .Zip3(viewModel.isFetchRemoteDone, viewModel.isTimerDone, viewModel.isCheckIAPDone)
+            .sink { isFetchRemoteDone, isTimerDone, isCheckIAPDone in
+                if isFetchRemoteDone && isTimerDone && isCheckIAPDone {
+                    viewModel.navigateApp()
+                }
+            }.store(in: &subscriptions)
     }
 }
 

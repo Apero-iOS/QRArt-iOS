@@ -7,19 +7,22 @@
 
 import SwiftUI
 import IQKeyboardManagerSwift
+import Firebase
 
 @main
 struct QRArtGeneratorApp: App {
     
     init() {
         configTableView()
+        configScrollView()
         configKeyboard()
-        FileManagerUtil.shared.createFolder(folder: FileManagerUtil.shared.photoFolderName)
+        configIAP()
+        setupFirebase()
     }
         
     var body: some Scene {
         WindowGroup {
-            TabbarView()
+            SplashView()
         }
     }
     
@@ -31,8 +34,26 @@ struct QRArtGeneratorApp: App {
         UITableView.appearance().separatorStyle = .none
     }
     
+    private func configScrollView() {
+        UIScrollView.appearance().showsVerticalScrollIndicator = false
+    }
+    
     private func configKeyboard() {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    }
+    
+    private func configIAP() {
+        InappManager.share.checkPurchaseProduct()
+        InappManager.share.productInfo(id: InappManager.share.productIdentifiers, isShowLoading: false)
+    }
+    
+    func setupFirebase() {
+        guard let plistPath = Bundle.main.path(forResource: Constants.GoogleService.ggPlistName, ofType: "plist"),
+              let options = FirebaseOptions(contentsOfFile: plistPath)
+        else {
+            return
+        }
+        FirebaseApp.configure(options: options)
     }
 }
