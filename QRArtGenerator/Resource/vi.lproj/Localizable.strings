@@ -120,3 +120,4 @@
 "restore" = "Khôi phục";
 "iap_description" = "• Người dùng đã đăng ký có quyền truy cập không giới hạn vào Dịch vụ. \n• Thanh toán sẽ được tính vào tài khoản iTunes khi xác nhận mua hàng. \n• Đăng ký tự động gia hạn trong vòng 24 giờ trước khi kết thúc thời gian đăng ký hiện tại. \n• Đăng ký có thể được quản lý và tự động gia hạn có thể bị tắt bằng cách truy cập cài đặt tài khoản của người dùng sau khi mua. \n• Bất kỳ phần không được sử dụng nào của thời gian dùng thử miễn phí, nếu được cung cấp, sẽ bị mất khi người dùng mua một thuê bao cho ấn phẩm đó, nếu có";
 "languages" = "Ngôn ngữ";
+"amount" = "Số lượng";

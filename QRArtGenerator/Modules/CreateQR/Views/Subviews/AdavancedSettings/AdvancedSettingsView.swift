@@ -15,10 +15,10 @@ enum AdvancedSettingsMode {
 struct AdvancedSettingsView: View {
     @State var mode: AdvancedSettingsMode = .collapse
     @State var rotate: Double = 0
-    @Binding var negativePromt: String
-    @Binding var positivePrompt: String
-    @Binding var oldNegativePromt: String
-    @Binding var oldPositivePrompt: String
+    @Binding var prompt: String
+    @Binding var negativePrompt: String
+    @Binding var oldPrompt: String
+    @Binding var oldNegativePrompt: String
 
     var body: some View {
         LazyVStack(alignment: .leading) {
@@ -53,18 +53,23 @@ struct AdvancedSettingsView: View {
     
     @ViewBuilder var descView: some View {
         VStack {
-            PromptView(prompt: $negativePromt,
-                       oldPrompt: oldNegativePromt,
+            // prompt
+            PromptView(prompt: $prompt,
+                       oldPrompt: oldPrompt,
                        title: Rlocalizable.prompt(),
                        subTitle: Rlocalizable.prompt_desc())
-            PromptView(prompt: $positivePrompt,
-                       oldPrompt: oldPositivePrompt,
+            // negative prompt
+            PromptView(prompt: $negativePrompt,
+                       oldPrompt: oldNegativePrompt,
                        title: Rlocalizable.negative_prompt(),
                        subTitle: Rlocalizable.negative_prompt_desc())
+            // guidance
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc())
+            // scale
             SliderSettingView(title: Rlocalizable.controlnet_scale(),
                               desc: Rlocalizable.controlnet_scale_desc())
+            // steps
             SliderSettingView(title: Rlocalizable.steps(),
                               desc: Rlocalizable.steps_desc())
         }
@@ -78,6 +83,9 @@ struct AdvancedSettingsView: View {
 
 struct AdvancedSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdvancedSettingsView(negativePromt: .constant(""), positivePrompt: .constant(""), oldNegativePromt: .constant(""), oldPositivePrompt: .constant(""))
+        AdvancedSettingsView(prompt: .constant(""),
+                             negativePrompt: .constant(""),
+                             oldPrompt: .constant(""),
+                             oldNegativePrompt: .constant(""))
     }
 }

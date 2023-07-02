@@ -14,16 +14,8 @@ enum CreateQRViewSource {
 }
 
 struct CreateQRView: View {
-    @StateObject var viewModel = CreateQRViewModel()
-    @State var showingSelectQRTypeView: Bool = false
-    @State var showingSelectCountryView: Bool = false
-    
-    init(source: CreateQRViewSource, indexSelect: Int?, list: [TemplateModel]) {
-        viewModel.source = source
-        viewModel.indexSelectQR = indexSelect ?? 0
-        viewModel.templateQR = list
-    }
-    
+    @StateObject var viewModel: CreateQRViewModel
+
     var body: some View {
         VStack {
             naviView
@@ -49,19 +41,19 @@ struct CreateQRView: View {
             }
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .bottomSheet(isPresented: $showingSelectQRTypeView,
+        .bottomSheet(isPresented: $viewModel.showingSelectQRTypeView,
                      height: HEIGHT_SCREEN/2,
                      topBarBackgroundColor: R.color.color_F7F7F7.color,
                      onDismiss: {
-            showingSelectQRTypeView = false
+            viewModel.showingSelectQRTypeView = false
         }) {
             qrSelectView
         }
-        .bottomSheet(isPresented: $showingSelectCountryView,
+        .bottomSheet(isPresented: $viewModel.showingSelectCountryView,
                      height: HEIGHT_SCREEN/2,
                      topBarBackgroundColor: R.color.color_F7F7F7.color,
                      onDismiss: {
-            showingSelectCountryView = false
+            viewModel.showingSelectCountryView = false
         }) {
             countrySelectView
         }
@@ -73,12 +65,13 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var templateView: some View {
-        ChooseTemplateView(templateQR: $viewModel.templateQR, indexSelectStyle: $viewModel.indexSelectQR)
+        ChooseTemplateView(templateQR: $viewModel.templateQR,
+                           indexSelectStyle: $viewModel.indexSelectTemplate)
     }
     
     @ViewBuilder var qrDetailView: some View {
-        SelectQRDetailView(showingSelectQRTypeView: $showingSelectQRTypeView,
-                           showingSelectCountryView: $showingSelectCountryView,
+        SelectQRDetailView(showingSelectQRTypeView: $viewModel.showingSelectQRTypeView,
+                           showingSelectCountryView: $viewModel.showingSelectCountryView,
                            validInput: $viewModel.validInput,
                            input: $viewModel.input,
                            countrySelect: $viewModel.countrySelect,
@@ -87,19 +80,22 @@ struct CreateQRView: View {
     
     @ViewBuilder var advancedSettingsView: some View {
         if !viewModel.templateQR.isEmpty {
-            AdvancedSettingsView(negativePromt: $viewModel.negativePromt,
-                                 positivePrompt: $viewModel.positivePromt,
-                                 oldNegativePromt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.negativePrompt,
-                                 oldPositivePrompt: $viewModel.templateQR[viewModel.indexSelectQR].styles[0].config.positivePrompt)
+            AdvancedSettingsView(prompt: $viewModel.input.prompt,
+                                 negativePrompt: $viewModel.input.negativePrompt,
+                                 oldPrompt: $viewModel.templateQR[viewModel.indexSelectTemplate].styles[0].config.positivePrompt,
+                                 oldNegativePrompt: $viewModel.templateQR[viewModel.indexSelectTemplate].styles[0].config.negativePrompt)
         }
     }
     
     @ViewBuilder var qrSelectView: some View {
-        SelectQRTypeView(selectedType: $viewModel.input.type, showingSelectQRTypeView: $showingSelectQRTypeView)
+        SelectQRTypeView(selectedType: $viewModel.input.type,
+                         showingSelectQRTypeView: $viewModel.showingSelectQRTypeView)
     }
     
     @ViewBuilder var countrySelectView: some View {
-        SelectCountryCodeView(countries: $viewModel.countries, selectedCountry: $viewModel.countrySelect, showingSelectCountryView: $showingSelectCountryView)
+        SelectCountryCodeView(countries: $viewModel.countries,
+                              selectedCountry: $viewModel.countrySelect,
+                              showingSelectCountryView: $viewModel.showingSelectCountryView)
     }
     
     @ViewBuilder var naviView: some View {
@@ -107,11 +103,10 @@ struct CreateQRView: View {
             // TODO
         }
     }
-    
 }
 
 struct CreateQRView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateQRView(source: .create, indexSelect: 0, list: [])
+        CreateQRView(viewModel: CreateQRViewModel(source: .create, indexSelect: 0, list: []))
     }
 }

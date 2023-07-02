@@ -121,6 +121,9 @@
 		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
 		C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C792A512A520093B48A /* BasicItemTemplateView.swift */; };
 		C8109C7E2A5160350093B48A /* GenerateQRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C7D2A5160350093B48A /* GenerateQRRequest.swift */; };
+		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
+		C8109C872A51971A0093B48A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C862A51971A0093B48A /* LoadingView.swift */; };
+		C8109C8A2A5198970093B48A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C892A5198970093B48A /* ResultView.swift */; };
 		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
 		C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E402A4DAF320077DCC3 /* ai_tab.json */; };
 		C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E412A4DAF320077DCC3 /* crown.json */; };
@@ -290,6 +293,9 @@
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		C8109C792A512A520093B48A /* BasicItemTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicItemTemplateView.swift; sourceTree = "<group>"; };
 		C8109C7D2A5160350093B48A /* GenerateQRRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRRequest.swift; sourceTree = "<group>"; };
+		C8109C822A518B3E0093B48A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
+		C8109C862A51971A0093B48A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C8109C892A5198970093B48A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		C8AA3E1B2A4D61030077DCC3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		C8AA3E402A4DAF320077DCC3 /* ai_tab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ai_tab.json; sourceTree = "<group>"; };
@@ -346,6 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				9AD2B9012A505AB9003B7C1F /* IAP */,
+				C8109C882A5198890093B48A /* Result */,
+				C8109C842A51970B0093B48A /* Loading */,
 				59F74C482A4FC78400AD8CBA /* Admob */,
 				9AD373712A4EBB1100FCF934 /* Search */,
 				A4BCC0A02A503B81006FD3F5 /* DetailStyles */,
@@ -699,8 +707,8 @@
 		9AC7DC8D2A4D396B00FB3119 /* CreateQR */ = {
 			isa = PBXGroup;
 			children = (
-				9AC7DCD22A4DB6E500FB3119 /* ViewModels */,
 				9AC7DC8E2A4D396B00FB3119 /* Models */,
+				9AC7DCD22A4DB6E500FB3119 /* ViewModels */,
 				9AC7DC922A4D396B00FB3119 /* Views */,
 			);
 			path = CreateQR;
@@ -737,21 +745,9 @@
 		9AC7DCBD2A4DB6C600FB3119 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */,
-				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
-				9AC7DCBE2A4DB6C600FB3119 /* SecurityModeView.swift */,
-				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
-				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
-				9AC7DCC12A4DB6C600FB3119 /* AdvancedSettingsView.swift */,
-				9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */,
-				9AC7DCC32A4DB6C600FB3119 /* ItemTemplateView.swift */,
-				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
-				9AC7DCC52A4DB6C600FB3119 /* PromptView.swift */,
-				9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */,
-				9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */,
-				C8AA3E442A4E72640077DCC3 /* SelectCountryCodeView.swift */,
-				C8AA3E462A4E730C0077DCC3 /* CountryCodeView.swift */,
-				C8109C792A512A520093B48A /* BasicItemTemplateView.swift */,
+				C8109C812A5182BD0093B48A /* SelectQR */,
+				C8109C802A5182AC0093B48A /* AdavancedSettings */,
+				C8109C7F2A5181080093B48A /* ChooseTemplate */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1047,6 +1043,59 @@
 				A4C69C482A4D90690076CF48 /* LanguageView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C8109C7F2A5181080093B48A /* ChooseTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */,
+				9AC7DCC32A4DB6C600FB3119 /* ItemTemplateView.swift */,
+			);
+			path = ChooseTemplate;
+			sourceTree = "<group>";
+		};
+		C8109C802A5182AC0093B48A /* AdavancedSettings */ = {
+			isa = PBXGroup;
+			children = (
+				9AC7DCC12A4DB6C600FB3119 /* AdvancedSettingsView.swift */,
+				9AC7DCC52A4DB6C600FB3119 /* PromptView.swift */,
+			);
+			path = AdavancedSettings;
+			sourceTree = "<group>";
+		};
+		C8109C812A5182BD0093B48A /* SelectQR */ = {
+			isa = PBXGroup;
+			children = (
+				9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */,
+				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
+				9AC7DCBE2A4DB6C600FB3119 /* SecurityModeView.swift */,
+				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
+				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
+				9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */,
+				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
+				9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */,
+				C8AA3E442A4E72640077DCC3 /* SelectCountryCodeView.swift */,
+				C8AA3E462A4E730C0077DCC3 /* CountryCodeView.swift */,
+				C8109C792A512A520093B48A /* BasicItemTemplateView.swift */,
+				C8109C822A518B3E0093B48A /* AmountView.swift */,
+			);
+			path = SelectQR;
+			sourceTree = "<group>";
+		};
+		C8109C842A51970B0093B48A /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				C8109C862A51971A0093B48A /* LoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		C8109C882A5198890093B48A /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				C8109C892A5198970093B48A /* ResultView.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		C8AA3E202A4DAEE30077DCC3 /* Recovered References */ = {
@@ -1480,6 +1529,7 @@
 				C8109C7E2A5160350093B48A /* GenerateQRRequest.swift in Sources */,
 				9AC7DCD62A4DB71D00FB3119 /* Country.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
+				C8109C8A2A5198970093B48A /* ResultView.swift in Sources */,
 				9AD373732A4EBB3400FCF934 /* SearchView.swift in Sources */,
 				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
 				59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */,
@@ -1499,6 +1549,7 @@
 				A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */,
 				A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */,
 				9AC7DCCA2A4DB6C600FB3119 /* QRTypeView.swift in Sources */,
+				C8109C832A518B3E0093B48A /* AmountView.swift in Sources */,
 				59286C902A4D31D300EBBEBF /* ScannerModel.swift in Sources */,
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
 				59286C7E2A4D31D300EBBEBF /* TabbarEnum.swift in Sources */,
@@ -1564,6 +1615,7 @@
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */,
 				9AC7DCD02A4DB6C600FB3119 /* DescriptionView.swift in Sources */,
+				C8109C872A51971A0093B48A /* LoadingView.swift in Sources */,
 				59286C8E2A4D31D300EBBEBF /* QRScannerDelegate.swift in Sources */,
 				C8AA3E5C2A4E81910077DCC3 /* AlamofireLogger.swift in Sources */,
 				C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */,

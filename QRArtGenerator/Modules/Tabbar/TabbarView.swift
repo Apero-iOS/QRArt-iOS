@@ -73,18 +73,18 @@ struct TabbarView: View {
             .fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
             }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
-                CreateQRView(source: .create, indexSelect: nil, list: [])
+                let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: [])
+                CreateQRView(viewModel: vm)
             }.fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
         }
-       
     }
     
     @ViewBuilder var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
             HistoryView().tag(TabbarEnum.history)
-
+            
             HomeView().tag(TabbarEnum.home)
             
             SettingsView().tag(TabbarEnum.settings)

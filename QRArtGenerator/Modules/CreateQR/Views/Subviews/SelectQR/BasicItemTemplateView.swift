@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct BasicItemTemplateView: View {
-    @Binding var isSelecBasicQR: Bool
+    @Binding var indexSelect: Int
+    var index: Int = .zero
+    var isSelect: Bool {
+        index == indexSelect
+    }
     
     var body: some View {
         VStack {
@@ -20,7 +24,7 @@ struct BasicItemTemplateView: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(
-                            LinearGradient(colors: isSelecBasicQR ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
+                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
                                            startPoint: .bottomLeading,
                                            endPoint: .topTrailing),
                             lineWidth: 2
@@ -36,6 +40,6 @@ struct BasicItemTemplateView: View {
 
 struct BasicItemTemplateView_Previews: PreviewProvider {
     static var previews: some View {
-        BasicItemTemplateView(isSelecBasicQR: .constant(true))
+        BasicItemTemplateView(indexSelect: .constant(0))
     }
 }
