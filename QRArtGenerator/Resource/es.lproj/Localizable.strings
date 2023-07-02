@@ -123,3 +123,4 @@
 "privacy_policy" = "Política de privacidad";
 "restore" = "Restaurar";
 "iap_description" = "• El usuario suscrito tiene acceso ilimitado a los servicios. \n• El pago se cargará a la cuenta de iTunes en la confirmación de compra. \n• La suscripción se renueva automáticamente dentro de las 24 horas antes del final del período de suscripción actual. \n• La suscripción se puede administrar y la renovación automática puede desactivarse yendo a la configuración de la cuenta del usuario después de comprar. \n• Cualquier parte no utilizada de un período de prueba gratuito, si se ofrece, se perderá cuando el usuario compre una suscripción a esa publicación, cuando corresponda";
+"languages" = "Lenguas";
