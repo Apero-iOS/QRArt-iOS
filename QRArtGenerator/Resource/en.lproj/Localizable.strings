@@ -101,3 +101,4 @@
 "negative_prompt" = "Negative Prompt (Optional)";
 "negative_prompt_desc" = "Prompt that warn AI to pretend";
 "basic" = "Basic";
+"languages" = "Languages";

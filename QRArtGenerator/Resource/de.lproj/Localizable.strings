@@ -101,3 +101,4 @@
 "negative_prompt" = "Negative Eingabeaufforderung (optional)";
 "negative_prompt_desc" = "Auffordern Sie, dass die Ki vorgibt";
 "basic" = "Basic";
+"languages" = "Sprachen";

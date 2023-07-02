@@ -105,3 +105,4 @@
 "negative_prompt" = "Aviso negativo (opcional)";
 "negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
 "basic" = "Básico";
+"languages" = "Lenguas";

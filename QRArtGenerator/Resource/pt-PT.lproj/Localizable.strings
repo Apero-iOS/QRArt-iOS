@@ -101,3 +101,4 @@
 "negative_prompt" = "Prompt negativo (opcional)";
 "negative_prompt_desc" = "Solicite que avise a IA para fingir";
 "basic" = "Básico";
+"languages" = "línguas";
