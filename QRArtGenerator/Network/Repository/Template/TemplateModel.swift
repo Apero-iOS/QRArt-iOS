@@ -30,7 +30,7 @@ struct Category: Codable {
     }
 }
 
-struct Style: Codable {
+struct Style: Codable, Identifiable {
     let id: String
     let project: String
     let name: String

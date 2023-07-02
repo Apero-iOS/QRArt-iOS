@@ -47,8 +47,8 @@ struct NavibarView: View {
                 Text("")
                     .frame(width: 50, height: 50)
             }
-
         }.frame(height: 50)
+        Divider()
     }
 }
 
