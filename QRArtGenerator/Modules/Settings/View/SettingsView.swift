@@ -61,10 +61,11 @@ struct SettingsView: View {
                     ForEach(viewModel.settings, id: \.self) { item in
                         NavigationLink {
                             switch item {
-                            case .language:
-                                LanguageView()
-                            default:
-                                Text(item.name)
+                                case .language:
+                                    let viewModel = LanguageViewModel(sourceOpen: .setting)
+                                    LanguageView(viewModel: viewModel)
+                                default:
+                                    Text(item.name)
                             }
                         } label: {
                             SettingRowView(item: item)

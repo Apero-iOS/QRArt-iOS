@@ -101,3 +101,4 @@
 "negative_prompt" = "Invite négative (facultative)";
 "negative_prompt_desc" = "Invite à avertir l'IA de faire semblant";
 "basic" = "Basique";
+"languages" = "Langues";

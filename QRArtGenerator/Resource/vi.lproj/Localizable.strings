@@ -101,3 +101,4 @@
 "negative_prompt" = "Lời nhắc âm (tùy chọn)";
 "negative_prompt_desc" = "Nhắc rằng AI cảnh báo giả vờ";
 "basic" = "Nền tảng";
+"languages" = "Ngôn ngữ";
