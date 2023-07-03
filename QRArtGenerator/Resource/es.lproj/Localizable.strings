@@ -100,10 +100,6 @@
 "cannot_be_empty" = "Este campo no puede estar vacío.";
 "negative_prompt" = "Aviso negativo (opcional)";
 "negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
-"negative_prompt" = "Invite négative (facultative)";
-"negative_prompt_desc" = "Invite à avertir l'IA de faire semblant";
-"negative_prompt" = "Aviso negativo (opcional)";
-"negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
 "basic" = "Básico";
 "go_further_with" = "Ir más allá con";
 "pro_up" = "PRO";
@@ -124,3 +120,10 @@
 "restore" = "Restaurar";
 "iap_description" = "• El usuario suscrito tiene acceso ilimitado a los servicios. \n• El pago se cargará a la cuenta de iTunes en la confirmación de compra. \n• La suscripción se renueva automáticamente dentro de las 24 horas antes del final del período de suscripción actual. \n• La suscripción se puede administrar y la renovación automática puede desactivarse yendo a la configuración de la cuenta del usuario después de comprar. \n• Cualquier parte no utilizada de un período de prueba gratuito, si se ofrece, se perderá cuando el usuario compre una suscripción a esa publicación, cuando corresponda";
 "languages" = "Lenguas";
+"amount" = "Cantidad";
+"download" = "Descargar";
+"download_4k" = "Descargar 4K";
+"regenerate" = "Regenerado";
+"share_qr" = "Compartir QR";
+"back_to_home" = "De vuelta a casa";
+"saved_success" = "¡Has guardado el QR con éxito!";

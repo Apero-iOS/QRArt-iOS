@@ -35,7 +35,7 @@ class QRItemDB: Object {
     @Persisted var wfSecurityMode: WifiSecurityMode
     
     // Paypal
-    @Persisted var paypalAmount: Double
+    @Persisted var paypalAmount: String
     
     // Advanced
     @Persisted var prompt: String

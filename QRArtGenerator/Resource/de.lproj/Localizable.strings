@@ -120,3 +120,10 @@
 "restore" = "Wiederherstellen";
 "iap_description" = "• Der abonnierte Benutzer hat unbegrenzten Zugriff auf die Dienste. \n• Die Zahlung wird bei Kaufbestätigung auf das iTunes -Konto berechnet. \n• Abonnement verlängert automatisch innerhalb von 24 Stunden vor dem Ende des aktuellen Abonnementzeitraums. \n• Das Abonnement kann verwaltet und automatisch erneuert werden, indem nach dem Kauf in die Kontoeinstellungen des Benutzers eingelegt wird. \n• Bei angebotenen kostenlosen Testzeiten wird ein unbenutzter Teil eines kostenlosen Testzeitraums verfällt, wenn der Benutzer gegebenenfalls ein Abonnement für diese Veröffentlichung kauft";
 "languages" = "Sprachen";
+"amount" = "Menge";
+"download" = "Herunterladen";
+"download_4k" = "Download 4K";
+"regenerate" = "Regenerieren";
+"share_qr" = "Share QR";
+"back_to_home" = "Zurück nach Hause";
+"saved_success" = "Sie haben den QR erfolgreich gerettet!";

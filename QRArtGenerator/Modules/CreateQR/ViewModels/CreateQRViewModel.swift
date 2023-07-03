@@ -13,21 +13,30 @@ class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "VN", dialCode: "+84")
     @Published var templateQR: [TemplateModel] = []
-    @Published var indexSelectQR: Int = .zero {
+    @Published var indexSelectTemplate: Int = .zero {
         didSet {
-            negativePromt = templateQR[indexSelectQR].styles[0].config.negativePrompt
-            positivePromt = templateQR[indexSelectQR].styles[0].config.positivePrompt
+            if !templateQR.isEmpty {
+                input.prompt = templateQR[indexSelectTemplate].styles[0].config.positivePrompt
+                input.negativePrompt = templateQR[indexSelectTemplate].styles[0].config.negativePrompt
+            }
+            
         }
     }
     @Published var input: QRDetailItem = QRDetailItem()
     @Published var validInput: Bool = false
-    @Published var qrImage: UIImage?
     @Published var source: CreateQRViewSource = .create
-    @Published var negativePromt: String = ""
-    @Published var positivePromt: String = ""
+    @Published var showingSelectQRTypeView: Bool = false
+    @Published var showingSelectCountryView: Bool = false
     
-    private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
+    private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
+    
+    init(source: CreateQRViewSource, indexSelect: Int?, list: [TemplateModel]) {
+        self.source = source
+        self.indexSelectTemplate = indexSelect ?? 0
+        templateQR.append(createBasicQRItem())
+        templateQR.append(contentsOf: list)
+    }
     
     deinit {
         cancellable.removeAll()
@@ -35,10 +44,6 @@ class CreateQRViewModel: ObservableObject {
     
     func fetchCountry() {
         countries = CountriesFetcher().fetch()
-    }
-    
-    init() {
-        templateQR.append(createBasicQRItem())
     }
     
     func fetchTemplate() {
@@ -54,9 +59,7 @@ class CreateQRViewModel: ObservableObject {
     func generateQR() {
         validInput = true
         if isValidInput() {
-            print("tuanlt done")
-        } else {
-            print("tuanlt not done")
+            genQR()
         }
     }
     
@@ -106,13 +109,13 @@ class CreateQRViewModel: ObservableObject {
         templateRepository.genQR(data: data,
                                  qrText: getQRText(),
                                  seed: 1,
-                                 positivePrompt: positivePromt,
-                                 negativePrompt: negativePromt)
+                                 positivePrompt: input.prompt,
+                                 negativePrompt: input.negativePrompt)
         .sink { comple in
             switch comple {
             case .finished:
                 break
-            case .failure(let error):
+            case .failure:
                 break
             }
         } receiveValue: { data in
@@ -123,6 +126,19 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func getQRText() -> String {
-        return "asadasd"
+        switch input.type {
+        case .website, .instagram, .facebook, .twitter, .spotify, .youtube:
+            return input.urlString
+        case .contact, .whatsapp:
+            return input.phoneNumber
+        case .email:
+            return "MATMSG:TO:\(input.emailAddress);SUB:\(input.emailSubject);BODY:\(input.emailDescription);;"
+        case .text:
+            return input.text
+        case .wifi:
+            return "WIFI:S:\(input.wfSsid);P:\(input.wfPassword);T:\(input.wfSecurityMode.title);;"
+        case .paypal:
+            return "\(input.urlString)/\(input.paypalAmount)"
+        }
     }
 }
