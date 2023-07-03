@@ -21,6 +21,10 @@ struct TemplateModel: Codable, Identifiable {
         case id = "_id"
         case styles, category
     }
+    
+    static func defaultObject() -> TemplateModel {
+        TemplateModel(id: "", styles: [], category: Category.defaultObject())
+    }
 }
 
 struct Category: Codable {
@@ -32,6 +36,10 @@ struct Category: Codable {
         case id = "_id"
         case project, name, createdAt, updatedAt
         case v = "__v"
+    }
+    
+    static func defaultObject() -> Category {
+        Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 0)
     }
 }
 

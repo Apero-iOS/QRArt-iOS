@@ -65,7 +65,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var templateView: some View {
-        ChooseTemplateView(templateQR: $viewModel.templateQR,
+        ChooseTemplateView(templateQR: $viewModel.templateQR.styles,
                            indexSelectStyle: $viewModel.indexSelectTemplate)
     }
     
@@ -79,11 +79,11 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var advancedSettingsView: some View {
-        if !viewModel.templateQR.isEmpty {
+        if !viewModel.templateQR.styles.isEmpty {
             AdvancedSettingsView(prompt: $viewModel.input.prompt,
                                  negativePrompt: $viewModel.input.negativePrompt,
-                                 oldPrompt: $viewModel.templateQR[viewModel.indexSelectTemplate].styles[0].config.positivePrompt,
-                                 oldNegativePrompt: $viewModel.templateQR[viewModel.indexSelectTemplate].styles[0].config.negativePrompt)
+                                 oldPrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.positivePrompt,
+                                 oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt)
         }
     }
     
@@ -107,6 +107,6 @@ struct CreateQRView: View {
 
 struct CreateQRView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateQRView(viewModel: CreateQRViewModel(source: .create, indexSelect: 0, list: []))
+        CreateQRView(viewModel: CreateQRViewModel(source: .create, indexSelect: 0, list: TemplateModel(id: "", styles: [], category: Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 0))))
     }
 }

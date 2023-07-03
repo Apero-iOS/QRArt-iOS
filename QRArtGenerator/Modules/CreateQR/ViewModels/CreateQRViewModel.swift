@@ -12,12 +12,12 @@ import Combine
 class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "VN", dialCode: "+84")
-    @Published var templateQR: [TemplateModel] = []
+    @Published var templateQR: TemplateModel = TemplateModel.defaultObject()
     @Published var indexSelectTemplate: Int = .zero {
         didSet {
-            if !templateQR.isEmpty {
-                input.prompt = templateQR[indexSelectTemplate].styles[0].config.positivePrompt
-                input.negativePrompt = templateQR[indexSelectTemplate].styles[0].config.negativePrompt
+            if !templateQR.styles.isEmpty {
+                input.prompt = templateQR.styles[indexSelectTemplate].config.positivePrompt
+                input.negativePrompt = templateQR.styles[indexSelectTemplate].config.negativePrompt
             }
             
         }
@@ -31,11 +31,13 @@ class CreateQRViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    init(source: CreateQRViewSource, indexSelect: Int?, list: [TemplateModel]) {
+    init(source: CreateQRViewSource, indexSelect: Int?, list: TemplateModel?) {
         self.source = source
         self.indexSelectTemplate = indexSelect ?? 0
-        templateQR.append(createBasicQRItem())
-        templateQR.append(contentsOf: list)
+        if let list = list {
+            self.templateQR = list
+            self.templateQR.styles.insert(createBasicQRItem(), at: 0)
+        }
     }
     
     deinit {
@@ -50,8 +52,9 @@ class CreateQRViewModel: ObservableObject {
         templateRepository.fetchTemplate().sink { comple in
             
         } receiveValue: { templates in
-            if let templateQR = templates {
-                self.templateQR.append(contentsOf: templateQR)
+            if let templates = templates?.first {
+                self.templateQR = templates
+                self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
             }
         }.store(in: &cancellable)
     }
@@ -96,12 +99,11 @@ class CreateQRViewModel: ObservableObject {
         return QRHelper.genQR(text: text)
     }
     
-    func createBasicQRItem() -> TemplateModel {
-        TemplateModel(id: "basic",
-                      styles: [Style(id: "",
-                                     project: "",
-                                     name: "",
-                                     key: "", category: "", prompt: "", config: Config(negativePrompt: "", positivePrompt: ""), version: "", createdAt: "", updatedAt: "", v: 0)], category: Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 0))
+    func createBasicQRItem() -> Style {
+        Style(id: "",
+              project: "",
+              name: "",
+              key: "", category: "", prompt: "", config: Config(negativePrompt: "", positivePrompt: ""), version: "", createdAt: "", updatedAt: "", v: 0)
     }
     
     func genQR() {
