@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChooseTemplateView: View {
-    @Binding var templateQR: [TemplateModel]
+    @Binding var templateQR: [Style]
     @Binding var indexSelectStyle: Int
     
     var body: some View {

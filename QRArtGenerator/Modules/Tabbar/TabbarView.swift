@@ -73,7 +73,7 @@ struct TabbarView: View {
             .fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
             }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
-                let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: [])
+                let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: nil)
                 CreateQRView(viewModel: vm)
             }.fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()

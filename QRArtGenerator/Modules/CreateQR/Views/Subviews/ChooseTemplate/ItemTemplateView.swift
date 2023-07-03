@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemTemplateView: View {
-    @Binding var template: TemplateModel
+    @Binding var template: Style
     @Binding var indexSelect: Int
     var index: Int = .zero
     var isSelect: Bool {
@@ -17,7 +17,7 @@ struct ItemTemplateView: View {
     
     var body: some View {
         VStack {
-            if let url = URL(string: template.styles[0].key) {
+            if let url = URL(string: template.key) {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
@@ -42,7 +42,7 @@ struct ItemTemplateView: View {
                 }
             }
             
-            Text(template.styles[0].name)
+            Text(template.name)
                 .font(R.font.urbanistMedium.font(size: 12))
         }
         .frame(maxWidth: 103, maxHeight: 124)
