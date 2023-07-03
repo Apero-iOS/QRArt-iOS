@@ -12,8 +12,8 @@ struct LanguageView: View {
     
     var body: some View {
         VStack {
-            NavibarView(title: Rlocalizable.languages(), isRightButton: true) {
-                viewModel.changeLanguageApp()
+            NavibarView(title: Rlocalizable.languages(), imageRightButton: R.image.ic_check.image, isRightButton: true, isLeftButton: viewModel.sourceOpen == .setting) {
+                viewModel.handleChangeLanguage()
             }
             List {
                 ForEach(0..<viewModel.languages.count, id: \.self) { index in

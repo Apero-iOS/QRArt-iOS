@@ -11,6 +11,7 @@ import SwiftUI
 enum SettingType: CaseIterable, Hashable, Identifiable {
     case language
     case privacy_policy
+    case terms_of_service
     case rate_app
     case share_app
     case version
@@ -21,6 +22,8 @@ enum SettingType: CaseIterable, Hashable, Identifiable {
                 return R.image.ic_setting_language.image
             case .privacy_policy:
                 return R.image.ic_setting_privacy_policy.image
+            case .terms_of_service:
+                return R.image.ic_terms_of_service.image
             case .rate_app:
                 return R.image.ic_setting_rate_app.image
             case .share_app:
@@ -42,6 +45,8 @@ enum SettingType: CaseIterable, Hashable, Identifiable {
                 return Rlocalizable.share_app()
             case .version:
                 return Rlocalizable.version()
+            case .terms_of_service:
+                return Rlocalizable.terms_of_service()
         }
     }
     

@@ -36,4 +36,13 @@ extension UserDefaults {
             UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.DID_SHOW_ONBOARDING)
         }
     }
+    
+    var isFirstLanguage: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Constants.Keys.FIRST_LANGUAGE)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.FIRST_LANGUAGE)
+        }
+    }
 }

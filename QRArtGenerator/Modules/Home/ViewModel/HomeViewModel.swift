@@ -12,7 +12,7 @@ import SwiftUI
 final class HomeViewModel: ObservableObject, Identifiable {
     
     @Published var listStyle: [TemplateModel] = []
-    @Published var isActive = false
+    @Published var isShowIAP = false
     
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()

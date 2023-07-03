@@ -997,8 +997,8 @@
 		A4C69C392A4D90570076CF48 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A4C69C3A2A4D90570076CF48 /* ViewModel */,
 				A4C69C3C2A4D90580076CF48 /* Model */,
+				A4C69C3A2A4D90570076CF48 /* ViewModel */,
 				A4C69C3E2A4D90580076CF48 /* View */,
 			);
 			path = Settings;
@@ -1575,7 +1575,6 @@
 				59286C902A4D31D300EBBEBF /* ScannerModel.swift in Sources */,
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
 				59286C7E2A4D31D300EBBEBF /* TabbarEnum.swift in Sources */,
-				9AC7DC9E2A4D396B00FB3119 /* InputType.swift in Sources */,
 				9AB8528F2A51655C00A546F4 /* RemoteKey.swift in Sources */,
 				9AD2B8F62A500F63003B7C1F /* QRDetailItem.swift in Sources */,
 				59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */,

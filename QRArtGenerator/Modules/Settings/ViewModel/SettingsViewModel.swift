@@ -9,4 +9,5 @@ import Foundation
 
 final class SettingsViewModel: ObservableObject {
     public let settings = SettingType.allCases
+    @Published public var isShowIAP: Bool = false
 }

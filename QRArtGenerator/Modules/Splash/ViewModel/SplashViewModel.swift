@@ -25,10 +25,12 @@ class SplashViewModel: ObservableObject {
     }
     
     func navigateApp() {
-        if UserDefaults.standard.didShowOnboarding {
-            Router.showTabbar()
-        } else {
+        if !UserDefaults.standard.isFirstLanguage {
+            Router.showFirstLanguage()
+        } else if !UserDefaults.standard.didShowOnboarding {
             Router.showOnboarding()
+        } else {
+            Router.showTabbar()
         }
     }
 }

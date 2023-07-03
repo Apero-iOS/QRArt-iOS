@@ -32,6 +32,7 @@ struct QRArtGeneratorApp: App {
         UITableView.appearance().showsVerticalScrollIndicator = false
         UITableView.appearance().showsHorizontalScrollIndicator = false
         UITableView.appearance().separatorStyle = .none
+        UITabBar.appearance().isHidden = true
     }
     
     private func configScrollView() {

@@ -35,6 +35,7 @@ struct Constants {
         static let KEY_USER_VIP = "KEY_USER_VIP"
         static let OPEN_APP_COUNT = "OPEN_APP_COUNT"
         static let DID_SHOW_ONBOARDING = "DID_SHOW_ONBOARDING"
+        static let FIRST_LANGUAGE = "FIRST_LANGUAGE"
     }
     
     struct GoogleService {

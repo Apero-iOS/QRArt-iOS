@@ -9,7 +9,7 @@ import Foundation
 
 final class LanguageViewModel: ObservableObject, Identifiable {
     var sourceOpen: SourceOpen
-    let languages: [LanguageType] = LanguageType.allCases
+    var languages: [LanguageType] = LanguageType.allCases
     @Published var selectedIndex: Int = 0
     
     init(sourceOpen: SourceOpen) {
@@ -20,7 +20,7 @@ final class LanguageViewModel: ObservableObject, Identifiable {
     func changeLanguageApp() {
         let language = languages[selectedIndex]
         LocalizationSystem.sharedInstance.setLanguage(languageCode: language.rawValue)
-//        UserDefaults.standard.isSelectedLanguage = true
+        UserDefaults.standard.isFirstLanguage = true
         if sourceOpen == .splash {
             Router.showTabbar()
         } else {
@@ -35,9 +35,21 @@ final class LanguageViewModel: ObservableObject, Identifiable {
     func configData() {
         let languageKey = LocalizationSystem.sharedInstance.getLanguage()
         if let language = LanguageType(rawValue: languageKey) {
-            selectedIndex = languages.firstIndex(of: language) ?? 0
+            if let index = languages.firstIndex(of: language) {
+                languages.remove(at: index)
+                languages.insert(language, at: 0)
+            }
         } else {
             selectedIndex = 0
+        }
+    }
+    
+    func handleChangeLanguage() {
+        if sourceOpen == .splash {
+            UserDefaults.standard.isFirstLanguage = true
+            Router.showOnboarding()
+        } else {
+            changeLanguageApp()
         }
     }
     

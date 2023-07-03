@@ -10,15 +10,23 @@ import SwiftUI
 struct DetailStylesView: View {
     
     @StateObject private var viewModel = DetailStylesViewModel()
-    @State var styles: [Style]
+    @State var template: TemplateModel? = nil
     
     var body: some View {
         VStack {
             NavibarView(title: Rlocalizable.ai_art())
             ScrollView {
                 LazyVGrid(columns: viewModel.getColumns()) {
-                    ForEach(styles) { style in
-                        itemView(style)                    }
+                    if let template = self.template {
+                        ForEach(0..<template.styles.count, id: \.self) { index in
+                            NavigationLink {
+                                let viewModel = CreateQRViewModel(source: .template, indexSelect: index, list: template)
+                                CreateQRView(viewModel: viewModel)
+                            } label: {
+                                itemView(template.styles[index])
+                            }
+                        }
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
@@ -35,12 +43,13 @@ struct DetailStylesView: View {
                 .cornerRadius(12, antialiased: true)
             Text(item.name)
                 .font(R.font.urbanistSemiBold.font(size: 12))
+                .foregroundColor(R.color.color_1B232E.color)
         }
     }
 }
 
 struct DetailStylesView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailStylesView(styles: [])
+        DetailStylesView()
     }
 }
