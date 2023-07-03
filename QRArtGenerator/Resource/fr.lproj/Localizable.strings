@@ -121,3 +121,9 @@
 "iap_description" = "• L'utilisateur abonné a un accès illimité aux services. \n• Le paiement sera facturé sur le compte iTunes lors de la confirmation d'achat. \n• L'abonnement se renouvelle automatiquement dans les 24 heures avant la fin de la période d'abonnement actuelle. \n• L'abonnement peut être géré et le renouvellement automatique peut être désactivé en allant aux paramètres du compte de l'utilisateur après l'achat. \n• Toute partie inutilisée d'une période d'essai gratuite, si elle est offerte, sera perdue lorsque l'utilisateur achètera un abonnement à cette publication, le cas échéant";
 "languages" = "Langues";
 "amount" = "Montant";
+"download" = "Télécharger";
+"download_4k" = "Télécharger 4K";
+"regenerate" = "Régénérer";
+"share_qr" = "Partager QR";
+"back_to_home" = "De retour à la maison";
+"saved_success" = "Vous avez enregistré le QR avec succès!";
