@@ -28,7 +28,7 @@ struct CreateQRView: View {
             }
             VStack {
                 Button(Rlocalizable.generate_qr()) {
-                    viewModel.genQR()
+                    viewModel.generateQR()
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
                 
@@ -62,6 +62,13 @@ struct CreateQRView: View {
             viewModel.fetchCountry()
             viewModel.fetchTemplate()
         }
+        .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+            LoadingView()
+        }
+        .fullScreenCover(isPresented: $viewModel.isShowExport) {
+            let resultViewModel = ResultViewModel(item: viewModel.input)
+            ResultView(viewModel: resultViewModel, image: $viewModel.imageResult)
+        }
     }
     
     @ViewBuilder var templateView: some View {
@@ -83,7 +90,9 @@ struct CreateQRView: View {
             AdvancedSettingsView(prompt: $viewModel.input.prompt,
                                  negativePrompt: $viewModel.input.negativePrompt,
                                  oldPrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.positivePrompt,
-                                 oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt)
+                                 oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt, guidance: $viewModel.input.guidance,
+                                 steps: $viewModel.input.steps,
+                                 scale: $viewModel.input.contronetScale)
         }
     }
     

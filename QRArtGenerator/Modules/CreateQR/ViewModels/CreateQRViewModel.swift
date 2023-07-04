@@ -19,7 +19,6 @@ class CreateQRViewModel: ObservableObject {
                 input.prompt = templateQR.styles[indexSelectTemplate].config.positivePrompt
                 input.negativePrompt = templateQR.styles[indexSelectTemplate].config.negativePrompt
             }
-            
         }
     }
     @Published var input: QRDetailItem = QRDetailItem()
@@ -27,13 +26,20 @@ class CreateQRViewModel: ObservableObject {
     @Published var source: CreateQRViewSource = .create
     @Published var showingSelectQRTypeView: Bool = false
     @Published var showingSelectCountryView: Bool = false
+    @Published var isShowLoadingView: Bool = false
+    @Published var isShowExport: Bool = false
+    @Published var imageResult: Image = Image("")
     
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
     init(source: CreateQRViewSource, indexSelect: Int?, list: TemplateModel?) {
         self.source = source
-        self.indexSelectTemplate = indexSelect ?? 0
+        if let indexSelect = indexSelect {
+            self.indexSelectTemplate = indexSelect + 1
+        } else {
+            self.indexSelectTemplate = 0
+        }
         if let list = list {
             self.templateQR = list
             self.templateQR.styles.insert(createBasicQRItem(), at: 0)
@@ -49,14 +55,16 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func fetchTemplate() {
-        templateRepository.fetchTemplate().sink { comple in
-            
-        } receiveValue: { templates in
-            if let templates = templates?.first {
-                self.templateQR = templates
-                self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
-            }
-        }.store(in: &cancellable)
+        if templateQR.styles.isEmpty {
+            templateRepository.fetchTemplate().sink { comple in
+
+            } receiveValue: { templates in
+                if let templates = templates?.first {
+                    self.templateQR = templates
+                    self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
+                }
+            }.store(in: &cancellable)
+        }
     }
     
     func generateQR() {
@@ -92,7 +100,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func validName() -> Bool {
-        return input.name.isEmpty && input.name.count < 50
+        return !input.name.isEmpty && input.name.count < 50
     }
     
     func genQRLocal(text: String) -> Data? {
@@ -108,21 +116,21 @@ class CreateQRViewModel: ObservableObject {
     
     func genQR() {
         guard let data = genQRLocal(text: getQRText()) else { return }
+        isShowLoadingView.toggle()
         templateRepository.genQR(data: data,
                                  qrText: getQRText(),
-                                 seed: 1,
                                  positivePrompt: input.prompt,
-                                 negativePrompt: input.negativePrompt)
+                                 negativePrompt: input.negativePrompt,
+                                 guidanceScale: Int(input.guidance),
+                                 numInferenceSteps: Int(input.steps),
+                                 controlnetConditioningScale: Int(input.contronetScale))
         .sink { comple in
-            switch comple {
-            case .finished:
-                break
-            case .failure:
-                break
-            }
+            self.isShowLoadingView.toggle()
         } receiveValue: { data in
-            var tuan = try? String(data: data!, encoding: .utf8)
-            print("tuanlt: \(tuan)")
+            guard let data = data, let uiImage = UIImage(data: data) else { return }
+            self.input.qrImage = uiImage
+            self.imageResult = Image(uiImage: uiImage)
+            self.isShowExport.toggle()
         }.store(in: &cancellable)
 
     }

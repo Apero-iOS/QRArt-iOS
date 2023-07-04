@@ -124,6 +124,7 @@
 		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
 		C8109C872A51971A0093B48A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C862A51971A0093B48A /* LoadingView.swift */; };
 		C8109C8A2A5198970093B48A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C892A5198970093B48A /* ResultView.swift */; };
+		C84BBF272A53FC950065B8AF /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BBF262A53FC950065B8AF /* ResultViewModel.swift */; };
 		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
 		C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E402A4DAF320077DCC3 /* ai_tab.json */; };
 		C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E412A4DAF320077DCC3 /* crown.json */; };
@@ -300,6 +301,7 @@
 		C8109C822A518B3E0093B48A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		C8109C862A51971A0093B48A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C8109C892A5198970093B48A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		C84BBF262A53FC950065B8AF /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		C8AA3E1B2A4D61030077DCC3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		C8AA3E402A4DAF320077DCC3 /* ai_tab.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ai_tab.json; sourceTree = "<group>"; };
@@ -1069,6 +1071,7 @@
 			children = (
 				9AC7DCC12A4DB6C600FB3119 /* AdvancedSettingsView.swift */,
 				9AC7DCC52A4DB6C600FB3119 /* PromptView.swift */,
+				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
 			);
 			path = AdavancedSettings;
 			sourceTree = "<group>";
@@ -1079,7 +1082,6 @@
 				9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */,
 				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
 				9AC7DCBE2A4DB6C600FB3119 /* SecurityModeView.swift */,
-				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
 				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
 				9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */,
 				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
@@ -1106,6 +1108,7 @@
 			children = (
 				C8109C892A5198970093B48A /* ResultView.swift */,
 				C8E923B42A52768600835F93 /* ResultButtonView.swift */,
+				C84BBF262A53FC950065B8AF /* ResultViewModel.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -1536,6 +1539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59286C7D2A4D31D300EBBEBF /* TabbarView.swift in Sources */,
+				C84BBF272A53FC950065B8AF /* ResultViewModel.swift in Sources */,
 				59286C912A4D31D300EBBEBF /* ScannerView.swift in Sources */,
 				59F74C312A4E85D800AD8CBA /* EdgeInsets+.swift in Sources */,
 				9AC7DCB52A4DB30300FB3119 /* SelectQRDetailView.swift in Sources */,
@@ -1836,6 +1840,7 @@
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "QR Art Code-DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "QRArt requires access to the album to import photos and videos to video editing project files and save videos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1873,8 +1878,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "QR Art Code-STG";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR Art Code-DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "QRArt requires access to the album to import photos and videos to video editing project files and save videos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2051,8 +2057,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "QR Art Code";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR Art Code-DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "QRArt requires access to the album to import photos and videos to video editing project files and save videos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -68,9 +68,9 @@ class QRItemDB: Object {
                             paypalAmount: paypalAmount,
                             prompt: prompt,
                             negativePrompt: negativePrompt,
-                            guidance: guidance,
-                            contronetScale: contronetScale,
-                            steps: steps)
+                            guidance: Double(guidance),
+                            contronetScale: Double(contronetScale),
+                            steps: Double(steps))
     }
 }
 
