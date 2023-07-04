@@ -19,7 +19,6 @@ class CreateQRViewModel: ObservableObject {
                 input.prompt = templateQR.styles[indexSelectTemplate].config.positivePrompt
                 input.negativePrompt = templateQR.styles[indexSelectTemplate].config.negativePrompt
             }
-            
         }
     }
     @Published var input: QRDetailItem = QRDetailItem()
@@ -36,7 +35,11 @@ class CreateQRViewModel: ObservableObject {
     
     init(source: CreateQRViewSource, indexSelect: Int?, list: TemplateModel?) {
         self.source = source
-        self.indexSelectTemplate = indexSelect ?? 0
+        if let indexSelect = indexSelect {
+            self.indexSelectTemplate = indexSelect + 1
+        } else {
+            self.indexSelectTemplate = 0
+        }
         if let list = list {
             self.templateQR = list
             self.templateQR.styles.insert(createBasicQRItem(), at: 0)
@@ -52,14 +55,16 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func fetchTemplate() {
-        templateRepository.fetchTemplate().sink { comple in
-            
-        } receiveValue: { templates in
-            if let templates = templates?.first {
-                self.templateQR = templates
-                self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
-            }
-        }.store(in: &cancellable)
+        if templateQR.styles.isEmpty {
+            templateRepository.fetchTemplate().sink { comple in
+
+            } receiveValue: { templates in
+                if let templates = templates?.first {
+                    self.templateQR = templates
+                    self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
+                }
+            }.store(in: &cancellable)
+        }
     }
     
     func generateQR() {
@@ -95,7 +100,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func validName() -> Bool {
-        return input.name.isEmpty && input.name.count < 50
+        return !input.name.isEmpty && input.name.count < 50
     }
     
     func genQRLocal(text: String) -> Data? {
@@ -123,6 +128,7 @@ class CreateQRViewModel: ObservableObject {
             self.isShowLoadingView.toggle()
         } receiveValue: { data in
             guard let data = data, let uiImage = UIImage(data: data) else { return }
+            self.input.qrImage = uiImage
             self.imageResult = Image(uiImage: uiImage)
             self.isShowExport.toggle()
         }.store(in: &cancellable)

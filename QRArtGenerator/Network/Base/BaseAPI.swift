@@ -75,15 +75,11 @@ class BaseAPI<T: TargetType> {
                             let image = UIImage(data: data)
                             multipartFromData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
                         } else {
-//                            multipartFromData.append(self.convertToData(value), withName: key)
+                            if let dataUnwrap = "\(value)".data(using: .utf8) {
+                                multipartFromData.append(dataUnwrap, withName: key)
+                            }
                         }
                     }
-                    multipartFromData.append("abc".data(using: .utf8)!, withName: "qrText")
-                    multipartFromData.append("abc".data(using: .utf8)!, withName: "positivePrompt")
-                    multipartFromData.append("abc".data(using: .utf8)!, withName: "negativePrompt")
-                    multipartFromData.append("1".data(using: .utf8)!, withName: "guidanceScale")
-                    multipartFromData.append("1".data(using: .utf8)!, withName: "numInferenceSteps")
-                    multipartFromData.append("1".data(using: .utf8)!, withName: "controlnetConditioningScale")
                 }
             }, to: url, method: method, headers: headers).response { response in
                 switch response.result {

@@ -28,7 +28,7 @@ struct CreateQRView: View {
             }
             VStack {
                 Button(Rlocalizable.generate_qr()) {
-                    viewModel.genQR()
+                    viewModel.generateQR()
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
                 
@@ -66,7 +66,8 @@ struct CreateQRView: View {
             LoadingView()
         }
         .fullScreenCover(isPresented: $viewModel.isShowExport) {
-            ResultView(image: $viewModel.imageResult)
+            let resultViewModel = ResultViewModel(item: viewModel.input)
+            ResultView(viewModel: resultViewModel, image: $viewModel.imageResult)
         }
     }
     

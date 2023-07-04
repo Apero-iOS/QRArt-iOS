@@ -40,9 +40,9 @@ struct QRDetailItem: QRItem {
     // Advanced
     var prompt: String = ""
     var negativePrompt: String = ""
-    var guidance: Double = .zero
-    var contronetScale: Double = .zero
-    var steps: Double = .zero
+    var guidance: Double = 1
+    var contronetScale: Double = 1
+    var steps: Double = 1
     
     func convertToDB(isNew: Bool = true) -> QRItemDB {
         let object = QRItemDB()

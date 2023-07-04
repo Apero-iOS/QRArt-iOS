@@ -42,10 +42,11 @@ enum ResultButtonType: CaseIterable {
 
 struct ResultButtonView: View {
     @State var typeButton: ResultButtonType = .download4k
+    var onTap: (() -> Void)? = nil
     
     var body: some View {
         Button {
-            
+            onTap?()
         } label: {
             ZStack(alignment: .topTrailing) {
                 HStack(alignment: .center, spacing: 8) {
