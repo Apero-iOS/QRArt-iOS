@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @StateObject private var viewModel = SettingsViewModel()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         VStack(alignment: .center) {
@@ -36,7 +37,7 @@ struct SettingsView: View {
                                     .font(R.font.urbanistRegular.font(size: 11))
                                     .foregroundColor(R.color.color_1B232E.color)
                                 Button {
-                                    //TODOs
+                                    viewModel.isShowIAP.toggle()
                                 } label: {
                                     HStack {
                                         Text(Rlocalizable.try_it_out())
@@ -58,27 +59,42 @@ struct SettingsView: View {
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)
                     
-                    ForEach(viewModel.settings, id: \.self) { item in
-                        NavigationLink {
-                            switch item {
-                                case .language:
-                                    let viewModel = LanguageViewModel(sourceOpen: .setting)
-                                    LanguageView(viewModel: viewModel)
-                                default:
-                                    Text(item.name)
-                            }
-                        } label: {
-                            SettingRowView(item: item)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 12)
-                        }
-                    }
+                    listItemView
                 }
             }
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .listStyle(.grouped)
+        .fullScreenCover(isPresented: $viewModel.isShowIAP) {
+            IAPView()
+        }
+    }
+    
+    @ViewBuilder private var listItemView: some View {
+        ForEach(viewModel.settings, id: \.self) { item in
+            NavigationLink {
+                switch item {
+                    case .language:
+                        let viewModel = LanguageViewModel(sourceOpen: .setting)
+                        LanguageView(viewModel: viewModel)
+                    case .privacy_policy:
+                        WebView(urlString: Constants.policyUrl)
+                            .ignoresSafeArea()
+                            .navigationBarTitle(Rlocalizable.privacy_policy(), displayMode: .inline)
+                    case .terms_of_service:
+                        WebView(urlString: Constants.termUrl)
+                            .ignoresSafeArea()
+                            .navigationBarTitle(Rlocalizable.terms_of_service(), displayMode: .inline)
+                    default:
+                        Text(item.name)
+                }
+            } label: {
+                SettingRowView(item: item)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+            }
+        }
     }
 }
 

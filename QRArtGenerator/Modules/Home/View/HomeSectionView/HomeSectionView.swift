@@ -11,6 +11,7 @@ struct HomeSectionView: View {
     
     var headerName: String
     var listItem: [Style] = []
+    var template: TemplateModel? = nil
     var onViewMore: (() -> Void)? = nil
     
     var body: some View {
@@ -19,7 +20,6 @@ struct HomeSectionView: View {
                 .padding(.horizontal, 20)
             listContentCustom()
         }.frame(height: 154)
-        
     }
 
     private func customHeader(with header: String, onViewMore: (() -> Void)? = nil) -> some View {
@@ -28,7 +28,7 @@ struct HomeSectionView: View {
                 .font(R.font.urbanistSemiBold.font(size: 16))
             Spacer()
             NavigationLink {
-                DetailStylesView(styles: listItem)
+                DetailStylesView(template: template)
             } label: {
                 Text(Rlocalizable.view_more())
                     .font(R.font.urbanistMedium.font(size: 14))
@@ -41,8 +41,13 @@ struct HomeSectionView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 ForEach(0..<listItem.count, id: \.self) { index in
-                    let item = listItem[index]
-                    itemView(item)
+                    NavigationLink {
+                        let viewModel = CreateQRViewModel(source: .template, indexSelect: index, list: template)
+                        CreateQRView(viewModel: viewModel)
+                    } label: {
+                        let item = listItem[index]
+                        itemView(item)
+                    }
                 }
             }
             .padding(.horizontal, 20)
@@ -56,6 +61,7 @@ struct HomeSectionView: View {
                 .cornerRadius(12, antialiased: true)
             Text(item.name)
                 .font(R.font.urbanistSemiBold.font(size: 12))
+                .foregroundColor(R.color.color_1B232E.color)
         }.frame(width: 100, height: 121)
     }
 }

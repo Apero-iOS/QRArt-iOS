@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StoreKit
 import SwiftUI
 
 final class Router {
@@ -14,8 +15,21 @@ final class Router {
         Router.setRootView(view: TabbarView(), window: window)
     }
     
+    public static func showFirstLanguage(window: UIWindow? = nil) {
+        let viewModel = LanguageViewModel(sourceOpen: .splash)
+        Router.setRootView(view: LanguageView(viewModel: viewModel), window: window)
+    }
+    
     public static func showOnboarding(window: UIWindow? = nil) {
         Router.setRootView(view: OnboardingView(), window: window)
+    }
+    
+    public static func requestReview() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
+            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                SKStoreReviewController.requestReview(in: scene)
+            }
+        }
     }
     
     //MARK: private

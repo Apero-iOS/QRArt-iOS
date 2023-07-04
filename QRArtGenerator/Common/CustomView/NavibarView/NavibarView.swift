@@ -13,24 +13,31 @@ struct NavibarView: View {
     
     var title: String = "Title" /// Set title
     var isImageTitle: Bool = false /// Ẩn hiện Image cạnh title
-    var imageRightButton: Image = Image(R.image.ic_shine_ai) /// Set Image nút bên trái
+    var imageRightTitle: Image = Image(R.image.ic_shine_ai) /// Set Image bên trái title
+    var imageRightButton: Image = Image(R.image.ic_purchase) /// Set Image button bên trái
     var isRightButton: Bool = false /// Ẩn hiện button bên trái
+    var isLeftButton: Bool = true
     
     var onRightAction: (() -> Void)? = nil
     
     var body: some View {
         HStack {
-            Button {
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Image(R.image.ic_arrow_back)
-            }.frame(width: 50, height: 50)
+            if isLeftButton {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(R.image.ic_arrow_back)
+                }.frame(width: 50, height: 50)
+            } else {
+                Text("")
+                    .frame(width: 50, height: 50)
+            }
 
             Spacer()
             Text(title)
                 .font(R.font.urbanistSemiBold.font(size: 18))
             if isImageTitle {
-                imageRightButton
+                imageRightTitle
                     .frame(width: 28, height: 24)
                     .offset(y: -3)
             }
@@ -40,7 +47,7 @@ struct NavibarView: View {
                 Button {
                     onRightAction?()
                 } label: {
-                    Image(R.image.ic_purchase)
+                    imageRightButton
                         .scaledToFit()
                 }.frame(width: 50, height: 50)
             } else {

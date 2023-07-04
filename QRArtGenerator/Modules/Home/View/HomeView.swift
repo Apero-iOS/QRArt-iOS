@@ -16,7 +16,7 @@ struct HomeView: View {
             VStack(spacing: 16) {
                 bannerView
                 ForEach(viewModel.listStyle) { category in
-                    HomeSectionView(headerName: "Technology", listItem: category.styles)
+                    HomeSectionView(headerName: "Technology", listItem: category.styles, template: category)
                 }
                 Spacer()
             }
@@ -44,7 +44,7 @@ struct HomeView: View {
                         .font(R.font.urbanistRegular.font(size: 11))
                         .foregroundColor(R.color.color_1B232E.color)
                     Button {
-                        //TODOs
+                        viewModel.isShowIAP.toggle()
                     } label: {
                         HStack {
                             Text(Rlocalizable.try_it_out())
@@ -67,6 +67,9 @@ struct HomeView: View {
         }
         .frame(height: 152)
         .padding(.horizontal, 20)
+        .fullScreenCover(isPresented: $viewModel.isShowIAP) {
+            IAPView()
+        }
     }
 }
 
