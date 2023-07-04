@@ -73,27 +73,51 @@ struct SettingsView: View {
     
     @ViewBuilder private var listItemView: some View {
         ForEach(viewModel.settings, id: \.self) { item in
-            NavigationLink {
-                switch item {
-                    case .language:
-                        let viewModel = LanguageViewModel(sourceOpen: .setting)
-                        LanguageView(viewModel: viewModel)
-                    case .privacy_policy:
-                        WebView(urlString: Constants.policyUrl)
-                            .ignoresSafeArea()
-                            .navigationBarTitle(Rlocalizable.privacy_policy(), displayMode: .inline)
-                    case .terms_of_service:
-                        WebView(urlString: Constants.termUrl)
-                            .ignoresSafeArea()
-                            .navigationBarTitle(Rlocalizable.terms_of_service(), displayMode: .inline)
-                    default:
-                        Text(item.name)
+            if item == .rate_app {
+                Button {
+                    Router.requestReview()
+                } label: {
+                    SettingRowView(item: item)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
                 }
-            } label: {
+            } else if item == .share_app {
+                Button {
+                    Router.actionSheet()
+                } label: {
+                    SettingRowView(item: item)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                }
+            } else if item == .version {
                 SettingRowView(item: item)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 12)
+            } else {
+                NavigationLink {
+                    switch item {
+                        case .language:
+                            let viewModel = LanguageViewModel(sourceOpen: .setting)
+                            LanguageView(viewModel: viewModel)
+                        case .privacy_policy:
+                            WebView(urlString: Constants.policyUrl)
+                                .ignoresSafeArea()
+                                .navigationBarTitle(Rlocalizable.privacy_policy(), displayMode: .inline)
+                        case .terms_of_service:
+                            WebView(urlString: Constants.termUrl)
+                                .ignoresSafeArea()
+                                .navigationBarTitle(Rlocalizable.terms_of_service(), displayMode: .inline)
+                        default:
+                            Text(item.name)
+                    }
+                } label: {
+                    SettingRowView(item: item)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                }
+                
             }
+            
         }
     }
 }
