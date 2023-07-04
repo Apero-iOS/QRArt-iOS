@@ -66,8 +66,8 @@ struct CreateQRView: View {
             LoadingView()
         }
         .fullScreenCover(isPresented: $viewModel.isShowExport) {
-            let resultViewModel = ResultViewModel(item: viewModel.input)
-            ResultView(viewModel: resultViewModel, image: $viewModel.imageResult)
+            let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
+            ResultView(viewModel: resultViewModel)
         }
     }
     
