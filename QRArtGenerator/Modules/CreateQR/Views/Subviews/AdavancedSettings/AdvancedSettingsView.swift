@@ -19,6 +19,9 @@ struct AdvancedSettingsView: View {
     @Binding var negativePrompt: String
     @Binding var oldPrompt: String
     @Binding var oldNegativePrompt: String
+    @Binding var guidance: Double
+    @Binding var steps: Double
+    @Binding var scale: Double
 
     var body: some View {
         LazyVStack(alignment: .leading) {
@@ -65,13 +68,16 @@ struct AdvancedSettingsView: View {
                        subTitle: Rlocalizable.negative_prompt_desc())
             // guidance
             SliderSettingView(title: Rlocalizable.guidance(),
-                              desc: Rlocalizable.guidance_desc())
+                              desc: Rlocalizable.guidance_desc(),
+                              value: $guidance)
             // scale
             SliderSettingView(title: Rlocalizable.controlnet_scale(),
-                              desc: Rlocalizable.controlnet_scale_desc())
+                              desc: Rlocalizable.controlnet_scale_desc(),
+                              value: $scale)
             // steps
             SliderSettingView(title: Rlocalizable.steps(),
-                              desc: Rlocalizable.steps_desc())
+                              desc: Rlocalizable.steps_desc(),
+                              value: $steps)
         }
     }
     
@@ -86,6 +92,6 @@ struct AdvancedSettingsView_Previews: PreviewProvider {
         AdvancedSettingsView(prompt: .constant(""),
                              negativePrompt: .constant(""),
                              oldPrompt: .constant(""),
-                             oldNegativePrompt: .constant(""))
+                             oldNegativePrompt: .constant(""), guidance: .constant(0), steps: .constant(0), scale: .constant(0))
     }
 }

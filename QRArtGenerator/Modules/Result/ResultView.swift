@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ResultView: View {
+    @Binding var image: Image
     var body: some View {
         VStack(spacing: 20) {
             naviView
-            Image(R.image.img_result)
+            image
                 .resizable()
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
                 .frame(width: WIDTH_SCREEN, height: WIDTH_SCREEN, alignment: .center)
@@ -27,6 +28,7 @@ struct ResultView: View {
             }
             Spacer()
         }
+        .hideNavigationBar(isHidden: true)
     }
     
     @ViewBuilder var naviView: some View {
@@ -38,6 +40,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView()
+        ResultView(image: .constant(Image("")))
     }
 }

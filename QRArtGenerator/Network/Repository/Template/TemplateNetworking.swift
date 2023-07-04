@@ -9,12 +9,14 @@ import Foundation
 
 enum TemplateNetworking {
     case fetchTemplate
-    case genQR(data: Data, qrText: String, seed: Int?, positivePrompt: String?, negativePrompt: String?)
+    case genQR(data: Data, qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int, controlnetConditioningScale: Int)
 }
 
 extension TemplateNetworking: TargetType {
     
     var baseURL: BaseURLType {
+        switch self {
+        case .fetchTemplate:
 #if DEV
         return .dev
 #elseif STG
@@ -22,6 +24,16 @@ extension TemplateNetworking: TargetType {
 #else
         return .product
 #endif
+        case .genQR:
+#if DEV
+            return .devGenImage
+#elseif STG
+        return .stgGenImage
+#else
+        return .productGenImage
+#endif
+        }
+
     }
     
     var method: HTTPMethod {
@@ -46,12 +58,14 @@ extension TemplateNetworking: TargetType {
         switch self {
         case .fetchTemplate:
             return .requestPlainBody
-        case .genQR(data: let data, qrText: let qrText, seed: let seed, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt):
+        case .genQR(data: let data, qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps, controlnetConditioningScale: let controlnetConditioningScale):
             return .requestBody(body: ["file": data,
                                        "qrText": qrText,
-                                       "seed": seed,
                                        "positivePrompt": positivePrompt,
-                                       "negativePrompt": negativePrompt])
+                                       "negativePrompt": negativePrompt,
+                                       "guidanceScale": guidanceScale,
+                                       "numInferenceSteps": numInferenceSteps,
+                                       "controlnetConditioningScale": controlnetConditioningScale])
         }
     }
     

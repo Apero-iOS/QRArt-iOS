@@ -27,6 +27,9 @@ class CreateQRViewModel: ObservableObject {
     @Published var source: CreateQRViewSource = .create
     @Published var showingSelectQRTypeView: Bool = false
     @Published var showingSelectCountryView: Bool = false
+    @Published var isShowLoadingView: Bool = false
+    @Published var isShowExport: Bool = false
+    @Published var imageResult: Image = Image("")
     
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
@@ -108,21 +111,20 @@ class CreateQRViewModel: ObservableObject {
     
     func genQR() {
         guard let data = genQRLocal(text: getQRText()) else { return }
+        isShowLoadingView.toggle()
         templateRepository.genQR(data: data,
                                  qrText: getQRText(),
-                                 seed: 1,
                                  positivePrompt: input.prompt,
-                                 negativePrompt: input.negativePrompt)
+                                 negativePrompt: input.negativePrompt,
+                                 guidanceScale: Int(input.guidance),
+                                 numInferenceSteps: Int(input.steps),
+                                 controlnetConditioningScale: Int(input.contronetScale))
         .sink { comple in
-            switch comple {
-            case .finished:
-                break
-            case .failure:
-                break
-            }
+            self.isShowLoadingView.toggle()
         } receiveValue: { data in
-            var tuan = try? String(data: data!, encoding: .utf8)
-            print("tuanlt: \(tuan)")
+            guard let data = data, let uiImage = UIImage(data: data) else { return }
+            self.imageResult = Image(uiImage: uiImage)
+            self.isShowExport.toggle()
         }.store(in: &cancellable)
 
     }

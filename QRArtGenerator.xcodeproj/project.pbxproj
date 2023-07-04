@@ -1069,6 +1069,7 @@
 			children = (
 				9AC7DCC12A4DB6C600FB3119 /* AdvancedSettingsView.swift */,
 				9AC7DCC52A4DB6C600FB3119 /* PromptView.swift */,
+				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
 			);
 			path = AdavancedSettings;
 			sourceTree = "<group>";
@@ -1079,7 +1080,6 @@
 				9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */,
 				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
 				9AC7DCBE2A4DB6C600FB3119 /* SecurityModeView.swift */,
-				9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */,
 				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
 				9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */,
 				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,

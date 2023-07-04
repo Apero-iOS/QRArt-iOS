@@ -11,6 +11,9 @@ enum BaseURLType {
     case dev
     case stg
     case product
+    case devGenImage
+    case stgGenImage
+    case productGenImage
     
     var desc : String {
         switch self {
@@ -20,6 +23,8 @@ enum BaseURLType {
             return "https://style-management-api.dev.apero.vn"
         case .product:
             return "https://style-management-api.dev.apero.vn"
+        case .devGenImage, .stgGenImage, .productGenImage:
+            return "https://image-generator.dev.apero.vn"
         }
     }
 }

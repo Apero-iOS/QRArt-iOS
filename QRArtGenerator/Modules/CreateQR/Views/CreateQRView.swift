@@ -62,6 +62,12 @@ struct CreateQRView: View {
             viewModel.fetchCountry()
             viewModel.fetchTemplate()
         }
+        .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+            LoadingView()
+        }
+        .fullScreenCover(isPresented: $viewModel.isShowExport) {
+            ResultView(image: $viewModel.imageResult)
+        }
     }
     
     @ViewBuilder var templateView: some View {
@@ -83,7 +89,9 @@ struct CreateQRView: View {
             AdvancedSettingsView(prompt: $viewModel.input.prompt,
                                  negativePrompt: $viewModel.input.negativePrompt,
                                  oldPrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.positivePrompt,
-                                 oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt)
+                                 oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt, guidance: $viewModel.input.guidance,
+                                 steps: $viewModel.input.steps,
+                                 scale: $viewModel.input.contronetScale)
         }
     }
     
