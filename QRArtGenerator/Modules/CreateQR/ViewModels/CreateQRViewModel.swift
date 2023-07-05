@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import MobileAds
 
 class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
@@ -29,6 +30,10 @@ class CreateQRViewModel: ObservableObject {
     @Published var isShowLoadingView: Bool = false
     @Published var isShowExport: Bool = false
     @Published var imageResult: Image = Image("")
+    
+    var isShowAdsInter: Bool {
+        return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
+    }
     
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
@@ -71,6 +76,22 @@ class CreateQRViewModel: ObservableObject {
         validInput = true
         if isValidInput() {
             genQR()
+        }
+    }
+    
+    public func createIdAds() {
+        if isShowAdsInter {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_generate)
+        }
+    }
+    
+    public func showAdsInter() {
+        if isShowAdsInter {
+            AdMobManager.shared.showIntertitial(unitId: .inter_generate, isSplash: false, blockDidDismiss: { [weak self] in
+                self?.generateQR()
+            })
+        } else {
+            generateQR()
         }
     }
     

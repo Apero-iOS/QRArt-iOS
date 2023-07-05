@@ -13,17 +13,18 @@ import Firebase
 struct QRArtGeneratorApp: App {
     
     init() {
+        setupFirebase()
         configTableView()
         configScrollView()
         configKeyboard()
         configIAP()
-        setupFirebase()
     }
         
     var body: some Scene {
         WindowGroup {
             SplashView()
         }
+
     }
     
     private func configTableView() {

@@ -44,6 +44,11 @@ struct ResultView: View {
                     }
                 }
                 Spacer()
+                if viewModel.isShowAdsInter {
+                    AdNativeView(adUnitID: .native_result, type: .medium)
+                        .frame(height: 171)
+                        .padding(.horizontal, 20)
+                }
             }
             if viewModel.isShowSuccessView {
                 SuccessView()

@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import MobileAds
 
 struct PromptView: View {
     @Binding var prompt: String
+    @State var countAds: Int = 1
     var oldPrompt: String
     var title: String = ""
     var subTitle: String = ""
+    
+    private var isShowAdsInter: Bool {
+        return RemoteConfigService.shared.number(forKey: .inter_inspire) > .zero && !UserDefaults.standard.isUserVip
+    }
     
     var body: some View {
         VStack(spacing: 8) {
@@ -26,7 +32,7 @@ struct PromptView: View {
                 }
                 Spacer()
                 Button {
-                    prompt = oldPrompt
+                    showAdsInter()
                 } label: {
                     R.image.ic_pen.image
                 }
@@ -36,6 +42,27 @@ struct PromptView: View {
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
+        }
+        .onAppear {
+            createIdAds()
+        }
+    }
+    
+    private func showAdsInter() {
+        if isShowAdsInter, countAds%RemoteConfigService.shared.number(forKey: .inter_inspire) == .zero {
+            AdMobManager.shared.showIntertitial(unitId: .inter_inspire, isSplash: false, blockDidDismiss:  {
+                prompt = oldPrompt
+                countAds += 1
+            })
+        } else {
+            prompt = oldPrompt
+            countAds += 1
+        }
+    }
+    
+    private func createIdAds() {
+        if isShowAdsInter {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_inspire)
         }
     }
 }
