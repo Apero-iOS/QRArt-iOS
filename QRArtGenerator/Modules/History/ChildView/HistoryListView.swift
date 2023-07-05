@@ -16,11 +16,13 @@ struct HistoryListView: View {
         List {
             Section(content: {
                 ForEach(items, id: \.id) { item in
+                    let vm = ResultViewModel(item: item as! QRDetailItem, image: Image(uiImage: item.qrImage), source: .history)
                     HistoryCell(item: item, canDelete: isInHistory, onDelete: {
                         onDelete?(item)
                     })
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                     .hideSeparatorLine()
+                    .background(NavigationLink("", destination: ResultView(viewModel: vm)).opacity(0))
                 }
             }, footer: {
                 Color.clear
