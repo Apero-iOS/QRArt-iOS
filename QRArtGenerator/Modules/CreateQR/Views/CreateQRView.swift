@@ -28,7 +28,7 @@ struct CreateQRView: View {
             }
             VStack {
                 Button(Rlocalizable.generate_qr()) {
-                    viewModel.generateQR()
+                    viewModel.showAdsInter()
                 }
                 .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
                 
@@ -61,6 +61,7 @@ struct CreateQRView: View {
         .onAppear {
             viewModel.fetchCountry()
             viewModel.fetchTemplate()
+            viewModel.createIdAds()
         }
         .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
             LoadingView()

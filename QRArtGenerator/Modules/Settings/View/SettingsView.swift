@@ -30,9 +30,12 @@ struct SettingsView: View {
                             Image(R.image.img_setting_banner)
                                 .frame(width: 180, height: 150)
                             VStack(alignment: .leading, spacing: 6) {
-                                Text(Rlocalizable.upgrade_to_qr())
-                                    .font(R.font.urbanistBold.font(size: 14))
-                                    .foregroundColor(R.color.color_1B232E.color)
+                                HStack(spacing: 4) {
+                                    Text(Rlocalizable.upgrade_to_qr())
+                                        .font(R.font.urbanistBold.font(size: 14))
+                                        .foregroundColor(R.color.color_1B232E.color)
+                                    Image(R.image.ic_pro)
+                                }
                                 Text(Rlocalizable.content_banner_setting())
                                     .font(R.font.urbanistRegular.font(size: 11))
                                     .foregroundColor(R.color.color_1B232E.color)

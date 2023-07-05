@@ -33,10 +33,12 @@ struct TabbarView: View {
                                         switch tab {
                                         case .scan:
                                             viewModel.showScan.toggle()
+                                            viewModel.changeCountSelect()
                                         case .ai:
                                             viewModel.showCreateQR.toggle()
+                                            viewModel.changeCountSelect()
                                         default:
-                                            break
+                                            viewModel.changeCountSelect()
                                         }
                                     }
                                 }
@@ -79,6 +81,15 @@ struct TabbarView: View {
                 IAPView()
             }
         }
+        .onChange(of: viewModel.countSelectTab, perform: { newValue in
+            let numberAds = viewModel.getNumberShowAds()
+            if numberAds > .zero, newValue%numberAds == .zero {
+                viewModel.showAdsInter()
+            }
+        })
+        .onAppear {
+            viewModel.createIdAds()
+        }
     }
     
     @ViewBuilder var contentView: some View {
@@ -88,7 +99,11 @@ struct TabbarView: View {
             HomeView().tag(TabbarEnum.home)
             
             SettingsView().tag(TabbarEnum.settings)
+            
         }
+        .onChange(of: viewModel.selectedTab, perform: { newValue in
+            viewModel.changeCountSelect()
+        })
     }
 }
 

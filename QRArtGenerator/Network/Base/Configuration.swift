@@ -17,14 +17,17 @@ enum BaseURLType {
     
     var desc : String {
         switch self {
-        case .dev :
-            return "https://style-management-api.dev.apero.vn"
-        case .stg :
-            return "https://style-management-api.dev.apero.vn"
-        case .product:
-            return "https://style-management-api.dev.apero.vn"
-        case .devGenImage, .stgGenImage, .productGenImage:
-            return "https://image-generator.dev.apero.vn"
+            case .dev :
+                return "https://style-management-api.dev.apero.vn"
+            case .stg :
+                return "https://style-management-api.stg.apero.vn"
+            case .product:
+                return "https://api-style-manager.apero.vn"
+            case .devGenImage:
+                return "https://image-generator.dev.apero.vn"
+            case .stgGenImage, .productGenImage:
+                return "https://api-img-gen-wrapper.apero.vn"
+                
         }
     }
 }

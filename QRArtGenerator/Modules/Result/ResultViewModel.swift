@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Combine
 import SwiftUI
+import MobileAds
 
 enum Resolutions {
     case normal
@@ -33,6 +34,15 @@ class ResultViewModel: ObservableObject {
     @Published var source: ResultViewSource
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
+    
+
+    var isShowAdsNative: Bool {
+        return RemoteConfigService.shared.bool(forKey: .native_result) && !UserDefaults.standard.isUserVip
+    }
+    
+    var isShowAdsInter: Bool {
+        return RemoteConfigService.shared.bool(forKey: .inter_regenerate) && !UserDefaults.standard.isUserVip
+    }
     
     init(item: QRDetailItem, image: Image, source: ResultViewSource) {
         self.item = item
@@ -107,6 +117,22 @@ class ResultViewModel: ObservableObject {
             return "WIFI:S:\(item.wfSsid);P:\(item.wfPassword);T:\(item.wfSecurityMode.title);;"
         case .paypal:
             return "\(item.urlString)/\(item.paypalAmount)"
+        }
+    }
+    
+    public func createIdAds() {
+        if isShowAdsInter {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_regenerate)
+        }
+    }
+    
+    public func showAdsInter() {
+        if isShowAdsInter {
+            AdMobManager.shared.showIntertitial(unitId: .inter_regenerate, isSplash: false, blockDidDismiss: { [weak self] in
+                self?.regenerate()
+            })
+        } else {
+            regenerate()
         }
     }
 }
