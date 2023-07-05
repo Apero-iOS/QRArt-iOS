@@ -27,6 +27,7 @@ struct TabItem: View {
                                             startPoint: .leading,
                                             endPoint: .trailing)
                         )
+                        .lineLimit(1)
                     
                 } else {
                     (tab == selectedTab ? tab.selectedIcon : tab.icon)
@@ -36,6 +37,7 @@ struct TabItem: View {
                     Text(tab.title)
                         .font(R.font.urbanistSemiBold.font(size: 14))
                         .foregroundColor(tab == selectedTab ? R.color.color_653AE4.color : R.color.color_9EABB9.color)
+                        .lineLimit(1)
                 }
             }
             .frame(width: width)
