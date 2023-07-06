@@ -60,12 +60,13 @@ struct TabbarView: View {
                                 .padding(.leading, 4)
                             
                             Spacer()
-                            
-                            LottieView(lottieFile: R.file.crownJson.name)
-                                .frame(width: 24, height: 24)
-                                .onTapGesture {
-                                    viewModel.showIAP.toggle()
-                                }
+                            if !UserDefaults.standard.isUserVip {
+                                LottieView(lottieFile: R.file.crownJson.name)
+                                    .frame(width: 24, height: 24)
+                                    .onTapGesture {
+                                        viewModel.showIAP.toggle()
+                                    }
+                            }
                         }
                         .frame(width: WIDTH_SCREEN - 32, height: 48)
                     })

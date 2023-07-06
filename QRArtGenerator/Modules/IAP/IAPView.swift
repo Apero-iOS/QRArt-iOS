@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct IAPView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @StateObject var viewModel = IAPViewModel()
+    @State var cancellable = Set<AnyCancellable>()
+    var onClose: (() -> Void)? = nil
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -64,7 +67,9 @@ struct IAPView: View {
                         
                         VStack(spacing: 12) {
                             ForEach(Array(viewModel.iapIds.enumerated()), id: \.offset) { index, type in
-                                IAPCell(idType: type, index: index, selectedIndex: $viewModel.selectedIndex)
+                                IAPCell(idType: type, index: index, selectedIndex: $viewModel.selectedIndex) {
+                                    viewModel.onTap()
+                                }
                             }
                         }
                         .padding(.top, 8)
@@ -125,7 +130,16 @@ struct IAPView: View {
         .ignoresSafeArea()
         .onAppear {
             viewModel.getInfoIAP()
+            InappManager.share.didPaymentSuccess.sink { isSuccess in
+                if isSuccess {
+                    dismiss()
+                }
+                
+            }.store(in: &cancellable)
         }
+        .onDisappear(perform: {
+            onClose?()
+        })
         .sheet(isPresented: $viewModel.showTerms) {
             NavigationView {
                 WebView(urlString: Constants.termUrl)

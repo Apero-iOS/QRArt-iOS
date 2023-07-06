@@ -12,6 +12,7 @@ struct OnboardingView: View {
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var pageIndex: Int = .zero
     @State private var progress: Double = .zero
+    @State private var showSub: Bool = false
     
     var body: some View {
         VStack {
@@ -39,6 +40,11 @@ struct OnboardingView: View {
                 
             }
         }.ignoresSafeArea()
+            .fullScreenCover(isPresented: $showSub) {
+                IAPView {
+                    Router.showTabbar()
+                }
+            }
     }
     
     private func changePage() {
@@ -47,7 +53,7 @@ struct OnboardingView: View {
             progress = Double(pageIndex)
         } else {
             UserDefaults.standard.didShowOnboarding = true
-            Router.showTabbar()
+            showSub = true
         }
     }
 }

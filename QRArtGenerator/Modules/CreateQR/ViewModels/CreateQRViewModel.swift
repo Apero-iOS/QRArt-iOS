@@ -30,6 +30,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var isShowLoadingView: Bool = false
     @Published var isShowExport: Bool = false
     @Published var imageResult: Image = Image("")
+    @Published var showSub: Bool = false
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -72,10 +73,19 @@ class CreateQRViewModel: ObservableObject {
         }
     }
     
+    func checkShowSub() -> Bool {
+        !UserDefaults.standard.isUserVip && UserDefaults.standard.generatePerDay >= 3
+    }
+    
     func generateQR() {
-        validInput = true
-        if isValidInput() {
-            genQR()
+        if checkShowSub() {
+            showSub = true
+        } else {
+            UserDefaults.standard.generatePerDay += 1
+            validInput = true
+            if isValidInput() {
+                genQR()
+            }
         }
     }
     
@@ -86,13 +96,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     public func showAdsInter() {
-        if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_generate, isSplash: false, blockDidDismiss: { [weak self] in
-                self?.generateQR()
-            })
-        } else {
-            generateQR()
-        }
+        generateQR()
     }
     
     func isValidInput() -> Bool {
@@ -145,8 +149,16 @@ class CreateQRViewModel: ObservableObject {
                                  guidanceScale: Int(input.guidance),
                                  numInferenceSteps: Int(input.steps),
                                  controlnetConditioningScale: Int(input.contronetScale))
-        .sink { comple in
-            self.isShowLoadingView.toggle()
+        .sink { [weak self] comple in
+            guard let self = self else { return }
+            if self.isShowAdsInter {
+                AdMobManager.shared.showIntertitial(unitId: .inter_generate, isSplash: false, blockDidDismiss: { [weak self] in
+                    guard let self = self else { return }
+                    self.isShowLoadingView.toggle()
+                })
+            } else {
+                self.isShowLoadingView.toggle()
+            }
         } receiveValue: { data in
             guard let data = data, let uiImage = UIImage(data: data) else { return }
             self.input.qrImage = uiImage

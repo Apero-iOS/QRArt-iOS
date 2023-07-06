@@ -70,6 +70,9 @@ struct CreateQRView: View {
             let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
             ResultView(viewModel: resultViewModel)
         }
+        .fullScreenCover(isPresented: $viewModel.showSub) {
+            IAPView()
+        }
     }
     
     @ViewBuilder var templateView: some View {
@@ -109,8 +112,8 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var naviView: some View {
-        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: true) {
-            // TODO
+        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip) {
+            viewModel.showSub = true
         }
     }
 }

@@ -61,7 +61,9 @@ struct ResultView: View {
         .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
             LoadingView()
         }
-        
+        .fullScreenCover(isPresented: $viewModel.showIAP) {
+            IAPView()
+        }
         
     }
     
@@ -91,7 +93,11 @@ struct ResultView: View {
     
     @ViewBuilder var download4kButton: some View {
         ResultButtonView(typeButton: .download4k, onTap: {
-            viewModel.download4k()
+            if !UserDefaults.standard.isUserVip {
+                viewModel.showIAP.toggle()
+            } else {
+                viewModel.download4k()
+            }
         })
     }
 }

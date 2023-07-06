@@ -16,7 +16,7 @@ struct HomeView: View {
             VStack(spacing: 16) {
                 bannerView
                 ForEach(viewModel.listStyle) { category in
-                    HomeSectionView(headerName: "Technology", listItem: category.styles, template: category)
+                    HomeSectionView(headerName: category.category.name, listItem: category.styles, template: category)
                 }
                 Spacer()
             }
@@ -43,22 +43,24 @@ struct HomeView: View {
                     Text(Rlocalizable.content_banner_home())
                         .font(R.font.urbanistRegular.font(size: 11))
                         .foregroundColor(R.color.color_1B232E.color)
-                    Button {
-                        viewModel.isShowIAP.toggle()
-                    } label: {
-                        HStack {
-                            Text(Rlocalizable.try_it_out())
-                                .font(R.font.urbanistBold.font(size: 12))
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.white)
-                            Image(R.image.ic_shine)
+                    if !UserDefaults.standard.isUserVip {
+                        Button {
+                            viewModel.isShowIAP.toggle()
+                        } label: {
+                            HStack {
+                                Text(Rlocalizable.try_it_out())
+                                    .font(R.font.urbanistBold.font(size: 12))
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.white)
+                                Image(R.image.ic_shine)
+                            }
+                            .fixedSize()
                         }
-                        .fixedSize()
+                        .frame(width: 100, height: 24)
+                        .background(Color(R.color.color_653AE4))
+                        .clipShape(Capsule())
+                        .padding(.top, 8)
                     }
-                    .frame(width: 100, height: 24)
-                    .background(Color(R.color.color_653AE4))
-                    .clipShape(Capsule())
-                    .padding(.top, 8)
                 }
                 .padding(.horizontal, 16)
                 Spacer()

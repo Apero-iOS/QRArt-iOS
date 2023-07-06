@@ -33,7 +33,6 @@ extension TemplateNetworking: TargetType {
         return .productGenImage
 #endif
         }
-
     }
     
     var method: HTTPMethod {

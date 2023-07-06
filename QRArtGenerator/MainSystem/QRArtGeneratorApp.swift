@@ -18,6 +18,7 @@ struct QRArtGeneratorApp: App {
         configScrollView()
         configKeyboard()
         configIAP()
+        resetUserDefaults()
     }
         
     var body: some Scene {
@@ -57,5 +58,25 @@ struct QRArtGeneratorApp: App {
             return
         }
         FirebaseApp.configure(options: options)
+    }
+    
+    func resetUserDefaults() {
+        if let lastDate = UserDefaults.standard.lastDayOpenApp {
+            let calendar = Calendar.current
+            let firstComponents = calendar.dateComponents([.year, .month, .day], from: lastDate)
+            let secondComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+            if firstComponents.year == secondComponents.year &&
+                firstComponents.month == secondComponents.month &&
+                firstComponents.day == secondComponents.day {
+                print("Ngày, tháng, năm của hai date giống nhau.")
+            } else {
+                print("Ngày, tháng, năm của hai date khác nhau.")
+                UserDefaults.standard.generatePerDay = 0
+                UserDefaults.standard.regeneratePerDay = 0
+                UserDefaults.standard.lastDayOpenApp = Date()
+            }
+        } else {
+            UserDefaults.standard.lastDayOpenApp = Date()
+        }
     }
 }

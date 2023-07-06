@@ -32,6 +32,7 @@ class ResultViewModel: ObservableObject {
     @Published var image: Image
     @Published var sheet: Bool = false
     @Published var source: ResultViewSource
+    @Published var showIAP: Bool = false
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -71,8 +72,12 @@ class ResultViewModel: ObservableObject {
     }
     
     func download4k() {
-        if let image = scaleImage(resolutions: .high) {
-            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+        if UserDefaults.standard.isUserVip {
+            if let image = scaleImage(resolutions: .high) {
+                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+            }
+        } else {
+            showIAP = true
         }
     }
     
@@ -80,23 +85,33 @@ class ResultViewModel: ObservableObject {
         return QRHelper.genQR(text: text)
     }
     
+    func checkShowSub() -> Bool {
+        !UserDefaults.standard.isUserVip && UserDefaults.standard.regeneratePerDay >= 1
+    }
+    
     func regenerate() {
-        guard let data = genQRLocal(text: getQRText()) else { return }
-        isShowLoadingView.toggle()
-        templateRepository.genQR(data: data,
-                                 qrText: getQRText(),
-                                 positivePrompt: item.prompt,
-                                 negativePrompt: item.negativePrompt,
-                                 guidanceScale: Int(item.guidance),
-                                 numInferenceSteps: Int(item.steps),
-                                 controlnetConditioningScale: Int(item.contronetScale))
-        .sink { comple in
-            self.isShowLoadingView.toggle()
-        } receiveValue: { data in
-            guard let data = data, let uiImage = UIImage(data: data) else { return }
-            self.item.qrImage = uiImage
-            self.image = Image(uiImage: uiImage)
-        }.store(in: &cancellable)
+        if checkShowSub() {
+            showIAP = true
+        } else {
+            guard let data = genQRLocal(text: getQRText()) else { return }
+            UserDefaults.standard.regeneratePerDay += 1
+            isShowLoadingView.toggle()
+            templateRepository.genQR(data: data,
+                                     qrText: getQRText(),
+                                     positivePrompt: item.prompt,
+                                     negativePrompt: item.negativePrompt,
+                                     guidanceScale: Int(item.guidance),
+                                     numInferenceSteps: Int(item.steps),
+                                     controlnetConditioningScale: Int(item.contronetScale))
+            .sink { comple in
+                self.isShowLoadingView.toggle()
+            } receiveValue: { data in
+                guard let data = data, let uiImage = UIImage(data: data) else { return }
+                self.item.qrImage = uiImage
+                self.image = Image(uiImage: uiImage)
+            }.store(in: &cancellable)
+        }
+
     }
     
     func share() {
