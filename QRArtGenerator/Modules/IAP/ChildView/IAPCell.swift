@@ -11,6 +11,7 @@ struct IAPCell: View {
     @State var idType: IAPIdType
     @State var index: Int
     @Binding var selectedIndex: Int
+    var onTap: (() -> Void)? = nil
     
     
     var body: some View {
@@ -65,7 +66,7 @@ struct IAPCell: View {
             
             Spacer()
             
-            Text("$3.99")
+            Text(idType.localizedPrice)
                 .font(R.font.urbanistBold.font(size: 16))
                 .foregroundColor(isSelect ? .white : R.color.color_1B232E.color)
                 .padding(.trailing, 16)
@@ -75,6 +76,7 @@ struct IAPCell: View {
         .cornerRadius(12)
         .onTapGesture {
             selectedIndex = index
+            onTap?()
         }
     }
     

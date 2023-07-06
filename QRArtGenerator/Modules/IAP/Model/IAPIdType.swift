@@ -9,9 +9,9 @@ import Foundation
 import MobileAds
 
 enum IAPIdType: String, CaseIterable {
-    case week = "visionart.vip.week"
-    case month = "visionart.vip.monthly"
-    case lifetime = "visionart.lifetime"
+    case week = "qr.art.weeklytrial"
+    case month = "qr.art.monthly"
+    case lifetime = "qr.art.lifetime"
     
     struct SubscriptionInfo: Decodable {
         let list: String

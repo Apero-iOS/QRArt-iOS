@@ -37,6 +37,9 @@ struct Constants {
         static let OPEN_APP_COUNT = "OPEN_APP_COUNT"
         static let DID_SHOW_ONBOARDING = "DID_SHOW_ONBOARDING"
         static let FIRST_LANGUAGE = "FIRST_LANGUAGE"
+        static let GENERATE_PER_DAY = "GENERATE_PER_DAY"
+        static let REGENERATE_PER_DAY = "REGENERATE_PER_DAY"
+        static let KEY_LAST_DAY_OPEN_APP = "KEY_LAST_DAY_OPEN_APP"
     }
     
     struct GoogleService {

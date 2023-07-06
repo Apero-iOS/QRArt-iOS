@@ -45,4 +45,31 @@ extension UserDefaults {
             UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.FIRST_LANGUAGE)
         }
     }
+    
+    var generatePerDay: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: Constants.Keys.GENERATE_PER_DAY)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.GENERATE_PER_DAY)
+        }
+    }
+    
+    var regeneratePerDay: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: Constants.Keys.REGENERATE_PER_DAY)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.REGENERATE_PER_DAY)
+        }
+    }
+    
+    var lastDayOpenApp: Date? {
+        get {
+            return UserDefaults.standard.value(forKey: Constants.Keys.KEY_LAST_DAY_OPEN_APP) as? Date
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.KEY_LAST_DAY_OPEN_APP)
+        }
+    }
 }

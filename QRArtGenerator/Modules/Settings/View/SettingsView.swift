@@ -39,21 +39,23 @@ struct SettingsView: View {
                                 Text(Rlocalizable.content_banner_setting())
                                     .font(R.font.urbanistRegular.font(size: 11))
                                     .foregroundColor(R.color.color_1B232E.color)
-                                Button {
-                                    viewModel.isShowIAP.toggle()
-                                } label: {
-                                    HStack {
-                                        Text(Rlocalizable.try_it_out())
-                                            .font(R.font.urbanistBold.font(size: 12))
-                                            .multilineTextAlignment(.center)
-                                            .foregroundColor(.white)
-                                        Image(R.image.ic_shine)
+                                if !UserDefaults.standard.isUserVip {
+                                    Button {
+                                        viewModel.isShowIAP.toggle()
+                                    } label: {
+                                        HStack {
+                                            Text(Rlocalizable.try_it_out())
+                                                .font(R.font.urbanistBold.font(size: 12))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(.white)
+                                            Image(R.image.ic_shine)
+                                        }
+                                        .fixedSize()
                                     }
-                                    .fixedSize()
+                                    .frame(width: 100, height: 32)
+                                    .background(Color(R.color.color_653AE4))
+                                    .cornerRadius(100)
                                 }
-                                .frame(width: 100, height: 32)
-                                .background(Color(R.color.color_653AE4))
-                                .cornerRadius(100)
                             }
                             Spacer()
                         }

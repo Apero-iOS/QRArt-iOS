@@ -72,7 +72,6 @@ class BaseAPI<T: TargetType> {
                 case .requestBody(let body):
                     body.forEach { key, value in
                         if let data = value as? Data {
-                            let image = UIImage(data: data)
                             multipartFromData.append(data, withName: "file", fileName: "file.png", mimeType: "image/png")
                         } else {
                             if let dataUnwrap = "\(value)".data(using: .utf8) {
