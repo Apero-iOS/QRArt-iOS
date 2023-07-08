@@ -25,6 +25,8 @@ struct InputNameView: View {
                     .foregroundColor(R.color.color_BD1E1E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
             }
+            
+            
         }
     }
     

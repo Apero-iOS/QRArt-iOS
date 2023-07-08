@@ -9,9 +9,9 @@ import Foundation
 import RealmSwift
 
 enum WifiSecurityMode: Int, CaseIterable, PersistableEnum {
-    case wep
-    case wpa
-    case wpa2
+    case wep = 1
+    case wpa = 2
+    case wpa2 = 3
     
     var title: String {
         return String(describing: self).uppercased()

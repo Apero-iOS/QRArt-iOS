@@ -33,6 +33,8 @@ class ResultViewModel: ObservableObject {
     @Published var sheet: Bool = false
     @Published var source: ResultViewSource
     @Published var showIAP: Bool = false
+    @Published var toastMessage: String = ""
+    @Published var isShowToast: Bool = false
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -71,6 +73,7 @@ class ResultViewModel: ObservableObject {
     func download() {
         if let image = scaleImage(resolutions: .normal) {
             UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+            showToast(message: Rlocalizable.download_success())
         }
     }
     
@@ -78,6 +81,7 @@ class ResultViewModel: ObservableObject {
         if UserDefaults.standard.isUserVip {
             if let image = scaleImage(resolutions: .high) {
                 UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+                showToast(message: Rlocalizable.download_success())
             }
         } else {
             showIAP = true
@@ -153,4 +157,10 @@ class ResultViewModel: ObservableObject {
             regenerate()
         }
     }
+    
+    func showToast(message: String) {
+        toastMessage = message
+        isShowToast.toggle()
+    }
 }
+

@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct SecurityModeView: View {
+    @Binding var wifiModeSelect: Int
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
             Text(Rlocalizable.security_mode())
                 .foregroundColor(R.color.color_1B232E.color)
                 .font(R.font.urbanistMedium.font(size: 14))
-            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text(Rlocalizable.picker())) {
-                textDesc(text: "WEP").tag(1)
-                textDesc(text: "WPA").tag(2)
-                textDesc(text: "WPA2").tag(3)
+            Picker(selection: $wifiModeSelect, label: Text(Rlocalizable.picker())) {
+                ForEach(WifiSecurityMode.allCases, id: \.self) { mode in
+                    textDesc(text: mode.title).tag(mode.rawValue)
+                }
             }
             .pickerStyle(.segmented)
         }
@@ -31,6 +33,6 @@ struct SecurityModeView: View {
 
 struct SecurityModeView_Previews: PreviewProvider {
     static var previews: some View {
-        SecurityModeView()
+        SecurityModeView(wifiModeSelect: .constant(1))
     }
 }

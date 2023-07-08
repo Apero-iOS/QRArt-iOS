@@ -17,7 +17,8 @@ struct SuccessView: View {
                     Text(Rlocalizable.saved_success())
                         .font(R.font.urbanistMedium.font(size: 16))
                         .foregroundColor(R.color.color_1C1818.color)
-                    
+                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        .multilineTextAlignment(.center)
                 }
                 Button {
                     

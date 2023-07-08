@@ -48,7 +48,7 @@
 "name" = "Nome";
 "website_link" = "Link do site";
 "contact_name" = "Nome de contato";
-"enter_contact_name" = "Digite o nome do Conntact";
+"enter_contact_name" = "Digite o nome do contato";
 "text" = "Texto";
 "enter_text_here" = "Digite um texto aqui";
 "email_to" = "Email para";
@@ -133,3 +133,8 @@
 "an_error_occurred" = "Um erro ocorreu";
 "no_internet" = "Sem internet";
 "an_unknown_error" = "Um erro desconhecido";
+"enter_qr_name" = "Digite o nome QR";
+"download_success" = "Baixar sucesso";
+"search_country" = "País de pesquisa";
+"enter_desc" = "Digite a descrição";
+"valid_email" = "Insira o e -mail válido";

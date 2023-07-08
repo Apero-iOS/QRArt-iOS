@@ -12,17 +12,38 @@ struct DescriptionView: View {
     var placeHolder: String = ""
     @Binding var desc: String
     @Binding var validInput: Bool
+    @FocusState var isFocused: Bool
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .font(R.font.urbanistSemiBold.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
             TextField(placeHolder, text: $desc)
+                .focused($isFocused)
                 .frame(height: 200, alignment: .top)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-                .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
+                .border(radius: 12, color: getBorderColor(), width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
+            
+            if validInput && desc.isEmpty {
+                Text(Rlocalizable.cannot_be_empty)
+                    .foregroundColor(R.color.color_BD1E1E.color)
+                    .font(R.font.urbanistRegular.font(size: 14))
+            }
+        }
+    }
+    
+    func getBorderColor() -> Color {
+        if validInput && desc.isEmpty {
+            return R.color.color_BD1E1E.color
+        } else {
+            if isFocused {
+                return R.color.color_653AE4.color
+            } else {
+                return R.color.color_EAEAEA.color
+            }
         }
     }
 }

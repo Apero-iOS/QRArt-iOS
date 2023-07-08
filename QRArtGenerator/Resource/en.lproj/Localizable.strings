@@ -48,7 +48,7 @@
 "name" = "Name";
 "website_link" = "Website Link";
 "contact_name" = "Contact Name";
-"enter_contact_name" = "Enter Conntact Name";
+"enter_contact_name" = "Enter Contact Name";
 "text" = "Text";
 "enter_text_here" = "Enter a text here";
 "email_to" = "Email to";
@@ -72,7 +72,7 @@
 "guidance" = "Guidance";
 "guidance_desc" = "Show the influence of prompts on image generation.";
 "controlnet_scale" = "ControNet scale";
-"controlnet_scale_desc" = "ControNet scale measures the ability of an AI generation system to produce outputs with higher levels of co ntrol.";
+"controlnet_scale_desc" = "ControNet scale measures the ability of an AI generation system to produce outputs with higher levels of control.";
 "steps" = "Steps";
 "steps_desc" = "The number of steps required to generate an image. The higher steps, the more quality.";
 "prompt" = "Prompt";
@@ -133,3 +133,8 @@
 "an_error_occurred" = "An error occurred";
 "no_internet" = "No internet";
 "an_unknown_error" = "An unknown error";
+"enter_qr_name" = "Enter QR name";
+"download_success" = "Download Success";
+"search_country" = "Search country";
+"enter_desc" = "Enter Description";
+"valid_email" = "Please input email valid";

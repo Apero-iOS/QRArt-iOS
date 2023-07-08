@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MobileAds
 
 public typealias VoidBlock = () -> Void
 public typealias BoolBlock = (Bool) -> Void
@@ -58,4 +59,8 @@ struct Constants {
     
     static let termUrl = "https://sites.google.com/view/qr-art-code-term-of-service/home"
     static let policyUrl = "https://sites.google.com/view/qr-art-code-privacy-policy/home"
+    
+    struct Colors {
+        static let defaultNativeAdColors = ThemeStyleAds.setBackground(backgroundColor: R.color.color_EAEAEA() ?? UIColor())
+    }
 }

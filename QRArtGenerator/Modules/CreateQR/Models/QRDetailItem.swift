@@ -33,6 +33,7 @@ struct QRDetailItem: QRItem {
     var wfSsid: String = ""
     var wfPassword: String = ""
     var wfSecurityMode: WifiSecurityMode = .wep
+    var indexWfSecurityMode: Int = 1
     
     // Paypal
     var paypalAmount: String = ""
