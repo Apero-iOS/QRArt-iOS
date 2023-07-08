@@ -38,6 +38,7 @@ struct NavibarView: View {
                 Spacer()
                 Text(title)
                     .font(R.font.urbanistSemiBold.font(size: 18))
+                    .padding(.trailing, !isRightButton ? 50 : 0)
                 if isImageTitle {
                     imageRightTitle
                         .frame(width: 28, height: 24)
