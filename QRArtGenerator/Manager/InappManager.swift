@@ -22,7 +22,7 @@ class InappManager {
     
     static let share = InappManager()
     
-    let sharedSecret: String = "efb06f373620499b96b23dad199d8c53"
+    let sharedSecret: String = "81440b93fc6e449fa826be9551a0d343"
     let productIdentifiers: Set<ProductIdentifier> = Set(IAPIdType.allCases.compactMap{$0.id})
     var listProduct = Set<SKProduct>()
     var didPaymentSuccess = PassthroughSubject<Bool, Never>()
@@ -30,15 +30,6 @@ class InappManager {
     var purchasedProduct: IAPIdType?
     var infoPurchaseProduct: ReceiptItem?
     weak var delegate: InappManagerDelegate?
-    
-//    func showIAPViewController(type: IAPType, completion: BoolBlock?, source: FirebaseParamsValue) {
-//        let iapVC = IAPViewController()
-//        iapVC.sourceValue = source
-//        iapVC.paymentSuccess = completion
-//        iapVC.modalPresentationStyle = .fullScreen
-//        iapVC.viewModel.iapType = type
-//        UIViewController.top()?.present(iapVC, animated: true)
-//    }
     
     func getFreedaysTrial(id: String) -> Int {
         var freeDay = 0
@@ -149,7 +140,6 @@ class InappManager {
         }
         
         SwiftyStoreKit.restorePurchases(atomically: true) { [weak self] results in
-            
             guard let _self = self else {return}
             if results.restoreFailedPurchases.count > 0 {
                 UserDefaults.standard.isUserVip = false
@@ -162,11 +152,7 @@ class InappManager {
                     ProgressHUD.hide()
                     switch result {
                     case .success(let receipt):
-                        
-                        
                         let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: _self.productIdentifiers, inReceipt: receipt)
-                        
-                        
                         switch purchaseResult {
                         case .purchased( _, let items):
                             self?.infoPurchaseProduct = items.first
@@ -182,12 +168,9 @@ class InappManager {
                             completed()
                             break
                         }
-                        
-                        
                     case .error(let error):
                         completed()
                         print("verify faild \(error.localizedDescription)")
-                        
                     }
                 }
             }

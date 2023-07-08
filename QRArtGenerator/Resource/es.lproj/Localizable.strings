@@ -129,3 +129,5 @@
 "saved_success" = "¡Has guardado el QR con éxito!";
 "terms_of_service" = "Términos de servicio";
 "save" = "Ahorrar";
+"ad_is_loading" = "AD se está cargando";
+"an_error_occurred" = "Ocurrió un error";

@@ -20,7 +20,7 @@ struct IAPCell: View {
                 HStack(spacing: 8) {
                     Text(idType.title)
                         .font(R.font.urbanistBold.font(size: 16))
-                        .foregroundColor(isSelect ? .white : R.color.color_1B232E.color)
+                        .foregroundColor(isBestPrice ? .white : R.color.color_1B232E.color)
                     
                     if isBestPrice {
                         HStack(spacing: 4) {
@@ -45,20 +45,20 @@ struct IAPCell: View {
                 if idType == .lifetime {
                     Text(Rlocalizable.onetime_payment)
                         .font(R.font.urbanistMedium.font(size: 12))
-                        .foregroundColor(isSelect ? .white : R.color.color_6A758B.color)
+                        .foregroundColor(isBestPrice ? .white : R.color.color_6A758B.color)
                 } else if idType.freeday > 0 {
                     HStack(spacing: 8) {
                         Text(Rlocalizable.auto_renewal)
                             .font(R.font.urbanistMedium.font(size: 12))
-                            .foregroundColor(isSelect ? .white : R.color.color_6A758B.color)
+                            .foregroundColor(isBestPrice ? .white : R.color.color_6A758B.color)
                         
                         Circle()
                             .frame(width: 3)
-                            .foregroundColor(isSelect ? .white : R.color.color_9EABB9.color)
+                            .foregroundColor(isBestPrice ? .white : R.color.color_9EABB9.color)
                         
                         Text(Rlocalizable.free_day_trial("\(idType.freeday)"))
                             .font(R.font.urbanistMedium.font(size: 12))
-                            .foregroundColor(isSelect ? .white : R.color.color_6A758B.color)
+                            .foregroundColor(isBestPrice ? .white : R.color.color_6A758B.color)
                     }
                 }
             }
@@ -68,24 +68,19 @@ struct IAPCell: View {
             
             Text(idType.localizedPrice)
                 .font(R.font.urbanistBold.font(size: 16))
-                .foregroundColor(isSelect ? .white : R.color.color_1B232E.color)
+                .foregroundColor(isBestPrice ? .white : R.color.color_1B232E.color)
                 .padding(.trailing, 16)
         }
         .frame(height: 65)
-        .background(isSelect ? R.color.color_653AE4.color : R.color.color_653AE4_5.color)
+        .background(isBestPrice ? R.color.color_653AE4.color : R.color.color_653AE4_5.color)
         .cornerRadius(12)
         .onTapGesture {
-            selectedIndex = index
             onTap?()
         }
     }
     
     var isBestPrice: Bool {
         return IAPIdType.checkBestPrice(id: idType.id)
-    }
-    
-    var isSelect: Bool {
-        return selectedIndex == index
     }
 }
 
