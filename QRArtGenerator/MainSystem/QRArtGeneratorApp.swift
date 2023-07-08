@@ -8,6 +8,7 @@
 import SwiftUI
 import IQKeyboardManagerSwift
 import Firebase
+import MobileAds
 
 @main
 struct QRArtGeneratorApp: App {
@@ -19,6 +20,7 @@ struct QRArtGeneratorApp: App {
         configKeyboard()
         configIAP()
         resetUserDefaults()
+        setUpAds()
     }
         
     var body: some Scene {
@@ -58,6 +60,11 @@ struct QRArtGeneratorApp: App {
             return
         }
         FirebaseApp.configure(options: options)
+    }
+    
+    func setUpAds() {
+        AdMobManager.shared.adFullScreenLoadingString = Rlocalizable.ad_is_loading()
+        AdMobManager.shared.rewardErrorString = Rlocalizable.an_error_occurred()
     }
     
     func resetUserDefaults() {

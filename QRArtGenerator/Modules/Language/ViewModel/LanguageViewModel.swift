@@ -48,9 +48,8 @@ final class LanguageViewModel: ObservableObject, Identifiable {
         if sourceOpen == .splash {
             UserDefaults.standard.isFirstLanguage = true
             Router.showOnboarding()
-        } else {
-            changeLanguageApp()
         }
+        changeLanguageApp()
     }
     
 }

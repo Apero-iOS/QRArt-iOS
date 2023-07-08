@@ -30,16 +30,8 @@ struct TabbarView: View {
                             HStack(alignment: .bottom, spacing: 0) {
                                 ForEach(viewModel.tabs, id: \.self) { tab in
                                     TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { _ in
-                                        switch tab {
-                                        case .scan:
-                                            viewModel.showScan.toggle()
-                                            viewModel.changeCountSelect()
-                                        case .ai:
-                                            viewModel.showCreateQR.toggle()
-                                            viewModel.changeCountSelect()
-                                        default:
-                                            viewModel.changeCountSelect()
-                                        }
+                                        viewModel.currentTab = tab
+                                        viewModel.changeCountSelect()
                                     }
                                 }
                             }
@@ -75,17 +67,28 @@ struct TabbarView: View {
             }
             .fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
-            }.fullScreenCover(isPresented: $viewModel.showCreateQR) {
+            }
+            .transaction({ transaction in
+                transaction.disablesAnimations = viewModel.isShowAds
+            })
+            .fullScreenCover(isPresented: $viewModel.showCreateQR) {
                 let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: nil)
                 CreateQRView(viewModel: vm)
-            }.fullScreenCover(isPresented: $viewModel.showIAP) {
+            }
+            .transaction({ transaction in
+                transaction.disablesAnimations = viewModel.isShowAds
+            })
+            .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
         }
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
-            let numberAds = viewModel.getNumberShowAds()
-            if numberAds > .zero, newValue%numberAds == .zero {
+            if viewModel.isShowAds {
                 viewModel.showAdsInter()
+            } else if viewModel.currentTab == .scan {
+                viewModel.showScan.toggle()
+            } else if viewModel.currentTab == .ai {
+                viewModel.showCreateQR.toggle()
             }
         })
         .onAppear {
@@ -103,6 +106,7 @@ struct TabbarView: View {
             
         }
         .onChange(of: viewModel.selectedTab, perform: { newValue in
+            viewModel.currentTab = newValue
             viewModel.changeCountSelect()
         })
     }
