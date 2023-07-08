@@ -45,7 +45,7 @@ struct HomeView: View {
                         .foregroundColor(R.color.color_1B232E.color)
                     if !UserDefaults.standard.isUserVip {
                         Button {
-                            viewModel.isShowIAP.toggle()
+                            viewModel.isShowGenerateQR.toggle()
                         } label: {
                             HStack {
                                 Text(Rlocalizable.try_it_out())
@@ -69,8 +69,11 @@ struct HomeView: View {
         }
         .frame(height: 152)
         .padding(.horizontal, 20)
-        .fullScreenCover(isPresented: $viewModel.isShowIAP) {
-            IAPView()
+        .fullScreenCover(isPresented: $viewModel.isShowGenerateQR) {
+            let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: nil)
+            CreateQRView(viewModel: vm)
+        }.onTapGesture {
+            viewModel.isShowGenerateQR.toggle()
         }
     }
 }
