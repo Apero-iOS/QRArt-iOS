@@ -36,7 +36,10 @@ class ResultViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-
+    var isCreate: Bool {
+        return source == .create
+    }
+    
     var isShowAdsNative: Bool {
         return RemoteConfigService.shared.bool(forKey: .native_result) && !UserDefaults.standard.isUserVip
     }

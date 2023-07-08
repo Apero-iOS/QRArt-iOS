@@ -26,7 +26,7 @@ struct ResultView: View {
                     .frame(width: WIDTH_SCREEN, height: WIDTH_SCREEN, alignment: .center)
                     
                 VStack {
-                    if viewModel.source == .create {
+                    if viewModel.isCreate {
                         HStack(spacing: 8) {
                             downloadButton
                             download4kButton
@@ -68,7 +68,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var naviView: some View {
-        NavibarView(title: viewModel.source == .create ? Rlocalizable.create_qr_title() : viewModel.item.name, isImageTitle: true, titleRightButton: Rlocalizable.save()) {
+        NavibarView(title: viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name, isImageTitle: viewModel.isCreate ? true : false, isRightButton: false, titleRightButton: viewModel.isCreate ? Rlocalizable.save() : "") {
             viewModel.save()
         }
     }
@@ -92,7 +92,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var download4kButton: some View {
-        ResultButtonView(typeButton: .download4k, onTap: {
+        ResultButtonView(typeButton: .download4k, isCreate: viewModel.isCreate, onTap: {
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
             } else {

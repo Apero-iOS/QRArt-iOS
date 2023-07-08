@@ -131,3 +131,5 @@
 "save" = "Ahorrar";
 "ad_is_loading" = "AD se está cargando";
 "an_error_occurred" = "Ocurrió un error";
+"no_internet" = "Sin internet";
+"an_unknown_error" = "Un error desconocido";

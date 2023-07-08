@@ -12,7 +12,9 @@ import SwiftUI
 final class HomeViewModel: ObservableObject, Identifiable {
     
     @Published var listStyle: [TemplateModel] = []
-    @Published var isShowIAP = false
+    @Published var isShowGenerateQR = false
+    @Published var isShowToast = false
+    @Published var msgError: String = ""
     
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
@@ -22,12 +24,18 @@ final class HomeViewModel: ObservableObject, Identifiable {
     }
     
     func fetchTemplate() {
-        templateRepository.fetchTemplate().sink { comple in
+        templateRepository.fetchTemplate().sink { [weak self] comple in
             switch comple {
             case .finished:
                 print("tuanlt: finished")
             case .failure(let error):
-                print("tuanlt: \(error)")
+                switch error {
+                case .No_Network:
+                    self?.msgError = Rlocalizable.no_internet()
+                default:
+                    self?.msgError = Rlocalizable.an_unknown_error()
+                }
+                self?.isShowToast.toggle()
             }
         } receiveValue: { [weak self] templates in
             if let templates = templates {

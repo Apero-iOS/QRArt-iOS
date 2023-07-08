@@ -152,7 +152,7 @@ class CreateQRViewModel: ObservableObject {
         .sink { [weak self] comple in
             guard let self = self else { return }
             if self.isShowAdsInter {
-                AdMobManager.shared.showIntertitial(unitId: .inter_generate, isSplash: false, blockDidDismiss: { [weak self] in
+                AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
                     guard let self = self else { return }
                     self.isShowLoadingView.toggle()
                 })
