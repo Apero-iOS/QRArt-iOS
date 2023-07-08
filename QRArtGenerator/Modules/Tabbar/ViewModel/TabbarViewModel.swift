@@ -10,15 +10,22 @@ import MobileAds
 
 class TabbarViewModel: ObservableObject, Identifiable {
     @Published var selectedTab: TabbarEnum = .home
+    @Published var currentTab: TabbarEnum = .home
     @Published var showScan: Bool = false
     @Published var showCreateQR: Bool = false
     @Published var showIAP: Bool = false
     @Published var countSelectTab: Int = .zero
+    @Published var showType: TabbarEnum = .scan
 
     var tabs: [TabbarEnum] = TabbarEnum.allCases
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.number(forKey: .inter_change_screen) > .zero && !UserDefaults.standard.isUserVip
+    }
+    
+    var isShowAds: Bool {
+        let numberAds = getNumberShowAds()
+        return numberAds > .zero && countSelectTab%numberAds == .zero
     }
     
     public func changeCountSelect() {
@@ -33,7 +40,18 @@ class TabbarViewModel: ObservableObject, Identifiable {
     
     public func showAdsInter() {
         if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_change_screen, isSplash: false)
+            AdMobManager.shared.showIntertitial(unitId: .inter_change_screen, blockWillDismiss: { [weak self] in
+                guard let self else {return}
+                presentScreen()
+            })
+        }
+    }
+    
+    public func presentScreen() {
+        if currentTab == .scan {
+            showScan.toggle()
+        } else if currentTab == .ai {
+            showCreateQR.toggle()
         }
     }
     
