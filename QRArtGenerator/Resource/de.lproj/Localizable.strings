@@ -131,3 +131,5 @@
 "save" = "Speichern";
 "ad_is_loading" = "AD lädt";
 "an_error_occurred" = "Ein Fehler ist aufgetreten";
+"no_internet" = "Kein Internet";
+"an_unknown_error" = "Ein unbekannter Fehler";

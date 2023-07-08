@@ -131,3 +131,5 @@
 "save" = "Sauvegarder";
 "ad_is_loading" = "L'annonce est chargée";
 "an_error_occurred" = "Une erreur s'est produite";
+"no_internet" = "Pas d'Internet";
+"an_unknown_error" = "Une erreur inconnue";

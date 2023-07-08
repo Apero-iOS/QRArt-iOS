@@ -21,7 +21,10 @@ struct HomeView: View {
                 Spacer()
             }
             .padding(.bottom, 50)
-        }
+        }.toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
+            .refreshable {
+                viewModel.fetchTemplate()
+            }
     }
     
     @ViewBuilder var bannerView: some View {

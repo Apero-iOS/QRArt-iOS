@@ -131,3 +131,5 @@
 "save" = "Lưu";
 "ad_is_loading" = "AD đang tải";
 "an_error_occurred" = "Một lỗi đã xảy ra";
+"no_internet" = "Không có mạng";
+"an_unknown_error" = "Một lỗi không xác định";

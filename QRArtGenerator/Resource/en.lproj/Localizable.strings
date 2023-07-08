@@ -131,3 +131,5 @@
 "save" = "Save";
 "ad_is_loading" = "Ad is loading";
 "an_error_occurred" = "An error occurred";
+"no_internet" = "No internet";
+"an_unknown_error" = "An unknown error";
