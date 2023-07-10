@@ -20,7 +20,7 @@ struct InputEmailView: View {
                 .foregroundColor(R.color.color_1B232E.color)
                 .font(R.font.urbanistMedium.font(size: 14))
             textField
-            if validInput && name.isEmpty {
+            if validInput && name.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
@@ -44,7 +44,7 @@ struct InputEmailView: View {
     }
     
     func getBorderColor() -> Color {
-        if validInput && name.isEmpty && !QRHelper.isValidEmail(name) {
+        if validInput && name.isEmptyOrWhitespace() && !QRHelper.isValidEmail(name) {
             return R.color.color_BD1E1E.color
         } else {
             if isFocused {

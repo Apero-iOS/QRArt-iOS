@@ -44,7 +44,7 @@ struct InputPhoneNumberView: View {
                         .font(R.font.urbanistRegular.font(size: 14))
                         .foregroundColor(R.color.color_1B232E.color)
                         .keyboardType(.decimalPad)
-                    if validInput && phoneNumber.isEmpty {
+                    if validInput && phoneNumber.isEmptyOrWhitespace() {
                         Text(Rlocalizable.cannot_be_empty)
                             .foregroundColor(R.color.color_BD1E1E.color)
                             .font(R.font.urbanistRegular.font(size: 14))
@@ -55,7 +55,7 @@ struct InputPhoneNumberView: View {
     }
     
     func getBorderColor() -> Color {
-        if validInput && phoneNumber.isEmpty {
+        if validInput && phoneNumber.isEmptyOrWhitespace() {
             return R.color.color_BD1E1E.color
         } else {
             if isFocused {
