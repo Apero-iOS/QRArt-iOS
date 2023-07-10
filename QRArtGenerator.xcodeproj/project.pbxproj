@@ -128,6 +128,7 @@
 		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
 		C8109C872A51971A0093B48A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C862A51971A0093B48A /* LoadingView.swift */; };
 		C8109C8A2A5198970093B48A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C892A5198970093B48A /* ResultView.swift */; };
+		C83D7B2E2A5BA2AA008D32ED /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D7B2D2A5BA2AA008D32ED /* String+.swift */; };
 		C84BBF272A53FC950065B8AF /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BBF262A53FC950065B8AF /* ResultViewModel.swift */; };
 		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
 		C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E402A4DAF320077DCC3 /* ai_tab.json */; };
@@ -310,6 +311,7 @@
 		C8109C822A518B3E0093B48A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		C8109C862A51971A0093B48A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C8109C892A5198970093B48A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		C83D7B2D2A5BA2AA008D32ED /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C84BBF262A53FC950065B8AF /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		C8AA3E1B2A4D61030077DCC3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
@@ -1106,12 +1108,9 @@
 				9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */,
 				9AC7DCBE2A4DB6C600FB3119 /* SecurityModeView.swift */,
 				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
-				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
-				9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */,
 				C8AA3E442A4E72640077DCC3 /* SelectCountryCodeView.swift */,
 				C8AA3E462A4E730C0077DCC3 /* CountryCodeView.swift */,
 				C8109C792A512A520093B48A /* BasicItemTemplateView.swift */,
-				C8109C822A518B3E0093B48A /* AmountView.swift */,
 				C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */,
 			);
 			path = SelectQR;
@@ -1232,6 +1231,9 @@
 			children = (
 				9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */,
 				C8AB7FEA2A5982BD001938AD /* InputEmailView.swift */,
+				C8109C822A518B3E0093B48A /* AmountView.swift */,
+				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
+				9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -1657,6 +1659,7 @@
 				76FC00E52A5BA5D600B53B5F /* String+.swift in Sources */,
 				76FC00F42A5BC73700B53B5F /* BottomSheet.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
+				C83D7B2E2A5BA2AA008D32ED /* String+.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				C8E923BA2A52AB3E00835F93 /* SuccessView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,

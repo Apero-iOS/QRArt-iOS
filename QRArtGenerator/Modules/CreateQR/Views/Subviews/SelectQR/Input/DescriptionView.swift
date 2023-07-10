@@ -27,7 +27,7 @@ struct DescriptionView: View {
                 .font(R.font.urbanistRegular.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
             
-            if validInput && desc.isEmpty {
+            if validInput && desc.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
@@ -36,7 +36,7 @@ struct DescriptionView: View {
     }
     
     func getBorderColor() -> Color {
-        if validInput && desc.isEmpty {
+        if validInput && desc.isEmptyOrWhitespace() {
             return R.color.color_BD1E1E.color
         } else {
             if isFocused {

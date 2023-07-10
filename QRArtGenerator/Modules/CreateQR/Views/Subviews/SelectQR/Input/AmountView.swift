@@ -21,18 +21,18 @@ struct AmountView: View {
                 Text("$")
                     .foregroundColor(R.color.color_1B232E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
-                    
             }
             .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
             .frame(height: 42)
             .focused($isFocused)
             .border(radius: 12, color: getBorderColor(),
                     width: 1)
+            .keyboardType(.decimalPad)
             
         }
     }
     func getBorderColor() -> Color {
-        if validInput && amount.isEmpty {
+        if validInput && amount.isEmptyOrWhitespace() {
             return R.color.color_BD1E1E.color
         } else {
             if isFocused {

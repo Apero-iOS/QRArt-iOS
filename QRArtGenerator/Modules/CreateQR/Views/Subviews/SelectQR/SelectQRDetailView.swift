@@ -82,10 +82,6 @@ struct SelectQRDetailView: View {
                                         desc: $input.emailDescription,
                                         validInput: $validInput)
                     case .whatsapp:
-                        InputNameView(title: Rlocalizable.contact_name(),
-                                      placeholder: Rlocalizable.enter_contact_name(),
-                                      name: $input.name,
-                                      validInput: $validInput)
                         InputPhoneNumberView(type: type,
                                              phoneNumber: $input.phoneNumber,
                                              showingSelectCountryView: $showingSelectCountryView,
@@ -94,27 +90,27 @@ struct SelectQRDetailView: View {
                     case .instagram:
                         InputNameView(title: Rlocalizable.instagram_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.name,
+                                      name: $input.urlString,
                                       validInput: $validInput)
                     case .facebook:
                         InputNameView(title: Rlocalizable.facebook_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.name,
+                                      name: $input.urlString,
                                       validInput: $validInput)
                     case .twitter:
                         InputNameView(title: Rlocalizable.twitter_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.name,
+                                      name: $input.urlString,
                                       validInput: $validInput)
                     case .spotify:
                         InputNameView(title: Rlocalizable.spotify_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.name,
+                                      name: $input.urlString,
                                       validInput: $validInput)
                     case .youtube:
                         InputNameView(title: Rlocalizable.youtube_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.name,
+                                      name: $input.urlString,
                                       validInput: $validInput)
                     case .wifi:
                         InputNameView(title: Rlocalizable.ssid(),
@@ -126,7 +122,7 @@ struct SelectQRDetailView: View {
                         SecurityModeView(wifiModeSelect: $input.indexWfSecurityMode)
                     case .paypal:
                         InputNameView(title: Rlocalizable.paypal_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
+                                      placeholder: "https://paypal.me/",
                                       name: $input.urlString,
                                       validInput: $validInput)
                         AmountView(amount: $input.paypalAmount,

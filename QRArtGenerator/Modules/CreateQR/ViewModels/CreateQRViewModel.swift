@@ -31,6 +31,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var isShowExport: Bool = false
     @Published var imageResult: Image = Image("")
     @Published var showSub: Bool = false
+    @Published var showToastError: Bool = false
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -109,21 +110,21 @@ class CreateQRViewModel: ObservableObject {
         if validName() && validPrompt() {
             switch input.type {
             case .website:
-                return !input.urlString.isEmpty
+                return !input.urlString.isEmptyOrWhitespace()
             case .contact:
-                return !input.contactName.isEmpty && !input.phoneNumber.isEmpty
+                return !input.contactName.isEmptyOrWhitespace() && !input.phoneNumber.isEmptyOrWhitespace()
             case .email:
-                return !input.emailAddress.isEmpty && !input.emailSubject.isEmpty && !input.emailDescription.isEmpty && QRHelper.isValidEmail(input.emailAddress)
+                return !input.emailAddress.isEmptyOrWhitespace() && !input.emailSubject.isEmptyOrWhitespace() && !input.emailDescription.isEmptyOrWhitespace() && QRHelper.isValidEmail(input.emailAddress)
             case .text:
-                return !input.text.isEmpty
+                return !input.text.isEmptyOrWhitespace()
             case .whatsapp:
-                return !input.phoneNumber.isEmpty
+                return !input.phoneNumber.isEmptyOrWhitespace()
             case .instagram, .facebook, .twitter, .spotify, .youtube:
-                return !input.urlString.isEmpty
+                return !input.urlString.isEmptyOrWhitespace()
             case .wifi:
-                return !input.wfSsid.isEmpty && !input.wfPassword.isEmpty
+                return !input.wfSsid.isEmptyOrWhitespace() && !input.wfPassword.isEmptyOrWhitespace()
             case .paypal:
-                return !input.urlString.isEmpty == false
+                return !input.urlString.isEmptyOrWhitespace()
             }
         } else {
             return false
@@ -131,7 +132,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func validName() -> Bool {
-        return !input.name.isEmpty && input.name.count < 50
+        return !input.name.isEmptyOrWhitespace() && input.name.count < 50
     }
     
     func validPrompt() -> Bool {
@@ -161,13 +162,19 @@ class CreateQRViewModel: ObservableObject {
                                  controlnetConditioningScale: Int(input.contronetScale))
         .sink { [weak self] comple in
             guard let self = self else { return }
-            if self.isShowAdsInter {
-                AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
-                    guard let self = self else { return }
+            switch comple {
+            case .finished:
+                if self.isShowAdsInter {
+                    AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
+                        guard let self = self else { return }
+                        self.isShowLoadingView.toggle()
+                    })
+                } else {
                     self.isShowLoadingView.toggle()
-                })
-            } else {
+                }
+            case .failure:
                 self.isShowLoadingView.toggle()
+                self.showToastError.toggle()
             }
         } receiveValue: { [weak self] data in
             guard let self = self,
