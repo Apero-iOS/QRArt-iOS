@@ -93,7 +93,7 @@ class ResultViewModel: ObservableObject {
     }
     
     func checkShowSub() -> Bool {
-        !UserDefaults.standard.isUserVip && UserDefaults.standard.regeneratePerDay >= 1
+        !UserDefaults.standard.isUserVip && UserDefaults.standard.regeneratePerDay >= RemoteConfigService.shared.number(forKey: .subReGenerateQr)
     }
     
     func regenerate() {

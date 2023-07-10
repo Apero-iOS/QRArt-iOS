@@ -26,6 +26,11 @@ struct DescriptionView: View {
                 .border(radius: 12, color: getBorderColor(), width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
+                .onChange(of: desc) { newValue in
+                    if newValue.count > 50 {
+                        desc = String(newValue.prefix(50))
+                    }
+                }
             
             if validInput && desc.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)

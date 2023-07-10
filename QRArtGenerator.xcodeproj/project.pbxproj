@@ -1135,6 +1135,7 @@
 		C8AA3E202A4DAEE30077DCC3 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				C83D7B2D2A5BA2AA008D32ED /* String+.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";

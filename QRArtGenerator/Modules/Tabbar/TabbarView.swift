@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabbarView: View {
     
-    @StateObject private var viewModel = TabbarViewModel()
+    @StateObject var viewModel = TabbarViewModel()
     
     var body: some View {
         GeometryReader { geo in
