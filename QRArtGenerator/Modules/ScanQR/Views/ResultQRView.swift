@@ -15,7 +15,18 @@ struct ResultQRView: View {
         GeometryReader { geo in
             VStack(spacing: 16) {
                 HStack {
-                    Image(R.image.ic_link)
+                    switch result.type {
+                    case .url:
+                        Image(R.image.ic_link)
+                    case .mail:
+                        Image(R.image.ic_email_scanner)
+                    case .phone:
+                        Image(R.image.ic_phone)
+                    case .text:
+                        Image(R.image.ic_text_scanner)
+                    case .wifi:
+                        Image(R.image.ic_wifi_scanner)
+                    }
                     HStack {
                         Text(result.title)
                             .font(
