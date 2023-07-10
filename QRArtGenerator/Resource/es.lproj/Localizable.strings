@@ -48,7 +48,7 @@
 "name" = "Nombre";
 "website_link" = "Enlace de página web";
 "contact_name" = "Nombre de contacto";
-"enter_contact_name" = "Ingrese el nombre de Conntact";
+"enter_contact_name" = "Ingrese el nombre de contacto";
 "text" = "Texto";
 "enter_text_here" = "Ingrese un texto aquí";
 "email_to" = "Email para";
@@ -72,7 +72,7 @@
 "guidance" = "Guía";
 "guidance_desc" = "Muestre la influencia de las indicaciones en la generación de imágenes.";
 "controlnet_scale" = "Escala de contrón";
-"controlnet_scale_desc" = "La escala del Controneto mide la capacidad de un sistema de generación de IA para producir salidas con niveles más altos de cotrol.";
+"controlnet_scale_desc" = "La escala del Controneto mide la capacidad de un sistema de generación de IA para producir resultados con niveles de control más altos.";
 "steps" = "Pasos";
 "steps_desc" = "El número de pasos necesarios para generar una imagen. Mientras más pasos, más calidad.";
 "prompt" = "Inmediato";
@@ -133,3 +133,8 @@
 "an_error_occurred" = "Ocurrió un error";
 "no_internet" = "Sin internet";
 "an_unknown_error" = "Un error desconocido";
+"enter_qr_name" = "Ingrese el nombre QR";
+"download_success" = "Descargar éxito";
+"search_country" = "Búsqueda de país";
+"enter_desc" = "Ingrese la descripción";
+"valid_email" = "Ingrese el correo electrónico válido";

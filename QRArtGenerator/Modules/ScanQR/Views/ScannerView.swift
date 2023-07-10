@@ -75,6 +75,10 @@ struct ScannerView: View {
                                     .frame(width: 24, height: 24)
                                 Slider(value: $viewModel.zoomValue, in: 1...5) { editing in }
                                     .tint(.white)
+                                    .onAppear {
+                                        UISlider.appearance()
+                                            .setThumbImage(UIImage(named: "ic_tint"), for: .normal)
+                                    }
                                 Image(R.image.ic_zoom_out)
                                     .foregroundColor(.white)
                                     .frame(width: 24, height: 24)

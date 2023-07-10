@@ -22,36 +22,42 @@ struct AdvancedSettingsView: View {
     @Binding var guidance: Double
     @Binding var steps: Double
     @Binding var scale: Double
+    @Binding var validInput: Bool
 
     var body: some View {
-        LazyVStack(alignment: .leading) {
-            HStack {
-                Text(Rlocalizable.advanced_settings())
-                    .font(R.font.urbanistSemiBold.font(size: 16))
-                    .foregroundColor(R.color.color_1B232E.color)
-                Spacer()
-                Button {
-                    if mode == .expand {
-                        withAnimation {
-                            mode = .collapse
+        VStack(spacing: 16) {
+            LazyVStack(alignment: .leading) {
+                HStack {
+                    Text(Rlocalizable.advanced_settings())
+                        .font(R.font.urbanistSemiBold.font(size: 16))
+                        .foregroundColor(R.color.color_1B232E.color)
+                    Spacer()
+                    Button {
+                        if mode == .expand {
+                            withAnimation {
+                                mode = .collapse
+                            }
+                            rotate = 0
+                        } else {
+                            withAnimation {
+                                mode = .expand
+                            }
+                            rotate = 90
                         }
-                        rotate = 0
-                    } else {
-                        withAnimation {
-                            mode = .expand
-                        }
-                        rotate = 90
+                    } label: {
+                        image.rotationEffect(.degrees(rotate))
                     }
-                } label: {
-                    image.rotationEffect(.degrees(rotate))
+                }
+                if mode == .expand {
+                    descView
                 }
             }
-            if mode == .expand {
-                descView
-            }
+            .clearBackgroundColorList()
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+            R.color.color_F7F7F7.color
+                .frame(height: 45)
         }
-        .clearBackgroundColorList()
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+
     }
     
     @ViewBuilder var descView: some View {
@@ -60,12 +66,14 @@ struct AdvancedSettingsView: View {
             PromptView(prompt: $prompt,
                        oldPrompt: oldPrompt,
                        title: Rlocalizable.prompt(),
-                       subTitle: Rlocalizable.prompt_desc())
+                       subTitle: Rlocalizable.prompt_desc(),
+                       validInput: $validInput)
             // negative prompt
             PromptView(prompt: $negativePrompt,
                        oldPrompt: oldNegativePrompt,
                        title: Rlocalizable.negative_prompt(),
-                       subTitle: Rlocalizable.negative_prompt_desc())
+                       subTitle: Rlocalizable.negative_prompt_desc(),
+                       validInput: $validInput)
             // guidance
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc(),
@@ -92,6 +100,6 @@ struct AdvancedSettingsView_Previews: PreviewProvider {
         AdvancedSettingsView(prompt: .constant(""),
                              negativePrompt: .constant(""),
                              oldPrompt: .constant(""),
-                             oldNegativePrompt: .constant(""), guidance: .constant(0), steps: .constant(0), scale: .constant(0))
+                             oldNegativePrompt: .constant(""), guidance: .constant(0), steps: .constant(0), scale: .constant(0), validInput: .constant(false))
     }
 }

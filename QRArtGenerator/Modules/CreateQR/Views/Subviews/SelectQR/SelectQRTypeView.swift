@@ -35,15 +35,18 @@ struct SelectQRTypeView: View {
             .frame(maxHeight: 29)
             List {
                 ForEach(QRGroupType.allCases, id:  \.self) { section in
-                    Section(header: Text(section.title)
+                    Section(header: Text(section.title).listRowInsets(EdgeInsets())
                         .font(R.font.urbanistSemiBold.font(size: 16))
                         .foregroundColor(R.color.color_1B232E.color)
                         .padding(EdgeInsets())) {
                         ForEach(section.items, id: \.self) { item in
                             QRTypeView(type: item, selectedType: $selectedType)
                                 .listRowInsets(EdgeInsets())
+                                .onTapGesture {
+                                    selectedType = item
+                                    showingSelectQRTypeView = false
+                                }
                         }
-    
                     }
                 }
             }

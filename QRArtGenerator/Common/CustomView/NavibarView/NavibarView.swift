@@ -18,6 +18,7 @@ struct NavibarView: View {
     var isRightButton: Bool = false /// Ẩn hiện button bên trái
     var isLeftButton: Bool = true
     var titleRightButton: String = ""
+    var isCloseButton: Bool = false
     
     var onRightAction: (() -> Void)? = nil
     
@@ -28,7 +29,12 @@ struct NavibarView: View {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Image(R.image.ic_arrow_back)
+                        if isCloseButton {
+                            Image(R.image.ic_close_screen)
+                        } else {
+                            Image(R.image.ic_arrow_back)
+                        }
+                        
                     }.frame(width: 50, height: 50)
                 } else {
                     Text("")

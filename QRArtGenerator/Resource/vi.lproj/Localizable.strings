@@ -48,7 +48,7 @@
 "name" = "Tên";
 "website_link" = "Địa chỉ website";
 "contact_name" = "Tên Liên lạc";
-"enter_contact_name" = "Nhập tên Conntact";
+"enter_contact_name" = "Nhập tên liên hệ";
 "text" = "Chữ";
 "enter_text_here" = "Nhập một văn bản vào đây";
 "email_to" = "Email đến";
@@ -72,7 +72,7 @@
 "guidance" = "Hướng dẫn";
 "guidance_desc" = "Hiển thị ảnh hưởng của lời nhắc đến việc tạo hình ảnh.";
 "controlnet_scale" = "Thang đo đối nghịch";
-"controlnet_scale_desc" = "Thang đo đối kháng đo lường khả năng của một hệ thống tạo AI để tạo ra các đầu ra với mức độ cao hơn của đồng ntrol.";
+"controlnet_scale_desc" = "Thang đo đối kháng đo lường khả năng của một hệ thống tạo AI để tạo ra các đầu ra với mức độ kiểm soát cao hơn.";
 "steps" = "Các bước";
 "steps_desc" = "Số lượng các bước cần thiết để tạo ra một hình ảnh. Các bước càng cao, chất lượng càng nhiều.";
 "prompt" = "Lời nhắc";
@@ -133,3 +133,9 @@
 "an_error_occurred" = "Một lỗi đã xảy ra";
 "no_internet" = "Không có mạng";
 "an_unknown_error" = "Một lỗi không xác định";
+"save" = "Cứu";
+"enter_qr_name" = "Nhập tên QR";
+"download_success" = "Tải xuống thành công";
+"search_country" = "Tìm kiếm quốc gia";
+"enter_desc" = "Nhập mô tả";
+"valid_email" = "Vui lòng nhập email hợp lệ";

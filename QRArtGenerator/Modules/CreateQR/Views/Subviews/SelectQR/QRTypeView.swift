@@ -34,11 +34,6 @@ struct QRTypeView: View {
         }
         .frame(maxHeight: 52)
         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-        .onTapGesture {
-            if !isSelected {
-                selectedType = type
-            }
-        }
         .background(Color.white)
     }
 }

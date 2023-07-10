@@ -64,6 +64,7 @@ struct ResultView: View {
         .fullScreenCover(isPresented: $viewModel.showIAP) {
             IAPView()
         }
+        .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
         
     }
     
@@ -81,7 +82,7 @@ struct ResultView: View {
     
     @ViewBuilder var regenerateButton: some View {
         ResultButtonView(typeButton: .regenerate) {
-            viewModel.regenerate()
+            viewModel.showAdsInter()
         }
     }
     

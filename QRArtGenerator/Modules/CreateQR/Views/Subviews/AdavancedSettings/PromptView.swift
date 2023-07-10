@@ -14,13 +14,14 @@ struct PromptView: View {
     var oldPrompt: String
     var title: String = ""
     var subTitle: String = ""
+    @Binding var validInput: Bool
     
     private var isShowAdsInter: Bool {
         return RemoteConfigService.shared.number(forKey: .inter_inspire) > .zero && !UserDefaults.standard.isUserVip
     }
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(title)
@@ -42,6 +43,11 @@ struct PromptView: View {
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
+            if validInput && prompt.isEmpty {
+                Text(Rlocalizable.cannot_be_empty)
+                    .foregroundColor(R.color.color_BD1E1E.color)
+                    .font(R.font.urbanistRegular.font(size: 14))
+            }
         }
         .onAppear {
             createIdAds()
@@ -69,6 +75,6 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView(prompt: .constant(""), oldPrompt: "")
+        PromptView(prompt: .constant(""), oldPrompt: "", validInput: .constant(false))
     }
 }

@@ -73,6 +73,9 @@ struct CreateQRView: View {
         .fullScreenCover(isPresented: $viewModel.showSub) {
             IAPView()
         }
+        .onChange(of: viewModel.input.type) { newValue in
+            viewModel.input.name = ""
+        }
     }
     
     @ViewBuilder var templateView: some View {
@@ -96,7 +99,8 @@ struct CreateQRView: View {
                                  oldPrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.positivePrompt,
                                  oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt, guidance: $viewModel.input.guidance,
                                  steps: $viewModel.input.steps,
-                                 scale: $viewModel.input.contronetScale)
+                                 scale: $viewModel.input.contronetScale,
+                                 validInput: $viewModel.validInput)
         }
     }
     
@@ -112,14 +116,8 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var naviView: some View {
-        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip) {
+        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip, isCloseButton: true) {
             viewModel.showSub = true
         }
-    }
-}
-
-struct CreateQRView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateQRView(viewModel: CreateQRViewModel(source: .create, indexSelect: 0, list: TemplateModel(id: "", styles: [], category: Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 0))))
     }
 }

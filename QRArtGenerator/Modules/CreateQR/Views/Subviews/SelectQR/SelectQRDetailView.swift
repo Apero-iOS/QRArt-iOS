@@ -19,7 +19,7 @@ struct SelectQRDetailView: View {
     var type: QRType
     
     var body: some View {
-        ZStack {
+        VStack (spacing: 16) {
             VStack(alignment: .leading) {
                 Text(Rlocalizable.select_qr_type)
                     .font(R.font.urbanistSemiBold.font(size: 16))
@@ -45,6 +45,7 @@ struct SelectQRDetailView: View {
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 VStack(spacing: 12) {
                     InputNameView(title: Rlocalizable.name(),
+                                  placeholder: Rlocalizable.enter_qr_name(),
                                   name: $input.name,
                                   validInput: $validInput)
                     switch type {
@@ -69,8 +70,8 @@ struct SelectQRDetailView: View {
                                       name: $input.text,
                                       validInput: $validInput)
                     case .email:
-                        InputNameView(title: Rlocalizable.email_to(),
-                                      placeholder: "example@gmail.com",
+                        InputEmailView(title: Rlocalizable.email_to(),
+                                      placeholder: "Example@gmail.com",
                                       name: $input.emailAddress,
                                       validInput: $validInput)
                         InputNameView(title: Rlocalizable.subject(),
@@ -78,6 +79,7 @@ struct SelectQRDetailView: View {
                                       name: $input.emailSubject,
                                       validInput: $validInput)
                         DescriptionView(title: Rlocalizable.email_desc(),
+                                        placeHolder: Rlocalizable.enter_desc(),
                                         desc: $input.emailDescription,
                                         validInput: $validInput)
                     case .whatsapp:
@@ -118,11 +120,11 @@ struct SelectQRDetailView: View {
                     case .wifi:
                         InputNameView(title: Rlocalizable.ssid(),
                                       placeholder: Rlocalizable.enter_wifi_name(),
-                                      name: $input.name, validInput: $validInput)
+                                      name: $input.wfSsid, validInput: $validInput)
                         InputNameView(title: Rlocalizable.password(),
                                       placeholder: Rlocalizable.enter_password(),
-                                      name: $input.name, validInput: $validInput)
-                        SecurityModeView()
+                                      name: $input.wfPassword, validInput: $validInput)
+                        SecurityModeView(wifiModeSelect: $input.indexWfSecurityMode)
                     case .paypal:
                         InputNameView(title: Rlocalizable.paypal_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
@@ -134,6 +136,8 @@ struct SelectQRDetailView: View {
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+            R.color.color_F7F7F7.color
+                .frame(height: 8)
         }
     }
     

@@ -109,7 +109,7 @@ struct QRHelper {
     }
     
     static func genQR(text: String) -> Data? {
-        let data = text.data(using: .ascii)
+        let data = text.data(using: .utf8)
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
             let transform = CGAffineTransform(scaleX: 3, y: 3)
@@ -119,6 +119,13 @@ struct QRHelper {
             }
         }
         return nil
+    }
+    
+    static func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
 }

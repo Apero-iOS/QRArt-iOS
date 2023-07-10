@@ -203,7 +203,7 @@ class InappManager {
                     UserDefaults.standard.isUserVip = false
                 }
                 completed()
-            case .error(_):
+            case .error(let error):
                 UserDefaults.standard.isUserVip = false
                 completed()
             }

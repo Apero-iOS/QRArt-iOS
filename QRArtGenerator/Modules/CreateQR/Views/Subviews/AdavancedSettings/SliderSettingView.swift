@@ -22,6 +22,10 @@ struct SliderSettingView: View {
             HStack(spacing: 8) {
                 Slider(value: $value, in: 1...8)
                     .setColorSlider(color: R.color.color_653AE4.color)
+                    .onAppear {
+                        UISlider.appearance()
+                            .setThumbImage(UIImage(named: "ic_tint_slider"), for: .normal)
+                    }
                 Text("\(Int(value))")
                     .font(R.font.urbanistSemiBold.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)

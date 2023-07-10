@@ -12,7 +12,7 @@ import MobileAds
 
 class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
-    @Published var countrySelect: Country = Country(code: "VN", dialCode: "+84")
+    @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
     @Published var templateQR: TemplateModel = TemplateModel.defaultObject()
     @Published var indexSelectTemplate: Int = .zero {
         didSet {
@@ -49,10 +49,13 @@ class CreateQRViewModel: ObservableObject {
         if let list = list {
             self.templateQR = list
             self.templateQR.styles.insert(createBasicQRItem(), at: 0)
+            self.templateQR.styles.swapAt(1, indexSelectTemplate)
+            self.indexSelectTemplate = 1
         }
     }
     
     deinit {
+        print("abcbabcbcabaa")
         cancellable.removeAll()
     }
     
@@ -64,9 +67,12 @@ class CreateQRViewModel: ObservableObject {
         if templateQR.styles.isEmpty {
             templateRepository.fetchTemplate().sink { comple in
 
-            } receiveValue: { templates in
-                if let templates = templates?.first {
-                    self.templateQR = templates
+            } receiveValue: { [weak self] categories in
+                guard let self = self else { return }
+                if let categories = categories {
+                    categories.forEach { category  in
+                        self.templateQR.styles.append(contentsOf: category.styles)
+                    }
                     self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
                 }
             }.store(in: &cancellable)
@@ -100,14 +106,14 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func isValidInput() -> Bool {
-        if validName() {
+        if validName() && validPrompt() {
             switch input.type {
             case .website:
                 return !input.urlString.isEmpty
             case .contact:
                 return !input.contactName.isEmpty && !input.phoneNumber.isEmpty
             case .email:
-                return !input.emailAddress.isEmpty && !input.emailSubject.isEmpty && !input.emailDescription.isEmpty
+                return !input.emailAddress.isEmpty && !input.emailSubject.isEmpty && !input.emailDescription.isEmpty && QRHelper.isValidEmail(input.emailAddress)
             case .text:
                 return !input.text.isEmpty
             case .whatsapp:
@@ -115,7 +121,7 @@ class CreateQRViewModel: ObservableObject {
             case .instagram, .facebook, .twitter, .spotify, .youtube:
                 return !input.urlString.isEmpty
             case .wifi:
-                return !input.wfSsid.isEmpty == false && !input.wfPassword.isEmpty
+                return !input.wfSsid.isEmpty && !input.wfPassword.isEmpty
             case .paypal:
                 return !input.urlString.isEmpty == false
             }
@@ -126,6 +132,10 @@ class CreateQRViewModel: ObservableObject {
     
     func validName() -> Bool {
         return !input.name.isEmpty && input.name.count < 50
+    }
+    
+    func validPrompt() -> Bool {
+        return !input.prompt.isEmpty && !input.negativePrompt.isEmpty
     }
     
     func genQRLocal(text: String) -> Data? {
@@ -159,8 +169,10 @@ class CreateQRViewModel: ObservableObject {
             } else {
                 self.isShowLoadingView.toggle()
             }
-        } receiveValue: { data in
-            guard let data = data, let uiImage = UIImage(data: data) else { return }
+        } receiveValue: { [weak self] data in
+            guard let self = self,
+                  let data = data,
+                  let uiImage = UIImage(data: data) else { return }
             self.input.qrImage = uiImage
             self.imageResult = Image(uiImage: uiImage)
             self.isShowExport.toggle()
@@ -179,6 +191,8 @@ class CreateQRViewModel: ObservableObject {
         case .text:
             return input.text
         case .wifi:
+            let mode = WifiSecurityMode(rawValue: input.indexWfSecurityMode) ?? .wpa2
+            input.wfSecurityMode = mode
             return "WIFI:S:\(input.wfSsid);P:\(input.wfPassword);T:\(input.wfSecurityMode.title);;"
         case .paypal:
             return "\(input.urlString)/\(input.paypalAmount)"

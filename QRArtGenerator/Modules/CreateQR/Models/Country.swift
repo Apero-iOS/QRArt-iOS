@@ -20,7 +20,7 @@ struct Country: Decodable, Hashable {
         
         return name
     }
-    public let dialCode: String
+    public var dialCode: String
     
     public static func getCurrentCountry() -> Country? {
         let locale: NSLocale = NSLocale.current as NSLocale

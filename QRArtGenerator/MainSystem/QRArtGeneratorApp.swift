@@ -65,6 +65,8 @@ struct QRArtGeneratorApp: App {
     func setUpAds() {
         AdMobManager.shared.adFullScreenLoadingString = Rlocalizable.ad_is_loading()
         AdMobManager.shared.rewardErrorString = Rlocalizable.an_error_occurred()
+        AdMobManager.shared.adsNativeColor = Constants.Colors.defaultNativeAdColors
+
     }
     
     func resetUserDefaults() {

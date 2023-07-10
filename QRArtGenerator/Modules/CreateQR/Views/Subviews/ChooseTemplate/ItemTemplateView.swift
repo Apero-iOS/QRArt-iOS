@@ -37,7 +37,21 @@ struct ItemTemplateView: View {
                                     .frame(width: 101, height: 101)
                             }
                     default:
-                        EmptyView()
+                        R.image.qr_basic.image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 103, height: 103)
+                            .cornerRadius(8)
+                            .clipped()
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(
+                                        LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
+                                                       startPoint: .bottomLeading,
+                                                       endPoint: .topTrailing),
+                                        lineWidth: 2
+                                    )
+                                    .frame(width: 101, height: 101)
+                            }
                     }
                 }
             }

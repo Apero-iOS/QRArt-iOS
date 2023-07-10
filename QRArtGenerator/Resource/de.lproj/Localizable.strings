@@ -48,7 +48,7 @@
 "name" = "Name";
 "website_link" = "Website -Link";
 "contact_name" = "Kontaktname";
-"enter_contact_name" = "Geben Sie den Namen des CONNTACT ein";
+"enter_contact_name" = "Geben Sie den Kontaktnamen ein";
 "text" = "Text";
 "enter_text_here" = "Geben Sie hier einen Text ein";
 "email_to" = "E-Mail an";
@@ -72,7 +72,7 @@
 "guidance" = "Orientierungshilfe";
 "guidance_desc" = "Zeigen Sie den Einfluss von Aufforderungen auf die Bilderzeugung.";
 "controlnet_scale" = "Kontronettskala";
-"controlnet_scale_desc" = "Die Contronet Scale misst die Fähigkeit eines KI -Erzeugungssystems, Ausgangsausgaben mit höheren Konzentrationen zu erzeugen.";
+"controlnet_scale_desc" = "Die Contronet -Skala misst die Fähigkeit eines KI -Erzeugungssystems, Ausgaben mit höheren Kontrollniveaus zu erzeugen.";
 "steps" = "Schritte";
 "steps_desc" = "Die Anzahl der Schritte, die erforderlich sind, um ein Bild zu generieren. Je höher, desto mehr Qualität.";
 "prompt" = "Prompt";
@@ -133,3 +133,8 @@
 "an_error_occurred" = "Ein Fehler ist aufgetreten";
 "no_internet" = "Kein Internet";
 "an_unknown_error" = "Ein unbekannter Fehler";
+"enter_qr_name" = "Geben Sie den QR -Namen ein";
+"download_success" = "Erfolg herunterladen";
+"search_country" = "Suchland";
+"enter_desc" = "Beschreibung eingeben";
+"valid_email" = "Bitte geben Sie eine E -Mail gültig ein";

@@ -17,25 +17,29 @@ struct CountryCodeView: View {
     }
     
     var body: some View {
-        HStack(alignment: .center, spacing: 8) {
-            Image(R.image.ic_checked)
-                .opacity(isSelected ? 1 : 0)
-            Text("\(country.name) (\(country.dialCode))")
-                .font(R.font.urbanistMedium.font(size: 16))
-                .foregroundColor(R.color.color_1B232E.color)
-            Spacer()
-            AsyncImage(url: country.flagUrl)
-                .frame(width: 28, height: 28)
-                .cornerRadius(14)
-        }
-        .frame(maxHeight: 52)
-        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-        .onTapGesture {
-            if !isSelected {
-                selectedCountry = country
+        VStack {
+            HStack(alignment: .center, spacing: 8) {
+                Image(R.image.ic_checked)
+                    .opacity(isSelected ? 1 : 0)
+                Text("\(country.name) (\(country.dialCode))")
+                    .font(R.font.urbanistMedium.font(size: 16))
+                    .foregroundColor(R.color.color_1B232E.color)
+                Spacer()
+                AsyncImage(url: country.flagUrl)
+                    .frame(width: 28, height: 28)
+                    .cornerRadius(14)
             }
+            .frame(maxHeight: 52)
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+            .onTapGesture {
+                if !isSelected {
+                    selectedCountry = country
+                }
+            }
+            .background(Color.white)
+            R.color.color_EAEAEA.color.frame(height: 1)
         }
-        .background(Color.white)
+
     }
 }
 
