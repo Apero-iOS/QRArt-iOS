@@ -16,7 +16,7 @@ public typealias UrlBlock = (URL?) -> Void
 public typealias FloatBlock = (Float) -> Void
 public typealias IntBlock = (Int) -> Void
 
-var realmVersion: UInt64 = 1
+var realmVersion: UInt64 = 2
 var Rlocalizable: _R.string.localizable {
     get {
         return R.string.localizable(preferredLanguages: [LocalizationSystem.sharedInstance.getLanguage()])

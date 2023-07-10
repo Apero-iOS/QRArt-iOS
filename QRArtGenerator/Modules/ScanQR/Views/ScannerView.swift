@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AVKit
-import BottomSheet
 
 struct ScannerView: View {
     
@@ -84,9 +83,19 @@ struct ScannerView: View {
                                     .frame(width: 24, height: 24)
                             }
                             .padding(.horizontal)
-                            
                             Spacer()
                             
+                            Color.clear.frame(height: 156+safeAreaInsets.bottom)
+                                .bottomSheet(isPresented: $viewModel.showSheet, height: 156+safeAreaInsets.bottom,
+                                             topBarHeight: 20,
+                                             contentBackgroundColor: .clear,
+                                             topBarBackgroundColor: .clear,
+                                             colorOverlay: .clear,
+                                             onDismiss: {
+                                    qrDelegate.scannerCode = nil
+                                }) {
+                                    ResultQRView(result: $viewModel.qrItem, viewModel: viewModel).background(.red).cornerRadius(24, corners: [.topLeft, .topRight]).ignoresSafeArea()
+                                }
                         }
                     }
                     .compositingGroup()
@@ -108,15 +117,6 @@ struct ScannerView: View {
             }
             .onChange(of: qrDelegate.scannerCode) { newValue in
                 viewModel.handleQRResult(text: newValue)
-            }
-            .bottomSheet(isPresented: $viewModel.showSheet, height: 156+safeAreaInsets.bottom,
-                         topBarHeight: 20,
-                         contentBackgroundColor: .clear,
-                         topBarBackgroundColor: Color.clear,
-                         onDismiss: {
-                qrDelegate.scannerCode = nil
-            }) {
-                ResultQRView(result: $viewModel.qrItem, viewModel: viewModel).cornerRadius(24, corners: [.topLeft, .topRight]).ignoresSafeArea()
             }
             .sheet(isPresented: $viewModel.isShowSendMessage) {
                 MessageComposeView(recipients: [viewModel.qrItem.title], body: "") { messageSent in

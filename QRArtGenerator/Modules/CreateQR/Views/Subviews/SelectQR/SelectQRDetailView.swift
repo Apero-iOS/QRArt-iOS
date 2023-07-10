@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import BottomSheet
 
 struct SelectQRDetailView: View {
     @State var name: String = ""
