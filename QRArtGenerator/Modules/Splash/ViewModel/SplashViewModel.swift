@@ -14,6 +14,10 @@ class SplashViewModel: ObservableObject {
     var isFetchRemoteDone = PassthroughSubject<Bool, Never>()
     var isCheckIAPDone = PassthroughSubject<Bool, Never>()
     
+    var isShowAds: Bool {
+        return RemoteConfigService.shared.bool(forKey: .app_open_splash) && !UserDefaults.standard.isUserVip
+    }
+    
     func prepareData() {
         FileManagerUtil.shared.createFolder(folder: FileManagerUtil.shared.photoFolderName)
         InappManager.share.veryCheckRegisterPack { [weak self] in
@@ -32,5 +36,33 @@ class SplashViewModel: ObservableObject {
         } else {
             Router.showTabbar()
         }
+    }
+    
+    func addOpenAd() {
+            AdResumeManager.shared.resumeAdId = .app_open_all_price
+            AdResumeManager.shared.blockadDidDismissFullScreenContent = { [weak self] in
+                guard let self = self else { return }
+                navigateApp()
+            }
+            AdResumeManager.shared.loadAd { [weak self] success in
+                guard let self = self else { return }
+                if success {
+                    if let vc = AppHelper.getRootViewController() {
+                        AdResumeManager.shared.showAdIfAvailable(viewController: vc)
+                    } else {
+                        navigateApp()
+                    }
+                } else {
+                    navigateApp()
+                }
+            }
+        }
+    
+     func handlePushScreen() {
+         if isShowAds {
+             addOpenAd()
+         } else {
+             navigateApp()
+         }
     }
 }

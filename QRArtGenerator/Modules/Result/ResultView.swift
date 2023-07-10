@@ -44,7 +44,7 @@ struct ResultView: View {
                     }
                 }
                 Spacer()
-                if viewModel.isShowAdsInter {
+                if viewModel.isShowAdsInter, ReachabilityManager.isNetworkConnected() {
                     AdNativeView(adUnitID: .native_result, type: .medium)
                         .frame(height: 171)
                         .padding(.horizontal, 20)

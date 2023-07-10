@@ -55,7 +55,7 @@ struct HistoryView: View {
             }
             
             Button {
-                // TODO: show create QR
+                viewModel.isActive.toggle()
             } label: {
                 Text(Rlocalizable.create_qr())
                     .font(R.font.urbanistSemiBold.font(size: 14))
@@ -68,7 +68,7 @@ struct HistoryView: View {
         }
         .padding(.horizontal, 40)
         .opacity(1)
-        
+        NavigationLink(destination: CreateQRView(viewModel: CreateQRViewModel(source: .create, indexSelect: nil, list: nil, isPush: true)), isActive: $viewModel.isActive) {}
         Spacer()
     }
     

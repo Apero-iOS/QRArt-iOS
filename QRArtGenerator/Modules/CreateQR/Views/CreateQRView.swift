@@ -117,7 +117,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var naviView: some View {
-        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip, isCloseButton: true) {
+        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip, isCloseButton: !viewModel.isPush) {
             viewModel.showSub = true
         }
     }

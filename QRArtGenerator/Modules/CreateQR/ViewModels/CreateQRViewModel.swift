@@ -32,6 +32,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var imageResult: Image = Image("")
     @Published var showSub: Bool = false
     @Published var showToastError: Bool = false
+    @Published var isPush: Bool
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -40,8 +41,9 @@ class CreateQRViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    init(source: CreateQRViewSource, indexSelect: Int?, list: TemplateModel?) {
+    init(source: CreateQRViewSource, indexSelect: Int?, list: TemplateModel?, isPush: Bool = false) {
         self.source = source
+        self.isPush = isPush
         if let indexSelect = indexSelect {
             self.indexSelectTemplate = indexSelect + 1
         } else {
@@ -164,7 +166,7 @@ class CreateQRViewModel: ObservableObject {
             guard let self = self else { return }
             switch comple {
             case .finished:
-                if self.isShowAdsInter {
+                    if self.isShowAdsInter && !self.showToastError {
                     AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
                         guard let self = self else { return }
                         self.isShowLoadingView.toggle()
@@ -179,7 +181,10 @@ class CreateQRViewModel: ObservableObject {
         } receiveValue: { [weak self] data in
             guard let self = self,
                   let data = data,
-                  let uiImage = UIImage(data: data) else { return }
+                  let uiImage = UIImage(data: data) else {
+                self?.showToastError.toggle()
+                return
+            }
             self.input.qrImage = uiImage
             self.imageResult = Image(uiImage: uiImage)
             self.isShowExport.toggle()

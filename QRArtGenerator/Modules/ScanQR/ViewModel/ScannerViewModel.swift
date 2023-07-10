@@ -26,7 +26,7 @@ class ScannerViewModel: ObservableObject {
     @Published var scannerCode: String?
     @Published var cameraSize: CGSize = .zero
     @Published var showSheet: Bool = false
-    @Published var zoomValue = 1.5
+    @Published var zoomValue: CGFloat = 1
     @Published var torchMode: AVCaptureDevice.TorchMode = .off
     @Published var frameCamera: CGRect = .zero
     @Published var qrItem: ResultQR = ResultQR(type: .text, content: "", title: "")
