@@ -40,8 +40,14 @@ struct ActivityView: UIViewControllerRepresentable {
     @Binding var showing: Bool
     
     func makeUIViewController(context: Context) -> UIActivityViewController {
+        var activityItems: [Any] = []
+        if let url = URL(string: url) {
+            activityItems = [url]
+        } else {
+            activityItems = [url]
+        }
         let vc = UIActivityViewController(
-            activityItems: [NSURL(string: url)!],
+            activityItems: activityItems,
             applicationActivities: nil
         )
         vc.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
