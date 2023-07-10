@@ -68,7 +68,7 @@ struct QRHelper {
     }
     
     static func openUrl(urlString: String?) {
-        if let urlString = urlString {
+        if let urlString = urlString?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
             if let url = NSURL(string: urlString) {
                 UIApplication.shared.open(url as URL)
             }

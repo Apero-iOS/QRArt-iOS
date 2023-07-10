@@ -21,7 +21,7 @@ struct SuccessView: View {
                         .multilineTextAlignment(.center)
                 }
                 Button {
-                    
+                    Router.showHistory()
                 } label: {
                     Text(Rlocalizable.back_to_home())
                         .font(R.font.urbanistSemiBold.font(size: 16))

@@ -81,7 +81,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func checkShowSub() -> Bool {
-        !UserDefaults.standard.isUserVip && UserDefaults.standard.generatePerDay >= 3
+        !UserDefaults.standard.isUserVip && UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr)
     }
     
     func generateQR() {
