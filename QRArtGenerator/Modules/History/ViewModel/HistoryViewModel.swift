@@ -14,6 +14,8 @@ class HistoryViewModel: ObservableObject {
     @Published var filteredItems: [QRItem] = []
     @Published var selectedCate: HistoryCategory?
     
+    @Published var isActive = false
+    
     init() {
         QRItemService.shared.setObserver { [weak self] items in
             self?.items = items

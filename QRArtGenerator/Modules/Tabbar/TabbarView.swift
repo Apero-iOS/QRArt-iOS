@@ -68,16 +68,10 @@ struct TabbarView: View {
             .fullScreenCover(isPresented: $viewModel.showScan) {
                 ScannerView()
             }
-            .transaction({ transaction in
-                transaction.disablesAnimations = viewModel.isShowAds
-            })
             .fullScreenCover(isPresented: $viewModel.showCreateQR) {
                 let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: nil)
                 CreateQRView(viewModel: vm)
             }
-            .transaction({ transaction in
-                transaction.disablesAnimations = viewModel.isShowAds
-            })
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }

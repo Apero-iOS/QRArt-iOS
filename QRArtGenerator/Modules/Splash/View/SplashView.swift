@@ -34,7 +34,7 @@ struct SplashView: View {
             .Zip3(viewModel.isFetchRemoteDone, viewModel.isTimerDone, viewModel.isCheckIAPDone)
             .sink { isFetchRemoteDone, isTimerDone, isCheckIAPDone in
                 if isFetchRemoteDone && isTimerDone && isCheckIAPDone {
-                    viewModel.navigateApp()
+                    viewModel.handlePushScreen()
                 }
             }.store(in: &subscriptions)
     }

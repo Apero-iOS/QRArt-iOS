@@ -13,8 +13,7 @@ struct HomeSectionView: View {
     var listItem: [Style] = []
     var template: TemplateModel? = nil
     var onViewMore: (() -> Void)? = nil
-    @State var isShowCreateQR: Bool = false
-    @State var indexSelect: Int = .zero
+    @State var selection: Int? = nil
     
     var body: some View {
         VStack(spacing: 12) {
@@ -43,16 +42,15 @@ struct HomeSectionView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 ForEach(0..<listItem.count, id: \.self) { index in
-                    let item = listItem[index]
-                    itemView(item)
-                        .onTapGesture {
-                            indexSelect = index
-                            isShowCreateQR.toggle()
+                    let viewModel = CreateQRViewModel(source: .template, indexSelect: index, list: template, isPush: true)
+                    NavigationLink(destination: CreateQRView(viewModel: viewModel), tag: index, selection: $selection) {
+                        Button {
+                            selection = index
+                        } label: {
+                            let item = listItem[index]
+                            itemView(item)
                         }
-                        .fullScreenCover(isPresented: $isShowCreateQR) {
-                            let viewModel = CreateQRViewModel(source: .template, indexSelect: indexSelect, list: template)
-                            CreateQRView(viewModel: viewModel)
-                        }
+                    }
                 }
             }
             .padding(.horizontal, 20)
