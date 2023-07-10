@@ -128,7 +128,6 @@
 		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
 		C8109C872A51971A0093B48A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C862A51971A0093B48A /* LoadingView.swift */; };
 		C8109C8A2A5198970093B48A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C892A5198970093B48A /* ResultView.swift */; };
-		C83D7B2E2A5BA2AA008D32ED /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D7B2D2A5BA2AA008D32ED /* String+.swift */; };
 		C84BBF272A53FC950065B8AF /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BBF262A53FC950065B8AF /* ResultViewModel.swift */; };
 		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
 		C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */ = {isa = PBXBuildFile; fileRef = C8AA3E402A4DAF320077DCC3 /* ai_tab.json */; };
@@ -1137,6 +1136,7 @@
 		C8AA3E202A4DAEE30077DCC3 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				C83D7B2D2A5BA2AA008D32ED /* String+.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1659,7 +1659,6 @@
 				76FC00E52A5BA5D600B53B5F /* String+.swift in Sources */,
 				76FC00F42A5BC73700B53B5F /* BottomSheet.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
-				C83D7B2E2A5BA2AA008D32ED /* String+.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				C8E923BA2A52AB3E00835F93 /* SuccessView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,

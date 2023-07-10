@@ -41,6 +41,11 @@ struct InputEmailView: View {
                     width: 1)
             .font(R.font.urbanistRegular.font(size: 14))
             .foregroundColor(R.color.color_1B232E.color)
+            .onChange(of: name) { newValue in
+                if newValue.count > 50 {
+                    name = String(newValue.prefix(50))
+                }
+            }
     }
     
     func getBorderColor() -> Color {

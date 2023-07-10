@@ -15,6 +15,12 @@ final class Router {
         Router.setRootView(view: TabbarView(), window: window)
     }
     
+    public static func showHistory(window: UIWindow? = nil) {
+        let viewModel  = TabbarViewModel()
+        viewModel.selectedTab = .history
+        Router.setRootView(view: TabbarView(viewModel: viewModel), window: window)
+    }
+    
     public static func showFirstLanguage(window: UIWindow? = nil) {
         let viewModel = LanguageViewModel(sourceOpen: .splash)
         Router.setRootView(view: LanguageView(viewModel: viewModel), window: window)
