@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
- 
 extension String {
     
     var trim: String {
