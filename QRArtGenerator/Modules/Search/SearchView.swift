@@ -24,6 +24,7 @@ struct SearchView: View {
                     .font(R.font.urbanistRegular.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
                     .focused($isFocusSearch)
+                    .padding(.trailing, 12)
                 }
                 .frame(height: 40)
                 .overlay (

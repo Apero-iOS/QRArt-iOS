@@ -13,11 +13,11 @@ class SearchViewModel: ObservableObject {
             search()
         }
     }
-    @Published var searchItems: [QRItem] = []
+    @Published var searchItems: [QRItem] = QRItemService.shared.getQRItems()
     private var totalItems: [QRItem] = QRItemService.shared.getQRItems()
     
     func search() {
-        let key = searchKey.trimmingCharacters(in: .whitespacesAndNewlines)
-        searchItems = totalItems.filter({ $0.name.lowercased().contains(key.lowercased()) })
+        let key = searchKey.trim
+        searchItems = key.isEmpty ? totalItems : totalItems.filter({ $0.name.trim.lowercased().contains(key.lowercased()) })
     }
 }

@@ -47,6 +47,7 @@
 		59F74C452A4FBE8B00AD8CBA /* AdBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C442A4FBE8B00AD8CBA /* AdBannerView.swift */; };
 		59F74C472A4FC24D00AD8CBA /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C462A4FC24D00AD8CBA /* AdViewController.swift */; };
 		59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C492A4FC79900AD8CBA /* AdNativeView.swift */; };
+		76FC00E52A5BA5D600B53B5F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC00E42A5BA5D600B53B5F /* String+.swift */; };
 		9AB852802A5135CE00A546F4 /* IAPFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB8527F2A5135CD00A546F4 /* IAPFeatureView.swift */; };
 		9AB852832A51363F00A546F4 /* IAPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB852822A51363F00A546F4 /* IAPViewModel.swift */; };
 		9AB852862A5138E500A546F4 /* IAPIdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB852852A5138E500A546F4 /* IAPIdType.swift */; };
@@ -216,6 +217,7 @@
 		62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator_QRArtGeneratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		69E53AB083F0BA1F5231B969 /* Pods-QRArtGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		76FC00E42A5BA5D600B53B5F /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		84F3C1A35E93DC48B9FF8923 /* Pods-QRArtGeneratorTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.staging.xcconfig"; sourceTree = "<group>"; };
 		8577C75B8F4BEECEFD6722F8 /* Pods-QRArtGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		8872CAFFF07151FDDAC4D66B /* Pods-QRArtGenerator.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.staging.xcconfig"; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 				59F74C302A4E85D800AD8CBA /* EdgeInsets+.swift */,
 				59F74C322A4E85F500AD8CBA /* Enviroment+.swift */,
 				9AD2B8FB2A501A73003B7C1F /* URL+.swift */,
+				76FC00E42A5BA5D600B53B5F /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1632,6 +1635,7 @@
 				9AC7DCC82A4DB6C600FB3119 /* SecurityModeView.swift in Sources */,
 				9AD2B8F82A501093003B7C1F /* WifiSecurityMode.swift in Sources */,
 				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
+				76FC00E52A5BA5D600B53B5F /* String+.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
 				C8E923BA2A52AB3E00835F93 /* SuccessView.swift in Sources */,
