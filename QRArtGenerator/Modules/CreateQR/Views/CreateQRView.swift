@@ -76,6 +76,7 @@ struct CreateQRView: View {
         .onChange(of: viewModel.input.type) { newValue in
             viewModel.input.name = ""
         }
+        .toast(message: Rlocalizable.unknow_error(), isShowing: $viewModel.showToastError, position: .center)
     }
     
     @ViewBuilder var templateView: some View {
