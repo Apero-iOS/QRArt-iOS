@@ -19,8 +19,7 @@ struct SearchView: View {
                     Image(R.image.search_ic)
                         .frame(width: 24)
                         .padding(.leading, 12)
-                    
-                    TextField(Rlocalizable.search_qr_name(), text: $viewModel.searchKey)
+                    LimitedTextField(placeholder: Rlocalizable.search_qr_name(), value: $viewModel.searchKey, charLimit: 50)
                     .font(R.font.urbanistRegular.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
                     .focused($isFocusSearch)
