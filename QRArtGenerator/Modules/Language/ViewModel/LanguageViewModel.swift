@@ -22,7 +22,7 @@ final class LanguageViewModel: ObservableObject, Identifiable {
         LocalizationSystem.sharedInstance.setLanguage(languageCode: language.rawValue)
         UserDefaults.standard.isFirstLanguage = true
         if sourceOpen == .splash {
-            Router.showTabbar()
+            Router.showOnboarding()
         } else {
 //            if RemoteConfigService.shared.bool(forKey: .reward_upload), !UserDefaults.standard.isUserVip {
 //                AdMobManager.shared.createAdRewardedIfNeed(unitId: .reward_upload)
@@ -45,10 +45,6 @@ final class LanguageViewModel: ObservableObject, Identifiable {
     }
     
     func handleChangeLanguage() {
-        if sourceOpen == .splash {
-            UserDefaults.standard.isFirstLanguage = true
-            Router.showOnboarding()
-        }
         changeLanguageApp()
     }
     

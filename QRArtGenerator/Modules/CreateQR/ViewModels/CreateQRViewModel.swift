@@ -38,6 +38,10 @@ class CreateQRViewModel: ObservableObject {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
     }
     
+    var isShowAdsBanner: Bool {
+        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
+    }
+    
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -58,7 +62,6 @@ class CreateQRViewModel: ObservableObject {
     }
     
     deinit {
-        print("abcbabcbcabaa")
         cancellable.removeAll()
     }
     
@@ -81,20 +84,12 @@ class CreateQRViewModel: ObservableObject {
             }.store(in: &cancellable)
         }
     }
-    
-    func checkShowSub() -> Bool {
-        !UserDefaults.standard.isUserVip && UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr)
-    }
-    
+
     func generateQR() {
-        if checkShowSub() {
-            showSub = true
-        } else {
-            UserDefaults.standard.generatePerDay += 1
-            validInput = true
-            if isValidInput() {
-                genQR()
-            }
+        UserDefaults.standard.generatePerDay += 1
+        validInput = true
+        if isValidInput() {
+            genQR()
         }
     }
     
@@ -105,7 +100,28 @@ class CreateQRViewModel: ObservableObject {
     }
     
     public func showAdsInter() {
-        generateQR()
+        if isShowAdsInter {
+            AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
+                guard let self = self else { return }
+                self.generateQR()
+            })
+        } else {
+            generateQR()
+        }
+    }
+    
+    public func onTapGenerate() {
+        if UserDefaults.standard.isUserVip {
+            generateQR()
+        } else {
+            if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
+                // show sub
+                showSub = true
+            } else {
+                // show ads
+                showAdsInter()
+            }
+        }
     }
     
     func isValidInput() -> Bool {
@@ -165,18 +181,11 @@ class CreateQRViewModel: ObservableObject {
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
-            case .finished:
-                    if self.isShowAdsInter && !self.showToastError {
-                    AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
-                        guard let self = self else { return }
-                        self.isShowLoadingView.toggle()
-                    })
-                } else {
+                case .finished:
                     self.isShowLoadingView.toggle()
-                }
-            case .failure:
-                self.isShowLoadingView.toggle()
-                self.showToastError.toggle()
+                case .failure:
+                    self.isShowLoadingView.toggle()
+                    self.showToastError.toggle()
             }
         } receiveValue: { [weak self] data in
             guard let self = self,

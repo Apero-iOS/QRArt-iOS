@@ -23,6 +23,11 @@ struct AdNativeView: UIViewControllerRepresentable {
             make.edges.equalToSuperview()
         }
         AdMobManager.shared.addAdNative(unitId: adUnitID, rootVC: adViewController, views: [nativeView], type: type)
+        AdMobManager.shared.blockNativeFaild = { id in
+            if id == adUnitID.rawValue {
+                adViewController.view.isHidden = true
+            }
+        }
         return adViewController
     }
     

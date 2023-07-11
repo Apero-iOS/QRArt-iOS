@@ -16,7 +16,7 @@ struct TabbarView: View {
             NavigationView {
                 ZStack(alignment: .bottom) {
                     contentView
-                        .padding(.bottom, geo.safeAreaInsets.bottom)
+                        .padding(.bottom, viewModel.isShowAdsBanner ? geo.safeAreaInsets.bottom + 80 : geo.safeAreaInsets.bottom)
                     
                     VStack(spacing: 0) {
                         Spacer()
@@ -30,15 +30,27 @@ struct TabbarView: View {
                             HStack(alignment: .bottom, spacing: 0) {
                                 ForEach(viewModel.tabs, id: \.self) { tab in
                                     TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { _ in
-                                        viewModel.currentTab = tab
-                                        viewModel.changeCountSelect()
+                                        switch tab {
+                                        case .scan:
+                                            viewModel.showScan.toggle()
+                                        case .ai:
+                                            viewModel.showCreateQR.toggle()
+                                        default:
+                                            print("Không phải view present")
+                                        }
                                     }
                                 }
                             }
                             .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                         }
+                        /// View Ads
+                        if viewModel.isShowAdsBanner {
+                            BannerView(adUnitID: .banner_tab_bar)
+                                .frame(height: 50)
+                        }
                         
-                        Color.white
+                        Color
+                            .white
                             .frame(width: WIDTH_SCREEN, height: geo.safeAreaInsets.bottom)
                     }
                     
@@ -79,10 +91,6 @@ struct TabbarView: View {
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
             if viewModel.isShowAds {
                 viewModel.showAdsInter()
-            } else if viewModel.currentTab == .scan {
-                viewModel.showScan.toggle()
-            } else if viewModel.currentTab == .ai {
-                viewModel.showCreateQR.toggle()
             }
         })
         .onAppear {
@@ -100,7 +108,6 @@ struct TabbarView: View {
             
         }
         .onChange(of: viewModel.selectedTab, perform: { newValue in
-            viewModel.currentTab = newValue
             viewModel.changeCountSelect()
         })
     }

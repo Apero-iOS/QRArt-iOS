@@ -16,12 +16,18 @@ struct BannerView: UIViewControllerRepresentable {
     var adUnitID: AdUnitID
     
     func makeUIViewController(context: Context) -> some UIViewController {
+        AdMobManager.shared.removeAd(unitId: adUnitID.rawValue)
         let adViewController = AdViewController()
         adViewController.view.addSubview(bannerView)
         bannerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        AdMobManager.shared.addAdBannerAdaptive(unitId: adUnitID, rootVC: adViewController, view: bannerView)
+        AdMobManager.shared.addAdBanner(unitId: adUnitID, rootVC: adViewController, view: bannerView)
+        AdMobManager.shared.blockBannerFaild = { id in
+            if id == adUnitID.rawValue {
+                adViewController.view.isHidden = true
+            }
+        }
         return adViewController
     }
     

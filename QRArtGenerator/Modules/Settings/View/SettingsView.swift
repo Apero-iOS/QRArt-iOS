@@ -74,6 +74,9 @@ struct SettingsView: View {
         .fullScreenCover(isPresented: $viewModel.isShowIAP) {
             IAPView()
         }
+        .onAppear {
+            UIView.setAnimationsEnabled(true)
+        }
     }
     
     @ViewBuilder private var listItemView: some View {
