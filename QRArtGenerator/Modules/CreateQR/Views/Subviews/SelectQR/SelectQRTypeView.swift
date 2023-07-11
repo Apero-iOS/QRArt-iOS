@@ -35,7 +35,9 @@ struct SelectQRTypeView: View {
             .frame(maxHeight: 29)
             List {
                 ForEach(QRGroupType.allCases, id:  \.self) { section in
-                    Section(header: Text(section.title).listRowInsets(EdgeInsets())
+                    Section(header: Text(section.title)
+                        .textCase(nil)
+                        .listRowInsets(EdgeInsets())
                         .font(R.font.urbanistSemiBold.font(size: 16))
                         .foregroundColor(R.color.color_1B232E.color)
                         .padding(EdgeInsets())) {

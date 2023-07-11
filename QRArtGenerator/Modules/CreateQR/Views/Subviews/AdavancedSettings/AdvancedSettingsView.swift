@@ -13,7 +13,7 @@ enum AdvancedSettingsMode {
 }
 
 struct AdvancedSettingsView: View {
-    @State var mode: AdvancedSettingsMode = .collapse
+    @Binding var mode: AdvancedSettingsMode
     @State var rotate: Double = 0
     @Binding var prompt: String
     @Binding var negativePrompt: String
@@ -28,9 +28,14 @@ struct AdvancedSettingsView: View {
         VStack(spacing: 16) {
             LazyVStack(alignment: .leading) {
                 HStack {
-                    Text(Rlocalizable.advanced_settings())
-                        .font(R.font.urbanistSemiBold.font(size: 16))
-                        .foregroundColor(R.color.color_1B232E.color)
+                    VStack(spacing: ) {
+                        Text(Rlocalizable.advanced_settings())
+                            .font(R.font.urbanistSemiBold.font(size: 16))
+                            .foregroundColor(R.color.color_1B232E.color)
+                        Text(Rlocalizable.advanced_settings_sub_title)
+                            .font(R.font.urbanistMedium.font(size: 12))
+                            .foregroundColor(R.color.color_6A758B.color)
+                    }
                     Spacer()
                     Button {
                         if mode == .expand {
@@ -97,7 +102,7 @@ struct AdvancedSettingsView: View {
 
 struct AdvancedSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdvancedSettingsView(prompt: .constant(""),
+        AdvancedSettingsView(mode: .constant(.collapse), prompt: .constant(""),
                              negativePrompt: .constant(""),
                              oldPrompt: .constant(""),
                              oldNegativePrompt: .constant(""), guidance: .constant(0), steps: .constant(0), scale: .constant(0), validInput: .constant(false))

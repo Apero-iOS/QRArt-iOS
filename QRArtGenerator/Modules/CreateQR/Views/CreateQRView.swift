@@ -95,7 +95,8 @@ struct CreateQRView: View {
     
     @ViewBuilder var advancedSettingsView: some View {
         if !viewModel.templateQR.styles.isEmpty {
-            AdvancedSettingsView(prompt: $viewModel.input.prompt,
+            AdvancedSettingsView(mode: $viewModel.mode,
+                                 prompt: $viewModel.input.prompt,
                                  negativePrompt: $viewModel.input.negativePrompt,
                                  oldPrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.positivePrompt,
                                  oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt, guidance: $viewModel.input.guidance,

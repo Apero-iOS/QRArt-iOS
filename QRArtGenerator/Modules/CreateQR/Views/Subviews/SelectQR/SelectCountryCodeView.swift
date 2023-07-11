@@ -68,7 +68,7 @@ struct SelectCountryCodeView: View {
         if search.isEmpty {
             return countries
         } else {
-            return countries.filter({ $0.name.contains(search) })
+            return countries.filter({ $0.name.uppercased().contains(search.uppercased())})
         }
     }
 }

@@ -73,4 +73,10 @@ struct QRDetailItem: QRItem {
         object.steps = Int(steps)
         return object
     }
+    
+    func duplicate() -> QRDetailItem {
+        var obj = QRDetailItem()
+        obj.type = type
+        return obj
+    }
 }
