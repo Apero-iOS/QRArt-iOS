@@ -7,11 +7,16 @@
 
 import Foundation
 import SwiftUI
+import MobileAds
 
 final class DetailStylesViewModel: ObservableObject, Identifiable {
     
+    var isShowAdsBanner: Bool {
+        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
+    }
+    
     public func getColumns() -> [GridItem] {
-        var columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+        let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
         return columns
     }
     

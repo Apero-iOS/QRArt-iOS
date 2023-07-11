@@ -33,6 +33,7 @@ struct ScannerView: View {
                             
                             HStack {
                                 Button {
+                                    UIView.setAnimationsEnabled(true)
                                     dismiss()
                                 } label: {
                                     Image(R.image.ic_close)

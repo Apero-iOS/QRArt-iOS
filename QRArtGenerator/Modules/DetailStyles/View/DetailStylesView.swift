@@ -14,7 +14,7 @@ struct DetailStylesView: View {
     
     var body: some View {
         VStack {
-            NavibarView(title: Rlocalizable.ai_art())
+            NavibarView(title: template?.category.name ?? "")
             ScrollView {
                 LazyVGrid(columns: viewModel.getColumns()) {
                     if let template = self.template {
@@ -30,6 +30,12 @@ struct DetailStylesView: View {
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
+            }
+            
+            /// View Ads
+            if viewModel.isShowAdsBanner {
+                BannerView(adUnitID: .banner_tab_bar)
+                    .frame(height: 50)
             }
         }
         .hideNavigationBar(isHidden: true)

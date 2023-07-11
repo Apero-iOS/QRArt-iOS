@@ -149,7 +149,7 @@ class ResultViewModel: ObservableObject {
     }
     
     public func showAdsInter() {
-        if isShowAdsInter {
+        if isShowAdsInter, !checkShowSub() {
             AdMobManager.shared.showIntertitial(unitId: .inter_regenerate, isSplash: false, blockDidDismiss: { [weak self] in
                 self?.regenerate()
             })

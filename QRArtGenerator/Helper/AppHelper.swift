@@ -67,6 +67,7 @@ extension RemoteKey {
     static let inter_change_screen = RemoteKey(rawValue: "inter_change_screen")
     static let native_result = RemoteKey(rawValue: "native_result")
     static let app_open_splash = RemoteKey(rawValue: "app_open_splash")
+    static let banner_tab_bar = RemoteKey(rawValue: "banner_tab_bar")
 }
 
 extension AdUnitID {
@@ -77,9 +78,5 @@ extension AdUnitID {
     static let native_result = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatNativeAdvanced : "ca-app-pub-6530974883137971/6291805244")
     static let app_open_high_floor = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/6973421391")
     static let app_open_all_price = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/1721094710")
-    
-    static let native_language = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatNativeAdvanced : "ca-app-pub-4973559944609228/2271279159")
-    static let open_app = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-4973559944609228/4134971263")
-    static let banner_home = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatBanner : "ca-app-pub-4973559944609228/1508807921")
-    static let reward_upload = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatRewarded : "ca-app-pub-4973559944609228/3392789133")
+    static let banner_tab_bar = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatBanner : "ca-app-pub-6530974883137971/7922189910")
 }

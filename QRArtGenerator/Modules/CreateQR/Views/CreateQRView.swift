@@ -27,17 +27,22 @@ struct CreateQRView: View {
                 }
             }
             VStack {
-                Button(Rlocalizable.generate_qr()) {
-                    viewModel.showAdsInter()
-                }
-                .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
+                Button {
+                    viewModel.onTapGenerate()
+                } label: {
+                    Text(Rlocalizable.generate_qr())
+                        .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
+                        .background(R.color.color_653AE4.color)
+                        .foregroundColor(Color.white)
+                        .font(R.font.urbanistSemiBold.font(size: 14))
+                        .cornerRadius(20)
+                }.padding(EdgeInsets(top: 0, leading: 20, bottom: viewModel.isShowAdsBanner ? 0 : 20, trailing: 20))
                 
-                .clipShape(Capsule())
-                .background(R.color.color_653AE4.color)
-                .foregroundColor(Color.white)
-                .font(R.font.urbanistSemiBold.font(size: 14))
-                .cornerRadius(20)
-                .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+                /// View Ads
+                if viewModel.isShowAdsBanner {
+                    BannerView(adUnitID: .banner_tab_bar)
+                        .frame(height: 50)
+                }
             }
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))

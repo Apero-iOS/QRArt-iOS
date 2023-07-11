@@ -15,12 +15,15 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var showCreateQR: Bool = false
     @Published var showIAP: Bool = false
     @Published var countSelectTab: Int = .zero
-    @Published var showType: TabbarEnum = .scan
 
     var tabs: [TabbarEnum] = TabbarEnum.allCases
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.number(forKey: .inter_change_screen) > .zero && !UserDefaults.standard.isUserVip
+    }
+    
+    var isShowAdsBanner: Bool {
+        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
     }
     
     var isShowAds: Bool {
