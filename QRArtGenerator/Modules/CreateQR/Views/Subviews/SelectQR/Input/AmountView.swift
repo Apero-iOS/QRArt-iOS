@@ -29,6 +29,9 @@ struct AmountView: View {
                     width: 1)
             .keyboardType(.decimalPad)
             
+            if validInput && amount.isEmptyOrWhitespace() {
+                textError(text: Rlocalizable.cannot_be_empty())
+            }
         }
     }
     func getBorderColor() -> Color {
@@ -41,6 +44,12 @@ struct AmountView: View {
                 return R.color.color_EAEAEA.color
             }
         }
+    }
+    
+    func textError(text: String) -> some View {
+        Text(text)
+            .foregroundColor(R.color.color_BD1E1E.color)
+            .font(R.font.urbanistRegular.font(size: 14))
     }
 }
 

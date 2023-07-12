@@ -22,7 +22,14 @@ class CreateQRViewModel: ObservableObject {
             }
         }
     }
-    @Published var input: QRDetailItem = QRDetailItem()
+    @Published var input: QRDetailItem = QRDetailItem() {
+        didSet {
+            if input.type != oldValue.type {
+                validInput = false
+                resetInput()
+            }
+        }
+    }
     @Published var validInput: Bool = false
     @Published var source: CreateQRViewSource = .create
     @Published var showingSelectQRTypeView: Bool = false
@@ -33,6 +40,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var showSub: Bool = false
     @Published var showToastError: Bool = false
     @Published var isPush: Bool
+    @Published var mode: AdvancedSettingsMode = .collapse
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -128,33 +136,36 @@ class CreateQRViewModel: ObservableObject {
         if validName() && validPrompt() {
             switch input.type {
             case .website:
-                return !input.urlString.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl()
             case .contact:
-                return !input.contactName.isEmptyOrWhitespace() && !input.phoneNumber.isEmptyOrWhitespace()
+                return !input.contactName.isEmptyOrWhitespace() && !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
             case .email:
-                return !input.emailAddress.isEmptyOrWhitespace() && !input.emailSubject.isEmptyOrWhitespace() && !input.emailDescription.isEmptyOrWhitespace() && QRHelper.isValidEmail(input.emailAddress)
+                return !input.emailAddress.isEmptyOrWhitespace() && !input.emailSubject.isEmptyOrWhitespace() && !input.emailDescription.isEmptyOrWhitespace() && input.emailAddress.isValidEmail()
             case .text:
                 return !input.text.isEmptyOrWhitespace()
             case .whatsapp:
-                return !input.phoneNumber.isEmptyOrWhitespace()
+                return !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
             case .instagram, .facebook, .twitter, .spotify, .youtube:
-                return !input.urlString.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && input.urlString.isValidUrl()
             case .wifi:
                 return !input.wfSsid.isEmptyOrWhitespace() && !input.wfPassword.isEmptyOrWhitespace()
             case .paypal:
-                return !input.urlString.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && !input.paypalAmount.isEmptyOrWhitespace()
             }
         } else {
+            if !validPrompt() && mode == .collapse {
+                mode = .expand
+            }
             return false
         }
     }
     
     func validName() -> Bool {
-        return !input.name.isEmptyOrWhitespace() && input.name.count < 50
+        return !input.name.isEmptyOrWhitespace()
     }
     
     func validPrompt() -> Bool {
-        return !input.prompt.isEmpty && !input.negativePrompt.isEmpty
+        return !input.prompt.isEmpty
     }
     
     func genQRLocal(text: String) -> Data? {
@@ -176,8 +187,7 @@ class CreateQRViewModel: ObservableObject {
                                  positivePrompt: input.prompt,
                                  negativePrompt: input.negativePrompt,
                                  guidanceScale: Int(input.guidance),
-                                 numInferenceSteps: Int(input.steps),
-                                 controlnetConditioningScale: Int(input.contronetScale))
+                                 numInferenceSteps: Int(input.steps))
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
@@ -218,5 +228,9 @@ class CreateQRViewModel: ObservableObject {
         case .paypal:
             return "\(input.urlString)/\(input.paypalAmount)"
         }
+    }
+    
+    func resetInput() {
+        input = input.duplicate()
     }
 }

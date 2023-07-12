@@ -108,8 +108,7 @@ class ResultViewModel: ObservableObject {
                                      positivePrompt: item.prompt,
                                      negativePrompt: item.negativePrompt,
                                      guidanceScale: Int(item.guidance),
-                                     numInferenceSteps: Int(item.steps),
-                                     controlnetConditioningScale: Int(item.contronetScale))
+                                     numInferenceSteps: Int(item.steps))
             .sink { comple in
                 self.isShowLoadingView.toggle()
             } receiveValue: { data in

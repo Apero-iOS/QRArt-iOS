@@ -47,7 +47,7 @@ struct QRHelper {
                 result.type = .text
             }
         } else {
-            if QRHelper.isValidPhone(phone: text) {
+            if text.isValidPhone() {
                 result.type = .phone
             } else if QRHelper.verifyUrl(urlString: text) {
                 result.type = .url
@@ -74,13 +74,6 @@ struct QRHelper {
             }
         }
     }
-    
-    static func isValidPhone(phone: String) -> Bool {
-        let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: phone)
-    }
-    
     
     static func connectWifi(data: WifiData, completion: ((Bool, String) -> Void)?) {
         let configuration = NEHotspotConfiguration.init(ssid: data.ssid, passphrase: data.password, isWEP: data.type == "WEP")
@@ -120,13 +113,5 @@ struct QRHelper {
         }
         return nil
     }
-    
-    static func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
 }
 

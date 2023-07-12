@@ -157,7 +157,7 @@ extension ScannerViewModel {
     }
     
     func openUrl(urlString: String) {
-        isShowWebView.toggle()
+        UIApplication.shared.open(URL(string: urlString)!)
     }
     
     func showToast(message: String) {

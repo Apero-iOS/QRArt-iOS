@@ -8,13 +8,20 @@
 import SwiftUI
 import MobileAds
 
+enum PromptViewType {
+    case prompt
+    case negativePrompt
+}
+
 struct PromptView: View {
-    @Binding var prompt: String
-    @State var countAds: Int = 1
     var oldPrompt: String
     var title: String = ""
     var subTitle: String = ""
+    @State var countAds: Int = 1
+    @State var typePrompt: PromptViewType = .prompt
+    @Binding var prompt: String
     @Binding var validInput: Bool
+    @FocusState var isFocused: Bool
     
     private var isShowAdsInter: Bool {
         return RemoteConfigService.shared.number(forKey: .inter_inspire) > .zero && !UserDefaults.standard.isUserVip
@@ -40,10 +47,11 @@ struct PromptView: View {
             }
             TextField(Rlocalizable.enter_prompt(), text: $prompt)
                 .frame(height: 100, alignment: .top)
+                .focused($isFocused)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-                .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
+                .border(radius: 12, color: getBorderColor(), width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
-            if validInput && prompt.isEmpty {
+            if validInput && typePrompt == .prompt && prompt.isEmpty {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
@@ -71,10 +79,22 @@ struct PromptView: View {
             AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_inspire)
         }
     }
+    
+    func getBorderColor() -> Color {
+        if validInput && typePrompt == .prompt && prompt.isEmpty {
+            return R.color.color_BD1E1E.color
+        } else {
+            if isFocused {
+                return R.color.color_653AE4.color
+            } else {
+                return R.color.color_EAEAEA.color
+            }
+        }
+    }
 }
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView(prompt: .constant(""), oldPrompt: "", validInput: .constant(false))
+        PromptView(oldPrompt: "", prompt: .constant(""), validInput: .constant(false))
     }
 }

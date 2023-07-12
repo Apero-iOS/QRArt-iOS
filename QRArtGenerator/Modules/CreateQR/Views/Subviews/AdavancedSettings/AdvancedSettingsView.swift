@@ -13,7 +13,7 @@ enum AdvancedSettingsMode {
 }
 
 struct AdvancedSettingsView: View {
-    @State var mode: AdvancedSettingsMode = .collapse
+    @Binding var mode: AdvancedSettingsMode
     @State var rotate: Double = 0
     @Binding var prompt: String
     @Binding var negativePrompt: String
@@ -25,12 +25,17 @@ struct AdvancedSettingsView: View {
     @Binding var validInput: Bool
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 0) {
             LazyVStack(alignment: .leading) {
                 HStack {
-                    Text(Rlocalizable.advanced_settings())
-                        .font(R.font.urbanistSemiBold.font(size: 16))
-                        .foregroundColor(R.color.color_1B232E.color)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(Rlocalizable.advanced_settings())
+                            .font(R.font.urbanistSemiBold.font(size: 16))
+                            .foregroundColor(R.color.color_1B232E.color)
+                        Text(Rlocalizable.advanced_settings_sub_title)
+                            .font(R.font.urbanistMedium.font(size: 12))
+                            .foregroundColor(R.color.color_6A758B.color)
+                    }
                     Spacer()
                     Button {
                         if mode == .expand {
@@ -63,29 +68,32 @@ struct AdvancedSettingsView: View {
     @ViewBuilder var descView: some View {
         VStack {
             // prompt
-            PromptView(prompt: $prompt,
-                       oldPrompt: oldPrompt,
+            PromptView(oldPrompt: oldPrompt,
                        title: Rlocalizable.prompt(),
                        subTitle: Rlocalizable.prompt_desc(),
+                       typePrompt: .prompt,
+                       prompt: $prompt,
                        validInput: $validInput)
             // negative prompt
-            PromptView(prompt: $negativePrompt,
-                       oldPrompt: oldNegativePrompt,
+            PromptView(oldPrompt: oldNegativePrompt,
                        title: Rlocalizable.negative_prompt(),
                        subTitle: Rlocalizable.negative_prompt_desc(),
+                       typePrompt: .negativePrompt,
+                       prompt: $negativePrompt,
                        validInput: $validInput)
             // guidance
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc(),
-                              value: $guidance)
-            // scale
-            SliderSettingView(title: Rlocalizable.controlnet_scale(),
-                              desc: Rlocalizable.controlnet_scale_desc(),
-                              value: $scale)
+                              value: $guidance,
+                              fromValue: 1,
+                              toValue: 10)
+
             // steps
             SliderSettingView(title: Rlocalizable.steps(),
                               desc: Rlocalizable.steps_desc(),
-                              value: $steps)
+                              value: $steps,
+                              fromValue: 10,
+                              toValue: 30)
         }
     }
     
@@ -97,7 +105,7 @@ struct AdvancedSettingsView: View {
 
 struct AdvancedSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdvancedSettingsView(prompt: .constant(""),
+        AdvancedSettingsView(mode: .constant(.collapse), prompt: .constant(""),
                              negativePrompt: .constant(""),
                              oldPrompt: .constant(""),
                              oldNegativePrompt: .constant(""), guidance: .constant(0), steps: .constant(0), scale: .constant(0), validInput: .constant(false))

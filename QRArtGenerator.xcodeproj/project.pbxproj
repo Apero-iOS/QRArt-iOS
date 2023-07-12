@@ -69,7 +69,7 @@
 		9AC7DCC92A4DB6C600FB3119 /* SliderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */; };
 		9AC7DCCA2A4DB6C600FB3119 /* QRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */; };
 		9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC12A4DB6C600FB3119 /* AdvancedSettingsView.swift */; };
-		9AC7DCCC2A4DB6C600FB3119 /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */; };
+		9AC7DCCC2A4DB6C600FB3119 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC22A4DB6C600FB3119 /* InputTextView.swift */; };
 		9AC7DCCD2A4DB6C600FB3119 /* ItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC32A4DB6C600FB3119 /* ItemTemplateView.swift */; };
 		9AC7DCCE2A4DB6C600FB3119 /* InputPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */; };
 		9AC7DCCF2A4DB6C600FB3119 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCC52A4DB6C600FB3119 /* PromptView.swift */; };
@@ -251,7 +251,7 @@
 		9AC7DCBF2A4DB6C600FB3119 /* SliderSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderSettingView.swift; sourceTree = "<group>"; };
 		9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRTypeView.swift; sourceTree = "<group>"; };
 		9AC7DCC12A4DB6C600FB3119 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
-		9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		9AC7DCC22A4DB6C600FB3119 /* InputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		9AC7DCC32A4DB6C600FB3119 /* ItemTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTemplateView.swift; sourceTree = "<group>"; };
 		9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPhoneNumberView.swift; sourceTree = "<group>"; };
 		9AC7DCC52A4DB6C600FB3119 /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
@@ -1230,7 +1230,7 @@
 		C8AB7FEC2A59883A001938AD /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				9AC7DCC22A4DB6C600FB3119 /* InputNameView.swift */,
+				9AC7DCC22A4DB6C600FB3119 /* InputTextView.swift */,
 				C8AB7FEA2A5982BD001938AD /* InputEmailView.swift */,
 				C8109C822A518B3E0093B48A /* AmountView.swift */,
 				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
@@ -1633,7 +1633,7 @@
 				9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */,
 				9AD373702A4E78F600FCF934 /* HistoryCategory.swift in Sources */,
 				9AB852802A5135CE00A546F4 /* IAPFeatureView.swift in Sources */,
-				9AC7DCCC2A4DB6C600FB3119 /* InputNameView.swift in Sources */,
+				9AC7DCCC2A4DB6C600FB3119 /* InputTextView.swift in Sources */,
 				9AD2B8FA2A5017F7003B7C1F /* FileManagerUtil.swift in Sources */,
 				C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */,
 				9AD2B8FC2A501A73003B7C1F /* URL+.swift in Sources */,

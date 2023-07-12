@@ -15,12 +15,30 @@ extension String {
     }
     
     func isEmptyOrWhitespace() -> Bool {
-        
         // Check empty string
         if self.isEmpty {
             return true
         }
         // Trim and check empty string
         return (self.trimmingCharacters(in: .whitespaces) == "")
+    }
+    
+    func isValidPhone() -> Bool {
+        let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: self)
+    }
+    
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: self)
+    }
+    
+    func isValidUrl () -> Bool {
+        if let url = NSURL(string: self) {
+            return UIApplication.shared.canOpenURL(url as URL)
+        }
+        return false
     }
 }

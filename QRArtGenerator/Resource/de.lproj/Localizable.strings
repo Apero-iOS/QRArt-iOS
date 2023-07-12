@@ -122,7 +122,7 @@
 "languages" = "Sprachen";
 "amount" = "Menge";
 "download" = "Herunterladen";
-"download_4k" = "Download 4K";
+"download_4k" = "Herunterladen 4K";
 "regenerate" = "Regenerieren";
 "share_qr" = "Share QR";
 "back_to_home" = "Zurück nach Hause";
@@ -138,3 +138,6 @@
 "search_country" = "Suchland";
 "enter_desc" = "Beschreibung eingeben";
 "valid_email" = "Bitte geben Sie eine E -Mail gültig ein";
+"advanced_settings_sub_title" = "Anpassung für die QR -Vorlage";
+"invalid_url" = "Bitte geben Sie eine gültige URL ein";
+"invalid_phone_number" = "Bitte geben Sie eine gültige Telefonnummer ein";

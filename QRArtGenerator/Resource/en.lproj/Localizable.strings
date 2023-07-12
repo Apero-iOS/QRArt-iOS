@@ -138,3 +138,6 @@
 "search_country" = "Search country";
 "enter_desc" = "Enter Description";
 "valid_email" = "Please input email valid";
+"advanced_settings_sub_title" = "Adjustment for QR Template";
+"invalid_url" = "Please enter a valid URL";
+"invalid_phone_number" = "Please enter a valid phone number";

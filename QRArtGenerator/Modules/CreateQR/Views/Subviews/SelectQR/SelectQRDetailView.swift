@@ -43,18 +43,18 @@ struct SelectQRDetailView: View {
                 .frame(maxHeight: 44)
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 VStack(spacing: 12) {
-                    InputNameView(title: Rlocalizable.name(),
+                    InputTextView(title: Rlocalizable.name(),
                                   placeholder: Rlocalizable.enter_qr_name(),
                                   name: $input.name,
                                   validInput: $validInput)
                     switch type {
                     case .website:
-                        InputNameView(title: Rlocalizable.website_link(),
+                        InputTextView(title: Rlocalizable.website_link(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                     case .contact:
-                        InputNameView(title: Rlocalizable.contact_name(),
+                        InputTextView(title: Rlocalizable.contact_name(),
                                       placeholder: Rlocalizable.enter_contact_name(),
                                       name: $input.contactName,
                                       validInput: $validInput)
@@ -64,7 +64,7 @@ struct SelectQRDetailView: View {
                                              validInput: $validInput,
                                              country: $countrySelect)
                     case .text:
-                        InputNameView(title: Rlocalizable.text(),
+                        InputTextView(title: Rlocalizable.text(),
                                       placeholder: Rlocalizable.enter_text_here(),
                                       name: $input.text,
                                       validInput: $validInput)
@@ -73,7 +73,7 @@ struct SelectQRDetailView: View {
                                       placeholder: "Example@gmail.com",
                                       name: $input.emailAddress,
                                       validInput: $validInput)
-                        InputNameView(title: Rlocalizable.subject(),
+                        InputTextView(title: Rlocalizable.subject(),
                                       placeholder: Rlocalizable.enter_subject(),
                                       name: $input.emailSubject,
                                       validInput: $validInput)
@@ -88,42 +88,42 @@ struct SelectQRDetailView: View {
                                              validInput: $validInput,
                                              country: $countrySelect)
                     case .instagram:
-                        InputNameView(title: Rlocalizable.instagram_url(),
+                        InputTextView(title: Rlocalizable.instagram_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                     case .facebook:
-                        InputNameView(title: Rlocalizable.facebook_url(),
+                        InputTextView(title: Rlocalizable.facebook_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                     case .twitter:
-                        InputNameView(title: Rlocalizable.twitter_url(),
+                        InputTextView(title: Rlocalizable.twitter_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                     case .spotify:
-                        InputNameView(title: Rlocalizable.spotify_url(),
+                        InputTextView(title: Rlocalizable.spotify_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                     case .youtube:
-                        InputNameView(title: Rlocalizable.youtube_url(),
+                        InputTextView(title: Rlocalizable.youtube_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                     case .wifi:
-                        InputNameView(title: Rlocalizable.ssid(),
+                        InputTextView(title: Rlocalizable.ssid(),
                                       placeholder: Rlocalizable.enter_wifi_name(),
                                       name: $input.wfSsid, validInput: $validInput)
-                        InputNameView(title: Rlocalizable.password(),
+                        InputTextView(title: Rlocalizable.password(),
                                       placeholder: Rlocalizable.enter_password(),
                                       name: $input.wfPassword, validInput: $validInput)
                         SecurityModeView(wifiModeSelect: $input.indexWfSecurityMode)
                     case .paypal:
-                        InputNameView(title: Rlocalizable.paypal_url(),
+                        InputTextView(title: Rlocalizable.paypal_url(),
                                       placeholder: "https://paypal.me/",
-                                      name: $input.urlString,
+                                      type: .url, name: $input.urlString,
                                       validInput: $validInput)
                         AmountView(amount: $input.paypalAmount,
                                    validInput: $validInput)
