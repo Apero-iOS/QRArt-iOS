@@ -46,24 +46,22 @@ struct HomeView: View {
                     Text(Rlocalizable.content_banner_home())
                         .font(R.font.urbanistRegular.font(size: 11))
                         .foregroundColor(R.color.color_1B232E.color)
-                    if !UserDefaults.standard.isUserVip {
-                        Button {
-                            viewModel.isShowGenerateQR.toggle()
-                        } label: {
-                            HStack {
-                                Text(Rlocalizable.try_it_out())
-                                    .font(R.font.urbanistBold.font(size: 12))
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.white)
-                                Image(R.image.ic_shine)
-                            }
-                            .fixedSize()
+                    Button {
+                        viewModel.isShowGenerateQR.toggle()
+                    } label: {
+                        HStack {
+                            Text(Rlocalizable.try_it_out())
+                                .font(R.font.urbanistBold.font(size: 12))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                            Image(R.image.ic_shine)
                         }
-                        .frame(width: 100, height: 24)
-                        .background(Color(R.color.color_653AE4))
-                        .clipShape(Capsule())
-                        .padding(.top, 8)
+                        .fixedSize()
                     }
+                    .frame(width: 100, height: 24)
+                    .background(Color(R.color.color_653AE4))
+                    .clipShape(Capsule())
+                    .padding(.top, 8)
                 }
                 .padding(.horizontal, 16)
                 Spacer()

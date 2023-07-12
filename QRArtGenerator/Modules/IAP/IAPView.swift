@@ -68,7 +68,7 @@ struct IAPView: View {
                         VStack(spacing: 12) {
                             ForEach(Array(viewModel.iapIds.enumerated()), id: \.offset) { index, type in
                                 IAPCell(idType: type, index: index, selectedIndex: $viewModel.selectedIndex) {
-                                    viewModel.onTap()
+                                    viewModel.onTap(index: index)
                                 }
                             }
                         }

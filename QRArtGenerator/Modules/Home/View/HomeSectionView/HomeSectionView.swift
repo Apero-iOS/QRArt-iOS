@@ -59,9 +59,22 @@ struct HomeSectionView: View {
     
     private func itemView(_ item: Style) -> some View {
         VStack {
-            AsyncImage(url: URL(string: item.key))
-                .frame(width: 100, height: 100)
-                .cornerRadius(12, antialiased: true)
+            AsyncImage(url: URL(string: item.key)) { phase in
+                switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(12, antialiased: true)
+                    default:
+                        R.image.img_error.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(12, antialiased: true)
+                }
+            }
             Text(item.name)
                 .font(R.font.urbanistSemiBold.font(size: 12))
                 .foregroundColor(R.color.color_1B232E.color)

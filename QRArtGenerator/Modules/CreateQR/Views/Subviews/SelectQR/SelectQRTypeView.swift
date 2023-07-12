@@ -10,6 +10,7 @@ import SwiftUI
 struct SelectQRTypeView: View {
     @Binding var selectedType: QRType
     @Binding var showingSelectQRTypeView: Bool
+    @Binding var groupType: QRGroupType
     
     var body: some View {
         VStack(alignment: .center, spacing: 12) {
@@ -47,6 +48,7 @@ struct SelectQRTypeView: View {
                                 .onTapGesture {
                                     selectedType = item
                                     showingSelectQRTypeView = false
+                                    groupType = section
                                 }
                         }
                     }
@@ -61,6 +63,6 @@ struct SelectQRTypeView: View {
 
 struct SelectQRTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectQRTypeView(selectedType: .constant(.facebook), showingSelectQRTypeView: .constant(false))
+        SelectQRTypeView(selectedType: .constant(.facebook), showingSelectQRTypeView: .constant(false), groupType: .constant(.basic))
     }
 }

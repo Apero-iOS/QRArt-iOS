@@ -113,7 +113,7 @@ struct CreateQRView: View {
     
     @ViewBuilder var qrSelectView: some View {
         SelectQRTypeView(selectedType: $viewModel.input.type,
-                         showingSelectQRTypeView: $viewModel.showingSelectQRTypeView)
+                         showingSelectQRTypeView: $viewModel.showingSelectQRTypeView, groupType: $viewModel.input.groupType)
     }
     
     @ViewBuilder var countrySelectView: some View {

@@ -14,6 +14,8 @@ class SearchViewModel: ObservableObject {
         }
     }
     @Published var searchItems: [QRItem] = QRItemService.shared.getQRItems()
+    var isCheckFocusSearch: Bool = true
+    
     private var totalItems: [QRItem] = QRItemService.shared.getQRItems()
     
     func search() {
