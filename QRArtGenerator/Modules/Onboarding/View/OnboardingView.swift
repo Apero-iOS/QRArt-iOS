@@ -53,7 +53,11 @@ struct OnboardingView: View {
             progress = Double(pageIndex)
         } else {
             UserDefaults.standard.didShowOnboarding = true
-            showSub = true
+            if UserDefaults.standard.isUserVip {
+                Router.showTabbar()
+            } else {
+                showSub = true
+            }
         }
     }
 }

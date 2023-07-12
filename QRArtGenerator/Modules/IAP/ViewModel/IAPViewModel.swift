@@ -28,7 +28,7 @@ class IAPViewModel: ObservableObject {
         }
     }
     
-    func onTap() {
-        InappManager.share.purchaseProduct(withId: iapIds[selectedIndex].id)
+    func onTap(index: Int) {
+        InappManager.share.purchaseProduct(withId: iapIds[index].id)
     }
 }

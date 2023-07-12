@@ -56,7 +56,10 @@ struct SearchView: View {
         }
         .hideNavigationBar(isHidden: true)
         .onAppear {
-            isFocusSearch = true
+            isFocusSearch = viewModel.isCheckFocusSearch
+        }
+        .onDisappear {
+            viewModel.isCheckFocusSearch = false
         }
     }
     
