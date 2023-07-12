@@ -17,7 +17,7 @@ struct ResultView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
                 naviView
                 viewModel.image
                     .resizable()
@@ -50,22 +50,21 @@ struct ResultView: View {
                         .padding(.horizontal, 20)
                 }
             }
+            .hideNavigationBar(isHidden: true)
+            .sheet(isPresented: $viewModel.sheet, content: {
+                ShareSheet(items: [viewModel.item.qrImage])
+            })
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+                LoadingView()
+            }
+            .fullScreenCover(isPresented: $viewModel.showIAP) {
+                IAPView()
+            }
+            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
             if viewModel.isShowSuccessView {
                 SuccessView()
             }
         }
-        .hideNavigationBar(isHidden: true)
-        .sheet(isPresented: $viewModel.sheet, content: {
-            ShareSheet(items: [viewModel.item.qrImage])
-        })
-        .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-            LoadingView()
-        }
-        .fullScreenCover(isPresented: $viewModel.showIAP) {
-            IAPView()
-        }
-        .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
-        
     }
     
     @ViewBuilder var naviView: some View {

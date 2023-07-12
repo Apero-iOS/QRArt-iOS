@@ -9,7 +9,7 @@ import Foundation
 
 enum TemplateNetworking {
     case fetchTemplate
-    case genQR(data: Data, qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int, controlnetConditioningScale: Int)
+    case genQR(data: Data, qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int)
 }
 
 extension TemplateNetworking: TargetType {
@@ -57,14 +57,13 @@ extension TemplateNetworking: TargetType {
         switch self {
         case .fetchTemplate:
             return .requestPlainBody
-        case .genQR(data: let data, qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps, controlnetConditioningScale: let controlnetConditioningScale):
+        case .genQR(data: let data, qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps):
             return .requestBody(body: ["file": data,
-                                       "qrText": qrText,
-                                       "positivePrompt": positivePrompt,
-                                       "negativePrompt": negativePrompt,
+                                       "qrText": qrText.trimmingCharacters(in: .whitespaces),
+                                       "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces),
+                                       "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces),
                                        "guidanceScale": guidanceScale,
-                                       "numInferenceSteps": numInferenceSteps,
-                                       "controlnetConditioningScale": controlnetConditioningScale])
+                                       "numInferenceSteps": numInferenceSteps])
         }
     }
     

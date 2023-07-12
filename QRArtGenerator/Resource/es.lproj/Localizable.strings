@@ -139,3 +139,5 @@
 "enter_desc" = "Ingrese la descripción";
 "valid_email" = "Ingrese el correo electrónico válido";
 "advanced_settings_sub_title" = "Ajuste para la plantilla QR";
+"invalid_url" = "Por favor introduzca un URL válido";
+"invalid_phone_number" = "Por favor ingrese un número de teléfono válido";

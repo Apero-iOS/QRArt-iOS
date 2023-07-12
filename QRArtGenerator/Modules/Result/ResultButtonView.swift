@@ -58,7 +58,7 @@ struct ResultButtonView: View {
                     Text(typeButton.title)
                         .foregroundColor((typeButton != .download4k) ? Color.black : Color.white)
                         .font(R.font.urbanistSemiBold.font(size: 14))
-                    if typeButton == .download4k, !isCreate {
+                    if typeButton == .download4k, !isCreate, !UserDefaults.standard.isUserVip {
                         R.image.ic_sub.image
                     }
                 }
@@ -69,7 +69,7 @@ struct ResultButtonView: View {
                 .border(radius: 24,
                         color: (typeButton != .download4k) ? R.color.color_EAEAEA.color : R.color.color_D8CEF8.color,
                         width: (typeButton != .download4k) ? 1 : 8)
-                if typeButton == .download4k, isCreate {
+                if typeButton == .download4k, isCreate, !UserDefaults.standard.isUserVip {
                     R.image.ic_sub.image
                         .offset(x: -5, y: -5)
                 }

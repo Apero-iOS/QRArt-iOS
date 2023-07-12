@@ -11,6 +11,8 @@ struct SliderSettingView: View {
     var title: String = ""
     var desc: String = ""
     @Binding var value: Double
+    @State var fromValue: Int = 1
+    @State var toValue: Int = 10
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
@@ -20,7 +22,7 @@ struct SliderSettingView: View {
                 .foregroundColor(R.color.color_6A758B.color)
                 .font(R.font.urbanistMedium.font(size: 12))
             HStack(spacing: 8) {
-                Slider(value: $value, in: 1...8)
+                Slider(value: $value, in: Double(fromValue)...Double(toValue))
                     .setColorSlider(color: R.color.color_653AE4.color)
                     .onAppear {
                         UISlider.appearance()

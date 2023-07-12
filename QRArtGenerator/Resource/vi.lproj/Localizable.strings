@@ -140,3 +140,5 @@
 "enter_desc" = "Nhập mô tả";
 "valid_email" = "Vui lòng nhập email hợp lệ";
 "advanced_settings_sub_title" = "Điều chỉnh cho mẫu QR";
+"invalid_url" = "Vui lòng nhập URL hợp lệ";
+"invalid_phone_number" = "Xin vui lòng nhập một số điện thoại hợp lệ";

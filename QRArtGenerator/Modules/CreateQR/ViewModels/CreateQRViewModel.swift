@@ -119,7 +119,7 @@ class CreateQRViewModel: ObservableObject {
         if validName() && validPrompt() {
             switch input.type {
             case .website:
-                return !input.urlString.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl()
             case .contact:
                 return !input.contactName.isEmptyOrWhitespace() && !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
             case .email:
@@ -129,11 +129,11 @@ class CreateQRViewModel: ObservableObject {
             case .whatsapp:
                 return !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
             case .instagram, .facebook, .twitter, .spotify, .youtube:
-                return !input.urlString.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && input.urlString.isValidUrl()
             case .wifi:
                 return !input.wfSsid.isEmptyOrWhitespace() && !input.wfPassword.isEmptyOrWhitespace()
             case .paypal:
-                return !input.urlString.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && !input.paypalAmount.isEmptyOrWhitespace()
             }
         } else {
             if !validPrompt() && mode == .collapse {
@@ -148,7 +148,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func validPrompt() -> Bool {
-        return !input.prompt.isEmpty && !input.negativePrompt.isEmpty
+        return !input.prompt.isEmpty
     }
     
     func genQRLocal(text: String) -> Data? {
@@ -170,8 +170,7 @@ class CreateQRViewModel: ObservableObject {
                                  positivePrompt: input.prompt,
                                  negativePrompt: input.negativePrompt,
                                  guidanceScale: Int(input.guidance),
-                                 numInferenceSteps: Int(input.steps),
-                                 controlnetConditioningScale: Int(input.contronetScale))
+                                 numInferenceSteps: Int(input.steps))
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {

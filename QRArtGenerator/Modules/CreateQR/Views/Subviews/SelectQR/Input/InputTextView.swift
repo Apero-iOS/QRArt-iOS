@@ -7,9 +7,15 @@
 
 import SwiftUI
 
-struct InputNameView: View {
+enum InputTextViewType {
+    case url
+    case name
+}
+
+struct InputTextView: View {
     var title: String = ""
     var placeholder: String = ""
+    @State var type: InputTextViewType = .name
     @Binding var name: String
     @Binding var validInput: Bool
     @FocusState var isFocused: Bool
@@ -21,12 +27,10 @@ struct InputNameView: View {
                 .font(R.font.urbanistMedium.font(size: 14))
             textField
             if validInput && name.isEmptyOrWhitespace() {
-                Text(Rlocalizable.cannot_be_empty)
-                    .foregroundColor(R.color.color_BD1E1E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                textError(text: Rlocalizable.cannot_be_empty())
+            } else if validInput && type == .url && !name.isValidUrl() {
+                textError(text: Rlocalizable.invalid_url())
             }
-            
-            
         }
     }
     
@@ -39,29 +43,30 @@ struct InputNameView: View {
                     width: 1)
             .font(R.font.urbanistRegular.font(size: 14))
             .foregroundColor(R.color.color_1B232E.color)
-            .onChange(of: name) { newValue in
-                if newValue.count > 50 {
-                    name = String(newValue.prefix(50))
-                }
-            }
     }
     
     func getBorderColor() -> Color {
-        if validInput && name.isEmptyOrWhitespace() {
+        if (validInput && name.isEmptyOrWhitespace()) || (validInput && type == .url && !name.isValidUrl()) {
             return R.color.color_BD1E1E.color
         } else {
-            if isFocused {
-                return R.color.color_653AE4.color
-            } else {
-                return R.color.color_EAEAEA.color
-            }
+            return setColorFocus()
         }
+    }
+    
+    private func setColorFocus() -> Color {
+        return isFocused ? R.color.color_653AE4.color : R.color.color_EAEAEA.color
+    }
+    
+    func textError(text: String) -> some View {
+        Text(text)
+            .foregroundColor(R.color.color_BD1E1E.color)
+            .font(R.font.urbanistRegular.font(size: 14))
     }
 }
 
 struct InputNameView_Previews: PreviewProvider {
     static var previews: some View {
-        InputNameView(name: .constant(""), validInput: .constant(true))
+        InputTextView(name: .constant(""), validInput: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }
