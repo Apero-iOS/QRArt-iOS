@@ -41,4 +41,14 @@ extension String {
         }
         return false
     }
+    
+    func replaceString(withRegex regex: String, by strValue: String) -> String {
+        let regex = try! NSRegularExpression(pattern: regex, options: NSRegularExpression.Options.caseInsensitive)
+        let range = NSMakeRange(0, self.count)
+        if range.location != NSNotFound {
+            return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: strValue)
+        } else {
+            return self
+        }
+    }
 }

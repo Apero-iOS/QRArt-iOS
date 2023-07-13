@@ -49,7 +49,11 @@ extension TemplateNetworking: TargetType {
         case .fetchTemplate:
             return .requestParms(path: "/qr-styles", params: ["project": APP_NAME])
         case .genQR:
+#if DEV || STG
             return .plainParams(path: "/api/v1/qr")
+#else
+            return .plainParams(path: "/api/v2/qr")
+#endif
         }
     }
     

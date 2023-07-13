@@ -6,6 +6,25 @@
 	<string>ca-app-pub-6530974883137971~8095578177</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>productPubPEM</key>
+	<string>-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuVg0t47njOJoF2AtZRj2
+O7VfPESF4vc1BVmtvI59ZQqlgydmNTddhpKQISMJz94p45aZLoJpQikluV+ywg4a
+/40UTsPl53nL5nFAnDjCvaeMOYqI74iXoy6nYkF+0yM449qH8kceqLyViZylcetT
+XU6s/J3DV2eKXo7/eocEef8qtlZlLkFnoppi5UQ5WNZD/qHh9oMknkN/1qYzcckn
+4pzHmapOAJopLpO9AjudfD9rHD+5Tsg9O3lucnBO4MyZCx5po8K4PX57gvfEmfsS
+xlC7tQUAcFM5PytxD7j8HwCr1msQTT4otNhjyqPL3opDNgvrtfUhTbhPCEcUh200
+BQIDAQAB
+-----END PUBLIC KEY-----
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuVg0t47njOJoF2AtZRj2
+O7VfPESF4vc1BVmtvI59ZQqlgydmNTddhpKQISMJz94p45aZLoJpQikluV+ywg4a
+/40UTsPl53nL5nFAnDjCvaeMOYqI74iXoy6nYkF+0yM449qH8kceqLyViZylcetT
+XU6s/J3DV2eKXo7/eocEef8qtlZlLkFnoppi5UQ5WNZD/qHh9oMknkN/1qYzcckn
+4pzHmapOAJopLpO9AjudfD9rHD+5Tsg9O3lucnBO4MyZCx5po8K4PX57gvfEmfsS
+xlC7tQUAcFM5PytxD7j8HwCr1msQTT4otNhjyqPL3opDNgvrtfUhTbhPCEcUh200
+BQIDAQAB
+-----END PUBLIC KEY-----</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Urbanist-Black.ttf</string>
