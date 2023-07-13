@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChooseTemplateView: View {
-    @Binding var templateQR: [Style]
+    @Binding var templates: [Template]
     @Binding var indexSelectStyle: Int
     
     var body: some View {
@@ -19,14 +19,14 @@ struct ChooseTemplateView: View {
                     .foregroundColor(R.color.color_1B232E.color)
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
-                        ForEach(0..<templateQR.count, id: \.self) { index in
+                        ForEach(0..<templates.count, id: \.self) { index in
                             if index == 0 {
                                 BasicItemTemplateView(indexSelect: $indexSelectStyle, index: index)
                                     .onTapGesture {
                                         indexSelectStyle = index
                                     }
                             } else {
-                                ItemTemplateView(template: $templateQR[index], indexSelect: $indexSelectStyle, index: index)
+                                ItemTemplateView(template: $templates[index], indexSelect: $indexSelectStyle, index: index)
                                     .onTapGesture {
                                         indexSelectStyle = index
                                     }
@@ -41,13 +41,5 @@ struct ChooseTemplateView: View {
             R.color.color_F7F7F7.color
                 .frame(height: 8)
         }
-
-    }
-}
-
-struct ChooseTemplateView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseTemplateView(templateQR: .constant([]), indexSelectStyle: .constant(0))
-            .previewLayout(.sizeThatFits)
     }
 }

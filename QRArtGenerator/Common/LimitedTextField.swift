@@ -33,10 +33,8 @@ struct LimitedTextField: View {
     }
     
     func updateUndelyingString(newEnteredString: String) {
-        if newEnteredString.count > charLimit {
-            self.enteredString = String(newEnteredString.prefix(charLimit))
-            underlyingString = self.enteredString
-        }
+        self.enteredString = String(newEnteredString.prefix(charLimit))
+        underlyingString = self.enteredString
     }
     
     func updateUnderlyingValue() {

@@ -11,7 +11,7 @@ import SwiftUI
 
 final class HomeViewModel: ObservableObject, Identifiable {
     
-    @Published var listStyle: [TemplateModel] = []
+    @Published var categories: [Category] = []
     @Published var isShowGenerateQR = false
     @Published var isShowToast = false
     @Published var msgError: String = ""
@@ -24,22 +24,26 @@ final class HomeViewModel: ObservableObject, Identifiable {
     }
     
     func fetchTemplate() {
-        templateRepository.fetchTemplate().sink { [weak self] comple in
+        templateRepository.fetchTemplates().sink { [weak self] comple in
+            guard let self = self else { return }
             switch comple {
             case .finished:
-                print("tuanlt: finished")
+                break
             case .failure(let error):
                 switch error {
                 case .No_Network:
-                    self?.msgError = Rlocalizable.no_internet()
+                    self.msgError = Rlocalizable.no_internet()
                 default:
-                    self?.msgError = Rlocalizable.an_unknown_error()
+                    self.msgError = Rlocalizable.an_unknown_error()
                 }
-                self?.isShowToast.toggle()
+                self.isShowToast.toggle()
             }
-        } receiveValue: { [weak self] templates in
-            if let templates = templates {
-                self?.listStyle = templates
+        } receiveValue: { [weak self] listTemplates in
+            guard let self = self else { return }
+            if let templates = listTemplates?.items {
+                Dictionary(grouping: templates, by: { $0.category }).forEach { key, value in
+                    self.categories.append(Category(name: key, templates: value))
+                }
             }
         }.store(in: &cancellable)
     }

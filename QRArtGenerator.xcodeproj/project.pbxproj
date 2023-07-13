@@ -149,6 +149,7 @@
 		C8AA3E6C2A4E86A70077DCC3 /* TemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E6B2A4E86A70077DCC3 /* TemplateModel.swift */; };
 		C8AA3E6E2A4E86EC0077DCC3 /* TemplateNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */; };
 		C8AB7FEB2A5982BD001938AD /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AB7FEA2A5982BD001938AD /* InputEmailView.swift */; };
+		C8C72E1D2A5FD65400E8918B /* AccessPhotoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C72E1C2A5FD65400E8918B /* AccessPhotoPopup.swift */; };
 		C8E923B22A5271FF00835F93 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C8E923B12A5271FF00835F93 /* loading.json */; };
 		C8E923B52A52768600835F93 /* ResultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B42A52768600835F93 /* ResultButtonView.swift */; };
 		C8E923B72A52AA0200835F93 /* PopupSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */; };
@@ -333,6 +334,7 @@
 		C8AA3E6B2A4E86A70077DCC3 /* TemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateModel.swift; sourceTree = "<group>"; };
 		C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateNetworking.swift; sourceTree = "<group>"; };
 		C8AB7FEA2A5982BD001938AD /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
+		C8C72E1C2A5FD65400E8918B /* AccessPhotoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhotoPopup.swift; sourceTree = "<group>"; };
 		C8E923B12A5271FF00835F93 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		C8E923B42A52768600835F93 /* ResultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultButtonView.swift; sourceTree = "<group>"; };
 		C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSuccessView.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 		59286C402A4D31D300EBBEBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8C72E1B2A5FD5FC00E8918B /* Popup */,
 				9AD2B9012A505AB9003B7C1F /* IAP */,
 				C8E923B82A52AB3400835F93 /* Success */,
 				C8109C882A5198890093B48A /* Result */,
@@ -1239,6 +1242,14 @@
 			path = Input;
 			sourceTree = "<group>";
 		};
+		C8C72E1B2A5FD5FC00E8918B /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				C8C72E1C2A5FD65400E8918B /* AccessPhotoPopup.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
 		C8E923B82A52AB3400835F93 /* Success */ = {
 			isa = PBXGroup;
 			children = (
@@ -1633,6 +1644,7 @@
 				9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */,
 				9AD373702A4E78F600FCF934 /* HistoryCategory.swift in Sources */,
 				9AB852802A5135CE00A546F4 /* IAPFeatureView.swift in Sources */,
+				C8C72E1D2A5FD65400E8918B /* AccessPhotoPopup.swift in Sources */,
 				9AC7DCCC2A4DB6C600FB3119 /* InputTextView.swift in Sources */,
 				9AD2B8FA2A5017F7003B7C1F /* FileManagerUtil.swift in Sources */,
 				C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */,

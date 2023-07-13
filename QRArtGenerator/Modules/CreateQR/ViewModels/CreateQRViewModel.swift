@@ -13,12 +13,12 @@ import MobileAds
 class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
-    @Published var templateQR: TemplateModel = TemplateModel.defaultObject()
+    @Published var templates: [Template] = []
     @Published var indexSelectTemplate: Int = .zero {
         didSet {
-            if !templateQR.styles.isEmpty {
-                input.prompt = templateQR.styles[indexSelectTemplate].config.positivePrompt
-                input.negativePrompt = templateQR.styles[indexSelectTemplate].config.negativePrompt
+            if !templates.isEmpty {
+                input.prompt = templates[indexSelectTemplate].positivePrompt
+                input.negativePrompt = templates[indexSelectTemplate].negativePrompt
             }
         }
     }
@@ -42,6 +42,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var isPush: Bool
     @Published var mode: AdvancedSettingsMode = .collapse
     @Published var idTemplateSelect: String?
+    @Published var templateSelect: Template?
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -54,13 +55,11 @@ class CreateQRViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    init(source: CreateQRViewSource, idTemplateSelect: String?, isPush: Bool = false) {
+    init(source: CreateQRViewSource, templateSelect: Template?, isPush: Bool = false) {
         self.source = source
         self.isPush = isPush
-        if let idTemplateSelect = idTemplateSelect {
-            self.idTemplateSelect = idTemplateSelect
-            self.indexSelectTemplate = 1
-        }
+        self.templateSelect = templateSelect
+        self.templates.insert(Template(), at: 0)
     }
     
     deinit {
@@ -72,22 +71,16 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func fetchTemplate() {
-        templateRepository.fetchTemplate().sink { comple in
+        templateRepository.fetchTemplates().sink { comple in
 
-        } receiveValue: { [weak self] categories in
+        } receiveValue: { [weak self] listTemplates in
             guard let self = self else { return }
-            if let categories = categories {
-                categories.forEach { category  in
-                    self.templateQR.styles.append(contentsOf: category.styles)
+            if let listTemplates = listTemplates {
+                self.templates.append(contentsOf: listTemplates.items)
+                if let index = self.templates.firstIndex(where: {$0 == self.templateSelect}) {
+                    self.templates.swapAt(1, index)
+                    self.indexSelectTemplate = 1
                 }
-                self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
-                if let idTemplateSelect = idTemplateSelect,
-                   let index = self.templateQR.styles.firstIndex(where: {$0.id == idTemplateSelect}) {
-                    self.templateQR.styles.swapAt(1, index)
-                    
-                    
-                }
-                
             }
         }.store(in: &cancellable)
     }
@@ -170,22 +163,9 @@ class CreateQRViewModel: ObservableObject {
         return !input.prompt.isEmpty
     }
     
-    func genQRLocal(text: String) -> Data? {
-        return QRHelper.genQR(text: text)
-    }
-    
-    func createBasicQRItem() -> Style {
-        Style(id: "",
-              project: "",
-              name: "",
-              key: "", category: "", prompt: "", config: Config(negativePrompt: "", positivePrompt: ""), version: "", createdAt: "", updatedAt: "", v: 0)
-    }
-    
     func genQR() {
-        guard let data = genQRLocal(text: getQRText()) else { return }
         isShowLoadingView.toggle()
-        templateRepository.genQR(data: data,
-                                 qrText: getQRText(),
+        templateRepository.genQR(qrText: getQRText(),
                                  positivePrompt: input.prompt,
                                  negativePrompt: input.negativePrompt,
                                  guidanceScale: Int(input.guidance),

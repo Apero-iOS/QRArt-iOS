@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemTemplateView: View {
-    @Binding var template: Style
+    @Binding var template: Template
     @Binding var indexSelect: Int
     var index: Int = .zero
     var isSelect: Bool {

@@ -68,7 +68,7 @@ struct HistoryView: View {
         }
         .padding(.horizontal, 40)
         .opacity(1)
-        NavigationLink(destination: CreateQRView(viewModel: CreateQRViewModel(source: .create, idTemplateSelect: nil, isPush: true)), isActive: $viewModel.isActive) {}
+        NavigationLink(destination: CreateQRView(viewModel: CreateQRViewModel(source: .create, templateSelect: nil, isPush: true)), isActive: $viewModel.isActive) {}
         Spacer()
     }
     

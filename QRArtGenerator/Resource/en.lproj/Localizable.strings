@@ -141,3 +141,5 @@
 "advanced_settings_sub_title" = "Adjustment for QR Template";
 "invalid_url" = "Please enter a valid URL";
 "invalid_phone_number" = "Please enter a valid phone number";
+"photos_access" = "Photos Access Permission";
+"photos_access_desc" = "To use the app, you will have to give us permission to access camera.";
