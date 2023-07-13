@@ -100,11 +100,9 @@ class ResultViewModel: ObservableObject {
         if checkShowSub() {
             showIAP = true
         } else {
-            guard let data = genQRLocal(text: getQRText()) else { return }
             UserDefaults.standard.regeneratePerDay += 1
             isShowLoadingView.toggle()
-            templateRepository.genQR(data: data,
-                                     qrText: getQRText(),
+            templateRepository.genQR(qrText: getQRText(),
                                      positivePrompt: item.prompt,
                                      negativePrompt: item.negativePrompt,
                                      guidanceScale: Int(item.guidance),

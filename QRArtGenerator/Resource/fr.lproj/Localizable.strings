@@ -141,3 +141,5 @@
 "advanced_settings_sub_title" = "Réglage du modèle QR";
 "invalid_url" = "Veuillez saisir une URL valide";
 "invalid_phone_number" = "s'il vous plaît entrer un numéro de téléphone valide";
+"photos_access" = "Permission d'accès aux photos";
+"photos_access_desc" = "Pour utiliser l'application, vous devrez nous donner la permission d'accéder à la caméra.";

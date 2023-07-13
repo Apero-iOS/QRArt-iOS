@@ -7,63 +7,29 @@
 
 import Foundation
 
-enum TemplateType {
+enum TemplateType: Codable {
     case basic
     case normal
 }
 
-struct TemplateModel: Codable, Identifiable {
-    let id: String
-    var styles: [Style]
-    let category: Category
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case styles, category
-    }
-    
-    static func defaultObject() -> TemplateModel {
-        TemplateModel(id: "", styles: [], category: Category.defaultObject())
-    }
+struct ListTemplates: Codable {
+    var items: [Template] = []
+    let totalItems, page, limit, totalPages: Int
+    let paging: Bool
 }
 
-struct Category: Codable {
-    let id: String
-    let project, name, createdAt, updatedAt: String
-    let v: Int
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case project, name, createdAt, updatedAt
-        case v = "__v"
-    }
-    
-    static func defaultObject() -> Category {
-        Category(id: "", project: "", name: "", createdAt: "", updatedAt: "", v: 0)
-    }
+struct Template: Codable, Hashable {
+//    var id: UUID = UUID()
+    var category: String = ""
+    var name: String = ""
+    var positivePrompt: String = ""
+    var negativePrompt: String = ""
+    var key: String = ""
+//    var type: TemplateType = .normal
 }
 
-struct Style: Codable, Identifiable {
-    let id: String
-    let project: String
-    let name: String
-    let key: String
-    let category: String
-    let prompt: String
-    var config: Config
-    let version: String
-    let createdAt, updatedAt: String
-    let v: Int
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case project, name, key, category, prompt, config, version, createdAt, updatedAt
-        case v = "__v"
-    }
+struct Category: Codable, Identifiable {
+    var id: UUID = UUID()
+    var name: String = ""
+    var templates: [Template] = []
 }
-
-struct Config: Codable {
-    var negativePrompt: String
-    var positivePrompt: String
-}
-

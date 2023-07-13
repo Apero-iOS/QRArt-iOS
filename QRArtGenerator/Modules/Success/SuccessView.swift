@@ -41,7 +41,6 @@ struct SuccessView: View {
             .cornerRadius(12)
         }
         .ignoresSafeArea()
-
     }
 }
 

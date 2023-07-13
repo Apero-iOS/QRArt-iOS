@@ -9,16 +9,16 @@ import Foundation
 import Combine
 
 protocol TemplateRepositoryProtocol {
-    func fetchTemplate() -> AnyPublisher<[TemplateModel]?, APIError>
-    func genQR(data: Data, qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError>
+    func fetchTemplates() -> AnyPublisher<ListTemplates?, APIError>
+    func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError>
 }
 
 class TemplateRepository: BaseAPI<TemplateNetworking>, TemplateRepositoryProtocol {
-    func fetchTemplate() -> AnyPublisher<[TemplateModel]?, APIError> {
-        fetch(target: .fetchTemplate, responseClass: [TemplateModel].self)
+    func fetchTemplates() -> AnyPublisher<ListTemplates?, APIError> {
+        fetch(target: .fetchTemplate, responseClass: ListTemplates.self)
     }
     
-    func genQR(data: Data, qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError> {
-        uploadFile(target: .genQR(data: data, qrText: qrText, positivePrompt: positivePrompt, negativePrompt: negativePrompt, guidanceScale: guidanceScale, numInferenceSteps: numInferenceSteps))
+    func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError> {
+        uploadFile(target: .genQR(qrText: qrText, positivePrompt: positivePrompt, negativePrompt: negativePrompt, guidanceScale: guidanceScale, numInferenceSteps: numInferenceSteps))
     }
 }

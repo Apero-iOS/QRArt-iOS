@@ -85,7 +85,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var templateView: some View {
-        ChooseTemplateView(templateQR: $viewModel.templateQR.styles,
+        ChooseTemplateView(templates: $viewModel.templates,
                            indexSelectStyle: $viewModel.indexSelectTemplate)
     }
     
@@ -99,16 +99,15 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var advancedSettingsView: some View {
-        if !viewModel.templateQR.styles.isEmpty {
             AdvancedSettingsView(mode: $viewModel.mode,
                                  prompt: $viewModel.input.prompt,
                                  negativePrompt: $viewModel.input.negativePrompt,
-                                 oldPrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.positivePrompt,
-                                 oldNegativePrompt: $viewModel.templateQR.styles[viewModel.indexSelectTemplate].config.negativePrompt, guidance: $viewModel.input.guidance,
+                                 oldPrompt: $viewModel.templates[viewModel.indexSelectTemplate].positivePrompt,
+                                 oldNegativePrompt: $viewModel.templates[viewModel.indexSelectTemplate].negativePrompt,
+                                 guidance: $viewModel.input.guidance,
                                  steps: $viewModel.input.steps,
                                  scale: $viewModel.input.contronetScale,
                                  validInput: $viewModel.validInput)
-        }
     }
     
     @ViewBuilder var qrSelectView: some View {

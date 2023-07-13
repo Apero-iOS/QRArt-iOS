@@ -9,15 +9,14 @@ import SwiftUI
 
 struct HomeSectionView: View {
     
-    var headerName: String
-    var listItem: [Style] = []
-    var template: TemplateModel? = nil
+    var categoryName: String = ""
+    var templates: [Template] = []
     var onViewMore: (() -> Void)? = nil
     @State var selection: Int? = nil
     
     var body: some View {
         VStack(spacing: 12) {
-            customHeader(with: headerName, onViewMore: onViewMore)
+            customHeader(with: categoryName, onViewMore: onViewMore)
                 .padding(.horizontal, 20)
             listContentCustom()
         }.frame(height: 154)
@@ -29,7 +28,7 @@ struct HomeSectionView: View {
                 .font(R.font.urbanistSemiBold.font(size: 16))
             Spacer()
             NavigationLink {
-                DetailStylesView(template: template)
+                DetailStylesView(templates: templates)
             } label: {
                 Text(Rlocalizable.view_more())
                     .font(R.font.urbanistMedium.font(size: 14))
@@ -41,14 +40,13 @@ struct HomeSectionView: View {
     private func listContentCustom() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
-                ForEach(0..<listItem.count, id: \.self) { index in
-                    let viewModel = CreateQRViewModel(source: .template, idTemplateSelect: template?.styles[index].id, isPush: true)
+                ForEach(0..<templates.count, id: \.self) { index in
+                    let viewModel = CreateQRViewModel(source: .template, templateSelect: templates[index], isPush: true)
                     NavigationLink(destination: CreateQRView(viewModel: viewModel), tag: index, selection: $selection) {
                         Button {
                             selection = index
                         } label: {
-                            let item = listItem[index]
-                            itemView(item)
+                            itemView(templates[index])
                         }
                     }
                 }
@@ -57,9 +55,9 @@ struct HomeSectionView: View {
         }
     }
     
-    private func itemView(_ item: Style) -> some View {
+    private func itemView(_ template: Template) -> some View {
         VStack {
-            AsyncImage(url: URL(string: item.key)) { phase in
+            AsyncImage(url: URL(string: template.key)) { phase in
                 switch phase {
                     case .success(let image):
                         image
@@ -75,16 +73,10 @@ struct HomeSectionView: View {
                             .cornerRadius(12, antialiased: true)
                 }
             }
-            Text(item.name)
+            Text(template.name)
                 .font(R.font.urbanistSemiBold.font(size: 12))
                 .foregroundColor(R.color.color_1B232E.color)
                 .frame(height: 16)
         }.frame(width: 100, height: 121)
-    }
-}
-
-struct HomeSectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeSectionView(headerName: "Technology")
     }
 }

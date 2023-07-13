@@ -10,21 +10,19 @@ import SwiftUI
 struct DetailStylesView: View {
     
     @StateObject private var viewModel = DetailStylesViewModel()
-    @State var template: TemplateModel? = nil
+    @State var templates: [Template] = []
     
     var body: some View {
         VStack {
-            NavibarView(title: template?.category.name ?? "")
+            NavibarView(title: templates.first?.category ?? "")
             ScrollView {
                 LazyVGrid(columns: viewModel.getColumns()) {
-                    if let template = self.template {
-                        ForEach(0..<template.styles.count, id: \.self) { index in
-                            NavigationLink {
-                                let viewModel = CreateQRViewModel(source: .template, idTemplateSelect: template.id)
-                                CreateQRView(viewModel: viewModel)
-                            } label: {
-                                itemView(template.styles[index])
-                            }
+                    ForEach(0..<templates.count, id: \.self) { index in
+                        NavigationLink {
+                            let viewModel = CreateQRViewModel(source: .template, templateSelect: templates[index])
+                            CreateQRView(viewModel: viewModel)
+                        } label: {
+                            itemView(templates[index])
                         }
                     }
                 }
@@ -41,13 +39,13 @@ struct DetailStylesView: View {
         .hideNavigationBar(isHidden: true)
     }
     
-    private func itemView(_ item: Style) -> some View {
+    private func itemView(_ template: Template) -> some View {
         VStack {
             let width = (WIDTH_SCREEN - 64)/3
-            AsyncImage(url: URL(string: item.key))
+            AsyncImage(url: URL(string: template.key))
                 .frame(width: width, height: width)
                 .cornerRadius(12, antialiased: true)
-            Text(item.name)
+            Text(template.name)
                 .font(R.font.urbanistSemiBold.font(size: 12))
                 .foregroundColor(R.color.color_1B232E.color)
         }

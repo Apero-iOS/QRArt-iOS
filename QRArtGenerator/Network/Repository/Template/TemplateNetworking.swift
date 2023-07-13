@@ -9,7 +9,7 @@ import Foundation
 
 enum TemplateNetworking {
     case fetchTemplate
-    case genQR(data: Data, qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int)
+    case genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int)
 }
 
 extension TemplateNetworking: TargetType {
@@ -47,7 +47,7 @@ extension TemplateNetworking: TargetType {
     var params: Param {
         switch self {
         case .fetchTemplate:
-            return .requestParms(path: "/qr-styles/group-by-category", params: ["project": APP_NAME])
+            return .requestParms(path: "/qr-styles", params: ["project": APP_NAME])
         case .genQR:
             return .plainParams(path: "/api/v1/qr")
         }
@@ -57,9 +57,8 @@ extension TemplateNetworking: TargetType {
         switch self {
         case .fetchTemplate:
             return .requestPlainBody
-        case .genQR(data: let data, qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps):
-            return .requestBody(body: ["file": data,
-                                       "qrText": qrText.trimmingCharacters(in: .whitespaces),
+        case .genQR(qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps):
+            return .requestBody(body: ["qrText": qrText.trimmingCharacters(in: .whitespaces),
                                        "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces),
                                        "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces),
                                        "guidanceScale": guidanceScale,

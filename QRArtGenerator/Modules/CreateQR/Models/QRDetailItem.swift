@@ -77,6 +77,8 @@ struct QRDetailItem: QRItem {
     func duplicate() -> QRDetailItem {
         var obj = QRDetailItem()
         obj.type = type
+        obj.prompt = prompt
+        obj.negativePrompt = negativePrompt
         return obj
     }
 }

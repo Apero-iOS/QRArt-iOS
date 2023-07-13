@@ -15,8 +15,8 @@ struct HomeView: View {
         ScrollView {
             VStack(spacing: 16) {
                 bannerView
-                ForEach(viewModel.listStyle) { category in
-                    HomeSectionView(headerName: category.category.name, listItem: category.styles, template: category)
+                ForEach(viewModel.categories) { category in
+                    HomeSectionView(categoryName: category.name, templates: category.templates)
                 }
                 Spacer()
             }
@@ -71,7 +71,7 @@ struct HomeView: View {
         .frame(height: 152)
         .padding(.horizontal, 20)
         .fullScreenCover(isPresented: $viewModel.isShowGenerateQR) {
-            let vm = CreateQRViewModel(source: .create, idTemplateSelect: nil)
+            let vm = CreateQRViewModel(source: .create, templateSelect: nil)
             CreateQRView(viewModel: vm)
         }.onTapGesture {
             viewModel.isShowGenerateQR.toggle()
