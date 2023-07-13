@@ -20,7 +20,7 @@ struct DetailStylesView: View {
                     if let template = self.template {
                         ForEach(0..<template.styles.count, id: \.self) { index in
                             NavigationLink {
-                                let viewModel = CreateQRViewModel(source: .template, indexSelect: index, list: template)
+                                let viewModel = CreateQRViewModel(source: .template, idTemplateSelect: template.id)
                                 CreateQRView(viewModel: viewModel)
                             } label: {
                                 itemView(template.styles[index])
