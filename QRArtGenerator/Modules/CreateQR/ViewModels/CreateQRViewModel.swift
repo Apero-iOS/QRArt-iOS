@@ -41,6 +41,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var showToastError: Bool = false
     @Published var isPush: Bool
     @Published var mode: AdvancedSettingsMode = .collapse
+    @Published var idTemplateSelect: String?
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -49,18 +50,11 @@ class CreateQRViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    init(source: CreateQRViewSource, indexSelect: Int?, list: TemplateModel?, isPush: Bool = false) {
+    init(source: CreateQRViewSource, idTemplateSelect: String?, isPush: Bool = false) {
         self.source = source
         self.isPush = isPush
-        if let indexSelect = indexSelect {
-            self.indexSelectTemplate = indexSelect + 1
-        } else {
-            self.indexSelectTemplate = 0
-        }
-        if let list = list {
-            self.templateQR = list
-            self.templateQR.styles.insert(createBasicQRItem(), at: 0)
-            self.templateQR.styles.swapAt(1, indexSelectTemplate)
+        if let idTemplateSelect = idTemplateSelect {
+            self.idTemplateSelect = idTemplateSelect
             self.indexSelectTemplate = 1
         }
     }
@@ -74,19 +68,24 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func fetchTemplate() {
-        if templateQR.styles.isEmpty {
-            templateRepository.fetchTemplate().sink { comple in
+        templateRepository.fetchTemplate().sink { comple in
 
-            } receiveValue: { [weak self] categories in
-                guard let self = self else { return }
-                if let categories = categories {
-                    categories.forEach { category  in
-                        self.templateQR.styles.append(contentsOf: category.styles)
-                    }
-                    self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
+        } receiveValue: { [weak self] categories in
+            guard let self = self else { return }
+            if let categories = categories {
+                categories.forEach { category  in
+                    self.templateQR.styles.append(contentsOf: category.styles)
                 }
-            }.store(in: &cancellable)
-        }
+                self.templateQR.styles.insert(self.createBasicQRItem(), at: 0)
+                if let idTemplateSelect = idTemplateSelect,
+                   let index = self.templateQR.styles.firstIndex(where: {$0.id == idTemplateSelect}) {
+                    self.templateQR.styles.swapAt(1, index)
+                    
+                    
+                }
+                
+            }
+        }.store(in: &cancellable)
     }
     
     func checkShowSub() -> Bool {

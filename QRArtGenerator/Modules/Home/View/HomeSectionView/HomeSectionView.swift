@@ -42,7 +42,7 @@ struct HomeSectionView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack {
                 ForEach(0..<listItem.count, id: \.self) { index in
-                    let viewModel = CreateQRViewModel(source: .template, indexSelect: index, list: template, isPush: true)
+                    let viewModel = CreateQRViewModel(source: .template, idTemplateSelect: template?.styles[index].id, isPush: true)
                     NavigationLink(destination: CreateQRView(viewModel: viewModel), tag: index, selection: $selection) {
                         Button {
                             selection = index

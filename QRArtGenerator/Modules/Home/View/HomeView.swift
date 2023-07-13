@@ -73,7 +73,7 @@ struct HomeView: View {
         .frame(height: 152)
         .padding(.horizontal, 20)
         .fullScreenCover(isPresented: $viewModel.isShowGenerateQR) {
-            let vm = CreateQRViewModel(source: .create, indexSelect: nil, list: nil)
+            let vm = CreateQRViewModel(source: .create, idTemplateSelect: nil)
             CreateQRView(viewModel: vm)
         }.onTapGesture {
             viewModel.isShowGenerateQR.toggle()
