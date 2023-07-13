@@ -33,6 +33,10 @@ let APP_ID = "6450879455"
 struct Constants {
     static let dummyQRs = [QRDetailItem()]
     
+    struct APISignature {
+        static let keyId = "123456789"
+    }
+    
     struct Keys {
         static let KEY_USER_VIP = "KEY_USER_VIP"
         static let OPEN_APP_COUNT = "OPEN_APP_COUNT"

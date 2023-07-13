@@ -60,9 +60,19 @@ class BaseAPI<T: TargetType> {
     
     func uploadFile(target: T) -> AnyPublisherResult<Data> {
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
-        let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
+        var headers = Alamofire.HTTPHeaders(target.headers ?? [:])
         let targetPath = buildPath(param: target.params)
         let urlString = target.baseURL.desc + targetPath
+        
+        // signature
+        let timeStamp = Int(Date().timeIntervalSince1970*1000)
+        let dataString = "\(timeStamp)@@@\(Constants.APISignature.keyId)"
+        if let encrypt = encrypted(str: dataString) {
+            headers.add(name: "x-api-signature", value: encrypt)
+            headers.add(name: "x-api-timestamp", value: "\(timeStamp))")
+            headers.add(name: "x-api-keyid", value: "\(Constants.APISignature.keyId)")
+        }
+            
         return FutureResult<Data> { promise in
             guard let url = URL(string: urlString) else {return promise(.failure(.General))}
             self.networking.session.upload(multipartFormData: { multipartFromData in
