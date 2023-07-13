@@ -101,7 +101,7 @@ class CreateQRViewModel: ObservableObject {
     
     public func showAdsInter() {
         if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockDidDismiss: { [weak self] in
+            AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockWillDismiss: { [weak self] in
                 guard let self = self else { return }
                 self.generateQR()
             })
@@ -164,6 +164,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func genQR() {
+        UIView.setAnimationsEnabled(false)
         isShowLoadingView.toggle()
         templateRepository.genQR(qrText: getQRText(),
                                  positivePrompt: input.prompt,
@@ -175,20 +176,24 @@ class CreateQRViewModel: ObservableObject {
             switch comple {
                 case .finished:
                     self.isShowLoadingView.toggle()
+                    UIView.setAnimationsEnabled(true)
                 case .failure:
                     self.isShowLoadingView.toggle()
                     self.showToastError.toggle()
+                    UIView.setAnimationsEnabled(true)
             }
         } receiveValue: { [weak self] data in
             guard let self = self,
                   let data = data,
                   let uiImage = UIImage(data: data) else {
                 self?.showToastError.toggle()
+                UIView.setAnimationsEnabled(true)
                 return
             }
             self.input.qrImage = uiImage
             self.imageResult = Image(uiImage: uiImage)
             self.isShowExport.toggle()
+            UIView.setAnimationsEnabled(true)
         }.store(in: &cancellable)
 
     }

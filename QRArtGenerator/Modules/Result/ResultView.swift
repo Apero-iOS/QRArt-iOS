@@ -54,9 +54,6 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.sheet, content: {
                 ShareSheet(items: [viewModel.item.qrImage])
             })
-            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-                LoadingView()
-            }
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
@@ -71,6 +68,9 @@ struct ResultView: View {
                     .background(TransparentBackground())
             })
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
+            if viewModel.isShowLoadingView {
+                LoadingView()
+            }
         }
     }
     
