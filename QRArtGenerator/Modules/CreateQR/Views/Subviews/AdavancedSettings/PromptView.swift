@@ -23,10 +23,6 @@ struct PromptView: View {
     @Binding var validInput: Bool
     @FocusState var isFocused: Bool
     
-    private var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.number(forKey: .inter_inspire) > .zero && !UserDefaults.standard.isUserVip
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -40,7 +36,7 @@ struct PromptView: View {
                 }
                 Spacer()
                 Button {
-                    showAdsInter()
+                    prompt = oldPrompt
                 } label: {
                     R.image.ic_pen.image
                 }
@@ -56,27 +52,6 @@ struct PromptView: View {
                     .foregroundColor(R.color.color_BD1E1E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
             }
-        }
-        .onAppear {
-            createIdAds()
-        }
-    }
-    
-    private func showAdsInter() {
-        if isShowAdsInter, countAds%RemoteConfigService.shared.number(forKey: .inter_inspire) == .zero {
-            AdMobManager.shared.showIntertitial(unitId: .inter_inspire, isSplash: false, blockDidDismiss:  {
-                prompt = oldPrompt
-                countAds += 1
-            })
-        } else {
-            prompt = oldPrompt
-            countAds += 1
-        }
-    }
-    
-    private func createIdAds() {
-        if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_inspire)
         }
     }
     
