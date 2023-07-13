@@ -110,7 +110,6 @@
 		A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E692A4ADCB20002FEF6 /* Router.swift */; };
 		A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */; };
 		A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */; };
-		A4A2E1032A5FFD81000D957E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4A2E1022A5FFD81000D957E /* GoogleService-Info.plist */; };
 		A4BA325A2A5BC0D1002C77C5 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA32592A5BC0D1002C77C5 /* ReachabilityManager.swift */; };
 		A4BB08722A51643100C01063 /* DetailStylesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */; };
 		A4BB08762A517FE600C01063 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08752A517FE600C01063 /* LanguageModel.swift */; };
@@ -151,6 +150,8 @@
 		C8AA3E6E2A4E86EC0077DCC3 /* TemplateNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */; };
 		C8AB7FEB2A5982BD001938AD /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AB7FEA2A5982BD001938AD /* InputEmailView.swift */; };
 		C8C72E1D2A5FD65400E8918B /* AccessPhotoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C72E1C2A5FD65400E8918B /* AccessPhotoPopup.swift */; };
+		C8C72E1F2A5FFF8100E8918B /* camera-access.json in Resources */ = {isa = PBXBuildFile; fileRef = C8C72E1E2A5FFF8100E8918B /* camera-access.json */; };
+		C8C72E212A60002900E8918B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8C72E202A60002900E8918B /* GoogleService-Info.plist */; };
 		C8E923B22A5271FF00835F93 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C8E923B12A5271FF00835F93 /* loading.json */; };
 		C8E923B52A52768600835F93 /* ResultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B42A52768600835F93 /* ResultButtonView.swift */; };
 		C8E923B72A52AA0200835F93 /* PopupSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */; };
@@ -295,7 +296,6 @@
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavibarView.swift; sourceTree = "<group>"; };
-		A4A2E1022A5FFD81000D957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4BA32592A5BC0D1002C77C5 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesViewModel.swift; sourceTree = "<group>"; };
 		A4BB08752A517FE600C01063 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
@@ -337,6 +337,8 @@
 		C8AA3E6D2A4E86EC0077DCC3 /* TemplateNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateNetworking.swift; sourceTree = "<group>"; };
 		C8AB7FEA2A5982BD001938AD /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
 		C8C72E1C2A5FD65400E8918B /* AccessPhotoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhotoPopup.swift; sourceTree = "<group>"; };
+		C8C72E1E2A5FFF8100E8918B /* camera-access.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "camera-access.json"; sourceTree = "<group>"; };
+		C8C72E202A60002900E8918B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8E923B12A5271FF00835F93 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		C8E923B42A52768600835F93 /* ResultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultButtonView.swift; sourceTree = "<group>"; };
 		C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSuccessView.swift; sourceTree = "<group>"; };
@@ -888,6 +890,7 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				C8C72E1E2A5FFF8100E8918B /* camera-access.json */,
 				C8E923B12A5271FF00835F93 /* loading.json */,
 				C8AA3E402A4DAF320077DCC3 /* ai_tab.json */,
 				C8AA3E412A4DAF320077DCC3 /* crown.json */,
@@ -903,8 +906,8 @@
 				9AD522822A4AA08100A947B5 /* Font */,
 				59C766212A496E6000D4BDD3 /* Assets.xcassets */,
 				9AD522A72A4AA0EB00A947B5 /* Info.plist */,
+				C8C72E202A60002900E8918B /* GoogleService-Info.plist */,
 				A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */,
-				A4A2E1022A5FFD81000D957E /* GoogleService-Info.plist */,
 				9ADEE5162A4973C40075FCE0 /* Localizable.strings */,
 			);
 			path = Resource;
@@ -1398,13 +1401,14 @@
 				C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
 				A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */,
+				C8C72E1F2A5FFF8100E8918B /* camera-access.json in Resources */,
 				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
-				A4A2E1032A5FFD81000D957E /* GoogleService-Info.plist in Resources */,
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
 				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
 				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
 				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
 				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
+				C8C72E212A60002900E8918B /* GoogleService-Info.plist in Resources */,
 				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
 				59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */,
 			);

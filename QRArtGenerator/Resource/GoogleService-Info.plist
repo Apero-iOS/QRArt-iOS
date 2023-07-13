@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>201196598253-oldo9bljgc9adv057bn1vng878s48d8v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.201196598253-oldo9bljgc9adv057bn1vng878s48d8v</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAQfwcbxrfmmq4fTD0ImNx9NKvy8qR9VRI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>201196598253</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.qrai.qrgenerator.aiart.qrcreator</string>
+	<key>PROJECT_ID</key>
+	<string>qr-art-code-ios-apero-assassin</string>
+	<key>STORAGE_BUCKET</key>
+	<string>qr-art-code-ios-apero-assassin.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:201196598253:ios:6744ad862812e5d13b2de4</string>
+</dict>
+</plist>
