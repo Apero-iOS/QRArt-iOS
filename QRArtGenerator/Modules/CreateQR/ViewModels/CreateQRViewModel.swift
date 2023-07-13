@@ -119,15 +119,18 @@ class CreateQRViewModel: ObservableObject {
     }
     
     public func onTapGenerate() {
-        if UserDefaults.standard.isUserVip {
-            generateQR()
-        } else {
-            if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
-                // show sub
-                showSub = true
+        validInput = true
+        if isValidInput() {
+            if UserDefaults.standard.isUserVip {
+                generateQR()
             } else {
-                // show ads
-                showAdsInter()
+                if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
+                    // show sub
+                    showSub = true
+                } else {
+                    // show ads
+                    showAdsInter()
+                }
             }
         }
     }

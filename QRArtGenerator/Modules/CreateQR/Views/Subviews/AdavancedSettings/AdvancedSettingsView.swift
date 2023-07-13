@@ -92,8 +92,8 @@ struct AdvancedSettingsView: View {
             SliderSettingView(title: Rlocalizable.steps(),
                               desc: Rlocalizable.steps_desc(),
                               value: $steps,
-                              fromValue: 10,
-                              toValue: 30)
+                              fromValue: 1,
+                              toValue: 10)
         }
     }
     
