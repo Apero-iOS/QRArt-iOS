@@ -82,6 +82,7 @@ public struct BottomSheet<Content: View>: View {
                 EmptyView()
             }
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
     fileprivate func sheetHeight(in geometry: GeometryProxy) -> CGFloat {
