@@ -22,7 +22,7 @@ struct ResultView: View {
                 viewModel.image
                     .resizable()
                     .cornerRadius(24)
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
                     .frame(width: WIDTH_SCREEN, height: WIDTH_SCREEN, alignment: .center)
                     
                 VStack {
@@ -94,7 +94,7 @@ struct ResultView: View {
     
     @ViewBuilder var downloadButton: some View {
         ResultButtonView(typeButton: .download, onTap: {
-            viewModel.download()
+            viewModel.checkDownload()
         })
     }
     
@@ -103,7 +103,7 @@ struct ResultView: View {
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
             } else {
-                viewModel.download4k()
+                viewModel.checkDownload4K()
             }
         })
     }

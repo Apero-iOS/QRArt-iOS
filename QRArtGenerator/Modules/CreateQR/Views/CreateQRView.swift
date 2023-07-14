@@ -23,13 +23,23 @@ struct CreateQRView: View {
                 ScrollView {
                     VStack {
                         templateView
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 10, trailing: 0))
+                            .background(Color.white)
                         qrDetailView
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 10, trailing: 0))
+                            .background(Color.white)
+                            
                         advancedSettingsView
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                            .background(Color.white)
                     }
                 }
+                .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                .background(R.color.color_F7F7F7.color)
                 VStack {
                     Button {
                         viewModel.onTapGenerate()
+                        UIApplication.shared.endEditing()
                     } label: {
                         Text(Rlocalizable.generate_qr())
                             .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
@@ -74,9 +84,6 @@ struct CreateQRView: View {
             viewModel.fetchTemplate()
             viewModel.createIdAds()
         }
-//        .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-//            LoadingView()
-//        }
         .fullScreenCover(isPresented: $viewModel.isShowExport) {
             let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
             ResultView(viewModel: resultViewModel)

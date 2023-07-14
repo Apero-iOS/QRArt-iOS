@@ -34,7 +34,9 @@ struct ItemTemplateView: View {
                                                        endPoint: .topTrailing),
                                         lineWidth: 2
                                     )
+                                    .background(isSelect ? R.color.color_653AE4.color.opacity(0.25) : Color.clear)
                                     .frame(width: 101, height: 101)
+                                    
                             }
                     default:
                         R.image.qr_basic.image.resizable()
@@ -50,6 +52,7 @@ struct ItemTemplateView: View {
                                                        endPoint: .topTrailing),
                                         lineWidth: 2
                                     )
+                                    .background(isSelect ? R.color.color_653AE4.color.opacity(0.25) : Color.clear)
                                     .frame(width: 101, height: 101)
                             }
                     }

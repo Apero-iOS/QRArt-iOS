@@ -38,8 +38,6 @@ struct ChooseTemplateView: View {
             }
             .padding(.leading, 20)
             .frame(maxWidth: WIDTH_SCREEN, maxHeight: 193)
-            R.color.color_F7F7F7.color
-                .frame(height: 8)
         }
     }
 }

@@ -35,6 +35,7 @@ class ScannerViewModel: ObservableObject {
     @Published var isShowSendMessage: Bool = false
     @Published var isShowWebView: Bool = false
     @Published var isShowShareActivity: Bool = false
+    @Published var showPopupAccessCamera: Bool = false
   
     func tourchClick() {
         if torchMode == .off {

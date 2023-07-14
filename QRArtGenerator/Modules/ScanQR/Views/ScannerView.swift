@@ -135,6 +135,10 @@ struct ScannerView: View {
             .sheet(isPresented: $viewModel.isShowShareActivity, content: {
                 ActivityView(url: viewModel.qrItem.content, showing: $viewModel.isShowShareActivity)
             })
+            .fullScreenCover(isPresented: $viewModel.showPopupAccessCamera, content: {
+                AccessPhotoPopup()
+                    .background(TransparentBackground())
+            })
             .toast(message: viewModel.toastMessage ?? "", isShowing: $viewModel.isShowToast, position: .bottom)
         }
     }
@@ -174,9 +178,11 @@ struct ScannerView: View {
                 } else {
                     /// permission Denied
                     viewModel.cameraPermission = .denied
+                    viewModel.showPopupAccessCamera = true
                 }
             case .denied, .restricted:
                 viewModel.cameraPermission = .denied
+                viewModel.showPopupAccessCamera = true
             default: break
             }
         }

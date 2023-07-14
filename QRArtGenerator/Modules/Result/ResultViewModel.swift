@@ -72,29 +72,61 @@ class ResultViewModel: ObservableObject {
         return newImage
     }
     
-    func download() {
-        if checkPhotoLibraryPermission() {
-            if let image = scaleImage(resolutions: .normal) {
-                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
-                showToast(message: Rlocalizable.download_success())
-            }
-        } else {
+    func checkDownload() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized, .limited:
+            download()
+        case .denied, .restricted :
             showPopupAcessPhoto = true
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                guard let self = self else { return }
+                switch status {
+                case .authorized, .limited:
+                    self.download()
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func download() {
+        if let image = scaleImage(resolutions: .normal) {
+            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+            showToast(message: Rlocalizable.download_success())
+        }
+    }
+    
+    func checkDownload4K() {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized, .limited:
+            download4k()
+        case .denied, .restricted :
+            showPopupAcessPhoto = true
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                guard let self = self else { return }
+                switch status {
+                case .authorized, .limited:
+                    self.download4k()
+                default:
+                    self.showPopupAcessPhoto = true
+                }
+            }
         }
     }
     
     func download4k() {
-        if checkPhotoLibraryPermission() {
-            if UserDefaults.standard.isUserVip {
-                if let image = scaleImage(resolutions: .high) {
-                    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
-                    showToast(message: Rlocalizable.download_success())
-                }
-            } else {
-                showIAP = true
+        if UserDefaults.standard.isUserVip {
+            if let image = scaleImage(resolutions: .high) {
+                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+                showToast(message: Rlocalizable.download_success())
             }
         } else {
-            showPopupAcessPhoto = true
+            showIAP = true
         }
     }
     
@@ -171,26 +203,6 @@ class ResultViewModel: ObservableObject {
     func showToast(message: String) {
         toastMessage = message
         isShowToast.toggle()
-    }
-    
-    func checkPhotoLibraryPermission() -> Bool {
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
-        case .authorized:
-            print("tuanlt: authorized")
-            return true
-        case .denied, .restricted :
-            print("tuanlt: denied")
-            return false
-        case .notDetermined:
-            print("tuanlt: notDetermined")
-            return false
-        case .limited:
-            print("tuanlt: limited")
-            return false
-        @unknown default:
-            return false
-        }
     }
 }
 

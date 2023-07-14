@@ -37,6 +37,7 @@ struct SelectQRDetailView: View {
                     }
                 }
                 .onTapGesture {
+                    UIApplication.shared.endEditing()
                     showingSelectQRTypeView = true
                 }
                 .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
@@ -131,8 +132,6 @@ struct SelectQRDetailView: View {
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-            R.color.color_F7F7F7.color
-                .frame(height: 8)
         }
     }
     

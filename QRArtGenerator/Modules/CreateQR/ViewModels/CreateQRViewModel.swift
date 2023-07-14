@@ -72,14 +72,13 @@ class CreateQRViewModel: ObservableObject {
     
     func fetchTemplate() {
         templateRepository.fetchTemplates().sink { comple in
-
+            self.indexSelectTemplate = 1
         } receiveValue: { [weak self] listTemplates in
             guard let self = self else { return }
             if let listTemplates = listTemplates {
                 self.templates.append(contentsOf: listTemplates.items)
                 if let index = self.templates.firstIndex(where: {$0 == self.templateSelect}) {
                     self.templates.swapAt(1, index)
-                    self.indexSelectTemplate = 1
                 }
             }
         }.store(in: &cancellable)
@@ -145,7 +144,7 @@ class CreateQRViewModel: ObservableObject {
             case .wifi:
                 return !input.wfSsid.isEmptyOrWhitespace() && !input.wfPassword.isEmptyOrWhitespace()
             case .paypal:
-                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && !input.paypalAmount.isEmptyOrWhitespace()
+                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && !input.paypalAmount.isEmptyOrWhitespace() && Int(input.paypalAmount) != nil
             }
         } else {
             if !validPrompt() && mode == .collapse {

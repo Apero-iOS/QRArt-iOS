@@ -43,7 +43,7 @@
 "phone_call" = "Telefon";
 "copy_text" = "Text kopieren";
 "open_mail" = "Offene Mail";
-"access_wifi" = "Zugang zu Fift";
+"access_wifi" = "Zugang zu WLAN";
 "create_qr_title" = "QR -Kreation mit";
 "name" = "Name";
 "website_link" = "Website -Link";
@@ -145,3 +145,4 @@
 "photos_access_desc" = "Um die App zu verwenden, müssen Sie uns die Erlaubnis geben, auf Kamera zuzugreifen.";
 "allow_access" = "Erlauben den Zugriff";
 "not_allow" = "Nicht erlauben";
+"valid_amount" = "Bitte geben Sie den Betrag gültig ein";

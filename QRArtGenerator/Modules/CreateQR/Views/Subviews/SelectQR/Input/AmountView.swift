@@ -28,14 +28,18 @@ struct AmountView: View {
             .border(radius: 12, color: getBorderColor(),
                     width: 1)
             .keyboardType(.decimalPad)
-            
             if validInput && amount.isEmptyOrWhitespace() {
                 textError(text: Rlocalizable.cannot_be_empty())
+            } else if validInput && !isValidNumber() {
+                Text(Rlocalizable.valid_amount)
+                    .foregroundColor(R.color.color_BD1E1E.color)
+                    .font(R.font.urbanistRegular.font(size: 14))
             }
+            
         }
     }
     func getBorderColor() -> Color {
-        if validInput && amount.isEmptyOrWhitespace() {
+        if validInput && (amount.isEmptyOrWhitespace() || isValidNumber()) {
             return R.color.color_BD1E1E.color
         } else {
             if isFocused {
@@ -50,6 +54,10 @@ struct AmountView: View {
         Text(text)
             .foregroundColor(R.color.color_BD1E1E.color)
             .font(R.font.urbanistRegular.font(size: 14))
+    }
+    
+    func isValidNumber() -> Bool {
+        return Int(amount) != nil
     }
 }
 
