@@ -20,41 +20,42 @@ struct ItemTemplateView: View {
             if let url = URL(string: template.key) {
                 AsyncImage(url: url) { phase in
                     switch phase {
-                    case .success(let image):
-                        image.resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 103, height: 103)
-                            .cornerRadius(8)
-                            .clipped()
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(
-                                        LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
-                                                       startPoint: .bottomLeading,
-                                                       endPoint: .topTrailing),
-                                        lineWidth: 2
-                                    )
-                                    .background(isSelect ? R.color.color_653AE4.color.opacity(0.25) : Color.clear)
-                                    .frame(width: 101, height: 101)
+                        case .success(let image):
+                            image.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 103, height: 103)
+                                .cornerRadius(8)
+                                .clipped()
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(
+                                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
+                                                           startPoint: .bottomLeading,
+                                                           endPoint: .topTrailing),
+                                            lineWidth: 2
+                                        )
+                                        .background(isSelect ? R.color.color_653AE4.color.opacity(0.25) : Color.clear)
+                                        .frame(width: 101, height: 101)
                                     
-                            }
-                    default:
-                        R.image.qr_basic.image.resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 103, height: 103)
-                            .cornerRadius(8)
-                            .clipped()
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(
-                                        LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
-                                                       startPoint: .bottomLeading,
-                                                       endPoint: .topTrailing),
-                                        lineWidth: 2
-                                    )
-                                    .background(isSelect ? R.color.color_653AE4.color.opacity(0.25) : Color.clear)
-                                    .frame(width: 101, height: 101)
-                            }
+                                }
+                        default:
+                            R.image.img_error.image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 103, height: 103)
+                                .cornerRadius(8)
+                                .clipped()
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(
+                                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
+                                                           startPoint: .bottomLeading,
+                                                           endPoint: .topTrailing),
+                                            lineWidth: 2
+                                        )
+                                        .background(isSelect ? R.color.color_653AE4.color.opacity(0.25) : Color.clear)
+                                        .frame(width: 101, height: 101)
+                                }
                     }
                 }
             }

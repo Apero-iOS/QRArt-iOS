@@ -42,9 +42,22 @@ struct DetailStylesView: View {
     private func itemView(_ template: Template) -> some View {
         VStack {
             let width = (WIDTH_SCREEN - 64)/3
-            AsyncImage(url: URL(string: template.key))
-                .frame(width: width, height: width)
-                .cornerRadius(12, antialiased: true)
+            AsyncImage(url: URL(string: template.key)) { phase in
+                switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: width, height: width)
+                            .cornerRadius(12, antialiased: true)
+                    default:
+                        R.image.img_error.image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: width, height: width)
+                            .cornerRadius(12, antialiased: true)
+                }
+            }
             Text(template.name)
                 .font(R.font.urbanistSemiBold.font(size: 12))
                 .foregroundColor(R.color.color_1B232E.color)
