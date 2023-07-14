@@ -143,3 +143,5 @@
 "invalid_phone_number" = "s'il vous plaît entrer un numéro de téléphone valide";
 "photos_access" = "Permission d'accès aux photos";
 "photos_access_desc" = "Pour utiliser l'application, vous devrez nous donner la permission d'accéder à la caméra.";
+"allow_access" = "Permettre l'accès";
+"not_allow" = "Ne pas permettre";

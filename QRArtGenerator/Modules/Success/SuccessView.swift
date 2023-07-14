@@ -28,9 +28,8 @@ struct SuccessView: View {
                         .foregroundColor(R.color.color_0F1B2E.color)
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
-                    .frame(height: 45)
-                    .frame(maxWidth: .infinity)
-                
+                .frame(height: 45)
+                .frame(maxWidth: .infinity)
                 .background(R.color.color_EAEAEA.color)
                 .cornerRadius(45/2)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))

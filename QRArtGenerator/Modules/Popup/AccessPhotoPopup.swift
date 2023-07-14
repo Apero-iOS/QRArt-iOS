@@ -8,35 +8,63 @@
 import SwiftUI
 
 struct AccessPhotoPopup: View {
+    
+    var onTapAction: (() -> Void)? = nil
+    
     var body: some View {
         ZStack {
             Color(.black).opacity(0.45)
-            VStack {
+            VStack(spacing: 24) {
+                VStack(spacing: 12) {
+                    LottieView(lottieFile: R.file.cameraAccessJson.name)
+                        .frame(width: 100, height: 100)
+                    VStack(spacing: 4) {
+                        Text(Rlocalizable.photos_access)
+                            .font(R.font.urbanistSemiBold.font(size: 16))
+                            .foregroundColor(R.color.color_1B232E.color)
+                            .multilineTextAlignment(.center)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        
+                        Text(Rlocalizable.photos_access_desc)
+                            .font(R.font.urbanistRegular.font(size: 14))
+                            .foregroundColor(R.color.color_1B232E.color)
+                            .multilineTextAlignment(.center)
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                    }
+                }
                 
-                
-                
-//                VStack(spacing: 16) {
-//                    R.image.img_success.image
-//                    Text(Rlocalizable.photos_access())
-//                        .font(R.font.urbanistMedium.font(size: 16))
-//                        .foregroundColor(R.color.color_1C1818.color)
-//                        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-//                        .multilineTextAlignment(.center)
-//                }
-//                Button {
-//                    Router.showHistory()
-//                } label: {
-//                    Text(Rlocalizable.photos_access_desc())
-//                        .font(R.font.urbanistSemiBold.font(size: 16))
-//                        .foregroundColor(R.color.color_0F1B2E.color)
-//                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-//                }
-//                    .frame(height: 45)
-//                    .frame(maxWidth: .infinity)
-//
-//                .background(R.color.color_EAEAEA.color)
-//                .cornerRadius(45/2)
-//                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                VStack(spacing: 8) {
+                    Button {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { _ in 
+                            onTapAction?()
+                        })
+
+                    } label: {
+                        Text(Rlocalizable.allow_access)
+                            .font(R.font.urbanistSemiBold.font(size: 14))
+                            .foregroundColor(Color.white)
+                            .frame(height: 34)
+                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                    }
+                    .frame(width: .infinity, height: 34)
+                    .background(R.color.color_653AE4.color)
+                    .cornerRadius(17)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                    
+                    Button {
+                        onTapAction?()
+                    } label: {
+                        Text(Rlocalizable.not_allow)
+                            .font(R.font.urbanistSemiBold.font(size: 14))
+                            .foregroundColor(R.color.color_0F1B2E.color)
+                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                    }
+                    .frame(width: .infinity, height: 34)
+                    .background(Color.white)
+                    .cornerRadius(17)
+                    .border(radius: 17, color: R.color.color_EAEAEA.color, width: 1)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                }
             }
             .padding(EdgeInsets(top: 24, leading: 0, bottom: 24, trailing: 0))
             .frame(width: WIDTH_SCREEN - 68*2)

@@ -143,3 +143,5 @@
 "invalid_phone_number" = "Xin vui lòng nhập một số điện thoại hợp lệ";
 "photos_access" = "Hình ảnh quyền truy cập";
 "photos_access_desc" = "Để sử dụng ứng dụng, bạn sẽ phải cho phép chúng tôi truy cập camera.";
+"allow_access" = "Cho phép truy cập";
+"not_allow" = "Không cho phép";

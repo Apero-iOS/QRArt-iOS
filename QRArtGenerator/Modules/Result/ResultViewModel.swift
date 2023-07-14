@@ -10,6 +10,7 @@ import UIKit
 import Combine
 import SwiftUI
 import MobileAds
+import Photos
 
 enum Resolutions {
     case normal
@@ -35,6 +36,7 @@ class ResultViewModel: ObservableObject {
     @Published var showIAP: Bool = false
     @Published var toastMessage: String = ""
     @Published var isShowToast: Bool = false
+    @Published var showPopupAcessPhoto: Bool = false
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -71,20 +73,28 @@ class ResultViewModel: ObservableObject {
     }
     
     func download() {
-        if let image = scaleImage(resolutions: .normal) {
-            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
-            showToast(message: Rlocalizable.download_success())
-        }
-    }
-    
-    func download4k() {
-        if UserDefaults.standard.isUserVip {
-            if let image = scaleImage(resolutions: .high) {
+        if checkPhotoLibraryPermission() {
+            if let image = scaleImage(resolutions: .normal) {
                 UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
                 showToast(message: Rlocalizable.download_success())
             }
         } else {
-            showIAP = true
+            showPopupAcessPhoto = true
+        }
+    }
+    
+    func download4k() {
+        if checkPhotoLibraryPermission() {
+            if UserDefaults.standard.isUserVip {
+                if let image = scaleImage(resolutions: .high) {
+                    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+                    showToast(message: Rlocalizable.download_success())
+                }
+            } else {
+                showIAP = true
+            }
+        } else {
+            showPopupAcessPhoto = true
         }
     }
     
@@ -158,6 +168,26 @@ class ResultViewModel: ObservableObject {
     func showToast(message: String) {
         toastMessage = message
         isShowToast.toggle()
+    }
+    
+    func checkPhotoLibraryPermission() -> Bool {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            print("tuanlt: authorized")
+            return true
+        case .denied, .restricted :
+            print("tuanlt: denied")
+            return false
+        case .notDetermined:
+            print("tuanlt: notDetermined")
+            return false
+        case .limited:
+            print("tuanlt: limited")
+            return false
+        @unknown default:
+            return false
+        }
     }
 }
 

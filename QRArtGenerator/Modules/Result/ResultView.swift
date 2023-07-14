@@ -51,7 +51,7 @@ struct ResultView: View {
                 }
             }
             .hideNavigationBar(isHidden: true)
-            .sheet(isPresented: $viewModel.sheet, content: {
+            .fullScreenCover(isPresented: $viewModel.sheet, content: {
                 ShareSheet(items: [viewModel.item.qrImage])
             })
             .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
@@ -60,10 +60,17 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
-            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
-            if viewModel.isShowSuccessView {
+            .fullScreenCover(isPresented: $viewModel.showPopupAcessPhoto, content: {
+                AccessPhotoPopup(onTapAction: {
+                    viewModel.showPopupAcessPhoto = false
+                })
+                    .background(TransparentBackground())
+            })
+            .fullScreenCover(isPresented: $viewModel.isShowSuccessView, content: {
                 SuccessView()
-            }
+                    .background(TransparentBackground())
+            })
+            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
         }
     }
     
@@ -118,4 +125,17 @@ struct ShareSheet: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
     }
+}
+
+struct TransparentBackground: UIViewRepresentable {
+
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
