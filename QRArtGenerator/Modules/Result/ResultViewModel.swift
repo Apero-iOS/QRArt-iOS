@@ -110,6 +110,7 @@ class ResultViewModel: ObservableObject {
         if checkShowSub() {
             showIAP = true
         } else {
+            UIView.setAnimationsEnabled(false)
             UserDefaults.standard.regeneratePerDay += 1
             isShowLoadingView.toggle()
             templateRepository.genQR(qrText: getQRText(),
@@ -119,10 +120,12 @@ class ResultViewModel: ObservableObject {
                                      numInferenceSteps: Int(item.steps))
             .sink { comple in
                 self.isShowLoadingView.toggle()
+                UIView.setAnimationsEnabled(true)
             } receiveValue: { data in
                 guard let data = data, let uiImage = UIImage(data: data) else { return }
                 self.item.qrImage = uiImage
                 self.image = Image(uiImage: uiImage)
+                UIView.setAnimationsEnabled(true)
             }.store(in: &cancellable)
         }
 
@@ -157,7 +160,7 @@ class ResultViewModel: ObservableObject {
     
     public func showAdsInter() {
         if isShowAdsInter, !checkShowSub() {
-            AdMobManager.shared.showIntertitial(unitId: .inter_regenerate, isSplash: false, blockDidDismiss: { [weak self] in
+            AdMobManager.shared.showIntertitial(unitId: .inter_regenerate, isSplash: false, blockWillDismiss: { [weak self] in
                 self?.regenerate()
             })
         } else {

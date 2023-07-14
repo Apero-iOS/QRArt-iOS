@@ -17,35 +17,41 @@ struct CreateQRView: View {
     @StateObject var viewModel: CreateQRViewModel
 
     var body: some View {
-        VStack {
-            naviView
-            ScrollView {
+        ZStack {
+            VStack {
+                naviView
+                ScrollView {
+                    VStack {
+                        templateView
+                        qrDetailView
+                        advancedSettingsView
+                    }
+                }
                 VStack {
-                    templateView
-                    qrDetailView
-                    advancedSettingsView
+                    Button {
+                        viewModel.onTapGenerate()
+                    } label: {
+                        Text(Rlocalizable.generate_qr())
+                            .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
+                            .background(R.color.color_653AE4.color)
+                            .foregroundColor(Color.white)
+                            .font(R.font.urbanistSemiBold.font(size: 14))
+                            .cornerRadius(20)
+                    }.padding(EdgeInsets(top: 0, leading: 20, bottom: viewModel.isShowAdsBanner ? 0 : 20, trailing: 20))
+                    
+                    /// View Ads
+                    if viewModel.isShowAdsBanner {
+                        BannerView(adUnitID: .banner_tab_bar)
+                            .frame(height: 50)
+                    }
                 }
             }
-            VStack {
-                Button {
-                    viewModel.onTapGenerate()
-                } label: {
-                    Text(Rlocalizable.generate_qr())
-                        .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
-                        .background(R.color.color_653AE4.color)
-                        .foregroundColor(Color.white)
-                        .font(R.font.urbanistSemiBold.font(size: 14))
-                        .cornerRadius(20)
-                }.padding(EdgeInsets(top: 0, leading: 20, bottom: viewModel.isShowAdsBanner ? 0 : 20, trailing: 20))
-                
-                /// View Ads
-                if viewModel.isShowAdsBanner {
-                    BannerView(adUnitID: .banner_tab_bar)
-                        .frame(height: 50)
-                }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            if viewModel.isShowLoadingView {
+                LoadingView()
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
         }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         .bottomSheet(isPresented: $viewModel.showingSelectQRTypeView,
                      height: HEIGHT_SCREEN,
                      topBarBackgroundColor: R.color.color_F7F7F7.color,
@@ -68,9 +74,9 @@ struct CreateQRView: View {
             viewModel.fetchTemplate()
             viewModel.createIdAds()
         }
-        .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-            LoadingView()
-        }
+//        .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+//            LoadingView()
+//        }
         .fullScreenCover(isPresented: $viewModel.isShowExport) {
             let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
             ResultView(viewModel: resultViewModel)
