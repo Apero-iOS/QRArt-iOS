@@ -47,7 +47,7 @@ struct CreateQRView: View {
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         .bottomSheet(isPresented: $viewModel.showingSelectQRTypeView,
-                     height: HEIGHT_SCREEN/2,
+                     height: HEIGHT_SCREEN,
                      topBarBackgroundColor: R.color.color_F7F7F7.color,
                      onDismiss: {
             viewModel.showingSelectQRTypeView = false
@@ -55,7 +55,7 @@ struct CreateQRView: View {
             qrSelectView
         }
         .bottomSheet(isPresented: $viewModel.showingSelectCountryView,
-                     height: HEIGHT_SCREEN/2,
+                     height: HEIGHT_SCREEN,
                      topBarBackgroundColor: R.color.color_F7F7F7.color,
                      onDismiss: {
             viewModel.showingSelectCountryView = false

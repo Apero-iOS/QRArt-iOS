@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AccessPhotoPopup: View {
+    
+    var onTapAction: (() -> Void)? = nil
+    
     var body: some View {
         ZStack {
             Color(.black).opacity(0.45)
@@ -32,7 +35,10 @@ struct AccessPhotoPopup: View {
                 
                 VStack(spacing: 8) {
                     Button {
-                        
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { _ in 
+                            onTapAction?()
+                        })
+
                     } label: {
                         Text(Rlocalizable.allow_access)
                             .font(R.font.urbanistSemiBold.font(size: 14))
@@ -46,7 +52,7 @@ struct AccessPhotoPopup: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     
                     Button {
-                        
+                        onTapAction?()
                     } label: {
                         Text(Rlocalizable.not_allow)
                             .font(R.font.urbanistSemiBold.font(size: 14))
