@@ -46,7 +46,8 @@ struct AccessPhotoPopup: View {
                             .frame(height: 34)
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     }
-                    .frame(width: .infinity, height: 34)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 34)
                     .background(R.color.color_653AE4.color)
                     .cornerRadius(17)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -59,7 +60,8 @@ struct AccessPhotoPopup: View {
                             .foregroundColor(R.color.color_0F1B2E.color)
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     }
-                    .frame(width: .infinity, height: 34)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 34)
                     .background(Color.white)
                     .cornerRadius(17)
                     .border(radius: 17, color: R.color.color_EAEAEA.color, width: 1)

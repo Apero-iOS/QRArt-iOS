@@ -43,7 +43,7 @@
 "phone_call" = "Telefone";
 "copy_text" = "Copiar texto";
 "open_mail" = "Correio aberto";
-"access_wifi" = "Acesso WIFT";
+"access_wifi" = "Acesso Wi -Fi";
 "create_qr_title" = "Criação QR com";
 "name" = "Nome";
 "website_link" = "Link do site";
@@ -145,3 +145,4 @@
 "photos_access_desc" = "Para usar o aplicativo, você terá que nos dar permissão para acessar a câmera.";
 "allow_access" = "Permitir acesso";
 "not_allow" = "Não permitido";
+"valid_amount" = "Por favor, insira o valor válido";

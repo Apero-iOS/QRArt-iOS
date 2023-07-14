@@ -131,8 +131,6 @@ struct SelectQRDetailView: View {
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-            R.color.color_F7F7F7.color
-                .frame(height: 8)
         }
     }
     

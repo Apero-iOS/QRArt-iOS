@@ -58,10 +58,7 @@ struct AdvancedSettingsView: View {
                 }
             }
             .clearBackgroundColorList()
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
-            R.color.color_F7F7F7.color
-                .frame(height: 45)
-        }
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))        }
 
     }
     
