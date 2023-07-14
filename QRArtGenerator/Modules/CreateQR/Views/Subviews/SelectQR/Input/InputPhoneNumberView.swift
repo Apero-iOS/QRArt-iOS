@@ -33,6 +33,7 @@ struct InputPhoneNumberView: View {
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 .onTapGesture {
+                    UIApplication.shared.endEditing()
                     showingSelectCountryView = true
                 }
                 VStack(alignment: .leading, spacing: 8) {
