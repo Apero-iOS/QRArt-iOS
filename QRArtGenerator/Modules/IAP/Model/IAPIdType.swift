@@ -12,6 +12,7 @@ enum IAPIdType: String, CaseIterable {
     case week = "qr.art.weeklytrial"
     case month = "qr.art.monthly"
     case lifetime = "qr.art.lifetime"
+    case year = "qr.art.yearly"
     
     struct SubscriptionInfo: Decodable {
         let list: String
@@ -26,6 +27,8 @@ enum IAPIdType: String, CaseIterable {
             return Rlocalizable.weekly()
         case .lifetime:
             return Rlocalizable.lifetime()
+        case .year:
+            return Rlocalizable.yearly()
         }
     }
     
