@@ -15,6 +15,7 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var showCreateQR: Bool = false
     @Published var showIAP: Bool = false
     @Published var countSelectTab: Int = .zero
+    @Published var failAds: Bool = true
 
     var tabs: [TabbarEnum] = TabbarEnum.allCases
     

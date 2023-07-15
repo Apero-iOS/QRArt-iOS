@@ -91,3 +91,9 @@ extension View {
     }
     
 }
+
+extension View {
+    @ViewBuilder func hiddenConditionally(isHidden: Binding<Bool>) -> some View {
+        isHidden.wrappedValue ? self  :  self.hidden() as? Self
+    }
+}

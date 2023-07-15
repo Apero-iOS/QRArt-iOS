@@ -1291,6 +1291,7 @@
 				59C766182A496E5F00D4BDD3 /* Resources */,
 				53320F09AD5C0A0573360B87 /* [CP] Embed Pods Frameworks */,
 				5F3127345C536A1A297A3F2F /* [CP] Copy Pods Resources */,
+				765459AE2A6248FE00489029 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1523,6 +1524,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		765459AE2A6248FE00489029 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		9ADEE50F2A4972C30075FCE0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
