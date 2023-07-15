@@ -43,6 +43,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var mode: AdvancedSettingsMode = .collapse
     @Published var idTemplateSelect: String?
     @Published var templateSelect: Template?
+    private var needFetchTemplates: Bool = true
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -71,17 +72,20 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func fetchTemplate() {
-        templateRepository.fetchTemplates().sink { comple in
-            self.indexSelectTemplate = 1
-        } receiveValue: { [weak self] listTemplates in
-            guard let self = self else { return }
-            if let listTemplates = listTemplates {
-                self.templates.append(contentsOf: listTemplates.items)
-                if let index = self.templates.firstIndex(where: {$0 == self.templateSelect}) {
-                    self.templates.swapAt(1, index)
+        if needFetchTemplates {
+            templateRepository.fetchTemplates().sink { comple in
+                self.indexSelectTemplate = 1
+                self.needFetchTemplates = false
+            } receiveValue: { [weak self] listTemplates in
+                guard let self = self else { return }
+                if let listTemplates = listTemplates {
+                    self.templates.append(contentsOf: listTemplates.items)
+                    if let index = self.templates.firstIndex(where: {$0 == self.templateSelect}) {
+                        self.templates.swapAt(1, index)
+                    }
                 }
-            }
-        }.store(in: &cancellable)
+            }.store(in: &cancellable)
+        }
     }
 
     func generateQR() {
