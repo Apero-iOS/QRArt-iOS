@@ -10,6 +10,7 @@ import SwiftUI
 struct AccessPhotoPopup: View {
     
     var onTapAction: (() -> Void)? = nil
+    var onTapCancel: (() -> Void)? = nil
     
     var body: some View {
         ZStack {
@@ -53,7 +54,7 @@ struct AccessPhotoPopup: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     
                     Button {
-                        onTapAction?()
+                        onTapCancel?()
                     } label: {
                         Text(Rlocalizable.not_allow)
                             .font(R.font.urbanistSemiBold.font(size: 14))
