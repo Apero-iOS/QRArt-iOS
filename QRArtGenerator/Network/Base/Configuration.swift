@@ -26,7 +26,7 @@ enum BaseURLType {
             case .devGenImage:
                 return "https://image-generator.dev.apero.vn"
             case .stgGenImage, .productGenImage:
-                return "https://api-img-gen-wrapper.apero.vn"
+                return "https://api-qrart.apero.vn"
                 
         }
     }

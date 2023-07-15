@@ -69,7 +69,7 @@ class BaseAPI<T: TargetType> {
         let dataString = "\(timeStamp)@@@\(Constants.APISignature.keyId)"
         if let encrypt = encrypted(str: dataString) {
             headers.add(name: "x-api-signature", value: encrypt)
-            headers.add(name: "x-api-timestamp", value: "\(timeStamp))")
+            headers.add(name: "x-api-timestamp", value: "\(timeStamp)")
             headers.add(name: "x-api-keyid", value: "\(Constants.APISignature.keyId)")
         }
             

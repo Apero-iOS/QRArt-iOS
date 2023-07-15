@@ -34,7 +34,7 @@ struct Constants {
     static let dummyQRs = [QRDetailItem()]
     
     struct APISignature {
-        static let keyId = "123456789"
+        static let keyId = "FqipUc0wyy"
     }
     
     struct Keys {
