@@ -24,54 +24,56 @@ struct NavibarView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                if isLeftButton {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        if isCloseButton {
-                            Image(R.image.ic_close_screen)
-                        } else {
-                            Image(R.image.ic_arrow_back)
-                        }
-                        
-                    }.frame(width: 50, height: 50)
-                } else {
-                    Text("")
-                        .frame(width: 50, height: 50)
-                }
-
-                Spacer()
-                Text(title)
-                    .font(R.font.urbanistSemiBold.font(size: 18))
-                    .padding(.trailing, !isRightButton && !isImageTitle ? 50 : 0)
-                    .lineLimit(1)
-                if isImageTitle {
-                    imageRightTitle
-                        .frame(width: 28, height: 24)
-                        .offset(x: -3, y: -3)
-                }
-                
-                Spacer()
-                if isRightButton {
-                    Button {
-                        onRightAction?()
-                    } label: {
-                        imageRightButton
-                            .scaledToFit()
-                    }.frame(width: 50, height: 50)
-                } else {
-                    if !titleRightButton.isEmpty  {
-                        Text(titleRightButton)
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(R.color.color_2073EF.color)
-                            .font(R.font.urbanistSemiBold.font(size: 14))
-                            .onTapGesture {
-                                onRightAction?()
-                            }.padding(.trailing, 20)
+            ZStack {
+                HStack {
+                    Text(title)
+                        .font(R.font.urbanistSemiBold.font(size: 18))
+                        .lineLimit(1)
+                    if isImageTitle {
+                        imageRightTitle
+                            .frame(width: 28, height: 24)
+                            .offset(x: -3, y: -3)
                     }
                 }
-            }.frame(height: 50)
+                .padding(.horizontal, 100)
+                HStack {
+                    if isLeftButton {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            if isCloseButton {
+                                Image(R.image.ic_close_screen)
+                            } else {
+                                Image(R.image.ic_arrow_back)
+                            }
+                            
+                        }.frame(width: 50, height: 50)
+                    }
+
+                    Spacer()
+
+                    if isRightButton {
+                        Button {
+                            onRightAction?()
+                        } label: {
+                            imageRightButton
+                                .scaledToFit()
+                        }.frame(width: 50, height: 50)
+                    } else {
+                        if !titleRightButton.isEmpty  {
+                            Text(titleRightButton)
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(R.color.color_2073EF.color)
+                                .font(R.font.urbanistSemiBold.font(size: 14))
+                                .lineLimit(1)
+                                .onTapGesture {
+                                    onRightAction?()
+                                }.padding(.trailing, 20)
+                        }
+                    }
+                }.frame(height: 50)
+            }
+            
             Color(R.color.color_EAEAEA)
                 .frame(height: 1)
         }

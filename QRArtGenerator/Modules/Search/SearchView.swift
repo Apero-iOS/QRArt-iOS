@@ -59,6 +59,7 @@ struct SearchView: View {
             isFocusSearch = viewModel.isCheckFocusSearch
         }
         .onDisappear {
+            isFocusSearch = false
             viewModel.isCheckFocusSearch = false
         }
     }

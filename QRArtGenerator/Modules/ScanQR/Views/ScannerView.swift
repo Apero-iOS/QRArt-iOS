@@ -135,11 +135,15 @@ struct ScannerView: View {
             .sheet(isPresented: $viewModel.isShowShareActivity, content: {
                 ActivityView(url: viewModel.qrItem.content, showing: $viewModel.isShowShareActivity)
             })
-            .fullScreenCover(isPresented: $viewModel.showPopupAccessCamera, content: {
-                AccessPhotoPopup()
-                    .background(TransparentBackground())
-            })
             .toast(message: viewModel.toastMessage ?? "", isShowing: $viewModel.isShowToast, position: .bottom)
+            
+            if viewModel.showPopupAccessCamera {
+                AccessPhotoPopup(onTapCancel: {
+                    dismiss()
+                })
+                .background(TransparentBackground())
+                .padding(.all, 0)
+            }
         }
     }
     
@@ -167,23 +171,27 @@ struct ScannerView: View {
     func checkCameraPermission() {
         Task {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
-            case .authorized:
-                viewModel.cameraPermission = .approve
-                setupCamera()
-            case .notDetermined:
-                if await AVCaptureDevice.requestAccess(for: .video) {
-                    /// permission granted
+                case .authorized:
                     viewModel.cameraPermission = .approve
                     setupCamera()
-                } else {
-                    /// permission Denied
+                case .notDetermined:
+                    if await AVCaptureDevice.requestAccess(for: .video) {
+                        /// permission granted
+                        viewModel.cameraPermission = .approve
+                        setupCamera()
+                    } else {
+                        /// permission Denied
+                        viewModel.cameraPermission = .denied
+                        withAnimation {
+                            viewModel.showPopupAccessCamera = true
+                        }
+                    }
+                case .denied, .restricted:
                     viewModel.cameraPermission = .denied
-                    viewModel.showPopupAccessCamera = true
-                }
-            case .denied, .restricted:
-                viewModel.cameraPermission = .denied
-                viewModel.showPopupAccessCamera = true
-            default: break
+                    withAnimation {
+                        viewModel.showPopupAccessCamera = true
+                    }
+                default: break
             }
         }
     }
