@@ -14,6 +14,7 @@ struct BannerView: UIViewControllerRepresentable {
     
     private let bannerView = UIView()
     var adUnitID: AdUnitID
+    var fail: VoidBlock?
     
     func makeUIViewController(context: Context) -> some UIViewController {
         AdMobManager.shared.removeAd(unitId: adUnitID.rawValue)
@@ -26,6 +27,7 @@ struct BannerView: UIViewControllerRepresentable {
         AdMobManager.shared.blockBannerFaild = { id in
             if id == adUnitID.rawValue {
                 adViewController.view.isHidden = true
+                fail?()
             }
         }
         return adViewController

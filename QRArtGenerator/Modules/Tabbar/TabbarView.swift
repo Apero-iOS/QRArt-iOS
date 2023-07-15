@@ -45,7 +45,10 @@ struct TabbarView: View {
                         }
                         /// View Ads
                         if viewModel.isShowAdsBanner {
-                            BannerView(adUnitID: .banner_tab_bar)
+                            BannerView(adUnitID: .banner_tab_bar, fail: {
+                                viewModel.failAds = false
+                            })
+                                .hiddenConditionally(isHidden: $viewModel.failAds)
                                 .frame(height: 50)
                         }
                         
