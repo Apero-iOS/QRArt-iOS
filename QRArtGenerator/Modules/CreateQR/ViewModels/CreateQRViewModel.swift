@@ -74,8 +74,14 @@ class CreateQRViewModel: ObservableObject {
     func fetchTemplate() {
         if needFetchTemplates {
             templateRepository.fetchTemplates().sink { comple in
-                self.indexSelectTemplate = 1
-                self.needFetchTemplates = false
+                switch comple {
+                case .finished:
+                    self.indexSelectTemplate = 1
+                    self.needFetchTemplates = false
+                case .failure:
+                    break
+                }
+                
             } receiveValue: { [weak self] listTemplates in
                 guard let self = self else { return }
                 if let listTemplates = listTemplates {
