@@ -40,22 +40,18 @@ struct TabbarView: View {
                                     }
                                 }
                             }
-                            .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                         }
-                        /// View Ads
-                        if viewModel.isShowAdsBanner {
-                            BannerView(adUnitID: .banner_tab_bar, fail: {
-                                viewModel.failAds = false
-                            })
-                                .hiddenConditionally(isHidden: $viewModel.failAds)
-                                .frame(height: 50)
-
-                        }
+                        .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                     }
+                    
                     /// View Ads
                     if viewModel.isShowAdsBanner {
-                        BannerView(adUnitID: .banner_tab_bar)
+                        BannerView(adUnitID: .banner_tab_bar, fail: {
+                            viewModel.failAds = false
+                        })
+                            .hiddenConditionally(isHidden: $viewModel.failAds)
                             .frame(height: 50)
+
                     }
                     
                     Color
