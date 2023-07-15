@@ -99,6 +99,10 @@ class ResultViewModel: ObservableObject {
         }
     }
     
+    func dissmissPopupAcessPhoto() {
+        showPopupAcessPhoto = false
+    }
+    
     func checkDownload4K() {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {

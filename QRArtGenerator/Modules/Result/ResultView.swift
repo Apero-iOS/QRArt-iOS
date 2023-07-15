@@ -57,12 +57,6 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
-            .fullScreenCover(isPresented: $viewModel.showPopupAcessPhoto, content: {
-                AccessPhotoPopup(onTapAction: {
-                    viewModel.showPopupAcessPhoto = false
-                })
-                    .background(TransparentBackground())
-            })
             .fullScreenCover(isPresented: $viewModel.isShowSuccessView, content: {
                 SuccessView()
                     .background(TransparentBackground())
@@ -70,6 +64,15 @@ struct ResultView: View {
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .bottom)
             if viewModel.isShowLoadingView {
                 LoadingView()
+            }
+            
+            if viewModel.showPopupAcessPhoto {
+                AccessPhotoPopup {
+                    viewModel.dissmissPopupAcessPhoto()
+                } onTapCancel: {
+                    viewModel.dissmissPopupAcessPhoto()
+                }
+                .padding(.all, 0)
             }
         }
     }
