@@ -40,10 +40,12 @@ final class HomeViewModel: ObservableObject, Identifiable {
             }
         } receiveValue: { [weak self] listTemplates in
             guard let self = self else { return }
+            self.categories.removeAll()
             if let templates = listTemplates?.items {
                 Dictionary(grouping: templates, by: { $0.category }).forEach { key, value in
                     self.categories.append(Category(name: key, templates: value))
                 }
+                self.categories.sort(by: {$0.name < $1.name})
             }
         }.store(in: &cancellable)
     }
