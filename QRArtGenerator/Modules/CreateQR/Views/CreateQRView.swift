@@ -18,7 +18,7 @@ struct CreateQRView: View {
 
     var body: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 0) {
                 naviView
                 ScrollView {
                     VStack {
