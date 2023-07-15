@@ -23,6 +23,7 @@ struct HistoryListView: View {
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                     .hideSeparatorLine()
                     .background(NavigationLink("", destination: ResultView(viewModel: vm)).opacity(0))
+                    .listRowBackground(Color.clear)
                 }
             }, footer: {
                 Color.clear
