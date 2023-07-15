@@ -16,7 +16,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var templates: [Template] = []
     @Published var indexSelectTemplate: Int = .zero {
         didSet {
-            if !templates.isEmpty, indexSelectTemplate > templates.count {
+            if !templates.isEmpty {
                 input.prompt = templates[indexSelectTemplate].positivePrompt
                 input.negativePrompt = templates[indexSelectTemplate].negativePrompt
             }
