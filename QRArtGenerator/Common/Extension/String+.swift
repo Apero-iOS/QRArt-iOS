@@ -35,11 +35,10 @@ extension String {
         return emailPred.evaluate(with: self)
     }
     
-    func isValidUrl () -> Bool {
-        if let url = NSURL(string: self) {
-            return UIApplication.shared.canOpenURL(url as URL)
-        }
-        return false
+    func isValidUrl() -> Bool {
+        let urlRegex = "((http|https)://)?([(w|W)]{3}+\\.)?+(.)+\\.+[A-Za-z]{2,3}+(\\.)?+(/(.)*)?"
+        let urlPred = NSPredicate(format:"SELF MATCHES %@", urlRegex)
+        return urlPred.evaluate(with: self)
     }
     
     func replaceString(withRegex regex: String, by strValue: String) -> String {
