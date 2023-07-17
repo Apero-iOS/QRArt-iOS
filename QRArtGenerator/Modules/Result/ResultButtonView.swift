@@ -12,6 +12,7 @@ enum ResultButtonType: CaseIterable {
     case download4k
     case regenerate
     case share
+    case saveAndShare
     
     var image: Image {
         switch self {
@@ -22,6 +23,8 @@ enum ResultButtonType: CaseIterable {
         case .regenerate:
             return R.image.ic_regenerate.image
         case .share:
+            return R.image.ic_share_qr.image
+        case .saveAndShare:
             return R.image.ic_share_qr.image
         }
     }
@@ -36,6 +39,8 @@ enum ResultButtonType: CaseIterable {
             return Rlocalizable.regenerate()
         case .share:
             return Rlocalizable.share_qr()
+        case .saveAndShare:
+            return Rlocalizable.save_share()
         }
     }
 }
@@ -58,21 +63,21 @@ struct ResultButtonView: View {
                     Text(typeButton.title)
                         .foregroundColor((typeButton != .download4k) ? Color.black : Color.white)
                         .font(R.font.urbanistSemiBold.font(size: 14))
-                    if typeButton == .download4k, !isCreate, !UserDefaults.standard.isUserVip {
+                    if typeButton == .download4k, !UserDefaults.standard.isUserVip {
                         R.image.ic_sub.image
                     }
                 }
-                .frame(width: isCreate ? WIDTH_SCREEN/2 - 8 - 40 : WIDTH_SCREEN - 40, height: 48)
+                .frame(width: isCreate ? WIDTH_SCREEN/2 - 8 - 40 : WIDTH_SCREEN - 40, height: typeButton == .download4k ? 52 : 48)
                 .padding(EdgeInsets(top: 0, leading: isCreate ? 12 : 0, bottom: 0, trailing: isCreate ? 12 : 0))
                 .background((typeButton != .download4k) ? R.color.color_F7F7F7.color : R.color.color_653AE4.color)
-                .cornerRadius(24)
-                .border(radius: 24,
+                .cornerRadius(typeButton == .download4k ? 52/2 : 48/2)
+                .border(radius: typeButton == .download4k ? 52/2 : 48/2,
                         color: (typeButton != .download4k) ? R.color.color_EAEAEA.color : R.color.color_D8CEF8.color,
                         width: (typeButton != .download4k) ? 1 : 8)
-                if typeButton == .download4k, isCreate, !UserDefaults.standard.isUserVip {
-                    R.image.ic_sub.image
-                        .offset(x: -5, y: -5)
-                }
+//                if typeButton == .download4k, isCreate, !UserDefaults.standard.isUserVip {
+//                    R.image.ic_sub.image
+//                        .offset(x: -5, y: -5)
+//                }
             }
             
         }

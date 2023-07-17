@@ -28,18 +28,14 @@ struct ResultView: View {
                 VStack {
                     if viewModel.isCreate {
                         HStack(spacing: 8) {
-                            downloadButton
+                            regenerateButton
+                            saveAndShareButton
+                        }
+                        HStack {
                             download4kButton
                         }
-                        HStack {
-                            regenerateButton
-                            shareButton
-                        }
                     } else {
-                        HStack {
-                            shareButton
-                            downloadButton
-                        }
+                        shareButton
                         download4kButton
                     }
                 }
@@ -78,13 +74,13 @@ struct ResultView: View {
     }
     
     @ViewBuilder var naviView: some View {
-        NavibarView(title: viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name, isImageTitle: viewModel.isCreate ? true : false, isRightButton: false, titleRightButton: viewModel.isCreate ? Rlocalizable.save() : "") {
+        NavibarView(title: viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name, isImageTitle: viewModel.isCreate ? true : false, isRightButton: false, titleRightButton: viewModel.isCreate ? Rlocalizable.done() : "") {
             viewModel.save()
         }
     }
     
     @ViewBuilder var shareButton: some View {
-        ResultButtonView(typeButton: .share) {
+        ResultButtonView(typeButton: .share, isCreate: false) {
             viewModel.share()
         }
     }
@@ -102,13 +98,19 @@ struct ResultView: View {
     }
     
     @ViewBuilder var download4kButton: some View {
-        ResultButtonView(typeButton: .download4k, isCreate: viewModel.isCreate, onTap: {
+        ResultButtonView(typeButton: .download4k, isCreate: false, onTap: {
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
             } else {
                 viewModel.checkDownload4K()
             }
         })
+    }
+    
+    @ViewBuilder var saveAndShareButton: some View {
+        ResultButtonView(typeButton: .saveAndShare) {
+            viewModel.saveAndShare()
+        }
     }
 }
 

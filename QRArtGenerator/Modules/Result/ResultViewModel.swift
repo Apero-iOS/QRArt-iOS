@@ -208,5 +208,10 @@ class ResultViewModel: ObservableObject {
         toastMessage = message
         isShowToast.toggle()
     }
+    
+    func saveAndShare() {
+        QRItemService.shared.saveNewQR(item)
+        share()
+    }
 }
 
