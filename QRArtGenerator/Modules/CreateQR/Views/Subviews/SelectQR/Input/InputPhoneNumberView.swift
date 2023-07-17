@@ -37,14 +37,22 @@ struct InputPhoneNumberView: View {
                     showingSelectCountryView = true
                 }
                 VStack(alignment: .leading, spacing: 8) {
-                    TextField(country.dialCode, text: $phoneNumber)
-                        .focused($isFocused)
-                        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-                        .frame(maxHeight: 42)
-                        .border(radius: 12, color: getBorderColor(), width: 1)
-                        .font(R.font.urbanistRegular.font(size: 14))
-                        .foregroundColor(R.color.color_1B232E.color)
-                        .keyboardType(.decimalPad)
+                    ZStack(alignment: .leading) {
+                        if phoneNumber.isEmpty {
+                            Text(country.dialCode)
+                                .foregroundColor(R.color.color_6A758B.color)
+                                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+                                .font(R.font.urbanistRegular.font(size: 14))
+                        }
+                        TextField("", text: $phoneNumber)
+                            .focused($isFocused)
+                            .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+                            .frame(maxHeight: 42)
+                            .border(radius: 12, color: getBorderColor(), width: 1)
+                            .font(R.font.urbanistRegular.font(size: 14))
+                            .foregroundColor(R.color.color_1B232E.color)
+                            .keyboardType(.decimalPad)
+                    }
                     if validInput && phoneNumber.isEmptyOrWhitespace() {
                         Text(Rlocalizable.cannot_be_empty)
                             .foregroundColor(R.color.color_BD1E1E.color)

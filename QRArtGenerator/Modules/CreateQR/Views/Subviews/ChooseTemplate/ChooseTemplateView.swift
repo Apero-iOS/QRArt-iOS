@@ -17,6 +17,7 @@ struct ChooseTemplateView: View {
                 Text(Rlocalizable.choose_a_template())
                     .font(R.font.urbanistSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
+                    .padding(.leading, 20)
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
                         ForEach(0..<templates.count, id: \.self) { index in
@@ -33,10 +34,11 @@ struct ChooseTemplateView: View {
                             }
                         }
                     }
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 }
-                .frame(maxWidth: WIDTH_SCREEN, maxHeight: 124)
+                
             }
-            .padding(.leading, 20)
+            
             .frame(maxWidth: WIDTH_SCREEN, maxHeight: 193)
         }
     }

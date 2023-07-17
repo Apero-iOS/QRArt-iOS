@@ -41,12 +41,25 @@ struct PromptView: View {
                     R.image.ic_pen.image
                 }
             }
-            TextField(Rlocalizable.enter_prompt(), text: $prompt)
-                .frame(height: 100, alignment: .top)
-                .focused($isFocused)
-                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-                .border(radius: 12, color: getBorderColor(), width: 1)
-                .font(R.font.urbanistRegular.font(size: 14))
+            ZStack {
+                if prompt.isEmpty {
+                    TextEditor(text: .constant(Rlocalizable.enter_prompt()))
+                        .frame(height: 100, alignment: .top)
+                        .focused($isFocused)
+                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                        .border(radius: 12, color: getBorderColor(), width: 1)
+                        .font(R.font.urbanistRegular.font(size: 14))
+                        .foregroundColor(R.color.color_6A758B.color)
+                }
+                
+                TextEditor(text: $prompt)
+                    .frame(height: 100, alignment: .top)
+                    .focused($isFocused)
+                    .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .border(radius: 12, color: getBorderColor(), width: 1)
+                    .font(R.font.urbanistRegular.font(size: 14))
+                    .foregroundColor(R.color.color_1B232E.color)
+            }
             if validInput && typePrompt == .prompt && prompt.isEmpty {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
