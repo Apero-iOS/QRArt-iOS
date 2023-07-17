@@ -35,14 +35,22 @@ struct InputTextView: View {
     }
     
     @ViewBuilder var textField: some View {
-        TextField(placeholder, text: $name)
-            .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-            .frame(maxHeight: 42)
-            .focused($isFocused)
-            .border(radius: 12, color: getBorderColor(),
-                    width: 1)
-            .font(R.font.urbanistRegular.font(size: 14))
-            .foregroundColor(R.color.color_1B232E.color)
+        ZStack(alignment: .leading) {
+            if name.isEmpty {
+                Text(placeholder)
+                    .foregroundColor(R.color.color_6A758B.color)
+                    .font(R.font.urbanistRegular.font(size: 14))
+                    .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+            }
+            TextField("", text: $name)
+                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
+                .frame(maxHeight: 42)
+                .focused($isFocused)
+                .border(radius: 12, color: getBorderColor(),
+                        width: 1)
+                .font(R.font.urbanistRegular.font(size: 14))
+                .foregroundColor(R.color.color_1B232E.color)
+        }
     }
     
     func getBorderColor() -> Color {

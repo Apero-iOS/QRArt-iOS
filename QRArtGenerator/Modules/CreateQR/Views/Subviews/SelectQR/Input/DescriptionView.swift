@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DescriptionView: View {
     var title: String = ""
-    var placeHolder: String = ""
+    @State var placeHolder: String = ""
     @Binding var desc: String
     @Binding var validInput: Bool
     @FocusState var isFocused: Bool
@@ -19,13 +19,28 @@ struct DescriptionView: View {
             Text(title)
                 .font(R.font.urbanistSemiBold.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
-            TextField(placeHolder, text: $desc)
-                .focused($isFocused)
-                .frame(height: 200, alignment: .top)
-                .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
-                .border(radius: 12, color: getBorderColor(), width: 1)
-                .font(R.font.urbanistRegular.font(size: 14))
-                .foregroundColor(R.color.color_1B232E.color)
+            
+            ZStack {
+                if desc.isEmpty {
+                    TextEditor(text: $placeHolder)
+                        .focused($isFocused)
+                        .frame(height: 200, alignment: .top)
+                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                        .border(radius: 12, color: getBorderColor(), width: 1)
+                        .font(R.font.urbanistRegular.font(size: 14))
+                        .foregroundColor(R.color.color_6A758B.color)
+                        .disabled(true)
+                }
+                TextEditor(text: $desc)
+                    .focused($isFocused)
+                    .frame(height: 200, alignment: .top)
+                    .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .border(radius: 12, color: getBorderColor(), width: 1)
+                    .font(R.font.urbanistRegular.font(size: 14))
+                    .foregroundColor(R.color.color_1B232E.color)
+                    .opacity(desc.isEmpty ? 0.25 : 1)
+            }
+
             
             if validInput && desc.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
