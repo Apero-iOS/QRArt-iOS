@@ -15,15 +15,8 @@ enum AdvancedSettingsMode {
 struct AdvancedSettingsView: View {
     @Binding var mode: AdvancedSettingsMode
     @State var rotate: Double = 0
-    @Binding var prompt: String
-    @Binding var negativePrompt: String
-    @Binding var oldPrompt: String
-    @Binding var oldNegativePrompt: String
-    @Binding var guidance: Double
-    @Binding var steps: Double
-    @Binding var scale: Double
-    @Binding var validInput: Bool
-
+    var didTapExpand: ((AdvancedSettingsMode) -> Void)?
+    
     var body: some View {
         VStack {
             HStack {
@@ -42,20 +35,16 @@ struct AdvancedSettingsView: View {
             .background(Color.white)
             .onTapGesture {
                 if mode == .expand {
-//                    withAnimation(.easeIn(duration: 0.1)) {
+                    withAnimation(.easeIn(duration: 0.2)) {
                         rotate = 0
-//                    }
-                    mode = .collapse
+                        didTapExpand?(.collapse)
+                    }
                 } else {
-//                    withAnimation(.easeOut(duration: 0.1)) {
+                    withAnimation(.easeOut(duration: 0.1)) {
                         rotate = 90
-//                    }
-                    mode = .expand
+                        didTapExpand?(.expand)
+                    }
                 }
-            }
-            
-            if mode == .expand {
-                descView
             }
         }
         .clearBackgroundColorList()
@@ -63,49 +52,8 @@ struct AdvancedSettingsView: View {
         
     }
     
-    @ViewBuilder var descView: some View {
-        VStack {
-            // prompt
-            PromptView(oldPrompt: oldPrompt,
-                       title: Rlocalizable.prompt(),
-                       subTitle: Rlocalizable.prompt_desc(),
-                       typePrompt: .prompt,
-                       prompt: $prompt,
-                       validInput: $validInput)
-            // negative prompt
-            PromptView(oldPrompt: oldNegativePrompt,
-                       title: Rlocalizable.negative_prompt(),
-                       subTitle: Rlocalizable.negative_prompt_desc(),
-                       typePrompt: .negativePrompt,
-                       prompt: $negativePrompt,
-                       validInput: $validInput)
-            // guidance
-            SliderSettingView(title: Rlocalizable.guidance(),
-                              desc: Rlocalizable.guidance_desc(),
-                              value: $guidance,
-                              fromValue: 1,
-                              toValue: 10)
-
-            // steps
-            SliderSettingView(title: Rlocalizable.steps(),
-                              desc: Rlocalizable.steps_desc(),
-                              value: $steps,
-                              fromValue: 1,
-                              toValue: 10)
-        }
-    }
-    
     @ViewBuilder var image: some View {
         R.image.ic_left.image
             .frame(width: 24, height: 24)
-    }
-}
-
-struct AdvancedSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AdvancedSettingsView(mode: .constant(.collapse), prompt: .constant(""),
-                             negativePrompt: .constant(""),
-                             oldPrompt: .constant(""),
-                             oldNegativePrompt: .constant(""), guidance: .constant(0), steps: .constant(0), scale: .constant(0), validInput: .constant(false))
     }
 }

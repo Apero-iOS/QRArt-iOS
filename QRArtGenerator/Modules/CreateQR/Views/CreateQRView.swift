@@ -15,37 +15,44 @@ enum CreateQRViewSource {
 
 struct CreateQRView: View {
     @StateObject var viewModel: CreateQRViewModel
+    @Namespace var advanceDescViewID
 
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 naviView
-                List {
-                    templateView
-                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-                        .background(Color.white)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
-                        .hideSeparatorLine()
-                    
-                    qrDetailView
-                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-                        .background(Color.white)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
-                        .hideSeparatorLine()
-                    
-                    advancedSettingsView
-                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-                        .background(Color.white)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
-                        .hideSeparatorLine()
+                ScrollViewReader { proxy in
+                    List {
+                        templateView
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                            .background(Color.white)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                            .hideSeparatorLine()
+                        
+                        qrDetailView
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                            .background(Color.white)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                            .hideSeparatorLine()
+                        
+                        advancedSettingsView(proxy: proxy)
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                            .background(Color.white)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+                            .hideSeparatorLine()
+                        
+                        if viewModel.mode == .expand {
+                            advanceDescView
+                        }
+                    }
+                    .listStyle(.plain)
+                    .background(R.color.color_F7F7F7.color)
+                    .clearBackgroundColorList()
+                    .hideScrollIndicator()
                 }
-                .listStyle(.plain)
-                .background(R.color.color_F7F7F7.color)
-                .clearBackgroundColorList()
-                .hideScrollIndicator()
                 
                 VStack {
                     Button {
@@ -123,16 +130,26 @@ struct CreateQRView: View {
                            type: viewModel.input.type)
     }
     
-    @ViewBuilder var advancedSettingsView: some View {
-            AdvancedSettingsView(mode: $viewModel.mode,
-                                 prompt: $viewModel.input.prompt,
-                                 negativePrompt: $viewModel.input.negativePrompt,
-                                 oldPrompt: $viewModel.templates[viewModel.indexSelectTemplate].positivePrompt,
-                                 oldNegativePrompt: $viewModel.templates[viewModel.indexSelectTemplate].negativePrompt,
-                                 guidance: $viewModel.input.guidance,
-                                 steps: $viewModel.input.steps,
-                                 scale: $viewModel.input.contronetScale,
-                                 validInput: $viewModel.validInput)
+    @ViewBuilder func advancedSettingsView(proxy: ScrollViewProxy) -> some View {
+        AdvancedSettingsView(mode: $viewModel.mode) { mode in
+            switch mode {
+            case .expand:
+                viewModel.mode = mode
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    withAnimation(.easeOut(duration: 0.2)) {
+                        proxy.scrollTo(advanceDescViewID, anchor: .top)
+                    }
+                }
+            case .collapse:
+                withAnimation(.easeIn(duration: 0.2)) {
+                    proxy.scrollTo(advanceDescViewID, anchor: .bottom)
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    viewModel.mode = mode
+                }
+            }
+        }
+        .id(advanceDescViewID)
     }
     
     @ViewBuilder var qrSelectView: some View {
@@ -149,6 +166,38 @@ struct CreateQRView: View {
     @ViewBuilder var naviView: some View {
         NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip, isCloseButton: !viewModel.isPush) {
             viewModel.showSub = true
+        }
+    }
+    
+    @ViewBuilder var advanceDescView: some View {
+        VStack {
+            // prompt
+            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate].positivePrompt,
+                       title: Rlocalizable.prompt(),
+                       subTitle: Rlocalizable.prompt_desc(),
+                       typePrompt: .prompt,
+                       prompt: $viewModel.input.prompt,
+                       validInput: $viewModel.validInput)
+            // negative prompt
+            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate].negativePrompt,
+                       title: Rlocalizable.negative_prompt(),
+                       subTitle: Rlocalizable.negative_prompt_desc(),
+                       typePrompt: .negativePrompt,
+                       prompt: $viewModel.input.negativePrompt,
+                       validInput: $viewModel.validInput)
+            // guidance
+            SliderSettingView(title: Rlocalizable.guidance(),
+                              desc: Rlocalizable.guidance_desc(),
+                              value: $viewModel.input.guidance,
+                              fromValue: 1,
+                              toValue: 10)
+
+            // steps
+            SliderSettingView(title: Rlocalizable.steps(),
+                              desc: Rlocalizable.steps_desc(),
+                              value: $viewModel.input.steps,
+                              fromValue: 1,
+                              toValue: 10)
         }
     }
 }

@@ -35,7 +35,7 @@ struct IAPView: View {
                     }
                     
                     VStack(spacing: 16) {
-                        HStack(alignment: .firstTextBaseline, spacing: 0) {
+                        HStack(alignment: .bottom, spacing: 0) {
                             Text(Rlocalizable.go_further_with)
                                 .font(R.font.urbanistSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
