@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SelectQRDetailView: View {
     @State var name: String = ""
+    @State var rotate: Double = 0
     @Binding var showingSelectQRTypeView: Bool
     @Binding var showingSelectCountryView: Bool
     @Binding var validInput: Bool
@@ -30,15 +31,18 @@ struct SelectQRDetailView: View {
                         .font(R.font.urbanistMedium.font(size: 16))
                         .foregroundColor(R.color.color_1B232E.color)
                     Spacer()
-                    if showingSelectQRTypeView {
-                        imageDropDown.rotationEffect(.degrees(90))
-                    } else {
-                        imageDropDown.rotationEffect(.degrees(0))
-                    }
+                    imageDropDown.rotationEffect(.degrees(rotate))
                 }
+                .background(Color.white)
                 .onTapGesture {
                     UIApplication.shared.endEditing()
                     showingSelectQRTypeView = true
+                    withAnimation(.linear(duration: 0.1)) {
+                        rotate = 90
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        rotate = 0
+                    }
                 }
                 .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                 .frame(maxHeight: 44)
@@ -131,7 +135,7 @@ struct SelectQRDetailView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            .padding(.horizontal, 20)
         }
     }
     

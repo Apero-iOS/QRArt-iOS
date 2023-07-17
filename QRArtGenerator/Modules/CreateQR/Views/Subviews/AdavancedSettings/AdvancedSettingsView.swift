@@ -25,41 +25,42 @@ struct AdvancedSettingsView: View {
     @Binding var validInput: Bool
 
     var body: some View {
-        VStack(spacing: 0) {
-            LazyVStack(alignment: .leading) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(Rlocalizable.advanced_settings())
-                            .font(R.font.urbanistSemiBold.font(size: 16))
-                            .foregroundColor(R.color.color_1B232E.color)
-                        Text(Rlocalizable.advanced_settings_sub_title)
-                            .font(R.font.urbanistMedium.font(size: 12))
-                            .foregroundColor(R.color.color_6A758B.color)
-                    }
-                    Spacer()
-                    Button {
-                        if mode == .expand {
-                            withAnimation {
-                                mode = .collapse
-                            }
-                            rotate = 0
-                        } else {
-                            withAnimation {
-                                mode = .expand
-                            }
-                            rotate = 90
-                        }
-                    } label: {
-                        image.rotationEffect(.degrees(rotate))
-                    }
+        VStack {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(Rlocalizable.advanced_settings())
+                        .font(R.font.urbanistSemiBold.font(size: 16))
+                        .foregroundColor(R.color.color_1B232E.color)
+                    Text(Rlocalizable.advanced_settings_sub_title)
+                        .font(R.font.urbanistMedium.font(size: 12))
+                        .foregroundColor(R.color.color_6A758B.color)
                 }
+                Spacer()
+                
+                image.rotationEffect(.degrees(rotate))
+            }
+            .background(Color.white)
+            .onTapGesture {
                 if mode == .expand {
-                    descView
+//                    withAnimation(.easeIn(duration: 0.1)) {
+                        rotate = 0
+//                    }
+                    mode = .collapse
+                } else {
+//                    withAnimation(.easeOut(duration: 0.1)) {
+                        rotate = 90
+//                    }
+                    mode = .expand
                 }
             }
-            .clearBackgroundColorList()
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))        }
-
+            
+            if mode == .expand {
+                descView
+            }
+        }
+        .clearBackgroundColorList()
+        .padding(.horizontal, 20)
+        
     }
     
     @ViewBuilder var descView: some View {

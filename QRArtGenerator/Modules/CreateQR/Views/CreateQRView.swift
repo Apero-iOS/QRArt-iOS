@@ -20,22 +20,33 @@ struct CreateQRView: View {
         ZStack {
             VStack(spacing: 0) {
                 naviView
-                ScrollView {
-                    VStack {
-                        templateView
-                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 10, trailing: 0))
-                            .background(Color.white)
-                        qrDetailView
-                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 10, trailing: 0))
-                            .background(Color.white)
-                            
-                        advancedSettingsView
-                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-                            .background(Color.white)
-                    }
+                List {
+                    templateView
+                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                        .background(Color.white)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                        .hideSeparatorLine()
+                    
+                    qrDetailView
+                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                        .background(Color.white)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                        .hideSeparatorLine()
+                    
+                    advancedSettingsView
+                        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                        .background(Color.white)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+                        .hideSeparatorLine()
                 }
-                .padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                .listStyle(.plain)
                 .background(R.color.color_F7F7F7.color)
+                .clearBackgroundColorList()
+                .hideScrollIndicator()
+                
                 VStack {
                     Button {
                         viewModel.onTapGenerate()
@@ -62,6 +73,7 @@ struct CreateQRView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .bottomSheet(isPresented: $viewModel.showingSelectQRTypeView,
                      height: HEIGHT_SCREEN,
                      topBarBackgroundColor: R.color.color_F7F7F7.color,
