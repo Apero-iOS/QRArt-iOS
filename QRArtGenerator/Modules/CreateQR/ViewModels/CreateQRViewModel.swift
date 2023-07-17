@@ -14,9 +14,9 @@ class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
     @Published var templates: [Template] = []
-    @Published var indexSelectTemplate: Int = .zero {
+    @Published var indexSelectTemplate: Int? {
         didSet {
-            if !templates.isEmpty {
+            if let indexSelectTemplate = indexSelectTemplate, !templates.isEmpty {
                 input.prompt = templates[indexSelectTemplate].positivePrompt
                 input.negativePrompt = templates[indexSelectTemplate].negativePrompt
             }
@@ -79,7 +79,7 @@ class CreateQRViewModel: ObservableObject {
                     self.indexSelectTemplate = 1
                     self.needFetchTemplates = false
                 case .failure:
-                    break
+                    self.indexSelectTemplate = 0
                 }
                 
             } receiveValue: { [weak self] listTemplates in
@@ -139,8 +139,17 @@ class CreateQRViewModel: ObservableObject {
     func isValidInput() -> Bool {
         if validName() && validPrompt() {
             switch input.type {
-            case .website:
-                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl()
+            case .website, .facebook, .instagram, .spotify, .youtube, .twitter:
+                if input.urlString.isEmptyOrWhitespace() {
+                   return false
+                }
+                var valid = input.urlString.validateURL()
+                if valid.isValid {
+                    input.urlString = valid.urlString
+                    return true
+                } else {
+                    return false
+                }
             case .contact:
                 return !input.contactName.isEmptyOrWhitespace() && !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
             case .email:
@@ -149,12 +158,23 @@ class CreateQRViewModel: ObservableObject {
                 return !input.text.isEmptyOrWhitespace()
             case .whatsapp:
                 return !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
-            case .instagram, .facebook, .twitter, .spotify, .youtube:
-                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && input.urlString.isValidUrl()
             case .wifi:
                 return !input.wfSsid.isEmptyOrWhitespace() && !input.wfPassword.isEmptyOrWhitespace()
             case .paypal:
-                return !input.urlString.isEmptyOrWhitespace() && input.urlString.isValidUrl() && !input.paypalAmount.isEmptyOrWhitespace() && Int(input.paypalAmount) != nil
+                if input.urlString.isEmptyOrWhitespace() {
+                    return false
+                }
+                var valid = input.urlString.validateURL()
+                if valid.isValid {
+                    if !input.paypalAmount.isEmptyOrWhitespace() && Int(input.paypalAmount) != nil {
+                        input.urlString = valid.urlString
+                        return true
+                    } else {
+                        return false
+                    }
+                } else {
+                    return false
+                }
             }
         } else {
             if !validPrompt() && mode == .collapse {

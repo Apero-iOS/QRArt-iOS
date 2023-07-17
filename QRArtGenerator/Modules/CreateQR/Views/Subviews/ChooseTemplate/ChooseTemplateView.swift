@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChooseTemplateView: View {
     @Binding var templates: [Template]
-    @Binding var indexSelectStyle: Int
+    @Binding var indexSelectStyle: Int?
     
     var body: some View {
         VStack(spacing: 16) {

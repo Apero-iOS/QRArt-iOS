@@ -35,10 +35,21 @@ extension String {
         return emailPred.evaluate(with: self)
     }
     
-    func isValidUrl() -> Bool {
-        let urlRegex = "((http|https)://)?([(w|W)]{3}+\\.)?+(.)+\\.+[A-Za-z]{2,3}+(\\.)?+(/(.)*)?"
-        let urlPred = NSPredicate(format:"SELF MATCHES %@", urlRegex)
-        return urlPred.evaluate(with: self)
+    func validateURL() -> (isValid: Bool, urlString: String) {
+        var url = self
+        
+        if !url.hasPrefix("http://") && !url.hasPrefix("https://") {
+            url = "https://" + url
+        }
+        
+        // Kiểm tra định dạng URL hợp lệ ở đây
+        // Bạn có thể sử dụng một biểu thức chính quy (regular expression) hoặc thư viện có sẵn như URLComponents để kiểm tra
+        
+        if let _ = URL(string: url) {
+            return (true, url)
+        } else {
+            return (false, "")
+        }
     }
     
     func replaceString(withRegex regex: String, by strValue: String) -> String {

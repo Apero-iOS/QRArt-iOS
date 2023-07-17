@@ -28,7 +28,7 @@ struct InputTextView: View {
             textField
             if validInput && name.isEmptyOrWhitespace() {
                 textError(text: Rlocalizable.cannot_be_empty())
-            } else if validInput && type == .url && !name.isValidUrl() {
+            } else if validInput && type == .url && !name.validateURL().isValid {
                 textError(text: Rlocalizable.invalid_url())
             }
         }
@@ -54,7 +54,7 @@ struct InputTextView: View {
     }
     
     func getBorderColor() -> Color {
-        if (validInput && name.isEmptyOrWhitespace()) || (validInput && type == .url && !name.isValidUrl()) {
+        if (validInput && name.isEmptyOrWhitespace()) || (validInput && type == .url && !name.validateURL().isValid) {
             return R.color.color_BD1E1E.color
         } else {
             return setColorFocus()

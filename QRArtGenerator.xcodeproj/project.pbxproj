@@ -1101,6 +1101,7 @@
 			isa = PBXGroup;
 			children = (
 				9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */,
+				C8109C792A512A520093B48A /* BasicItemTemplateView.swift */,
 				9AC7DCC32A4DB6C600FB3119 /* ItemTemplateView.swift */,
 			);
 			path = ChooseTemplate;
@@ -1126,7 +1127,6 @@
 				9AC7DCC02A4DB6C600FB3119 /* QRTypeView.swift */,
 				C8AA3E442A4E72640077DCC3 /* SelectCountryCodeView.swift */,
 				C8AA3E462A4E730C0077DCC3 /* CountryCodeView.swift */,
-				C8109C792A512A520093B48A /* BasicItemTemplateView.swift */,
 				C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */,
 			);
 			path = SelectQR;
