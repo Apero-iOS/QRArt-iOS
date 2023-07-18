@@ -43,6 +43,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var mode: AdvancedSettingsMode = .collapse
     @Published var idTemplateSelect: String?
     @Published var templateSelect: Template?
+    @Published var isLoadAdsSuccess: Bool = true
     private var needFetchTemplates: Bool = true
     
     var isShowAdsInter: Bool {
