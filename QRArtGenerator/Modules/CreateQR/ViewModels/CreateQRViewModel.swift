@@ -232,7 +232,7 @@ class CreateQRViewModel: ObservableObject {
         case .website, .instagram, .facebook, .twitter, .spotify, .youtube:
             return input.urlString
         case .contact, .whatsapp:
-            return input.phoneNumber
+            return countrySelect.dialCode + input.phoneNumber
         case .email:
             return "MATMSG:TO:\(input.emailAddress);SUB:\(input.emailSubject);BODY:\(input.emailDescription);;"
         case .text:

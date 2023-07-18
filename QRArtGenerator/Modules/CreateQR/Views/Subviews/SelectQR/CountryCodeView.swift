@@ -17,7 +17,7 @@ struct CountryCodeView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack(alignment: .center, spacing: 8) {
                 Image(R.image.ic_checked)
                     .opacity(isSelected ? 1 : 0)
