@@ -11,7 +11,6 @@ import SwiftUI
 
 
 struct QRHelper {
-    
     static func parseResultQR(text: String) -> ResultQR {
         var arrydict = text.components(separatedBy: ";")
         var result = ResultQR(type: .text, content: text, title: text)
@@ -22,11 +21,11 @@ struct QRHelper {
                 arrydict[0] = arrydict[0].replacingOccurrences(of: QRScanType.wifi.rawValue, with: "")
                 arrydict.forEach { string in
                     let dicArry = string.components(separatedBy: ":")
-                    if dicArry.count == 2 {
+                    if dicArry.count >= 2 {
                         if dicArry[0] == "S" {
                             result.title = dicArry[1]
                         }
-                        result.dictionary.updateValue(dicArry[1], forKey: dicArry[0])
+                        result.dictionary.updateValue(string.replacingOccurrences(of: dicArry[0]+":", with: ""), forKey: dicArry[0])
                     }
                 }
             } else if arrydict.first!.starts(with: QRScanType.mail.rawValue) {
@@ -35,11 +34,11 @@ struct QRHelper {
                 result.type = .mail
                 arrydict.forEach { string in
                     let dicArry = string.components(separatedBy: ":")
-                    if dicArry.count == 2 {
+                    if dicArry.count >= 2 {
                         if dicArry[0] == "TO" {
                             result.title = dicArry[1]
                         }
-                        result.dictionary.updateValue(dicArry[1], forKey: dicArry[0])
+                        result.dictionary.updateValue(string.replacingOccurrences(of: dicArry[0]+":", with: ""), forKey: dicArry[0])
                     }
                 }
             } else {
