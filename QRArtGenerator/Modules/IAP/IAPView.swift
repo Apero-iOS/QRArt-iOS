@@ -121,6 +121,7 @@ struct IAPView: View {
                     .padding(.leading, 16)
                     .padding(.top, (safeAreaInsets.top + 8))
                     .onTapGesture {
+                        onClose?()
                         dismiss()
                     }
                 
@@ -138,7 +139,7 @@ struct IAPView: View {
             }.store(in: &cancellable)
         }
         .onDisappear(perform: {
-            onClose?()
+//            onClose?()
         })
         .sheet(isPresented: $viewModel.showTerms) {
             NavigationView {

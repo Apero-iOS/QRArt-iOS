@@ -13,7 +13,7 @@ struct Country: Decodable, Hashable {
     }
     public let code: String
     public var name: String {
-        Locale.current.localizedString(forRegionCode: code) ?? ""
+        Locale(identifier: "en_US").localizedString(forRegionCode: code) ?? ""
     }
     
     public var title: String {
