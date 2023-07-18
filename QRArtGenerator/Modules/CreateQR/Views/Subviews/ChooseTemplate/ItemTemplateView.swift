@@ -95,5 +95,5 @@ struct ItemTemplateView: View {
                 .font(R.font.urbanistMedium.font(size: 12))
         }
         .frame(maxWidth: 103, maxHeight: 124)
-    }
+    } 
 }

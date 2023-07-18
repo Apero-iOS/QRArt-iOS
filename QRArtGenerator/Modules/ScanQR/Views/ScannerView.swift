@@ -14,7 +14,7 @@ struct ScannerView: View {
     @StateObject var viewModel = ScannerViewModel()
     @Environment(\.dismiss) var dismiss
     @Environment(\.safeAreaInsets) private var safeAreaInsets
-    
+  
     var body: some View {
         ZStack {
             GeometryReader {
@@ -144,6 +144,12 @@ struct ScannerView: View {
                 .background(TransparentBackground())
                 .padding(.all, 0)
             }
+        }.onReceive(NotificationCenter.default.publisher(
+            for: UIScene.willEnterForegroundNotification)) { _ in
+                if viewModel.session.isRunning == false {
+                    viewModel.session.startRunning()
+                }
+                viewModel.activeScannerAnimation()
         }
     }
     
