@@ -102,7 +102,11 @@ struct HistoryView: View {
         .padding(.horizontal, -20)
         
         HistoryListView(items: $viewModel.filteredItems, isInHistory: true, onDelete: { item in
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+            if #available(iOS 16.0, *) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                    viewModel.delete(item: item)
+                }
+            } else {
                 viewModel.delete(item: item)
             }
         })
