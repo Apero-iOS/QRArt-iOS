@@ -149,34 +149,27 @@ class InappManager {
             else if results.restoredPurchases.count > 0 {
                 let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: _self.sharedSecret)
                 SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
+                    ProgressHUD.hide()
                     switch result {
                     case .success(let receipt):
-                        self?.verifyLifeTime(receipt: receipt) { result in
-                            if result {
-                                completed()
-                            } else {
-                                let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: _self.productIdentifiers, inReceipt: receipt)
-                                switch purchaseResult {
-                                case .purchased( _, let items):
-                                    self?.infoPurchaseProduct = items.first
-                                    self?.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
-                                    UserDefaults.standard.isUserVip = true
-                                    _self.delegate?.purchaseSuccess(id: "")
-                                    completed()
-                                case .expired(_,_):
-                                    UserDefaults.standard.isUserVip = false
-                                    completed()
-                                case .notPurchased:
-                                    UserDefaults.standard.isUserVip = false
-                                    completed()
-                                    break
-                                }
-                            }
-                            ProgressHUD.hide()
+                        let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: _self.productIdentifiers, inReceipt: receipt)
+                        switch purchaseResult {
+                        case .purchased( _, let items):
+                            self?.infoPurchaseProduct = items.first
+                            self?.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
+                            UserDefaults.standard.isUserVip = true
+                            _self.delegate?.purchaseSuccess(id: "")
+                            completed()
+                        case .expired(_,_):
+                            UserDefaults.standard.isUserVip = false
+                            completed()
+                        case .notPurchased:
+                            UserDefaults.standard.isUserVip = false
+                            completed()
+                            break
                         }
                     case .error(let error):
                         completed()
-                        ProgressHUD.hide()
                         print("verify faild \(error.localizedDescription)")
                     }
                 }
@@ -196,26 +189,20 @@ class InappManager {
             guard let self = self else { return }
             switch result {
             case .success(let receipt):
-                verifyLifeTime(receipt: receipt) { result in
-                    if !result {
-                        let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: self.productIdentifiers, inReceipt: receipt)
-                        switch purchaseResult {
-                        case .purchased( let expireddate, let items):
-                            print("==> purchased expireddate \(expireddate)")
-                            UserDefaults.standard.isUserVip = true
-                            self.infoPurchaseProduct = items.first
-                            self.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
-                        case .expired(let expireddate,_):
-                            print("==> expireddate \(expireddate)")
-                            UserDefaults.standard.isUserVip = false
-                        case .notPurchased:
-                            UserDefaults.standard.isUserVip = false
-                        }
-                        completed()
-                    } else {
-                        completed()
-                    }
+                let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: self.productIdentifiers, inReceipt: receipt)
+                switch purchaseResult {
+                case .purchased( let expireddate, let items):
+                    print("==> purchased expireddate \(expireddate)")
+                    UserDefaults.standard.isUserVip = true
+                    self.infoPurchaseProduct = items.first
+                    self.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
+                case .expired(let expireddate,_):
+                    print("==> expireddate \(expireddate)")
+                    UserDefaults.standard.isUserVip = false
+                case .notPurchased:
+                    UserDefaults.standard.isUserVip = false
                 }
+                completed()
             case .error(let error):
                 UserDefaults.standard.isUserVip = false
                 completed()
@@ -223,17 +210,6 @@ class InappManager {
             
         }
     }
-    
-    func verifyLifeTime(receipt: ReceiptInfo, completion: BoolBlock) {
-        let lifeTime = SwiftyStoreKit.verifyPurchase(productIds: [IAPIdType.lifetime.id], inReceipt: receipt)
-            switch lifeTime {
-            case .purchased(_):
-                UserDefaults.standard.isUserVip = true
-                completion(true)
-            case .notPurchased:
-                completion(false)
-            }
-        }
     
     func getInfoPurchasedProduct() {
         let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: sharedSecret)
