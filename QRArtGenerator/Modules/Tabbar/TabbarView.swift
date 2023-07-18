@@ -7,19 +7,17 @@
 
 import SwiftUI
 
-let coloredNavAppearance = UINavigationBarAppearance()
-
 struct TabbarView: View {
     
     @StateObject var viewModel = TabbarViewModel()
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     init() {
-        coloredNavAppearance.configureWithOpaqueBackground()
+        let coloredNavAppearance = UINavigationBarAppearance()
         coloredNavAppearance.backgroundColor = .white
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
+        coloredNavAppearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = coloredNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
         

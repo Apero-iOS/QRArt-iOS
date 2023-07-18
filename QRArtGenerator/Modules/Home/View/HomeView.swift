@@ -29,8 +29,9 @@ struct HomeView: View {
                 }
  
                 Spacer()
+                Color(.clear)
+                    .frame(height: 100)
             }
-            .padding(.bottom, 50)
         }.toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
             .refreshable {
                 viewModel.fetchTemplate()
