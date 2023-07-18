@@ -26,6 +26,7 @@ struct SelectCountryCodeView: View {
                     Spacer()
                     Button {
                         showingSelectCountryView = false
+                        UIApplication.shared.endEditing()
                     } label: {
                         Text(Rlocalizable.done)
                             .font(R.font.urbanistMedium.font(size: 14))
