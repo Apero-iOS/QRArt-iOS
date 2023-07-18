@@ -98,7 +98,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var download4kButton: some View {
-        ResultButtonView(typeButton: .download4k, isCreate: false, onTap: {
+        ResultButtonView(typeButton: .download4k, isCreate: viewModel.isCreate, onTap: {
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
             } else {

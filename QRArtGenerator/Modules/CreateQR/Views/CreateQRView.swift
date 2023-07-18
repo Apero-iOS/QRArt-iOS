@@ -65,7 +65,7 @@ struct CreateQRView: View {
                             .foregroundColor(Color.white)
                             .font(R.font.urbanistSemiBold.font(size: 14))
                             .cornerRadius(20)
-                    }.padding(EdgeInsets(top: 0, leading: 20, bottom: viewModel.isShowAdsBanner ? 0 : 20, trailing: 20))
+                    }.padding(EdgeInsets(top: 20, leading: 20, bottom: viewModel.isShowAdsBanner ? 0 : 20, trailing: 20))
                     
                     /// View Ads
                     if viewModel.isShowAdsBanner {
@@ -172,14 +172,14 @@ struct CreateQRView: View {
     @ViewBuilder var advanceDescView: some View {
         VStack {
             // prompt
-            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate].positivePrompt,
+            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].positivePrompt,
                        title: Rlocalizable.prompt(),
                        subTitle: Rlocalizable.prompt_desc(),
                        typePrompt: .prompt,
                        prompt: $viewModel.input.prompt,
                        validInput: $viewModel.validInput)
             // negative prompt
-            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate].negativePrompt,
+            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
                        title: Rlocalizable.negative_prompt(),
                        subTitle: Rlocalizable.negative_prompt_desc(),
                        typePrompt: .negativePrompt,

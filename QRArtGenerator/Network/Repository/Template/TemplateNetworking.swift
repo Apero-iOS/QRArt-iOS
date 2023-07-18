@@ -66,7 +66,8 @@ extension TemplateNetworking: TargetType {
                                        "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces),
                                        "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces),
                                        "guidanceScale": guidanceScale,
-                                       "numInferenceSteps": numInferenceSteps])
+                                       "numInferenceSteps": numInferenceSteps,
+                                       "controlnetConditioningScale": 8])
         }
     }
     

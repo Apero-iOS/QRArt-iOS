@@ -23,7 +23,7 @@ struct LoadingView: View {
                         .font(R.font.urbanistSemiBold.font(size: 16))
                         .foregroundColor(Color(red: 0.98, green: 0.76, blue: 0.16))
                         .scaleEffect(scale)
-//                        .offset(x: 0, y: self.moveDown ? 3 : 0) 
+                        .offset(x: 0, y: self.moveDown ? 3 : 0)
                         .animation(
                             .easeInOut(duration: 0.6)
                             .repeatForever()
@@ -33,7 +33,7 @@ struct LoadingView: View {
                         .onAppear {
                             withAnimation {
                                 scale = 1
-//                                moveDown.toggle()
+                                moveDown.toggle()
                             }
                         }
                 }
