@@ -32,8 +32,11 @@ struct DetailStylesView: View {
             
             /// View Ads
             if viewModel.isShowAdsBanner {
-                BannerView(adUnitID: .banner_tab_bar)
-                    .frame(height: 50)
+                BannerView(adUnitID: .banner_tab_bar, fail: {
+                    viewModel.isLoadAdsSuccess = false
+                })
+                .hiddenConditionally(isHidden: $viewModel.isLoadAdsSuccess)
+                .frame(height: 50)
             }
         }
         .hideNavigationBar(isHidden: true)

@@ -11,6 +11,8 @@ import MobileAds
 
 final class DetailStylesViewModel: ObservableObject, Identifiable {
     
+    @Published var isLoadAdsSuccess: Bool = true
+    
     var isShowAdsBanner: Bool {
         return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
     }

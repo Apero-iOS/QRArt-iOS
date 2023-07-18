@@ -7,10 +7,24 @@
 
 import SwiftUI
 
+let coloredNavAppearance = UINavigationBarAppearance()
+
 struct TabbarView: View {
     
     @StateObject var viewModel = TabbarViewModel()
     @Environment(\.safeAreaInsets) private var safeAreaInsets
+    
+    init() {
+        coloredNavAppearance.configureWithOpaqueBackground()
+        coloredNavAppearance.backgroundColor = .white
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+        
+    }
+
     
     var body: some View {
         NavigationView {
@@ -114,6 +128,10 @@ struct TabbarView: View {
         .onChange(of: viewModel.selectedTab, perform: { newValue in
             viewModel.changeCountSelect()
         })
+    }
+    
+    public func setSelectedTab(tab: TabbarEnum) {
+        viewModel.selectedTab = tab
     }
 }
 
