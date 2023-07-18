@@ -46,6 +46,11 @@ struct CreateQRView: View {
                         
                         if viewModel.mode == .expand {
                             advanceDescView
+                                .padding(.bottom, 16)
+                                .background(Color.white)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                                .hideSeparatorLine()
                         }
                     }
                     .listStyle(.plain)
@@ -134,7 +139,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder func advancedSettingsView(proxy: ScrollViewProxy) -> some View {
-        AdvancedSettingsView(mode: $viewModel.mode) { mode in
+        AdvancedSettingsView(mode: $viewModel.mode, rotate: .constant(viewModel.mode == .collapse ? 0 : 90)) { mode in
             switch mode {
             case .expand:
                 viewModel.mode = mode
@@ -202,5 +207,6 @@ struct CreateQRView: View {
                               fromValue: 1,
                               toValue: 10)
         }
+        .padding(.horizontal, 20)
     }
 }

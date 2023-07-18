@@ -138,13 +138,14 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func isValidInput() -> Bool {
+        
         if validName() && validPrompt() {
             switch input.type {
             case .website, .facebook, .instagram, .spotify, .youtube, .twitter:
                 if input.urlString.isEmptyOrWhitespace() {
                    return false
                 }
-                var valid = input.urlString.validateURL()
+                let valid = input.urlString.validateURL()
                 if valid.isValid {
                     input.urlString = valid.urlString
                     return true
@@ -165,7 +166,7 @@ class CreateQRViewModel: ObservableObject {
                 if input.urlString.isEmptyOrWhitespace() {
                     return false
                 }
-                var valid = input.urlString.validateURL()
+                let valid = input.urlString.validateURL()
                 if valid.isValid {
                     if !input.paypalAmount.isEmptyOrWhitespace() && Int(input.paypalAmount) != nil {
                         input.urlString = valid.urlString

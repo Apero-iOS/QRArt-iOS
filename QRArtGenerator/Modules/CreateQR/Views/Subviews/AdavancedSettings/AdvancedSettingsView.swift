@@ -14,7 +14,7 @@ enum AdvancedSettingsMode {
 
 struct AdvancedSettingsView: View {
     @Binding var mode: AdvancedSettingsMode
-    @State var rotate: Double = 0
+    @Binding var rotate: Double
     var didTapExpand: ((AdvancedSettingsMode) -> Void)?
     
     var body: some View {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
 struct HomeSectionView: View {
     
@@ -59,18 +60,22 @@ struct HomeSectionView: View {
         VStack {
             AsyncImage(url: URL(string: template.key)) { phase in
                 switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(12, antialiased: true)
-                    default:
-                        R.image.img_error.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(12, antialiased: true)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .cornerRadius(12, antialiased: true)
+                case .empty:
+                    EmptyView()
+                        .skeleton(with: true, size: CGSize(width: 103, height: 103))
+                        .shape(type: .rounded(.radius(8)))
+                default:
+                    R.image.img_error.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .cornerRadius(12, antialiased: true)
                 }
             }
             Text(template.name)
