@@ -49,6 +49,7 @@ struct HomeSectionView: View {
                         } label: {
                             itemView(templates[index])
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }
