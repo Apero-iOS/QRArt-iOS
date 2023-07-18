@@ -36,6 +36,7 @@ struct CountryCodeView: View {
                 if !isSelected {
                     selectedCountry = country
                 }
+                UIApplication.shared.endEditing()
             }
             
             R.color.color_EAEAEA.color.frame(height: 1)
