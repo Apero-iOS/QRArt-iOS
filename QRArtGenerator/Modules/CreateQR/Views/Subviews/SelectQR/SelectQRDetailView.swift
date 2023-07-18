@@ -64,12 +64,6 @@ struct SelectQRDetailView: View {
                                       focusField: focusTextfieldType,
                                       textfieldType: .link)
                     case .contact:
-                        InputTextView(title: Rlocalizable.contact_name(),
-                                      placeholder: Rlocalizable.enter_contact_name(),
-                                      name: $input.contactName,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .contactName)
                         InputPhoneNumberView(type: type,
                                              phoneNumber: $input.phoneNumber,
                                              showingSelectCountryView: $showingSelectCountryView,

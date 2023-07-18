@@ -156,10 +156,7 @@ class CreateQRViewModel: ObservableObject {
                 return .link
             }
         case .contact:
-            if input.contactName.isEmptyOrWhitespace() {
-                return .contactName
-            }
-            if input.phoneNumber.isEmptyOrWhitespace() || input.phoneNumber.isValidPhone() {
+            if input.phoneNumber.isEmptyOrWhitespace() || !input.phoneNumber.isValidPhone() {
                 return .contactPhone
             }
         case .email:

@@ -45,17 +45,17 @@ struct PromptView: View {
             ZStack {
                 if prompt.isEmpty {
                     TextEditor(text: .constant(Rlocalizable.enter_prompt()))
-                        .frame(height: 100, alignment: .top)
-                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                        .frame(height: 120, alignment: .top)
+                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                         .border(radius: 12, color: getBorderColor(), width: 1)
                         .font(R.font.urbanistRegular.font(size: 14))
                         .foregroundColor(R.color.color_6A758B.color)
                 }
                 
                 TextEditor(text: $prompt)
-                    .frame(height: 100, alignment: .top)
+                    .frame(height: 120, alignment: .top)
                     .focused(focusField, equals: textfieldType)
-                    .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                     .border(radius: 12, color: getBorderColor(), width: 1)
                     .font(R.font.urbanistRegular.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
