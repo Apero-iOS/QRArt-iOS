@@ -34,6 +34,7 @@ struct AdvancedSettingsView: View {
             }
             .background(Color.white)
             .onTapGesture {
+                UIApplication.shared.endEditing()
                 if mode == .expand {
                     withAnimation(.easeIn(duration: 0.2)) {
                         rotate = 0
