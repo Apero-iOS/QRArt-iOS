@@ -12,7 +12,8 @@ struct DescriptionView: View {
     @State var placeHolder: String = ""
     @Binding var desc: String
     @Binding var validInput: Bool
-    @FocusState var isFocused: Bool
+    var focusField: FocusState<TextFieldType?>.Binding
+    var textfieldType: TextFieldType
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -23,7 +24,6 @@ struct DescriptionView: View {
             ZStack {
                 if desc.isEmpty {
                     TextEditor(text: $placeHolder)
-                        .focused($isFocused)
                         .frame(height: 200, alignment: .top)
                         .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         .border(radius: 12, color: getBorderColor(), width: 1)
@@ -32,7 +32,7 @@ struct DescriptionView: View {
                         .disabled(true)
                 }
                 TextEditor(text: $desc)
-                    .focused($isFocused)
+                    .focused(focusField, equals: textfieldType)
                     .frame(height: 200, alignment: .top)
                     .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                     .border(radius: 12, color: getBorderColor(), width: 1)
@@ -54,7 +54,7 @@ struct DescriptionView: View {
         if validInput && desc.isEmptyOrWhitespace() {
             return R.color.color_BD1E1E.color
         } else {
-            if isFocused {
+            if focusField.wrappedValue == textfieldType {
                 return R.color.color_653AE4.color
             } else {
                 return R.color.color_EAEAEA.color
@@ -64,7 +64,10 @@ struct DescriptionView: View {
 }
 
 struct EmailDescriptionView_Previews: PreviewProvider {
+    @FocusState static var focusState: TextFieldType?
+    
     static var previews: some View {
-        DescriptionView(desc: .constant(""), validInput: .constant(true))
+        DescriptionView(desc: .constant(""), validInput: .constant(true), focusField: $focusState,
+                        textfieldType: .emailDesc)
     }
 }

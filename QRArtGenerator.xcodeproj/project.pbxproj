@@ -61,6 +61,7 @@
 		9AB852912A51686100A546F4 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB852902A51686100A546F4 /* UserDefaultManager.swift */; };
 		9AB852952A516F6200A546F4 /* IAPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB852942A516F6200A546F4 /* IAPCell.swift */; };
 		9ABC4DA92A4C354E002646DA /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA82A4C354E002646DA /* View+.swift */; };
+		9AC33C9E2A6680D200463E58 /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC33C9D2A6680D200463E58 /* TextFieldType.swift */; };
 		9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAB2A4D3E9500FB3119 /* QRItem.swift */; };
 		9AC7DCB52A4DB30300FB3119 /* SelectQRDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */; };
 		9AC7DCB92A4DB3BB00FB3119 /* SelectQRTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */; };
@@ -243,6 +244,7 @@
 		9AB852902A51686100A546F4 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		9AB852942A516F6200A546F4 /* IAPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCell.swift; sourceTree = "<group>"; };
 		9ABC4DA82A4C354E002646DA /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		9AC33C9D2A6680D200463E58 /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
 		9AC7DC8F2A4D396B00FB3119 /* QRType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRType.swift; sourceTree = "<group>"; };
 		9AC7DC942A4D396B00FB3119 /* CreateQRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRView.swift; sourceTree = "<group>"; };
 		9AC7DC972A4D396B00FB3119 /* SelectQRTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectQRTypeView.swift; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 				9AC7DCB32A4DB2DA00FB3119 /* Country.swift */,
 				9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */,
 				9AD2B8F72A501093003B7C1F /* WifiSecurityMode.swift */,
+				9AC33C9D2A6680D200463E58 /* TextFieldType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1627,6 +1630,7 @@
 				A4BB08782A51867C00C01063 /* LanguageViewModel.swift in Sources */,
 				9AC7DCCE2A4DB6C600FB3119 /* InputPhoneNumberView.swift in Sources */,
 				9AC7DCD42A4DB6E500FB3119 /* CreateQRViewModel.swift in Sources */,
+				9AC33C9E2A6680D200463E58 /* TextFieldType.swift in Sources */,
 				C8AA3E512A4E80B40077DCC3 /* Configuration.swift in Sources */,
 				9AD2B9032A505AC8003B7C1F /* IAPView.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,

@@ -44,6 +44,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var idTemplateSelect: String?
     @Published var templateSelect: Template?
     @Published var isLoadAdsSuccess: Bool = true
+    @Published var errorInputType: TextFieldType?
     private var needFetchTemplates: Bool = true
     
     var isShowAdsInter: Bool {
@@ -94,11 +95,12 @@ class CreateQRViewModel: ObservableObject {
             }.store(in: &cancellable)
         }
     }
-
+    
     func generateQR() {
         UserDefaults.standard.generatePerDay += 1
         validInput = true
-        if isValidInput() {
+        errorInputType = getErrorInput()
+        if errorInputType == nil {
             genQR()
         }
     }
@@ -122,7 +124,8 @@ class CreateQRViewModel: ObservableObject {
     
     public func onTapGenerate() {
         validInput = true
-        if isValidInput() {
+        errorInputType = getErrorInput()
+        if errorInputType == nil {
             if UserDefaults.standard.isUserVip {
                 generateQR()
             } else {
@@ -137,61 +140,75 @@ class CreateQRViewModel: ObservableObject {
         }
     }
     
-    func isValidInput() -> Bool {
-        
-        if validName() && validPrompt() {
-            switch input.type {
-            case .website, .facebook, .instagram, .spotify, .youtube, .twitter:
-                if input.urlString.isEmptyOrWhitespace() {
-                   return false
-                }
-                let valid = input.urlString.validateURL()
-                if valid.isValid {
-                    input.urlString = valid.urlString
-                    return true
-                } else {
-                    return false
-                }
-            case .contact:
-                return !input.contactName.isEmptyOrWhitespace() && !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
-            case .email:
-                return !input.emailAddress.isEmptyOrWhitespace() && !input.emailSubject.isEmptyOrWhitespace() && !input.emailDescription.isEmptyOrWhitespace() && input.emailAddress.isValidEmail()
-            case .text:
-                return !input.text.isEmptyOrWhitespace()
-            case .whatsapp:
-                return !input.phoneNumber.isEmptyOrWhitespace() && input.phoneNumber.isValidPhone()
-            case .wifi:
-                return !input.wfSsid.isEmptyOrWhitespace() && !input.wfPassword.isEmptyOrWhitespace()
-            case .paypal:
-                if input.urlString.isEmptyOrWhitespace() {
-                    return false
-                }
-                let valid = input.urlString.validateURL()
-                if valid.isValid {
-                    if !input.paypalAmount.isEmptyOrWhitespace() && Int(input.paypalAmount) != nil {
-                        input.urlString = valid.urlString
-                        return true
-                    } else {
-                        return false
-                    }
-                } else {
-                    return false
-                }
+    func getErrorInput() -> TextFieldType? {
+        if input.name.isEmptyOrWhitespace() {
+            return .name
+        }
+        switch input.type {
+        case .website, .facebook, .instagram, .spotify, .youtube, .twitter:
+            if input.urlString.isEmptyOrWhitespace() {
+                return .link
             }
-        } else {
-            if !validPrompt() && mode == .collapse {
+            let valid = input.urlString.validateURL()
+            if valid.isValid {
+                input.urlString = valid.urlString
+            } else {
+                return .link
+            }
+        case .contact:
+            if input.contactName.isEmptyOrWhitespace() {
+                return .contactName
+            }
+            if input.phoneNumber.isEmptyOrWhitespace() || input.phoneNumber.isValidPhone() {
+                return .contactPhone
+            }
+        case .email:
+            if input.emailAddress.isEmptyOrWhitespace() || !input.emailAddress.isValidEmail() {
+                return .email
+            }
+            if input.emailSubject.isEmptyOrWhitespace() {
+                return .emailSubject
+            }
+            if input.emailDescription.isEmptyOrWhitespace() {
+                return .emailDesc
+            }
+        case .text:
+            if input.text.isEmptyOrWhitespace() {
+                return .text
+            }
+        case .whatsapp:
+            if input.phoneNumber.isEmptyOrWhitespace() || !input.phoneNumber.isValidPhone() {
+                return .contactPhone
+            }
+        case .wifi:
+            if input.wfSsid.isEmptyOrWhitespace() {
+                return .wifiID
+            }
+            if input.wfPassword.isEmptyOrWhitespace() {
+                return .wifiPass
+            }
+        case .paypal:
+            if input.urlString.isEmptyOrWhitespace() {
+                return .link
+            }
+            let valid = input.urlString.validateURL()
+            if valid.isValid {
+                if !input.paypalAmount.isEmptyOrWhitespace() && Int(input.paypalAmount) != nil {
+                    input.urlString = valid.urlString
+                } else {
+                    return .paypal
+                }
+            } else {
+                return .link
+            }
+        }
+        if input.prompt.isEmpty {
+            if mode == .collapse {
                 mode = .expand
             }
-            return false
+            return .prompt
         }
-    }
-    
-    func validName() -> Bool {
-        return !input.name.isEmptyOrWhitespace()
-    }
-    
-    func validPrompt() -> Bool {
-        return !input.prompt.isEmpty
+        return nil
     }
     
     func genQR() {
@@ -205,13 +222,13 @@ class CreateQRViewModel: ObservableObject {
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
-                case .finished:
-                    self.isShowLoadingView.toggle()
-                    UIView.setAnimationsEnabled(true)
-                case .failure:
-                    self.isShowLoadingView.toggle()
-                    self.showToastError.toggle()
-                    UIView.setAnimationsEnabled(true)
+            case .finished:
+                self.isShowLoadingView.toggle()
+                UIView.setAnimationsEnabled(true)
+            case .failure:
+                self.isShowLoadingView.toggle()
+                self.showToastError.toggle()
+                UIView.setAnimationsEnabled(true)
             }
         } receiveValue: { [weak self] data in
             guard let self = self,
@@ -226,7 +243,7 @@ class CreateQRViewModel: ObservableObject {
             self.isShowExport.toggle()
             UIView.setAnimationsEnabled(true)
         }.store(in: &cancellable)
-
+        
     }
     
     func getQRText() -> String {
