@@ -32,15 +32,19 @@ struct QRHelper {
                 //QR mail
                 arrydict[0] = arrydict[0].replacingOccurrences(of: QRScanType.mail.rawValue, with: "")
                 result.type = .mail
-                arrydict.forEach { string in
-                    let dicArry = string.components(separatedBy: ":")
-                    if dicArry.count >= 2 {
-                        if dicArry[0] == "TO" {
-                            result.title = dicArry[1]
-                        }
-                        result.dictionary.updateValue(string.replacingOccurrences(of: dicArry[0]+":", with: ""), forKey: dicArry[0])
+                let dicArryBody = text.components(separatedBy: "BODY:")
+                if dicArryBody.count == 2 {
+                    result.dictionary.updateValue(String(dicArryBody[1].dropLast()), forKey: "BODY")
+                    let dicArrySUB = dicArryBody[0].components(separatedBy: "SUB:")
+                    if dicArrySUB.count == 2 {
+                        result.dictionary.updateValue(String(dicArrySUB[1].dropLast()), forKey: "SUB")
+                        
+                        let dicArryTO = dicArrySUB[0].components(separatedBy: "TO:")
+                        result.dictionary.updateValue(String(dicArryTO[1].dropLast()), forKey: "TO")
+                        result.title = String(dicArryTO[1].dropLast())
                     }
                 }
+                
             } else {
                 // QR unknow
                 result.type = .text
