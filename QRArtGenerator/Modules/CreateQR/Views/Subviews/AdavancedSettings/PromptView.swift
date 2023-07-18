@@ -45,7 +45,7 @@ struct PromptView: View {
             ZStack {
                 if prompt.isEmpty {
                     TextEditor(text: .constant(Rlocalizable.enter_prompt()))
-                        .frame(height: 120, alignment: .top)
+                        .frame(height: 200, alignment: .top)
                         .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                         .border(radius: 12, color: getBorderColor(), width: 1)
                         .font(R.font.urbanistRegular.font(size: 14))
@@ -53,7 +53,7 @@ struct PromptView: View {
                 }
                 
                 TextEditor(text: $prompt)
-                    .frame(height: 120, alignment: .top)
+                    .frame(height: 200, alignment: .top)
                     .focused(focusField, equals: textfieldType)
                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                     .border(radius: 12, color: getBorderColor(), width: 1)

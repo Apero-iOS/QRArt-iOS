@@ -26,6 +26,7 @@ struct SelectCountryCodeView: View {
                     Spacer()
                     Button {
                         showingSelectCountryView = false
+                        search = ""
                         UIApplication.shared.endEditing()
                     } label: {
                         Text(Rlocalizable.done)
