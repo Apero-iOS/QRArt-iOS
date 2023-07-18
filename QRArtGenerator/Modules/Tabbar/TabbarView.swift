@@ -30,7 +30,7 @@ struct TabbarView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 contentView
-                    .padding(.bottom, viewModel.isShowAdsBanner ? safeAreaInsets.bottom + 80 : safeAreaInsets.bottom)
+                    .padding(.bottom, viewModel.canShowBannerAd() ? safeAreaInsets.bottom + 80 : safeAreaInsets.bottom)
                 
                 VStack(spacing: 0) {
                     Spacer()
@@ -59,13 +59,12 @@ struct TabbarView: View {
                     }
                     
                     /// View Ads
-                    if viewModel.isShowAdsBanner {
+                    if viewModel.canShowBannerAd() {
                         BannerView(adUnitID: .banner_tab_bar, fail: {
-                            viewModel.failAds = false
+                            viewModel.failAds = true
                         })
-                            .hiddenConditionally(isHidden: $viewModel.failAds)
-                            .frame(height: 50)
-
+                        .frame(height: 50)
+                        
                     }
                     
                     Color

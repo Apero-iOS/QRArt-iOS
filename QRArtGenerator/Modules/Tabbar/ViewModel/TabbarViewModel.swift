@@ -15,7 +15,7 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var showCreateQR: Bool = false
     @Published var showIAP: Bool = false
     @Published var countSelectTab: Int = .zero
-    @Published var failAds: Bool = true
+    @Published var failAds: Bool = false
 
     var tabs: [TabbarEnum] = TabbarEnum.allCases
     
@@ -61,5 +61,9 @@ class TabbarViewModel: ObservableObject, Identifiable {
     
     public func getNumberShowAds() -> Int {
         return RemoteConfigService.shared.number(forKey: .inter_change_screen)
+    }
+    
+    public func canShowBannerAd() -> Bool {
+        return isShowAdsBanner && !failAds
     }
 }
