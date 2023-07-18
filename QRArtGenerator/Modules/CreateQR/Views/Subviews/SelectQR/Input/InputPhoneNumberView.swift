@@ -15,7 +15,8 @@ struct InputPhoneNumberView: View {
     @Binding var showingSelectCountryView: Bool
     @Binding var validInput: Bool
     @Binding var country: Country
-    @FocusState var isFocused: Bool
+    var focusField: FocusState<TextFieldType?>.Binding
+    var textfieldType: TextFieldType
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
@@ -45,7 +46,7 @@ struct InputPhoneNumberView: View {
                                 .font(R.font.urbanistRegular.font(size: 14))
                         }
                         TextField("", text: $phoneNumber)
-                            .focused($isFocused)
+                            .focused(focusField, equals: textfieldType)
                             .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                             .frame(maxHeight: 42)
                             .border(radius: 12, color: getBorderColor(), width: 1)
@@ -71,7 +72,7 @@ struct InputPhoneNumberView: View {
         if validInput && (phoneNumber.isEmptyOrWhitespace() || !phoneNumber.isValidPhone()) {
             return R.color.color_BD1E1E.color
         } else {
-            if isFocused {
+            if focusField.wrappedValue == textfieldType {
                 return R.color.color_653AE4.color
             } else {
                 return R.color.color_EAEAEA.color
@@ -81,8 +82,11 @@ struct InputPhoneNumberView: View {
 }
 
 struct InputPhoneNumberView_Previews: PreviewProvider {
+    @FocusState static var focusState: TextFieldType?
+    
     static var previews: some View {
-        InputPhoneNumberView(phoneNumber: .constant(""), showingSelectCountryView: .constant(true), validInput: .constant(true), country: .constant(Country(code: "VN", dialCode: "+84")))
+        InputPhoneNumberView(phoneNumber: .constant(""), showingSelectCountryView: .constant(true), validInput: .constant(true), country: .constant(Country(code: "VN", dialCode: "+84")), focusField: $focusState,
+                             textfieldType: .contactPhone)
             .previewLayout(.sizeThatFits)
     }
 }

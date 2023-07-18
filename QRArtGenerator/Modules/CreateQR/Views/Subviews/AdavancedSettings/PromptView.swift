@@ -21,7 +21,8 @@ struct PromptView: View {
     @State var typePrompt: PromptViewType = .prompt
     @Binding var prompt: String
     @Binding var validInput: Bool
-    @FocusState var isFocused: Bool
+    var focusField: FocusState<TextFieldType?>.Binding
+    var textfieldType: TextFieldType
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -45,7 +46,6 @@ struct PromptView: View {
                 if prompt.isEmpty {
                     TextEditor(text: .constant(Rlocalizable.enter_prompt()))
                         .frame(height: 100, alignment: .top)
-                        .focused($isFocused)
                         .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         .border(radius: 12, color: getBorderColor(), width: 1)
                         .font(R.font.urbanistRegular.font(size: 14))
@@ -54,7 +54,7 @@ struct PromptView: View {
                 
                 TextEditor(text: $prompt)
                     .frame(height: 100, alignment: .top)
-                    .focused($isFocused)
+                    .focused(focusField, equals: textfieldType)
                     .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                     .border(radius: 12, color: getBorderColor(), width: 1)
                     .font(R.font.urbanistRegular.font(size: 14))
@@ -73,7 +73,7 @@ struct PromptView: View {
         if validInput && typePrompt == .prompt && prompt.isEmpty {
             return R.color.color_BD1E1E.color
         } else {
-            if isFocused {
+            if focusField.wrappedValue == textfieldType {
                 return R.color.color_653AE4.color
             } else {
                 return R.color.color_EAEAEA.color
@@ -83,7 +83,10 @@ struct PromptView: View {
 }
 
 struct PromptView_Previews: PreviewProvider {
+    @FocusState static var focusState: TextFieldType?
+    
     static var previews: some View {
-        PromptView(oldPrompt: "", prompt: .constant(""), validInput: .constant(false))
+        PromptView(oldPrompt: "", prompt: .constant(""), validInput: .constant(false), focusField: $focusState,
+                   textfieldType: .prompt)
     }
 }

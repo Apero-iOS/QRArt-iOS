@@ -12,7 +12,8 @@ struct InputEmailView: View {
     var placeholder: String = ""
     @Binding var name: String
     @Binding var validInput: Bool
-    @FocusState var isFocused: Bool
+    var focusField: FocusState<TextFieldType?>.Binding
+    var textfieldType: TextFieldType
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
@@ -43,7 +44,7 @@ struct InputEmailView: View {
             TextField("", text: $name)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .frame(maxHeight: 42)
-                .focused($isFocused)
+                .focused(focusField, equals: textfieldType)
                 .border(radius: 12, color: getBorderColor(),
                         width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
@@ -57,10 +58,10 @@ struct InputEmailView: View {
     }
     
     func getBorderColor() -> Color {
-        if validInput && name.isEmptyOrWhitespace() && !name.isValidEmail() {
+        if validInput && (name.isEmptyOrWhitespace() || !name.isValidEmail()) {
             return R.color.color_BD1E1E.color
         } else {
-            if isFocused {
+            if focusField.wrappedValue == textfieldType {
                 return R.color.color_653AE4.color
             } else {
                 return R.color.color_EAEAEA.color
@@ -70,7 +71,10 @@ struct InputEmailView: View {
 }
 
 struct InputEmailView_Previews: PreviewProvider {
+    @FocusState static var focusState: TextFieldType?
+    
     static var previews: some View {
-        InputEmailView(name: .constant(""), validInput: .constant(false))
+        InputEmailView(name: .constant(""), validInput: .constant(false), focusField: $focusState,
+                       textfieldType: .email)
     }
 }

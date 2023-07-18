@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum InputTextViewType {
     case url
@@ -18,7 +19,8 @@ struct InputTextView: View {
     @State var type: InputTextViewType = .name
     @Binding var name: String
     @Binding var validInput: Bool
-    @FocusState var isFocused: Bool
+    var focusField: FocusState<TextFieldType?>.Binding
+    var textfieldType: TextFieldType
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
@@ -45,7 +47,7 @@ struct InputTextView: View {
             TextField("", text: $name)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                 .frame(maxHeight: 42)
-                .focused($isFocused)
+                .focused(focusField, equals: textfieldType)
                 .border(radius: 12, color: getBorderColor(),
                         width: 1)
                 .font(R.font.urbanistRegular.font(size: 14))
@@ -62,7 +64,7 @@ struct InputTextView: View {
     }
     
     private func setColorFocus() -> Color {
-        return isFocused ? R.color.color_653AE4.color : R.color.color_EAEAEA.color
+        return focusField.wrappedValue == textfieldType ? R.color.color_653AE4.color : R.color.color_EAEAEA.color
     }
     
     func textError(text: String) -> some View {
@@ -73,8 +75,13 @@ struct InputTextView: View {
 }
 
 struct InputNameView_Previews: PreviewProvider {
+    @FocusState static var focusState: TextFieldType?
+    
     static var previews: some View {
-        InputTextView(name: .constant(""), validInput: .constant(true))
+        InputTextView(name: .constant(""),
+                      validInput: .constant(true),
+                      focusField: $focusState,
+                      textfieldType: .contactPhone)
             .previewLayout(.sizeThatFits)
     }
 }

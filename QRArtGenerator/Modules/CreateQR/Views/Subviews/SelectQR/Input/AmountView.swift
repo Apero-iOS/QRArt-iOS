@@ -10,7 +10,8 @@ import SwiftUI
 struct AmountView: View {
     @Binding var amount: String
     @Binding var validInput: Bool
-    @FocusState var isFocused: Bool
+    var focusField: FocusState<TextFieldType?>.Binding
+    var textfieldType: TextFieldType
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -24,7 +25,7 @@ struct AmountView: View {
             }
             .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
             .frame(height: 42)
-            .focused($isFocused)
+            .focused(focusField, equals: textfieldType)
             .border(radius: 12, color: getBorderColor(),
                     width: 1)
             .keyboardType(.decimalPad)
@@ -39,10 +40,10 @@ struct AmountView: View {
         }
     }
     func getBorderColor() -> Color {
-        if validInput && (amount.isEmptyOrWhitespace() || isValidNumber()) {
+        if validInput && (amount.isEmptyOrWhitespace() || !isValidNumber()) {
             return R.color.color_BD1E1E.color
         } else {
-            if isFocused {
+            if focusField.wrappedValue == textfieldType {
                 return R.color.color_653AE4.color
             } else {
                 return R.color.color_EAEAEA.color
@@ -62,7 +63,10 @@ struct AmountView: View {
 }
 
 struct AmountView_Previews: PreviewProvider {
+    @FocusState static var focusState: TextFieldType?
+    
     static var previews: some View {
-        AmountView(amount: .constant("$"), validInput: .constant(false))
+        AmountView(amount: .constant("$"), validInput: .constant(false), focusField: $focusState,
+                   textfieldType: .paypal)
     }
 }

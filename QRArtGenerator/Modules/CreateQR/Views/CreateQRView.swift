@@ -16,6 +16,8 @@ enum CreateQRViewSource {
 struct CreateQRView: View {
     @StateObject var viewModel: CreateQRViewModel
     @Namespace var advanceDescViewID
+    @FocusState var errorFieldType: TextFieldType?
+    @State var change: Bool = false
 
     var body: some View {
         ZStack {
@@ -62,6 +64,7 @@ struct CreateQRView: View {
                 VStack {
                     Button {
                         viewModel.onTapGenerate()
+                        change.toggle()
                         UIApplication.shared.endEditing()
                     } label: {
                         Text(Rlocalizable.generate_qr())
@@ -121,6 +124,9 @@ struct CreateQRView: View {
         .onChange(of: viewModel.input.type) { newValue in
             viewModel.input.name = ""
         }
+        .onChange(of: change, perform: { _ in
+            errorFieldType = viewModel.errorInputType
+        })
         .toast(message: Rlocalizable.unknow_error(), isShowing: $viewModel.showToastError, position: .center)
     }
     
@@ -135,6 +141,7 @@ struct CreateQRView: View {
                            validInput: $viewModel.validInput,
                            input: $viewModel.input,
                            countrySelect: $viewModel.countrySelect,
+                           focusTextfieldType: $errorFieldType,
                            type: viewModel.input.type)
     }
     
@@ -185,14 +192,18 @@ struct CreateQRView: View {
                        subTitle: Rlocalizable.prompt_desc(),
                        typePrompt: .prompt,
                        prompt: $viewModel.input.prompt,
-                       validInput: $viewModel.validInput)
+                       validInput: $viewModel.validInput,
+                       focusField: $errorFieldType,
+                       textfieldType: .prompt)
             // negative prompt
             PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
                        title: Rlocalizable.negative_prompt(),
                        subTitle: Rlocalizable.negative_prompt_desc(),
                        typePrompt: .negativePrompt,
                        prompt: $viewModel.input.negativePrompt,
-                       validInput: $viewModel.validInput)
+                       validInput: $viewModel.validInput,
+                       focusField: $errorFieldType,
+                       textfieldType: .negativePrompt)
             // guidance
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc(),
