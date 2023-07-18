@@ -67,8 +67,8 @@ struct ResultButtonView: View {
                         R.image.ic_sub.image
                     }
                 }
-                .frame(width: (isCreate && typeButton != .download4k) ? WIDTH_SCREEN/2 - 8 - 40 : WIDTH_SCREEN - 40, height: typeButton == .download4k ? 52 : 48)
-                .padding(EdgeInsets(top: 0, leading: isCreate ? 12 : 0, bottom: 0, trailing: isCreate ? 12 : 0))
+                .frame(width: (isCreate && typeButton != .download4k) ? WIDTH_SCREEN/2 - 8 - 20 : WIDTH_SCREEN - 40, height: typeButton == .download4k ? 52 : 48)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .background((typeButton != .download4k) ? R.color.color_F7F7F7.color : R.color.color_653AE4.color)
                 .cornerRadius(typeButton == .download4k ? 52/2 : 48/2)
                 .border(radius: typeButton == .download4k ? 52/2 : 48/2,
@@ -79,7 +79,6 @@ struct ResultButtonView: View {
                         .offset(x: -5, y: -5)
                 }
             }
-            
         }
     }
 }

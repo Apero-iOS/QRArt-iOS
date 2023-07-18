@@ -36,7 +36,7 @@ struct NavibarView: View {
                     }
                 }
                 .padding(.horizontal, 100)
-                HStack {
+                HStack(spacing: 0) {
                     if isLeftButton {
                         Button {
                             presentationMode.wrappedValue.dismiss()
@@ -62,13 +62,13 @@ struct NavibarView: View {
                     } else {
                         if !titleRightButton.isEmpty  {
                             Text(titleRightButton)
-                                .frame(width: 50, height: 50)
+                                .padding(.trailing, 20)
                                 .foregroundColor(R.color.color_2073EF.color)
                                 .font(R.font.urbanistSemiBold.font(size: 14))
                                 .lineLimit(1)
                                 .onTapGesture {
                                     onRightAction?()
-                                }.padding(.trailing, 20)
+                                }
                         }
                     }
                 }.frame(height: 50)
