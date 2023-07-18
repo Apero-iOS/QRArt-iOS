@@ -31,12 +31,13 @@ struct CountryCodeView: View {
             }
             .frame(maxHeight: 52)
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+            .background(Color.white)
             .onTapGesture {
                 if !isSelected {
                     selectedCountry = country
                 }
             }
-            .background(Color.white)
+            
             R.color.color_EAEAEA.color.frame(height: 1)
         }
 

@@ -16,6 +16,8 @@ target 'QRArtGenerator' do
 #  pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
   pod 'MobileAds' , :git => "https://github.com/AperoVN/MobileAds.git"
   pod 'SwCrypt'
+  pod 'SkeletonUI'
+  
   target 'QRArtGeneratorTests' do
     inherit! :search_paths
     # Pods for testing

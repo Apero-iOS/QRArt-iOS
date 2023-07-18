@@ -59,6 +59,7 @@ struct PromptView: View {
                     .border(radius: 12, color: getBorderColor(), width: 1)
                     .font(R.font.urbanistRegular.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
+                    .opacity(prompt.isEmpty ? 0.25 : 1)
             }
             if validInput && typePrompt == .prompt && prompt.isEmpty {
                 Text(Rlocalizable.cannot_be_empty)

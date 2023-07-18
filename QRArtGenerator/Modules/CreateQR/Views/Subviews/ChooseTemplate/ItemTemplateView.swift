@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
 struct ItemTemplateView: View {
     @Binding var template: Template
@@ -51,6 +52,10 @@ struct ItemTemplateView: View {
                                 }
                                 
                             }
+                    case .empty:
+                        EmptyView()
+                            .skeleton(with: true, size: CGSize(width: 103, height: 103))
+                            .shape(type: .rounded(.radius(8)))
                     default:
                         R.image.img_error.image
                             .resizable()

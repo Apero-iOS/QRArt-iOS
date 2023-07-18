@@ -19,7 +19,7 @@ struct ChooseTemplateView: View {
                     .foregroundColor(R.color.color_1B232E.color)
                     .padding(.leading, 20)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack {
+                    HStack {
                         ForEach(0..<templates.count, id: \.self) { index in
                             if index == 0 {
                                 BasicItemTemplateView(indexSelect: $indexSelectStyle, index: index)

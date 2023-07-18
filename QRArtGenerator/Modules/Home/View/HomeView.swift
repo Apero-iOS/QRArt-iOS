@@ -15,9 +15,19 @@ struct HomeView: View {
         ScrollView {
             VStack(spacing: 16) {
                 bannerView
-                ForEach(viewModel.categories) { category in
-                    HomeSectionView(categoryName: category.name, templates: category.templates)
+                
+                if viewModel.categories.isEmpty {
+                    Spacer()
+                    
+                    ProgressView()
+                        .tint(R.color.color_653AE4.color)
+                        .frame(height: 150)
+                } else {
+                    ForEach(viewModel.categories) { category in
+                        HomeSectionView(categoryName: category.name, templates: category.templates)
+                    }
                 }
+ 
                 Spacer()
             }
             .padding(.bottom, 50)
