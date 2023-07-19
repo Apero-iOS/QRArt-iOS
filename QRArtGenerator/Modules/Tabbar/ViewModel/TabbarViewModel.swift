@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MobileAds
+import Combine
 
 class TabbarViewModel: ObservableObject, Identifiable {
     @Published var selectedTab: TabbarEnum = .home
@@ -16,6 +17,8 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var showIAP: Bool = false
     @Published var countSelectTab: Int = .zero
     @Published var failAds: Bool = false
+    @Published var isVip: Bool = UserDefaults.standard.isUserVip
+    var cancellable = Set<AnyCancellable>()
 
     var tabs: [TabbarEnum] = TabbarEnum.allCases
     
@@ -30,6 +33,10 @@ class TabbarViewModel: ObservableObject, Identifiable {
     var isShowAds: Bool {
         let numberAds = getNumberShowAds()
         return numberAds > .zero && countSelectTab%numberAds == .zero
+    }
+    
+    deinit {
+        cancellable.removeAll()
     }
     
     public func changeCountSelect() {

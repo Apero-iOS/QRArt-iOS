@@ -110,6 +110,12 @@ struct TabbarView: View {
         })
         .onAppear {
             viewModel.createIdAds()
+            InappManager.share.didPaymentSuccess.sink { isSuccess in
+                if isSuccess {
+                    viewModel.isVip = UserDefaults.standard.isUserVip
+                }
+                
+            }.store(in: &viewModel.cancellable)
         }
     }
     
