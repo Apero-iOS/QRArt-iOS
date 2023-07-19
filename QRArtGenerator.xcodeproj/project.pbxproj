@@ -1924,13 +1924,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QRArtGenerator/QRArtGenerator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QRArtGenerator/Preview Content\"";
 				DEVELOPMENT_TEAM = 63ZK7FQ2ND;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1944,7 +1944,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.qrai.qrgenerator.aiart.qrcreator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1964,7 +1964,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QRArtGenerator/QRArtGenerator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QRArtGenerator/Preview Content\"";
 				DEVELOPMENT_TEAM = 63ZK7FQ2ND;
 				ENABLE_PREVIEWS = YES;
@@ -1984,7 +1984,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.qrai.qrgenerator.aiart.qrcreator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2143,13 +2143,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QRArtGenerator/Preview Content\"";
 				DEVELOPMENT_TEAM = 63ZK7FQ2ND;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code STG";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2163,7 +2163,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.qrai.qrgenerator.aiart.qrcreator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
