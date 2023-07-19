@@ -148,3 +148,4 @@
 "valid_amount" = "Vui lòng nhập số tiền hợp lệ";
 "yearly" = "Hàng năm";
 "save_share" = "Lưu và chia sẻ";
+"could_not_load_data" = "Không thể tải dữ liệu. Vui lòng thử lại";

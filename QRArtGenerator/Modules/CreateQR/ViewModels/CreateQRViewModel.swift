@@ -46,6 +46,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var isLoadAdsSuccess: Bool = true
     @Published var errorInputType: TextFieldType?
     private var needFetchTemplates: Bool = true
+    var messageError: String = ""
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -222,8 +223,9 @@ class CreateQRViewModel: ObservableObject {
             case .finished:
                 self.isShowLoadingView.toggle()
                 UIView.setAnimationsEnabled(true)
-            case .failure:
+            case .failure(let error):
                 self.isShowLoadingView.toggle()
+                self.messageError = error.message
                 self.showToastError.toggle()
                 UIView.setAnimationsEnabled(true)
             }
