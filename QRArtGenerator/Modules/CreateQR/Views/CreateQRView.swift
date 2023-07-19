@@ -159,7 +159,7 @@ struct CreateQRView: View {
                 withAnimation(.easeIn(duration: 0.2)) {
                     proxy.scrollTo(advanceDescViewID, anchor: .bottom)
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     viewModel.mode = mode
                 }
             }

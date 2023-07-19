@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
 struct DetailStylesView: View {
     
@@ -53,6 +54,10 @@ struct DetailStylesView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: width, height: width)
                             .cornerRadius(12, antialiased: true)
+                case .empty:
+                    EmptyView()
+                        .skeleton(with: true, size: CGSize(width: 103, height: 103))
+                        .shape(type: .rounded(.radius(8)))
                     default:
                         R.image.img_error.image
                             .resizable()

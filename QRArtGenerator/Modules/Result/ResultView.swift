@@ -53,10 +53,6 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
-            .fullScreenCover(isPresented: $viewModel.isShowSuccessView, content: {
-                SuccessView()
-                    .background(TransparentBackground())
-            })
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             if viewModel.isShowLoadingView {
                 LoadingView()
@@ -69,6 +65,10 @@ struct ResultView: View {
                     viewModel.dissmissPopupAcessPhoto()
                 }
                 .padding(.all, 0)
+            }
+            
+            if viewModel.isShowSuccessView {
+                SuccessView()
             }
         }
     }

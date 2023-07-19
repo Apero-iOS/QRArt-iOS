@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SuccessView: View {
+    @State private var isShowingBackground: Bool = false
+    @State private var isShowingContent: Bool = false
+    
     var body: some View {
         ZStack {
             Color(.black).opacity(0.45)
@@ -38,6 +41,16 @@ struct SuccessView: View {
             .frame(width: WIDTH_SCREEN - 68*2)
             .background(Color.white)
             .cornerRadius(12)
+            .opacity(isShowingContent ? 1 : 0)
+        }
+        .opacity(isShowingBackground ? 1 : 0)
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.1)) {
+                isShowingBackground.toggle()
+            }
+            withAnimation(.easeOut(duration: 0.2).delay(0.15)) {
+                isShowingContent.toggle()
+            }
         }
         .ignoresSafeArea()
     }
