@@ -233,6 +233,7 @@ class CreateQRViewModel: ObservableObject {
             guard let self = self,
                   let data = data,
                   let uiImage = UIImage(data: data) else {
+                self?.messageError = Rlocalizable.could_not_load_data()
                 self?.showToastError.toggle()
                 UIView.setAnimationsEnabled(true)
                 return
