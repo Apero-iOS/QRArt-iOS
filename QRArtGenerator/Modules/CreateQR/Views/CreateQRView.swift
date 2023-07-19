@@ -110,6 +110,8 @@ struct CreateQRView: View {
         }
         .hideNavigationBar(isHidden: true)
         .onAppear {
+            UISlider.appearance()
+                .setThumbImage(UIImage(named: "ic_tint_slider"), for: .normal)
             viewModel.fetchCountry()
             viewModel.fetchTemplate()
             viewModel.createIdAds()
