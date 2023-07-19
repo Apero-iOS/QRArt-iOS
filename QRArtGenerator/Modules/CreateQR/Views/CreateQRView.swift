@@ -77,16 +77,11 @@ struct CreateQRView: View {
                     
                     /// View Ads
                     if viewModel.isShowAdsBanner {
-                        VStack(spacing: 0) {
-                            R.color.color_EAEAEA.color
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 1)
-                            BannerView(adUnitID: .banner_tab_bar, fail: {
-                                viewModel.isLoadAdsSuccess = false
-                            })
-                            .hiddenConditionally(isHidden: $viewModel.isLoadAdsSuccess)
-                            .frame(height: 50)
-                        }
+                        BannerView(adUnitID: .banner_tab_bar, fail: {
+                            viewModel.isLoadAdsSuccess = false
+                        })
+                        .hiddenConditionally(isHidden: $viewModel.isLoadAdsSuccess)
+                        .frame(height: 50)
                     }
                 }
             }
