@@ -148,3 +148,4 @@
 "valid_amount" = "Ingrese la cantidad válida";
 "yearly" = "Anual";
 "save_share" = "Guardar Compartir";
+"could_not_load_data" = "No pudo cargar datos. Inténtalo de nuevo";

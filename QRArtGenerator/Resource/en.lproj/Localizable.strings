@@ -148,3 +148,4 @@
 "valid_amount" = "Please input amount valid";
 "yearly" = "Yearly";
 "save_share" = "Save & Share";
+"could_not_load_data" = "Couldn't load data. Please try again";

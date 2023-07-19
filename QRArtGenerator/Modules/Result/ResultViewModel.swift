@@ -155,6 +155,12 @@ class ResultViewModel: ObservableObject {
                                      guidanceScale: Int(item.guidance),
                                      numInferenceSteps: Int(item.steps))
             .sink { comple in
+                switch comple {
+                case .finished:
+                    break
+                case .failure(let erorr):
+                    self.showToast(error.message)
+                }
                 self.isShowLoadingView.toggle()
                 UIView.setAnimationsEnabled(true)
             } receiveValue: { data in

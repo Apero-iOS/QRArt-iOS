@@ -30,12 +30,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
             case .finished:
                 break
             case .failure(let error):
-                switch error {
-                case .No_Network:
-                    self.msgError = Rlocalizable.no_internet()
-                default:
-                    self.msgError = Rlocalizable.an_unknown_error()
-                }
+                self.msgError = error.message
                 self.isShowToast.toggle()
             }
         } receiveValue: { [weak self] listTemplates in

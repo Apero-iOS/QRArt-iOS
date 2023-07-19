@@ -148,3 +148,4 @@
 "valid_amount" = "Veuillez saisir le montant valide";
 "yearly" = "Annuel";
 "save_share" = "Sauver partager";
+"could_not_load_data" = "Ne pouvait pas charger des données. Veuillez réessayer";
