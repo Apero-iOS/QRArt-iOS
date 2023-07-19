@@ -30,6 +30,7 @@ struct DescriptionView: View {
                         .font(R.font.urbanistRegular.font(size: 14))
                         .foregroundColor(R.color.color_6A758B.color)
                         .disabled(true)
+                        .allowsHitTesting(false)
                 }
                 TextEditor(text: $desc)
                     .focused(focusField, equals: textfieldType)

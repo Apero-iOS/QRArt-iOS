@@ -158,8 +158,8 @@ class ResultViewModel: ObservableObject {
                 switch comple {
                 case .finished:
                     break
-                case .failure(let erorr):
-                    self.showToast(error.message)
+                case .failure(let error):
+                    self.showToast(message: error.message)
                 }
                 self.isShowLoadingView.toggle()
                 UIView.setAnimationsEnabled(true)
