@@ -57,7 +57,7 @@ struct ResultView: View {
                 SuccessView()
                     .background(TransparentBackground())
             })
-            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, position: .center, duration: 3)
+            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             if viewModel.isShowLoadingView {
                 LoadingView()
             }

@@ -50,6 +50,7 @@ struct PromptView: View {
                         .border(radius: 12, color: getBorderColor(), width: 1)
                         .font(R.font.urbanistRegular.font(size: 14))
                         .foregroundColor(R.color.color_6A758B.color)
+                        .allowsHitTesting(false)
                 }
                 
                 TextEditor(text: $prompt)
