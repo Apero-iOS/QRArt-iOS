@@ -59,7 +59,7 @@ class ResultViewModel: ObservableObject {
     }
     
     func save() {
-        QRItemService.shared.saveNewQR(item)
+        QRItemService.shared.saveNewQR(item, isNew: false)
         isShowSuccessView = true
     }
     
@@ -210,7 +210,7 @@ class ResultViewModel: ObservableObject {
     }
     
     func saveAndShare() {
-        QRItemService.shared.saveNewQR(item)
+        QRItemService.shared.saveNewQR(item, isNew: false)
         share()
     }
 }

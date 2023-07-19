@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct QRDetailItem: QRItem {
-    var id: String = ""
+    var id: String = UUID().uuidString
     var name: String = ""
     var createdDate: Date = Date()
     var qrImage: UIImage = UIImage()
