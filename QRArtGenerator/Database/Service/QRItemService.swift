@@ -32,8 +32,8 @@ class QRItemService {
         }
     }
     
-    func saveNewQR(_ item: QRDetailItem) {
-        let object = item.convertToDB()
+    func saveNewQR(_ item: QRDetailItem, isNew: Bool) {
+        let object = item.convertToDB(isNew: isNew)
         FileManagerUtil.shared.saveImage(image: item.qrImage, name: object.ID)
         do {
             let realm = try Realm()
