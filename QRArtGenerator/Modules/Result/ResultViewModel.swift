@@ -164,7 +164,10 @@ class ResultViewModel: ObservableObject {
                 self.isShowLoadingView.toggle()
                 UIView.setAnimationsEnabled(true)
             } receiveValue: { data in
-                guard let data = data, let uiImage = UIImage(data: data) else { return }
+                guard let data = data, let uiImage = UIImage(data: data) else {
+                    self.showToast(message: Rlocalizable.could_not_load_data())
+                    return
+                }
                 self.item.qrImage = uiImage
                 self.image = Image(uiImage: uiImage)
                 UIView.setAnimationsEnabled(true)
