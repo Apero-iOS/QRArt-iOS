@@ -116,6 +116,7 @@
 		A4BB08762A517FE600C01063 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08752A517FE600C01063 /* LanguageModel.swift */; };
 		A4BB08782A51867C00C01063 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08772A51867C00C01063 /* LanguageViewModel.swift */; };
 		A4BCC0A32A503BCF006FD3F5 /* DetailStylesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */; };
+		A4BEFB112A6916DC00BB2FC1 /* AdjustManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */; };
 		A4C0E24E2A4E89FA00E69CF2 /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0E24D2A4E89FA00E69CF2 /* HomeSectionView.swift */; };
 		A4C0E2512A4EB9E600E69CF2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0E2502A4EB9E600E69CF2 /* HomeViewModel.swift */; };
 		A4C69C422A4D90580076CF48 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C3B2A4D90580076CF48 /* SettingsViewModel.swift */; };
@@ -306,6 +307,7 @@
 		A4BB08752A517FE600C01063 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		A4BB08772A51867C00C01063 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
 		A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesView.swift; sourceTree = "<group>"; };
+		A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustManager.swift; sourceTree = "<group>"; };
 		A4C0E24D2A4E89FA00E69CF2 /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
 		A4C0E2502A4EB9E600E69CF2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A4C69C3B2A4D90580076CF48 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 		59286C972A4D31F100EBBEBF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A4BEFB0F2A6916DC00BB2FC1 /* Adjust */,
 				A4BA32592A5BC0D1002C77C5 /* ReachabilityManager.swift */,
 				59286C982A4D31F100EBBEBF /* CountriesFetcher.swift */,
 				A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */,
@@ -1023,6 +1026,14 @@
 				A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A4BEFB0F2A6916DC00BB2FC1 /* Adjust */ = {
+			isa = PBXGroup;
+			children = (
+				A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */,
+			);
+			path = Adjust;
 			sourceTree = "<group>";
 		};
 		A4C0E24C2A4E898F00E69CF2 /* HomeSectionView */ = {
@@ -1658,6 +1669,7 @@
 				C8AA3E532A4E80BE0077DCC3 /* TargetType.swift in Sources */,
 				59F74C472A4FC24D00AD8CBA /* AdViewController.swift in Sources */,
 				A4C69C432A4D90580076CF48 /* SettingsModel.swift in Sources */,
+				A4BEFB112A6916DC00BB2FC1 /* AdjustManager.swift in Sources */,
 				9AB852832A51363F00A546F4 /* IAPViewModel.swift in Sources */,
 				9AC7DCB92A4DB3BB00FB3119 /* SelectQRTypeView.swift in Sources */,
 				C8AA3E6A2A4E85E50077DCC3 /* FailureResponse.swift in Sources */,

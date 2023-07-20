@@ -10,6 +10,23 @@ import IQKeyboardManagerSwift
 import Firebase
 import MobileAds
 import FacebookCore
+import Adjust
+import UIKit
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        configAdjust()
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        ApplicationDelegate.shared.application(app,
+                                               open: url,
+                                               sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                               annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+    }
+}
 
 @main
 struct QRArtGeneratorApp: App {
@@ -25,12 +42,11 @@ struct QRArtGeneratorApp: App {
         resetUserDefaults()
         setUpAds()
     }
-        
+    
     var body: some Scene {
         WindowGroup {
             SplashView()
         }
-
     }
     
     private func configTableView() {
@@ -70,7 +86,7 @@ struct QRArtGeneratorApp: App {
         AdMobManager.shared.adFullScreenLoadingString = Rlocalizable.ad_is_loading()
         AdMobManager.shared.rewardErrorString = Rlocalizable.an_error_occurred()
         AdMobManager.shared.adsNativeColor = Constants.Colors.defaultNativeAdColors
-
+        
     }
     
     func resetUserDefaults() {
@@ -93,17 +109,4 @@ struct QRArtGeneratorApp: App {
         }
     }
     
-    class AppDelegate: NSObject, UIApplicationDelegate {
-        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-            ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-            return true
-        }
-        
-        func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-            ApplicationDelegate.shared.application(app,
-                                                   open: url,
-                                                   sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                   annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-        }
-    }
 }
