@@ -27,6 +27,9 @@ struct SplashView: View {
             setupObserver()
             viewModel.prepareData()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            PermissionTrackkingHelper.requestPermissionTrackking()
+        }
     }
     
     private func setupObserver() {
