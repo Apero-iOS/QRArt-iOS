@@ -98,7 +98,6 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func generateQR() {
-        UserDefaults.standard.generatePerDay += 1
         validInput = true
         errorInputType = getErrorInput()
         if errorInputType == nil {
@@ -240,6 +239,7 @@ class CreateQRViewModel: ObservableObject {
             }
             self.input.qrImage = uiImage
             self.imageResult = Image(uiImage: uiImage)
+            UserDefaults.standard.generatePerDay += 1
             self.isShowExport.toggle()
             UIView.setAnimationsEnabled(true)
         }.store(in: &cancellable)

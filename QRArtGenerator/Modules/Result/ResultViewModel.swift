@@ -147,7 +147,6 @@ class ResultViewModel: ObservableObject {
             showIAP = true
         } else {
             UIView.setAnimationsEnabled(false)
-            UserDefaults.standard.regeneratePerDay += 1
             isShowLoadingView.toggle()
             templateRepository.genQR(qrText: getQRText(),
                                      positivePrompt: item.prompt,
@@ -170,6 +169,7 @@ class ResultViewModel: ObservableObject {
                 }
                 self.item.qrImage = uiImage
                 self.image = Image(uiImage: uiImage)
+                UserDefaults.standard.regeneratePerDay += 1
                 UIView.setAnimationsEnabled(true)
             }.store(in: &cancellable)
         }
