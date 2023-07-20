@@ -159,6 +159,7 @@
 		C8E923B52A52768600835F93 /* ResultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B42A52768600835F93 /* ResultButtonView.swift */; };
 		C8E923B72A52AA0200835F93 /* PopupSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */; };
 		C8E923BA2A52AB3E00835F93 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B92A52AB3E00835F93 /* SuccessView.swift */; };
+		C8EDAC4D2A691CB400BD8E33 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = C8EDAC4C2A691CB400BD8E33 /* FacebookCore */; };
 		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
@@ -360,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */,
+				C8EDAC4D2A691CB400BD8E33 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1306,9 @@
 			dependencies = (
 			);
 			name = QRArtGenerator;
+			packageProductDependencies = (
+				C8EDAC4C2A691CB400BD8E33 /* FacebookCore */,
+			);
 			productName = QRArtGenerator;
 			productReference = 59C7661A2A496E5F00D4BDD3 /* QRArtGenerator.app */;
 			productType = "com.apple.product-type.application";
@@ -1385,6 +1390,9 @@
 				de,
 			);
 			mainGroup = 59C766112A496E5F00D4BDD3;
+			packageReferences = (
+				C8EDAC4B2A691CB400BD8E33 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 59C7661B2A496E5F00D4BDD3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1970,7 +1978,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2149,7 +2157,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code STG";
+				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2256,6 +2264,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C8EDAC4B2A691CB400BD8E33 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C8EDAC4C2A691CB400BD8E33 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8EDAC4B2A691CB400BD8E33 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 59C766122A496E5F00D4BDD3 /* Project object */;
 }
