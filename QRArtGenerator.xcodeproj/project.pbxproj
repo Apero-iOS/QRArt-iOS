@@ -161,6 +161,7 @@
 		C8E923B72A52AA0200835F93 /* PopupSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */; };
 		C8E923BA2A52AB3E00835F93 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E923B92A52AB3E00835F93 /* SuccessView.swift */; };
 		C8EDAC4D2A691CB400BD8E33 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = C8EDAC4C2A691CB400BD8E33 /* FacebookCore */; };
+		C8EDAC4F2A691E3000BD8E33 /* PermissionTrackkingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EDAC4E2A691E3000BD8E33 /* PermissionTrackkingHelper.swift */; };
 		D88CC3533853E567D40A3935 /* Pods_QRArtGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */; };
 /* End PBXBuildFile section */
 
@@ -352,6 +353,7 @@
 		C8E923B42A52768600835F93 /* ResultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultButtonView.swift; sourceTree = "<group>"; };
 		C8E923B62A52AA0200835F93 /* PopupSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSuccessView.swift; sourceTree = "<group>"; };
 		C8E923B92A52AB3E00835F93 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		C8EDAC4E2A691E3000BD8E33 /* PermissionTrackkingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTrackkingHelper.swift; sourceTree = "<group>"; };
 		D319D4A89D312830D2124ED0 /* Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D39060580F499CCA99319F65 /* Pods-QRArtGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator/Pods-QRArtGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		F8BEBB2BADD7284900BF0F74 /* Pods-QRArtGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-QRArtGeneratorTests/Pods-QRArtGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -592,6 +594,7 @@
 				A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */,
 				59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */,
 				9AB8528E2A51655C00A546F4 /* RemoteKey.swift */,
+				C8EDAC4E2A691E3000BD8E33 /* PermissionTrackkingHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1767,6 +1770,7 @@
 				59286C8B2A4D31D300EBBEBF /* HistoryCategoryListView.swift in Sources */,
 				C8AA3E452A4E72640077DCC3 /* SelectCountryCodeView.swift in Sources */,
 				9AC7DCBC2A4DB62600FB3119 /* CreateQRView.swift in Sources */,
+				C8EDAC4F2A691E3000BD8E33 /* PermissionTrackkingHelper.swift in Sources */,
 				C8AA3E562A4E80E80077DCC3 /* APIError.swift in Sources */,
 				9AB852912A51686100A546F4 /* UserDefaultManager.swift in Sources */,
 			);
@@ -1953,6 +1957,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1993,6 +1998,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2172,6 +2178,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
