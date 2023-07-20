@@ -42,7 +42,7 @@ class SplashViewModel: ObservableObject {
             AdResumeManager.shared.resumeAdId = .app_open_all_price
             AdResumeManager.shared.blockadDidDismissFullScreenContent = { [weak self] in
                 guard let self = self else { return }
-                navigateApp()
+                self.navigateApp()
             }
             AdResumeManager.shared.loadAd { [weak self] success in
                 guard let self = self else { return }
@@ -50,10 +50,10 @@ class SplashViewModel: ObservableObject {
                     if let vc = AppHelper.getRootViewController() {
                         AdResumeManager.shared.showAdIfAvailable(viewController: vc)
                     } else {
-                        navigateApp()
+                        self.navigateApp()
                     }
                 } else {
-                    navigateApp()
+                    self.navigateApp()
                 }
             }
         }

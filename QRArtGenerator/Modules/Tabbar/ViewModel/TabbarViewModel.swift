@@ -53,7 +53,7 @@ class TabbarViewModel: ObservableObject, Identifiable {
         if isShowAdsInter {
             AdMobManager.shared.showIntertitial(unitId: .inter_change_screen, blockWillDismiss: { [weak self] in
                 guard let self else {return}
-                presentScreen()
+                self.presentScreen()
             })
         }
     }
