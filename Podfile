@@ -17,6 +17,7 @@ target 'QRArtGenerator' do
   pod 'MobileAds' , :git => "https://github.com/AperoVN/MobileAds.git"
   pod 'SwCrypt'
   pod 'SkeletonUI'
+  pod 'Adjust', '~> 4.29.7'
   
   target 'QRArtGeneratorTests' do
     inherit! :search_paths
