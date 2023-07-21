@@ -23,6 +23,18 @@ struct AppHelper {
             .first(where: { $0.isKeyWindow }))?.rootViewController
     }
     
+    static func findTextField(in view: UIView?) -> UITextField? {
+        if let textField = view as? UITextField {
+            return textField
+        }
+        for subview in view?.subviews ?? [] {
+            if let textField = findTextField(in: subview) {
+                return textField
+            }
+        }
+        return nil
+    }
+    
 }
 
 struct SafeAreaInsetsKey: EnvironmentKey {

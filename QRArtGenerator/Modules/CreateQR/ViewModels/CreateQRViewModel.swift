@@ -209,7 +209,6 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func genQR() {
-        UIView.setAnimationsEnabled(false)
         isShowLoadingView.toggle()
         templateRepository.genQR(qrText: getQRText(),
                                  positivePrompt: input.prompt,
@@ -221,12 +220,10 @@ class CreateQRViewModel: ObservableObject {
             switch comple {
             case .finished:
                 self.isShowLoadingView.toggle()
-                UIView.setAnimationsEnabled(true)
             case .failure(let error):
                 self.isShowLoadingView.toggle()
                 self.messageError = error.message
                 self.showToastError.toggle()
-                UIView.setAnimationsEnabled(true)
             }
         } receiveValue: { [weak self] data in
             guard let self = self,
@@ -234,14 +231,14 @@ class CreateQRViewModel: ObservableObject {
                   let uiImage = UIImage(data: data) else {
                 self?.messageError = Rlocalizable.could_not_load_data()
                 self?.showToastError.toggle()
-                UIView.setAnimationsEnabled(true)
                 return
             }
-            self.input.qrImage = uiImage
-            self.imageResult = Image(uiImage: uiImage)
-            UserDefaults.standard.generatePerDay += 1
-            self.isShowExport.toggle()
-            UIView.setAnimationsEnabled(true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                self?.input.qrImage = uiImage
+                self?.imageResult = Image(uiImage: uiImage)
+                UserDefaults.standard.generatePerDay += 1
+                self?.isShowExport.toggle()
+            }
         }.store(in: &cancellable)
         
     }

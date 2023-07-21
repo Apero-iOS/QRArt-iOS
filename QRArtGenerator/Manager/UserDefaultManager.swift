@@ -11,6 +11,7 @@ extension UserDefaults {
     
     var isUserVip: Bool {
         get {
+//            return true
             return UserDefaults.standard.bool(forKey: Constants.Keys.KEY_USER_VIP)
         }
         set {

@@ -11,10 +11,21 @@ struct LanguageView: View {
     @StateObject var viewModel: LanguageViewModel
     
     var body: some View {
-        VStack {
-            NavibarView(title: Rlocalizable.languages(), imageRightButton: R.image.ic_check.image, isRightButton: true, isLeftButton: viewModel.sourceOpen == .setting) {
-                viewModel.handleChangeLanguage()
+        if viewModel.sourceOpen == .splash {
+            NavigationView {
+                contentView
             }
+        } else {
+            contentView
+        }
+    }
+    
+    @ViewBuilder var contentView: some View {
+        VStack {
+            Rectangle()
+                .fill(R.color.color_EAEAEA.color)
+                .frame(width: WIDTH_SCREEN, height: 1)
+            
             List {
                 ForEach(0..<viewModel.languages.count, id: \.self) { index in
                     let language = viewModel.languages[index]
@@ -29,7 +40,14 @@ struct LanguageView: View {
             .listStyle(.plain)
             .clearBackgroundColorList()
         }
-        .hideNavigationBar(isHidden: true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(Rlocalizable.languages())
+        .toolbar {
+            Image(R.image.ic_check)
+                .onTapGesture {
+                    viewModel.handleChangeLanguage()
+                }
+        }
     }
     
     private func languageView(_ language: LanguageType, isSelected: Bool) -> some View {
