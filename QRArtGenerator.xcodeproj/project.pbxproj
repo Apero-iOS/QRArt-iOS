@@ -1954,7 +1954,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR AI DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
@@ -1995,7 +1995,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR AI";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
@@ -2175,7 +2175,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AI QR Code DEV";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR AI STG";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
