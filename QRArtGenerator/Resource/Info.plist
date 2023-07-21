@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FacebookAppID</key>
+	<string>674938347787286</string>
+	<key>FacebookClientToken</key>
+	<string>f957c64fea21920a53fcb2a81ddee0ec</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-6530974883137971~8095578177</string>
+	<key>GADNativeAdValidatorEnabled</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://adjust-skadnetwork.com</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -161,16 +173,6 @@
 			<string>n38lu8286q.skadnetwork</string>
 		</dict>
 	</array>
-	<key>FacebookAppID</key>
-	<string>674938347787286</string>
-	<key>FacebookClientToken</key>
-	<string>f957c64fea21920a53fcb2a81ddee0ec</string>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-6530974883137971~8095578177</string>
-	<key>GADNativeAdValidatorEnabled</key>
-	<false/>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Urbanist-Black.ttf</string>
