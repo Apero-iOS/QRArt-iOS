@@ -82,6 +82,7 @@
 		9AC7DCD72A4DB72800FB3119 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCB12A4D605800FB3119 /* HistoryCell.swift */; };
 		9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCA92A4D3A3600FB3119 /* HistoryViewModel.swift */; };
 		9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAF2A4D405F00FB3119 /* Date+.swift */; };
+		9AD132312A6FAFB9006EAE82 /* AdServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132302A6FAFB8006EAE82 /* AdServices.swift */; };
 		9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */; };
 		9AD2B8F42A500735003B7C1F /* QRItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F32A500735003B7C1F /* QRItemDB.swift */; };
 		9AD2B8F62A500F63003B7C1F /* QRDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */; };
@@ -268,6 +269,7 @@
 		9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
 		9AC7DCD32A4DB6E500FB3119 /* CreateQRViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRViewModel.swift; sourceTree = "<group>"; };
+		9AD132302A6FAFB8006EAE82 /* AdServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdServices.swift; sourceTree = "<group>"; };
 		9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9AD2B8F32A500735003B7C1F /* QRItemDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemDB.swift; sourceTree = "<group>"; };
 		9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailItem.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				59F74C3E2A4EC1CE00AD8CBA /* QRHelper.swift */,
 				9AB8528E2A51655C00A546F4 /* RemoteKey.swift */,
 				C8EDAC4E2A691E3000BD8E33 /* PermissionTrackkingHelper.swift */,
+				9AD132302A6FAFB8006EAE82 /* AdServices.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1734,6 +1737,7 @@
 				76FC00F42A5BC73700B53B5F /* BottomSheet.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
+				9AD132312A6FAFB9006EAE82 /* AdServices.swift in Sources */,
 				C8E923BA2A52AB3E00835F93 /* SuccessView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				592DBDB72A4D8ED000AF79EE /* ResultQRView.swift in Sources */,
