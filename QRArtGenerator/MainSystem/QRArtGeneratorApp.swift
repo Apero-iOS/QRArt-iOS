@@ -41,6 +41,7 @@ struct QRArtGeneratorApp: App {
         configIAP()
         resetUserDefaults()
         setUpAds()
+        configNavigationBar()
     }
     
     var body: some Scene {
@@ -71,6 +72,16 @@ struct QRArtGeneratorApp: App {
     private func configIAP() {
         InappManager.share.checkPurchaseProduct()
         InappManager.share.productInfo(id: InappManager.share.productIdentifiers, isShowLoading: false)
+    }
+    
+    private func configNavigationBar() {
+        let coloredNavAppearance = UINavigationBarAppearance()
+        coloredNavAppearance.backgroundColor = .white
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: R.color.color_1B232E()!, .font: R.font.urbanistSemiBold(size: 18)!]
+        coloredNavAppearance.shadowColor = .clear
+        coloredNavAppearance.setBackIndicatorImage(R.image.ic_arrow_back()?.withRenderingMode(.alwaysOriginal), transitionMaskImage: R.image.ic_arrow_back()?.withRenderingMode(.alwaysOriginal))
+        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
     }
     
     func setupFirebase() {
@@ -109,4 +120,13 @@ struct QRArtGeneratorApp: App {
         }
     }
     
+}
+
+extension UINavigationController {
+
+  open override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    navigationBar.topItem?.backButtonDisplayMode = .minimal
+  }
+
 }

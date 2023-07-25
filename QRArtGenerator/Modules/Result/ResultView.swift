@@ -14,11 +14,31 @@ enum ResultViewSource {
 
 struct ResultView: View {
     @StateObject var viewModel: ResultViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
+        if !viewModel.isCreate {
+            contentView
+        } else {
+            ZStack {
+                NavigationView {
+                    contentView
+                }
+                
+                if viewModel.isShowSuccessView {
+                    SuccessView()
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder var contentView: some View {
         ZStack {
             VStack(spacing: 0) {
-                naviView
+                Rectangle()
+                    .fill(R.color.color_EAEAEA.color)
+                    .frame(width: WIDTH_SCREEN, height: 1)
+                
                 viewModel.image
                     .resizable()
                     .cornerRadius(24)
@@ -46,17 +66,53 @@ struct ResultView: View {
                         .padding(.horizontal, 20)
                 }
             }
-            .hideNavigationBar(isHidden: true)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        if viewModel.isCreate {
+                            Image(R.image.ic_close_screen)
+                                .padding(.leading, 4)
+                                .onTapGesture {
+                                    dismiss()
+                                }
+                        }
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Text(Rlocalizable.create_qr_title)
+                                .font(R.font.urbanistSemiBold.font(size: 18))
+                                .lineLimit(1)
+                            
+                            Image(R.image.ic_shine_ai)
+                                .frame(width: 28, height: 24)
+                                .offset(x: -3, y: -3)
+                        }
+                        
+                        Spacer()
+                        
+                        if viewModel.isCreate {
+                            Button(Rlocalizable.done()) {
+                                viewModel.save()
+                            }
+                            .font(R.font.urbanistSemiBold.font(size: 14))
+                        }
+                    }
+                    .frame(height: 48)
+                }
+            }
             .fullScreenCover(isPresented: $viewModel.sheet, content: {
                 ShareSheet(items: [viewModel.item.qrImage])
             })
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView()
             }
-            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
-            if viewModel.isShowLoadingView {
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
                 LoadingView()
             }
+            .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             
             if viewModel.showPopupAcessPhoto {
                 AccessPhotoPopup {
@@ -66,16 +122,6 @@ struct ResultView: View {
                 }
                 .padding(.all, 0)
             }
-            
-            if viewModel.isShowSuccessView {
-                SuccessView()
-            }
-        }
-    }
-    
-    @ViewBuilder var naviView: some View {
-        NavibarView(title: viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name, isImageTitle: viewModel.isCreate ? true : false, isRightButton: false, titleRightButton: viewModel.isCreate ? Rlocalizable.done() : "") {
-            viewModel.save()
         }
     }
     

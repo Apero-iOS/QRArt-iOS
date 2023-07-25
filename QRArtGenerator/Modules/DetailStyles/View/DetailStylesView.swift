@@ -15,7 +15,10 @@ struct DetailStylesView: View {
     
     var body: some View {
         VStack {
-            NavibarView(title: templates.first?.category ?? "")
+            Rectangle()
+                .fill(R.color.color_EAEAEA.color)
+                .frame(width: WIDTH_SCREEN, height: 1)
+            
             ScrollView {
                 LazyVGrid(columns: viewModel.getColumns()) {
                     ForEach(0..<templates.count, id: \.self) { index in
@@ -40,7 +43,7 @@ struct DetailStylesView: View {
                 .frame(height: 50)
             }
         }
-        .hideNavigationBar(isHidden: true)
+        .navigationTitle(templates.first?.category ?? "")
     }
     
     private func itemView(_ template: Template) -> some View {

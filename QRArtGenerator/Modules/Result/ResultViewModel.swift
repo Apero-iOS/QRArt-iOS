@@ -146,7 +146,6 @@ class ResultViewModel: ObservableObject {
         if checkShowSub() {
             showIAP = true
         } else {
-            UIView.setAnimationsEnabled(false)
             isShowLoadingView.toggle()
             templateRepository.genQR(qrText: getQRText(),
                                      positivePrompt: item.prompt,
@@ -161,7 +160,6 @@ class ResultViewModel: ObservableObject {
                     self.showToast(message: error.message)
                 }
                 self.isShowLoadingView.toggle()
-                UIView.setAnimationsEnabled(true)
             } receiveValue: { data in
                 guard let data = data, let uiImage = UIImage(data: data) else {
                     self.showToast(message: Rlocalizable.could_not_load_data())
@@ -170,7 +168,6 @@ class ResultViewModel: ObservableObject {
                 self.item.qrImage = uiImage
                 self.image = Image(uiImage: uiImage)
                 UserDefaults.standard.regeneratePerDay += 1
-                UIView.setAnimationsEnabled(true)
             }.store(in: &cancellable)
         }
 

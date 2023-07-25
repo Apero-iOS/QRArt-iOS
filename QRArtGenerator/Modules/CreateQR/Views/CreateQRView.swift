@@ -18,11 +18,49 @@ struct CreateQRView: View {
     @Namespace var advanceDescViewID
     @FocusState var errorFieldType: TextFieldType?
     @State var change: Bool = false
-
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
+        parentView
+            .onAppear {
+                UISlider.appearance()
+                    .setThumbImage(UIImage(named: "ic_tint_slider"), for: .normal)
+                viewModel.fetchCountry()
+                viewModel.fetchTemplate()
+                viewModel.createIdAds()
+            }
+            .fullScreenCover(isPresented: $viewModel.isShowExport) {
+                let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
+                ResultView(viewModel: resultViewModel)
+            }
+            .fullScreenCover(isPresented: $viewModel.showSub) {
+                IAPView()
+            }
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+                LoadingView()
+            }
+            .onChange(of: viewModel.input.type) { newValue in
+                viewModel.input.name = ""
+            }
+            .onChange(of: change, perform: { _ in
+                errorFieldType = viewModel.errorInputType
+            })
+            .toast(message: viewModel.messageError, isShowing: $viewModel.showToastError, duration: 3, position: .center)
+    }
+    
+    @ViewBuilder var parentView: some View {
+        if viewModel.isPush {
+            contentView
+        } else {
+            NavigationView {
+                contentView
+            }
+        }
+    }
+    
+    @ViewBuilder var contentView: some View {
         ZStack {
             VStack(spacing: 0) {
-                naviView
                 ScrollViewReader { proxy in
                     List {
                         templateView
@@ -86,10 +124,6 @@ struct CreateQRView: View {
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            if viewModel.isShowLoadingView {
-                LoadingView()
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .bottomSheet(isPresented: $viewModel.showingSelectQRTypeView,
@@ -108,28 +142,44 @@ struct CreateQRView: View {
         }) {
             countrySelectView
         }
-        .hideNavigationBar(isHidden: true)
-        .onAppear {
-            UISlider.appearance()
-                .setThumbImage(UIImage(named: "ic_tint_slider"), for: .normal)
-            viewModel.fetchCountry()
-            viewModel.fetchTemplate()
-            viewModel.createIdAds()
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(Rlocalizable.create_qr_title())
+        .toolbar {      // navigation bar when create new
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    if !viewModel.isPush {
+                        Image(R.image.ic_close_screen)
+                            .padding(.leading, 4)
+                            .onTapGesture {
+                                dismiss()
+                            }
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Text(Rlocalizable.create_qr_title)
+                            .font(R.font.urbanistSemiBold.font(size: 18))
+                            .lineLimit(1)
+                        
+                        Image(R.image.ic_shine_ai)
+                            .frame(width: 28, height: 24)
+                            .offset(x: -3, y: -3)
+                    }
+                    
+                    Spacer()
+                    
+                    if !UserDefaults.standard.isUserVip {
+                        Image(R.image.ic_purchase)
+                            .padding(.trailing, 3)
+                            .onTapGesture {
+                                viewModel.showSub = true
+                            }
+                    }
+                }
+                .frame(height: 48)
+            }
         }
-        .fullScreenCover(isPresented: $viewModel.isShowExport) {
-            let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
-            ResultView(viewModel: resultViewModel)
-        }
-        .fullScreenCover(isPresented: $viewModel.showSub) {
-            IAPView()
-        }
-        .onChange(of: viewModel.input.type) { newValue in
-            viewModel.input.name = ""
-        }
-        .onChange(of: change, perform: { _ in
-            errorFieldType = viewModel.errorInputType
-        })
-        .toast(message: viewModel.messageError, isShowing: $viewModel.showToastError, duration: 3, position: .center)
     }
     
     @ViewBuilder var templateView: some View {
@@ -180,12 +230,6 @@ struct CreateQRView: View {
                               showingSelectCountryView: $viewModel.showingSelectCountryView)
     }
     
-    @ViewBuilder var naviView: some View {
-        NavibarView(title: Rlocalizable.create_qr_title(), isImageTitle: true, isRightButton: !UserDefaults.standard.isUserVip, isCloseButton: !viewModel.isPush) {
-            viewModel.showSub = true
-        }
-    }
-    
     @ViewBuilder var advanceDescView: some View {
         VStack {
             // prompt
@@ -212,7 +256,7 @@ struct CreateQRView: View {
                               value: $viewModel.input.guidance,
                               fromValue: 1,
                               toValue: 10)
-
+            
             // steps
             SliderSettingView(title: Rlocalizable.steps(),
                               desc: Rlocalizable.steps_desc(),

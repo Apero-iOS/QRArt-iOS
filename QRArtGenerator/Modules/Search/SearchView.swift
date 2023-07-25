@@ -14,33 +14,9 @@ struct SearchView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 12) {
-                HStack(spacing: 12) {
-                    Image(R.image.search_ic)
-                        .frame(width: 24)
-                        .padding(.leading, 12)
-                    LimitedTextField(placeholder: Rlocalizable.search_qr_name(), value: $viewModel.searchKey, charLimit: 50)
-                    .font(R.font.urbanistRegular.font(size: 14))
-                    .foregroundColor(R.color.color_1B232E.color)
-                    .focused($isFocusSearch)
-                    .padding(.trailing, 12)
-                }
-                .frame(height: 40)
-                .overlay (
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(R.color.color_EAEAEA.color)
-                )
-                
-                Button(Rlocalizable.cancel()) {
-                    isFocusSearch = false
-                    dismiss()
-                }
-                .font(R.font.urbanistMedium.font(size: 14))
-            }
-            .padding(.all, 16)
-            
             R.color.color_EAEAEA.color
                 .frame(width: WIDTH_SCREEN, height: 1)
+                .padding(.top, 14)
             
             if viewModel.searchItems.isEmpty {
                 if !viewModel.searchKey.isEmpty {
@@ -54,9 +30,45 @@ struct SearchView: View {
             
             Spacer()
         }
-        .hideNavigationBar(isHidden: true)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack(spacing: 12) {
+                    HStack(spacing: 12) {
+                        Image(R.image.search_ic)
+                            .frame(width: 24)
+                            .padding(.leading, 12)
+                        LimitedTextField(placeholder: Rlocalizable.search_qr_name(), value: $viewModel.searchKey, charLimit: 50)
+                            .font(R.font.urbanistRegular.font(size: 14))
+                            .foregroundColor(R.color.color_1B232E.color)
+                            .focused($isFocusSearch)
+                            .padding(.trailing, 12)
+                    }
+                    .frame(height: 40)
+                    .overlay (
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(R.color.color_EAEAEA.color)
+                    )
+                    
+                    Button(Rlocalizable.cancel()) {
+                        isFocusSearch = false
+                        dismiss()
+                    }
+                    .font(R.font.urbanistMedium.font(size: 14))
+                }
+                .frame(height: 48)
+            }
+        }
         .onAppear {
-            isFocusSearch = viewModel.isCheckFocusSearch
+            if viewModel.isCheckFocusSearch {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    let viewController = UIApplication.shared.keyWindow?.rootViewController
+                    if let textField = AppHelper.findTextField(in: viewController?.view) {
+                        textField.becomeFirstResponder()
+                    }
+                }
+                isFocusSearch = viewModel.isCheckFocusSearch
+            }
         }
         .onDisappear {
             isFocusSearch = false
