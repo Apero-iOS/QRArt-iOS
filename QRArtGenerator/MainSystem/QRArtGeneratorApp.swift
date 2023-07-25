@@ -17,6 +17,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         configAdjust()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        AdServices.shared.fetchAttributionData()
         return true
     }
     
