@@ -19,7 +19,7 @@ class ScannerViewModel: ObservableObject {
     
     @Published var isScanning: Bool = false
     @Published var session: AVCaptureSession = .init()
-    @Published var qrOutput: AVCaptureMetadataOutput = .init()
+    @Published var qrOutput: AVCaptureVideoDataOutput = .init()
     @Published var cameraPermission: CameraPermission = .idle
     @Published var errorMessage: String = ""
     @Published var showError: Bool = false
