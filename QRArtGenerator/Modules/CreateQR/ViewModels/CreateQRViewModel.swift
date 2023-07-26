@@ -45,7 +45,9 @@ class CreateQRViewModel: ObservableObject {
     @Published var templateSelect: Template?
     @Published var isLoadAdsSuccess: Bool = true
     @Published var errorInputType: TextFieldType?
+    @Published var promptSample: PromptSample = PromptSample()
     private var needFetchTemplates: Bool = true
+        
     var messageError: String = ""
     
     var isShowAdsInter: Bool {
@@ -264,5 +266,13 @@ class CreateQRViewModel: ObservableObject {
     
     func resetInput() {
         input = input.duplicate()
+    }
+    
+    func genSamplePrompt() {
+        input.prompt = promptSample.randomPrompt()
+    }
+    
+    func genSampleNegativePrompt() {
+        input.negativePrompt = promptSample.randomNegativePrompt()
     }
 }

@@ -62,7 +62,7 @@ struct CreateQRView: View {
         ZStack {
             VStack(spacing: 0) {
                 ScrollViewReader { proxy in
-                    List {
+                    ScrollView {
                         templateView
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
@@ -240,7 +240,9 @@ struct CreateQRView: View {
                        prompt: $viewModel.input.prompt,
                        validInput: $viewModel.validInput,
                        focusField: $errorFieldType,
-                       textfieldType: .prompt)
+                       textfieldType: .prompt) {
+                viewModel.genSamplePrompt()
+            }
             // negative prompt
             PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
                        title: Rlocalizable.negative_prompt(),
@@ -249,7 +251,9 @@ struct CreateQRView: View {
                        prompt: $viewModel.input.negativePrompt,
                        validInput: $viewModel.validInput,
                        focusField: $errorFieldType,
-                       textfieldType: .negativePrompt)
+                       textfieldType: .negativePrompt) {
+                viewModel.genSampleNegativePrompt()
+            }
             // guidance
             SliderSettingView(title: Rlocalizable.guidance(),
                               desc: Rlocalizable.guidance_desc(),

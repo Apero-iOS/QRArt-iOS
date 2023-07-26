@@ -80,6 +80,7 @@ extension RemoteKey {
     static let native_result = RemoteKey(rawValue: "native_result")
     static let app_open_splash = RemoteKey(rawValue: "app_open_splash")
     static let banner_tab_bar = RemoteKey(rawValue: "banner_tab_bar")
+    static let languageFirstOpen = RemoteKey(rawValue: "language_first_open")
 }
 
 extension AdUnitID {
