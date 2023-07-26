@@ -23,6 +23,8 @@ struct PromptView: View {
     @Binding var validInput: Bool
     var focusField: FocusState<TextFieldType?>.Binding
     var textfieldType: TextFieldType
+    var didTap: VoidBlock?
+    let maxLength: Int = 10
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -31,36 +33,56 @@ struct PromptView: View {
                     Text(title)
                         .font(R.font.urbanistSemiBold.font(size: 14))
                         .foregroundColor(R.color.color_1B232E.color)
-                    Text(subTitle)
-                        .font(R.font.urbanistMedium.font(size: 12))
-                        .foregroundColor(R.color.color_6A758B.color)
-                }
-                Spacer()
-                Button {
-                    prompt = oldPrompt
-                } label: {
-                    R.image.ic_pen.image
+                    HStack {
+                        Text(subTitle)
+                            .font(R.font.urbanistMedium.font(size: 12))
+                            .foregroundColor(R.color.color_6A758B.color)
+                        Spacer()
+                        if !prompt.isEmpty {
+                            Button {
+                                prompt = ""
+                            } label: {
+                                Text(Rlocalizable.reset())
+                                    .font(R.font.urbanistMedium.font(size: 12))
+                                    .foregroundColor(R.color.color_1B232E.color)
+                            }
+                        }
+                    }
                 }
             }
             ZStack {
                 if prompt.isEmpty {
-                    TextEditor(text: .constant(Rlocalizable.enter_prompt()))
-                        .frame(height: 120, alignment: .top)
-                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                        .border(radius: 12, color: getBorderColor(), width: 1)
-                        .font(R.font.urbanistRegular.font(size: 14))
-                        .foregroundColor(R.color.color_6A758B.color)
-                        .allowsHitTesting(false)
-                }
-                
-                TextEditor(text: $prompt)
-                    .frame(height: 120, alignment: .top)
-                    .focused(focusField, equals: textfieldType)
-                    .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                    VStack(spacing: 8) {
+                        TextEditor(text: .constant(Rlocalizable.enter_prompt()))
+                            .frame(height: 120, alignment: .top)
+                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                            
+                            .font(R.font.urbanistRegular.font(size: 14))
+                            .foregroundColor(R.color.color_6A758B.color)
+                            .allowsHitTesting(false)
+                        textCountPrompt
+                    }
                     .border(radius: 12, color: getBorderColor(), width: 1)
-                    .font(R.font.urbanistRegular.font(size: 14))
-                    .foregroundColor(R.color.color_1B232E.color)
-                    .opacity(prompt.isEmpty ? 0.25 : 1)
+                    
+                }
+                VStack(spacing: 8) {
+                    TextEditor(text: $prompt)
+                        .frame(height: 120, alignment: .top)
+                        .focused(focusField, equals: textfieldType)
+                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                        
+                        .font(R.font.urbanistRegular.font(size: 14))
+                        .foregroundColor(R.color.color_1B232E.color)
+                        .opacity(prompt.isEmpty ? 0.25 : 1)
+                        .onChange(of: prompt) { newValue in
+                            if newValue.count > maxLength {
+                                prompt = String(newValue.prefix(maxLength))
+                            }
+                        }
+                    textCountPrompt
+                }
+                .border(radius: 12, color: getBorderColor(), width: 1)
+
             }
             if validInput && typePrompt == .prompt && prompt.isEmpty {
                 Text(Rlocalizable.cannot_be_empty)
@@ -79,6 +101,41 @@ struct PromptView: View {
             } else {
                 return R.color.color_EAEAEA.color
             }
+        }
+    }
+    
+    @ViewBuilder var textCountPrompt: some View {
+        HStack(spacing: 0) {
+            Text("\(prompt.count)/")
+                .font(R.font.urbanistMedium.font(size: 12))
+                .foregroundColor(getColorCountText(type: .count))
+            Text("\(maxLength)")
+                .font(R.font.urbanistMedium.font(size: 12))
+                .foregroundColor(getColorCountText(type: .limit))
+            Spacer()
+            Button {
+                didTap?()
+            } label: {
+                R.image.ic_random_prompt.image
+            }
+        }
+        .padding(EdgeInsets(top: 0, leading: 12, bottom: 8, trailing: 12))
+    }
+    
+    enum TextCount {
+        case count
+        case limit
+    }
+    
+    func getColorCountText(type: TextCount) -> Color {
+        if prompt.isEmpty || prompt.count >= maxLength {
+            return R.color.color_BD1E1E.color
+        }
+        switch type {
+        case .count:
+            return R.color.color_1B232E.color
+        case .limit:
+            return R.color.color_6A758B.color
         }
     }
 }

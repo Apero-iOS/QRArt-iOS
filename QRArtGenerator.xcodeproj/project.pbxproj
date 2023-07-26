@@ -133,6 +133,7 @@
 		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
 		C8109C872A51971A0093B48A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C862A51971A0093B48A /* LoadingView.swift */; };
 		C8109C8A2A5198970093B48A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C892A5198970093B48A /* ResultView.swift */; };
+		C82E15902A70C92600EF6946 /* PromptSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82E158F2A70C92600EF6946 /* PromptSample.swift */; };
 		C84BBF272A53FC950065B8AF /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BBF262A53FC950065B8AF /* ResultViewModel.swift */; };
 		C855593E2A615EB40083D119 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855593D2A615EB40083D119 /* UIApplication+.swift */; };
 		C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = C88A2B6B2A4C43D4003A93B6 /* countries.json */; };
@@ -326,6 +327,7 @@
 		C8109C822A518B3E0093B48A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		C8109C862A51971A0093B48A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C8109C892A5198970093B48A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		C82E158F2A70C92600EF6946 /* PromptSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptSample.swift; sourceTree = "<group>"; };
 		C84BBF262A53FC950065B8AF /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		C855593D2A615EB40083D119 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		C88A2B6B2A4C43D4003A93B6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 				9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */,
 				9AD2B8F72A501093003B7C1F /* WifiSecurityMode.swift */,
 				9AC33C9D2A6680D200463E58 /* TextFieldType.swift */,
+				C82E158F2A70C92600EF6946 /* PromptSample.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1771,6 +1774,7 @@
 				59286C992A4D31F100EBBEBF /* CountriesFetcher.swift in Sources */,
 				A4C0E24E2A4E89FA00E69CF2 /* HomeSectionView.swift in Sources */,
 				9AB852952A516F6200A546F4 /* IAPCell.swift in Sources */,
+				C82E15902A70C92600EF6946 /* PromptSample.swift in Sources */,
 				59286C8B2A4D31D300EBBEBF /* HistoryCategoryListView.swift in Sources */,
 				C8AA3E452A4E72640077DCC3 /* SelectCountryCodeView.swift in Sources */,
 				9AC7DCBC2A4DB62600FB3119 /* CreateQRView.swift in Sources */,

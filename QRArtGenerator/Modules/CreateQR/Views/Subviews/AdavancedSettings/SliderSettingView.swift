@@ -22,7 +22,7 @@ struct SliderSettingView: View {
                 .foregroundColor(R.color.color_6A758B.color)
                 .font(R.font.urbanistMedium.font(size: 12))
             HStack(spacing: 8) {
-                Slider(value: $value, in: Double(fromValue)...Double(toValue))
+                Slider(value: $value, in: Double(fromValue)...Double(toValue), step: 1.0)
                     .setColorSlider(color: R.color.color_653AE4.color)
                     .onAppear {
                         UISlider.appearance()
