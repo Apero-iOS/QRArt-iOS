@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ScreenshotPreventing
 
 enum ResultViewSource {
     case history
@@ -66,8 +67,8 @@ struct ResultView: View {
                         .padding(.horizontal, 20)
                 }
             }
+            .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
@@ -82,23 +83,24 @@ struct ResultView: View {
                         Spacer()
                         
                         HStack {
-                            Text(Rlocalizable.create_qr_title)
+                            Text(viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name)
                                 .font(R.font.urbanistSemiBold.font(size: 18))
                                 .lineLimit(1)
                             
-                            Image(R.image.ic_shine_ai)
-                                .frame(width: 28, height: 24)
-                                .offset(x: -3, y: -3)
+                            if viewModel.isCreate {
+                                Image(R.image.ic_shine_ai)
+                                    .frame(width: 28, height: 24)
+                                    .offset(x: -3, y: -3)
+                            }
                         }
                         
                         Spacer()
                         
-                        if viewModel.isCreate {
-                            Button(Rlocalizable.done()) {
-                                viewModel.save()
-                            }
-                            .font(R.font.urbanistSemiBold.font(size: 14))
+                        Button(viewModel.isCreate ? Rlocalizable.done() : "") {
+                            viewModel.isCreate ? viewModel.save() : ()
                         }
+                        .font(R.font.urbanistSemiBold.font(size: 14))
+                        .frame(width: 33)
                     }
                     .frame(height: 48)
                 }

@@ -74,7 +74,7 @@
 "controlnet_scale" = "ControNet scale";
 "controlnet_scale_desc" = "ControNet scale measures the ability of an AI generation system to produce outputs with higher levels of control.";
 "steps" = "Steps";
-"steps_desc" = "The number of steps required to generate an image. The higher steps, the more quality.";
+"steps_desc" = "Quality improves as the sampling step increases";
 "prompt" = "Prompt";
 "prompt_desc" = "Prompt that guides the generation towards";
 "enter_prompt" = "Enter any Prompt";

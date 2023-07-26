@@ -23,7 +23,7 @@ struct DetailStylesView: View {
                 LazyVGrid(columns: viewModel.getColumns()) {
                     ForEach(0..<templates.count, id: \.self) { index in
                         NavigationLink {
-                            let viewModel = CreateQRViewModel(source: .template, templateSelect: templates[index])
+                            let viewModel = CreateQRViewModel(source: .template, templateSelect: templates[index], isPush: true)
                             CreateQRView(viewModel: viewModel)
                         } label: {
                             itemView(templates[index])
