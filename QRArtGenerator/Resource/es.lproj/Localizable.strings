@@ -74,7 +74,7 @@
 "controlnet_scale" = "Escala de contrón";
 "controlnet_scale_desc" = "La escala del Controneto mide la capacidad de un sistema de generación de IA para producir resultados con niveles de control más altos.";
 "steps" = "Pasos";
-"steps_desc" = "El número de pasos necesarios para generar una imagen. Mientras más pasos, más calidad.";
+"steps_desc" = "La calidad mejora a medida que aumenta el paso de muestreo";
 "prompt" = "Inmediato";
 "prompt_desc" = "Solicitar que guía la generación hacia";
 "enter_prompt" = "Ingrese cualquier aviso";

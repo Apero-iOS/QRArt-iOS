@@ -74,7 +74,7 @@
 "controlnet_scale" = "Kontronettskala";
 "controlnet_scale_desc" = "Die Contronet -Skala misst die Fähigkeit eines KI -Erzeugungssystems, Ausgaben mit höheren Kontrollniveaus zu erzeugen.";
 "steps" = "Schritte";
-"steps_desc" = "Die Anzahl der Schritte, die erforderlich sind, um ein Bild zu generieren. Je höher, desto mehr Qualität.";
+"steps_desc" = "Die Qualität verbessert sich mit zunehmendem Abtastschritt";
 "prompt" = "Prompt";
 "prompt_desc" = "Auffordern, die die Generation in Richtung leitet";
 "enter_prompt" = "Geben Sie jede Eingabeaufforderung ein";

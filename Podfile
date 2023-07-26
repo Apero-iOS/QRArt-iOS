@@ -18,6 +18,7 @@ target 'QRArtGenerator' do
   pod 'SwCrypt'
   pod 'SkeletonUI'
   pod 'Adjust', '~> 4.33.5'
+  pod 'ScreenshotPreventing/SwiftUI', '1.4.0'
   
   target 'QRArtGeneratorTests' do
     inherit! :search_paths

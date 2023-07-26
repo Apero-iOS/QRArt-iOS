@@ -74,7 +74,7 @@
 "controlnet_scale" = "Escala Controneta";
 "controlnet_scale_desc" = "A escala de contronet mede a capacidade de um sistema de geração de IA de produzir saídas com níveis mais altos de controle.";
 "steps" = "Passos";
-"steps_desc" = "O número de etapas necessárias para gerar uma imagem. Os passos mais altos, mais qualidade.";
+"steps_desc" = "A qualidade melhora à medida que a etapa de amostragem aumenta";
 "prompt" = "Incitar";
 "prompt_desc" = "Solicitar que orienta a geração para";
 "enter_prompt" = "Insira qualquer prompt";

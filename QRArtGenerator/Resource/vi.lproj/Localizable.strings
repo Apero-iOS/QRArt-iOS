@@ -74,7 +74,7 @@
 "controlnet_scale" = "Thang đo đối nghịch";
 "controlnet_scale_desc" = "Thang đo đối kháng đo lường khả năng của một hệ thống tạo AI để tạo ra các đầu ra với mức độ kiểm soát cao hơn.";
 "steps" = "Các bước";
-"steps_desc" = "Số lượng các bước cần thiết để tạo ra một hình ảnh. Các bước càng cao, chất lượng càng nhiều.";
+"steps_desc" = "Chất lượng được cải thiện khi bước lấy mẫu tăng";
 "prompt" = "Lời nhắc";
 "prompt_desc" = "Nhắc rằng hướng dẫn thế hệ hướng tới";
 "enter_prompt" = "Nhập bất kỳ lời nhắc nào";

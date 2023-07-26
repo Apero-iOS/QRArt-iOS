@@ -126,22 +126,14 @@ struct CreateQRView: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
-        .bottomSheet(isPresented: $viewModel.showingSelectQRTypeView,
-                     height: HEIGHT_SCREEN,
-                     topBarBackgroundColor: R.color.color_F7F7F7.color,
-                     onDismiss: {
-            viewModel.showingSelectQRTypeView = false
-        }) {
+        .sheet(isPresented: $viewModel.showingSelectQRTypeView, content: {
             qrSelectView
-        }
-        .bottomSheet(isPresented: $viewModel.showingSelectCountryView,
-                     height: HEIGHT_SCREEN,
-                     topBarBackgroundColor: R.color.color_F7F7F7.color,
-                     onDismiss: {
-            viewModel.showingSelectCountryView = false
-        }) {
+                .presentationDetent()
+        })
+        .sheet(isPresented: $viewModel.showingSelectCountryView, content: {
             countrySelectView
-        }
+                .presentationDetent()
+        })
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Rlocalizable.create_qr_title())
         .toolbar {      // navigation bar when create new
@@ -175,6 +167,9 @@ struct CreateQRView: View {
                             .onTapGesture {
                                 viewModel.showSub = true
                             }
+                    } else {
+                        Color.clear
+                            .frame(width: viewModel.isPush ? 33 : 20)
                     }
                 }
                 .frame(height: 48)

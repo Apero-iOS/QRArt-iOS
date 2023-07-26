@@ -74,7 +74,7 @@
 "controlnet_scale" = "Échelle de controvers";
 "controlnet_scale_desc" = "L'échelle Controntet mesure la capacité d'un système de génération d'IA à produire des sorties avec des niveaux de contrôle plus élevés.";
 "steps" = "Pas";
-"steps_desc" = "Le nombre d'étapes requis pour générer une image. Plus les étapes supérieures, plus la qualité.";
+"steps_desc" = "La qualité s'améliore à mesure que l'étape d'échantillonnage augmente";
 "prompt" = "Rapide";
 "prompt_desc" = "Invite qui guide la génération vers";
 "enter_prompt" = "Entrez n'importe quelle invite";

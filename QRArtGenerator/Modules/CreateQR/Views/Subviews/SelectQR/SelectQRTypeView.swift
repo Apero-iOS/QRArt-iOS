@@ -34,6 +34,8 @@ struct SelectQRTypeView: View {
                 .padding(.trailing, 16)
             }
             .frame(maxHeight: 29)
+            .padding(.top, 24)
+            
             List {
                 ForEach(QRGroupType.allCases, id:  \.self) { section in
                     Section(header: Text(section.title)

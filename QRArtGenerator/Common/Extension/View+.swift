@@ -90,6 +90,15 @@ extension View {
                             config: .init(duration: duration, position: position)))
     }
     
+    @ViewBuilder func presentationDetent() -> some View {
+        if #available(iOS 16, *) {
+            presentationDetents([.fraction(0.9)])
+                .presentationDragIndicator(.visible)
+        } else {
+            onAppear()
+        }
+    }
+    
 }
 
 extension View {

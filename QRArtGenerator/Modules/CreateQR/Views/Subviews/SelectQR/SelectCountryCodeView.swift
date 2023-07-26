@@ -37,6 +37,7 @@ struct SelectCountryCodeView: View {
                 .padding(.trailing, 16)
             }
             .frame(maxHeight: 29)
+            .padding(.top, 24)
             
             VStack(spacing: 12) {
                 // search bar
