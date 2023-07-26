@@ -22,11 +22,16 @@ struct DetailStylesView: View {
             ScrollView {
                 LazyVGrid(columns: viewModel.getColumns()) {
                     ForEach(0..<templates.count, id: \.self) { index in
-                        NavigationLink {
-                            let viewModel = CreateQRViewModel(source: .template, templateSelect: templates[index], isPush: true)
-                            CreateQRView(viewModel: viewModel)
-                        } label: {
-                            itemView(templates[index])
+                        let viewModel = CreateQRViewModel(source: .template, templateSelect: templates[index], isPush: true)
+                        NavigationLink(destination: CreateQRView(viewModel: viewModel), tag: index, selection: $viewModel.selection) {
+                            Button {
+                                self.viewModel.selection = index
+                                FirebaseAnalytics.logEvent(type: .home_style_click,
+                                                           params: [.style: templates[index].name])
+                            } label: {
+                                itemView(templates[index])
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
@@ -57,10 +62,10 @@ struct DetailStylesView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: width, height: width)
                             .cornerRadius(12, antialiased: true)
-                case .empty:
-                    EmptyView()
-                        .skeleton(with: true, size: CGSize(width: 103, height: 103))
-                        .shape(type: .rounded(.radius(8)))
+                    case .empty:
+                        EmptyView()
+                            .skeleton(with: true, size: CGSize(width: 103, height: 103))
+                            .shape(type: .rounded(.radius(8)))
                     default:
                         R.image.img_error.image
                             .resizable()

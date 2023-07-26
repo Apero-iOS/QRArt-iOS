@@ -112,6 +112,8 @@
 		A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E692A4ADCB20002FEF6 /* Router.swift */; };
 		A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */; };
 		A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */; };
+		A4B6F6192A70D35E003FC1B4 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6F6172A70D35E003FC1B4 /* FirebaseAnalytics.swift */; };
+		A4B6F61A2A70D35E003FC1B4 /* FirebaseAnalyticsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6F6182A70D35E003FC1B4 /* FirebaseAnalyticsEnum.swift */; };
 		A4BA325A2A5BC0D1002C77C5 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA32592A5BC0D1002C77C5 /* ReachabilityManager.swift */; };
 		A4BB08722A51643100C01063 /* DetailStylesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */; };
 		A4BB08762A517FE600C01063 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08752A517FE600C01063 /* LanguageModel.swift */; };
@@ -306,6 +308,8 @@
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavibarView.swift; sourceTree = "<group>"; };
+		A4B6F6172A70D35E003FC1B4 /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
+		A4B6F6182A70D35E003FC1B4 /* FirebaseAnalyticsEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsEnum.swift; sourceTree = "<group>"; };
 		A4BA32592A5BC0D1002C77C5 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesViewModel.swift; sourceTree = "<group>"; };
 		A4BB08752A517FE600C01063 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
@@ -592,6 +596,7 @@
 		59286C972A4D31F100EBBEBF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A4B6F6162A70D35E003FC1B4 /* Analytics */,
 				A4BEFB0F2A6916DC00BB2FC1 /* Adjust */,
 				A4BA32592A5BC0D1002C77C5 /* ReachabilityManager.swift */,
 				59286C982A4D31F100EBBEBF /* CountriesFetcher.swift */,
@@ -994,6 +999,15 @@
 				A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */,
 			);
 			path = NavibarView;
+			sourceTree = "<group>";
+		};
+		A4B6F6162A70D35E003FC1B4 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A4B6F6172A70D35E003FC1B4 /* FirebaseAnalytics.swift */,
+				A4B6F6182A70D35E003FC1B4 /* FirebaseAnalyticsEnum.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		A4BB08702A51641500C01063 /* ViewModel */ = {
@@ -1662,6 +1676,7 @@
 				C8AA3E512A4E80B40077DCC3 /* Configuration.swift in Sources */,
 				9AD2B9032A505AC8003B7C1F /* IAPView.swift in Sources */,
 				9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */,
+				A4B6F6192A70D35E003FC1B4 /* FirebaseAnalytics.swift in Sources */,
 				59F74C3F2A4EC1CE00AD8CBA /* QRHelper.swift in Sources */,
 				C8109C7E2A5160350093B48A /* GenerateQRRequest.swift in Sources */,
 				9AC7DCD62A4DB71D00FB3119 /* Country.swift in Sources */,
@@ -1759,6 +1774,7 @@
 				A4C71F202A625BC300D29928 /* Collection+.swift in Sources */,
 				9AC7DCD72A4DB72800FB3119 /* HistoryCell.swift in Sources */,
 				C8AA3E612A4E81E00077DCC3 /* BaseAPI+.swift in Sources */,
+				A4B6F61A2A70D35E003FC1B4 /* FirebaseAnalyticsEnum.swift in Sources */,
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
 				9AB852862A5138E500A546F4 /* IAPIdType.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
