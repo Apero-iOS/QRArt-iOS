@@ -35,6 +35,7 @@ struct TabbarView: View {
                                             viewModel.showScan.toggle()
                                         case .ai:
                                             viewModel.showCreateQR.toggle()
+                                            FirebaseAnalytics.logEvent(type: .qr_creation_click)
                                         default:
                                             print("Không phải view present")
                                     }

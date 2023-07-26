@@ -24,12 +24,18 @@ struct ChooseTemplateView: View {
                             if index == 0 {
                                 BasicItemTemplateView(indexSelect: $indexSelectStyle, index: index)
                                     .onTapGesture {
-                                        indexSelectStyle = index
+                                        if index != indexSelectStyle {
+                                            indexSelectStyle = index
+                                            FirebaseAnalytics.logEvent(type: .qr_creation_style_click, params: [.style: "Basic"])
+                                        }
                                     }
                             } else {
                                 ItemTemplateView(template: $templates[index], indexSelect: $indexSelectStyle, index: index)
                                     .onTapGesture {
-                                        indexSelectStyle = index
+                                        if index != indexSelectStyle {
+                                            indexSelectStyle = index
+                                            FirebaseAnalytics.logEvent(type: .qr_creation_style_click, params: [.style: templates[index].name])
+                                        }
                                     }
                             }
                         }

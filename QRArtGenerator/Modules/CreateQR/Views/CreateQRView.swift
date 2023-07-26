@@ -28,6 +28,7 @@ struct CreateQRView: View {
                 viewModel.fetchCountry()
                 viewModel.fetchTemplate()
                 viewModel.createIdAds()
+                FirebaseAnalytics.logEvent(type: .qr_creation_view)
             }
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)

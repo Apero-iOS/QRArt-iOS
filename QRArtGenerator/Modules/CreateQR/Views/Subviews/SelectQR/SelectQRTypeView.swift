@@ -51,6 +51,7 @@ struct SelectQRTypeView: View {
                                     selectedType = item
                                     showingSelectQRTypeView = false
                                     groupType = section
+                                    FirebaseAnalytics.logEvent(type: .qr_creation_select_type_click, params: [.qr_type: item.title])
                                 }
                         }
                     }

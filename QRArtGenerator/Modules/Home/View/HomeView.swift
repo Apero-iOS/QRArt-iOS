@@ -32,10 +32,14 @@ struct HomeView: View {
                 Color(.clear)
                     .frame(height: 100)
             }
-        }.toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
-            .refreshable {
-                viewModel.fetchTemplate()
-            }
+        }
+        .onAppear {
+            FirebaseAnalytics.logEvent(type: .home_view)
+        }
+        .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
+        .refreshable {
+            viewModel.fetchTemplate()
+        }
     }
     
     @ViewBuilder var bannerView: some View {

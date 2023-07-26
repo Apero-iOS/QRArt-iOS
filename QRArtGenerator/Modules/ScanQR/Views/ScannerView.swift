@@ -107,14 +107,19 @@ struct ScannerView: View {
             .ignoresSafeArea()
             .onAppear {
                 checkCameraPermission()
+                FirebaseAnalytics.logEvent(type: .scan_view)
             }
             .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             }
             .onChange(of: viewModel.zoomValue) { newValue in
                 viewModel.zoomCamera(value: CGFloat(newValue))
+                FirebaseAnalytics.logEvent(type: .scan_zoom_click)
             }
             .onChange(of: viewModel.torchMode) { newValue in
                 viewModel.updateTorchMode(mode: newValue)
+                if newValue == .on {
+                    FirebaseAnalytics.logEvent(type: .scan_flash_click)
+                }
             }
             .onChange(of: qrDelegate.scannerCode) { newValue in
                 viewModel.handleQRResult(text: newValue)
@@ -138,8 +143,11 @@ struct ScannerView: View {
             .toast(message: viewModel.toastMessage ?? "", isShowing: $viewModel.isShowToast, position: .bottom)
             
             if viewModel.showPopupAccessCamera {
-                AccessPhotoPopup(onTapCancel: {
+                AccessPhotoPopup(onTapAction: {
+                    FirebaseAnalytics.logEvent(type: .allow_access_click)
+                }, onTapCancel: {
                     dismiss()
+                    FirebaseAnalytics.logEvent(type: .not_allow_click)
                 })
                 .background(TransparentBackground())
                 .padding(.all, 0)
@@ -181,22 +189,26 @@ struct ScannerView: View {
                     viewModel.cameraPermission = .approve
                     setupCamera()
                 case .notDetermined:
+                    FirebaseAnalytics.logEvent(type: .permission_view)
                     if await AVCaptureDevice.requestAccess(for: .video) {
                         /// permission granted
                         viewModel.cameraPermission = .approve
                         setupCamera()
+                        FirebaseAnalytics.logEvent(type: .allow_access_click)
                     } else {
                         /// permission Denied
                         viewModel.cameraPermission = .denied
                         withAnimation {
                             viewModel.showPopupAccessCamera = true
                         }
+                        FirebaseAnalytics.logEvent(type: .permission_view)
                     }
                 case .denied, .restricted:
                     viewModel.cameraPermission = .denied
                     withAnimation {
                         viewModel.showPopupAccessCamera = true
                     }
+                    FirebaseAnalytics.logEvent(type: .permission_view)
                 default: break
             }
         }
