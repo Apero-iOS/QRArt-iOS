@@ -223,10 +223,9 @@ struct ScannerView: View {
             viewModel.session.beginConfiguration()
             viewModel.session.addInput(input)
             viewModel.session.addOutput(viewModel.qrOutput)
-            viewModel.qrOutput.metadataObjectTypes = [.qr]
+            viewModel.qrOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_32BGRA)] as [String : Any]
+            viewModel.qrOutput.setSampleBufferDelegate(qrDelegate, queue: DispatchQueue(label: "my.image.handling.queue"))
             let fromLayerRect = viewModel.frameCamera
-            viewModel.qrOutput.rectOfInterest = viewModel.cameraLayer.metadataOutputRectConverted(fromLayerRect: fromLayerRect)
-            viewModel.qrOutput.setMetadataObjectsDelegate(qrDelegate, queue: .main)
             viewModel.session.commitConfiguration()
             DispatchQueue.global(qos: .background).async {
                 viewModel.session.startRunning()
