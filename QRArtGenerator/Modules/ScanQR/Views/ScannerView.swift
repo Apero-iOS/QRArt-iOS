@@ -73,12 +73,16 @@ struct ScannerView: View {
                                 Image(R.image.ic_zoom_in)
                                     .foregroundColor(.white)
                                     .frame(width: 24, height: 24)
-                                Slider(value: $viewModel.zoomValue, in: 1...5) { editing in }
-                                    .tint(.white)
-                                    .onAppear {
-                                        UISlider.appearance()
-                                            .setThumbImage(UIImage(named: "ic_tint"), for: .normal)
+                                Slider(value: $viewModel.zoomValue, in: 1...5) { editing in
+                                    if editing {
+                                        FirebaseAnalytics.logEvent(type: .scan_zoom_click)
                                     }
+                                }
+                                .tint(.white)
+                                .onAppear {
+                                    UISlider.appearance()
+                                        .setThumbImage(UIImage(named: "ic_tint"), for: .normal)
+                                }
                                 Image(R.image.ic_zoom_out)
                                     .foregroundColor(.white)
                                     .frame(width: 24, height: 24)
@@ -113,7 +117,6 @@ struct ScannerView: View {
             }
             .onChange(of: viewModel.zoomValue) { newValue in
                 viewModel.zoomCamera(value: CGFloat(newValue))
-                FirebaseAnalytics.logEvent(type: .scan_zoom_click)
             }
             .onChange(of: viewModel.torchMode) { newValue in
                 viewModel.updateTorchMode(mode: newValue)

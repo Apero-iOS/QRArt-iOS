@@ -26,6 +26,7 @@ struct HistoryCategoryListView: View {
                         .frame(height: 40)
                         .onTapGesture {
                             onSelectCategory?(cate)
+                            FirebaseAnalytics.logEvent(type: .history_tab_click)
                         }
                 }
             }

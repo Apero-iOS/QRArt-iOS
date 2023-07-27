@@ -13,6 +13,7 @@ final class SettingsViewModel: ObservableObject {
     var cancellable = Set<AnyCancellable>()
     
     @Published public var isShowIAP: Bool = false
+    @Published public var activeScreen: SettingType?
     @Published public var isVip: Bool = UserDefaults.standard.isUserVip
     
 }

@@ -30,6 +30,9 @@ struct HistoryView: View {
                 listView
             }
         }
+        .onAppear {
+            FirebaseAnalytics.logEvent(type: .history_view)
+        }
         .padding(.horizontal, 20)
         .hideNavigationBar(isHidden: true)
     }
@@ -56,6 +59,7 @@ struct HistoryView: View {
             
             Button {
                 viewModel.isActive.toggle()
+                FirebaseAnalytics.logEvent(type: .history_qr_click)
             } label: {
                 Text(Rlocalizable.create_qr())
                     .font(R.font.urbanistSemiBold.font(size: 14))
