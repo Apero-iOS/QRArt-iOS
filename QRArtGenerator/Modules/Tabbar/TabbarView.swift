@@ -110,13 +110,20 @@ struct TabbarView: View {
     
     @ViewBuilder var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
-            HistoryView().tag(TabbarEnum.history)
-            
             HomeView().tag(TabbarEnum.home)
+                .contentShape(Rectangle())
+                .simultaneousGesture(DragGesture())
+            
+            HistoryView().tag(TabbarEnum.history)
+                .contentShape(Rectangle())
+                .simultaneousGesture(DragGesture())
             
             SettingsView().tag(TabbarEnum.settings)
+                .contentShape(Rectangle())
+                .simultaneousGesture(DragGesture())
             
         }
+        .tabViewStyle(.page)
         .onChange(of: viewModel.selectedTab, perform: { newValue in
             viewModel.changeCountSelect()
         })
