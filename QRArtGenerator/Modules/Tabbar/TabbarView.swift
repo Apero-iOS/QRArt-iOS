@@ -90,7 +90,7 @@ struct TabbarView: View {
             CreateQRView(viewModel: vm)
         }
         .fullScreenCover(isPresented: $viewModel.showIAP) {
-            IAPView()
+            IAPView(source: .topBar)
         }
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
             if viewModel.isShowAds {

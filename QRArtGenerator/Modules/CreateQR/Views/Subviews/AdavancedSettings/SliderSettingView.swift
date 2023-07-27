@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+enum SliderSettingType {
+    case guidance
+    case step
+}
+
 struct SliderSettingView: View {
     var title: String = ""
     var desc: String = ""
     @Binding var value: Double
     @State var fromValue: Int = 1
     @State var toValue: Int = 10
+    var type = SliderSettingType.guidance
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
@@ -28,6 +34,15 @@ struct SliderSettingView: View {
                         UISlider.appearance()
                             .setThumbImage(UIImage(named: "ic_tint_slider"), for: .normal)
                     }
+                    .onChange(of: value) { newValue in
+                        switch type {
+                        case .guidance:
+                            FirebaseAnalytics.logEvent(type: .advanced_setting_guidance_click)
+                        case .step:
+                            FirebaseAnalytics.logEvent(type: .advanced_setting_step_click)
+                        }
+                    }
+                
                 Text("\(Int(value))")
                     .font(R.font.urbanistSemiBold.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)

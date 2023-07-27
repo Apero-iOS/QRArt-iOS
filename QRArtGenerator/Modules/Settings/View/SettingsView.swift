@@ -29,7 +29,7 @@ struct SettingsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .listStyle(.grouped)
         .fullScreenCover(isPresented: $viewModel.isShowIAP) {
-            IAPView()
+            IAPView(source: .setting)
         }
         .onAppear {
             InappManager.share.didPaymentSuccess.sink { isSuccess in

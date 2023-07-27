@@ -29,6 +29,16 @@ class IAPViewModel: ObservableObject {
     }
     
     func onTap(index: Int) {
+        switch iapIds[index] {
+        case .week:
+            FirebaseAnalytics.logEvent(type: .sub_weekly_click)
+        case .month:
+            FirebaseAnalytics.logEvent(type: .sub_monthly_click)
+        case .lifetime:
+            FirebaseAnalytics.logEvent(type: .sub_lifetime_click)
+        case .year:
+            break
+        }
         InappManager.share.purchaseProduct(withId: iapIds[index].id)
     }
 }

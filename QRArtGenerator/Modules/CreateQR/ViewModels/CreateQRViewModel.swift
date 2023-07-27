@@ -19,6 +19,7 @@ class CreateQRViewModel: ObservableObject {
             if let indexSelectTemplate = indexSelectTemplate, !templates.isEmpty {
                 input.prompt = templates[indexSelectTemplate].positivePrompt
                 input.negativePrompt = templates[indexSelectTemplate].negativePrompt
+                input.templateQRName = templates[indexSelectTemplate].name
             }
         }
     }

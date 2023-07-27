@@ -32,6 +32,12 @@ enum FirebaseAnalyticsEnum: String {
     case qr_creation_save_share_click
     case qr_creation_download_4k_click
     case qr_creation_done_click
+    case sub_view
+    case sub_weekly_click
+    case sub_monthly_click
+    case sub_lifetime_click
+    case sub_successfull
+    case sub_successfull_3days_free_trial
 }
 
 enum FirebaseParamsKey: String {
