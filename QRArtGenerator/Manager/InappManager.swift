@@ -18,9 +18,14 @@ protocol InappManagerDelegate: AnyObject {
     func purchaseSuccess(id: String)
 }
 
-class InappManager {
+class InappManager: NSObject {
     
     static let share = InappManager()
+    
+    private override init() {
+        super.init()
+        SKPaymentQueue.default().add(self)
+    }
     
     let sharedSecret: String = "81440b93fc6e449fa826be9551a0d343"
     let productIdentifiers: Set<ProductIdentifier> = Set(IAPIdType.allCases.compactMap{$0.id})
@@ -29,6 +34,7 @@ class InappManager {
     var productsInfo = CurrentValueSubject<Set<SKProduct>, Never>([])
     var purchasedProduct: IAPIdType?
     var infoPurchaseProduct: ReceiptItem?
+    private var needShowRestoreError = false
     weak var delegate: InappManagerDelegate?
     
     func getFreedaysTrial(id: String) -> Int {
@@ -65,42 +71,11 @@ class InappManager {
     }
     
     func purchaseProduct(withId id: String) {
-        ProgressHUD.show()
-        
-        SwiftyStoreKit.purchaseProduct(id, quantity: 1, atomically: true) { [weak self] result in
-            ProgressHUD.hide()
-            switch result {
-            case .success(let purchase):
-                self?.purchasedProduct = IAPIdType.allCases.filter({ $0.id == purchase.productId }).first
-                UserDefaults.standard.isUserVip = true
-                self?.delegate?.purchaseSuccess(id: purchase.productId)
-                if purchase.needsFinishTransaction {
-                    SwiftyStoreKit.finishTransaction(purchase.transaction) // kết thúc dao dịch
-                }
-            case .error(let error):
-                switch error.code {
-                case .unknown:
-                    print("Unknown error. Please contact support")
-                case .clientInvalid:
-                    print("Not allowed to make the payment")
-                case .paymentCancelled:
-                    print("Not allowed to make the payment")
-                case .paymentInvalid:
-                    print("The purchase identifier was invalid")
-                case .paymentNotAllowed:
-                    print("The device is not allowed to make the payment")
-                case .storeProductNotAvailable:
-                    print("The product is not available in the current storefront")
-                case .cloudServicePermissionDenied:
-                    print("Access to cloud service information is not allowed")
-                case .cloudServiceNetworkConnectionFailed:
-                    print("Could not connect to the network")
-                case .cloudServiceRevoked:
-                    print("User has revoked permission to use this cloud service")
-                default:
-                    break
-                }
-            }
+        guard let product = listProduct.first(where: { $0.productIdentifier == id }) else { return }
+        if SKPaymentQueue.canMakePayments() {
+            ProgressHUD.show()
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(payment)
         }
     }
     
@@ -134,51 +109,13 @@ class InappManager {
     }
     
     // MARK: Restore
-    func restorePurchases(isShowLoading: Bool = true, completed: @escaping() -> () = {}) {
-        if isShowLoading {
-            ProgressHUD.show()
-        }
-        
-        SwiftyStoreKit.restorePurchases(atomically: true) { [weak self] results in
-            guard let _self = self else {return}
-            if results.restoreFailedPurchases.count > 0 {
-                UserDefaults.standard.isUserVip = false
-                ProgressHUD.hide()
-                completed()
+    func restorePurchases(isShowLoading: Bool = true) {
+        if (SKPaymentQueue.canMakePayments()) {
+            if isShowLoading {
+                ProgressHUD.show()
             }
-            else if results.restoredPurchases.count > 0 {
-                let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: _self.sharedSecret)
-                SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
-                    ProgressHUD.hide()
-                    switch result {
-                    case .success(let receipt):
-                        let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: _self.productIdentifiers, inReceipt: receipt)
-                        switch purchaseResult {
-                        case .purchased( _, let items):
-                            self?.infoPurchaseProduct = items.first
-                            self?.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
-                            UserDefaults.standard.isUserVip = true
-                            _self.delegate?.purchaseSuccess(id: "")
-                            completed()
-                        case .expired(_,_):
-                            UserDefaults.standard.isUserVip = false
-                            completed()
-                        case .notPurchased:
-                            UserDefaults.standard.isUserVip = false
-                            completed()
-                            break
-                        }
-                    case .error(let error):
-                        completed()
-                        print("verify faild \(error.localizedDescription)")
-                    }
-                }
-            }
-            else {
-                completed()
-                ProgressHUD.hide()
-                UserDefaults.standard.isUserVip = false
-            }
+            needShowRestoreError = isShowLoading
+            SKPaymentQueue.default().restoreCompletedTransactions()
         }
     }
     
@@ -203,7 +140,7 @@ class InappManager {
                     UserDefaults.standard.isUserVip = false
                 }
                 completed()
-            case .error(let error):
+            case .error:
                 UserDefaults.standard.isUserVip = false
                 completed()
             }
@@ -229,6 +166,60 @@ class InappManager {
         }
     }
     
+}
+
+// MARK: - SKPaymentTransactionObserver
+extension InappManager: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased, .restored:
+                let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: sharedSecret)
+                SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] result in
+                    ProgressHUD.hide()
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let receipt):
+                        let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: self.productIdentifiers, inReceipt: receipt)
+                        switch purchaseResult {
+                        case .purchased( _, let items):
+                            self.infoPurchaseProduct = items.first
+                            self.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
+                            UserDefaults.standard.isUserVip = true
+                            self.delegate?.purchaseSuccess(id: "")
+                        case .expired(_,_):
+                            UserDefaults.standard.isUserVip = false
+                        case .notPurchased:
+                            UserDefaults.standard.isUserVip = false
+                            break
+                        }
+                    case .error(let error):
+                        print("verify faild \(error.localizedDescription)")
+                    }
+                }
+                SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
+                break
+            case .failed:
+                print("Purchased Failed")
+                ProgressHUD.hide()
+                SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        if needShowRestoreError {
+            AppHelper.getRootViewController()?.view.makeToast(error.localizedDescription)
+        }
+        ProgressHUD.hide()
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        ProgressHUD.hide()
+    }
 }
 
 extension SKProduct {
