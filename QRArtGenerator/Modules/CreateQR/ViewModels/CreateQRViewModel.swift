@@ -203,7 +203,7 @@ class CreateQRViewModel: ObservableObject {
                 return .link
             }
         }
-        if input.prompt.isEmpty {
+        if input.prompt.isEmptyOrWhitespace() {
             if mode == .collapse {
                 mode = .expand
             }

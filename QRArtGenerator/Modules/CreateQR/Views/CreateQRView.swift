@@ -227,6 +227,18 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var advanceDescView: some View {
+        // prompt
+        PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].positivePrompt,
+                   title: Rlocalizable.prompt(),
+                   subTitle: Rlocalizable.prompt_desc(),
+                   typePrompt: .prompt,
+                   prompt: $viewModel.input.prompt,
+                   validInput: $viewModel.validInput,
+                   focusField: $errorFieldType,
+                   textfieldType: .prompt) {
+            viewModel.genSamplePrompt()
+        }
+                   .padding(.horizontal, 20)
         // negative prompt
         PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
                    title: Rlocalizable.negative_prompt(),
