@@ -54,7 +54,7 @@ struct PromptView: View {
                     VStack(spacing: 8) {
                         TextEditor(text: .constant(Rlocalizable.enter_prompt()))
                             .frame(height: 120, alignment: .top)
-                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                            .padding(EdgeInsets(top: 1, leading: 8, bottom: 0, trailing: 8))
                             
                             .font(R.font.urbanistRegular.font(size: 14))
                             .foregroundColor(R.color.color_6A758B.color)
@@ -68,7 +68,7 @@ struct PromptView: View {
                     TextEditor(text: $prompt)
                         .frame(height: 120, alignment: .top)
                         .focused(focusField, equals: textfieldType)
-                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                        .padding(EdgeInsets(top: 1, leading: 8, bottom: 0, trailing: 8))
                         
                         .font(R.font.urbanistRegular.font(size: 14))
                         .foregroundColor(R.color.color_1B232E.color)

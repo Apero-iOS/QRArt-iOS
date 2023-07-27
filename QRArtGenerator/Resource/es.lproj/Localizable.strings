@@ -101,7 +101,7 @@
 "negative_prompt" = "Aviso negativo (opcional)";
 "negative_prompt_desc" = "Solicitar que advierte a ai que fingir";
 "basic" = "Básico";
-"go_further_with" = "Ir más allá con";
+"go_further_with" = "Ir más allá con ";
 "pro_up" = "PRO";
 "version_iap" = " versión";
 "no_advertisements" = "Sin publicidad";

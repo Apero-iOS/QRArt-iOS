@@ -101,7 +101,7 @@
 "negative_prompt" = "Invite négative (facultative)";
 "negative_prompt_desc" = "Invite à avertir l'IA de faire semblant";
 "basic" = "Basique";
-"go_further_with" = "Aller plus loin";
+"go_further_with" = "Aller plus loin ";
 "pro_up" = "PRO";
 "version_iap" = " version";
 "no_advertisements" = "Aucune publicité";

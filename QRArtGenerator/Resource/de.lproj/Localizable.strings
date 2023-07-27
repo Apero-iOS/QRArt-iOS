@@ -101,7 +101,7 @@
 "negative_prompt" = "Negative Eingabeaufforderung (optional)";
 "negative_prompt_desc" = "Auffordern Sie, dass die Ki vorgibt";
 "basic" = "Basic";
-"go_further_with" = "Geh weiter mit";
+"go_further_with" = "Geh weiter mit ";
 "pro_up" = "PROFI";
 "version_iap" = " Ausführung";
 "no_advertisements" = "Keine Werbung";

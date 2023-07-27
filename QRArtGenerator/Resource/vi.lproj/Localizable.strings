@@ -101,8 +101,8 @@
 "negative_prompt" = "Lời nhắc âm (tùy chọn)";
 "negative_prompt_desc" = "Nhắc rằng AI cảnh báo giả vờ";
 "basic" = "Nền tảng";
-"go_further_with" = "Go further with";
-"pro_up" = "Pro";
+"go_further_with" = "Go further with ";
+"pro_up" = "PRO";
 "version_iap" = " version";
 "no_advertisements" = "Không có quảng cáo";
 "unlimited_qr_generation" = "Tạo QR không giới hạn";
