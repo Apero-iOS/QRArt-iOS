@@ -82,39 +82,16 @@ struct IAPView: View {
                         }
                         .padding(.top, 8)
                         
-                        HStack(spacing: 16) {
-                            Text(Rlocalizable.terms_of_service)
-                                .font(R.font.urbanistBold.font(size: 12))
-                                .foregroundColor(R.color.color_6A758B.color)
-                                .onTapGesture {
-                                    viewModel.showTerms.toggle()
-                                }
-                            
-                            Rectangle()
-                                .frame(width: 1)
-                                .foregroundColor(R.color.color_6A758B.color)
-                            
-                            Text(Rlocalizable.privacy_policy)
-                                .font(R.font.urbanistBold.font(size: 12))
-                                .foregroundColor(R.color.color_6A758B.color)
-                                .onTapGesture {
-                                    viewModel.showPolicy.toggle()
-                                }
-                            
-                            Spacer()
-                            
-                            Text(Rlocalizable.restore)
-                                .font(R.font.urbanistBold.font(size: 12))
-                                .foregroundColor(R.color.color_6A758B.color)
-                                .onTapGesture {
-                                    InappManager.share.restorePurchases()
-                                }
-                        }
+                        Text(Rlocalizable.cancel_anytime)
+                            .font(R.font.urbanistMedium.font(size: 14))
+                            .foregroundColor(R.color.color_6A758B.color)
                         
                         Text(Rlocalizable.iap_description)
                             .font(R.font.urbanistRegular.font(size: 12))
                             .foregroundColor(R.color.color_6A758B.color)
                             .lineSpacing(3)
+                        
+                        termPrivacyView
                     }
                     .padding(.horizontal, 20)
                 }
@@ -143,7 +120,7 @@ struct IAPView: View {
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess {
                     var package_time = ""
-                    var subPurchase = viewModel.iapIds[viewModel.selectedIndex]
+                    let subPurchase = viewModel.iapIds[viewModel.selectedIndex]
                     switch subPurchase {
                     case .month:
                         package_time = "month"
@@ -166,9 +143,6 @@ struct IAPView: View {
                 
             }.store(in: &cancellable)
         }
-        .onDisappear(perform: {
-//            onClose?()
-        })
         .sheet(isPresented: $viewModel.showTerms) {
             NavigationView {
                 WebView(urlString: Constants.termUrl)
@@ -184,6 +158,39 @@ struct IAPView: View {
                     .navigationTitle(Rlocalizable.privacy_policy())
                     .navigationBarTitleDisplayMode(.inline)
             }
+        }
+    }
+    
+    @ViewBuilder var termPrivacyView: some View {
+        HStack(spacing: 16) {
+            Text(Rlocalizable.terms_of_service)
+                .font(R.font.urbanistBold.font(size: 12))
+                .foregroundColor(R.color.color_6A758B.color)
+                .onTapGesture {
+                    viewModel.showTerms.toggle()
+                }
+            
+            Rectangle()
+                .frame(width: 1)
+                .foregroundColor(R.color.color_6A758B.color)
+            
+            Text(Rlocalizable.privacy_policy)
+                .font(R.font.urbanistBold.font(size: 12))
+                .foregroundColor(R.color.color_6A758B.color)
+                .onTapGesture {
+                    viewModel.showPolicy.toggle()
+                }
+            
+            Rectangle()
+                .frame(width: 1)
+                .foregroundColor(R.color.color_6A758B.color)
+            
+            Text(Rlocalizable.restore)
+                .font(R.font.urbanistBold.font(size: 12))
+                .foregroundColor(R.color.color_6A758B.color)
+                .onTapGesture {
+                    InappManager.share.restorePurchases()
+                }
         }
     }
 }
