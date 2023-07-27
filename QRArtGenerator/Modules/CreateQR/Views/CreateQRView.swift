@@ -238,7 +238,7 @@ struct CreateQRView: View {
                    textfieldType: .prompt) {
             viewModel.genSamplePrompt()
         }
-                   .padding(.horizontal, 20)
+                .padding(.horizontal, 20)
         // negative prompt
         PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
                    title: Rlocalizable.negative_prompt(),
