@@ -39,13 +39,12 @@ struct PromptView: View {
                             .foregroundColor(R.color.color_6A758B.color)
                         Spacer()
                         if !prompt.isEmpty {
-                            Button {
-                                prompt = ""
-                            } label: {
-                                Text(Rlocalizable.reset())
-                                    .font(R.font.urbanistMedium.font(size: 12))
-                                    .foregroundColor(R.color.color_1B232E.color)
-                            }
+                            Text(Rlocalizable.reset())
+                                .font(R.font.urbanistMedium.font(size: 12))
+                                .foregroundColor(R.color.color_1B232E.color)
+                                .onTapGesture {
+                                    prompt = ""
+                                }
                         }
                     }
                 }
@@ -84,7 +83,7 @@ struct PromptView: View {
                 .border(radius: 12, color: getBorderColor(), width: 1)
 
             }
-            if validInput && typePrompt == .prompt && prompt.isEmpty {
+            if validInput && typePrompt == .prompt && prompt.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
                     .font(R.font.urbanistRegular.font(size: 14))
@@ -93,7 +92,7 @@ struct PromptView: View {
     }
     
     func getBorderColor() -> Color {
-        if validInput && typePrompt == .prompt && prompt.isEmpty {
+        if validInput && typePrompt == .prompt && prompt.isEmptyOrWhitespace() {
             return R.color.color_BD1E1E.color
         } else {
             if focusField.wrappedValue == textfieldType {
@@ -113,11 +112,11 @@ struct PromptView: View {
                 .font(R.font.urbanistMedium.font(size: 12))
                 .foregroundColor(getColorCountText(type: .limit))
             Spacer()
-            Button {
-                didTap?()
-            } label: {
-                R.image.ic_random_prompt.image
-            }
+            R.image.ic_random_prompt.image
+                .onTapGesture {
+                    didTap?()
+                    FirebaseAnalytics.logEvent(type: typePrompt == .prompt ? .advanced_suggest_prompt_click : .advanced_suggest_negative_prompt_click)
+                }
         }
         .padding(EdgeInsets(top: 0, leading: 12, bottom: 8, trailing: 12))
     }
@@ -128,7 +127,7 @@ struct PromptView: View {
     }
     
     func getColorCountText(type: TextCount) -> Color {
-        if prompt.isEmpty || prompt.count >= maxLength {
+        if prompt.count >= maxLength {
             return R.color.color_BD1E1E.color
         }
         switch type {
