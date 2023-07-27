@@ -97,6 +97,7 @@ struct ResultView: View {
                         Spacer()
                         
                         Button(viewModel.isCreate ? Rlocalizable.done() : "") {
+                            FirebaseAnalytics.logEvent(type: .qr_creation_done_click)
                             viewModel.isCreate ? viewModel.save() : ()
                         }
                         .font(R.font.urbanistSemiBold.font(size: 14))
@@ -109,7 +110,7 @@ struct ResultView: View {
                 ShareSheet(items: [viewModel.item.qrImage])
             })
             .fullScreenCover(isPresented: $viewModel.showIAP) {
-                IAPView()
+                IAPView(source: .download4K)
             }
             .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
                 LoadingView()
@@ -125,6 +126,12 @@ struct ResultView: View {
                 .padding(.all, 0)
             }
         }
+        .onAppear {
+            FirebaseAnalytics.logEvent(type: .qr_creation_result_view, params: [.style: viewModel.item.templateQRName,
+                                                                                .qr_type: viewModel.item.type.title,
+                                                                                .guidance_number: "\(viewModel.item.guidance)",
+                                                                                .step_number: "\(viewModel.item.steps)"])
+        }
     }
     
     @ViewBuilder var shareButton: some View {
@@ -135,6 +142,7 @@ struct ResultView: View {
     
     @ViewBuilder var regenerateButton: some View {
         ResultButtonView(typeButton: .regenerate) {
+            FirebaseAnalytics.logEvent(type: .qr_creation_regenerate_click)
             viewModel.showAdsInter()
         }
     }
@@ -147,6 +155,7 @@ struct ResultView: View {
     
     @ViewBuilder var download4kButton: some View {
         ResultButtonView(typeButton: .download4k, isCreate: viewModel.isCreate, onTap: {
+            FirebaseAnalytics.logEvent(type: .qr_creation_download_4k_click)
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
             } else {
@@ -157,6 +166,7 @@ struct ResultView: View {
     
     @ViewBuilder var saveAndShareButton: some View {
         ResultButtonView(typeButton: .saveAndShare) {
+            FirebaseAnalytics.logEvent(type: .qr_creation_save_share_click)
             viewModel.saveAndShare()
         }
     }

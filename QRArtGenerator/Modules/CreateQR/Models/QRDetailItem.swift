@@ -16,6 +16,7 @@ struct QRDetailItem: QRItem {
     var groupType: QRGroupType = .basic
     var templateId: String = ""
     var urlString: String = ""
+    var templateQRName: String = ""
     
     // Contact
     var contactName: String = ""

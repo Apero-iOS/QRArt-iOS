@@ -8,12 +8,20 @@
 import SwiftUI
 import Combine
 
+enum SourceIAPView: String {
+    case topBar = "top_bar"
+    case download4K = "download_4k"
+    case generateButton = "generate_button"
+    case setting = "setting"
+}
+
 struct IAPView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @StateObject var viewModel = IAPViewModel()
     @State var cancellable = Set<AnyCancellable>()
     var onClose: (() -> Void)? = nil
+    var source: SourceIAPView = .setting
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -130,9 +138,29 @@ struct IAPView: View {
         }
         .ignoresSafeArea()
         .onAppear {
+            FirebaseAnalytics.logEvent(type: .sub_view, params: [.source: source.rawValue])
             viewModel.getInfoIAP()
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess {
+                    var package_time = ""
+                    var subPurchase = viewModel.iapIds[viewModel.selectedIndex]
+                    switch subPurchase {
+                    case .month:
+                        package_time = "month"
+                    case .week:
+                        package_time = "week"
+                    case .lifetime:
+                        package_time = "lifetime"
+                    default:
+                        break
+                    }
+                    
+                    FirebaseAnalytics.logEvent(type: .sub_successfull, params: [.source: source.rawValue,
+                                                                                .package_time: package_time])
+                    if subPurchase.freeday == 3 {
+                        FirebaseAnalytics.logEvent(type: .sub_successfull_3days_free_trial, params: [.source: source.rawValue,
+                                                                                                     .package_time: package_time])
+                    }
                     dismiss()
                 }
                 

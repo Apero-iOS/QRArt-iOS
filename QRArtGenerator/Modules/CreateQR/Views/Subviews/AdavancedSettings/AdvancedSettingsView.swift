@@ -34,6 +34,7 @@ struct AdvancedSettingsView: View {
             }
             .background(Color.white)
             .onTapGesture {
+                FirebaseAnalytics.logEvent(type: .advanced_setting_view)
                 UIApplication.shared.endEditing()
                 if mode == .expand {
                     withAnimation(.easeIn(duration: 0.2)) {

@@ -115,6 +115,7 @@ struct PromptView: View {
             Spacer()
             Button {
                 didTap?()
+                FirebaseAnalytics.logEvent(type: typePrompt == .prompt ? .advanced_suggest_prompt_click : .advanced_suggest_negative_prompt_click)
             } label: {
                 R.image.ic_random_prompt.image
             }

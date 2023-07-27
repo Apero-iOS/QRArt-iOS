@@ -35,7 +35,7 @@ struct CreateQRView: View {
                 ResultView(viewModel: resultViewModel)
             }
             .fullScreenCover(isPresented: $viewModel.showSub) {
-                IAPView()
+                IAPView(source: .generateButton)
             }
             .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
                 LoadingView()
@@ -227,18 +227,6 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var advanceDescView: some View {
-        // prompt
-        PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].positivePrompt,
-                   title: Rlocalizable.prompt(),
-                   subTitle: Rlocalizable.prompt_desc(),
-                   typePrompt: .prompt,
-                   prompt: $viewModel.input.prompt,
-                   validInput: $viewModel.validInput,
-                   focusField: $errorFieldType,
-                   textfieldType: .prompt) {
-            viewModel.genSamplePrompt()
-        }
-                   .padding(.horizontal, 20)
         // negative prompt
         PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
                    title: Rlocalizable.negative_prompt(),
@@ -256,7 +244,8 @@ struct CreateQRView: View {
                           desc: Rlocalizable.guidance_desc(),
                           value: $viewModel.input.guidance,
                           fromValue: 1,
-                          toValue: 10)
+                          toValue: 10,
+                          type: .guidance)
         .padding(.horizontal, 20)
         
         // steps
@@ -264,7 +253,8 @@ struct CreateQRView: View {
                           desc: Rlocalizable.steps_desc(),
                           value: $viewModel.input.steps,
                           fromValue: 1,
-                          toValue: 10)
+                          toValue: 10,
+                          type: .step)
         .padding(.horizontal, 20)
     }
 }
