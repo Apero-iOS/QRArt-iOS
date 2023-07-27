@@ -24,7 +24,7 @@ struct PromptView: View {
     var focusField: FocusState<TextFieldType?>.Binding
     var textfieldType: TextFieldType
     var didTap: VoidBlock?
-    let maxLength: Int = 10
+    let maxLength: Int = 500
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
