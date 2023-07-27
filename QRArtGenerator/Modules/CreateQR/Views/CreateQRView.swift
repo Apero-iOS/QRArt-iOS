@@ -63,7 +63,7 @@ struct CreateQRView: View {
         ZStack {
             VStack(spacing: 0) {
                 ScrollViewReader { proxy in
-                    ScrollView {
+                    List {
                         templateView
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
@@ -227,43 +227,44 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var advanceDescView: some View {
-        VStack {
-            // prompt
-            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].positivePrompt,
-                       title: Rlocalizable.prompt(),
-                       subTitle: Rlocalizable.prompt_desc(),
-                       typePrompt: .prompt,
-                       prompt: $viewModel.input.prompt,
-                       validInput: $viewModel.validInput,
-                       focusField: $errorFieldType,
-                       textfieldType: .prompt) {
-                viewModel.genSamplePrompt()
-            }
-            // negative prompt
-            PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
-                       title: Rlocalizable.negative_prompt(),
-                       subTitle: Rlocalizable.negative_prompt_desc(),
-                       typePrompt: .negativePrompt,
-                       prompt: $viewModel.input.negativePrompt,
-                       validInput: $viewModel.validInput,
-                       focusField: $errorFieldType,
-                       textfieldType: .negativePrompt) {
-                viewModel.genSampleNegativePrompt()
-            }
-            // guidance
-            SliderSettingView(title: Rlocalizable.guidance(),
-                              desc: Rlocalizable.guidance_desc(),
-                              value: $viewModel.input.guidance,
-                              fromValue: 1,
-                              toValue: 10)
-            
-            // steps
-            SliderSettingView(title: Rlocalizable.steps(),
-                              desc: Rlocalizable.steps_desc(),
-                              value: $viewModel.input.steps,
-                              fromValue: 1,
-                              toValue: 10)
+        // prompt
+        PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].positivePrompt,
+                   title: Rlocalizable.prompt(),
+                   subTitle: Rlocalizable.prompt_desc(),
+                   typePrompt: .prompt,
+                   prompt: $viewModel.input.prompt,
+                   validInput: $viewModel.validInput,
+                   focusField: $errorFieldType,
+                   textfieldType: .prompt) {
+            viewModel.genSamplePrompt()
         }
+                   .padding(.horizontal, 20)
+        // negative prompt
+        PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
+                   title: Rlocalizable.negative_prompt(),
+                   subTitle: Rlocalizable.negative_prompt_desc(),
+                   typePrompt: .negativePrompt,
+                   prompt: $viewModel.input.negativePrompt,
+                   validInput: $viewModel.validInput,
+                   focusField: $errorFieldType,
+                   textfieldType: .negativePrompt) {
+            viewModel.genSampleNegativePrompt()
+        }
+                   .padding(.horizontal, 20)
+        // guidance
+        SliderSettingView(title: Rlocalizable.guidance(),
+                          desc: Rlocalizable.guidance_desc(),
+                          value: $viewModel.input.guidance,
+                          fromValue: 1,
+                          toValue: 10)
+        .padding(.horizontal, 20)
+        
+        // steps
+        SliderSettingView(title: Rlocalizable.steps(),
+                          desc: Rlocalizable.steps_desc(),
+                          value: $viewModel.input.steps,
+                          fromValue: 1,
+                          toValue: 10)
         .padding(.horizontal, 20)
     }
 }
