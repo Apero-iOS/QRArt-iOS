@@ -126,6 +126,7 @@ class CreateQRViewModel: ObservableObject {
     }
     
     public func onTapGenerate() {
+        FirebaseAnalytics.logEvent(type: .qr_creation_generate_click)
         validInput = true
         errorInputType = getErrorInput()
         if errorInputType == nil {

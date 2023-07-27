@@ -73,4 +73,13 @@ class TabbarViewModel: ObservableObject, Identifiable {
     public func canShowBannerAd() -> Bool {
         return isShowAdsBanner && !failAds
     }
+    
+    public func logEventTracking(type: TabbarEnum) {
+        switch type {
+            case .history:
+                FirebaseAnalytics.logEvent(type: .history_click)
+            default:
+                break
+        }
+    }
 }

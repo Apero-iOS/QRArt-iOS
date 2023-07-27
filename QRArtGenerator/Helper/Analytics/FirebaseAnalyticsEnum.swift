@@ -38,6 +38,17 @@ enum FirebaseAnalyticsEnum: String {
     case sub_lifetime_click
     case sub_successfull
     case sub_successfull_3days_free_trial
+    case history_click
+    case history_view
+    case history_all_click
+    case history_tab_click
+    case history_qr_click
+    case setting_view
+    case setting_language
+    case setting_pricacy_policy
+    case setting_term_of_service
+    case setting_rate_app
+    case setting_share_app
 }
 
 enum FirebaseParamsKey: String {

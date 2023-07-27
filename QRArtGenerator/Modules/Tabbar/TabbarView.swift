@@ -126,6 +126,7 @@ struct TabbarView: View {
         .tabViewStyle(.page)
         .onChange(of: viewModel.selectedTab, perform: { newValue in
             viewModel.changeCountSelect()
+            viewModel.logEventTracking(type: newValue)
         })
     }
     
