@@ -173,7 +173,7 @@ extension InappManager: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-            case .purchased, .restored:
+            case .restored:
                 let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: sharedSecret)
                 SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] result in
                     ProgressHUD.hide()
@@ -198,12 +198,14 @@ extension InappManager: SKPaymentTransactionObserver {
                     }
                 }
                 SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
-                break
+            case .purchased:
+                purchasedProduct = IAPIdType.allCases.filter({ $0.id == transaction.payment.productIdentifier }).first
+                UserDefaults.standard.isUserVip = true
+                SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
             case .failed:
                 print("Purchased Failed")
                 ProgressHUD.hide()
                 SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
-                break
             default:
                 break
             }
