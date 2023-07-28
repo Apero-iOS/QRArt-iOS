@@ -173,32 +173,8 @@ extension InappManager: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
-            case .restored:
-                let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: sharedSecret)
-                SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] result in
-                    ProgressHUD.hide()
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let receipt):
-                        let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: self.productIdentifiers, inReceipt: receipt)
-                        switch purchaseResult {
-                        case .purchased( _, let items):
-                            self.infoPurchaseProduct = items.first
-                            self.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
-                            UserDefaults.standard.isUserVip = true
-                            self.delegate?.purchaseSuccess(id: "")
-                        case .expired(_,_):
-                            UserDefaults.standard.isUserVip = false
-                        case .notPurchased:
-                            UserDefaults.standard.isUserVip = false
-                            break
-                        }
-                    case .error(let error):
-                        print("verify faild \(error.localizedDescription)")
-                    }
-                }
-                SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
             case .purchased:
+                ProgressHUD.hide()
                 purchasedProduct = IAPIdType.allCases.filter({ $0.id == transaction.payment.productIdentifier }).first
                 UserDefaults.standard.isUserVip = true
                 SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
@@ -220,7 +196,32 @@ extension InappManager: SKPaymentTransactionObserver {
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        ProgressHUD.hide()
+        let appleValidator = AppleReceiptValidator(service: Constants.isDev ? .sandbox : .production, sharedSecret: sharedSecret)
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { [weak self] result in
+            ProgressHUD.hide()
+            guard let self = self else { return }
+            switch result {
+            case .success(let receipt):
+                let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: self.productIdentifiers, inReceipt: receipt)
+                switch purchaseResult {
+                case .purchased( _, let items):
+                    self.infoPurchaseProduct = items.first
+                    self.purchasedProduct = IAPIdType.allCases.filter({ $0.id == items[0].productId }).first
+                    UserDefaults.standard.isUserVip = true
+                    self.delegate?.purchaseSuccess(id: "")
+                case .expired(_,_):
+                    UserDefaults.standard.isUserVip = false
+                case .notPurchased:
+                    UserDefaults.standard.isUserVip = false
+                    break
+                }
+            case .error(let error):
+                print("verify faild \(error.localizedDescription)")
+            }
+        }
+        for transaction in queue.transactions {
+            SKPaymentQueue.default().finishTransaction(transaction as SKPaymentTransaction)
+        }
     }
 }
 

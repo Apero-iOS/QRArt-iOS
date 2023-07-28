@@ -109,6 +109,7 @@
 		9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9ADEE5162A4973C40075FCE0 /* Localizable.strings */; };
 		9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE51D2A497E360075FCE0 /* Constants.swift */; };
 		9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */; };
+		9AF2E4CC2A738119001374EE /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */; };
 		A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E692A4ADCB20002FEF6 /* Router.swift */; };
 		A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */; };
 		A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */; };
@@ -305,6 +306,7 @@
 		9ADEE51B2A497DF50075FCE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9ADEE51D2A497E360075FCE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
+		9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A49D14FD2A4D9ADA00CA5FE9 /* NavibarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavibarView.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				59F74C402A4EC4C200AD8CBA /* WebView.swift */,
 				9AB852892A513DD400A546F4 /* Loading.swift */,
 				76FC00E62A5BBDB800B53B5F /* LimitedTextField.swift */,
+				9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1681,6 +1684,7 @@
 				C8109C7E2A5160350093B48A /* GenerateQRRequest.swift in Sources */,
 				9AC7DCD62A4DB71D00FB3119 /* Country.swift in Sources */,
 				9AD522812A4A86A300A947B5 /* R+.swift in Sources */,
+				9AF2E4CC2A738119001374EE /* RefreshableScrollView.swift in Sources */,
 				C8109C8A2A5198970093B48A /* ResultView.swift in Sources */,
 				9AD373732A4EBB3400FCF934 /* SearchView.swift in Sources */,
 				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
