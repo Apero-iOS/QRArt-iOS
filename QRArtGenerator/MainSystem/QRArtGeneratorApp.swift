@@ -67,7 +67,7 @@ struct QRArtGeneratorApp: App {
     private func configKeyboard() {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 30
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 70
     }
     
     private func configIAP() {

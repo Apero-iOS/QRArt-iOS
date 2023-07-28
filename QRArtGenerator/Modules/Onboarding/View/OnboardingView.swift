@@ -39,12 +39,16 @@ struct OnboardingView: View {
                 .padding(.bottom, 50.0)
                 
             }
-        }.ignoresSafeArea()
-            .fullScreenCover(isPresented: $showSub) {
-                IAPView {
-                    Router.showTabbar()
-                }
+        }
+        .ignoresSafeArea()
+        .fullScreenCover(isPresented: $showSub) {
+            IAPView(isAfterOnboarding: true) {
+                Router.showTabbar()
             }
+        }
+        .onAppear {
+            PermissionTrackkingHelper.requestPermissionTrackking()
+        }
     }
     
     private func changePage() {

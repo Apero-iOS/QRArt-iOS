@@ -20,6 +20,7 @@ struct IAPView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @StateObject var viewModel = IAPViewModel()
     @State var cancellable = Set<AnyCancellable>()
+    var isAfterOnboarding: Bool = false
     var onClose: (() -> Void)? = nil
     var source: SourceIAPView = .setting
     
@@ -138,7 +139,7 @@ struct IAPView: View {
                         FirebaseAnalytics.logEvent(type: .sub_successfull_3days_free_trial, params: [.source: source.rawValue,
                                                                                                      .package_time: package_time])
                     }
-                    dismiss()
+                    isAfterOnboarding ? onClose?() : dismiss()
                 }
                 
             }.store(in: &cancellable)
