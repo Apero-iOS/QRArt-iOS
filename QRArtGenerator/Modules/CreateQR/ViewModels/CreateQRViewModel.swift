@@ -14,15 +14,9 @@ class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
     @Published var templates: [Template] = []
-    @Published var indexSelectTemplate: Int? {
-        didSet {
-            if let indexSelectTemplate = indexSelectTemplate, !templates.isEmpty {
-                input.prompt = templates[indexSelectTemplate].positivePrompt
-                input.negativePrompt = templates[indexSelectTemplate].negativePrompt
-                input.templateQRName = templates[indexSelectTemplate].name
-            }
-        }
-    }
+    @Published var isShowPopupCreate: Bool = false
+    @Published var isShowViewChooseStyle: Bool = false
+    @Published var baseUrl: String = ""
     @Published var input: QRDetailItem = QRDetailItem() {
         didSet {
             if input.type != oldValue.type {
@@ -41,9 +35,10 @@ class CreateQRViewModel: ObservableObject {
     @Published var showSub: Bool = false
     @Published var showToastError: Bool = false
     @Published var isPush: Bool
+    @Published var qrImage: UIImage?
     @Published var mode: AdvancedSettingsMode = .collapse
     @Published var idTemplateSelect: String?
-    @Published var templateSelect: Template?
+    @Published var templateSelect: Template
     @Published var isLoadAdsSuccess: Bool = true
     @Published var errorInputType: TextFieldType?
     @Published var promptSample: PromptSample = PromptSample()
@@ -62,9 +57,11 @@ class CreateQRViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    init(source: CreateQRViewSource, templateSelect: Template?, isPush: Bool = false) {
+    init(source: CreateQRViewSource, templateSelect: Template, isPush: Bool = false, qrImage: UIImage? = nil, baseUrl: String? = nil) {
         self.source = source
         self.isPush = isPush
+        self.baseUrl = baseUrl ?? ""
+        self.qrImage = qrImage
         self.templateSelect = templateSelect
         self.templates.insert(Template(), at: 0)
     }
@@ -82,19 +79,14 @@ class CreateQRViewModel: ObservableObject {
             templateRepository.fetchTemplates().sink { comple in
                 switch comple {
                 case .finished:
-                    self.indexSelectTemplate = 1
                     self.needFetchTemplates = false
                 case .failure:
-                    self.indexSelectTemplate = 0
+                    break
                 }
-                
             } receiveValue: { [weak self] listTemplates in
                 guard let self = self else { return }
                 if let listTemplates = listTemplates {
                     self.templates.append(contentsOf: listTemplates.items)
-                    if let index = self.templates.firstIndex(where: {$0 == self.templateSelect}) {
-                        self.templates.swapAt(1, index)
-                    }
                 }
             }.store(in: &cancellable)
         }
@@ -130,21 +122,21 @@ class CreateQRViewModel: ObservableObject {
         validInput = true
         errorInputType = getErrorInput()
         if errorInputType == nil {
-            if UserDefaults.standard.isUserVip {
-                generateQR()
+            if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
+                isShowPopupCreate.toggle()
             } else {
-                if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
-                    // show sub
-                    showSub = true
-                } else {
-                    // show ads
-                    showAdsInter()
-                }
+                showAdsInter()
             }
         }
     }
     
     func getErrorInput() -> TextFieldType? {
+        if qrImage != nil {
+            if baseUrl.isEmptyOrWhitespace() {
+                return .baseUrl
+            }
+            return nil
+        }
         if input.name.isEmptyOrWhitespace() {
             return .name
         }
@@ -248,6 +240,9 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func getQRText() -> String {
+        if qrImage != nil {
+            return baseUrl
+        }
         switch input.type {
         case .website, .instagram, .facebook, .twitter, .spotify, .youtube:
             return input.urlString

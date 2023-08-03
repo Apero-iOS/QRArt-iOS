@@ -21,7 +21,7 @@ struct CreateQRView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        parentView
+            parentView
             .onAppear {
                 UISlider.appearance()
                     .setThumbImage(UIImage(named: "ic_tint_slider"), for: .normal)
@@ -40,6 +40,14 @@ struct CreateQRView: View {
             .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
                 LoadingView()
             }
+            .fullScreenCover(isPresented: $viewModel.isShowViewChooseStyle, content: {
+                ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
+                    viewModel.templateSelect = template
+                }
+            })
+            .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, showTopIndicator: false, content: {
+                popupGenerateView
+            })
             .onChange(of: viewModel.input.type) { newValue in
                 viewModel.input.name = ""
             }
@@ -59,25 +67,61 @@ struct CreateQRView: View {
         }
     }
     
+    @ViewBuilder var popupGenerateView: some View {
+        VStack {
+          
+            Button {
+                viewModel.showAdsInter()
+            } label: {
+                Text("Ads")
+            }
+            
+            Button {
+                viewModel.showSub = true
+            } label: {
+                Text("Sub")
+            }
+
+        }
+    }
+    
     @ViewBuilder var contentView: some View {
         ZStack {
             VStack(spacing: 0) {
                 ScrollViewReader { proxy in
                     List {
+                        if let qrImage = viewModel.qrImage {
+                            VStack {
+                                HStack {
+                                    Text("You Qr code")
+                                    Spacer()
+                                    Text("Edit")
+                                }
+                                HStack {
+                                    TextEditor(text: $viewModel.baseUrl)
+                                    Image(uiImage: qrImage)
+                                        .resizable()
+                                        .frame(width: 100, height: 100)
+                                        .aspectRatio(1, contentMode: .fill)
+                                        .cornerRadius(10)
+                                }
+                            }
+                        }
                         templateView
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
                             .hideSeparatorLine()
-                        
-                        qrDetailView
-                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-                            .background(Color.white)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
-                            .hideSeparatorLine()
-                        
+                        if viewModel.qrImage == nil {
+                            qrDetailView
+                                .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                                .background(Color.white)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                                .hideSeparatorLine()
+                        }
+                   
                         advancedSettingsView(proxy: proxy)
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
@@ -95,6 +139,7 @@ struct CreateQRView: View {
                         }
                     }
                     .listStyle(.plain)
+                    .clipped()
                     .background(R.color.color_F7F7F7.color)
                     .clearBackgroundColorList()
                     .hideScrollIndicator()
@@ -125,8 +170,10 @@ struct CreateQRView: View {
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+           
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
+        
         .sheet(isPresented: $viewModel.showingSelectQRTypeView, content: {
             qrSelectView
                 .presentationDetent()
@@ -139,48 +186,69 @@ struct CreateQRView: View {
         .navigationTitle(Rlocalizable.create_qr_title())
         .toolbar {      // navigation bar when create new
             ToolbarItem(placement: .principal) {
-                HStack {
-                    if !viewModel.isPush {
-                        Image(R.image.ic_close_screen)
-                            .padding(.leading, 4)
-                            .onTapGesture {
-                                dismiss()
-                            }
-                    }
-                    
-                    Spacer()
-                    
+                ZStack {
                     HStack {
-                        Text(Rlocalizable.create_qr_title)
-                            .font(R.font.urbanistSemiBold.font(size: 18))
-                            .lineLimit(1)
+                        if !viewModel.isPush {
+                            Image(R.image.ic_close_screen)
+                                .padding(.leading, 4)
+                                .onTapGesture {
+                                    dismiss()
+                                }
+                        }
                         
-                        Image(R.image.ic_shine_ai)
-                            .frame(width: 28, height: 24)
-                            .offset(x: -3, y: -3)
+                        Spacer()
+                        
+                        HStack {
+                            Text(Rlocalizable.create_qr_title)
+                                .font(R.font.urbanistSemiBold.font(size: 18))
+                                .lineLimit(1)
+                            
+                            Image(R.image.ic_shine_ai)
+                                .frame(width: 28, height: 24)
+                                .offset(x: -3, y: -3)
+                        }
+                        
+                        Spacer()
+                        
+                        if !UserDefaults.standard.isUserVip {
+                            Image(R.image.ic_purchase)
+                                .padding(.trailing, 3)
+                                .onTapGesture {
+                                    viewModel.showSub = true
+                                }
+                        } else {
+                            Color.clear
+                                .frame(width: viewModel.isPush ? 33 : 20)
+                        }
                     }
-                    
-                    Spacer()
-                    
-                    if !UserDefaults.standard.isUserVip {
-                        Image(R.image.ic_purchase)
-                            .padding(.trailing, 3)
-                            .onTapGesture {
-                                viewModel.showSub = true
-                            }
-                    } else {
-                        Color.clear
-                            .frame(width: viewModel.isPush ? 33 : 20)
-                    }
+                    .frame(height: 48)
                 }
-                .frame(height: 48)
+               
+
             }
+        }
+        .onAppear {
+        
         }
     }
     
     @ViewBuilder var templateView: some View {
-        ChooseTemplateView(templates: $viewModel.templates,
-                           indexSelectStyle: $viewModel.indexSelectTemplate)
+//        ChooseTemplateView(templates: $viewModel.templates,
+//                           indexSelectStyle: $viewModel.indexSelectTemplate)
+        VStack {
+            HStack {
+                Text("Choose style")
+                Spacer()
+                Text("Edit")
+            }.background(Color.white)
+            .onTapGesture {
+                viewModel.isShowViewChooseStyle.toggle()
+            }
+            ItemTemplateView(template: $viewModel.templateSelect)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 20)
+       
     }
     
     @ViewBuilder var qrDetailView: some View {
@@ -228,7 +296,7 @@ struct CreateQRView: View {
     
     @ViewBuilder var advanceDescView: some View {
         // prompt
-        PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].positivePrompt,
+        PromptView(oldPrompt: viewModel.templateSelect.positivePrompt,
                    title: Rlocalizable.prompt(),
                    subTitle: Rlocalizable.prompt_desc(),
                    typePrompt: .prompt,
@@ -238,35 +306,22 @@ struct CreateQRView: View {
                    textfieldType: .prompt) {
             viewModel.genSamplePrompt()
         }
-                   .padding(.horizontal, 20)
-        // negative prompt
-        PromptView(oldPrompt: viewModel.templates[viewModel.indexSelectTemplate ?? 0].negativePrompt,
-                   title: Rlocalizable.negative_prompt(),
-                   subTitle: Rlocalizable.negative_prompt_desc(),
-                   typePrompt: .negativePrompt,
-                   prompt: $viewModel.input.negativePrompt,
-                   validInput: $viewModel.validInput,
-                   focusField: $errorFieldType,
-                   textfieldType: .negativePrompt) {
-            viewModel.genSampleNegativePrompt()
-        }
-                   .padding(.horizontal, 20)
-        // guidance
-        SliderSettingView(title: Rlocalizable.guidance(),
-                          desc: Rlocalizable.guidance_desc(),
-                          value: $viewModel.input.guidance,
-                          fromValue: 1,
-                          toValue: 10,
-                          type: .guidance)
         .padding(.horizontal, 20)
         
-        // steps
-        SliderSettingView(title: Rlocalizable.steps(),
-                          desc: Rlocalizable.steps_desc(),
-                          value: $viewModel.input.steps,
-                          fromValue: 1,
-                          toValue: 10,
-                          type: .step)
-        .padding(.horizontal, 20)
+        ScrollView(.horizontal) {
+            HStack(spacing: 15) {
+                ForEach(0..<10) { index in
+                    HStack {
+                        Text("Test Tag \(index)")
+                            .padding(.horizontal, 10)
+                    }
+                    .frame(height: 50)
+                    .background(Color.gray)
+                    .cornerRadius(25)
+                }
+            }.padding(.horizontal, 20)
+        }
+        .background(Color.white)
+    
     }
 }

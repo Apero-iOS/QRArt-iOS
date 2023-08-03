@@ -10,28 +10,32 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject private var viewModel = HomeViewModel()
+    let cellWidth = (WIDTH_SCREEN-55)/2.0
+    var generateQRBlock: ((Template) -> Void)?
     
     var body: some View {
+        let spacing: CGFloat = 15
         RefreshableScrollView {
-            VStack(spacing: 16) {
-                bannerView
-                
-                if viewModel.categories.isEmpty {
-                    Spacer()
-                    
-                    ProgressView()
-                        .tint(R.color.color_653AE4.color)
-                        .frame(height: 150)
-                } else {
-                    ForEach(viewModel.categories) { category in
-                        HomeSectionView(categoryName: category.name, templates: category.templates)
+            let count = Float(viewModel.templates.count)/2.0
+            HStack(alignment: .top, spacing: spacing) {
+                VStack {
+                    ForEach(0..<Int(count.rounded(.up)), id: \.self) { i in
+                        itemView(viewModel.templates[i*2])
+                     
                     }
-                }
- 
-                Spacer()
-                Color(.clear)
-                    .frame(height: 100)
+                }.frame(maxWidth: .infinity)
+                
+                VStack {
+                    Spacer().frame(height: 40)
+                    ForEach(0..<Int(count.rounded(.down)), id: \.self) { i in
+                        itemView(viewModel.templates[i*2+1])
+                    }
+                }.frame(maxWidth: .infinity)
             }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            Spacer().frame(height: 120)
         }
         .onAppear {
             FirebaseAnalytics.logEvent(type: .home_view)
@@ -42,54 +46,37 @@ struct HomeView: View {
         }
     }
     
-    @ViewBuilder var bannerView: some View {
-        ZStack {
-            Color(R.color.color_E5F3FF)
-                .cornerRadius(11)
-                .frame(height: 140, alignment: .bottom)
-                .padding(.top)
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        Text(Rlocalizable.title_banner_home())
-                            .font(R.font.urbanistSemiBold.font(size: 16))
-                            .foregroundColor(R.color.color_1B232E.color)
-                        Image(R.image.ic_shine_ai)
-                            .frame(width: 28, height: 24)
-                            .offset(y: -3)
-                    }
-                    Text(Rlocalizable.content_banner_home())
-                        .font(R.font.urbanistRegular.font(size: 11))
-                        .foregroundColor(R.color.color_1B232E.color)
-                    Button {
-                        viewModel.isShowGenerateQR.toggle()
-                    } label: {
-                        HStack {
-                            Text(Rlocalizable.try_it_out())
-                                .font(R.font.urbanistBold.font(size: 12))
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.white)
-                            Image(R.image.ic_shine)
-                        }
-                        .fixedSize()
-                    }
-                    .frame(width: 100, height: 24)
-                    .background(Color(R.color.color_653AE4))
-                    .clipShape(Capsule())
-                    .padding(.top, 8)
+    private func itemView(_ template: Template) -> some View {
+        VStack {
+            AsyncImage(url: URL(string: template.key)) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                case .empty:
+                    EmptyView()
+                        .skeleton(with: true, size: CGSize(width: cellWidth, height: cellWidth))
+                        .shape(type: .rounded(.radius(8)))
+                default:
+                    R.image.img_error.image
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .frame(height: 150)
                 }
-                .padding(.horizontal, 16)
-                Spacer()
-                Image(R.image.frame_banner_home)
             }
+            Spacer()
+            Text(template.name)
+                .font(R.font.urbanistSemiBold.font(size: 12))
+                .foregroundColor(R.color.color_1B232E.color)
+                .frame(height: 16)
+            Spacer()
         }
-        .frame(height: 152)
-        .padding(.horizontal, 20)
-        .fullScreenCover(isPresented: $viewModel.isShowGenerateQR) {
-            let vm = CreateQRViewModel(source: .create, templateSelect: nil)
-            CreateQRView(viewModel: vm)
-        }.onTapGesture {
-            viewModel.isShowGenerateQR.toggle()
+        .frame(width: cellWidth, height: cellWidth*4/3)
+        .background(Color.white)
+        .border(radius: 30, color: .white, width: 8.0)
+        .onTapGesture {
+            generateQRBlock?(template)
         }
     }
 }

@@ -22,4 +22,5 @@ enum TextFieldType {
     case paypal
     case prompt
     case negativePrompt
+    case baseUrl
 }

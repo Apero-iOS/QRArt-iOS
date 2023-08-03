@@ -11,12 +11,20 @@ extension UserDefaults {
     
     var isUserVip: Bool {
         get {
-//            return true
-            return UserDefaults.standard.bool(forKey: Constants.Keys.KEY_USER_VIP)
+           return true
+            //return UserDefaults.standard.bool(forKey: Constants.Keys.KEY_USER_VIP)
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.KEY_USER_VIP)
             InappManager.share.didPaymentSuccess.send(newValue)
+        }
+    }
+    var generateQRCount: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: Constants.Keys.GENERATE_QR_COUNT)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.GENERATE_QR_COUNT)
         }
     }
     

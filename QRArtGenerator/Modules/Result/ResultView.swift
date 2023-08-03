@@ -34,29 +34,22 @@ struct ResultView: View {
     }
     
     @ViewBuilder var contentView: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                Rectangle()
-                    .fill(R.color.color_EAEAEA.color)
-                    .frame(width: WIDTH_SCREEN, height: 1)
+        ZStack(alignment: .top) {
+            VStack(spacing: 20) {
+              
                 
                 viewModel.image
                     .resizable()
                     .cornerRadius(24)
-                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-                    .frame(width: WIDTH_SCREEN, height: WIDTH_SCREEN, alignment: .center)
+                    .frame(width: WIDTH_SCREEN-40)
+                    .aspectRatio(1.0, contentMode: .fit)
+
                     
-                VStack {
+                HStack {
                     if viewModel.isCreate {
-                        HStack(spacing: 8) {
-                            regenerateButton
-                            saveAndShareButton
-                        }
-                        HStack {
-                            download4kButton
-                        }
+                        download4kButton
                     } else {
-                        shareButton
+                        saveAndShareButton
                         download4kButton
                     }
                 }
@@ -79,11 +72,9 @@ struct ResultView: View {
                                     dismiss()
                                 }
                         }
-                        
                         Spacer()
-                        
                         HStack {
-                            Text(viewModel.isCreate ? Rlocalizable.create_qr_title() : viewModel.item.name)
+                            Text(viewModel.isCreate ? Rlocalizable.create_qr_title() : Rlocalizable.create_qr())
                                 .font(R.font.urbanistSemiBold.font(size: 18))
                                 .lineLimit(1)
                             
@@ -125,7 +116,11 @@ struct ResultView: View {
                 }
                 .padding(.all, 0)
             }
+            Rectangle()
+                .fill(R.color.color_EAEAEA.color)
+                .frame(width: WIDTH_SCREEN, height: 1)
         }
+        .padding(20)
         .onAppear {
             FirebaseAnalytics.logEvent(type: .qr_creation_result_view, params: [.style: viewModel.item.templateQRName,
                                                                                 .qr_type: viewModel.item.type.title,

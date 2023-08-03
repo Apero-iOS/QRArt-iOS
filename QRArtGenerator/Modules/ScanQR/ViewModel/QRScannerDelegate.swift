@@ -22,7 +22,6 @@ class QRScannerDelegate: NSObject, ObservableObject, AVCaptureVideoDataOutputSam
             return
         }
         if let barcode = self.extractQRCode(fromFrame: frame) {
-            
             if barcode != scannerCode {
                 scannerCode = barcode
             }

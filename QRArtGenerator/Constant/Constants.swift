@@ -40,6 +40,7 @@ struct Constants {
     struct Keys {
         static let KEY_USER_VIP = "KEY_USER_VIP"
         static let OPEN_APP_COUNT = "OPEN_APP_COUNT"
+        static let GENERATE_QR_COUNT = "GENERATE_QR_COUNT"
         static let DID_SHOW_ONBOARDING = "DID_SHOW_ONBOARDING"
         static let FIRST_LANGUAGE = "FIRST_LANGUAGE"
         static let GENERATE_PER_DAY = "GENERATE_PER_DAY"

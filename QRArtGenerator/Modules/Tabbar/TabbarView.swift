@@ -16,7 +16,7 @@ struct TabbarView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 contentView
-                    .padding(.bottom, viewModel.canShowBannerAd() ? safeAreaInsets.bottom + 80 : safeAreaInsets.bottom)
+                    .padding(.bottom, viewModel.canShowBannerAd() ? 80 : 0)
                 
                 VStack(spacing: 0) {
                     Spacer()
@@ -32,10 +32,11 @@ struct TabbarView: View {
                                 TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { _ in
                                     switch tab {
                                         case .scan:
-                                            viewModel.showScan.toggle()
-                                        case .ai:
                                             viewModel.showCreateQR.toggle()
                                             FirebaseAnalytics.logEvent(type: .qr_creation_click)
+                                        case .ai:
+                                            viewModel.showScan.toggle()
+                                           
                                         default:
                                             print("Không phải view present")
                                     }
@@ -51,7 +52,6 @@ struct TabbarView: View {
                             viewModel.failAds = true
                         })
                         .frame(height: 50)
-                        
                     }
                     
                     Color
@@ -60,10 +60,11 @@ struct TabbarView: View {
                 }
                 
             }
+            .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
             .ignoresSafeArea(edges: .bottom)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal, content: {
+                ToolbarItem(placement: .navigation, content: {
                     HStack {
                         Image(R.image.history_logo_ic)
                             .padding(.leading, 4)
@@ -76,8 +77,12 @@ struct TabbarView: View {
                                     viewModel.showIAP.toggle()
                                 }
                         }
+                        NavigationLink(destination: SettingsView()) {
+                            Image(R.image.setting_ic.name)
+                        }
                     }
                     .frame(width: WIDTH_SCREEN - 32, height: 48)
+                    .background(Color.clear)
                 })
             }
             .hideNavigationBar(isHidden: viewModel.selectedTab == .settings)
@@ -85,13 +90,23 @@ struct TabbarView: View {
         .fullScreenCover(isPresented: $viewModel.showScan) {
             ScannerView()
         }
+        .fullScreenCover(isPresented: $viewModel.isShowChoosePhoto, content: {
+            ChoosePhotoView { qrString, soruceImage in
+                viewModel.qrImage = soruceImage
+                viewModel.qrString = qrString
+                viewModel.showCreateQR.toggle()
+            }
+        })
         .fullScreenCover(isPresented: $viewModel.showCreateQR) {
-            let vm = CreateQRViewModel(source: .create, templateSelect: nil)
+            let vm = CreateQRViewModel(source: .create, templateSelect: viewModel.templateSelect, qrImage: viewModel.qrImage, baseUrl: viewModel.qrString)
             CreateQRView(viewModel: vm)
         }
         .fullScreenCover(isPresented: $viewModel.showIAP) {
             IAPView(source: .topBar)
         }
+        .bottomSheet(isPresented: $viewModel.showPopupGenQR, height: 137, showTopIndicator: false, content: {
+            popupCreateView
+        })
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
             if viewModel.isShowAds {
                 viewModel.showAdsInter()
@@ -108,22 +123,53 @@ struct TabbarView: View {
         }
     }
     
+    @ViewBuilder var popupCreateView: some View {
+        VStack {
+            HStack {
+                Button {
+                    viewModel.showPopupGenQR = false
+                    viewModel.isShowChoosePhoto.toggle()
+                } label: {
+                    VStack {
+                        Image(R.image.ic_setting_share.name)
+                        Text("Image")
+                    }
+                }
+                Button {
+                    viewModel.qrImage = nil
+                    viewModel.qrString = nil
+                    viewModel.showPopupGenQR = false
+                    viewModel.showCreateQR.toggle()
+                } label: {
+                    VStack {
+                        Image(R.image.scan_ic.name)
+                        Text("Scan")
+                    }
+                }
+            }
+            Spacer()
+        }
+        
+    }
+    
     @ViewBuilder var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
-            HomeView().tag(TabbarEnum.home)
+            HomeView(generateQRBlock: { template in
+                viewModel.templateSelect = template
+                viewModel.showPopupGenQR.toggle()
+            }).tag(TabbarEnum.home)
                 .contentShape(Rectangle())
                 .simultaneousGesture(DragGesture())
-            
-            HistoryView().tag(TabbarEnum.history)
-                .contentShape(Rectangle())
-                .simultaneousGesture(DragGesture())
-            
-            SettingsView().tag(TabbarEnum.settings)
+                
+            HistoryView(createQRBlock: {
+                viewModel.templateSelect = AppHelper.templates.first ?? .init()
+                viewModel.showPopupGenQR.toggle()
+            }).tag(TabbarEnum.history)
                 .contentShape(Rectangle())
                 .simultaneousGesture(DragGesture())
             
         }
-        .tabViewStyle(.page)
+        .tabViewStyle(.page(indexDisplayMode: .never))
         .onChange(of: viewModel.selectedTab, perform: { newValue in
             viewModel.changeCountSelect()
             viewModel.logEventTracking(type: newValue)

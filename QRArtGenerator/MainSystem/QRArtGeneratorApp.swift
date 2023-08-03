@@ -77,12 +77,14 @@ struct QRArtGeneratorApp: App {
     
     private func configNavigationBar() {
         let coloredNavAppearance = UINavigationBarAppearance()
-        coloredNavAppearance.backgroundColor = .white
+        coloredNavAppearance.configureWithTransparentBackground()
+        coloredNavAppearance.backgroundColor = .clear
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: R.color.color_1B232E()!, .font: R.font.urbanistSemiBold(size: 18)!]
         coloredNavAppearance.shadowColor = .clear
         coloredNavAppearance.setBackIndicatorImage(R.image.ic_arrow_back()?.withRenderingMode(.alwaysOriginal), transitionMaskImage: R.image.ic_arrow_back()?.withRenderingMode(.alwaysOriginal))
         UINavigationBar.appearance().standardAppearance = coloredNavAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+
     }
     
     func setupFirebase() {
