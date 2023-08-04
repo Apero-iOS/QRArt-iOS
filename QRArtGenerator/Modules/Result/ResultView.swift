@@ -34,31 +34,80 @@ struct ResultView: View {
     }
     
     @ViewBuilder var contentView: some View {
+        
         ZStack(alignment: .top) {
-            VStack(spacing: 20) {
-              
-                
-                viewModel.image
-                    .resizable()
-                    .cornerRadius(24)
-                    .frame(width: WIDTH_SCREEN-40)
-                    .aspectRatio(1.0, contentMode: .fit)
-
+            ScrollView {
+                VStack(alignment: .leading) {
                     
-                HStack {
-                    if viewModel.isCreate {
-                        download4kButton
-                    } else {
-                        saveAndShareButton
-                        download4kButton
+                    viewModel.image
+                        .resizable()
+                        .cornerRadius(24)
+                        .frame(width: WIDTH_SCREEN-40)
+                        .aspectRatio(1.0, contentMode: .fill)
+                    
+                    if !viewModel.isCreate {
+                        HStack {
+                            Text("Time created:")
+                            Text("June 25 2023")
+                        }
+                        HStack {
+                            Text("Style Name:")
+                            Text("June 25 2023")
+                        }
+                        HStack {
+                            Text("QR Type:")
+                            Text("June 25 2023")
+                        }
+                        HStack {
+                            Text("Link:")
+                            Text("June 25 2023")
+                        }
+                    }
+                    download4kButton
+                    Text("Share you QR")
+                    ScrollView {
+                        HStack(spacing: 10) {
+                            VStack {
+                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
+                                Text("Twutter")
+                                    .lineLimit(1)
+                                
+                            }
+                            .onTapGesture {
+                                QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
+                            }
+                            VStack {
+                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
+                                Text("Facebook").lineLimit(1)
+                            }.onTapGesture {
+                                QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                            }
+                            VStack {
+                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
+                                Text("Instagram")
+                                    .lineLimit(1)
+                                  
+                            }
+                            .onTapGesture {
+                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
+                            }
+                            VStack {
+                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
+                                Text("Share").lineLimit(1)
+                            }.onTapGesture {
+                                viewModel.sheet.toggle()
+                            }
+                            Spacer()
+                        }
+                    }
+                    Spacer()
+                    if viewModel.isShowAdsInter, ReachabilityManager.isNetworkConnected() {
+                        AdNativeView(adUnitID: .native_result, type: .medium)
+                            .frame(height: 171)
+                            .padding(.horizontal, 20)
                     }
                 }
-                Spacer()
-                if viewModel.isShowAdsInter, ReachabilityManager.isNetworkConnected() {
-                    AdNativeView(adUnitID: .native_result, type: .medium)
-                        .frame(height: 171)
-                        .padding(.horizontal, 20)
-                }
+                .padding(20)
             }
             .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)
@@ -69,6 +118,7 @@ struct ResultView: View {
                             Image(R.image.ic_close_screen)
                                 .padding(.leading, 4)
                                 .onTapGesture {
+                                    viewModel.save()
                                     dismiss()
                                 }
                         }
@@ -87,24 +137,30 @@ struct ResultView: View {
                         
                         Spacer()
                         
-                        Button(viewModel.isCreate ? Rlocalizable.done() : "") {
-                            FirebaseAnalytics.logEvent(type: .qr_creation_done_click)
-                            viewModel.isCreate ? viewModel.save() : ()
+                        if viewModel.isCreate {
+                            regenerateButton.frame(width: 33)
+                        } else {
+                            Button(action: {
+                                viewModel.isShowDeleteAction.toggle()
+                            }, label: {
+                                Text("Delete")
+                                    .frame(width: 33)
+                            })
                         }
-                        .font(R.font.urbanistSemiBold.font(size: 14))
-                        .frame(width: 33)
                     }
                     .frame(height: 48)
                 }
             }
-            .fullScreenCover(isPresented: $viewModel.sheet, content: {
+            .sheet(isPresented:  $viewModel.sheet, content: {
                 ShareSheet(items: [viewModel.item.qrImage])
             })
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView(source: .download4K)
             }
-            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-                LoadingView()
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView, onDismiss: {
+                viewModel.isGenQRSuccess = false
+            }) {
+                LoadingView(isDismiss: $viewModel.isGenQRSuccess)
             }
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             
@@ -119,8 +175,19 @@ struct ResultView: View {
             Rectangle()
                 .fill(R.color.color_EAEAEA.color)
                 .frame(width: WIDTH_SCREEN, height: 1)
+            
         }
-        .padding(20)
+        .actionSheet(isPresented: $viewModel.isShowDeleteAction, content: {() -> ActionSheet in
+            ActionSheet(title: Text(""), message: Text("Would you like to delete  this QR?"),
+                        buttons: [
+                            .destructive(Text("Delete"), action: {
+                                print("Ok selected")
+                            }),
+                            .cancel(Text("Cancel"), action: {
+                                print("Cancel selected")
+                            })
+                        ])
+        })
         .onAppear {
             FirebaseAnalytics.logEvent(type: .qr_creation_result_view, params: [.style: viewModel.item.templateQRName,
                                                                                 .qr_type: viewModel.item.type.title,
@@ -136,9 +203,11 @@ struct ResultView: View {
     }
     
     @ViewBuilder var regenerateButton: some View {
-        ResultButtonView(typeButton: .regenerate) {
+        Button {
             FirebaseAnalytics.logEvent(type: .qr_creation_regenerate_click)
             viewModel.showAdsInter()
+        } label: {
+            Text("Regenerate")
         }
     }
     
@@ -165,6 +234,7 @@ struct ResultView: View {
             viewModel.saveAndShare()
         }
     }
+    
 }
 
 struct ResultView_Previews: PreviewProvider {
@@ -186,7 +256,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 }
 
 struct TransparentBackground: UIViewRepresentable {
-
+    
     func makeUIView(context: Context) -> UIView {
         let view = UIView()
         DispatchQueue.main.async {
@@ -194,6 +264,6 @@ struct TransparentBackground: UIViewRepresentable {
         }
         return view
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {}
 }

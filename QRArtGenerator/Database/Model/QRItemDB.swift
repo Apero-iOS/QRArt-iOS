@@ -16,7 +16,7 @@ class QRItemDB: Object {
     @Persisted var groupType: QRGroupType
     @Persisted var templateId: String = ""
     @Persisted var urlString: String
-    
+    @Persisted var baseUrl: String?
     // Contact
     @Persisted var contactName: String
     @Persisted var phoneNumber: String
@@ -52,6 +52,7 @@ class QRItemDB: Object {
                             name: name,
                             createdDate: createdDate,
                             qrImage: image,
+                            baseUrl: baseUrl,
                             type: type,
                             groupType: groupType,
                             templateId: templateId,

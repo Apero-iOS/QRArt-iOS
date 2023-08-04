@@ -12,6 +12,7 @@ struct QRDetailItem: QRItem {
     var name: String = ""
     var createdDate: Date = Date()
     var qrImage: UIImage = UIImage()
+    var baseUrl: String?
     var type: QRType = .website
     var groupType: QRGroupType = .basic
     var templateId: String = ""
@@ -72,6 +73,7 @@ struct QRDetailItem: QRItem {
         object.guidance = Int(guidance)
         object.contronetScale = Int(contronetScale)
         object.steps = Int(steps)
+        object.baseUrl = baseUrl
         return object
     }
     
@@ -80,6 +82,7 @@ struct QRDetailItem: QRItem {
         obj.type = type
         obj.prompt = prompt
         obj.negativePrompt = negativePrompt
+        obj.baseUrl = baseUrl
         return obj
     }
 }

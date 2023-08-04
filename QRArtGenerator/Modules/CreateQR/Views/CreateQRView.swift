@@ -34,14 +34,18 @@ struct CreateQRView: View {
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
                 ResultView(viewModel: resultViewModel)
             }
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView, onDismiss: {
+                viewModel.isGenQRSuccess = false
+            }) {
+                LoadingView(isDismiss: $viewModel.isGenQRSuccess)
+            }
             .fullScreenCover(isPresented: $viewModel.showSub) {
                 IAPView(source: .generateButton)
             }
-            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-                LoadingView()
-            }
             .fullScreenCover(isPresented: $viewModel.isShowViewChooseStyle, content: {
                 ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
+                    viewModel.input.prompt = template.positivePrompt
+                    viewModel.input.negativePrompt = template.negativePrompt
                     viewModel.templateSelect = template
                 }
             })

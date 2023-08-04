@@ -6,12 +6,22 @@
 	<string>674938347787286</string>
 	<key>FacebookClientToken</key>
 	<string>f957c64fea21920a53fcb2a81ddee0ec</string>
+	<key>FacebookDisplayName</key>
+	<string>QR-AI</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6530974883137971~8095578177</string>
 	<key>GADNativeAdValidatorEnabled</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>instagram</string>
+		<string>fb</string>
+		<string>whatsapp</string>
+		<string>twitter</string>
+	</array>
 	<key>NSAdvertisingAttributionReportEndpoint</key>
 	<string>https://adjust-skadnetwork.com</string>
 	<key>SKAdNetworkItems</key>

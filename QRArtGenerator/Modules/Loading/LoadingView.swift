@@ -12,43 +12,40 @@ struct LoadingView: View {
     @State var scale: CGFloat = 0.75
     @State var textStr: String = "Generating..."
     @State var moveDown: Bool = false
+    @State var isShowSub: Bool = false
+    @Binding var isDismiss: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        ZStack {
+        VStack(spacing: 15) {
+            Spacer()
             LottieView(lottieFile: R.file.loadingJson.name)
-            HStack(spacing: 2) {
-                let textArr = textStr.map { String($0) }
-                ForEach(0..<textArr.count, id: \.self) { index in
-                    Text(textArr[index])
-                        .font(R.font.urbanistSemiBold.font(size: 16))
-                        .foregroundColor(Color(red: 0.98, green: 0.76, blue: 0.16))
-                        .scaleEffect(scale)
-                        .offset(x: 0, y: self.moveDown ? 3 : 0)
-                        .animation(
-                            .easeInOut(duration: 0.6)
-                            .repeatForever()
-                            .delay(Double(index)*0.1),
-                            value: UUID()
-                        )
-                        .onAppear {
-                            withAnimation {
-                                scale = 1
-                                moveDown.toggle()
-                            }
-                        }
-                }
+            Button {
+                isShowSub = true
+            } label: {
+                Text("Speed up")
             }
-            .padding(.top, 100)
-            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(R.color.color_1B232E.color)
-        
+        .fullScreenCover(isPresented: $isShowSub, onDismiss: {
+            if isDismiss {
+                dismiss()
+            }
+        }) {
+            IAPView(source: .generateButton)
+        }
+        .onChange(of: isDismiss) { newValue in
+            if newValue, !isShowSub {
+                dismiss()
+            }
+        }
     }
 }
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView()
+        LoadingView(isDismiss: .constant(false))
     }
 }

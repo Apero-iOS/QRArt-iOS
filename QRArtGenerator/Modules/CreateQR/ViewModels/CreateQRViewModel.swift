@@ -30,6 +30,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var showingSelectQRTypeView: Bool = false
     @Published var showingSelectCountryView: Bool = false
     @Published var isShowLoadingView: Bool = false
+    @Published var isGenQRSuccess: Bool = false
     @Published var isShowExport: Bool = false
     @Published var imageResult: Image = Image("")
     @Published var showSub: Bool = false
@@ -63,6 +64,8 @@ class CreateQRViewModel: ObservableObject {
         self.baseUrl = baseUrl ?? ""
         self.qrImage = qrImage
         self.templateSelect = templateSelect
+        self.input.prompt = templateSelect.positivePrompt
+        self.input.negativePrompt = templateSelect.negativePrompt
         self.templates.insert(Template(), at: 0)
     }
     
@@ -135,6 +138,7 @@ class CreateQRViewModel: ObservableObject {
             if baseUrl.isEmptyOrWhitespace() {
                 return .baseUrl
             }
+            input.baseUrl = baseUrl
             return nil
         }
         if input.name.isEmptyOrWhitespace() {
@@ -215,9 +219,15 @@ class CreateQRViewModel: ObservableObject {
             guard let self = self else { return }
             switch comple {
             case .finished:
-                self.isShowLoadingView.toggle()
+                if UserDefaults.standard.isUserVip {
+                    self.isGenQRSuccess = true
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                        self.isGenQRSuccess = true
+                    })
+                }
             case .failure(let error):
-                self.isShowLoadingView.toggle()
+                self.isGenQRSuccess = true
                 self.messageError = error.message
                 self.showToastError.toggle()
             }
