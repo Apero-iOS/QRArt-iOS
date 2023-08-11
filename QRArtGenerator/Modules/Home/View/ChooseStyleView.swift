@@ -53,75 +53,94 @@ struct ChooseStyleView: View {
             .navigationTitle(Rlocalizable.create_qr_title())
             .toolbar {      // navigation bar when create new
                 ToolbarItem(placement: .principal) {
-                    ZStack {
+                    ZStack(alignment: .center) {
+                        HStack {
+                            Text(Rlocalizable.create_qr_title)
+                                .font(R.font.urbanistSemiBold.font(size: 18))
+                                .lineLimit(1)
+                            
+                            Image(R.image.ic_shine_ai)
+                                .frame(width: 28, height: 24)
+                                .offset(x: -3, y: -3)
+                        }
                         HStack {
                             
-                            Image(R.image.ic_close_screen)
+                            Image(R.image.ic_close_tl)
                                 .padding(.leading, 4)
                                 .onTapGesture {
                                     dismiss()
                                 }
-                            Spacer()
-                            
-                            HStack {
-                                Text(Rlocalizable.create_qr_title)
-                                    .font(R.font.urbanistSemiBold.font(size: 18))
-                                    .lineLimit(1)
-                                
-                                Image(R.image.ic_shine_ai)
-                                    .frame(width: 28, height: 24)
-                                    .offset(x: -3, y: -3)
-                            }
                             
                             Spacer()
                             
                             Button {
-                                selectQRBlock?(templateSelect)
-                                dismiss()
+                                if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip {
+                                    viewModel.isShowIAP.toggle()
+                                } else {
+                                    selectQRBlock?(templateSelect)
+                                    dismiss()
+                                }
                             } label: {
-                                Text("Next")
+                                Text(Rlocalizable.next)
+                                    .font(R.font.beVietnamProMedium.font(size: 14))
+                                    .foregroundColor(R.color.color_653AE4.color)
                             }
                         }
                         .frame(height: 48)
                     }
-                   
-
                 }
             }
             .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
+            .fullScreenCover(isPresented: $viewModel.isShowIAP) {
+                IAPView(source: .topBar)
+            }
           
         }
     }
     
     private func itemView(_ template: Template) -> some View {
-        VStack {
-            AsyncImage(url: URL(string: template.key)) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(1.0, contentMode: .fit)
-                case .empty:
-                    EmptyView()
-                        .skeleton(with: true, size: CGSize(width: cellWidth, height: cellWidth))
-                        .shape(type: .rounded(.radius(8)))
-                default:
-                    R.image.img_error.image
-                        .resizable()
-                        .aspectRatio(1.0, contentMode: .fit)
-                        .frame(height: 150)
-                }
+        ZStack(alignment: .topTrailing) {
+            VStack {
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(
+                        AsyncImage(url: URL(string: template.key)) { phase in
+                            switch phase {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            case .empty:
+                                EmptyView()
+                                    .skeleton(with: true, size: CGSize(width: cellWidth, height: cellWidth))
+                                    .shape(type: .rounded(.radius(8)))
+                            default:
+                                R.image.img_error.image
+                                    .resizable()
+                                    .aspectRatio(1.0, contentMode: .fit)
+                                    .frame(height: 150)
+                            }
+                        }
+                    )
+                    .cornerRadius(25, corners: [.topLeft, .topRight])
+                    .padding([.top, .leading, .trailing], 5)
+                    .padding(.bottom, 16)
+                Spacer()
+                Text(template.name)
+                    .font(R.font.beVietnamProMediumItalic.font(size: 14))
+                    .foregroundColor(R.color.color_1B232E.color)
+                    .padding(.bottom)
+                Spacer()
             }
-            Spacer()
-            Text(template.name)
-                .font(R.font.urbanistSemiBold.font(size: 12))
-                .foregroundColor(R.color.color_1B232E.color)
-                .frame(height: 16)
-            Spacer()
+            if template.packageType != "basic" {
+                Image(R.image.ic_style_sub.name)
+                    .padding(.top, 13)
+                    .padding(.trailing, 11)
+            }
         }
         .frame(width: cellWidth, height: cellWidth*4/3)
         .background(Color.white)
-        .border(radius: 30, color: (template.key == templateSelect.key ? Color.blue : Color.white), width: 8.0)
+        .border(radius: 30, color: (template.key == templateSelect.key ? R.color.color_653AE4.color : Color.clear), width: 2)
         .onTapGesture {
             templateSelect = template
         }

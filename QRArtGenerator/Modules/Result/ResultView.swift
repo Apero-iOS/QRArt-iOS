@@ -17,18 +17,16 @@ struct ResultView: View {
     @StateObject var viewModel: ResultViewModel
     @Environment(\.dismiss) private var dismiss
     
+    var onTapOderStyle: ((Template) -> Void)?
+    
     var body: some View {
-        if !viewModel.isCreate {
-            contentView
-        } else {
-            ZStack {
-                NavigationView {
-                    contentView
-                }
-                
-                if viewModel.isShowSuccessView {
-                    SuccessView()
-                }
+        ZStack {
+            NavigationView {
+                contentView
+            }
+            
+            if viewModel.isShowSuccessView {
+                SuccessView()
             }
         }
     }
@@ -45,67 +43,29 @@ struct ResultView: View {
                         .frame(width: WIDTH_SCREEN-40)
                         .aspectRatio(1.0, contentMode: .fill)
                     
-                    if !viewModel.isCreate {
-                        HStack {
-                            Text("Time created:")
-                            Text("June 25 2023")
-                        }
-                        HStack {
-                            Text("Style Name:")
-                            Text("June 25 2023")
-                        }
-                        HStack {
-                            Text("QR Type:")
-                            Text("June 25 2023")
-                        }
-                        HStack {
-                            Text("Link:")
-                            Text("June 25 2023")
-                        }
-                    }
                     download4kButton
-                    Text("Share you QR")
-                    ScrollView {
-                        HStack(spacing: 10) {
-                            VStack {
-                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
-                                Text("Twutter")
-                                    .lineLimit(1)
-                                
-                            }
-                            .onTapGesture {
-                                QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
-                            }
-                            VStack {
-                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
-                                Text("Facebook").lineLimit(1)
-                            }.onTapGesture {
-                                QRHelper.share.facebookShare(image: viewModel.item.qrImage)
-                            }
-                            VStack {
-                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
-                                Text("Instagram")
-                                    .lineLimit(1)
-                                  
-                            }
-                            .onTapGesture {
-                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
-                            }
-                            VStack {
-                                Image(R.image.ic_share.name).frame(height: 36).aspectRatio(1, contentMode: .fill)
-                                Text("Share").lineLimit(1)
-                            }.onTapGesture {
-                                viewModel.sheet.toggle()
-                            }
-                            Spacer()
+                    Text(Rlocalizable.share_your_qr)
+                        .font(R.font.beVietnamProSemiBold.font(size: 16))
+                        .padding(.top, 25)
+                    HStack(spacing: 26) {
+                        shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
+                            QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
                         }
+                        
+                        shareItem(name: "X", icon: R.image.ic_share_x.image) {
+                            QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
+                        }
+                        
+                        shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
+                            QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                        }
+                        
+                        shareItem(name: "Share", icon: R.image.ic_share_system.image) {
+                            viewModel.sheet.toggle()
+                        }
+
                     }
-                    Spacer()
-                    if viewModel.isShowAdsInter, ReachabilityManager.isNetworkConnected() {
-                        AdNativeView(adUnitID: .native_result, type: .medium)
-                            .frame(height: 171)
-                            .padding(.horizontal, 20)
-                    }
+                    oderStyleView
                 }
                 .padding(20)
             }
@@ -113,39 +73,29 @@ struct ResultView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    HStack {
-                        if viewModel.isCreate {
+                    ZStack {
+                        HStack {
+                            Text(Rlocalizable.result)
+                                .font(R.font.beVietnamProSemiBold.font(size: 16))
+                                .lineLimit(1)
+                            
+                            Image(R.image.ic_shine_ai)
+                                .frame(width: 28)
+                                .offset(x: -3, y: -3)
+                        }
+                        HStack {
                             Image(R.image.ic_close_screen)
                                 .padding(.leading, 4)
                                 .onTapGesture {
                                     viewModel.save()
                                     dismiss()
                                 }
-                        }
-                        Spacer()
-                        HStack {
-                            Text(viewModel.isCreate ? Rlocalizable.create_qr_title() : Rlocalizable.create_qr())
-                                .font(R.font.urbanistSemiBold.font(size: 18))
-                                .lineLimit(1)
+                            Spacer()
                             
-                            if viewModel.isCreate {
-                                Image(R.image.ic_shine_ai)
-                                    .frame(width: 28, height: 24)
-                                    .offset(x: -3, y: -3)
-                            }
-                        }
-                        
-                        Spacer()
-                        
-                        if viewModel.isCreate {
-                            regenerateButton.frame(width: 33)
-                        } else {
-                            Button(action: {
-                                viewModel.isShowDeleteAction.toggle()
-                            }, label: {
-                                Text("Delete")
-                                    .frame(width: 33)
-                            })
+                            regenerateButton
+                                .frame(width: 33, height: 26)
+                                .padding(.trailing, 20)
+                            
                         }
                     }
                     .frame(height: 48)
@@ -157,10 +107,11 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.showIAP) {
                 IAPView(source: .download4K)
             }
-            .fullScreenCover(isPresented: $viewModel.isShowLoadingView, onDismiss: {
-                viewModel.isGenQRSuccess = false
-            }) {
-                LoadingView(isDismiss: $viewModel.isGenQRSuccess)
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+                LoadingView()
+            }
+            .fullScreenCover(isPresented: $viewModel.isShowIAP) {
+                IAPView(source: .topBar)
             }
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             
@@ -197,7 +148,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var shareButton: some View {
-        ResultButtonView(typeButton: .share, isCreate: false) {
+        ResultButtonView(typeButton: .share) {
             viewModel.share()
         }
     }
@@ -207,7 +158,16 @@ struct ResultView: View {
             FirebaseAnalytics.logEvent(type: .qr_creation_regenerate_click)
             viewModel.showAdsInter()
         } label: {
-            Text("Regenerate")
+            HStack(spacing: 2) {
+                Text(Rlocalizable.regenerate)
+                    .font(R.font.beVietnamProSemiBold.font(size: 12))
+                    .foregroundColor(R.color.color_653AE4.color)
+                    .padding(.leading, 8)
+                    .padding(.vertical, 4)
+                Image(R.image.ic_giftbox.name)
+                    .padding(.trailing, 8)
+            }
+            .border(radius: 20, color: R.color.color_653AE4.color, width: 1)
         }
     }
     
@@ -218,7 +178,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var download4kButton: some View {
-        ResultButtonView(typeButton: .download4k, isCreate: viewModel.isCreate, onTap: {
+        ResultButtonView(typeButton: .download4k, onTap: {
             FirebaseAnalytics.logEvent(type: .qr_creation_download_4k_click)
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
@@ -235,11 +195,79 @@ struct ResultView: View {
         }
     }
     
+    @ViewBuilder var oderStyleView: some View {
+        Text(Rlocalizable.select_other_style)
+            .font(R.font.beVietnamProSemiBold.font(size: 16))
+            .padding(.top, 20)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                ForEach(0..<AppHelper.templates.count, id: \.self) { index in
+                    templateView(item: AppHelper.templates[index])
+                        .frame(width: 120, height: 120)
+                        .cornerRadius(12)
+                        .onTapGesture {
+                            if AppHelper.templates[index].packageType != "basic" && !UserDefaults.standard.isUserVip {
+                                viewModel.isShowIAP.toggle()
+                            } else {
+                                onTapOderStyle?(AppHelper.templates[index])
+                                dismiss()
+                            }
+                            
+                        }
+                }
+            }
+        }
+    }
+    
+    private func templateView(item: Template) -> some View {
+        ZStack(alignment: .topTrailing) {
+            Rectangle()
+                .foregroundColor(.clear)
+                .background(
+                    AsyncImage(url: URL(string: item.key)) { phase in
+                        switch phase {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            case .empty:
+                                EmptyView()
+                                    .skeleton(with: true, size: CGSize(width: 120, height: 120))
+                                    .shape(type: .rounded(.radius(8)))
+                            default:
+                                R.image.img_error.image
+                                    .resizable()
+                                    .aspectRatio(1.0, contentMode: .fit)
+                                    .frame(height: 150)
+                        }
+                    })
+            if item.packageType != "basic" && !UserDefaults.standard.isUserVip {
+                Image(R.image.ic_style_sub.name)
+                    .padding([.top, .trailing], 7)
+            }
+        }
+    }
+    
+    private func shareItem(name: String, icon: Image, completion: @escaping VoidBlock) -> some View {
+        VStack(spacing: 6) {
+            icon
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 36, height: 36)
+                .clipped()
+            Text(name)
+                .font(R.font.beVietnamProLight.font(size: 12))
+                .foregroundColor(R.color.color_555555.color)
+                .lineLimit(1)
+            
+        }.onTapGesture(perform: completion)
+    }
+    
 }
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(viewModel: ResultViewModel(item: QRDetailItem(), image: Image(""), source: .create))
+        ResultView(viewModel: ResultViewModel(item: QRDetailItem(), image: Image("")))
     }
 }
 

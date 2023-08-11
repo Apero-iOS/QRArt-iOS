@@ -13,17 +13,18 @@ struct HistoryListView: View {
     var onDelete: ((QRItem) -> Void)?
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVGrid(columns: [GridItem(.flexible(), spacing: 15), GridItem(.flexible())], spacing: 15) {
                 ForEach(items, id: \.id) { item in
-                    let vm = ResultViewModel(item: item as! QRDetailItem, image: Image(uiImage: item.qrImage), source: .history)
+                    let vm = ResultViewModel(item: item as! QRDetailItem, image: Image(uiImage: item.qrImage))
                     NavigationLink {
-                        ResultView(viewModel: vm)
+                        DetailQRView(viewModel: vm)
                     } label: {
-                        HistoryCell(item: item, canDelete: isInHistory)
+                        HistoryCell(item: item as! QRDetailItem, canDelete: isInHistory)
                     }
                 }
             }
+            Spacer().frame(height: 120)
         }
     }
 }

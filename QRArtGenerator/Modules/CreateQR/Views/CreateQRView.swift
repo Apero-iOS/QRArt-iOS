@@ -31,13 +31,15 @@ struct CreateQRView: View {
                 FirebaseAnalytics.logEvent(type: .qr_creation_view)
             }
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
-                let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult, source: .create)
-                ResultView(viewModel: resultViewModel)
+                let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult)
+                ResultView(viewModel: resultViewModel) { template in
+                    viewModel.templateSelect = template
+                }
             }
-            .fullScreenCover(isPresented: $viewModel.isShowLoadingView, onDismiss: {
-                viewModel.isGenQRSuccess = false
-            }) {
-                LoadingView(isDismiss: $viewModel.isGenQRSuccess)
+            .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
+                LoadingView { isSub in
+                    viewModel.isShowSub = isSub
+                }
             }
             .fullScreenCover(isPresented: $viewModel.showSub) {
                 IAPView(source: .generateButton)
@@ -46,10 +48,11 @@ struct CreateQRView: View {
                 ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
                     viewModel.input.prompt = template.positivePrompt
                     viewModel.input.negativePrompt = template.negativePrompt
+                    viewModel.input.templateQRName = template.name
                     viewModel.templateSelect = template
                 }
             })
-            .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, showTopIndicator: false, content: {
+            .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, topBarCornerRadius: 20, showTopIndicator: false, content: {
                 popupGenerateView
             })
             .onChange(of: viewModel.input.type) { newValue in
@@ -72,21 +75,43 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var popupGenerateView: some View {
-        VStack {
-          
+        VStack(spacing: 8) {
             Button {
                 viewModel.showAdsInter()
+                viewModel.isShowPopupCreate.toggle()
             } label: {
-                Text("Ads")
+                Text(Rlocalizable.generate_with_an_ad)
+                    .foregroundColor(R.color.color_000000.color)
+                    .frame(width: UIScreen.screenWidth - 40, height: 50)
+                    .background(R.color.color_F7F7F7.color)
+                    .border(radius: 100, color: R.color.color_EAEAEA.color, width: 1)
+                    .padding(.horizontal, 20)
             }
             
             Button {
                 viewModel.showSub = true
+                viewModel.isShowPopupCreate.toggle()
             } label: {
-                Text("Sub")
+                HStack(alignment: .center, spacing: 8) {
+                    VStack {
+                        Text(Rlocalizable.pro_generate)
+                            .foregroundColor(R.color.color_FFFFFF.color)
+                            .font(R.font.beVietnamProSemiBold.font(size: 14))
+                        Text(Rlocalizable.no_ads_more_quickly)
+                            .foregroundColor(R.color.color_FFFFFF.color)
+                            .font(R.font.beVietnamProRegular.font(size: 12))
+                    }
+                    Image(R.image.ic_style_sub.name)
+                        .padding(.top, 10)
+                }
+                .frame(width: UIScreen.screenWidth - 40, height: 50)
+                .background(R.color.color_653AE4.color)
+                .cornerRadius(100)
+                .padding(.horizontal, 20)
             }
-
+            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     @ViewBuilder var contentView: some View {
@@ -97,25 +122,32 @@ struct CreateQRView: View {
                         if let qrImage = viewModel.qrImage {
                             VStack {
                                 HStack {
-                                    Text("You Qr code")
+                                    Text(Rlocalizable.you_qr_code)
+                                        .foregroundColor(R.color.color_1B232E.color)
+                                        .font(R.font.beVietnamProSemiBold.font(size: 16))
                                     Spacer()
-                                    Text("Edit")
+                                    Image(R.image.ic_edit.name)
                                 }
                                 HStack {
                                     TextEditor(text: $viewModel.baseUrl)
+                                        .foregroundColor(R.color.color_6A758B.color)
+                                        .padding([.top, .leading, .bottom], 12)
                                     Image(uiImage: qrImage)
                                         .resizable()
-                                        .frame(width: 100, height: 100)
-                                        .aspectRatio(1, contentMode: .fill)
-                                        .cornerRadius(10)
+                                        .frame(width: 76, height: 76)
+                                        .aspectRatio(contentMode: .fill)
+                                        .clipped()
+                                        .cornerRadius(8)
+                                        .padding(10)
                                 }
+                                .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                             }
                         }
                         templateView
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
                             .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .hideSeparatorLine()
                         if viewModel.qrImage == nil {
                             qrDetailView
@@ -156,11 +188,11 @@ struct CreateQRView: View {
                         UIApplication.shared.endEditing()
                     } label: {
                         Text(Rlocalizable.generate_qr())
-                            .frame(maxWidth: WIDTH_SCREEN, maxHeight: 42)
+                            .frame(maxWidth: WIDTH_SCREEN, maxHeight: 48)
                             .background(R.color.color_653AE4.color)
                             .foregroundColor(Color.white)
-                            .font(R.font.urbanistSemiBold.font(size: 14))
-                            .cornerRadius(20)
+                            .font(R.font.beVietnamProSemiBold.font(size: 14))
+                            .cornerRadius(100)
                     }.padding(EdgeInsets(top: 20, leading: 20, bottom: viewModel.isShowAdsBanner ? 0 : 20, trailing: 20))
                     
                     /// View Ads
@@ -241,14 +273,17 @@ struct CreateQRView: View {
 //                           indexSelectStyle: $viewModel.indexSelectTemplate)
         VStack {
             HStack {
-                Text("Choose style")
+                Text(Rlocalizable.choose_style)
+                    .font(R.font.beVietnamProSemiBold.font(size: 16))
+                    .foregroundColor(R.color.color_1B232E.color)
                 Spacer()
-                Text("Edit")
+                Image(R.image.ic_edit.name)
             }.background(Color.white)
             .onTapGesture {
                 viewModel.isShowViewChooseStyle.toggle()
             }
             ItemTemplateView(template: $viewModel.templateSelect)
+                .padding(.vertical, 20)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 20)
@@ -301,15 +336,13 @@ struct CreateQRView: View {
     @ViewBuilder var advanceDescView: some View {
         // prompt
         PromptView(oldPrompt: viewModel.templateSelect.positivePrompt,
-                   title: Rlocalizable.prompt(),
+                   title: Rlocalizable.describe_qr_art_idea(),
                    subTitle: Rlocalizable.prompt_desc(),
                    typePrompt: .prompt,
                    prompt: $viewModel.input.prompt,
                    validInput: $viewModel.validInput,
                    focusField: $errorFieldType,
-                   textfieldType: .prompt) {
-            viewModel.genSamplePrompt()
-        }
+                   textfieldType: .prompt)
         .padding(.horizontal, 20)
         
         ScrollView(.horizontal) {
@@ -317,11 +350,13 @@ struct CreateQRView: View {
                 ForEach(0..<10) { index in
                     HStack {
                         Text("Test Tag \(index)")
-                            .padding(.horizontal, 10)
+                            .font(R.font.beVietnamProRegular.font(size: 13))
+                            .foregroundColor(R.color.color_6A758B.color)
+                            .padding(.horizontal, 11)
                     }
-                    .frame(height: 50)
-                    .background(Color.gray)
-                    .cornerRadius(25)
+                    .frame(height: 40)
+                    .background(R.color.color_EAEAEA.color)
+                    .cornerRadius(50)
                 }
             }.padding(.horizontal, 20)
         }

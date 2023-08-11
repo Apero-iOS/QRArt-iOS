@@ -15,6 +15,7 @@ final class ChooseStyleViewModel: ObservableObject, Identifiable {
     @Published var templates: [Template] = AppHelper.templates
     @Published var isShowGenerateQR = false
     @Published var isShowToast = false
+    @Published var isShowIAP = false
     @Published var msgError: String = ""
     var templateSelect: Template?
     

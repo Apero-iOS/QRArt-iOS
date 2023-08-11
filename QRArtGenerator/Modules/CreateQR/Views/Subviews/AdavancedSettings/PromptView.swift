@@ -15,7 +15,7 @@ enum PromptViewType {
 
 struct PromptView: View {
     var oldPrompt: String
-    var title: String = ""
+    var title: String = "Title"
     var subTitle: String = ""
     @State var countAds: Int = 1
     @State var typePrompt: PromptViewType = .prompt
@@ -23,21 +23,17 @@ struct PromptView: View {
     @Binding var validInput: Bool
     var focusField: FocusState<TextFieldType?>.Binding
     var textfieldType: TextFieldType
-    var didTap: VoidBlock?
     let maxLength: Int = 500
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
-                        .font(R.font.urbanistSemiBold.font(size: 14))
-                        .foregroundColor(R.color.color_1B232E.color)
                     HStack {
-                        Text(subTitle)
-                            .font(R.font.urbanistMedium.font(size: 12))
-                            .foregroundColor(R.color.color_6A758B.color)
-                        Spacer()
+                    Text(title)
+                        .font(R.font.beVietnamProRegular.font(size: 14))
+                        .foregroundColor(R.color.color_1B232E.color)
+                    Spacer()
                         if !prompt.isEmpty {
                             Text(Rlocalizable.reset())
                                 .font(R.font.urbanistMedium.font(size: 12))
@@ -52,11 +48,11 @@ struct PromptView: View {
             ZStack {
                 if prompt.isEmpty {
                     VStack(spacing: 8) {
-                        TextEditor(text: .constant(Rlocalizable.enter_prompt()))
+                        TextEditor(text: .constant(Rlocalizable.eg_prompt()))
                             .frame(height: 120, alignment: .top)
                             .padding(EdgeInsets(top: 1, leading: 8, bottom: 0, trailing: 8))
                             
-                            .font(R.font.urbanistRegular.font(size: 14))
+                            .font(R.font.beVietnamProLight.font(size: 13))
                             .foregroundColor(R.color.color_6A758B.color)
                             .allowsHitTesting(false)
                         textCountPrompt
@@ -112,11 +108,6 @@ struct PromptView: View {
                 .font(R.font.urbanistMedium.font(size: 12))
                 .foregroundColor(getColorCountText(type: .limit))
             Spacer()
-            R.image.ic_random_prompt.image
-                .onTapGesture {
-                    didTap?()
-                    FirebaseAnalytics.logEvent(type: typePrompt == .prompt ? .advanced_suggest_prompt_click : .advanced_suggest_negative_prompt_click)
-                }
         }
         .padding(EdgeInsets(top: 0, leading: 12, bottom: 8, trailing: 12))
     }

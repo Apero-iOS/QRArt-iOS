@@ -69,6 +69,9 @@ struct SearchView: View {
                 }
                 isFocusSearch = viewModel.isCheckFocusSearch
             }
+            QRItemService.shared.setObserver { histores in
+                viewModel.searchItems = histores
+            }
         }
         .onDisappear {
             isFocusSearch = false

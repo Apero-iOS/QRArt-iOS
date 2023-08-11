@@ -9,43 +9,80 @@ import SwiftUI
 
 struct LoadingView: View {
     
-    @State var scale: CGFloat = 0.75
-    @State var textStr: String = "Generating..."
     @State var moveDown: Bool = false
     @State var isShowSub: Bool = false
-    @Binding var isDismiss: Bool
+    @State var index: Int = .zero
     @Environment(\.dismiss) private var dismiss
     
+    let listTitle: [String] = [Rlocalizable.analysing_the_qr(),
+                               Rlocalizable.applying_the_style(),
+                               Rlocalizable.igniting_the_ai_engine(),
+                               Rlocalizable.extracting_feature(),
+                               Rlocalizable.generating_your_qr()]
+    
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    var onShowSub: BoolBlock? = nil
+    
     var body: some View {
-        VStack(spacing: 15) {
-            Spacer()
-            LottieView(lottieFile: R.file.loadingJson.name)
-            Button {
-                isShowSub = true
-            } label: {
-                Text("Speed up")
+        VStack {
+            ZStack {
+                ZStack(alignment: .bottom) {
+                    LottieView(lottieFile: R.file.qrLoadingJson.name)
+                        .offset(CGSize(width: 0, height: -50))
+                    Text(listTitle[index])
+                        .font(R.font.beVietnamProMedium.font(size: 16))
+                        .animation(.easeInOut)
+                }
+                .frame(width: UIScreen.screenWidth - 180, height: UIScreen.screenWidth - 100)
+                LottieView(lottieFile: R.file.magicLoadingJson.name)
             }
+            .frame(width: UIScreen.screenWidth + 180, height: UIScreen.screenWidth)
+            .padding(.top, 100)
+            
+            speedUpButton
+            
             Spacer()
         }
+        .ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(R.color.color_1B232E.color)
-        .fullScreenCover(isPresented: $isShowSub, onDismiss: {
-            if isDismiss {
-                dismiss()
+        .background(Color.white)
+        .onReceive(timer) { _ in
+            if index < listTitle.count - 1 {
+                index += 1
+            } else {
+                index = 0
             }
-        }) {
-            IAPView(source: .generateButton)
         }
-        .onChange(of: isDismiss) { newValue in
-            if newValue, !isShowSub {
-                dismiss()
-            }
+        .fullScreenCover(isPresented: $isShowSub) {
+            IAPView(source: .generateButton, onClose: {
+                onShowSub?(false)
+            })
         }
     }
+    
+    @ViewBuilder var speedUpButton: some View {
+        HStack {
+            Button {
+                isShowSub.toggle()
+                onShowSub?(true)
+            } label: {
+                Image(R.image.ic_speed_ip)
+                Text(Rlocalizable.speed_up)
+                    .foregroundColor(R.color.color_FFF500.color)
+                    .font(R.font.beVietnamProSemiBold.font(size: 14))
+            }
+        }
+        .frame(width: 236, height: 48)
+        .background(R.color.color_653AE4.color)
+        .cornerRadius(100)
+        .shadow(color: R.color.color_653AE4.color.opacity(0.25), radius: 0, x: 0, y: 0)
+
+    }
+    
 }
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView(isDismiss: .constant(false))
+        LoadingView()
     }
 }

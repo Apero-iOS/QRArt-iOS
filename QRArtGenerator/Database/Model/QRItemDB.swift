@@ -17,6 +17,8 @@ class QRItemDB: Object {
     @Persisted var templateId: String = ""
     @Persisted var urlString: String
     @Persisted var baseUrl: String?
+    @Persisted var templateQRName: String = ""
+    @Persisted var createType: CreateQRType
     // Contact
     @Persisted var contactName: String
     @Persisted var phoneNumber: String
@@ -57,6 +59,8 @@ class QRItemDB: Object {
                             groupType: groupType,
                             templateId: templateId,
                             urlString: urlString,
+                            templateQRName: templateQRName,
+                            createType: createType,
                             contactName: contactName,
                             phoneNumber: phoneNumber,
                             text: text,
@@ -101,6 +105,9 @@ extension QRItemDB {
         copy.guidance = guidance
         copy.contronetScale = contronetScale
         copy.steps = steps
+        copy.templateQRName = templateQRName
+        copy.createType = createType
+        copy.baseUrl = baseUrl
         return copy
     }
     
@@ -127,6 +134,9 @@ extension QRItemDB {
         duplicate.guidance = guidance
         duplicate.contronetScale = contronetScale
         duplicate.steps = steps
+        duplicate.templateQRName = templateQRName
+        duplicate.createType = createType
+        duplicate.baseUrl = baseUrl
         return duplicate
     }
 }

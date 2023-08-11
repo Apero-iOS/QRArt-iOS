@@ -22,12 +22,15 @@ struct AdvancedSettingsView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(Rlocalizable.advanced_settings())
-                        .font(R.font.urbanistSemiBold.font(size: 16))
+                        .font(R.font.beVietnamProSemiBold.font(size: 16))
                         .foregroundColor(R.color.color_1B232E.color)
-                    Text(Rlocalizable.advanced_settings_sub_title)
-                        .font(R.font.urbanistMedium.font(size: 12))
-                        .foregroundColor(R.color.color_6A758B.color)
+                    if rotate == .zero {
+                        Text(Rlocalizable.advanced_settings_sub_title)
+                            .font(R.font.beVietnamProLight.font(size: 13))
+                            .foregroundColor(R.color.color_6A758B.color)
+                    }
                 }
+                .animation(.easeIn, value: UUID())
                 Spacer()
                 
                 image.rotationEffect(.degrees(rotate))

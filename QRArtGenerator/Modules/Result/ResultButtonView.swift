@@ -47,7 +47,6 @@ enum ResultButtonType: CaseIterable {
 
 struct ResultButtonView: View {
     @State var typeButton: ResultButtonType = .download4k
-    var isCreate: Bool = true
     var onTap: (() -> Void)? = nil
     
     var body: some View {
@@ -69,9 +68,6 @@ struct ResultButtonView: View {
                     Text(typeButton.title)
                         .foregroundColor((typeButton != .download4k) ? Color.black : Color.white)
                         .font(R.font.urbanistSemiBold.font(size: 14))
-                    if typeButton == .download4k, !isCreate, !UserDefaults.standard.isUserVip {
-                        R.image.ic_sub.image
-                    }
                 }
                 .frame(height: height)
                 .frame(maxWidth: .infinity)
@@ -81,7 +77,7 @@ struct ResultButtonView: View {
                 .border(radius: height/2,
                         color: color,
                         width: borderWidth)
-                if typeButton == .download4k, isCreate, !UserDefaults.standard.isUserVip {
+                if typeButton == .download4k, !UserDefaults.standard.isUserVip {
                     R.image.ic_sub.image
                         .offset(x: -5, y: -5)
                 }

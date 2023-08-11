@@ -8,7 +8,6 @@
 import Foundation
 
 enum TextFieldType {
-    case name
     case link
     case contactName
     case contactPhone

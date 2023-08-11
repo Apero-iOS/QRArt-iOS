@@ -19,13 +19,12 @@ struct ListTemplates: Codable {
 }
 
 struct Template: Codable, Hashable {
-//    var id: UUID = UUID()
     var category: String = ""
     var name: String = ""
     var positivePrompt: String = ""
     var negativePrompt: String = ""
+    var packageType: String = ""
     var key: String = ""
-//    var type: TemplateType = .normal
 }
 
 struct Category: Codable, Identifiable {

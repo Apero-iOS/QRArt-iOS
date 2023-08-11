@@ -58,7 +58,7 @@ public struct TLPhotosPickerConfigure {
     public var customLocalizedTitle: [String: String] = ["Camera Roll": "Camera Roll"]
     public var tapHereToChange = "Tap here to change"
     public var cancelTitle = "Cancel"
-    public var doneTitle = "Done"
+    public var doneTitle = Rlocalizable.next()
     public var emptyMessage = "No albums"
     public var selectMessage = "Select"
     public var deselectMessage = "Deselect"
@@ -81,7 +81,7 @@ public struct TLPhotosPickerConfigure {
     public var mediaType: PHAssetMediaType? = nil
     public var numberOfColumn = 3
     public var minimumLineSpacing: CGFloat = 5
-    public var minimumInteritemSpacing: CGFloat = 5
+    public var minimumInteritemSpacing: CGFloat = 8.5
     public var singleSelectedMode = false
     public var isChooseQRMode: Bool = true
     public var maxSelectedAssets: Int? = nil
@@ -259,7 +259,7 @@ open class TLPhotosPickerViewController: UIViewController {
                 self.popArrowImageView.image = image?.colorMask(color: .white)
                 self.subTitleArrowImageView.image = subImage
                 self.view.backgroundColor = .white
-                self.collectionView.backgroundColor = .white
+                self.collectionView.backgroundColor = .clear
             }
         }
     }
@@ -398,11 +398,12 @@ extension TLPhotosPickerViewController {
             return
         }
         let count = CGFloat(self.configure.numberOfColumn)
-        let width = floor((self.view.frame.size.width - (self.configure.minimumInteritemSpacing * (count-1))) / count)
+        let width = floor(((self.view.frame.size.width - 40) - (self.configure.minimumInteritemSpacing * (count-1))) / count)
         self.thumbnailSize = CGSize(width: width, height: width)
         layout.itemSize = self.thumbnailSize
         layout.minimumInteritemSpacing = self.configure.minimumInteritemSpacing
         layout.minimumLineSpacing = self.configure.minimumLineSpacing
+        layout.sectionInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: 20)
         self.collectionView.collectionViewLayout = layout
         self.placeholderThumbnail = centerAtRect(image: self.configure.placeholderIcon, rect: CGRect(x: 0, y: 0, width: width, height: width))
         self.cameraImage = centerAtRect(image: self.configure.cameraIcon, rect: CGRect(x: 0, y: 0, width: width, height: width), bgColor: self.configure.cameraBgColor)
@@ -1031,6 +1032,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
                 cell = makeCell(nibName: nibName)
             }else{
                 cell.imageView?.image = self.cameraImage
+                cell.selectImageView.isHidden = true
             }
             return cell
         }

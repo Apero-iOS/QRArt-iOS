@@ -43,6 +43,7 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet open var selectedHeight: NSLayoutConstraint?
     @IBOutlet open var orderLabel: UILabel?
     @IBOutlet open var orderBgView: UIView?
+    @IBOutlet weak var selectImageView: UIImageView!
     
     var configure = TLPhotosPickerConfigure() {
         didSet {
@@ -51,6 +52,8 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
             self.videoIconImageView?.image = self.configure.videoIcon
             self.orderBgView?.isHidden = self.configure.singleSelectedMode
             self.orderLabel?.isHidden = self.configure.singleSelectedMode
+            self.layer.cornerRadius = 8
+            self.clipsToBounds = true
         }
     }
     
@@ -90,7 +93,8 @@ open class TLPhotoCollectionViewCell: UICollectionViewCell {
     
     @objc open var selectedAsset: Bool = false {
         willSet(newValue) {
-            self.selectedView?.isHidden = !newValue
+//            self.selectedView?.isHidden = !newValue
+            self.selectImageView.image = newValue ? R.image.ic_selected_image() : R.image.ic_unselect_image()
             self.durationView?.backgroundColor = newValue ? self.configure.selectedColor : UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
             if !newValue {
                 self.orderLabel?.text = ""

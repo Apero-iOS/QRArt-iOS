@@ -30,7 +30,6 @@ class CreateQRViewModel: ObservableObject {
     @Published var showingSelectQRTypeView: Bool = false
     @Published var showingSelectCountryView: Bool = false
     @Published var isShowLoadingView: Bool = false
-    @Published var isGenQRSuccess: Bool = false
     @Published var isShowExport: Bool = false
     @Published var imageResult: Image = Image("")
     @Published var showSub: Bool = false
@@ -43,9 +42,17 @@ class CreateQRViewModel: ObservableObject {
     @Published var isLoadAdsSuccess: Bool = true
     @Published var errorInputType: TextFieldType?
     @Published var promptSample: PromptSample = PromptSample()
+    @Published var isShowSub: Bool = false {
+        didSet {
+            checkShowLoading()
+        }
+    }
+    
     private var needFetchTemplates: Bool = true
         
     var messageError: String = ""
+    var isStatusGenegate: Bool = false
+    var isGenegateSuccess: Bool = false
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -66,6 +73,9 @@ class CreateQRViewModel: ObservableObject {
         self.templateSelect = templateSelect
         self.input.prompt = templateSelect.positivePrompt
         self.input.negativePrompt = templateSelect.negativePrompt
+        self.input.templateQRName = templateSelect.name
+        self.input.createType = qrImage != nil ? .normal : .custom
+        self.input.baseUrl = self.baseUrl
         self.templates.insert(Template(), at: 0)
     }
     
@@ -141,9 +151,6 @@ class CreateQRViewModel: ObservableObject {
             input.baseUrl = baseUrl
             return nil
         }
-        if input.name.isEmptyOrWhitespace() {
-            return .name
-        }
         switch input.type {
         case .website, .facebook, .instagram, .spotify, .youtube, .twitter:
             if input.urlString.isEmptyOrWhitespace() {
@@ -209,7 +216,9 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func genQR() {
-        isShowLoadingView.toggle()
+        isShowLoadingView = true
+        isStatusGenegate = true
+        isGenegateSuccess = false
         templateRepository.genQR(qrText: getQRText(),
                                  positivePrompt: input.prompt,
                                  negativePrompt: input.negativePrompt,
@@ -218,18 +227,14 @@ class CreateQRViewModel: ObservableObject {
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
-            case .finished:
-                if UserDefaults.standard.isUserVip {
-                    self.isGenQRSuccess = true
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                        self.isGenQRSuccess = true
-                    })
-                }
-            case .failure(let error):
-                self.isGenQRSuccess = true
-                self.messageError = error.message
-                self.showToastError.toggle()
+                case .finished:
+                    self.isStatusGenegate = false
+                    self.checkShowLoading()
+                case .failure(let error):
+                    self.isStatusGenegate = false
+                    self.checkShowLoading()
+                    self.messageError = error.message
+                    self.showToastError.toggle()
             }
         } receiveValue: { [weak self] data in
             guard let self = self,
@@ -239,14 +244,33 @@ class CreateQRViewModel: ObservableObject {
                 self?.showToastError.toggle()
                 return
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-                self?.input.qrImage = uiImage
-                self?.imageResult = Image(uiImage: uiImage)
-                UserDefaults.standard.generatePerDay += 1
-                self?.isShowExport.toggle()
-            }
+            self.isGenegateSuccess = true
+            self.input.qrImage = uiImage
+            self.imageResult = Image(uiImage: uiImage)
+            UserDefaults.standard.generatePerDay += 1
+            
         }.store(in: &cancellable)
         
+    }
+    
+    func checkShowLoading() {
+        if !isShowSub && isShowLoadingView && !isStatusGenegate {
+            if UserDefaults.standard.isUserVip {
+                self.isShowLoadingView.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                    self?.isShowExport.toggle()
+                }
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+                    self?.isShowLoadingView.toggle()
+                    if self?.isGenegateSuccess == true {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                            self?.isShowExport.toggle()
+                        }
+                    }
+                })
+            }
+        }
     }
     
     func getQRText() -> String {

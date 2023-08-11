@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryCell: View {
-    @State var item: QRItem
+    @State var item: QRDetailItem
     @State private var showingDelete = false
     var canDelete: Bool
     var onDelete: VoidBlock?
@@ -17,20 +17,27 @@ struct HistoryCell: View {
         itemView(item)
     }
     
-    private func itemView(_ item: QRItem) -> some View {
+    private func itemView(_ item: QRDetailItem) -> some View {
         VStack(alignment: .leading) {
             Image(uiImage: item.qrImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(12)
             Text(item.createdDate.toString())
-                .font(R.font.urbanistSemiBold.font(size: 12))
-                .foregroundColor(R.color.color_1B232E.color)
+                .font(R.font.beVietnamProRegular.font(size: 12))
+                .foregroundColor(R.color.color_6A758B.color)
                 .frame(height: 16)
-            Text(item.name)
-                .font(R.font.urbanistSemiBold.font(size: 12))
-                .foregroundColor(R.color.color_1B232E.color)
-                .frame(height: 16)
+            if item.createType == .custom {
+                HStack {
+                    item.type.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 16, height: 16)
+                    Text(item.type.title)
+                        .font(R.font.beVietnamProRegular.font(size: 12))
+                        .foregroundColor(R.color.color_6A758B.color)
+                }
+            }
     
             Spacer()
         }

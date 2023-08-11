@@ -26,6 +26,10 @@ struct HistoryView: View {
         }
         .onAppear {
             FirebaseAnalytics.logEvent(type: .history_view)
+            QRItemService.shared.setObserver { histores in
+                viewModel.filteredItems = histores
+                viewModel.items = histores
+            }
         }
         .padding(.horizontal, 20)
         .hideNavigationBar(isHidden: true)

@@ -66,6 +66,13 @@
                             <constraint firstItem="hbA-dR-I09" firstAttribute="top" secondItem="d1a-KW-Ta4" secondAttribute="top" constant="5" id="xJ1-j7-RX7"/>
                         </constraints>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_unselect_image" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-pu-jnL">
+                        <rect key="frame" x="73" y="5" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="NoN-pu-jnL" secondAttribute="height" id="Eya-Dq-Bme"/>
+                            <constraint firstAttribute="height" constant="22" id="nZ5-c9-C6e"/>
+                        </constraints>
+                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aju-ob-KlZ">
                         <rect key="frame" x="0.0" y="75" width="100" height="25"/>
                         <subviews>
@@ -97,11 +104,13 @@
                     </activityIndicatorView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="vfk-Ao-TKR" secondAttribute="bottom" id="2gw-cO-5bN"/>
                 <constraint firstAttribute="bottom" secondItem="aju-ob-KlZ" secondAttribute="bottom" id="2wo-Ki-15d"/>
                 <constraint firstAttribute="trailing" secondItem="aju-ob-KlZ" secondAttribute="trailing" id="2zm-kD-GPn"/>
                 <constraint firstAttribute="bottom" secondItem="apl-2Q-Hz7" secondAttribute="bottom" id="3zu-V3-EAd"/>
+                <constraint firstAttribute="trailing" secondItem="NoN-pu-jnL" secondAttribute="trailing" constant="5" id="4tp-dT-3Tn"/>
                 <constraint firstAttribute="trailing" secondItem="0cR-fZ-1bW" secondAttribute="trailing" id="9sd-Ea-EBO"/>
                 <constraint firstAttribute="trailing" secondItem="vfk-Ao-TKR" secondAttribute="trailing" id="BZ0-ZG-uW5"/>
                 <constraint firstAttribute="bottom" secondItem="TGh-wt-hcR" secondAttribute="bottom" constant="5" id="Ba1-Z6-ypz"/>
@@ -117,6 +126,7 @@
                 <constraint firstItem="d1a-KW-Ta4" firstAttribute="width" secondItem="IF3-4e-v0j" secondAttribute="width" constant="10" id="clS-DI-jvL"/>
                 <constraint firstItem="d1a-KW-Ta4" firstAttribute="top" secondItem="IF3-4e-v0j" secondAttribute="top" constant="-5" id="d3r-HZ-6We"/>
                 <constraint firstItem="DZc-ag-e55" firstAttribute="centerX" secondItem="IF3-4e-v0j" secondAttribute="centerX" id="fnn-1c-fSn"/>
+                <constraint firstItem="NoN-pu-jnL" firstAttribute="top" secondItem="IF3-4e-v0j" secondAttribute="top" constant="5" id="qSf-05-y7s"/>
                 <constraint firstItem="DZc-ag-e55" firstAttribute="centerY" secondItem="IF3-4e-v0j" secondAttribute="centerY" id="qZc-2h-nOx"/>
                 <constraint firstItem="d1a-KW-Ta4" firstAttribute="leading" secondItem="IF3-4e-v0j" secondAttribute="leading" constant="-5" id="sOj-ms-Oo3"/>
                 <constraint firstItem="0cR-fZ-1bW" firstAttribute="top" secondItem="IF3-4e-v0j" secondAttribute="top" id="sSC-fd-MoT"/>
@@ -132,6 +142,7 @@
                 <outlet property="orderBgView" destination="hbA-dR-I09" id="cQo-BP-xh1"/>
                 <outlet property="orderLabel" destination="Weu-ef-IZ5" id="B3t-X5-o3a"/>
                 <outlet property="playerView" destination="apl-2Q-Hz7" id="vTI-ie-mcV"/>
+                <outlet property="selectImageView" destination="NoN-pu-jnL" id="KMy-Ff-8yG"/>
                 <outlet property="selectedHeight" destination="VMJ-Qp-D4N" id="uVe-tQ-4q5"/>
                 <outlet property="selectedView" destination="d1a-KW-Ta4" id="c31-4y-72g"/>
                 <outlet property="videoIconImageView" destination="Uzf-HJ-aUY" id="d7e-Bl-181"/>
@@ -139,4 +150,7 @@
             <point key="canvasLocation" x="32" y="-10"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_unselect_image" width="22" height="22"/>
+    </resources>
 </document>

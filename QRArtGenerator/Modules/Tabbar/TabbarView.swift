@@ -95,7 +95,7 @@ struct TabbarView: View {
                 viewModel.qrImage = soruceImage
                 viewModel.qrString = qrString
                 viewModel.showCreateQR.toggle()
-            }
+            }.ignoresSafeArea()
         })
         .fullScreenCover(isPresented: $viewModel.showCreateQR) {
             let vm = CreateQRViewModel(source: .create, templateSelect: viewModel.templateSelect, qrImage: viewModel.qrImage, baseUrl: viewModel.qrString)
@@ -104,7 +104,7 @@ struct TabbarView: View {
         .fullScreenCover(isPresented: $viewModel.showIAP) {
             IAPView(source: .topBar)
         }
-        .bottomSheet(isPresented: $viewModel.showPopupGenQR, height: 137, showTopIndicator: false, content: {
+        .bottomSheet(isPresented: $viewModel.showPopupGenQR, height: 137, topBarCornerRadius: 20, showTopIndicator: false, content: {
             popupCreateView
         })
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
@@ -126,15 +126,20 @@ struct TabbarView: View {
     @ViewBuilder var popupCreateView: some View {
         VStack {
             HStack {
+                Spacer()
                 Button {
                     viewModel.showPopupGenQR = false
                     viewModel.isShowChoosePhoto.toggle()
                 } label: {
                     VStack {
-                        Image(R.image.ic_setting_share.name)
-                        Text("Image")
+                        Image(R.image.ic_upload_your_qr.name)
+                        Text(Rlocalizable.upload_your_qr)
+                            .padding(.top, 12)
+                            .font(R.font.beVietnamProMedium.font(size: 14))
+                            .foregroundColor(R.color.color_1B232E.color)
                     }
                 }
+                Spacer()
                 Button {
                     viewModel.qrImage = nil
                     viewModel.qrString = nil
@@ -142,12 +147,15 @@ struct TabbarView: View {
                     viewModel.showCreateQR.toggle()
                 } label: {
                     VStack {
-                        Image(R.image.scan_ic.name)
-                        Text("Scan")
+                        Image(R.image.ic_create_new_qr.name)
+                        Text(Rlocalizable.create_new_qr)
+                            .padding(.top, 12)
+                            .font(R.font.beVietnamProMedium.font(size: 14))
+                            .foregroundColor(R.color.color_1B232E.color)
                     }
                 }
+                Spacer()
             }
-            Spacer()
         }
         
     }
@@ -157,6 +165,8 @@ struct TabbarView: View {
             HomeView(generateQRBlock: { template in
                 viewModel.templateSelect = template
                 viewModel.showPopupGenQR.toggle()
+            }, showIAP: {
+                viewModel.showIAP.toggle()
             }).tag(TabbarEnum.home)
                 .contentShape(Rectangle())
                 .simultaneousGesture(DragGesture())

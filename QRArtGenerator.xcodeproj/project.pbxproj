@@ -137,6 +137,24 @@
 		A4BB08722A51643100C01063 /* DetailStylesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */; };
 		A4BB08762A517FE600C01063 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08752A517FE600C01063 /* LanguageModel.swift */; };
 		A4BB08782A51867C00C01063 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08772A51867C00C01063 /* LanguageViewModel.swift */; };
+		A4BB27372A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27252A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf */; };
+		A4BB27382A81039D00DB53B1 /* BeVietnamPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27262A81039D00DB53B1 /* BeVietnamPro-Light.ttf */; };
+		A4BB27392A81039D00DB53B1 /* BeVietnamPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27272A81039D00DB53B1 /* BeVietnamPro-Regular.ttf */; };
+		A4BB273A2A81039D00DB53B1 /* BeVietnamPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27282A81039D00DB53B1 /* BeVietnamPro-Medium.ttf */; };
+		A4BB273B2A81039D00DB53B1 /* BeVietnamPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27292A81039D00DB53B1 /* BeVietnamPro-Bold.ttf */; };
+		A4BB273C2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272A2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf */; };
+		A4BB273D2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272B2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf */; };
+		A4BB273E2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272C2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf */; };
+		A4BB273F2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272D2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf */; };
+		A4BB27402A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272E2A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf */; };
+		A4BB27412A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272F2A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf */; };
+		A4BB27422A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27302A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf */; };
+		A4BB27432A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27312A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf */; };
+		A4BB27442A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27322A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf */; };
+		A4BB27452A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27332A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf */; };
+		A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27342A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf */; };
+		A4BB27472A81039D00DB53B1 /* BeVietnamPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27352A81039D00DB53B1 /* BeVietnamPro-Black.ttf */; };
+		A4BB27482A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27362A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf */; };
 		A4BCC0A32A503BCF006FD3F5 /* DetailStylesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */; };
 		A4BEFB112A6916DC00BB2FC1 /* AdjustManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */; };
 		A4C0E24E2A4E89FA00E69CF2 /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0E24D2A4E89FA00E69CF2 /* HomeSectionView.swift */; };
@@ -148,7 +166,10 @@
 		A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C482A4D90690076CF48 /* LanguageView.swift */; };
 		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
 		A4C71F202A625BC300D29928 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C71F1F2A625BC300D29928 /* Collection+.swift */; };
+		A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CE0D9B2A83953B00B41A68 /* magic-loading.json */; };
+		A4CE0D9E2A83953B00B41A68 /* qr-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CE0D9C2A83953B00B41A68 /* qr-loading.json */; };
 		A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */; };
+		A4F806932A84937500E9B523 /* DetailQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F806922A84937500E9B523 /* DetailQRView.swift */; };
 		C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C792A512A520093B48A /* BasicItemTemplateView.swift */; };
 		C8109C7E2A5160350093B48A /* GenerateQRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C7D2A5160350093B48A /* GenerateQRRequest.swift */; };
 		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
@@ -352,6 +373,24 @@
 		A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesViewModel.swift; sourceTree = "<group>"; };
 		A4BB08752A517FE600C01063 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		A4BB08772A51867C00C01063 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
+		A4BB27252A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		A4BB27262A81039D00DB53B1 /* BeVietnamPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Light.ttf"; sourceTree = "<group>"; };
+		A4BB27272A81039D00DB53B1 /* BeVietnamPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Regular.ttf"; sourceTree = "<group>"; };
+		A4BB27282A81039D00DB53B1 /* BeVietnamPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Medium.ttf"; sourceTree = "<group>"; };
+		A4BB27292A81039D00DB53B1 /* BeVietnamPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Bold.ttf"; sourceTree = "<group>"; };
+		A4BB272A2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		A4BB272B2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Thin.ttf"; sourceTree = "<group>"; };
+		A4BB272C2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Italic.ttf"; sourceTree = "<group>"; };
+		A4BB272D2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		A4BB272E2A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-MediumItalic.ttf"; sourceTree = "<group>"; };
+		A4BB272F2A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27302A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27312A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		A4BB27322A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ThinItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27332A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A4BB27342A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27352A81039D00DB53B1 /* BeVietnamPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Black.ttf"; sourceTree = "<group>"; };
+		A4BB27362A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-LightItalic.ttf"; sourceTree = "<group>"; };
 		A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesView.swift; sourceTree = "<group>"; };
 		A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustManager.swift; sourceTree = "<group>"; };
 		A4C0E24D2A4E89FA00E69CF2 /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
@@ -363,7 +402,10 @@
 		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		A4C71F1F2A625BC300D29928 /* Collection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		A4CE0D9B2A83953B00B41A68 /* magic-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "magic-loading.json"; sourceTree = "<group>"; };
+		A4CE0D9C2A83953B00B41A68 /* qr-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "qr-loading.json"; sourceTree = "<group>"; };
 		A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEV.plist"; sourceTree = "<group>"; };
+		A4F806922A84937500E9B523 /* DetailQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQRView.swift; sourceTree = "<group>"; };
 		C8109C792A512A520093B48A /* BasicItemTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicItemTemplateView.swift; sourceTree = "<group>"; };
 		C8109C7D2A5160350093B48A /* GenerateQRRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRRequest.swift; sourceTree = "<group>"; };
 		C8109C822A518B3E0093B48A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
@@ -437,6 +479,7 @@
 		59286C402A4D31D300EBBEBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A4F8068F2A8491B000E9B523 /* DetailQR */,
 				59FBA0572A7A790F00F65EAB /* ChoosePhoto */,
 				C8C72E1B2A5FD5FC00E8918B /* Popup */,
 				9AD2B9012A505AB9003B7C1F /* IAP */,
@@ -989,6 +1032,24 @@
 		9AD522822A4AA08100A947B5 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				A4BB27252A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf */,
+				A4BB27262A81039D00DB53B1 /* BeVietnamPro-Light.ttf */,
+				A4BB27272A81039D00DB53B1 /* BeVietnamPro-Regular.ttf */,
+				A4BB27282A81039D00DB53B1 /* BeVietnamPro-Medium.ttf */,
+				A4BB27292A81039D00DB53B1 /* BeVietnamPro-Bold.ttf */,
+				A4BB272A2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf */,
+				A4BB272B2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf */,
+				A4BB272C2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf */,
+				A4BB272D2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf */,
+				A4BB272E2A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf */,
+				A4BB272F2A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf */,
+				A4BB27302A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf */,
+				A4BB27312A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf */,
+				A4BB27322A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf */,
+				A4BB27332A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf */,
+				A4BB27342A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf */,
+				A4BB27352A81039D00DB53B1 /* BeVietnamPro-Black.ttf */,
+				A4BB27362A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf */,
 				9AD5228F2A4AA09200A947B5 /* Urbanist-Black.ttf */,
 				9AD5228B2A4AA09200A947B5 /* Urbanist-Bold.ttf */,
 				9AD5228C2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf */,
@@ -1006,6 +1067,8 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				A4CE0D9B2A83953B00B41A68 /* magic-loading.json */,
+				A4CE0D9C2A83953B00B41A68 /* qr-loading.json */,
 				C8C72E1E2A5FFF8100E8918B /* camera-access.json */,
 				C8E923B12A5271FF00835F93 /* loading.json */,
 				C8AA3E402A4DAF320077DCC3 /* ai_tab.json */,
@@ -1225,6 +1288,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A4F8068F2A8491B000E9B523 /* DetailQR */ = {
+			isa = PBXGroup;
+			children = (
+				A4F806902A8491CD00E9B523 /* View */,
+			);
+			path = DetailQR;
+			sourceTree = "<group>";
+		};
+		A4F806902A8491CD00E9B523 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4F806922A84937500E9B523 /* DetailQRView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8109C7F2A5181080093B48A /* ChooseTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,9 +1350,9 @@
 		C8109C882A5198890093B48A /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				C8109C892A5198970093B48A /* ResultView.swift */,
 				C8E923B42A52768600835F93 /* ResultButtonView.swift */,
 				C84BBF262A53FC950065B8AF /* ResultViewModel.swift */,
+				C8109C892A5198970093B48A /* ResultView.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -1535,23 +1614,43 @@
 				9AD522A12A4AA09200A947B5 /* Urbanist-Black.ttf in Resources */,
 				59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */,
 				9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */,
+				A4BB27412A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf in Resources */,
+				A4BB27392A81039D00DB53B1 /* BeVietnamPro-Regular.ttf in Resources */,
+				A4BB27382A81039D00DB53B1 /* BeVietnamPro-Light.ttf in Resources */,
+				A4BB273C2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf in Resources */,
 				592BFE662A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib in Resources */,
+				A4BB273D2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf in Resources */,
+				A4CE0D9E2A83953B00B41A68 /* qr-loading.json in Resources */,
 				C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */,
+				A4BB27422A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf in Resources */,
+				A4BB273E2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf in Resources */,
+				A4BB27372A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf in Resources */,
 				C8E923B22A5271FF00835F93 /* loading.json in Resources */,
 				9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */,
 				C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */,
 				C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
+				A4BB27402A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf in Resources */,
 				A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */,
 				C8C72E1F2A5FFF8100E8918B /* camera-access.json in Resources */,
+				A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */,
 				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
+				A4BB273A2A81039D00DB53B1 /* BeVietnamPro-Medium.ttf in Resources */,
+				A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */,
+				A4BB27472A81039D00DB53B1 /* BeVietnamPro-Black.ttf in Resources */,
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
+				A4BB27432A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf in Resources */,
 				592BFE7B2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib in Resources */,
 				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
 				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
+				A4BB273F2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf in Resources */,
 				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
 				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
+				A4BB27442A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf in Resources */,
+				A4BB27482A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf in Resources */,
+				A4BB273B2A81039D00DB53B1 /* BeVietnamPro-Bold.ttf in Resources */,
 				C8C72E212A60002900E8918B /* GoogleService-Info.plist in Resources */,
+				A4BB27452A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf in Resources */,
 				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
 				592BFE702A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib in Resources */,
 				59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */,
@@ -1824,6 +1923,7 @@
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				9AD2B9002A501E6E003B7C1F /* QRItemService.swift in Sources */,
 				9AB8528D2A5160D800A546F4 /* SplashViewModel.swift in Sources */,
+				A4F806932A84937500E9B523 /* DetailQRView.swift in Sources */,
 				9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */,
 				9AC7DCCF2A4DB6C600FB3119 /* PromptView.swift in Sources */,
 				9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */,
