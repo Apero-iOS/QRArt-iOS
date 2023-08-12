@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30511F50193A4959F89B3A8A /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */; };
 		55A72A218713257382CFB921 /* Pods_QRArtGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000E5BDC5B5105537F2E9B41 /* Pods_QRArtGeneratorTests.framework */; };
+		5921E3B22A7BAE6E0028ED1A /* ChooseStyleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5921E3B12A7BAE6E0028ED1A /* ChooseStyleViewModel.swift */; };
 		59286C772A4D31D300EBBEBF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C432A4D31D300EBBEBF /* HomeView.swift */; };
 		59286C782A4D31D300EBBEBF /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C462A4D31D300EBBEBF /* SplashView.swift */; };
 		59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C492A4D31D300EBBEBF /* TabbarViewModel.swift */; };
@@ -30,7 +31,22 @@
 		59286C952A4D31D300EBBEBF /* OnboardingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C752A4D31D300EBBEBF /* OnboardingRowView.swift */; };
 		59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C762A4D31D300EBBEBF /* OnboardingView.swift */; };
 		59286C992A4D31F100EBBEBF /* CountriesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59286C982A4D31F100EBBEBF /* CountriesFetcher.swift */; };
+		592BFE632A7B41CA00FC6C04 /* TLPhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE542A7B41CA00FC6C04 /* TLPhotoLibrary.swift */; };
+		592BFE642A7B41CA00FC6C04 /* TLPhotopickerDataSourcesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE552A7B41CA00FC6C04 /* TLPhotopickerDataSourcesProtocol.swift */; };
+		592BFE652A7B41CA00FC6C04 /* TLCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE562A7B41CA00FC6C04 /* TLCollectionTableViewCell.swift */; };
+		592BFE662A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BFE572A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib */; };
+		592BFE672A7B41CA00FC6C04 /* TLBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE582A7B41CA00FC6C04 /* TLBundle.swift */; };
+		592BFE682A7B41CA00FC6C04 /* TLAlbumPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE592A7B41CA00FC6C04 /* TLAlbumPopView.swift */; };
+		592BFE692A7B41CA00FC6C04 /* TLAssetPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE5A2A7B41CA00FC6C04 /* TLAssetPreviewViewController.swift */; };
+		592BFE6C2A7B41CA00FC6C04 /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE5D2A7B41CA00FC6C04 /* SynchronizedDictionary.swift */; };
+		592BFE6D2A7B41CA00FC6C04 /* TLAssetCollection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE5E2A7B41CA00FC6C04 /* TLAssetCollection+Extension.swift */; };
+		592BFE6E2A7B41CA00FC6C04 /* TLPhotosPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE5F2A7B41CA00FC6C04 /* TLPhotosPickerViewController.swift */; };
+		592BFE6F2A7B41CA00FC6C04 /* TLAssetsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE602A7B41CA00FC6C04 /* TLAssetsCollection.swift */; };
+		592BFE702A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BFE612A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib */; };
+		592BFE7B2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BFE792A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib */; };
+		592BFE7C2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE7A2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift */; };
 		592DBDB72A4D8ED000AF79EE /* ResultQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592DBDB62A4D8ED000AF79EE /* ResultQRView.swift */; };
+		59C3B3352A78E0DD00770F2B /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3B3342A78E0DD00770F2B /* HomeCell.swift */; };
 		59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */; };
 		59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C766212A496E6000D4BDD3 /* Assets.xcassets */; };
 		59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C766242A496E6000D4BDD3 /* Preview Assets.xcassets */; };
@@ -47,6 +63,8 @@
 		59F74C452A4FBE8B00AD8CBA /* AdBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C442A4FBE8B00AD8CBA /* AdBannerView.swift */; };
 		59F74C472A4FC24D00AD8CBA /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C462A4FC24D00AD8CBA /* AdViewController.swift */; };
 		59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F74C492A4FC79900AD8CBA /* AdNativeView.swift */; };
+		59FBA0562A7A5E4600F65EAB /* ChooseStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FBA0552A7A5E4600F65EAB /* ChooseStyleView.swift */; };
+		59FBA0772A7A7ADC00F65EAB /* ChoosePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FBA0762A7A7ADC00F65EAB /* ChoosePhotoView.swift */; };
 		76FC00E52A5BA5D600B53B5F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC00E42A5BA5D600B53B5F /* String+.swift */; };
 		76FC00E72A5BBDB800B53B5F /* LimitedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC00E62A5BBDB800B53B5F /* LimitedTextField.swift */; };
 		76FC00F42A5BC73700B53B5F /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC00F12A5BC73700B53B5F /* BottomSheet.swift */; };
@@ -119,6 +137,24 @@
 		A4BB08722A51643100C01063 /* DetailStylesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */; };
 		A4BB08762A517FE600C01063 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08752A517FE600C01063 /* LanguageModel.swift */; };
 		A4BB08782A51867C00C01063 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BB08772A51867C00C01063 /* LanguageViewModel.swift */; };
+		A4BB27372A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27252A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf */; };
+		A4BB27382A81039D00DB53B1 /* BeVietnamPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27262A81039D00DB53B1 /* BeVietnamPro-Light.ttf */; };
+		A4BB27392A81039D00DB53B1 /* BeVietnamPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27272A81039D00DB53B1 /* BeVietnamPro-Regular.ttf */; };
+		A4BB273A2A81039D00DB53B1 /* BeVietnamPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27282A81039D00DB53B1 /* BeVietnamPro-Medium.ttf */; };
+		A4BB273B2A81039D00DB53B1 /* BeVietnamPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27292A81039D00DB53B1 /* BeVietnamPro-Bold.ttf */; };
+		A4BB273C2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272A2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf */; };
+		A4BB273D2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272B2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf */; };
+		A4BB273E2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272C2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf */; };
+		A4BB273F2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272D2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf */; };
+		A4BB27402A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272E2A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf */; };
+		A4BB27412A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB272F2A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf */; };
+		A4BB27422A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27302A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf */; };
+		A4BB27432A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27312A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf */; };
+		A4BB27442A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27322A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf */; };
+		A4BB27452A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27332A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf */; };
+		A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27342A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf */; };
+		A4BB27472A81039D00DB53B1 /* BeVietnamPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27352A81039D00DB53B1 /* BeVietnamPro-Black.ttf */; };
+		A4BB27482A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4BB27362A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf */; };
 		A4BCC0A32A503BCF006FD3F5 /* DetailStylesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */; };
 		A4BEFB112A6916DC00BB2FC1 /* AdjustManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */; };
 		A4C0E24E2A4E89FA00E69CF2 /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0E24D2A4E89FA00E69CF2 /* HomeSectionView.swift */; };
@@ -130,7 +166,10 @@
 		A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C482A4D90690076CF48 /* LanguageView.swift */; };
 		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
 		A4C71F202A625BC300D29928 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C71F1F2A625BC300D29928 /* Collection+.swift */; };
+		A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CE0D9B2A83953B00B41A68 /* magic-loading.json */; };
+		A4CE0D9E2A83953B00B41A68 /* qr-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CE0D9C2A83953B00B41A68 /* qr-loading.json */; };
 		A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */; };
+		A4F806932A84937500E9B523 /* DetailQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F806922A84937500E9B523 /* DetailQRView.swift */; };
 		C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C792A512A520093B48A /* BasicItemTemplateView.swift */; };
 		C8109C7E2A5160350093B48A /* GenerateQRRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C7D2A5160350093B48A /* GenerateQRRequest.swift */; };
 		C8109C832A518B3E0093B48A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C822A518B3E0093B48A /* AmountView.swift */; };
@@ -190,6 +229,7 @@
 /* Begin PBXFileReference section */
 		000E5BDC5B5105537F2E9B41 /* Pods_QRArtGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D849722C2C5702D42EE59AB /* Pods_QRArtGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5921E3B12A7BAE6E0028ED1A /* ChooseStyleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStyleViewModel.swift; sourceTree = "<group>"; };
 		59286C432A4D31D300EBBEBF /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		59286C462A4D31D300EBBEBF /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		59286C492A4D31D300EBBEBF /* TabbarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarViewModel.swift; sourceTree = "<group>"; };
@@ -211,7 +251,22 @@
 		59286C752A4D31D300EBBEBF /* OnboardingRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingRowView.swift; sourceTree = "<group>"; };
 		59286C762A4D31D300EBBEBF /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		59286C982A4D31F100EBBEBF /* CountriesFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesFetcher.swift; sourceTree = "<group>"; };
+		592BFE542A7B41CA00FC6C04 /* TLPhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLPhotoLibrary.swift; sourceTree = "<group>"; };
+		592BFE552A7B41CA00FC6C04 /* TLPhotopickerDataSourcesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLPhotopickerDataSourcesProtocol.swift; sourceTree = "<group>"; };
+		592BFE562A7B41CA00FC6C04 /* TLCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		592BFE572A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		592BFE582A7B41CA00FC6C04 /* TLBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLBundle.swift; sourceTree = "<group>"; };
+		592BFE592A7B41CA00FC6C04 /* TLAlbumPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAlbumPopView.swift; sourceTree = "<group>"; };
+		592BFE5A2A7B41CA00FC6C04 /* TLAssetPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAssetPreviewViewController.swift; sourceTree = "<group>"; };
+		592BFE5D2A7B41CA00FC6C04 /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
+		592BFE5E2A7B41CA00FC6C04 /* TLAssetCollection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TLAssetCollection+Extension.swift"; sourceTree = "<group>"; };
+		592BFE5F2A7B41CA00FC6C04 /* TLPhotosPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLPhotosPickerViewController.swift; sourceTree = "<group>"; };
+		592BFE602A7B41CA00FC6C04 /* TLAssetsCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAssetsCollection.swift; sourceTree = "<group>"; };
+		592BFE612A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLPhotosPickerViewController.xib; sourceTree = "<group>"; };
+		592BFE792A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		592BFE7A2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		592DBDB62A4D8ED000AF79EE /* ResultQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultQRView.swift; sourceTree = "<group>"; };
+		59C3B3342A78E0DD00770F2B /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		59C7661A2A496E5F00D4BDD3 /* QRArtGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRArtGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRArtGeneratorApp.swift; sourceTree = "<group>"; };
 		59C766212A496E6000D4BDD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,6 +286,8 @@
 		59F74C442A4FBE8B00AD8CBA /* AdBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerView.swift; sourceTree = "<group>"; };
 		59F74C462A4FC24D00AD8CBA /* AdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
 		59F74C492A4FC79900AD8CBA /* AdNativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdNativeView.swift; sourceTree = "<group>"; };
+		59FBA0552A7A5E4600F65EAB /* ChooseStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStyleView.swift; sourceTree = "<group>"; };
+		59FBA0762A7A7ADC00F65EAB /* ChoosePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePhotoView.swift; sourceTree = "<group>"; };
 		5D8FA71CBCF848EE6FFC2673 /* Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		62B48F6F4CC42D09ED51017D /* Pods_QRArtGenerator_QRArtGeneratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRArtGenerator_QRArtGeneratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6884600408C8790FEA5FA751 /* Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; path = "Target Support Files/Pods-QRArtGenerator-QRArtGeneratorUITests/Pods-QRArtGenerator-QRArtGeneratorUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +373,24 @@
 		A4BB08712A51643100C01063 /* DetailStylesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesViewModel.swift; sourceTree = "<group>"; };
 		A4BB08752A517FE600C01063 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		A4BB08772A51867C00C01063 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModel.swift; sourceTree = "<group>"; };
+		A4BB27252A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		A4BB27262A81039D00DB53B1 /* BeVietnamPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Light.ttf"; sourceTree = "<group>"; };
+		A4BB27272A81039D00DB53B1 /* BeVietnamPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Regular.ttf"; sourceTree = "<group>"; };
+		A4BB27282A81039D00DB53B1 /* BeVietnamPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Medium.ttf"; sourceTree = "<group>"; };
+		A4BB27292A81039D00DB53B1 /* BeVietnamPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Bold.ttf"; sourceTree = "<group>"; };
+		A4BB272A2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		A4BB272B2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Thin.ttf"; sourceTree = "<group>"; };
+		A4BB272C2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Italic.ttf"; sourceTree = "<group>"; };
+		A4BB272D2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		A4BB272E2A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-MediumItalic.ttf"; sourceTree = "<group>"; };
+		A4BB272F2A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27302A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27312A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		A4BB27322A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ThinItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27332A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A4BB27342A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		A4BB27352A81039D00DB53B1 /* BeVietnamPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Black.ttf"; sourceTree = "<group>"; };
+		A4BB27362A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-LightItalic.ttf"; sourceTree = "<group>"; };
 		A4BCC0A22A503BCF006FD3F5 /* DetailStylesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStylesView.swift; sourceTree = "<group>"; };
 		A4BEFB102A6916DC00BB2FC1 /* AdjustManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustManager.swift; sourceTree = "<group>"; };
 		A4C0E24D2A4E89FA00E69CF2 /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
@@ -327,7 +402,10 @@
 		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		A4C71F1F2A625BC300D29928 /* Collection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		A4CE0D9B2A83953B00B41A68 /* magic-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "magic-loading.json"; sourceTree = "<group>"; };
+		A4CE0D9C2A83953B00B41A68 /* qr-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "qr-loading.json"; sourceTree = "<group>"; };
 		A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEV.plist"; sourceTree = "<group>"; };
+		A4F806922A84937500E9B523 /* DetailQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQRView.swift; sourceTree = "<group>"; };
 		C8109C792A512A520093B48A /* BasicItemTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicItemTemplateView.swift; sourceTree = "<group>"; };
 		C8109C7D2A5160350093B48A /* GenerateQRRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateQRRequest.swift; sourceTree = "<group>"; };
 		C8109C822A518B3E0093B48A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
@@ -401,6 +479,8 @@
 		59286C402A4D31D300EBBEBF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A4F8068F2A8491B000E9B523 /* DetailQR */,
+				59FBA0572A7A790F00F65EAB /* ChoosePhoto */,
 				C8C72E1B2A5FD5FC00E8918B /* Popup */,
 				9AD2B9012A505AB9003B7C1F /* IAP */,
 				C8E923B82A52AB3400835F93 /* Success */,
@@ -434,8 +514,10 @@
 		59286C422A4D31D300EBBEBF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59C3B3332A78E0BA00770F2B /* HomeCell */,
 				A4C0E24C2A4E898F00E69CF2 /* HomeSectionView */,
 				59286C432A4D31D300EBBEBF /* HomeView.swift */,
+				59FBA0552A7A5E4600F65EAB /* ChooseStyleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -611,6 +693,35 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		592BFE522A7B41CA00FC6C04 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				592BFE542A7B41CA00FC6C04 /* TLPhotoLibrary.swift */,
+				592BFE552A7B41CA00FC6C04 /* TLPhotopickerDataSourcesProtocol.swift */,
+				592BFE562A7B41CA00FC6C04 /* TLCollectionTableViewCell.swift */,
+				592BFE572A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib */,
+				592BFE7A2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift */,
+				592BFE792A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib */,
+				592BFE582A7B41CA00FC6C04 /* TLBundle.swift */,
+				592BFE592A7B41CA00FC6C04 /* TLAlbumPopView.swift */,
+				592BFE5A2A7B41CA00FC6C04 /* TLAssetPreviewViewController.swift */,
+				592BFE5D2A7B41CA00FC6C04 /* SynchronizedDictionary.swift */,
+				592BFE5E2A7B41CA00FC6C04 /* TLAssetCollection+Extension.swift */,
+				592BFE5F2A7B41CA00FC6C04 /* TLPhotosPickerViewController.swift */,
+				592BFE602A7B41CA00FC6C04 /* TLAssetsCollection.swift */,
+				592BFE612A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		59C3B3332A78E0BA00770F2B /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				59C3B3342A78E0DD00770F2B /* HomeCell.swift */,
+			);
+			path = HomeCell;
+			sourceTree = "<group>";
+		};
 		59C766112A496E5F00D4BDD3 = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +815,23 @@
 				59F74C462A4FC24D00AD8CBA /* AdViewController.swift */,
 			);
 			path = Admob;
+			sourceTree = "<group>";
+		};
+		59FBA0572A7A790F00F65EAB /* ChoosePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				592BFE522A7B41CA00FC6C04 /* Photo */,
+				59FBA0752A7A7ACD00F65EAB /* View */,
+			);
+			path = ChoosePhoto;
+			sourceTree = "<group>";
+		};
+		59FBA0752A7A7ACD00F65EAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59FBA0762A7A7ADC00F65EAB /* ChoosePhotoView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		704E9C9B993E1DD8EA8AD92E /* Pods */ = {
@@ -904,6 +1032,24 @@
 		9AD522822A4AA08100A947B5 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				A4BB27252A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf */,
+				A4BB27262A81039D00DB53B1 /* BeVietnamPro-Light.ttf */,
+				A4BB27272A81039D00DB53B1 /* BeVietnamPro-Regular.ttf */,
+				A4BB27282A81039D00DB53B1 /* BeVietnamPro-Medium.ttf */,
+				A4BB27292A81039D00DB53B1 /* BeVietnamPro-Bold.ttf */,
+				A4BB272A2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf */,
+				A4BB272B2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf */,
+				A4BB272C2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf */,
+				A4BB272D2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf */,
+				A4BB272E2A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf */,
+				A4BB272F2A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf */,
+				A4BB27302A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf */,
+				A4BB27312A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf */,
+				A4BB27322A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf */,
+				A4BB27332A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf */,
+				A4BB27342A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf */,
+				A4BB27352A81039D00DB53B1 /* BeVietnamPro-Black.ttf */,
+				A4BB27362A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf */,
 				9AD5228F2A4AA09200A947B5 /* Urbanist-Black.ttf */,
 				9AD5228B2A4AA09200A947B5 /* Urbanist-Bold.ttf */,
 				9AD5228C2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf */,
@@ -921,6 +1067,8 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				A4CE0D9B2A83953B00B41A68 /* magic-loading.json */,
+				A4CE0D9C2A83953B00B41A68 /* qr-loading.json */,
 				C8C72E1E2A5FFF8100E8918B /* camera-access.json */,
 				C8E923B12A5271FF00835F93 /* loading.json */,
 				C8AA3E402A4DAF320077DCC3 /* ai_tab.json */,
@@ -1074,6 +1222,7 @@
 			isa = PBXGroup;
 			children = (
 				A4C0E2502A4EB9E600E69CF2 /* HomeViewModel.swift */,
+				5921E3B12A7BAE6E0028ED1A /* ChooseStyleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1139,6 +1288,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A4F8068F2A8491B000E9B523 /* DetailQR */ = {
+			isa = PBXGroup;
+			children = (
+				A4F806902A8491CD00E9B523 /* View */,
+			);
+			path = DetailQR;
+			sourceTree = "<group>";
+		};
+		A4F806902A8491CD00E9B523 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4F806922A84937500E9B523 /* DetailQRView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8109C7F2A5181080093B48A /* ChooseTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1185,9 +1350,9 @@
 		C8109C882A5198890093B48A /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				C8109C892A5198970093B48A /* ResultView.swift */,
 				C8E923B42A52768600835F93 /* ResultButtonView.swift */,
 				C84BBF262A53FC950065B8AF /* ResultViewModel.swift */,
+				C8109C892A5198970093B48A /* ResultView.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -1449,22 +1614,45 @@
 				9AD522A12A4AA09200A947B5 /* Urbanist-Black.ttf in Resources */,
 				59C766252A496E6000D4BDD3 /* Preview Assets.xcassets in Resources */,
 				9AD522952A4AA09200A947B5 /* Urbanist-Medium.ttf in Resources */,
+				A4BB27412A81039D00DB53B1 /* BeVietnamPro-BoldItalic.ttf in Resources */,
+				A4BB27392A81039D00DB53B1 /* BeVietnamPro-Regular.ttf in Resources */,
+				A4BB27382A81039D00DB53B1 /* BeVietnamPro-Light.ttf in Resources */,
+				A4BB273C2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf in Resources */,
+				592BFE662A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib in Resources */,
+				A4BB273D2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf in Resources */,
+				A4CE0D9E2A83953B00B41A68 /* qr-loading.json in Resources */,
 				C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */,
+				A4BB27422A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf in Resources */,
+				A4BB273E2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf in Resources */,
+				A4BB27372A81039D00DB53B1 /* BeVietnamPro-SemiBold.ttf in Resources */,
 				C8E923B22A5271FF00835F93 /* loading.json in Resources */,
 				9ADEE5142A4973C40075FCE0 /* Localizable.strings in Resources */,
 				C8AA3E432A4DAF320077DCC3 /* crown.json in Resources */,
 				C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
+				A4BB27402A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf in Resources */,
 				A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */,
 				C8C72E1F2A5FFF8100E8918B /* camera-access.json in Resources */,
+				A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */,
 				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
+				A4BB273A2A81039D00DB53B1 /* BeVietnamPro-Medium.ttf in Resources */,
+				A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */,
+				A4BB27472A81039D00DB53B1 /* BeVietnamPro-Black.ttf in Resources */,
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
+				A4BB27432A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf in Resources */,
+				592BFE7B2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib in Resources */,
 				9AD522A62A4AA09200A947B5 /* Urbanist-Regular.ttf in Resources */,
 				9AD522992A4AA09200A947B5 /* Urbanist-Light.ttf in Resources */,
+				A4BB273F2A81039D00DB53B1 /* BeVietnamPro-ExtraLightItalic.ttf in Resources */,
 				9AD522A52A4AA09200A947B5 /* Urbanist-Thin.ttf in Resources */,
 				9AD522A22A4AA09200A947B5 /* Urbanist-Italic.ttf in Resources */,
+				A4BB27442A81039D00DB53B1 /* BeVietnamPro-ThinItalic.ttf in Resources */,
+				A4BB27482A81039D00DB53B1 /* BeVietnamPro-LightItalic.ttf in Resources */,
+				A4BB273B2A81039D00DB53B1 /* BeVietnamPro-Bold.ttf in Resources */,
 				C8C72E212A60002900E8918B /* GoogleService-Info.plist in Resources */,
+				A4BB27452A81039D00DB53B1 /* BeVietnamPro-ExtraBold.ttf in Resources */,
 				9AD5229B2A4AA09200A947B5 /* Urbanist-ExtraLight.ttf in Resources */,
+				592BFE702A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib in Resources */,
 				59C766222A496E6000D4BDD3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1667,13 +1855,17 @@
 			files = (
 				59286C7D2A4D31D300EBBEBF /* TabbarView.swift in Sources */,
 				C84BBF272A53FC950065B8AF /* ResultViewModel.swift in Sources */,
+				59FBA0772A7A7ADC00F65EAB /* ChoosePhotoView.swift in Sources */,
 				C8AB7FEB2A5982BD001938AD /* InputEmailView.swift in Sources */,
 				59286C912A4D31D300EBBEBF /* ScannerView.swift in Sources */,
 				59F74C312A4E85D800AD8CBA /* EdgeInsets+.swift in Sources */,
 				9AC7DCB52A4DB30300FB3119 /* SelectQRDetailView.swift in Sources */,
 				59286C7B2A4D31D300EBBEBF /* TabbarPrimaryButton.swift in Sources */,
+				592BFE642A7B41CA00FC6C04 /* TLPhotopickerDataSourcesProtocol.swift in Sources */,
 				A4BB08782A51867C00C01063 /* LanguageViewModel.swift in Sources */,
+				592BFE682A7B41CA00FC6C04 /* TLAlbumPopView.swift in Sources */,
 				9AC7DCCE2A4DB6C600FB3119 /* InputPhoneNumberView.swift in Sources */,
+				592BFE652A7B41CA00FC6C04 /* TLCollectionTableViewCell.swift in Sources */,
 				9AC7DCD42A4DB6E500FB3119 /* CreateQRViewModel.swift in Sources */,
 				9AC33C9E2A6680D200463E58 /* TextFieldType.swift in Sources */,
 				C8AA3E512A4E80B40077DCC3 /* Configuration.swift in Sources */,
@@ -1690,8 +1882,11 @@
 				A49D14FE2A4D9ADA00CA5FE9 /* NavibarView.swift in Sources */,
 				59286C792A4D31D300EBBEBF /* TabbarViewModel.swift in Sources */,
 				59286C942A4D31D300EBBEBF /* OnboardingModel.swift in Sources */,
+				59FBA0562A7A5E4600F65EAB /* ChooseStyleView.swift in Sources */,
 				59F74C332A4E85F500AD8CBA /* Enviroment+.swift in Sources */,
 				59286C7C2A4D31D300EBBEBF /* TabbarShape.swift in Sources */,
+				592BFE6F2A7B41CA00FC6C04 /* TLAssetsCollection.swift in Sources */,
+				592BFE672A7B41CA00FC6C04 /* TLBundle.swift in Sources */,
 				A4BB08722A51643100C01063 /* DetailStylesViewModel.swift in Sources */,
 				A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */,
 				C8AA3E532A4E80BE0077DCC3 /* TargetType.swift in Sources */,
@@ -1704,9 +1899,11 @@
 				C8AA3E472A4E730C0077DCC3 /* CountryCodeView.swift in Sources */,
 				59F74C3B2A4EB97200AD8CBA /* MessageView.swift in Sources */,
 				A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */,
+				592BFE6E2A7B41CA00FC6C04 /* TLPhotosPickerViewController.swift in Sources */,
 				A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */,
 				C8E923B52A52768600835F93 /* ResultButtonView.swift in Sources */,
 				9AC7DCCA2A4DB6C600FB3119 /* QRTypeView.swift in Sources */,
+				59C3B3352A78E0DD00770F2B /* HomeCell.swift in Sources */,
 				C8109C832A518B3E0093B48A /* AmountView.swift in Sources */,
 				59286C902A4D31D300EBBEBF /* ScannerModel.swift in Sources */,
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
@@ -1718,6 +1915,7 @@
 				9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */,
 				59286C952A4D31D300EBBEBF /* OnboardingRowView.swift in Sources */,
 				C8AA3E5F2A4E81CD0077DCC3 /* AFError+.swift in Sources */,
+				592BFE6D2A7B41CA00FC6C04 /* TLAssetCollection+Extension.swift in Sources */,
 				A4BB08762A517FE600C01063 /* LanguageModel.swift in Sources */,
 				9AC7DCD12A4DB6C600FB3119 /* ChooseTemplateView.swift in Sources */,
 				C8AA3E632A4E82690077DCC3 /* TemplateRepository.swift in Sources */,
@@ -1725,6 +1923,7 @@
 				59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */,
 				9AD2B9002A501E6E003B7C1F /* QRItemService.swift in Sources */,
 				9AB8528D2A5160D800A546F4 /* SplashViewModel.swift in Sources */,
+				A4F806932A84937500E9B523 /* DetailQRView.swift in Sources */,
 				9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */,
 				9AC7DCCF2A4DB6C600FB3119 /* PromptView.swift in Sources */,
 				9AC7DCCB2A4DB6C600FB3119 /* AdvancedSettingsView.swift in Sources */,
@@ -1734,6 +1933,8 @@
 				9AC7DCCC2A4DB6C600FB3119 /* InputTextView.swift in Sources */,
 				9AD2B8FA2A5017F7003B7C1F /* FileManagerUtil.swift in Sources */,
 				C8AA3E592A4E81210077DCC3 /* AFNetworking.swift in Sources */,
+				592BFE692A7B41CA00FC6C04 /* TLAssetPreviewViewController.swift in Sources */,
+				5921E3B22A7BAE6E0028ED1A /* ChooseStyleViewModel.swift in Sources */,
 				9AD2B8FC2A501A73003B7C1F /* URL+.swift in Sources */,
 				9AB8528A2A513DD400A546F4 /* Loading.swift in Sources */,
 				59286C8D2A4D31D300EBBEBF /* HistoryView.swift in Sources */,
@@ -1749,6 +1950,7 @@
 				9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */,
 				59286C8C2A4D31D300EBBEBF /* HistoryListView.swift in Sources */,
 				76FC00F52A5BC73700B53B5F /* ViewExtension.swift in Sources */,
+				592BFE6C2A7B41CA00FC6C04 /* SynchronizedDictionary.swift in Sources */,
 				A4BCC0A32A503BCF006FD3F5 /* DetailStylesView.swift in Sources */,
 				59F74C352A4E869500AD8CBA /* CommonShape.swift in Sources */,
 				9AC7DCCD2A4DB6C600FB3119 /* ItemTemplateView.swift in Sources */,
@@ -1756,6 +1958,7 @@
 				9AD2B8F82A501093003B7C1F /* WifiSecurityMode.swift in Sources */,
 				9ABC4DA92A4C354E002646DA /* View+.swift in Sources */,
 				76FC00E52A5BA5D600B53B5F /* String+.swift in Sources */,
+				592BFE7C2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift in Sources */,
 				76FC00F42A5BC73700B53B5F /* BottomSheet.swift in Sources */,
 				A4C69C452A4D90580076CF48 /* SettingRowView.swift in Sources */,
 				59286C7A2A4D31D300EBBEBF /* TabItem.swift in Sources */,
@@ -1792,6 +1995,7 @@
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AC7DCC92A4DB6C600FB3119 /* SliderSettingView.swift in Sources */,
 				59286C992A4D31F100EBBEBF /* CountriesFetcher.swift in Sources */,
+				592BFE632A7B41CA00FC6C04 /* TLPhotoLibrary.swift in Sources */,
 				A4C0E24E2A4E89FA00E69CF2 /* HomeSectionView.swift in Sources */,
 				9AB852952A516F6200A546F4 /* IAPCell.swift in Sources */,
 				C82E15902A70C92600EF6946 /* PromptSample.swift in Sources */,
@@ -1984,6 +2188,7 @@
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "QR AI DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to photo library";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2023,8 +2228,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "QR AI";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR AI DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to photo library";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -2203,8 +2409,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRArtGenerator/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "QR AI STG";
+				INFOPLIST_KEY_CFBundleDisplayName = "QR AI DEV";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AI QR Code wants access to the camera so it can scan QR code";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to photo library";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "AI QR Code requires access to the album to import photos and save photos to the device.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

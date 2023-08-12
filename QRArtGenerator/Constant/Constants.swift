@@ -16,7 +16,7 @@ public typealias UrlBlock = (URL?) -> Void
 public typealias FloatBlock = (Float) -> Void
 public typealias IntBlock = (Int) -> Void
 
-var realmVersion: UInt64 = 2
+var realmVersion: UInt64 = 3
 var Rlocalizable: _R.string.localizable {
     get {
         return R.string.localizable(preferredLanguages: [LocalizationSystem.sharedInstance.getLanguage()])
@@ -40,6 +40,7 @@ struct Constants {
     struct Keys {
         static let KEY_USER_VIP = "KEY_USER_VIP"
         static let OPEN_APP_COUNT = "OPEN_APP_COUNT"
+        static let GENERATE_QR_COUNT = "GENERATE_QR_COUNT"
         static let DID_SHOW_ONBOARDING = "DID_SHOW_ONBOARDING"
         static let FIRST_LANGUAGE = "FIRST_LANGUAGE"
         static let GENERATE_PER_DAY = "GENERATE_PER_DAY"

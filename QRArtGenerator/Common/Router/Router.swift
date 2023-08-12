@@ -51,8 +51,12 @@ final class Router {
     
     //MARK: private
     private static func setRootView<T: View>(view: T, window: UIWindow? = nil) {
+        let host = UIHostingController(rootView: view)
+        host.view.backgroundColor = .red
         if window != nil {
-            window?.rootViewController = UIHostingController(rootView: view)
+           
+            window?.rootViewController = host
+         
             UIView.transition(with: window!,
                               duration: 0.35,
                               options: .transitionCrossDissolve,
@@ -64,7 +68,7 @@ final class Router {
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap { $0.windows }
                 .first(where: { $0.isKeyWindow })) {
-                keyWindow.rootViewController = UIHostingController(rootView: view)
+                keyWindow.rootViewController = host
                 UIView.transition(with: keyWindow,
                                   duration: 0.35,
                                   options: .transitionCrossDissolve,

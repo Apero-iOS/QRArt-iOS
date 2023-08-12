@@ -18,9 +18,14 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var countSelectTab: Int = .zero
     @Published var failAds: Bool = false
     @Published var isVip: Bool = UserDefaults.standard.isUserVip
+    @Published var showPopupGenQR: Bool = false
+    @Published var isShowChoosePhoto: Bool = false
+    var templateSelect: Template = .init()
+    var qrImage: UIImage?
+    var qrString: String?
     var cancellable = Set<AnyCancellable>()
 
-    var tabs: [TabbarEnum] = TabbarEnum.allCases
+    var tabs: [TabbarEnum] = [.home, .ai, .history]
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.number(forKey: .inter_change_screen) > .zero && !UserDefaults.standard.isUserVip

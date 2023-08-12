@@ -16,13 +16,13 @@ enum SourceIAPView: String {
 }
 
 struct IAPView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @StateObject var viewModel = IAPViewModel()
     @State var cancellable = Set<AnyCancellable>()
     var isAfterOnboarding: Bool = false
-    var onClose: (() -> Void)? = nil
     var source: SourceIAPView = .setting
+    var onClose: (() -> Void)? = nil
     
     var body: some View {
         ZStack(alignment: .leading) {

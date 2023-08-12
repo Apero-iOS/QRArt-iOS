@@ -14,15 +14,9 @@ class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
     @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
     @Published var templates: [Template] = []
-    @Published var indexSelectTemplate: Int? {
-        didSet {
-            if let indexSelectTemplate = indexSelectTemplate, !templates.isEmpty {
-                input.prompt = templates[indexSelectTemplate].positivePrompt
-                input.negativePrompt = templates[indexSelectTemplate].negativePrompt
-                input.templateQRName = templates[indexSelectTemplate].name
-            }
-        }
-    }
+    @Published var isShowPopupCreate: Bool = false
+    @Published var isShowViewChooseStyle: Bool = false
+    @Published var baseUrl: String = ""
     @Published var input: QRDetailItem = QRDetailItem() {
         didSet {
             if input.type != oldValue.type {
@@ -41,15 +35,24 @@ class CreateQRViewModel: ObservableObject {
     @Published var showSub: Bool = false
     @Published var showToastError: Bool = false
     @Published var isPush: Bool
+    @Published var qrImage: UIImage?
     @Published var mode: AdvancedSettingsMode = .collapse
     @Published var idTemplateSelect: String?
-    @Published var templateSelect: Template?
+    @Published var templateSelect: Template
     @Published var isLoadAdsSuccess: Bool = true
     @Published var errorInputType: TextFieldType?
     @Published var promptSample: PromptSample = PromptSample()
+    @Published var isShowSub: Bool = false {
+        didSet {
+            checkShowLoading()
+        }
+    }
+    
     private var needFetchTemplates: Bool = true
         
     var messageError: String = ""
+    var isStatusGenegate: Bool = false
+    var isGenegateSuccess: Bool = false
     
     var isShowAdsInter: Bool {
         return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
@@ -62,10 +65,17 @@ class CreateQRViewModel: ObservableObject {
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    init(source: CreateQRViewSource, templateSelect: Template?, isPush: Bool = false) {
+    init(source: CreateQRViewSource, templateSelect: Template, isPush: Bool = false, qrImage: UIImage? = nil, baseUrl: String? = nil) {
         self.source = source
         self.isPush = isPush
+        self.baseUrl = baseUrl ?? ""
+        self.qrImage = qrImage
         self.templateSelect = templateSelect
+        self.input.prompt = templateSelect.positivePrompt
+        self.input.negativePrompt = templateSelect.negativePrompt
+        self.input.templateQRName = templateSelect.name
+        self.input.createType = qrImage != nil ? .normal : .custom
+        self.input.baseUrl = self.baseUrl
         self.templates.insert(Template(), at: 0)
     }
     
@@ -82,19 +92,14 @@ class CreateQRViewModel: ObservableObject {
             templateRepository.fetchTemplates().sink { comple in
                 switch comple {
                 case .finished:
-                    self.indexSelectTemplate = 1
                     self.needFetchTemplates = false
                 case .failure:
-                    self.indexSelectTemplate = 0
+                    break
                 }
-                
             } receiveValue: { [weak self] listTemplates in
                 guard let self = self else { return }
                 if let listTemplates = listTemplates {
                     self.templates.append(contentsOf: listTemplates.items)
-                    if let index = self.templates.firstIndex(where: {$0 == self.templateSelect}) {
-                        self.templates.swapAt(1, index)
-                    }
                 }
             }.store(in: &cancellable)
         }
@@ -130,23 +135,21 @@ class CreateQRViewModel: ObservableObject {
         validInput = true
         errorInputType = getErrorInput()
         if errorInputType == nil {
-            if UserDefaults.standard.isUserVip {
-                generateQR()
+            if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
+                isShowPopupCreate.toggle()
             } else {
-                if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
-                    // show sub
-                    showSub = true
-                } else {
-                    // show ads
-                    showAdsInter()
-                }
+                showAdsInter()
             }
         }
     }
     
     func getErrorInput() -> TextFieldType? {
-        if input.name.isEmptyOrWhitespace() {
-            return .name
+        if qrImage != nil {
+            if baseUrl.isEmptyOrWhitespace() {
+                return .baseUrl
+            }
+            input.baseUrl = baseUrl
+            return nil
         }
         switch input.type {
         case .website, .facebook, .instagram, .spotify, .youtube, .twitter:
@@ -213,7 +216,9 @@ class CreateQRViewModel: ObservableObject {
     }
     
     func genQR() {
-        isShowLoadingView.toggle()
+        isShowLoadingView = true
+        isStatusGenegate = true
+        isGenegateSuccess = false
         templateRepository.genQR(qrText: getQRText(),
                                  positivePrompt: input.prompt,
                                  negativePrompt: input.negativePrompt,
@@ -222,12 +227,14 @@ class CreateQRViewModel: ObservableObject {
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
-            case .finished:
-                self.isShowLoadingView.toggle()
-            case .failure(let error):
-                self.isShowLoadingView.toggle()
-                self.messageError = error.message
-                self.showToastError.toggle()
+                case .finished:
+                    self.isStatusGenegate = false
+                    self.checkShowLoading()
+                case .failure(let error):
+                    self.isStatusGenegate = false
+                    self.checkShowLoading()
+                    self.messageError = error.message
+                    self.showToastError.toggle()
             }
         } receiveValue: { [weak self] data in
             guard let self = self,
@@ -237,17 +244,39 @@ class CreateQRViewModel: ObservableObject {
                 self?.showToastError.toggle()
                 return
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-                self?.input.qrImage = uiImage
-                self?.imageResult = Image(uiImage: uiImage)
-                UserDefaults.standard.generatePerDay += 1
-                self?.isShowExport.toggle()
-            }
+            self.isGenegateSuccess = true
+            self.input.qrImage = uiImage
+            self.imageResult = Image(uiImage: uiImage)
+            UserDefaults.standard.generatePerDay += 1
+            
         }.store(in: &cancellable)
         
     }
     
+    func checkShowLoading() {
+        if !isShowSub && isShowLoadingView && !isStatusGenegate {
+            if UserDefaults.standard.isUserVip {
+                self.isShowLoadingView.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                    self?.isShowExport.toggle()
+                }
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+                    self?.isShowLoadingView.toggle()
+                    if self?.isGenegateSuccess == true {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                            self?.isShowExport.toggle()
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
     func getQRText() -> String {
+        if qrImage != nil {
+            return baseUrl
+        }
         switch input.type {
         case .website, .instagram, .facebook, .twitter, .spotify, .youtube:
             return input.urlString

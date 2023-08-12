@@ -8,9 +8,22 @@
 import Foundation
 import NetworkExtension
 import SwiftUI
+import Photos
+import FBSDKShareKit
+import UIKit
+import Social
+
+public protocol SocialMediaShareable {
+    func image() -> UIImage?
+    func url() -> URL?
+    func text() -> String?
+}
 
 
-struct QRHelper {
+class QRHelper: NSObject {
+    static let share = QRHelper()
+    var documentController: UIDocumentInteractionController!
+    
     static func parseResultQR(text: String) -> ResultQR {
         var arrydict = text.components(separatedBy: ";")
         var result = ResultQR(type: .text, content: text, title: text)
@@ -118,3 +131,69 @@ struct QRHelper {
     }
 }
 
+extension QRHelper {
+    @objc func shareImageInstagram(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error != nil {
+            return
+        }
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        
+        if let lastAsset = fetchResult.firstObject {
+            let url = URL(string: "instagram://library?LocalIdentifier=\(lastAsset.localIdentifier)")!
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                let urlStr = "https://itunes.apple.com/in/app/instagram/id389801252?mt=8"
+                UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
+                
+            }
+        }
+    }
+    
+    func share(image: UIImage, for serviceType: String, from presentingVC: UIViewController) {
+        if let composeVC = SLComposeViewController(forServiceType:serviceType) {
+            composeVC.add(image)
+            presentingVC.present(composeVC, animated: true, completion: nil)
+        }
+    }
+    
+    func shareImageViaInstagram(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(shareImageInstagram(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func shareImageViaTwitter(image: UIImage) {
+        let instagramURL = URL(string: "twitter://app")
+        if UIApplication.shared.canOpenURL(instagramURL!),
+            let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter) {
+            vc.add(image)
+            AppHelper.getRootViewController()?.present(vc, animated: true)
+        } else {
+            let urlStr = "https://apps.apple.com/us/app/twitter/id333903271"
+            UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func facebookShare(image: UIImage) {
+        var photo: SharePhoto!
+        
+        photo = SharePhoto(image: image, isUserGenerated: false)
+        let content = SharePhotoContent()
+        content.photos = [photo]
+        let dialog = ShareDialog(viewController: AppHelper.getRootViewController(), content: content, delegate: nil)
+        do {
+            try dialog.validate()
+        } catch {}
+        guard let schemaUrl = URL(string: "fb://") else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(schemaUrl) {
+        } else {
+            let urlStr = "https://apps.apple.com/vn/app/facebook/id284882215"
+            UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
+        }
+        dialog.show()
+    }
+}

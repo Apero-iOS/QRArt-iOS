@@ -6,12 +6,22 @@
 	<string>674938347787286</string>
 	<key>FacebookClientToken</key>
 	<string>f957c64fea21920a53fcb2a81ddee0ec</string>
+	<key>FacebookDisplayName</key>
+	<string>QR-AI</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6530974883137971~8095578177</string>
 	<key>GADNativeAdValidatorEnabled</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>instagram</string>
+		<string>fb</string>
+		<string>whatsapp</string>
+		<string>twitter</string>
+	</array>
 	<key>NSAdvertisingAttributionReportEndpoint</key>
 	<string>https://adjust-skadnetwork.com</string>
 	<key>SKAdNetworkItems</key>
@@ -185,6 +195,34 @@
 		<string>Urbanist-Regular.ttf</string>
 		<string>Urbanist-SemiBold.ttf</string>
 		<string>Urbanist-Thin.ttf</string>
+        <string>BeVietnamPro-Black.ttf</string>
+        <string>BeVietnamPro-BlackItalic.ttf</string>
+        <string>BeVietnamPro-Bold.ttf</string>
+        <string>BeVietnamPro-BoldItalic.ttf</string>
+        <string>BeVietnamPro-ExtraBold.ttf</string>
+        <string>BeVietnamPro-ExtraBoldItalic.ttf</string>
+        <string>BeVietnamPro-ExtraLight.ttf</string>
+        <string>BeVietnamPro-ExtraLightItalic.ttf</string>
+        <string>BeVietnamPro-Italic.ttf</string>
+        <string>BeVietnamPro-Light.ttf</string>
+        <string>BeVietnamPro-LightItalic.ttf</string>
+        <string>BeVietnamPro-Medium.ttf</string>
+        <string>BeVietnamPro-MediumItalic.ttf</string>
+        <string>BeVietnamPro-Regular.ttf</string>
+        <string>BeVietnamPro-SemiBold.ttf</string>
+        <string>BeVietnamPro-SemiBoldItalic.ttf</string>
+        <string>BeVietnamPro-Thin.ttf</string>
+        <string>BeVietnamPro-ThinItalic.ttf</string>
+        <string>Urbanist-Black.ttf</string>
+        <string>Urbanist-Bold.ttf</string>
+        <string>Urbanist-ExtraBold.ttf</string>
+        <string>Urbanist-ExtraLight.ttf</string>
+        <string>Urbanist-Italic.ttf</string>
+        <string>Urbanist-Light.ttf</string>
+        <string>Urbanist-Medium.ttf</string>
+        <string>Urbanist-Regular.ttf</string>
+        <string>Urbanist-SemiBold.ttf</string>
+        <string>Urbanist-Thin.ttf</string>
 	</array>
 	<key>productPubPEM</key>
 	<string>-----BEGIN PUBLIC KEY-----

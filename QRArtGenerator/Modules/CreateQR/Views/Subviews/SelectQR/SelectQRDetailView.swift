@@ -49,12 +49,6 @@ struct SelectQRDetailView: View {
                 .frame(maxHeight: 44)
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 VStack(spacing: 12) {
-                    InputTextView(title: Rlocalizable.name(),
-                                  placeholder: Rlocalizable.enter_qr_name(),
-                                  name: $input.name,
-                                  validInput: $validInput,
-                                  focusField: focusTextfieldType,
-                                  textfieldType: .name)
                     switch type {
                     case .website:
                         InputTextView(title: Rlocalizable.website_link(),

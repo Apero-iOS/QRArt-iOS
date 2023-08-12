@@ -9,42 +9,76 @@ import SwiftUI
 
 struct LoadingView: View {
     
-    @State var scale: CGFloat = 0.75
-    @State var textStr: String = "Generating..."
     @State var moveDown: Bool = false
+    @State var isShowSub: Bool = false
+    @State var index: Int = .zero
+    @Environment(\.dismiss) private var dismiss
+    
+    let listTitle: [String] = [Rlocalizable.analysing_the_qr(),
+                               Rlocalizable.applying_the_style(),
+                               Rlocalizable.igniting_the_ai_engine(),
+                               Rlocalizable.extracting_feature(),
+                               Rlocalizable.generating_your_qr()]
+    
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    var onShowSub: BoolBlock? = nil
     
     var body: some View {
-        ZStack {
-            LottieView(lottieFile: R.file.loadingJson.name)
-            HStack(spacing: 2) {
-                let textArr = textStr.map { String($0) }
-                ForEach(0..<textArr.count, id: \.self) { index in
-                    Text(textArr[index])
-                        .font(R.font.urbanistSemiBold.font(size: 16))
-                        .foregroundColor(Color(red: 0.98, green: 0.76, blue: 0.16))
-                        .scaleEffect(scale)
-                        .offset(x: 0, y: self.moveDown ? 3 : 0)
-                        .animation(
-                            .easeInOut(duration: 0.6)
-                            .repeatForever()
-                            .delay(Double(index)*0.1),
-                            value: UUID()
-                        )
-                        .onAppear {
-                            withAnimation {
-                                scale = 1
-                                moveDown.toggle()
-                            }
-                        }
+        VStack {
+            ZStack {
+                ZStack(alignment: .bottom) {
+                    LottieView(lottieFile: R.file.qrLoadingJson.name)
+                        .offset(CGSize(width: 0, height: -50))
+                    Text(listTitle[index])
+                        .font(R.font.beVietnamProMedium.font(size: 16))
+                        .animation(.easeInOut)
                 }
+                .frame(width: UIScreen.screenWidth - 180, height: UIScreen.screenWidth - 100)
+                LottieView(lottieFile: R.file.magicLoadingJson.name)
             }
+            .frame(width: UIScreen.screenWidth + 180, height: UIScreen.screenWidth)
             .padding(.top, 100)
             
+            speedUpButton
+            
+            Spacer()
         }
+        .ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(R.color.color_1B232E.color)
-        
+        .background(Color.white)
+        .onReceive(timer) { _ in
+            if index < listTitle.count - 1 {
+                index += 1
+            } else {
+                index = 0
+            }
+        }
+        .fullScreenCover(isPresented: $isShowSub) {
+            IAPView(source: .generateButton, onClose: {
+                onShowSub?(false)
+            })
+        }
     }
+    
+    @ViewBuilder var speedUpButton: some View {
+        HStack {
+            Button {
+                isShowSub.toggle()
+                onShowSub?(true)
+            } label: {
+                Image(R.image.ic_speed_ip)
+                Text(Rlocalizable.speed_up)
+                    .foregroundColor(R.color.color_FFF500.color)
+                    .font(R.font.beVietnamProSemiBold.font(size: 14))
+            }
+        }
+        .frame(width: 236, height: 48)
+        .background(R.color.color_653AE4.color)
+        .cornerRadius(100)
+        .shadow(color: R.color.color_653AE4.color.opacity(0.25), radius: 0, x: 0, y: 0)
+
+    }
+    
 }
 
 struct LoadingView_Previews: PreviewProvider {

@@ -30,19 +30,17 @@ class ResultViewModel: ObservableObject {
     @Published var item: QRDetailItem
     @Published var isShowSuccessView: Bool = false
     @Published var isShowLoadingView: Bool = false
+    @Published var isGenQRSuccess: Bool = false
     @Published var image: Image
     @Published var sheet: Bool = false
-    @Published var source: ResultViewSource
     @Published var showIAP: Bool = false
     @Published var toastMessage: String = ""
     @Published var isShowToast: Bool = false
+    @Published var isShowDeleteAction: Bool = false
     @Published var showPopupAcessPhoto: Bool = false
+    @Published var isShowIAP = false
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
-    
-    var isCreate: Bool {
-        return source == .create
-    }
     
     var isShowAdsNative: Bool {
         return RemoteConfigService.shared.bool(forKey: .native_result) && !UserDefaults.standard.isUserVip
@@ -52,10 +50,9 @@ class ResultViewModel: ObservableObject {
         return RemoteConfigService.shared.bool(forKey: .inter_regenerate) && !UserDefaults.standard.isUserVip
     }
     
-    init(item: QRDetailItem, image: Image, source: ResultViewSource) {
+    init(item: QRDetailItem, image: Image) {
         self.item = item
         self.image = image
-        self.source = source
     }
     
     func save() {
@@ -159,7 +156,13 @@ class ResultViewModel: ObservableObject {
                 case .failure(let error):
                     self.showToast(message: error.message)
                 }
-                self.isShowLoadingView.toggle()
+                if UserDefaults.standard.isUserVip {
+                    self.isGenQRSuccess = true
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                        self.isGenQRSuccess = true
+                    })
+                }
             } receiveValue: { data in
                 guard let data = data, let uiImage = UIImage(data: data) else {
                     self.showToast(message: Rlocalizable.could_not_load_data())
@@ -178,6 +181,9 @@ class ResultViewModel: ObservableObject {
     }
     
     func getQRText() -> String {
+        if let baseUrl = item.baseUrl {
+            return baseUrl
+        }
         switch item.type {
         case .website, .instagram, .facebook, .twitter, .spotify, .youtube:
             return item.urlString

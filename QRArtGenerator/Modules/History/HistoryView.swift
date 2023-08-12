@@ -11,19 +11,13 @@ struct HistoryView: View {
     
     // MARK: - Variables
     @StateObject var viewModel = HistoryViewModel()
-    
+    var createQRBlock: VoidBlock?
     
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             Color.clear
                 .frame(height: 0)
-            
-            Text(Rlocalizable.history())
-                .font(R.font.urbanistBold.font(size: 28))
-                .foregroundColor(R.color.color_1B232E.color)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
             if viewModel.items.isEmpty {
                 emptyView
             } else {
@@ -32,6 +26,10 @@ struct HistoryView: View {
         }
         .onAppear {
             FirebaseAnalytics.logEvent(type: .history_view)
+            QRItemService.shared.setObserver { histores in
+                viewModel.filteredItems = histores
+                viewModel.items = histores
+            }
         }
         .padding(.horizontal, 20)
         .hideNavigationBar(isHidden: true)
@@ -42,7 +40,7 @@ struct HistoryView: View {
         Spacer()
             .frame(height: HEIGHT_SCREEN / 20)
         
-        Image(R.image.history_empty_ic)
+        Image(R.image.history_empty_ic.name)
             .aspectRatio(contentMode: .fit)
         
         VStack(spacing: 24) {
@@ -58,7 +56,7 @@ struct HistoryView: View {
             }
             
             Button {
-                viewModel.isActive.toggle()
+                createQRBlock?()
                 FirebaseAnalytics.logEvent(type: .history_qr_click)
             } label: {
                 Text(Rlocalizable.create_qr())
@@ -72,39 +70,10 @@ struct HistoryView: View {
         }
         .padding(.horizontal, 40)
         .opacity(1)
-        NavigationLink(destination: CreateQRView(viewModel: CreateQRViewModel(source: .create, templateSelect: nil, isPush: true)), isActive: $viewModel.isActive) {}
         Spacer()
     }
     
     @ViewBuilder var listView: some View {
-        NavigationLink {
-            SearchView()
-        } label: {
-            HStack(spacing: 12) {
-                Image(R.image.search_ic)
-                    .frame(width: 24)
-                    .padding(.leading, 12)
-                
-                Text(Rlocalizable.search_qr_name())
-                    .font(R.font.urbanistRegular.font(size: 14))
-                    .foregroundColor(R.color.color_6A758B.color)
-                
-                Spacer()
-            }
-            .frame(height: 40)
-            .background(.white)
-            .overlay (
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(R.color.color_EAEAEA.color)
-            )
-        }
-        .buttonStyle(.plain)
-        
-        HistoryCategoryListView(caterories: $viewModel.categories, selectedCate: $viewModel.selectedCate, onSelectCategory: { cate in
-            viewModel.select(category: cate)
-        })
-        .padding(.horizontal, -20)
-        
         HistoryListView(items: $viewModel.filteredItems, isInHistory: true, onDelete: { item in
             if #available(iOS 16.0, *) {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {

@@ -10,89 +10,43 @@ import SkeletonUI
 
 struct ItemTemplateView: View {
     @Binding var template: Template
-    @Binding var indexSelect: Int?
     var index: Int = .zero
-    var isSelect: Bool {
-        index == indexSelect
-    }
     
     var body: some View {
         VStack {
             if let url = URL(string: template.key) {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image.resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 103, height: 103)
-                            .cornerRadius(8)
-                            .clipped()
-                            .overlay {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(
-                                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
-                                                           startPoint: .bottomLeading,
-                                                           endPoint: .topTrailing),
-                                            lineWidth: 2
-                                        )
-                                        .frame(width: 101, height: 101)
-                                        .background(isSelect ? R.color.color_653AE4.color.opacity(0.2) : Color.clear)
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 140, height: 140)
+                    .background(
+                        AsyncImage(url: url) { phase in
+                            switch phase {
+                                case .success(let image):
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 120, height: 120)
                                         .cornerRadius(8)
                                         .clipped()
-                                    
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(
-                                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
-                                                           startPoint: .bottomLeading,
-                                                           endPoint: .topTrailing),
-                                            lineWidth: 2
-                                        )
-                                        .frame(width: 101, height: 101)
-                                }
-                                
-                            }
-                    case .empty:
-                        EmptyView()
-                            .skeleton(with: true, size: CGSize(width: 103, height: 103))
-                            .shape(type: .rounded(.radius(8)))
-                    default:
-                        R.image.img_error.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 103, height: 103)
-                            .cornerRadius(8)
-                            .clipped()
-                            .overlay {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(
-                                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
-                                                           startPoint: .bottomLeading,
-                                                           endPoint: .topTrailing),
-                                            lineWidth: 2
-                                        )
-                                        .frame(width: 101, height: 101)
-                                        .background(isSelect ? R.color.color_653AE4.color.opacity(0.2) : Color.clear)
+                                case .empty:
+                                    EmptyView()
+                                        .skeleton(with: true, size: CGSize(width: 120, height: 120))
+                                        .shape(type: .rounded(.radius(8)))
+                                default:
+                                    R.image.img_error.image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 120, height: 120)
                                         .cornerRadius(8)
                                         .clipped()
-                                    
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(
-                                            LinearGradient(colors: isSelect ? [R.color.color_6427C8.color, R.color.color_E79CB7.color] : [Color.clear],
-                                                           startPoint: .bottomLeading,
-                                                           endPoint: .topTrailing),
-                                            lineWidth: 2
-                                        )
-                                        .frame(width: 101, height: 101)
-                                }
                             }
-                    }
-                }
+                        }
+                    )
+                    .border(radius: 12, color: R.color.color_653AE4.color, width: 4)
+                
             }
             
             Text(template.name)
-                .font(R.font.urbanistMedium.font(size: 12))
+                .font(R.font.urbanistRegular.font(size: 13))
         }
         .frame(maxWidth: 103, maxHeight: 124)
     } 

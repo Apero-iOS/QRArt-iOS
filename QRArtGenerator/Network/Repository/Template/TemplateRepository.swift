@@ -19,6 +19,7 @@ class TemplateRepository: BaseAPI<TemplateNetworking>, TemplateRepositoryProtoco
     }
     
     func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError> {
+      
         uploadFile(target: .genQR(qrText: qrText, positivePrompt: positivePrompt, negativePrompt: negativePrompt, guidanceScale: guidanceScale, numInferenceSteps: numInferenceSteps))
     }
 }

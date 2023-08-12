@@ -35,6 +35,8 @@ struct AppHelper {
         return nil
     }
     
+    static var templates: [Template] = []
+    
 }
 
 struct SafeAreaInsetsKey: EnvironmentKey {

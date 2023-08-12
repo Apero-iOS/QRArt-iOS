@@ -8,7 +8,6 @@
 import Foundation
 
 enum TextFieldType {
-    case name
     case link
     case contactName
     case contactPhone
@@ -22,4 +21,5 @@ enum TextFieldType {
     case paypal
     case prompt
     case negativePrompt
+    case baseUrl
 }

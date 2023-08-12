@@ -14,23 +14,21 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text(Rlocalizable.settings)
-                .font(R.font.urbanistBold.font(size: 28))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading)
             ScrollView {
                 LazyVStack {
                     bannerSettingView
                     listItemView
                 }
-            }
+            }.clipped()
             Spacer()
         }
+        .navigationTitle(Rlocalizable.settings())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .listStyle(.grouped)
         .fullScreenCover(isPresented: $viewModel.isShowIAP) {
             IAPView(source: .setting)
         }
+       
         .onAppear {
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess {

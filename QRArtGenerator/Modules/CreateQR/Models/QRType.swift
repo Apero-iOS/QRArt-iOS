@@ -151,3 +151,8 @@ enum QRGroupType: Int, CaseIterable, PersistableEnum {
         }
     }
 }
+
+enum CreateQRType: String, PersistableEnum {
+    case normal
+    case custom
+}

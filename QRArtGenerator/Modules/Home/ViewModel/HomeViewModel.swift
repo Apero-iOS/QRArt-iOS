@@ -12,6 +12,7 @@ import SwiftUI
 final class HomeViewModel: ObservableObject, Identifiable {
     
     @Published var categories: [Category] = []
+    @Published var templates: [Template] = AppHelper.templates
     @Published var isShowGenerateQR = false
     @Published var isShowToast = false
     @Published var msgError: String = ""
@@ -35,13 +36,12 @@ final class HomeViewModel: ObservableObject, Identifiable {
             }
         } receiveValue: { [weak self] listTemplates in
             guard let self = self else { return }
-            self.categories.removeAll()
+            self.templates.removeAll()
             if let templates = listTemplates?.items {
-                Dictionary(grouping: templates, by: { $0.category }).forEach { key, value in
-                    self.categories.append(Category(name: key, templates: value))
-                }
-                self.categories.sort(by: {$0.name < $1.name})
+                self.templates.append(contentsOf: templates)
+                AppHelper.templates = templates
             }
+            
         }.store(in: &cancellable)
     }
 }

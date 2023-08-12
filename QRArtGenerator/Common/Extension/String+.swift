@@ -42,10 +42,11 @@ extension String {
             url = "https://" + url
         }
         
-        // Kiểm tra định dạng URL hợp lệ ở đây
-        // Bạn có thể sử dụng một biểu thức chính quy (regular expression) hoặc thư viện có sẵn như URLComponents để kiểm tra
+        let urlRegEx = "((?:http|https)://)?(?:[\\w\\d\\-_]+\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+        let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+        let result = urlTest.evaluate(with: url)
         
-        if let _ = URL(string: url) {
+        if result {
             return (true, url)
         } else {
             return (false, "")

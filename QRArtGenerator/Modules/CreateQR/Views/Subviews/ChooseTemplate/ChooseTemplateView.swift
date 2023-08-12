@@ -21,23 +21,13 @@ struct ChooseTemplateView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(0..<templates.count, id: \.self) { index in
-                            if index == 0 {
-                                BasicItemTemplateView(indexSelect: $indexSelectStyle, index: index)
-                                    .onTapGesture {
-                                        if index != indexSelectStyle {
-                                            indexSelectStyle = index
-                                            FirebaseAnalytics.logEvent(type: .qr_creation_style_click, params: [.style: "Basic"])
-                                        }
+                            ItemTemplateView(template: $templates[index], index: index)
+                                .onTapGesture {
+                                    if index != indexSelectStyle {
+                                        indexSelectStyle = index
+                                        FirebaseAnalytics.logEvent(type: .qr_creation_style_click, params: [.style: templates[index].name])
                                     }
-                            } else {
-                                ItemTemplateView(template: $templates[index], indexSelect: $indexSelectStyle, index: index)
-                                    .onTapGesture {
-                                        if index != indexSelectStyle {
-                                            indexSelectStyle = index
-                                            FirebaseAnalytics.logEvent(type: .qr_creation_style_click, params: [.style: templates[index].name])
-                                        }
-                                    }
-                            }
+                                }
                         }
                     }
                     .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
