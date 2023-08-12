@@ -176,3 +176,8 @@
 "details" = "Einzelheiten";
 "link" = "Verknüpfung";
 "next" = "Nächste";
+"create_your_ai_qr_code" = "Erstellen Sie Ihren\nai QR -Code";
+"choose_your_qr_style" = "Wählen Sie Ihren\nqr -Stil";
+"give_input_for_qr" = "Geben Sie die Eingabe\nfür qr";
+"provide_ai_input_prompt" = "Geben Sie eine Eingabeaufforderung\nzur Eingabeaufforderung";
+"final_step_initiate_qr_morph" = "Abschlussschritt:\ninitiieren QR-Morph";

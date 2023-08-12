@@ -46,6 +46,7 @@ struct Constants {
         static let GENERATE_PER_DAY = "GENERATE_PER_DAY"
         static let REGENERATE_PER_DAY = "REGENERATE_PER_DAY"
         static let KEY_LAST_DAY_OPEN_APP = "KEY_LAST_DAY_OPEN_APP"
+        static let TOOLTIPS_DONE = "TOOLTIPS_DONE"
     }
     
     struct GoogleService {

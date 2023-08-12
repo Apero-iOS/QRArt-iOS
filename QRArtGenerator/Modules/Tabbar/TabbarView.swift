@@ -13,79 +13,106 @@ struct TabbarView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .bottom) {
-                contentView
-                    .padding(.bottom, viewModel.canShowBannerAd() ? 80 : 0)
-                
-                VStack(spacing: 0) {
-                    Spacer()
+        ZStack(alignment: .bottom) {
+            NavigationView {
+                ZStack(alignment: .bottom) {
+                    contentView
+                        .padding(.bottom, viewModel.canShowBannerAd() ? 80 : 0)
                     
-                    ZStack(alignment: .bottom) {
-                        TabBarShape()
-                            .fill(Color.white)
-                            .frame(height: 64)
-                            .shadow(color: R.color.color_D3D3D3_30.color, radius: 20, x: 0, y: -4)
+                    VStack(spacing: 0) {
+                        Spacer()
                         
-                        HStack(alignment: .bottom, spacing: 0) {
-                            ForEach(viewModel.tabs, id: \.self) { tab in
-                                TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { _ in
-                                    switch tab {
+                        ZStack(alignment: .bottom) {
+                            TabBarShape()
+                                .fill(Color.white)
+                                .frame(height: 64)
+                                .shadow(color: R.color.color_D3D3D3_30.color, radius: 20, x: 0, y: -4)
+                            
+                            HStack(alignment: .bottom, spacing: 0) {
+                                ForEach(viewModel.tabs, id: \.self) { tab in
+                                    TabItem(width: WIDTH_SCREEN / CGFloat(viewModel.tabs.count), tab: tab, selectedTab: $viewModel.selectedTab) { _ in
+                                        switch tab {
                                         case .scan:
                                             viewModel.showCreateQR.toggle()
                                             FirebaseAnalytics.logEvent(type: .qr_creation_click)
                                         case .ai:
                                             viewModel.showScan.toggle()
-                                           
+                                            
                                         default:
                                             print("Không phải view present")
+                                        }
                                     }
                                 }
                             }
+                            .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
                         }
-                        .frame(width: WIDTH_SCREEN, height: 101, alignment: .bottom)
-                    }
-                    
-                    /// View Ads
-                    if viewModel.canShowBannerAd() {
-                        BannerView(adUnitID: .banner_tab_bar, fail: {
-                            viewModel.failAds = true
-                        })
-                        .frame(height: 50)
-                    }
-                    
-                    Color
-                        .white
-                        .frame(width: WIDTH_SCREEN, height: safeAreaInsets.bottom)
-                }
-                
-            }
-            .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
-            .ignoresSafeArea(edges: .bottom)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigation, content: {
-                    HStack {
-                        Image(R.image.history_logo_ic)
-                            .padding(.leading, 4)
                         
-                        Spacer()
-                        if !UserDefaults.standard.isUserVip {
-                            LottieView(lottieFile: R.file.crownJson.name)
-                                .frame(width: 24, height: 24)
-                                .onTapGesture {
-                                    viewModel.showIAP.toggle()
-                                }
+                        /// View Ads
+                        if viewModel.canShowBannerAd() {
+                            BannerView(adUnitID: .banner_tab_bar, fail: {
+                                viewModel.failAds = true
+                            })
+                            .frame(height: 50)
                         }
-                        NavigationLink(destination: SettingsView()) {
-                            Image(R.image.setting_ic.name)
-                        }
+                        
+                        Color
+                            .white
+                            .frame(width: WIDTH_SCREEN, height: safeAreaInsets.bottom)
                     }
-                    .frame(width: WIDTH_SCREEN - 32, height: 48)
-                    .background(Color.clear)
-                })
+                    
+                }
+                .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
+                .ignoresSafeArea(edges: .bottom)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigation, content: {
+                        HStack {
+                            Image(R.image.history_logo_ic)
+                                .padding(.leading, 4)
+                            
+                            Spacer()
+                            if !UserDefaults.standard.isUserVip {
+                                LottieView(lottieFile: R.file.crownJson.name)
+                                    .frame(width: 24, height: 24)
+                                    .onTapGesture {
+                                        viewModel.showIAP.toggle()
+                                    }
+                            }
+                            NavigationLink(destination: SettingsView()) {
+                                Image(R.image.setting_ic.name)
+                            }
+                        }
+                        .frame(width: WIDTH_SCREEN - 32, height: 48)
+                        .background(Color.clear)
+                    })
+                }
+                .hideNavigationBar(isHidden: viewModel.selectedTab == .settings)
             }
-            .hideNavigationBar(isHidden: viewModel.selectedTab == .settings)
+            
+            if viewModel.showPopupGenQR || !UserDefaults.standard.tooltipsDone {
+                PopupCreateView {
+                    viewModel.showPopupGenQR = false
+                    viewModel.isShowChoosePhoto.toggle()
+                } createButtonTap: {
+                    viewModel.qrImage = nil
+                    viewModel.qrString = nil
+                    viewModel.showPopupGenQR = false
+                    viewModel.showCreateQR.toggle()
+                } outsideViewTap: {
+                    viewModel.showPopupGenQR = false
+                }
+            }
+            
+            if !UserDefaults.standard.tooltipsDone {
+                TooltipsView(type: .home) {
+                    viewModel.qrImage = nil
+                    viewModel.qrString = nil
+                    viewModel.showPopupGenQR = false
+                    viewModel.templateSelect = AppHelper.templates.first ?? .init()
+                    viewModel.showCreateQR.toggle()
+                }
+            }
+
         }
         .fullScreenCover(isPresented: $viewModel.showScan) {
             ScannerView()
@@ -104,9 +131,6 @@ struct TabbarView: View {
         .fullScreenCover(isPresented: $viewModel.showIAP) {
             IAPView(source: .topBar)
         }
-        .bottomSheet(isPresented: $viewModel.showPopupGenQR, height: 137, topBarCornerRadius: 20, showTopIndicator: false, content: {
-            popupCreateView
-        })
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
             if viewModel.isShowAds {
                 viewModel.showAdsInter()
@@ -122,44 +146,7 @@ struct TabbarView: View {
             }.store(in: &viewModel.cancellable)
         }
     }
-    
-    @ViewBuilder var popupCreateView: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button {
-                    viewModel.showPopupGenQR = false
-                    viewModel.isShowChoosePhoto.toggle()
-                } label: {
-                    VStack {
-                        Image(R.image.ic_upload_your_qr.name)
-                        Text(Rlocalizable.upload_your_qr)
-                            .padding(.top, 12)
-                            .font(R.font.beVietnamProMedium.font(size: 14))
-                            .foregroundColor(R.color.color_1B232E.color)
-                    }
-                }
-                Spacer()
-                Button {
-                    viewModel.qrImage = nil
-                    viewModel.qrString = nil
-                    viewModel.showPopupGenQR = false
-                    viewModel.showCreateQR.toggle()
-                } label: {
-                    VStack {
-                        Image(R.image.ic_create_new_qr.name)
-                        Text(Rlocalizable.create_new_qr)
-                            .padding(.top, 12)
-                            .font(R.font.beVietnamProMedium.font(size: 14))
-                            .foregroundColor(R.color.color_1B232E.color)
-                    }
-                }
-                Spacer()
-            }
-        }
         
-    }
-    
     @ViewBuilder var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
             HomeView(generateQRBlock: { template in

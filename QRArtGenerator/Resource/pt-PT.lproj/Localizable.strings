@@ -175,3 +175,8 @@
 "select_other_style" = "Selecione outro estilo";
 "details" = "Detalhes";
 "next" = "Próximo";
+"create_your_ai_qr_code" = "Crie seu código\nai qr";
+"choose_your_qr_style" = "Escolha o seu\nestilo qr";
+"give_input_for_qr" = "Dê entrada\npara qr";
+"provide_ai_input_prompt" = "Forneça um prompt\nde entrada Ai";
+"final_step_initiate_qr_morph" = "Etapa final:\nIniciar QR-Morph";

@@ -76,7 +76,7 @@ struct PromptView: View {
                         }
                     textCountPrompt
                 }
-                .border(radius: 12, color: getBorderColor(), width: 1)
+                .border(radius: 12, color: getBorderColor(), width: 1, inset: 1)
 
             }
             if validInput && typePrompt == .prompt && prompt.isEmptyOrWhitespace() {

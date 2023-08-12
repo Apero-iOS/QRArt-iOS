@@ -176,3 +176,8 @@
 "details" = "Chi tiết";
 "link" = "Liên kết";
 "next" = "Kế tiếp";
+"create_your_ai_qr_code" = "Tạo mã QR\nAI của bạn";
+"choose_your_qr_style" = "Chọn kiểu\nQR của bạn";
+"give_input_for_qr" = "Cho đầu vào\ncho QR";
+"provide_ai_input_prompt" = "Cung cấp lời nhắc\nđầu vào AI";
+"final_step_initiate_qr_morph" = "Bước cuối cùng:\nbắt đầu qr-morph";

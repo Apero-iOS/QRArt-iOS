@@ -20,9 +20,11 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var isVip: Bool = UserDefaults.standard.isUserVip
     @Published var showPopupGenQR: Bool = false
     @Published var isShowChoosePhoto: Bool = false
+    @Published var tooltipOpacity: Double = 0
     var templateSelect: Template = .init()
     var qrImage: UIImage?
     var qrString: String?
+    
     var cancellable = Set<AnyCancellable>()
 
     var tabs: [TabbarEnum] = [.home, .ai, .history]
