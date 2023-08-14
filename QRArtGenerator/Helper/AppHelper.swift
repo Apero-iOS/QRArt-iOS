@@ -94,4 +94,18 @@ extension AdUnitID {
     static let app_open_high_floor = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/6973421391")
     static let app_open_all_price = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/1721094710")
     static let banner_tab_bar = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatBanner : "ca-app-pub-6530974883137971/7922189910")
+    
+    static let open_splash = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/7922189910")
+    static let native_home = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatNativeAdvanced : "ca-app-pub-6530974883137971/7922189910")
+    static let inter_template = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/7922189910")
+    static let banner_result = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatBanner : "ca-app-pub-6530974883137971/7922189910")
+    static let inter_generator = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/7922189910")
+    static let native_resultback = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatNativeAdvanced : "ca-app-pub-6530974883137971/7922189910")
+    static let reward_regen = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatRewarded : "ca-app-pub-6530974883137971/7922189910")
+    static let inter_createmore = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/7922189910")
+    static let inter_scanopenlink = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/7922189910")
+    static let inter_openmail = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/7922189910")
+    static let banner_scan = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatBanner : "ca-app-pub-6530974883137971/7922189910")
+    
+    
 }
