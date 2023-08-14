@@ -68,8 +68,22 @@ struct CreateQRView: View {
         if viewModel.isPush {
             contentView
         } else {
-            NavigationView {
-                contentView
+            ZStack {
+                NavigationView {
+                    contentView
+                }
+                
+                if !UserDefaults.standard.tooltipsDone {
+                    TooltipsView(type: .qrType) {
+                        viewModel.isShowToolTipGenerate = true
+                    }
+                }
+                
+                if viewModel.isShowToolTipGenerate {
+                    TooltipsView(isShowAdsBanner: viewModel.isShowAdsBanner, type: .generate) {
+                        UserDefaults.standard.tooltipsDone = true
+                    }
+                }
             }
         }
     }

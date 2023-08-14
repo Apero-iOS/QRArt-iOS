@@ -47,6 +47,7 @@ class CreateQRViewModel: ObservableObject {
             checkShowLoading()
         }
     }
+    @Published var isShowToolTipGenerate = false
     
     private var needFetchTemplates: Bool = true
         

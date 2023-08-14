@@ -223,6 +223,7 @@
         <string>Urbanist-Regular.ttf</string>
         <string>Urbanist-SemiBold.ttf</string>
         <string>Urbanist-Thin.ttf</string>
+		<string>rubber-duck-regular.ttf</string>
 	</array>
 	<key>productPubPEM</key>
 	<string>-----BEGIN PUBLIC KEY-----

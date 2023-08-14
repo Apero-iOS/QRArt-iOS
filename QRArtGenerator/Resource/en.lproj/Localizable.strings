@@ -176,3 +176,8 @@
 "details" = "Details";
 "link" = "Link";
 "next" = "Next";
+"create_your_ai_qr_code" = "Create your\nAI QR code";
+"choose_your_qr_style" = "Choose your\nQR Style";
+"give_input_for_qr" = "Give Input\nfor QR";
+"provide_ai_input_prompt" = "Provide AI\nInput Prompt";
+"final_step_initiate_qr_morph" = "Final step:\nInitiate QR-Morph";

@@ -52,7 +52,6 @@ final class Router {
     //MARK: private
     private static func setRootView<T: View>(view: T, window: UIWindow? = nil) {
         let host = UIHostingController(rootView: view)
-        host.view.backgroundColor = .red
         if window != nil {
            
             window?.rootViewController = host

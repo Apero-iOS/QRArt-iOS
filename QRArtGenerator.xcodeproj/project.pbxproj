@@ -79,6 +79,7 @@
 		9AB852912A51686100A546F4 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB852902A51686100A546F4 /* UserDefaultManager.swift */; };
 		9AB852952A516F6200A546F4 /* IAPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB852942A516F6200A546F4 /* IAPCell.swift */; };
 		9ABC4DA92A4C354E002646DA /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC4DA82A4C354E002646DA /* View+.swift */; };
+		9ABD36152A878C4700690306 /* PopupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABD36142A878C4700690306 /* PopupCreateView.swift */; };
 		9AC33C9E2A6680D200463E58 /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC33C9D2A6680D200463E58 /* TextFieldType.swift */; };
 		9AC7DCAC2A4D3E9500FB3119 /* QRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAB2A4D3E9500FB3119 /* QRItem.swift */; };
 		9AC7DCB52A4DB30300FB3119 /* SelectQRDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DC9A2A4D396B00FB3119 /* SelectQRDetailView.swift */; };
@@ -101,6 +102,11 @@
 		9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCA92A4D3A3600FB3119 /* HistoryViewModel.swift */; };
 		9AC7DCD92A4DB74500FB3119 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7DCAF2A4D405F00FB3119 /* Date+.swift */; };
 		9AD132312A6FAFB9006EAE82 /* AdServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132302A6FAFB8006EAE82 /* AdServices.swift */; };
+		9AD132342A6FB1C7006EAE82 /* TooltipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132332A6FB1C7006EAE82 /* TooltipsView.swift */; };
+		9AD132362A6FB5BC006EAE82 /* BackdropBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132352A6FB5BC006EAE82 /* BackdropBlurView.swift */; };
+		9AD132392A6FC3AD006EAE82 /* TooltipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132382A6FC3AD006EAE82 /* TooltipsViewModel.swift */; };
+		9AD1323B2A6FC94A006EAE82 /* rubber-duck-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD1323A2A6FC94A006EAE82 /* rubber-duck-regular.ttf */; };
+		9AD1323E2A6FD906006EAE82 /* TooltipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1323D2A6FD906006EAE82 /* TooltipType.swift */; };
 		9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */; };
 		9AD2B8F42A500735003B7C1F /* QRItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F32A500735003B7C1F /* QRItemDB.swift */; };
 		9AD2B8F62A500F63003B7C1F /* QRDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */; };
@@ -309,6 +315,7 @@
 		9AB852902A51686100A546F4 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		9AB852942A516F6200A546F4 /* IAPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCell.swift; sourceTree = "<group>"; };
 		9ABC4DA82A4C354E002646DA /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		9ABD36142A878C4700690306 /* PopupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCreateView.swift; sourceTree = "<group>"; };
 		9AC33C9D2A6680D200463E58 /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
 		9AC7DC8F2A4D396B00FB3119 /* QRType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRType.swift; sourceTree = "<group>"; };
 		9AC7DC942A4D396B00FB3119 /* CreateQRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRView.swift; sourceTree = "<group>"; };
@@ -331,6 +338,11 @@
 		9AC7DCC72A4DB6C600FB3119 /* ChooseTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTemplateView.swift; sourceTree = "<group>"; };
 		9AC7DCD32A4DB6E500FB3119 /* CreateQRViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQRViewModel.swift; sourceTree = "<group>"; };
 		9AD132302A6FAFB8006EAE82 /* AdServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdServices.swift; sourceTree = "<group>"; };
+		9AD132332A6FB1C7006EAE82 /* TooltipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipsView.swift; sourceTree = "<group>"; };
+		9AD132352A6FB5BC006EAE82 /* BackdropBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackdropBlurView.swift; sourceTree = "<group>"; };
+		9AD132382A6FC3AD006EAE82 /* TooltipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipsViewModel.swift; sourceTree = "<group>"; };
+		9AD1323A2A6FC94A006EAE82 /* rubber-duck-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rubber-duck-regular.ttf"; sourceTree = "<group>"; };
+		9AD1323D2A6FD906006EAE82 /* TooltipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipType.swift; sourceTree = "<group>"; };
 		9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9AD2B8F32A500735003B7C1F /* QRItemDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemDB.swift; sourceTree = "<group>"; };
 		9AD2B8F52A500F63003B7C1F /* QRDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailItem.swift; sourceTree = "<group>"; };
@@ -481,6 +493,7 @@
 			children = (
 				A4F8068F2A8491B000E9B523 /* DetailQR */,
 				59FBA0572A7A790F00F65EAB /* ChoosePhoto */,
+				9AD132322A6FB1AC006EAE82 /* Tooltips */,
 				C8C72E1B2A5FD5FC00E8918B /* Popup */,
 				9AD2B9012A505AB9003B7C1F /* IAP */,
 				C8E923B82A52AB3400835F93 /* Success */,
@@ -564,6 +577,7 @@
 				59286C4B2A4D31D300EBBEBF /* TabItem.swift */,
 				59286C4C2A4D31D300EBBEBF /* TabbarPrimaryButton.swift */,
 				59286C4D2A4D31D300EBBEBF /* TabbarShape.swift */,
+				9ABD36142A878C4700690306 /* PopupCreateView.swift */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -689,6 +703,7 @@
 				9AB8528E2A51655C00A546F4 /* RemoteKey.swift */,
 				C8EDAC4E2A691E3000BD8E33 /* PermissionTrackkingHelper.swift */,
 				9AD132302A6FAFB8006EAE82 /* AdServices.swift */,
+				9AD132352A6FB5BC006EAE82 /* BackdropBlurView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -959,6 +974,32 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		9AD132322A6FB1AC006EAE82 /* Tooltips */ = {
+			isa = PBXGroup;
+			children = (
+				9AD1323C2A6FD8FB006EAE82 /* Model */,
+				9AD132372A6FC39B006EAE82 /* ViewModel */,
+				9AD132332A6FB1C7006EAE82 /* TooltipsView.swift */,
+			);
+			path = Tooltips;
+			sourceTree = "<group>";
+		};
+		9AD132372A6FC39B006EAE82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AD132382A6FC3AD006EAE82 /* TooltipsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9AD1323C2A6FD8FB006EAE82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AD1323D2A6FD906006EAE82 /* TooltipType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9AD2B8EF2A4FCAAA003B7C1F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,6 +1101,7 @@
 				9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */,
 				9AD5228D2A4AA09200A947B5 /* Urbanist-SemiBold.ttf */,
 				9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */,
+				9AD1323A2A6FC94A006EAE82 /* rubber-duck-regular.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -1631,6 +1673,7 @@
 				C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
 				A4BB27402A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf in Resources */,
+				9AD1323B2A6FC94A006EAE82 /* rubber-duck-regular.ttf in Resources */,
 				A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */,
 				C8C72E1F2A5FFF8100E8918B /* camera-access.json in Resources */,
 				A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */,
@@ -1906,8 +1949,10 @@
 				59C3B3352A78E0DD00770F2B /* HomeCell.swift in Sources */,
 				C8109C832A518B3E0093B48A /* AmountView.swift in Sources */,
 				59286C902A4D31D300EBBEBF /* ScannerModel.swift in Sources */,
+				9AD132392A6FC3AD006EAE82 /* TooltipsViewModel.swift in Sources */,
 				59286C922A4D31D300EBBEBF /* CameraView.swift in Sources */,
 				59286C7E2A4D31D300EBBEBF /* TabbarEnum.swift in Sources */,
+				9AD1323E2A6FD906006EAE82 /* TooltipType.swift in Sources */,
 				9AB8528F2A51655C00A546F4 /* RemoteKey.swift in Sources */,
 				9AD2B8F62A500F63003B7C1F /* QRDetailItem.swift in Sources */,
 				59F74C4A2A4FC79900AD8CBA /* AdNativeView.swift in Sources */,
@@ -1945,6 +1990,7 @@
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
 				59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */,
+				9AD132342A6FB1C7006EAE82 /* TooltipsView.swift in Sources */,
 				9ADEE5112A4973490075FCE0 /* R.generated.swift in Sources */,
 				A4C69C442A4D90580076CF48 /* SettingsView.swift in Sources */,
 				9AC7DCD82A4DB73700FB3119 /* HistoryViewModel.swift in Sources */,
@@ -1983,12 +2029,14 @@
 				C8AA3E612A4E81E00077DCC3 /* BaseAPI+.swift in Sources */,
 				A4B6F61A2A70D35E003FC1B4 /* FirebaseAnalyticsEnum.swift in Sources */,
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
+				9AD132362A6FB5BC006EAE82 /* BackdropBlurView.swift in Sources */,
 				9AB852862A5138E500A546F4 /* IAPIdType.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */,
 				9AC7DCD02A4DB6C600FB3119 /* DescriptionView.swift in Sources */,
 				C8109C872A51971A0093B48A /* LoadingView.swift in Sources */,
 				59286C8E2A4D31D300EBBEBF /* QRScannerDelegate.swift in Sources */,
+				9ABD36152A878C4700690306 /* PopupCreateView.swift in Sources */,
 				C8AA3E5C2A4E81910077DCC3 /* AlamofireLogger.swift in Sources */,
 				C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */,
 				C8AA3E682A4E85DD0077DCC3 /* SuccessResponse.swift in Sources */,

@@ -81,4 +81,13 @@ extension UserDefaults {
             UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.KEY_LAST_DAY_OPEN_APP)
         }
     }
+    
+    var tooltipsDone: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Constants.Keys.TOOLTIPS_DONE)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.TOOLTIPS_DONE)
+        }
+    }
 }
