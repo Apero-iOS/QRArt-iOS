@@ -14,7 +14,7 @@ struct AdNativeView: UIViewControllerRepresentable {
     
     private let nativeView = UIView()
     var adUnitID: AdUnitID
-    var type: NativeAdType = .small
+    var type: NativeAdType
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let adViewController = AdViewController()
@@ -28,6 +28,28 @@ struct AdNativeView: UIViewControllerRepresentable {
                 adViewController.view.isHidden = true
             }
         }
+        return adViewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    }
+}
+
+struct AdNativeViewMultiple: UIViewControllerRepresentable {
+    
+    var nativeView: UIView
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let adViewController = AdViewController()
+        adViewController.view.addSubview(nativeView)
+        nativeView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(6)
+            make.bottom.equalToSuperview().offset(-6)
+            make.leading.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().offset(-6)
+        }
+        nativeView.layer.cornerRadius = 22
+        nativeView.layer.masksToBounds = true
         return adViewController
     }
     

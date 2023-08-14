@@ -22,6 +22,10 @@ struct HomeView: View {
                 VStack {
                     ForEach(0..<Int(count.rounded(.up)), id: \.self) { i in
                         itemView(viewModel.templates[i*2])
+                        if viewModel.isLoadAd, (i+1)%3 == 0 {
+                            let index = ((i+1)/3)*2
+                            AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                        }
                     }
                 }.frame(maxWidth: .infinity)
                 
@@ -29,6 +33,10 @@ struct HomeView: View {
                     Spacer().frame(height: 40)
                     ForEach(0..<Int(count.rounded(.down)), id: \.self) { i in
                         itemView(viewModel.templates[i*2+1])
+                        if viewModel.isLoadAd, i%3 == 0 {
+                            let index = (i/3)*2+1
+                            AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                        }
                     }
                 }.frame(maxWidth: .infinity)
             }
