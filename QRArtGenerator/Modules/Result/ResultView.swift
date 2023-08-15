@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ScreenshotPreventing
+import Combine
 
 enum ResultViewSource {
     case history
@@ -16,7 +17,7 @@ enum ResultViewSource {
 struct ResultView: View {
     @StateObject var viewModel: ResultViewModel
     @Environment(\.dismiss) private var dismiss
-    
+    @State var cancellable = Set<AnyCancellable>()
     var onTapOderStyle: ((Template) -> Void)?
     
     var body: some View {
@@ -34,40 +35,45 @@ struct ResultView: View {
     @ViewBuilder var contentView: some View {
         
         ZStack(alignment: .top) {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    
-                    viewModel.image
-                        .resizable()
-                        .cornerRadius(24)
-                        .frame(width: WIDTH_SCREEN-40)
-                        .aspectRatio(1.0, contentMode: .fill)
-                    
-                    download4kButton
-                    Text(Rlocalizable.share_your_qr)
-                        .font(R.font.beVietnamProSemiBold.font(size: 16))
-                        .padding(.top, 25)
-                    HStack(spacing: 26) {
-                        shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
-                            QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
-                        }
+            VStack {
+                 ScrollView {
+                    VStack(alignment: .leading) {
                         
-                        shareItem(name: "X", icon: R.image.ic_share_x.image) {
-                            QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
-                        }
+                        viewModel.image
+                            .resizable()
+                            .cornerRadius(24)
+                            .frame(width: WIDTH_SCREEN-40)
+                            .aspectRatio(1.0, contentMode: .fill)
                         
-                        shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
-                            QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                        download4kButton
+                        Text(Rlocalizable.share_your_qr)
+                            .font(R.font.beVietnamProSemiBold.font(size: 16))
+                            .padding(.top, 25)
+                        HStack(spacing: 26) {
+                            shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
+                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "X", icon: R.image.ic_share_x.image) {
+                                QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
+                                QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "Share", icon: R.image.ic_share_system.image) {
+                                viewModel.sheet.toggle()
+                            }
+                            
                         }
+                        oderStyleView
                         
-                        shareItem(name: "Share", icon: R.image.ic_share_system.image) {
-                            viewModel.sheet.toggle()
-                        }
-
                     }
-                    oderStyleView
+                    .padding(20)
+          
                 }
-                .padding(20)
+                
             }
             .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)
@@ -144,6 +150,11 @@ struct ResultView: View {
                                                                                 .qr_type: viewModel.item.type.title,
                                                                                 .guidance_number: "\(viewModel.item.guidance)",
                                                                                 .step_number: "\(viewModel.item.steps)"])
+            InappManager.share.didPaymentSuccess.sink { isSuccess in
+                if isSuccess, viewModel.isShowAd {
+                    viewModel.isShowAd = false
+                }
+            }.store(in: &cancellable)
         }
     }
     

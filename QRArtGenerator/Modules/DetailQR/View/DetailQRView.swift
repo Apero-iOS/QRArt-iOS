@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-
+import Combine
 struct DetailQRView: View {
     @StateObject var viewModel: ResultViewModel
     @Environment(\.dismiss) private var dismiss
-    
+    @State var cancellable = Set<AnyCancellable>()
     var body: some View {
         contentView
     }
@@ -18,91 +18,98 @@ struct DetailQRView: View {
     @ViewBuilder var contentView: some View {
         
         ZStack(alignment: .top) {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    
-                    viewModel.image
-                        .resizable()
-                        .cornerRadius(24)
-                        .frame(width: WIDTH_SCREEN-40)
-                        .aspectRatio(1.0, contentMode: .fill)
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack {
-                            Text(Rlocalizable.time_created() + ": ")
-                                .font(R.font.beVietnamProSemiBold.font(size: 13))
-                                .foregroundColor(R.color.color_1B232E.color)
-                            Text(viewModel.item.createdDate.toString())
-                                .font(R.font.beVietnamProRegular.font(size: 12))
-                                .foregroundColor(R.color.color_6A758B.color)
-                        }
-                        HStack {
-                            Text(Rlocalizable.style_name() + ": ")
-                                .font(R.font.beVietnamProSemiBold.font(size: 13))
-                                .foregroundColor(R.color.color_1B232E.color)
-                            Text(viewModel.item.templateQRName)
-                                .font(R.font.beVietnamProRegular.font(size: 12))
-                                .foregroundColor(R.color.color_6A758B.color)
-                        }
-                        if viewModel.item.createType == .normal {
+            VStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        
+                        viewModel.image
+                            .resizable()
+                            .cornerRadius(24)
+                            .frame(width: WIDTH_SCREEN-40)
+                            .aspectRatio(1.0, contentMode: .fill)
+                        VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Text(Rlocalizable.qr_code() + ": ")
+                                Text(Rlocalizable.time_created() + ": ")
                                     .font(R.font.beVietnamProSemiBold.font(size: 13))
                                     .foregroundColor(R.color.color_1B232E.color)
-                                Text(viewModel.item.baseUrl)
-                                    .font(R.font.beVietnamProMediumItalic.font(size: 12))
-                                    .foregroundColor(R.color.color_6A758B.color)
-                            }
-                        } else {
-                            HStack {
-                                Text(Rlocalizable.qr_type() + ": ")
-                                    .font(R.font.beVietnamProSemiBold.font(size: 13))
-                                    .foregroundColor(R.color.color_1B232E.color)
-                                viewModel.item.type.image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 16, height: 16)
-                                Text(viewModel.item.type.title)
+                                Text(viewModel.item.createdDate.toString())
                                     .font(R.font.beVietnamProRegular.font(size: 12))
                                     .foregroundColor(R.color.color_6A758B.color)
                             }
                             HStack {
-                                Text(Rlocalizable.link() + ": ")
+                                Text(Rlocalizable.style_name() + ": ")
                                     .font(R.font.beVietnamProSemiBold.font(size: 13))
                                     .foregroundColor(R.color.color_1B232E.color)
-                                Text(viewModel.item.urlString)
-                                    .font(R.font.beVietnamProMediumItalic.font(size: 12))
-                                    .foregroundColor(R.color.color_007AFF.color)
+                                Text(viewModel.item.templateQRName)
+                                    .font(R.font.beVietnamProRegular.font(size: 12))
+                                    .foregroundColor(R.color.color_6A758B.color)
                             }
-                        }
-                    }.padding(.top, 12)
-                    
-                    download4kButton
-                        .frame(height: 48)
-                    Text(Rlocalizable.share_your_qr)
-                        .font(R.font.beVietnamProSemiBold.font(size: 16))
-                        .padding(.top, 25)
-                    HStack(spacing: 26) {
-                        shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
-                            QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
-                        }
+                            if viewModel.item.createType == .normal {
+                                HStack {
+                                    Text(Rlocalizable.qr_code() + ": ")
+                                        .font(R.font.beVietnamProSemiBold.font(size: 13))
+                                        .foregroundColor(R.color.color_1B232E.color)
+                                    Text(viewModel.item.baseUrl)
+                                        .font(R.font.beVietnamProMediumItalic.font(size: 12))
+                                        .foregroundColor(R.color.color_6A758B.color)
+                                }
+                            } else {
+                                HStack {
+                                    Text(Rlocalizable.qr_type() + ": ")
+                                        .font(R.font.beVietnamProSemiBold.font(size: 13))
+                                        .foregroundColor(R.color.color_1B232E.color)
+                                    viewModel.item.type.image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 16, height: 16)
+                                    Text(viewModel.item.type.title)
+                                        .font(R.font.beVietnamProRegular.font(size: 12))
+                                        .foregroundColor(R.color.color_6A758B.color)
+                                }
+                                HStack {
+                                    Text(Rlocalizable.link() + ": ")
+                                        .font(R.font.beVietnamProSemiBold.font(size: 13))
+                                        .foregroundColor(R.color.color_1B232E.color)
+                                    Text(viewModel.item.urlString)
+                                        .font(R.font.beVietnamProMediumItalic.font(size: 12))
+                                        .foregroundColor(R.color.color_007AFF.color)
+                                }
+                            }
+                        }.padding(.top, 12)
                         
-                        shareItem(name: "X", icon: R.image.ic_share_x.image) {
-                            QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
+                        download4kButton
+                            .frame(height: 48)
+                        Text(Rlocalizable.share_your_qr)
+                            .font(R.font.beVietnamProSemiBold.font(size: 16))
+                            .padding(.top, 25)
+                        HStack(spacing: 26) {
+                            shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
+                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "X", icon: R.image.ic_share_x.image) {
+                                QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
+                                QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "Share", icon: R.image.ic_share_system.image) {
+                                viewModel.sheet.toggle()
+                            }
+                            
                         }
-                        
-                        shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
-                            QRHelper.share.facebookShare(image: viewModel.item.qrImage)
-                        }
-                        
-                        shareItem(name: "Share", icon: R.image.ic_share_system.image) {
-                            viewModel.sheet.toggle()
-                        }
-
+                        .padding(.top, 16)
+                        Spacer()
                     }
-                    .padding(.top, 16)
-                    Spacer()
+                    .padding(20)
                 }
-                .padding(20)
+                if viewModel.isShowAd {
+                    BannerView(adUnitID: .banner_result, fail: {
+                        viewModel.isShowAd = false
+                    }).frame(height: 50).frame(maxWidth: .infinity)
+                }
             }
             .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)
@@ -167,6 +174,11 @@ struct DetailQRView: View {
                                                                                 .qr_type: viewModel.item.type.title,
                                                                                 .guidance_number: "\(viewModel.item.guidance)",
                                                                                 .step_number: "\(viewModel.item.steps)"])
+            InappManager.share.didPaymentSuccess.sink { isSuccess in
+                if isSuccess, viewModel.isShowAd {
+                    viewModel.isShowAd = false
+                }
+            }.store(in: &cancellable)
         }
     }
     

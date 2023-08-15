@@ -79,7 +79,7 @@ struct CreateQRView: View {
                     }
                 }
                 
-                if viewModel.isShowToolTipGenerate {
+                if viewModel.isShowToolTipGenerate, !UserDefaults.standard.tooltipsDone {
                     TooltipsView(isShowAdsBanner: viewModel.isShowAdsBanner, type: .generate) {
                         UserDefaults.standard.tooltipsDone = true
                     }

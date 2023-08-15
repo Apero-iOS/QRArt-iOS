@@ -7,6 +7,8 @@
 
 import SwiftUI
 import AVKit
+import MobileAds
+import Combine
 
 struct ScannerView: View {
     
@@ -14,7 +16,7 @@ struct ScannerView: View {
     @StateObject var viewModel = ScannerViewModel()
     @Environment(\.dismiss) var dismiss
     @Environment(\.safeAreaInsets) private var safeAreaInsets
-  
+    @State var cancellable = Set<AnyCancellable>()
     var body: some View {
         ZStack {
             GeometryReader {
@@ -89,19 +91,38 @@ struct ScannerView: View {
                             }
                             .padding(.horizontal)
                             Spacer()
-                            
-                            Color.clear.frame(height: 156+safeAreaInsets.bottom)
-                                .bottomSheet(isPresented: $viewModel.showSheet, height: 156+safeAreaInsets.bottom,
-                                             topBarHeight: 20,
-                                             contentBackgroundColor: .clear,
-                                             topBarBackgroundColor: .clear,
-                                             colorOverlay: .clear,
-                                             onDismiss: {
-                                    qrDelegate.scannerCode = nil
-                                }) {
-                                    ResultQRView(result: $viewModel.qrItem, viewModel: viewModel).background(.red).cornerRadius(24, corners: [.topLeft, .topRight]).ignoresSafeArea()
-                                }
+                        
+                            Color.clear.frame(height: 156)
+                           
                         }
+                        .bottomSheet(isPresented: $viewModel.showSheet, height: 156+safeAreaInsets.bottom + (viewModel.isShowAd ? 70 : 0),
+                                     topBarHeight: 20,
+                                     contentBackgroundColor: .clear,
+                                     topBarBackgroundColor: .clear,
+                                     colorOverlay: .clear,
+                                     onDismiss: {
+                            qrDelegate.scannerCode = nil
+                        }) {
+                            ResultQRView(result: $viewModel.qrItem, viewModel: viewModel).background(.red).cornerRadius(24, corners: [.topLeft, .topRight]).ignoresSafeArea()
+                        }
+                        if viewModel.isShowAd {
+                            VStack(spacing: 0) {
+                                Spacer()
+                                BannerView(adUnitID: .banner_scan, fail: {
+                                    viewModel.isShowAd = false
+                                })
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+    
+                                Text("")
+                                    .frame(height: safeAreaInsets.bottom)
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.white)
+                            }
+                        }
+                    
+                     
+                       
                     }
                     .compositingGroup()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -112,6 +133,13 @@ struct ScannerView: View {
             .onAppear {
                 checkCameraPermission()
                 FirebaseAnalytics.logEvent(type: .scan_view)
+                AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_openmail)
+                AdMobManager.shared.createAdRewardedIfNeed(unitId: .inter_scanopenlink)
+                InappManager.share.didPaymentSuccess.sink { isSuccess in
+                    if isSuccess, viewModel.isShowAd {
+                        viewModel.isShowAd = false
+                    }
+                }.store(in: &cancellable)
             }
             .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             }

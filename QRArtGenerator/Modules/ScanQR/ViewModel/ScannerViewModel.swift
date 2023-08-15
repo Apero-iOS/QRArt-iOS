@@ -9,6 +9,7 @@ import SwiftUI
 import AVKit
 import NetworkExtension
 import MessageUI
+import MobileAds
 
 class ScannerViewModel: ObservableObject {
     
@@ -36,6 +37,7 @@ class ScannerViewModel: ObservableObject {
     @Published var isShowWebView: Bool = false
     @Published var isShowShareActivity: Bool = false
     @Published var showPopupAccessCamera: Bool = false
+    @Published var isShowAd: Bool = true
   
     func tourchClick() {
         if torchMode == .off {
@@ -122,9 +124,21 @@ extension ScannerViewModel {
         case .phoneCall:
             phoneCall(numberString: item.content)
         case .openMail:
-            openMail(item: item)
+            if !UserDefaults.standard.isUserVip, RemoteConfigService.shared.bool(forKey: .inter_openmail) {
+                AdMobManager.shared.showIntertitial(unitId: .inter_openmail, blockDidDismiss:  { [weak self] in
+                    self?.openMail(item: item)
+                })
+            } else {
+                openMail(item: item)
+            }
         case .openUrl:
-            openUrl(urlString: item.content)
+            if !UserDefaults.standard.isUserVip, RemoteConfigService.shared.bool(forKey: .inter_scanopenlink) {
+                AdMobManager.shared.showIntertitial(unitId: .inter_scanopenlink, blockDidDismiss:  { [weak self] in
+                    self?.openUrl(urlString: item.content)
+                })
+            } else {
+                openUrl(urlString: item.content)
+            }
         }
     }
     

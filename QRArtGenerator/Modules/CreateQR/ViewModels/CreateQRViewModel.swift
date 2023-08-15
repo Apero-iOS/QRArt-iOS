@@ -56,7 +56,7 @@ class CreateQRViewModel: ObservableObject {
     var isGenegateSuccess: Bool = false
     
     var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
+        return RemoteConfigService.shared.bool(forKey: .inter_generator) && !UserDefaults.standard.isUserVip
     }
     
     var isShowAdsBanner: Bool {
@@ -121,25 +121,26 @@ class CreateQRViewModel: ObservableObject {
     }
     
     public func showAdsInter() {
-        if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockWillDismiss: { [weak self] in
-                guard let self = self else { return }
-                self.generateQR()
-            })
-        } else {
-            generateQR()
-        }
+        AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockWillDismiss: { [weak self] in
+            guard let self = self else { return }
+            self.generateQR()
+        })
     }
     
     public func onTapGenerate() {
         FirebaseAnalytics.logEvent(type: .qr_creation_generate_click)
         validInput = true
         errorInputType = getErrorInput()
+     
         if errorInputType == nil {
-            if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
-                isShowPopupCreate.toggle()
-            } else {
+            if UserDefaults.standard.generateQRCount == 0 || UserDefaults.standard.isUserVip {
+                UserDefaults.standard.generateQRCount += 1
+                generateQR()
+            } else if RemoteConfigService.shared.bool(forKey: .inter_generator), UserDefaults.standard.generateQRCount < 7 {
+                UserDefaults.standard.generateQRCount += 1
                 showAdsInter()
+            } else {
+                showSub.toggle()
             }
         }
     }

@@ -39,6 +39,7 @@ class ResultViewModel: ObservableObject {
     @Published var isShowDeleteAction: Bool = false
     @Published var showPopupAcessPhoto: Bool = false
     @Published var isShowIAP = false
+    @Published var isShowAd = (!UserDefaults.standard.isUserVip && RemoteConfigService.shared.bool(forKey: .banner_result))
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     

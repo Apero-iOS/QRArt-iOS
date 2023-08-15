@@ -21,6 +21,15 @@ extension UserDefaults {
     }
     var generateQRCount: Int {
         get {
+            return UserDefaults.standard.integer(forKey: Constants.Keys.TEMPLATE_SELECT_COUNT)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.TEMPLATE_SELECT_COUNT)
+        }
+    }
+    
+    var templateSelectCount: Int {
+        get {
             return UserDefaults.standard.integer(forKey: Constants.Keys.GENERATE_QR_COUNT)
         }
         set {

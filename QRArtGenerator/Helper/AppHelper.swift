@@ -75,7 +75,6 @@ struct ActivityView: UIViewControllerRepresentable {
 }
 
 extension RemoteKey {
-    static let inter_generate = RemoteKey(rawValue: "inter_generate")
     static let inter_regenerate = RemoteKey(rawValue: "inter_regenerate")
     static let inter_inspire = RemoteKey(rawValue: "inter_inspire")
     static let inter_change_screen = RemoteKey(rawValue: "inter_change_screen")
@@ -83,6 +82,7 @@ extension RemoteKey {
     static let app_open_splash = RemoteKey(rawValue: "app_open_splash")
     static let banner_tab_bar = RemoteKey(rawValue: "banner_tab_bar")
     static let languageFirstOpen = RemoteKey(rawValue: "language_first_open")
+
 }
 
 extension AdUnitID {

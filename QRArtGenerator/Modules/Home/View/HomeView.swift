@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MobileAds
 
 struct HomeView: View {
     
@@ -24,7 +25,9 @@ struct HomeView: View {
                         itemView(viewModel.templates[i*2])
                         if viewModel.isLoadAd, (i+1)%3 == 0 {
                             let index = ((i+1)/3)*2
-                            AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                            if index < viewModel.nativeViews.count {
+                                AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                            }
                         }
                     }
                 }.frame(maxWidth: .infinity)
@@ -35,7 +38,10 @@ struct HomeView: View {
                         itemView(viewModel.templates[i*2+1])
                         if viewModel.isLoadAd, i%3 == 0 {
                             let index = (i/3)*2+1
-                            AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                            if index < viewModel.nativeViews.count {
+                                AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                            }
+                           
                         }
                     }
                 }.frame(maxWidth: .infinity)
@@ -98,9 +104,22 @@ struct HomeView: View {
         .background(Color.white.opacity(0.55))
         .cornerRadius(30)
         .onTapGesture {
-            template.packageType != "basic" && !UserDefaults.standard.isUserVip ? showIAP?() : generateQRBlock?(template)
+            if template.packageType != "basic" && !UserDefaults.standard.isUserVip {
+                showIAP?()
+                return
+            }
+            UserDefaults.standard.templateSelectCount += 1
+            if viewModel.isShowSelectInter() {
+                AdMobManager.shared.showIntertitial(unitId: .inter_template, blockDidDismiss: {
+                    generateQRBlock?(template)
+                })
+            } else {
+                generateQRBlock?(template)
+            }
+       
         }
     }
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
