@@ -53,6 +53,7 @@ struct HomeView: View {
         }
         .onAppear {
             FirebaseAnalytics.logEvent(type: .home_view)
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_template)
         }
         .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
         .refreshable {

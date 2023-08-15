@@ -61,7 +61,8 @@ class CreateQRViewModel: ObservableObject {
     }
     
     var isShowAdsBanner: Bool {
-        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
+        return false
+        //return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
     }
     
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
@@ -117,12 +118,12 @@ class CreateQRViewModel: ObservableObject {
     
     public func createIdAds() {
         if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_generate)
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_generator)
         }
     }
     
     public func showAdsInter() {
-        AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockWillDismiss: { [weak self] in
+        AdMobManager.shared.showIntertitial(unitId: .inter_generator, blockWillDismiss: { [weak self] in
             guard let self = self else { return }
             self.generateQR()
         })

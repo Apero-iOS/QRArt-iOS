@@ -100,6 +100,8 @@ struct QRArtGeneratorApp: App {
         AdMobManager.shared.adFullScreenLoadingString = Rlocalizable.ad_is_loading()
         AdMobManager.shared.rewardErrorString = Rlocalizable.an_error_occurred()
         AdMobManager.shared.adsNativeColor = Constants.Colors.defaultNativeAdColors
+        AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_openmail)
+        AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_scanopenlink)
         
     }
     

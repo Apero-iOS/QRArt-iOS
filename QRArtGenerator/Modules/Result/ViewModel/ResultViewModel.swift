@@ -46,12 +46,8 @@ class ResultViewModel: ObservableObject {
     
     var isSaveQR = false
     
-    var isShowAdsNative: Bool {
-        return RemoteConfigService.shared.bool(forKey: .native_result) && !UserDefaults.standard.isUserVip
-    }
-    
-    var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.bool(forKey: .inter_regenerate) && !UserDefaults.standard.isUserVip
+    var isShowAdsReward: Bool {
+        return RemoteConfigService.shared.bool(forKey: .reward_regen) && !UserDefaults.standard.isUserVip
     }
     
     var isShowInterCreateMore: Bool {
@@ -214,8 +210,8 @@ class ResultViewModel: ObservableObject {
     }
     
     public func createIdAds() {
-        if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_regenerate)
+        if isShowAdsReward {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .reward_regen)
         }
     }
     
@@ -226,9 +222,11 @@ class ResultViewModel: ObservableObject {
     }
     
     public func showAdsInter() {
-        if isShowAdsInter, !checkShowSub() {
-            AdMobManager.shared.showIntertitial(unitId: .inter_regenerate, isSplash: false, blockWillDismiss: { [weak self] in
-                self?.regenerate()
+        if isShowAdsReward {
+            AdMobManager.shared.showRewarded(unitId: .reward_regen, completion: { [weak self] status in
+                if status {
+                    self?.regenerate()
+                }
             })
         } else {
             regenerate()

@@ -15,7 +15,8 @@ final class DetailStylesViewModel: ObservableObject, Identifiable {
     @Published var selection: Int? = nil
     
     var isShowAdsBanner: Bool {
-        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
+        return false
+        //return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
     }
     
     public func getColumns() -> [GridItem] {
