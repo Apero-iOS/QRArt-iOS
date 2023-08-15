@@ -248,7 +248,13 @@ class CreateQRViewModel: ObservableObject {
             }
             self.isGenegateSuccess = true
             self.input.qrImage = uiImage
-            self.imageResult = Image(uiImage: uiImage)
+            if UserDefaults.standard.isUserVip {
+                self.imageResult = Image(uiImage: uiImage)
+            } else {
+                var newSize = CGSize(width: uiImage.size.width*0.8, height: uiImage.size.height*0.8)
+                self.imageResult = Image(uiImage: uiImage.resize(newSize))
+            }
+            
             UserDefaults.standard.generatePerDay += 1
             
         }.store(in: &cancellable)

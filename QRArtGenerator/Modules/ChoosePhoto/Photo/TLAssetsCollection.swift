@@ -49,6 +49,13 @@ public struct TLPHAsset {
         }
     }
     
+    public var fullImageData: Data? {
+        get {
+            guard let phAsset = self.phAsset else { return nil }
+            return TLPhotoLibrary.fullImageData(asset: phAsset)
+        }
+    }
+    
     public func extType(defaultExt: ImageExtType = .png) -> ImageExtType {
         guard let fileName = self.originalFileName,
               let encodedFileName = fileName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),

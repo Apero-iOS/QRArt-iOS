@@ -31,6 +31,7 @@ struct CreateQRView: View {
                 FirebaseAnalytics.logEvent(type: .qr_creation_view)
             }
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
+               
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult)
                 ResultView(viewModel: resultViewModel) { template in
                     viewModel.templateSelect = template
