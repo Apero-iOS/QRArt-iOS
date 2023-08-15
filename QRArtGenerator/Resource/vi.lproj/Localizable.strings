@@ -42,7 +42,7 @@
 "phone_message" = "Tin nhắn";
 "phone_call" = "Điện thoại";
 "copy_text" = "Sao chép văn bản";
-"open_mail" = "Mở thư";
+"open_mail" = "Gửi thư";
 "access_wifi" = "Truy cập wifi";
 "create_qr_title" = "Tạo QR với";
 "name" = "Tên";
@@ -195,3 +195,4 @@
 "yes" = "Đúng";
 "no" = "KHÔNG";
 "create_more" = "Tạo ra nhiều hơn";
+"update_qr" = "Tải lên QR";

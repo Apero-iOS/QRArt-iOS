@@ -42,7 +42,7 @@
 "phone_message" = "Message";
 "phone_call" = "Phone";
 "copy_text" = "Copy Text";
-"open_mail" = "Open Mail";
+"open_mail" = "Send Mail";
 "access_wifi" = "Access Wifi";
 "create_qr_title" = "QR Creation with";
 "name" = "Name";
@@ -195,3 +195,4 @@
 "yes" = "Yes";
 "no" = "No";
 "create_more" = "Create more";
+"update_qr" = "Upload QR";

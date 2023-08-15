@@ -49,7 +49,7 @@ struct ResultQRView: View {
                     Button {
                         viewModel.isShowShareActivity.toggle()
                     } label: {
-                        Image(R.image.ic_share)
+                        Image(R.image.ic_result_share)
                     }
                 }.frame(height: 44)
                 

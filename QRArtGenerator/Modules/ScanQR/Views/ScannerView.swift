@@ -42,6 +42,20 @@ struct ScannerView: View {
                                         .foregroundColor(.white)
                                 }.frame(width: 40, height: 40)
                                 Spacer()
+                                Button {
+                                    viewModel.isShowChoosePhoto.toggle()
+                                } label: {
+                                    HStack {
+                                        Image(R.image.ic_upload_qr)
+                                            .padding(.leading, 10)
+                                        Text(Rlocalizable.update_qr())
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 10)
+                                    }
+                                    .frame(height: 42)
+                                    .background(R.color.color_000000.color.opacity(0.15))
+                                    .cornerRadius(24)
+                                }
                             }
                             .padding(.horizontal)
                             
@@ -160,6 +174,11 @@ struct ScannerView: View {
                     print("MessageComposeView with message sent? \(messageSent)")
                 }
             }
+            .fullScreenCover(isPresented: $viewModel.isShowChoosePhoto, content: {
+                ChoosePhotoView { qrString, soruceImage in
+                    viewModel.handleQRResult(text: qrString)
+                }.ignoresSafeArea()
+            })
             .sheet(isPresented: $viewModel.isShowWebView, content: {
                 NavigationView{
                     WebView(urlString: viewModel.qrItem.content)
