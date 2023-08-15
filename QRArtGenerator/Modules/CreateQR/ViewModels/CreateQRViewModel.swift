@@ -136,10 +136,8 @@ class CreateQRViewModel: ObservableObject {
      
         if errorInputType == nil {
             if UserDefaults.standard.generateQRCount == 0 || UserDefaults.standard.isUserVip {
-                UserDefaults.standard.generateQRCount += 1
                 generateQR()
             } else if RemoteConfigService.shared.bool(forKey: .inter_generator), UserDefaults.standard.generateQRCount < 7 {
-                UserDefaults.standard.generateQRCount += 1
                 showAdsInter()
             } else {
                 showSub.toggle()
@@ -234,6 +232,7 @@ class CreateQRViewModel: ObservableObject {
                 case .finished:
                     self.isStatusGenegate = false
                     self.checkShowLoading()
+                    UserDefaults.standard.generateQRCount += 1
                 case .failure(let error):
                     self.isStatusGenegate = false
                     self.checkShowLoading()
