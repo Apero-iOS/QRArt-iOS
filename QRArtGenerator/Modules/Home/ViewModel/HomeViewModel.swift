@@ -38,16 +38,19 @@ final class HomeViewModel: ObservableObject, Identifiable {
             }
         } receiveValue: { [weak self] listTemplates in
             guard let self = self else { return }
-            if let templates = listTemplates?.items {
-                let indexAd = templates.count/3 + 1
-                nativeViews.removeAll()
-                for _ in 0...indexAd {
-                    nativeViews.append(UIView())
-                }
-            }
+        
             
             let root = UIApplication.shared.windows.first?.rootViewController
             if RemoteConfigService.shared.bool(forKey: .native_home), !UserDefaults.standard.isUserVip {
+              
+                if let templates = listTemplates?.items {
+                    let countAd = templates.count/3 + 1
+                    nativeViews.removeAll()
+                    for _ in 0...countAd {
+                        nativeViews.append(UIView())
+                    }
+                }
+                AdMobManager.shared.removeAd(unitId: AdUnitID.native_home.rawValue)
                 AdMobManager.shared.addAdNative(unitId: .native_home, rootVC: root!, views: nativeViews, type: .freeSize)
                 AdMobManager.shared.blockNativeFaild = { [weak self] id in
                     if id == AdUnitID.native_home.rawValue {
