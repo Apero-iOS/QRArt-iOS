@@ -102,6 +102,8 @@ struct QRArtGeneratorApp: App {
         AdMobManager.shared.adsNativeColor = Constants.Colors.defaultNativeAdColors
         AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_openmail)
         AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_scanopenlink)
+        AdMobManager.shared.createAdRewardedIfNeed(unitId: .reward_regen)
+        UserDefaults.standard.templateSelectCount = 0
         
     }
     
