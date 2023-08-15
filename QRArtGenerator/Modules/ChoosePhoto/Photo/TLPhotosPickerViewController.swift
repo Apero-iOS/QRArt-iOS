@@ -1024,6 +1024,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
         var cell = makeCell(nibName: nibName)
         guard let collection = self.focusedCollection else { return cell }
         cell.isCameraCell = collection.useCameraButton && indexPath.section == 0 && indexPath.row == 0
+        cell.selectImageView.isHidden = false
         if cell.isCameraCell {
             if let nibName = self.configure.cameraCellNibSet?.nibName {
                 cell = makeCell(nibName: nibName)

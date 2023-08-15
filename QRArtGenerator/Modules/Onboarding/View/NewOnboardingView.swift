@@ -27,6 +27,7 @@ struct NewOnboardingView: View {
                     .padding(.bottom, 32)
                 
                 Button {
+                    FirebaseAnalytics.logEvent(type: .onboarding_click)
                     UserDefaults.standard.didShowOnboarding = true
                     if UserDefaults.standard.isUserVip {
                         Router.showTabbar()
@@ -52,6 +53,7 @@ struct NewOnboardingView: View {
             }
         }
         .onAppear {
+            FirebaseAnalytics.logEvent(type: .onboarding_view)
             PermissionTrackkingHelper.requestPermissionTrackking()
         }
     }

@@ -153,7 +153,7 @@ struct CreateQRView: View {
                                     } label: {
                                         Image(R.image.ic_edit.name)
                                     }
-                                }
+                                }.padding(.top, 20)
                                 HStack {
                                     TextEditor(text: $viewModel.baseUrl)
                                         .foregroundColor(R.color.color_6A758B.color)

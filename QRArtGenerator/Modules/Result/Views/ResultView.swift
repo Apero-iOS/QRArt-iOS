@@ -124,7 +124,7 @@ struct ResultView: View {
             .popup(isPresented: $viewModel.showPopupConfirm, view: {
                 PopupConfirmSaveQR(onTapOk: {
                     viewModel.showPopupConfirm.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
                         viewModel.save()
                         dismiss()
                     }
