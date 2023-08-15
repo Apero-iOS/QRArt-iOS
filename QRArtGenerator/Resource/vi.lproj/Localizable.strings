@@ -181,3 +181,17 @@
 "give_input_for_qr" = "Cho đầu vào\ncho QR";
 "provide_ai_input_prompt" = "Cung cấp lời nhắc\nđầu vào AI";
 "final_step_initiate_qr_morph" = "Bước cuối cùng:\nbắt đầu qr-morph";
+"title_setting_banner" = "Giải phóng nghệ thuật QR!";
+"content_setting_banner" = "Biến mã thông thường thành \n các sáng tạo phi thường.";
+"create_now" = "Hãy tạo ngay";
+"youre_on" = "Bạn đang ở trên";
+"premium" = "Phần thưởng!";
+"discover_wow_qr_art" = "Khám phá WOW QR Art";
+"content_onboarding" = "Bắt đầu và xem làm thế nào mã QR có thể vừa thực tế vừa truyền cảm hứng trực quan.";
+"continue" = "Tiếp tục";
+"message_delete_history" = "Bạn có muốn xóa QR này không?";
+"exit" = "Lối ra";
+"confirm_exit" = "Bạn có thực sự muốn thoát ra?";
+"yes" = "Đúng";
+"no" = "KHÔNG";
+"create_more" = "Tạo ra nhiều hơn";

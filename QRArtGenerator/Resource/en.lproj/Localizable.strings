@@ -181,3 +181,17 @@
 "give_input_for_qr" = "Give Input\nfor QR";
 "provide_ai_input_prompt" = "Provide AI\nInput Prompt";
 "final_step_initiate_qr_morph" = "Final step:\nInitiate QR-Morph";
+"title_setting_banner" = "Unleash QR Artistry!";
+"content_setting_banner" = "Turn ordinary codes into \n extraordinary creations.";
+"create_now" = "Create Now";
+"youre_on" = "You're On";
+"premium" = "Premium!";
+"discover_wow_qr_art" = "Discover Wow QR Art";
+"content_onboarding" = "Get started and see how QR codes can be both practical and visually inspiring.";
+"continue" = "Continue";
+"message_delete_history" = "Would you like to delete  this QR?";
+"exit" = "Exit";
+"confirm_exit" = "Do you really want to exit?";
+"yes" = "Yes";
+"no" = "No";
+"create_more" = "Create more";

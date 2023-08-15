@@ -159,12 +159,13 @@ struct DetailQRView: View {
             
         }
         .actionSheet(isPresented: $viewModel.isShowDeleteAction, content: {() -> ActionSheet in
-            ActionSheet(title: Text(""), message: Text("Would you like to delete  this QR?"),
+            ActionSheet(title: Text(""), message: Text(Rlocalizable.message_delete_history),
                         buttons: [
-                            .destructive(Text("Delete"), action: {
-                                print("Ok selected")
+                            .destructive(Text(Rlocalizable.delete), action: {
+                                QRItemService.shared.deleteQR(viewModel.item)
+                                dismiss()
                             }),
-                            .cancel(Text("Cancel"), action: {
+                            .cancel(Text(Rlocalizable.cancel), action: {
                                 print("Cancel selected")
                             })
                         ])

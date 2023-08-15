@@ -16,6 +16,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var templates: [Template] = []
     @Published var isShowPopupCreate: Bool = false
     @Published var isShowViewChooseStyle: Bool = false
+    @Published var isShowChoosePhoto: Bool = false
     @Published var baseUrl: String = ""
     @Published var input: QRDetailItem = QRDetailItem() {
         didSet {

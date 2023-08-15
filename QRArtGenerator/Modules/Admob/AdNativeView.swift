@@ -15,6 +15,7 @@ struct AdNativeView: UIViewControllerRepresentable {
     private let nativeView = UIView()
     var adUnitID: AdUnitID
     var type: NativeAdType
+    var blockNativeFaild: VoidBlock? = nil
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let adViewController = AdViewController()
@@ -26,6 +27,7 @@ struct AdNativeView: UIViewControllerRepresentable {
         AdMobManager.shared.blockNativeFaild = { id in
             if id == adUnitID.rawValue {
                 adViewController.view.isHidden = true
+                blockNativeFaild?()
             }
         }
         return adViewController

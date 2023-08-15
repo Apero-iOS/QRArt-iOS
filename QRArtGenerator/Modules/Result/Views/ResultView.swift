@@ -8,6 +8,7 @@
 import SwiftUI
 import ScreenshotPreventing
 import Combine
+import ExytePopupView
 
 enum ResultViewSource {
     case history
@@ -93,8 +94,9 @@ struct ResultView: View {
                             Image(R.image.ic_close_screen)
                                 .padding(.leading, 4)
                                 .onTapGesture {
-                                    viewModel.save()
-                                    dismiss()
+                                    withAnimation {
+                                        viewModel.showPopupConfirm.toggle()
+                                    }
                                 }
                             Spacer()
                             
@@ -119,6 +121,25 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.isShowIAP) {
                 IAPView(source: .topBar)
             }
+            .popup(isPresented: $viewModel.showPopupConfirm, view: {
+                PopupConfirmSaveQR(onTapOk: {
+                    viewModel.showPopupConfirm.toggle()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        viewModel.save()
+                        dismiss()
+                    }
+                }, onTapNo: {
+                    viewModel.showPopupConfirm.toggle()
+                })
+            }, customize: {
+                $0
+                    .type(.floater())
+                    .position(.center)
+                    .animation(.spring())
+                    .closeOnTapOutside(true)
+                    .backgroundColor(.black.opacity(0.5))
+            })
+            
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             
             if viewModel.showPopupAcessPhoto {
@@ -146,6 +167,7 @@ struct ResultView: View {
                         ])
         })
         .onAppear {
+            viewModel.createIdInterCreateMore()
             FirebaseAnalytics.logEvent(type: .qr_creation_result_view, params: [.style: viewModel.item.templateQRName,
                                                                                 .qr_type: viewModel.item.type.title,
                                                                                 .guidance_number: "\(viewModel.item.guidance)",
@@ -207,7 +229,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var oderStyleView: some View {
-        Text(Rlocalizable.select_other_style)
+        Text(Rlocalizable.create_more)
             .font(R.font.beVietnamProSemiBold.font(size: 16))
             .padding(.top, 20)
         ScrollView(.horizontal, showsIndicators: false) {
@@ -220,10 +242,11 @@ struct ResultView: View {
                             if AppHelper.templates[index].packageType != "basic" && !UserDefaults.standard.isUserVip {
                                 viewModel.isShowIAP.toggle()
                             } else {
-                                onTapOderStyle?(AppHelper.templates[index])
-                                dismiss()
+                                viewModel.showInterCreateMore {
+                                    onTapOderStyle?(AppHelper.templates[index])
+                                    dismiss()
+                                }
                             }
-                            
                         }
                 }
             }

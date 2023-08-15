@@ -73,13 +73,15 @@ struct TabbarView: View {
                             Spacer()
                             if !UserDefaults.standard.isUserVip {
                                 LottieView(lottieFile: R.file.crownJson.name)
-                                    .frame(width: 24, height: 24)
+                                    .frame(width: 48, height: 48)
+                                    .offset(CGSize(width: 8, height: 0))
                                     .onTapGesture {
                                         viewModel.showIAP.toggle()
                                     }
                             }
                             NavigationLink(destination: SettingsView()) {
                                 Image(R.image.setting_ic.name)
+                                    .colorMultiply(R.color.color_1B232E.color)
                             }
                         }
                         .frame(width: WIDTH_SCREEN - 32, height: 48)

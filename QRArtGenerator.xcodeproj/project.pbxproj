@@ -173,8 +173,10 @@
 		A4C69C492A4D90690076CF48 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C482A4D90690076CF48 /* LanguageView.swift */; };
 		A4C69C4B2A4D90CD0076CF48 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */; };
 		A4C71F202A625BC300D29928 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C71F1F2A625BC300D29928 /* Collection+.swift */; };
+		A4CAC9742A89E4A800704A5E /* NewOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAC9732A89E4A800704A5E /* NewOnboardingView.swift */; };
+		A4CAC9792A8A22AF00704A5E /* PopupConfirmSaveQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CAC9782A8A22AF00704A5E /* PopupConfirmSaveQR.swift */; };
+		A4CCD71C2A8B606F0051F2C1 /* qr-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CCD71B2A8B606F0051F2C1 /* qr-loading.json */; };
 		A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CE0D9B2A83953B00B41A68 /* magic-loading.json */; };
-		A4CE0D9E2A83953B00B41A68 /* qr-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A4CE0D9C2A83953B00B41A68 /* qr-loading.json */; };
 		A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */; };
 		A4F806932A84937500E9B523 /* DetailQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F806922A84937500E9B523 /* DetailQRView.swift */; };
 		C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8109C792A512A520093B48A /* BasicItemTemplateView.swift */; };
@@ -416,8 +418,10 @@
 		A4C69C482A4D90690076CF48 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		A4C69C4A2A4D90CD0076CF48 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		A4C71F1F2A625BC300D29928 /* Collection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		A4CAC9732A89E4A800704A5E /* NewOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOnboardingView.swift; sourceTree = "<group>"; };
+		A4CAC9782A8A22AF00704A5E /* PopupConfirmSaveQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupConfirmSaveQR.swift; sourceTree = "<group>"; };
+		A4CCD71B2A8B606F0051F2C1 /* qr-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "qr-loading.json"; sourceTree = "<group>"; };
 		A4CE0D9B2A83953B00B41A68 /* magic-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "magic-loading.json"; sourceTree = "<group>"; };
-		A4CE0D9C2A83953B00B41A68 /* qr-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "qr-loading.json"; sourceTree = "<group>"; };
 		A4F561932A5427A8002E19DD /* GoogleService-Info-DEV.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-DEV.plist"; sourceTree = "<group>"; };
 		A4F806922A84937500E9B523 /* DetailQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQRView.swift; sourceTree = "<group>"; };
 		C8109C792A512A520093B48A /* BasicItemTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicItemTemplateView.swift; sourceTree = "<group>"; };
@@ -681,6 +685,7 @@
 			children = (
 				59286C742A4D31D300EBBEBF /* RowView */,
 				59286C762A4D31D300EBBEBF /* OnboardingView.swift */,
+				A4CAC9732A89E4A800704A5E /* NewOnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1112,8 +1117,8 @@
 		9AD522B92A4B0F2A00A947B5 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				A4CCD71B2A8B606F0051F2C1 /* qr-loading.json */,
 				A4CE0D9B2A83953B00B41A68 /* magic-loading.json */,
-				A4CE0D9C2A83953B00B41A68 /* qr-loading.json */,
 				C8C72E1E2A5FFF8100E8918B /* camera-access.json */,
 				C8E923B12A5271FF00835F93 /* loading.json */,
 				C8AA3E402A4DAF320077DCC3 /* ai_tab.json */,
@@ -1333,6 +1338,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A4CAC9752A8A1C8800704A5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C8E923B42A52768600835F93 /* ResultButtonView.swift */,
+				C8109C892A5198970093B48A /* ResultView.swift */,
+				A4CAC9782A8A22AF00704A5E /* PopupConfirmSaveQR.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A4CAC9762A8A1C8F00704A5E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C84BBF262A53FC950065B8AF /* ResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A4F8068F2A8491B000E9B523 /* DetailQR */ = {
 			isa = PBXGroup;
 			children = (
@@ -1395,9 +1418,8 @@
 		C8109C882A5198890093B48A /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				C8E923B42A52768600835F93 /* ResultButtonView.swift */,
-				C84BBF262A53FC950065B8AF /* ResultViewModel.swift */,
-				C8109C892A5198970093B48A /* ResultView.swift */,
+				A4CAC9762A8A1C8F00704A5E /* ViewModel */,
+				A4CAC9752A8A1C8800704A5E /* Views */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -1665,7 +1687,6 @@
 				A4BB273C2A81039D00DB53B1 /* BeVietnamPro-BlackItalic.ttf in Resources */,
 				592BFE662A7B41CA00FC6C04 /* TLCollectionTableViewCell.xib in Resources */,
 				A4BB273D2A81039D00DB53B1 /* BeVietnamPro-Thin.ttf in Resources */,
-				A4CE0D9E2A83953B00B41A68 /* qr-loading.json in Resources */,
 				C88A2B6C2A4C43D4003A93B6 /* countries.json in Resources */,
 				A4BB27422A81039D00DB53B1 /* BeVietnamPro-SemiBoldItalic.ttf in Resources */,
 				A4BB273E2A81039D00DB53B1 /* BeVietnamPro-Italic.ttf in Resources */,
@@ -1682,6 +1703,7 @@
 				A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */,
 				9AD5229E2A4AA09200A947B5 /* Urbanist-ExtraBold.ttf in Resources */,
 				A4BB273A2A81039D00DB53B1 /* BeVietnamPro-Medium.ttf in Resources */,
+				A4CCD71C2A8B606F0051F2C1 /* qr-loading.json in Resources */,
 				A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */,
 				A4BB27472A81039D00DB53B1 /* BeVietnamPro-Black.ttf in Resources */,
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
@@ -1991,6 +2013,7 @@
 				59F74C452A4FBE8B00AD8CBA /* AdBannerView.swift in Sources */,
 				9AD2B8F42A500735003B7C1F /* QRItemDB.swift in Sources */,
 				76FC00E72A5BBDB800B53B5F /* LimitedTextField.swift in Sources */,
+				A4CAC9792A8A22AF00704A5E /* PopupConfirmSaveQR.swift in Sources */,
 				9AD522B82A4B0E8C00A947B5 /* LottieView.swift in Sources */,
 				59286C962A4D31D300EBBEBF /* OnboardingView.swift in Sources */,
 				59F74C412A4EC4C200AD8CBA /* WebView.swift in Sources */,
@@ -2036,6 +2059,7 @@
 				9AD132362A6FB5BC006EAE82 /* BackdropBlurView.swift in Sources */,
 				9AB852862A5138E500A546F4 /* IAPIdType.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
+				A4CAC9742A89E4A800704A5E /* NewOnboardingView.swift in Sources */,
 				9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */,
 				9AC7DCD02A4DB6C600FB3119 /* DescriptionView.swift in Sources */,
 				C8109C872A51971A0093B48A /* LoadingView.swift in Sources */,

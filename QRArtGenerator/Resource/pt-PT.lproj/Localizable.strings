@@ -180,3 +180,17 @@
 "give_input_for_qr" = "Dê entrada\npara qr";
 "provide_ai_input_prompt" = "Forneça um prompt\nde entrada Ai";
 "final_step_initiate_qr_morph" = "Etapa final:\nIniciar QR-Morph";
+"title_setting_banner" = "Desencadear arte qr!";
+"content_setting_banner" = "Transforme códigos comuns em \n criações extraordinárias.";
+"create_now" = "Crie agora";
+"youre_on" = "Você está ligado";
+"premium" = "Prêmio!";
+"discover_wow_qr_art" = "Descubra Wow Qr Art";
+"content_onboarding" = "Comece e veja como os códigos QR podem ser práticos e visualmente inspiradores.";
+"continue" = "Continuar";
+"message_delete_history" = "Você gostaria de excluir este QR?";
+"exit" = "Saída";
+"confirm_exit" = "Você realmente quer sair?";
+"yes" = "Sim";
+"no" = "Não";
+"create_more" = "Crie mais";

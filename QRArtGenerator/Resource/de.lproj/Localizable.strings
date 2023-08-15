@@ -181,3 +181,17 @@
 "give_input_for_qr" = "Geben Sie die Eingabe\nfür qr";
 "provide_ai_input_prompt" = "Geben Sie eine Eingabeaufforderung\nzur Eingabeaufforderung";
 "final_step_initiate_qr_morph" = "Abschlussschritt:\ninitiieren QR-Morph";
+"title_setting_banner" = "Führen Sie die QR -Kunst frei!";
+"content_setting_banner" = "Verwandeln Sie gewöhnliche Codes in \n außergewöhnliche Kreationen.";
+"create_now" = "Jetzt erstellen";
+"youre_on" = "Sie sind auf";
+"premium" = "Prämie!";
+"discover_wow_qr_art" = "Entdecken Sie WOW QR -Kunst";
+"content_onboarding" = "Gehen Sie an und sehen Sie, wie QR -Codes sowohl praktisch als auch visuell inspirierend sein können.";
+"continue" = "Weitermachen";
+"message_delete_history" = "Möchten Sie dieses QR löschen?";
+"exit" = "Ausfahrt";
+"confirm_exit" = "Willst du wirklich gehen?";
+"yes" = "Ja";
+"no" = "NEIN";
+"create_more" = "Mehr erstellen";

@@ -53,6 +53,13 @@ struct CreateQRView: View {
                     viewModel.templateSelect = template
                 }
             })
+            .fullScreenCover(isPresented: $viewModel.isShowChoosePhoto, content: {
+                ChoosePhotoView { qrString, image in
+                    viewModel.qrImage = image
+                    viewModel.baseUrl = qrString
+                    viewModel.isShowChoosePhoto.toggle()
+                }.ignoresSafeArea()
+            })
             .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, topBarCornerRadius: 20, showTopIndicator: false, content: {
                 popupGenerateView
             })
@@ -141,7 +148,11 @@ struct CreateQRView: View {
                                         .foregroundColor(R.color.color_1B232E.color)
                                         .font(R.font.beVietnamProSemiBold.font(size: 16))
                                     Spacer()
-                                    Image(R.image.ic_edit.name)
+                                    Button {
+                                        viewModel.isShowChoosePhoto.toggle()
+                                    } label: {
+                                        Image(R.image.ic_edit.name)
+                                    }
                                 }
                                 HStack {
                                     TextEditor(text: $viewModel.baseUrl)
@@ -261,25 +272,22 @@ struct CreateQRView: View {
                         
                         Spacer()
                         
-                        if !UserDefaults.standard.isUserVip {
-                            Image(R.image.ic_purchase)
-                                .padding(.trailing, 3)
-                                .onTapGesture {
-                                    viewModel.showSub = true
-                                }
-                        } else {
+//                        if !UserDefaults.standard.isUserVip {
+//                            Image(R.image.ic_purchase)
+//                                .padding(.trailing, 3)
+//                                .onTapGesture {
+//                                    viewModel.showSub = true
+//                                }
+//                        } else {
                             Color.clear
                                 .frame(width: viewModel.isPush ? 33 : 20)
-                        }
+//                        }
                     }
                     .frame(height: 48)
                 }
                
 
             }
-        }
-        .onAppear {
-        
         }
     }
     
