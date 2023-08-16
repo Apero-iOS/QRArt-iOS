@@ -119,6 +119,21 @@ class TLPhotoLibrary {
         }
         return image
     }
+    
+    @discardableResult
+    class func fullImageData(asset: PHAsset) -> Data? {
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        options.resizeMode = .none
+        options.isNetworkAccessAllowed = true
+        options.version = .current
+        var image: Data? = nil
+        _ = PHCachingImageManager().requestImageData(for: asset, options: options) { (imageData, dataUTI, orientation, info) in
+            image = imageData
+        }
+        return image
+    }
+    
 }
 
 extension PHFetchOptions {

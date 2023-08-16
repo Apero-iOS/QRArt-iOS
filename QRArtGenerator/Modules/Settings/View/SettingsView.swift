@@ -40,22 +40,20 @@ struct SettingsView: View {
     }
     
     @ViewBuilder private var bannerSettingView: some View {
-        ZStack {
-            Image(R.image.img_banner_background)
+        ZStack(alignment: .leading) {
+            Image(R.image.img_setting_banner)
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .cornerRadius(12)
-            HStack {
-                Image(R.image.img_setting_banner)
-                    .frame(width: 180, height: 150)
+
                 if viewModel.isVip {
                     contentBannerVip
+                        .padding(.leading, 25)
                 } else {
                     contentBannerNormal
+                        .padding(.leading, 20)
                 }
-                Spacer()
-            }
         }
         .frame(maxWidth: .infinity, maxHeight: 153)
         .padding(.horizontal, 20)
@@ -63,50 +61,61 @@ struct SettingsView: View {
     }
     
     @ViewBuilder private var contentBannerVip: some View {
-        HStack(alignment: .bottom) {
-            VStack(alignment: .trailing) {
-                Image(R.image.ic_pro)
-                Text("You're On")
-                    .font(R.font.urbanistBold.font(size: 24))
-                    .foregroundColor(R.color.color_1B232E.color)
-                Text("Premium!")
-                    .font(R.font.urbanistBold.font(size: 24))
-                    .foregroundColor(R.color.color_1B232E.color)
-            }
-            R.image.ic_shine.image
-                .resizable()
-                .frame(width: 18, height: 18)
-                .scaledToFill()
-                .padding(.bottom, 6.0)
+        VStack(alignment: .leading) {
+            Text(Rlocalizable.youre_on)
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
+                .foregroundColor(.white)
+            Text(Rlocalizable.premium)
+                .font(R.font.beVietnamProSemiBold.font(size: 22))
+                .overlay {
+                    LinearGradient(
+                        stops: [
+                            Gradient.Stop(color: Color(red: 1, green: 0.68, blue: 0.3), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.97, green: 0.82, blue: 0.06), location: 1.00),
+                        ],
+                        startPoint: UnitPoint(x: 0, y: 1),
+                        endPoint: UnitPoint(x: 1, y: 0)
+                    ).mask {
+                        Text(Rlocalizable.premium)
+                            .font(R.font.beVietnamProSemiBold.font(size: 22))
+                    }
+                }
         }
     }
     
     @ViewBuilder private var contentBannerNormal: some View {
         VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 4) {
-                Text(Rlocalizable.upgrade_to_qr())
-                    .font(R.font.urbanistBold.font(size: 14))
-                    .foregroundColor(R.color.color_1B232E.color)
-                Image(R.image.ic_pro)
-            }
-            Text(Rlocalizable.content_banner_setting())
-                .font(R.font.urbanistRegular.font(size: 11))
-                .foregroundColor(R.color.color_1B232E.color)
+            Text(Rlocalizable.title_setting_banner)
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
+                .foregroundColor(.white)
+            Text(Rlocalizable.content_setting_banner)
+                .font(R.font.beVietnamProRegular.font(size: 11))
+                .foregroundColor(.white)
             if !UserDefaults.standard.isUserVip {
                 Button {
                     viewModel.isShowIAP.toggle()
                 } label: {
                     HStack {
-                        Text(Rlocalizable.try_it_out())
-                            .font(R.font.urbanistBold.font(size: 12))
+                        Text(Rlocalizable.create_now)
+                            .font(R.font.beVietnamProSemiBold.font(size: 12))
                             .multilineTextAlignment(.center)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                         Image(R.image.ic_shine)
+                            .colorMultiply(.black)
                     }
                     .fixedSize()
                 }
-                .frame(width: 100, height: 32)
-                .background(Color(R.color.color_653AE4))
+                .frame(width: 100, height: 28)
+                .background(
+                    LinearGradient(
+                        stops: [
+                            Gradient.Stop(color: Color(red: 1, green: 0.68, blue: 0.3), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.97, green: 0.82, blue: 0.06), location: 1.00),
+                        ],
+                        startPoint: UnitPoint(x: 0, y: 1),
+                        endPoint: UnitPoint(x: 1, y: 0)
+                    )
+                )
                 .cornerRadius(100)
             }
         }

@@ -42,7 +42,7 @@
 "phone_message" = "Message";
 "phone_call" = "Téléphone";
 "copy_text" = "Copier le texte";
-"open_mail" = "Courrier ouvert";
+"open_mail" = "Envoyer un mail";
 "access_wifi" = "Accéder au WiFi";
 "create_qr_title" = "Création QR avec";
 "name" = "Nom";
@@ -181,3 +181,18 @@
 "give_input_for_qr" = "Donner une entrée\npour QR";
 "provide_ai_input_prompt" = "Fournir une invite\nd'entrée AI";
 "final_step_initiate_qr_morph" = "Étape finale:\nINITIER QR-MORPH";
+"title_setting_banner" = "Unleash QR Artistmer!";
+"content_setting_banner" = "Transformez les codes ordinaires en \n créations extraordinaires.";
+"create_now" = "Créer maintenant";
+"youre_on" = "Tu es sur";
+"premium" = "Prime!";
+"discover_wow_qr_art" = "Découvrez l'art wow qr";
+"content_onboarding" = "Commencez et voyez comment les codes QR peuvent être à la fois pratiques et visuellement inspirants.";
+"continue" = "Continuer";
+"message_delete_history" = "Souhaitez-vous supprimer ce QR?";
+"exit" = "Sortie";
+"confirm_exit" = "Voulez-vous vraiment sortir?";
+"yes" = "Oui";
+"no" = "Non";
+"create_more" = "Créer plus";
+"update_qr" = "Télécharger QR";

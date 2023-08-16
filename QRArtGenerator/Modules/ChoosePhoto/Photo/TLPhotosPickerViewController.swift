@@ -547,8 +547,8 @@ extension TLPhotosPickerViewController {
         self.stopPlay()
         if configure.isChooseQRMode {
          
-            if let image = self.selectedAssets.first?.fullResolutionImage, let qrString = extractQRCode(image: image) {
-                dismiss(done: true, qrString: qrString, sourceImage: image)
+            if let imageData = self.selectedAssets.first?.fullImageData, let qrString = extractQRCode(data: imageData) {
+                dismiss(done: true, qrString: qrString, sourceImage: UIImage(data: imageData))
             } else {
                 self.view.makeToast("Not QR format", position: .center)
             }
@@ -558,18 +558,15 @@ extension TLPhotosPickerViewController {
         }
     }
     
-    private func extractQRCode(image: UIImage) -> String? {
-       
-        if let data = image.pngData() {
-            let barcodeRequest = VNDetectBarcodesRequest()
-            barcodeRequest.symbologies = [.qr]
-            try? self.sequenceHandler.perform([barcodeRequest], onImageData: data, orientation: .up)
-            guard let results = barcodeRequest.results, let firstBarcode = results.first?.payloadStringValue else {
-                return nil
-            }
-            return firstBarcode
+    private func extractQRCode(data: Data) -> String? {
+
+        let barcodeRequest = VNDetectBarcodesRequest()
+        barcodeRequest.symbologies = [.qr]
+        try? self.sequenceHandler.perform([barcodeRequest], onImageData: data, orientation: .up)
+        guard let results = barcodeRequest.results, let firstBarcode = results.first?.payloadStringValue else {
+            return nil
         }
-        return nil
+        return firstBarcode
     }
     
     @IBAction open func limitButtonTap() {
@@ -1027,6 +1024,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
         var cell = makeCell(nibName: nibName)
         guard let collection = self.focusedCollection else { return cell }
         cell.isCameraCell = collection.useCameraButton && indexPath.section == 0 && indexPath.row == 0
+        cell.selectImageView.isHidden = false
         if cell.isCameraCell {
             if let nibName = self.configure.cameraCellNibSet?.nibName {
                 cell = makeCell(nibName: nibName)

@@ -14,7 +14,8 @@ struct AdNativeView: UIViewControllerRepresentable {
     
     private let nativeView = UIView()
     var adUnitID: AdUnitID
-    var type: NativeAdType = .small
+    var type: NativeAdType
+    var blockNativeFaild: VoidBlock? = nil
     
     func makeUIViewController(context: Context) -> some UIViewController {
         let adViewController = AdViewController()
@@ -26,8 +27,31 @@ struct AdNativeView: UIViewControllerRepresentable {
         AdMobManager.shared.blockNativeFaild = { id in
             if id == adUnitID.rawValue {
                 adViewController.view.isHidden = true
+                blockNativeFaild?()
             }
         }
+        return adViewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    }
+}
+
+struct AdNativeViewMultiple: UIViewControllerRepresentable {
+    
+    var nativeView: UIView
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let adViewController = AdViewController()
+        adViewController.view.addSubview(nativeView)
+        nativeView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(6)
+            make.bottom.equalToSuperview().offset(-6)
+            make.leading.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().offset(-6)
+        }
+        nativeView.layer.cornerRadius = 22
+        nativeView.layer.masksToBounds = true
         return adViewController
     }
     

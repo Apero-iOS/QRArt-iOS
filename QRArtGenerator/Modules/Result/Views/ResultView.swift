@@ -7,6 +7,8 @@
 
 import SwiftUI
 import ScreenshotPreventing
+import Combine
+import ExytePopupView
 
 enum ResultViewSource {
     case history
@@ -16,7 +18,7 @@ enum ResultViewSource {
 struct ResultView: View {
     @StateObject var viewModel: ResultViewModel
     @Environment(\.dismiss) private var dismiss
-    
+    @State var cancellable = Set<AnyCancellable>()
     var onTapOderStyle: ((Template) -> Void)?
     
     var body: some View {
@@ -34,40 +36,45 @@ struct ResultView: View {
     @ViewBuilder var contentView: some View {
         
         ZStack(alignment: .top) {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    
-                    viewModel.image
-                        .resizable()
-                        .cornerRadius(24)
-                        .frame(width: WIDTH_SCREEN-40)
-                        .aspectRatio(1.0, contentMode: .fill)
-                    
-                    download4kButton
-                    Text(Rlocalizable.share_your_qr)
-                        .font(R.font.beVietnamProSemiBold.font(size: 16))
-                        .padding(.top, 25)
-                    HStack(spacing: 26) {
-                        shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
-                            QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
-                        }
+            VStack {
+                 ScrollView {
+                    VStack(alignment: .leading) {
                         
-                        shareItem(name: "X", icon: R.image.ic_share_x.image) {
-                            QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
-                        }
+                        viewModel.image
+                            .resizable()
+                            .cornerRadius(24)
+                            .frame(width: WIDTH_SCREEN-40)
+                            .aspectRatio(1.0, contentMode: .fill)
                         
-                        shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
-                            QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                        download4kButton
+                        Text(Rlocalizable.share_your_qr)
+                            .font(R.font.beVietnamProSemiBold.font(size: 16))
+                            .padding(.top, 25)
+                        HStack(spacing: 26) {
+                            shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
+                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "X", icon: R.image.ic_share_x.image) {
+                                QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
+                                QRHelper.share.facebookShare(image: viewModel.item.qrImage)
+                            }
+                            
+                            shareItem(name: "Share", icon: R.image.ic_share_system.image) {
+                                viewModel.sheet.toggle()
+                            }
+                            
                         }
+                        oderStyleView
                         
-                        shareItem(name: "Share", icon: R.image.ic_share_system.image) {
-                            viewModel.sheet.toggle()
-                        }
-
                     }
-                    oderStyleView
+                    .padding(20)
+          
                 }
-                .padding(20)
+                
             }
             .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)
@@ -87,8 +94,9 @@ struct ResultView: View {
                             Image(R.image.ic_close_screen)
                                 .padding(.leading, 4)
                                 .onTapGesture {
-                                    viewModel.save()
-                                    dismiss()
+                                    withAnimation {
+                                        viewModel.showPopupConfirm.toggle()
+                                    }
                                 }
                             Spacer()
                             
@@ -113,6 +121,25 @@ struct ResultView: View {
             .fullScreenCover(isPresented: $viewModel.isShowIAP) {
                 IAPView(source: .topBar)
             }
+            .popup(isPresented: $viewModel.showPopupConfirm, view: {
+                PopupConfirmSaveQR(onTapOk: {
+                    viewModel.showPopupConfirm.toggle()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
+                        viewModel.save()
+                        dismiss()
+                    }
+                }, onTapNo: {
+                    viewModel.showPopupConfirm.toggle()
+                })
+            }, customize: {
+                $0
+                    .type(.floater())
+                    .position(.center)
+                    .animation(.spring())
+                    .closeOnTapOutside(true)
+                    .backgroundColor(.black.opacity(0.5))
+            })
+            
             .toast(message: viewModel.toastMessage, isShowing: $viewModel.isShowToast, duration: 3, position: .center)
             
             if viewModel.showPopupAcessPhoto {
@@ -140,10 +167,16 @@ struct ResultView: View {
                         ])
         })
         .onAppear {
+            viewModel.createIdInterCreateMore()
             FirebaseAnalytics.logEvent(type: .qr_creation_result_view, params: [.style: viewModel.item.templateQRName,
                                                                                 .qr_type: viewModel.item.type.title,
                                                                                 .guidance_number: "\(viewModel.item.guidance)",
                                                                                 .step_number: "\(viewModel.item.steps)"])
+            InappManager.share.didPaymentSuccess.sink { isSuccess in
+                if isSuccess, viewModel.isShowAd {
+                    viewModel.isShowAd = false
+                }
+            }.store(in: &cancellable)
         }
     }
     
@@ -196,7 +229,7 @@ struct ResultView: View {
     }
     
     @ViewBuilder var oderStyleView: some View {
-        Text(Rlocalizable.select_other_style)
+        Text(Rlocalizable.create_more)
             .font(R.font.beVietnamProSemiBold.font(size: 16))
             .padding(.top, 20)
         ScrollView(.horizontal, showsIndicators: false) {
@@ -209,10 +242,11 @@ struct ResultView: View {
                             if AppHelper.templates[index].packageType != "basic" && !UserDefaults.standard.isUserVip {
                                 viewModel.isShowIAP.toggle()
                             } else {
-                                onTapOderStyle?(AppHelper.templates[index])
-                                dismiss()
+                                viewModel.showInterCreateMore {
+                                    onTapOderStyle?(AppHelper.templates[index])
+                                    dismiss()
+                                }
                             }
-                            
                         }
                 }
             }

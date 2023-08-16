@@ -30,11 +30,13 @@ class TabbarViewModel: ObservableObject, Identifiable {
     var tabs: [TabbarEnum] = [.home, .ai, .history]
     
     var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.number(forKey: .inter_change_screen) > .zero && !UserDefaults.standard.isUserVip
+        return false
+        //return RemoteConfigService.shared.number(forKey: .inter_change_screen) > .zero && !UserDefaults.standard.isUserVip
     }
     
     var isShowAdsBanner: Bool {
-        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
+        return false
+       // return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
     }
     
     var isShowAds: Bool {
@@ -74,7 +76,8 @@ class TabbarViewModel: ObservableObject, Identifiable {
     }
     
     public func getNumberShowAds() -> Int {
-        return RemoteConfigService.shared.number(forKey: .inter_change_screen)
+        return 0
+       // return RemoteConfigService.shared.number(forKey: .inter_change_screen)
     }
     
     public func canShowBannerAd() -> Bool {

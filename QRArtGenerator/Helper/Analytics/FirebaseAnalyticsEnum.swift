@@ -49,6 +49,8 @@ enum FirebaseAnalyticsEnum: String {
     case setting_term_of_service
     case setting_rate_app
     case setting_share_app
+    case onboarding_view
+    case onboarding_click
 }
 
 enum FirebaseParamsKey: String {

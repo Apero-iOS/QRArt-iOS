@@ -27,7 +27,7 @@ final class Router {
     }
     
     public static func showOnboarding(window: UIWindow? = nil) {
-        Router.setRootView(view: OnboardingView(), window: window)
+        Router.setRootView(view: NewOnboardingView(), window: window)
     }
     
     public static func requestReview() {

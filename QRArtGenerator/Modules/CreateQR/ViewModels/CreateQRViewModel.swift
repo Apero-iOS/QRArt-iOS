@@ -16,6 +16,7 @@ class CreateQRViewModel: ObservableObject {
     @Published var templates: [Template] = []
     @Published var isShowPopupCreate: Bool = false
     @Published var isShowViewChooseStyle: Bool = false
+    @Published var isShowChoosePhoto: Bool = false
     @Published var baseUrl: String = ""
     @Published var input: QRDetailItem = QRDetailItem() {
         didSet {
@@ -56,11 +57,12 @@ class CreateQRViewModel: ObservableObject {
     var isGenegateSuccess: Bool = false
     
     var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.bool(forKey: .inter_generate) && !UserDefaults.standard.isUserVip
+        return RemoteConfigService.shared.bool(forKey: .inter_generator) && !UserDefaults.standard.isUserVip
     }
     
     var isShowAdsBanner: Bool {
-        return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
+        return false
+        //return RemoteConfigService.shared.bool(forKey: .banner_tab_bar) && !UserDefaults.standard.isUserVip
     }
     
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
@@ -116,30 +118,29 @@ class CreateQRViewModel: ObservableObject {
     
     public func createIdAds() {
         if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_generate)
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_generator)
         }
     }
     
     public func showAdsInter() {
-        if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_generate, blockWillDismiss: { [weak self] in
-                guard let self = self else { return }
-                self.generateQR()
-            })
-        } else {
-            generateQR()
-        }
+        AdMobManager.shared.showIntertitial(unitId: .inter_generator, blockWillDismiss: { [weak self] in
+            guard let self = self else { return }
+            self.generateQR()
+        })
     }
     
     public func onTapGenerate() {
         FirebaseAnalytics.logEvent(type: .qr_creation_generate_click)
         validInput = true
         errorInputType = getErrorInput()
+     
         if errorInputType == nil {
-            if UserDefaults.standard.generatePerDay >= RemoteConfigService.shared.number(forKey: .subGenerateQr) {
-                isShowPopupCreate.toggle()
-            } else {
+            if UserDefaults.standard.generateQRCount == 0 || UserDefaults.standard.isUserVip {
+                generateQR()
+            } else if RemoteConfigService.shared.bool(forKey: .inter_generator), UserDefaults.standard.generateQRCount < 7 {
                 showAdsInter()
+            } else {
+                showSub.toggle()
             }
         }
     }
@@ -231,6 +232,7 @@ class CreateQRViewModel: ObservableObject {
                 case .finished:
                     self.isStatusGenegate = false
                     self.checkShowLoading()
+                    UserDefaults.standard.generateQRCount += 1
                 case .failure(let error):
                     self.isStatusGenegate = false
                     self.checkShowLoading()
@@ -247,7 +249,13 @@ class CreateQRViewModel: ObservableObject {
             }
             self.isGenegateSuccess = true
             self.input.qrImage = uiImage
-            self.imageResult = Image(uiImage: uiImage)
+            if UserDefaults.standard.isUserVip {
+                self.imageResult = Image(uiImage: uiImage)
+            } else {
+                var newSize = CGSize(width: uiImage.size.width*0.8, height: uiImage.size.height*0.8)
+                self.imageResult = Image(uiImage: uiImage.resize(newSize))
+            }
+            
             UserDefaults.standard.generatePerDay += 1
             
         }.store(in: &cancellable)

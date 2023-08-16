@@ -38,16 +38,20 @@ class ResultViewModel: ObservableObject {
     @Published var isShowToast: Bool = false
     @Published var isShowDeleteAction: Bool = false
     @Published var showPopupAcessPhoto: Bool = false
+    @Published var showPopupConfirm: Bool = false
     @Published var isShowIAP = false
+    @Published var isShowAd = (!UserDefaults.standard.isUserVip && RemoteConfigService.shared.bool(forKey: .banner_result))
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
-    var isShowAdsNative: Bool {
-        return RemoteConfigService.shared.bool(forKey: .native_result) && !UserDefaults.standard.isUserVip
+    var isSaveQR = false
+    
+    var isShowAdsReward: Bool {
+        return RemoteConfigService.shared.bool(forKey: .reward_regen) && !UserDefaults.standard.isUserVip
     }
     
-    var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.bool(forKey: .inter_regenerate) && !UserDefaults.standard.isUserVip
+    var isShowInterCreateMore: Bool {
+        return RemoteConfigService.shared.bool(forKey: .inter_createmore) && !UserDefaults.standard.isUserVip
     }
     
     init(item: QRDetailItem, image: Image) {
@@ -72,20 +76,22 @@ class ResultViewModel: ObservableObject {
     func checkDownload() {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
-        case .authorized, .limited:
-            download()
-        case .denied, .restricted :
-            showPopupAcessPhoto = true
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
-                guard let self = self else { return }
-                switch status {
-                case .authorized, .limited:
-                    self.download()
-                default:
-                    break
+            case .authorized, .limited:
+                download()
+            case .denied, .restricted :
+                showPopupAcessPhoto = true
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                    guard let self = self else { return }
+                    switch status {
+                        case .authorized, .limited:
+                            self.download()
+                        default:
+                            break
+                    }
                 }
-            }
+            default:
+                print(status)
         }
     }
     
@@ -93,6 +99,7 @@ class ResultViewModel: ObservableObject {
         if let image = scaleImage(resolutions: .normal) {
             UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
             showToast(message: Rlocalizable.download_success())
+            isSaveQR = true
         }
     }
     
@@ -103,20 +110,22 @@ class ResultViewModel: ObservableObject {
     func checkDownload4K() {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
-        case .authorized, .limited:
-            download4k()
-        case .denied, .restricted :
-            showPopupAcessPhoto = true
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
-                guard let self = self else { return }
-                switch status {
-                case .authorized, .limited:
-                    self.download4k()
-                default:
-                    self.showPopupAcessPhoto = true
+            case .authorized, .limited:
+                download4k()
+            case .denied, .restricted :
+                showPopupAcessPhoto = true
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                    guard let self = self else { return }
+                    switch status {
+                        case .authorized, .limited:
+                            self.download4k()
+                        default:
+                            self.showPopupAcessPhoto = true
+                    }
                 }
-            }
+            default:
+                print(status)
         }
     }
     
@@ -201,18 +210,36 @@ class ResultViewModel: ObservableObject {
     }
     
     public func createIdAds() {
-        if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_regenerate)
+        if isShowAdsReward {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .reward_regen)
+        }
+    }
+    
+    public func createIdInterCreateMore() {
+        if isShowInterCreateMore {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_createmore)
         }
     }
     
     public func showAdsInter() {
-        if isShowAdsInter, !checkShowSub() {
-            AdMobManager.shared.showIntertitial(unitId: .inter_regenerate, isSplash: false, blockWillDismiss: { [weak self] in
-                self?.regenerate()
+        if isShowAdsReward {
+            AdMobManager.shared.showRewarded(unitId: .reward_regen, completion: { [weak self] status in
+                if status {
+                    self?.regenerate()
+                }
             })
         } else {
             regenerate()
+        }
+    }
+    
+    public func showInterCreateMore(completion: VoidBlock?) {
+        if isShowInterCreateMore {
+            AdMobManager.shared.showIntertitial(unitId: .inter_createmore, isSplash: false, blockWillDismiss: {
+                completion?()
+            })
+        } else {
+            completion?()
         }
     }
     

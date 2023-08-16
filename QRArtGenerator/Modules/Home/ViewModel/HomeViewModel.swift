@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import MobileAds
 
 final class HomeViewModel: ObservableObject, Identifiable {
     
@@ -16,7 +17,8 @@ final class HomeViewModel: ObservableObject, Identifiable {
     @Published var isShowGenerateQR = false
     @Published var isShowToast = false
     @Published var msgError: String = ""
-    
+    @Published var isLoadAd: Bool = (RemoteConfigService.shared.bool(forKey: .native_home) && !UserDefaults.standard.isUserVip)
+    var nativeViews: [UIView] = []
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -36,6 +38,31 @@ final class HomeViewModel: ObservableObject, Identifiable {
             }
         } receiveValue: { [weak self] listTemplates in
             guard let self = self else { return }
+        
+            
+            let root = UIApplication.shared.windows.first?.rootViewController
+            if RemoteConfigService.shared.bool(forKey: .native_home), !UserDefaults.standard.isUserVip {
+              
+                if let templates = listTemplates?.items {
+                    let countAd = templates.count/3 + 1
+                    nativeViews.removeAll()
+                    for _ in 0...countAd {
+                        nativeViews.append(UIView())
+                    }
+                }
+                AdMobManager.shared.removeAd(unitId: AdUnitID.native_home.rawValue)
+                AdMobManager.shared.addAdNative(unitId: .native_home, rootVC: root!, views: nativeViews, type: .freeSize)
+                AdMobManager.shared.blockNativeFaild = { [weak self] id in
+                    if id == AdUnitID.native_home.rawValue {
+                        self?.isLoadAd = false
+                    }
+                }
+            } else {
+                if isLoadAd {
+                    isLoadAd = false
+                }
+            }
+
             self.templates.removeAll()
             if let templates = listTemplates?.items {
                 self.templates.append(contentsOf: templates)
@@ -43,5 +70,20 @@ final class HomeViewModel: ObservableObject, Identifiable {
             }
             
         }.store(in: &cancellable)
+    }
+    
+    func isShowSelectInter() -> Bool {
+        if UserDefaults.standard.isUserVip || !RemoteConfigService.shared.bool(forKey: .inter_template) {
+            return false
+        }
+        let start = 2
+        let step = 3
+        if UserDefaults.standard.templateSelectCount == 2 {
+            return true
+        }
+        if (UserDefaults.standard.templateSelectCount - start)%3 == 0 {
+            return true
+        }
+        return false
     }
 }

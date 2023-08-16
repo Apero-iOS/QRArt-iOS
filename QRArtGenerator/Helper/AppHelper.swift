@@ -74,22 +74,10 @@ struct ActivityView: UIViewControllerRepresentable {
     }
 }
 
-extension RemoteKey {
-    static let inter_generate = RemoteKey(rawValue: "inter_generate")
-    static let inter_regenerate = RemoteKey(rawValue: "inter_regenerate")
-    static let inter_inspire = RemoteKey(rawValue: "inter_inspire")
-    static let inter_change_screen = RemoteKey(rawValue: "inter_change_screen")
-    static let native_result = RemoteKey(rawValue: "native_result")
-    static let app_open_splash = RemoteKey(rawValue: "app_open_splash")
-    static let banner_tab_bar = RemoteKey(rawValue: "banner_tab_bar")
-    static let languageFirstOpen = RemoteKey(rawValue: "language_first_open")
-}
-
 extension AdUnitID {
     static let inter_change_screen = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/3730109139")
     static let inter_inspire = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/4061281622")
     static let inter_generate = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/4444425002")
-    static let inter_regenerate = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/4188386086")
     static let native_result = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatNativeAdvanced : "ca-app-pub-6530974883137971/6291805244")
     static let app_open_high_floor = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/6973421391")
     static let app_open_all_price = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatAppOpen : "ca-app-pub-6530974883137971/1721094710")

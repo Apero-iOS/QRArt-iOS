@@ -31,6 +31,7 @@ struct CreateQRView: View {
                 FirebaseAnalytics.logEvent(type: .qr_creation_view)
             }
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
+               
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult)
                 ResultView(viewModel: resultViewModel) { template in
                     viewModel.templateSelect = template
@@ -51,6 +52,13 @@ struct CreateQRView: View {
                     viewModel.input.templateQRName = template.name
                     viewModel.templateSelect = template
                 }
+            })
+            .fullScreenCover(isPresented: $viewModel.isShowChoosePhoto, content: {
+                ChoosePhotoView { qrString, image in
+                    viewModel.qrImage = image
+                    viewModel.baseUrl = qrString
+                    viewModel.isShowChoosePhoto.toggle()
+                }.ignoresSafeArea()
             })
             .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, topBarCornerRadius: 20, showTopIndicator: false, content: {
                 popupGenerateView
@@ -79,7 +87,7 @@ struct CreateQRView: View {
                     }
                 }
                 
-                if viewModel.isShowToolTipGenerate {
+                if viewModel.isShowToolTipGenerate, !UserDefaults.standard.tooltipsDone {
                     TooltipsView(isShowAdsBanner: viewModel.isShowAdsBanner, type: .generate) {
                         UserDefaults.standard.tooltipsDone = true
                     }
@@ -140,8 +148,12 @@ struct CreateQRView: View {
                                         .foregroundColor(R.color.color_1B232E.color)
                                         .font(R.font.beVietnamProSemiBold.font(size: 16))
                                     Spacer()
-                                    Image(R.image.ic_edit.name)
-                                }
+                                    Button {
+                                        viewModel.isShowChoosePhoto.toggle()
+                                    } label: {
+                                        Image(R.image.ic_edit.name)
+                                    }
+                                }.padding(.top, 20)
                                 HStack {
                                     TextEditor(text: $viewModel.baseUrl)
                                         .foregroundColor(R.color.color_6A758B.color)
@@ -260,25 +272,22 @@ struct CreateQRView: View {
                         
                         Spacer()
                         
-                        if !UserDefaults.standard.isUserVip {
-                            Image(R.image.ic_purchase)
-                                .padding(.trailing, 3)
-                                .onTapGesture {
-                                    viewModel.showSub = true
-                                }
-                        } else {
+//                        if !UserDefaults.standard.isUserVip {
+//                            Image(R.image.ic_purchase)
+//                                .padding(.trailing, 3)
+//                                .onTapGesture {
+//                                    viewModel.showSub = true
+//                                }
+//                        } else {
                             Color.clear
                                 .frame(width: viewModel.isPush ? 33 : 20)
-                        }
+//                        }
                     }
                     .frame(height: 48)
                 }
                
 
             }
-        }
-        .onAppear {
-        
         }
     }
     

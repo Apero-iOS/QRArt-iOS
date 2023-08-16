@@ -31,7 +31,7 @@ struct BannerView: UIViewControllerRepresentable {
             make.top.equalTo(lineView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        AdMobManager.shared.addAdBanner(unitId: adUnitID, rootVC: adViewController, view: bannerView)
+        AdMobManager.shared.addAdBannerAdaptive(unitId: adUnitID, rootVC: adViewController, view: bannerView)
         AdMobManager.shared.blockBannerFaild = { id in
             if id == adUnitID.rawValue {
                 adViewController.view.isHidden = true

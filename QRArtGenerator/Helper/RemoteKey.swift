@@ -23,4 +23,13 @@ extension RemoteKey {
     static let inter_scanopenlink = RemoteKey(rawValue: "inter_scanopenlink")
     static let inter_openmail = RemoteKey(rawValue: "inter_openmail")
     static let banner_scan = RemoteKey(rawValue: "banner_scan")
+    
+    //static let inter_regenerate = RemoteKey(rawValue: "inter_regenerate")
+    //static let inter_inspire = RemoteKey(rawValue: "inter_inspire")
+    //static let inter_change_screen = RemoteKey(rawValue: "inter_change_screen")
+    //static let native_result = RemoteKey(rawValue: "native_result")
+    static let app_open_splash = RemoteKey(rawValue: "app_open_splash")
+    //static let banner_tab_bar = RemoteKey(rawValue: "banner_tab_bar")
+    static let languageFirstOpen = RemoteKey(rawValue: "language_first_open")
+    
 }
