@@ -23,7 +23,7 @@ enum TabbarEnum: CaseIterable {
         case .ai:
             return Rlocalizable.create()
         case .history:
-            return Rlocalizable.history()
+            return Rlocalizable.my_qr()
         case .settings:
             return Rlocalizable.settings()
         }
@@ -38,7 +38,7 @@ enum TabbarEnum: CaseIterable {
         case .ai:
             return Image("")
         case .history:
-            return R.image.history_ic.image
+            return R.image.ic_my_qr.image
         case .settings:
             return R.image.setting_ic.image
         }
@@ -53,7 +53,7 @@ enum TabbarEnum: CaseIterable {
         case .ai:
             return Image("")
         case .history:
-            return R.image.history_selected_ic.image
+            return R.image.ic_my_qr_selected.image
         case .settings:
             return R.image.setting_selected_ic.image
         }

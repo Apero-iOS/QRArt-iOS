@@ -291,13 +291,24 @@ open class TLPhotosPickerViewController: UIViewController {
     }
     
     private func requestAuthorization() {
+        FirebaseAnalytics.logEvent(type: .permission_photo_view)
         if #available(iOS 14.0, *) {
             PHPhotoLibrary.requestAuthorization(for:  .readWrite) { [weak self] status in
                 self?.processAuthorization(status: status)
+                if status == .denied || status == .restricted {
+                    FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
+                } else {
+                    FirebaseAnalytics.logEvent(type: .permission_photo_allow_click_view)
+                }
             }
         } else {
             PHPhotoLibrary.requestAuthorization { [weak self] status in
                 self?.processAuthorization(status: status)
+                if status == .denied || status == .restricted {
+                    FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
+                } else {
+                    FirebaseAnalytics.logEvent(type: .permission_photo_allow_click_view)
+                }
             }
         }
     }
@@ -646,12 +657,15 @@ extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavig
         case .authorized:
             self.showCamera()
         case .notDetermined:
+                FirebaseAnalytics.logEvent(type: .permission_camera_view)
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] (authorized) in
                 DispatchQueue.main.async { [weak self] in
                     if authorized {
                         self?.showCamera()
+                        FirebaseAnalytics.logEvent(type: .permission_camera_allow_click)
                     } else {
                         self?.handleDeniedCameraAuthorization()
+                        FirebaseAnalytics.logEvent(type: .permission_camera_not_allow_click)
                     }
                 }
             })

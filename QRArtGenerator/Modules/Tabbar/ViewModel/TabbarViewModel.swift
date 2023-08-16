@@ -87,7 +87,7 @@ class TabbarViewModel: ObservableObject, Identifiable {
     public func logEventTracking(type: TabbarEnum) {
         switch type {
             case .history:
-                FirebaseAnalytics.logEvent(type: .history_click)
+                FirebaseAnalytics.logEvent(type: .my_qr_click)
             default:
                 break
         }

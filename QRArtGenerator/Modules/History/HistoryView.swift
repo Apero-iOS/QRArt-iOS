@@ -25,7 +25,7 @@ struct HistoryView: View {
             }
         }
         .onAppear {
-            FirebaseAnalytics.logEvent(type: .history_view)
+            FirebaseAnalytics.logEvent(type: .my_qr_view)
             QRItemService.shared.setObserver { histores in
                 viewModel.filteredItems = histores
                 viewModel.items = histores
@@ -57,7 +57,6 @@ struct HistoryView: View {
             
             Button {
                 createQRBlock?()
-                FirebaseAnalytics.logEvent(type: .history_qr_click)
             } label: {
                 Text(Rlocalizable.create_qr())
                     .font(R.font.urbanistSemiBold.font(size: 14))

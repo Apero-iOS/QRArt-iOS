@@ -47,6 +47,7 @@ struct CreateQRView: View {
             }
             .fullScreenCover(isPresented: $viewModel.isShowViewChooseStyle, content: {
                 ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
+                    FirebaseAnalytics.logEvent(type: .qr_creation_next_style_click, params: [.style: template.name])
                     viewModel.input.prompt = template.positivePrompt
                     viewModel.input.negativePrompt = template.negativePrompt
                     viewModel.input.templateQRName = template.name
@@ -209,6 +210,8 @@ struct CreateQRView: View {
                 
                 VStack {
                     Button {
+                        FirebaseAnalytics.logEvent(type: .qr_creation_generate_click, params: [.style: viewModel.templateSelect.name,
+                                                                                               .qr_type: viewModel.input.type.title])
                         viewModel.onTapGenerate()
                         change.toggle()
                         UIApplication.shared.endEditing()
@@ -303,6 +306,7 @@ struct CreateQRView: View {
                 Image(R.image.ic_edit.name)
             }.background(Color.white)
             .onTapGesture {
+                FirebaseAnalytics.logEvent(type: .qr_creation_change_style_click)
                 viewModel.isShowViewChooseStyle.toggle()
             }
             ItemTemplateView(template: $viewModel.templateSelect)

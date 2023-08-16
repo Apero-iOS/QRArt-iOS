@@ -239,19 +239,19 @@ struct ScannerView: View {
                     viewModel.cameraPermission = .approve
                     setupCamera()
                 case .notDetermined:
-                    FirebaseAnalytics.logEvent(type: .permission_view)
+                    FirebaseAnalytics.logEvent(type: .permission_camera_view)
                     if await AVCaptureDevice.requestAccess(for: .video) {
                         /// permission granted
                         viewModel.cameraPermission = .approve
                         setupCamera()
-                        FirebaseAnalytics.logEvent(type: .allow_access_click)
+                        FirebaseAnalytics.logEvent(type: .permission_camera_allow_click)
                     } else {
                         /// permission Denied
                         viewModel.cameraPermission = .denied
                         withAnimation {
                             viewModel.showPopupAccessCamera = true
                         }
-                        FirebaseAnalytics.logEvent(type: .permission_view)
+                        FirebaseAnalytics.logEvent(type: .permission_camera_not_allow_click)
                     }
                 case .denied, .restricted:
                     viewModel.cameraPermission = .denied

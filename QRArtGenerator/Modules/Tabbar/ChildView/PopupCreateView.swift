@@ -35,6 +35,7 @@ struct PopupCreateView: View {
                     HStack {
                         Spacer()
                         Button {
+                            FirebaseAnalytics.logEvent(type: .home_upload_qr_click)
                             uploadButtonTap?()
                         } label: {
                             VStack {
@@ -47,6 +48,7 @@ struct PopupCreateView: View {
                         }
                         Spacer()
                         Button {
+                            FirebaseAnalytics.logEvent(type: .home_create_new_qr_click)
                             createButtonTap?()
                         } label: {
                             VStack {
@@ -69,6 +71,7 @@ struct PopupCreateView: View {
         .ignoresSafeArea()
         .opacity(opacity)
         .onAppear {
+            FirebaseAnalytics.logEvent(type: .home_dialog_view)
             withAnimation(.easeOut(duration: 0.2)) {
                 opacity = 1
             }
