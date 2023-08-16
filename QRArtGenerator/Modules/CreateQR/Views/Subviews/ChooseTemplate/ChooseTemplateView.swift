@@ -25,7 +25,6 @@ struct ChooseTemplateView: View {
                                 .onTapGesture {
                                     if index != indexSelectStyle {
                                         indexSelectStyle = index
-                                        FirebaseAnalytics.logEvent(type: .qr_creation_style_click, params: [.style: templates[index].name])
                                     }
                                 }
                         }

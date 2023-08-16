@@ -52,18 +52,22 @@ struct ResultView: View {
                             .padding(.top, 25)
                         HStack(spacing: 26) {
                             shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
+                                FirebaseAnalytics.logEvent(type: .result_share_click, params: [.share_type: "Instagram"])
                                 QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
                             }
                             
                             shareItem(name: "X", icon: R.image.ic_share_x.image) {
+                                FirebaseAnalytics.logEvent(type: .result_share_click, params: [.share_type: "twitter"])
                                 QRHelper.share.shareImageViaTwitter(image: viewModel.item.qrImage)
                             }
                             
                             shareItem(name: "Facebook", icon: R.image.ic_share_facebook.image) {
+                                FirebaseAnalytics.logEvent(type: .result_share_click, params: [.share_type: "Facebook"])
                                 QRHelper.share.facebookShare(image: viewModel.item.qrImage)
                             }
                             
                             shareItem(name: "Share", icon: R.image.ic_share_system.image) {
+                                FirebaseAnalytics.logEvent(type: .result_share_click, params: [.share_type: "Share"])
                                 viewModel.sheet.toggle()
                             }
                             
@@ -212,7 +216,7 @@ struct ResultView: View {
     
     @ViewBuilder var download4kButton: some View {
         ResultButtonView(typeButton: .download4k, onTap: {
-            FirebaseAnalytics.logEvent(type: .qr_creation_download_4k_click)
+            FirebaseAnalytics.logEvent(type: .result_save_as_4k_click)
             if !UserDefaults.standard.isUserVip {
                 viewModel.showIAP.toggle()
             } else {

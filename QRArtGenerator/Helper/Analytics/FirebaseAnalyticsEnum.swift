@@ -13,13 +13,12 @@ enum FirebaseAnalyticsEnum: String {
     case not_allow_click
     case home_view
     case home_style_click
-    case home_view_more_click
     case scan_view
     case scan_zoom_click
     case scan_flash_click
     case qr_creation_click
     case qr_creation_view
-    case qr_creation_style_click
+    case qr_creation_next_style_click
     case qr_creation_select_type_click
     case qr_creation_generate_click
     case advanced_setting_view
@@ -30,7 +29,7 @@ enum FirebaseAnalyticsEnum: String {
     case qr_creation_result_view
     case qr_creation_regenerate_click
     case qr_creation_save_share_click
-    case qr_creation_download_4k_click
+    case result_save_as_4k_click
     case qr_creation_done_click
     case sub_view
     case sub_weekly_click
@@ -38,11 +37,7 @@ enum FirebaseAnalyticsEnum: String {
     case sub_lifetime_click
     case sub_successfull
     case sub_successfull_3days_free_trial
-    case history_click
-    case history_view
     case history_all_click
-    case history_tab_click
-    case history_qr_click
     case setting_view
     case setting_language
     case setting_pricacy_policy
@@ -51,6 +46,20 @@ enum FirebaseAnalyticsEnum: String {
     case setting_share_app
     case onboarding_view
     case onboarding_click
+    case permission_camera_view
+    case permission_camera_allow_click
+    case permission_camera_not_allow_click
+    case permission_photo_view
+    case permission_photo_allow_click_view
+    case permission_photo_not_allow_click_view
+    case home_dialog_view
+    case home_upload_qr_click
+    case home_create_new_qr_click
+    case my_qr_click
+    case my_qr_view
+    case my_qr_thumnail_click
+    case qr_creation_change_style_click
+    case result_share_click
 }
 
 enum FirebaseParamsKey: String {
@@ -61,6 +70,7 @@ enum FirebaseParamsKey: String {
     case step_number
     case source
     case package_time
+    case share_type
 }
 
 enum FirebaseParamsValue: String {
