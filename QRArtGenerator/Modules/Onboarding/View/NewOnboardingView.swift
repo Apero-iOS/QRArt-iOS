@@ -35,13 +35,15 @@ struct NewOnboardingView: View {
                         showSub = true
                     }
                 } label: {
-                    Text(Rlocalizable.continue)
-                        .foregroundColor(.white)
-                        .font(R.font.beVietnamProSemiBold.font(size: 14))
+                    HStack {
+                        Text(Rlocalizable.continue)
+                            .foregroundColor(.white)
+                            .font(R.font.beVietnamProSemiBold.font(size: 14))
+                    }
+                    .frame(width: UIScreen.screenWidth - 48, height: 42)
+                    .background(R.color.color_653AE4.color)
+                    .cornerRadius(24)
                 }
-                .frame(width: UIScreen.screenWidth - 48, height: 42)
-                .background(R.color.color_653AE4.color)
-                .cornerRadius(24)
                 .padding(.bottom, 77)
 
             }

@@ -83,7 +83,7 @@ struct ResultView: View {
             .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
+                ToolbarItem(placement: .navigation) {
                     ZStack {
                         HStack {
                             Text(Rlocalizable.result)
@@ -96,19 +96,20 @@ struct ResultView: View {
                         }
                         HStack {
                             Image(R.image.ic_close_screen)
-                                .padding(.leading, 4)
+                                
                                 .onTapGesture {
                                     withAnimation {
                                         viewModel.showPopupConfirm.toggle()
                                     }
                                 }
                             Spacer()
-                            
                             regenerateButton
-                                .frame(width: 33, height: 26)
-                                .padding(.trailing, 20)
-                            
+                                .frame(height: 26)
                         }
+                        .frame(width: WIDTH_SCREEN-24)
+                        .padding(.leading, 16)
+                        .padding(.trailing, 8)
+                        
                     }
                     .frame(height: 48)
                 }

@@ -68,7 +68,7 @@ struct TooltipsView: View {
                 .padding(.top, safeAreaInsets.top + 290)
         case .generate:
             Rectangle()
-                .frame(height: 66)
+                .frame(height: 88)
                 .blendMode(.destinationOut)
                 .padding(.bottom, viewModel.getBottomPadding(isShowAdsBanner, safeArea: safeAreaInsets))
         }
@@ -116,7 +116,7 @@ struct TooltipsView: View {
             }
             .padding(EdgeInsets(top: 0,
                                 leading: 0,
-                                bottom: viewModel.getBottomPadding(isShowAdsBanner, safeArea: safeAreaInsets) + 60,
+                                bottom: viewModel.getBottomPadding(isShowAdsBanner, safeArea: safeAreaInsets) + 80,
                                 trailing: 60))
         }
     }
