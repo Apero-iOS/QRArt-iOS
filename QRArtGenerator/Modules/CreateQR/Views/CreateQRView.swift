@@ -374,12 +374,15 @@ struct CreateQRView: View {
         
         ScrollView(.horizontal) {
             HStack(spacing: 15) {
-                ForEach(0..<10) { index in
+                ForEach(0..<viewModel.listPromptSuggess.count, id: \.self) { index in
                     HStack {
-                        Text("Test Tag \(index)")
+                        Text(viewModel.listPromptSuggess[index].title)
                             .font(R.font.beVietnamProRegular.font(size: 13))
                             .foregroundColor(R.color.color_6A758B.color)
                             .padding(.horizontal, 11)
+                            .onTapGesture {
+                                viewModel.input.prompt = viewModel.listPromptSuggess[index].content
+                            }
                     }
                     .frame(height: 40)
                     .background(R.color.color_EAEAEA.color)
