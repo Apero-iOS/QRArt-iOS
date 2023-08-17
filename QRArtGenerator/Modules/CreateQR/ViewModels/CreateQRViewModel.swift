@@ -51,6 +51,8 @@ class CreateQRViewModel: ObservableObject {
     @Published var isShowToolTipGenerate = false
     
     private var needFetchTemplates: Bool = true
+    
+    let listPromptSuggess = PromptSuggessType.allCases
         
     var messageError: String = ""
     var isStatusGenegate: Bool = false

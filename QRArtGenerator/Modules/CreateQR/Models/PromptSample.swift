@@ -7,6 +7,74 @@
 
 import Foundation
 
+enum PromptSuggessType: CaseIterable {
+    case cyberpunk
+    case landscapes
+    case anime
+    case portraits
+    case flying_dog
+    case young
+    case city
+    case concepts
+    case caslte
+    case super_hero
+    case elegant
+
+    var title: String {
+        switch self {
+            case .cyberpunk:
+                return Rlocalizable.cyberpunk()
+            case .landscapes:
+                return Rlocalizable.landscapes()
+            case .anime:
+                return Rlocalizable.anime()
+            case .portraits:
+                return Rlocalizable.portraits()
+            case .flying_dog:
+                return Rlocalizable.flying_dog()
+            case .young:
+                return Rlocalizable.young()
+            case .city:
+                return Rlocalizable.city()
+            case .concepts:
+                return Rlocalizable.concepts()
+            case .caslte:
+                return Rlocalizable.caslte()
+            case .super_hero:
+                return Rlocalizable.super_hero()
+            case .elegant:
+                return Rlocalizable.elegant()
+        }
+    }
+    
+    var content: String {
+        switch self {
+            case .cyberpunk:
+                return Rlocalizable.content_prompt_suggess_1()
+            case .landscapes:
+                return Rlocalizable.content_prompt_suggess_2()
+            case .anime:
+                return Rlocalizable.content_prompt_suggess_3()
+            case .portraits:
+                return Rlocalizable.content_prompt_suggess_4()
+            case .flying_dog:
+                return Rlocalizable.content_prompt_suggess_5()
+            case .young:
+                return Rlocalizable.content_prompt_suggess_6()
+            case .city:
+                return Rlocalizable.content_prompt_suggess_7()
+            case .concepts:
+                return Rlocalizable.content_prompt_suggess_8()
+            case .caslte:
+                return Rlocalizable.content_prompt_suggess_9()
+            case .super_hero:
+                return Rlocalizable.content_prompt_suggess_10()
+            case .elegant:
+                return Rlocalizable.content_prompt_suggess_11()
+        }
+    }
+}
+
 struct PromptSample {
     let prompt: [String] = ["a home built in a huge Soap bubble, windows, doors, porches, awnings, middle of SPACE, cyberpunk lights, Hyper Detail, 8K, HD, Octane Rendering, Unreal Engine, V-Ray, full hd",
                             "ossuary cemetary segmented shelves overgrown, graveyard, vertical shelves, zdzisław beksiński, hr giger, mystical occult symbol in real life, high detail, green fog",
