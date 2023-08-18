@@ -21,7 +21,7 @@ enum TabbarEnum: CaseIterable {
         case .scan:
             return Rlocalizable.scan()
         case .ai:
-            return Rlocalizable.create()
+            return Rlocalizable.scan()
         case .history:
             return Rlocalizable.my_qr()
         case .settings:

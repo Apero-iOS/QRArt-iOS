@@ -140,7 +140,7 @@ class CreateQRViewModel: ObservableObject {
             if UserDefaults.standard.generateQRCount == 0 || UserDefaults.standard.isUserVip {
                 generateQR()
             } else if RemoteConfigService.shared.bool(forKey: .inter_generator), UserDefaults.standard.generateQRCount < 7 {
-                showAdsInter()
+                isShowPopupCreate.toggle()
             } else {
                 showSub.toggle()
             }
