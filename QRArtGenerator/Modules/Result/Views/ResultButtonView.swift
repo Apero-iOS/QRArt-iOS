@@ -34,7 +34,7 @@ enum ResultButtonType: CaseIterable {
         case .download:
             return Rlocalizable.download()
         case .download4k:
-            return Rlocalizable.download_4k()
+            return Rlocalizable.save_as_4k()
         case .regenerate:
             return Rlocalizable.regenerate()
         case .share:
