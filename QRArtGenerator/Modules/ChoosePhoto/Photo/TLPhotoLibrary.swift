@@ -124,13 +124,14 @@ class TLPhotoLibrary {
     class func fullImageData(asset: PHAsset) -> Data? {
         let options = PHImageRequestOptions()
         options.isSynchronous = true
-        options.resizeMode = .none
+        options.resizeMode = .exact
         options.isNetworkAccessAllowed = true
         options.version = .current
         var image: Data? = nil
-        _ = PHCachingImageManager().requestImageData(for: asset, options: options) { (imageData, dataUTI, orientation, info) in
-            image = imageData
-        }
+      
+        _ = PHCachingImageManager().requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: options, resultHandler: {(result, info)->Void in
+            image = result?.pngData()
+        })
         return image
     }
     
