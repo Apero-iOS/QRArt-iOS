@@ -65,7 +65,6 @@ struct AccessPhotoPopup: View {
                     .frame(height: 34)
                     .background(Color.white)
                     .cornerRadius(17)
-                    .border(radius: 17, color: R.color.color_EAEAEA.color, width: 1)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
             }

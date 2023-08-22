@@ -22,7 +22,7 @@ struct InputPhoneNumberView: View {
         VStack (alignment: .leading, spacing: 8) {
             Text(Rlocalizable.phone_number())
                 .foregroundColor(R.color.color_1B232E.color)
-                .font(R.font.urbanistMedium.font(size: 14))
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
             HStack(alignment: .top) {
                 HStack(spacing: 8) {
                     AsyncImage(url: country.flagUrl)

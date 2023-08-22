@@ -219,6 +219,11 @@
 "content_prompt_suggess_9" = "Môi trường lâu đài Nathria trong World of Warcraft";
 "content_prompt_suggess_10" = "Rõ ràng chân dung của một khái niệm siêu anh hùng";
 "content_prompt_suggess_11" = "thời trang đẹp thanh lịch của nước, váy quây sang trọng, nền biển nhiệt đới";
-"save_as_4k" = "Lưu dưới dạng 4K";
 "not_qr_format" = "Không phải định dạng QR";
 "unlock_pro_month" = "Mở khóa Pro với %@/tháng";
+"website_url" = "URL trang web";
+"save_as_4k" = "Lưu dưới dạng 4k";
+"permission_photos" = "Để sử dụng ứng dụng, bạn sẽ phải cho phép chúng tôi truy cập ảnh.";
+"whoops" = "Rất tiếc!";
+"no_internet" = "Không tìm thấy kết nối internet. Kiểm tra kết nối của bạn hoặc thử lại.";
+"try_again" = "Thử lại";

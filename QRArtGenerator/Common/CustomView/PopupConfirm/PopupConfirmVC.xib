@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BeVietnamPro-Light.ttf">
+            <string>BeVietnamPro-Light</string>
+        </array>
+        <array key="BeVietnamPro-SemiBold.ttf">
+            <string>BeVietnamPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupConfirmVC" customModule="QRArtGenerator" customModuleProvider="target">
+            <connections>
+                <outlet property="btnCancel" destination="SdN-t9-J4D" id="a9Q-9e-RJm"/>
+                <outlet property="btnOk" destination="XxU-bd-cAc" id="Pt4-09-vUY"/>
+                <outlet property="containerView" destination="zCd-xd-faO" id="dHq-AS-008"/>
+                <outlet property="lblMessage" destination="1Ae-0M-CWO" id="4N0-7U-Yge"/>
+                <outlet property="lblTitle" destination="jJF-td-0uC" id="7DT-yt-ujk"/>
+                <outlet property="lottieView" destination="Jdf-gN-Maa" id="h20-oV-F3T"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCd-xd-faO">
+                    <rect key="frame" x="46" y="301" width="322" height="308.5"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uar-Az-szp">
+                            <rect key="frame" x="16" y="16" width="290" height="156.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdf-gN-Maa" customClass="LottieAnimationView" customModule="Lottie">
+                                    <rect key="frame" x="0.0" y="0.0" width="290" height="93"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="93" id="Hb5-b3-PCe"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="camera-access"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos Access Permission" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJF-td-0uC">
+                                    <rect key="frame" x="0.0" y="98" width="290" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="BeVietnamPro-SemiBold" family="Be Vietnam Pro" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To use the app, you will have to give us permission to access photos." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ae-0M-CWO">
+                                    <rect key="frame" x="0.0" y="123.5" width="290" height="33"/>
+                                    <fontDescription key="fontDescription" name="BeVietnamPro-Light" family="Be Vietnam Pro" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ecd-Fn-hPI">
+                            <rect key="frame" x="20" y="196.5" width="282" height="92"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxU-bd-cAc">
+                                    <rect key="frame" x="0.0" y="0.0" width="282" height="42"/>
+                                    <color key="backgroundColor" name="color_653AE4"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="MZC-NB-zSj"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="BeVietnamPro-SemiBold" family="Be Vietnam Pro" pointSize="14"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Allow Access"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="halfRadius" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="tapOK" destination="-1" eventType="touchUpInside" id="9br-O9-T7g"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdN-t9-J4D">
+                                    <rect key="frame" x="0.0" y="50" width="282" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="IHj-Oe-I7P"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="BeVietnamPro-SemiBold" family="Be Vietnam Pro" pointSize="14"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Not allow">
+                                        <color key="titleColor" name="color_0F1B2E"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapCancel" destination="-1" eventType="touchUpInside" id="Xbk-7d-0pm"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="uar-Az-szp" firstAttribute="top" secondItem="zCd-xd-faO" secondAttribute="top" constant="16" id="0wQ-0A-V1B"/>
+                        <constraint firstAttribute="bottom" secondItem="Ecd-Fn-hPI" secondAttribute="bottom" constant="20" id="Wli-o6-kYo"/>
+                        <constraint firstAttribute="trailing" secondItem="Ecd-Fn-hPI" secondAttribute="trailing" constant="20" id="mxF-ph-Mvk"/>
+                        <constraint firstItem="Ecd-Fn-hPI" firstAttribute="top" secondItem="uar-Az-szp" secondAttribute="bottom" constant="24" id="tdc-iL-vQK"/>
+                        <constraint firstAttribute="trailing" secondItem="uar-Az-szp" secondAttribute="trailing" constant="16" id="v2O-Xs-DaR"/>
+                        <constraint firstItem="uar-Az-szp" firstAttribute="leading" secondItem="zCd-xd-faO" secondAttribute="leading" constant="16" id="vIu-mg-WM4"/>
+                        <constraint firstItem="Ecd-Fn-hPI" firstAttribute="leading" secondItem="zCd-xd-faO" secondAttribute="leading" constant="20" id="yex-uJ-2h2"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornorRadius">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zCd-xd-faO" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Isa-4m-bnw"/>
+                <constraint firstItem="zCd-xd-faO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="46" id="lDx-XP-3sK"/>
+                <constraint firstItem="zCd-xd-faO" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="yRa-Qo-UgQ"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="70.982142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="color_0F1B2E">
+            <color red="0.058823529411764705" green="0.10588235294117647" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color_653AE4">
+            <color red="0.39599999785423279" green="0.22699999809265137" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

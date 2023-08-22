@@ -219,6 +219,11 @@
 "content_prompt_suggess_9" = "Umweltschloss Natria in der Welt von Warcraft";
 "content_prompt_suggess_10" = "Klares Porträt eines Superhelden -Konzepts";
 "content_prompt_suggess_11" = "schöne modische elegante Göttlichkeit von Wasser, schickes trägerloses Kleid, tropischer Meeres Hintergrund";
+"website_url" = "Webadresse";
 "save_as_4k" = "Speichern Sie als 4K";
 "not_qr_format" = "Kein QR -Format";
 "unlock_pro_month" = "Profi mit %@/Monat freischalten";
+"permission_photos" = "Um die App zu verwenden, müssen Sie uns die Erlaubnis geben, auf Fotos zuzugreifen.";
+"whoops" = "Hoppla!";
+"no_internet" = "Es wurde keine Internetverbindung gefunden. Überprüfen Sie Ihre Verbindung oder versuchen Sie es erneut.";
+"try_again" = "Versuchen Sie es erneut";
