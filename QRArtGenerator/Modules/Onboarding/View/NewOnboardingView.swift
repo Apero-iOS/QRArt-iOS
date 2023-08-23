@@ -50,7 +50,7 @@ struct NewOnboardingView: View {
         }
         .ignoresSafeArea()
         .fullScreenCover(isPresented: $showSub) {
-            IAPView(isAfterOnboarding: true) {
+            IAPOnboarding(isAfterOnboarding: true) {
                 Router.showTabbar()
             }
         }

@@ -46,6 +46,7 @@
 		592BFE702A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BFE612A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib */; };
 		592BFE7B2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592BFE792A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib */; };
 		592BFE7C2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592BFE7A2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift */; };
+		592C60652A95B32C007E9ADA /* IAPOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592C60642A95B32C007E9ADA /* IAPOnboarding.swift */; };
 		592DBDB72A4D8ED000AF79EE /* ResultQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592DBDB62A4D8ED000AF79EE /* ResultQRView.swift */; };
 		59C3B3352A78E0DD00770F2B /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C3B3342A78E0DD00770F2B /* HomeCell.swift */; };
 		59C7661E2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7661D2A496E5F00D4BDD3 /* QRArtGeneratorApp.swift */; };
@@ -275,6 +276,7 @@
 		592BFE612A7B41CA00FC6C04 /* TLPhotosPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLPhotosPickerViewController.xib; sourceTree = "<group>"; };
 		592BFE792A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		592BFE7A2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		592C60642A95B32C007E9ADA /* IAPOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPOnboarding.swift; sourceTree = "<group>"; };
 		592DBDB62A4D8ED000AF79EE /* ResultQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultQRView.swift; sourceTree = "<group>"; };
 		59C3B3342A78E0DD00770F2B /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		59C7661A2A496E5F00D4BDD3 /* QRArtGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRArtGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1047,6 +1049,7 @@
 				9AB852812A51363100A546F4 /* ViewModel */,
 				9AB8527E2A5135B800A546F4 /* ChildView */,
 				9AD2B9022A505AC8003B7C1F /* IAPView.swift */,
+				592C60642A95B32C007E9ADA /* IAPOnboarding.swift */,
 			);
 			path = IAP;
 			sourceTree = "<group>";
@@ -2068,6 +2071,7 @@
 				C8AA3E5C2A4E81910077DCC3 /* AlamofireLogger.swift in Sources */,
 				C8109C7A2A512A520093B48A /* BasicItemTemplateView.swift in Sources */,
 				C8AA3E682A4E85DD0077DCC3 /* SuccessResponse.swift in Sources */,
+				592C60652A95B32C007E9ADA /* IAPOnboarding.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				9AC7DCC92A4DB6C600FB3119 /* SliderSettingView.swift in Sources */,
 				59286C992A4D31F100EBBEBF /* CountriesFetcher.swift in Sources */,

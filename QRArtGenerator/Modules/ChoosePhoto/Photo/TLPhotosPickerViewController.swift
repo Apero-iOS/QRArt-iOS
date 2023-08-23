@@ -561,7 +561,7 @@ extension TLPhotosPickerViewController {
             if let imageData = self.selectedAssets.first?.fullImageData, let qrString = extractQRCode(data: imageData) {
                 dismiss(done: true, qrString: qrString, sourceImage: UIImage(data: imageData))
             } else {
-                self.view.makeToast("Not QR format", position: .center)
+                self.view.makeToast(Rlocalizable.not_qr_format(), position: .center)
             }
            
         } else {

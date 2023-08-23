@@ -11,9 +11,9 @@ struct CircularProgressView: View {
     let progress: Double
     let lineWidth: CGFloat
     
-    private let underLineColor: Color = R.color.color_EAEAEA.color
+     let underLineColor: Color = R.color.color_EAEAEA.color
     
-    private let aboveLineColor: LinearGradient = LinearGradient(
+     let aboveLineColor: LinearGradient = LinearGradient(
         stops: [
             Gradient.Stop(color: R.color.color_6427C8.color, location: 0.00),
             Gradient.Stop(color: R.color.color_E79CB7.color, location: 1.00),

@@ -29,13 +29,14 @@ class SplashViewModel: ObservableObject {
     }
     
     func navigateApp() {
-        if !UserDefaults.standard.isFirstLanguage && RemoteConfigService.shared.bool(forKey: .languageFirstOpen) && !UserDefaults.standard.didShowOnboarding {
-            Router.showFirstLanguage()
-        } else if !UserDefaults.standard.didShowOnboarding {
-            Router.showOnboarding()
-        } else {
-            Router.showTabbar()
-        }
+        Router.showOnboarding()
+//        if !UserDefaults.standard.isFirstLanguage && RemoteConfigService.shared.bool(forKey: .languageFirstOpen) && !UserDefaults.standard.didShowOnboarding {
+//            Router.showFirstLanguage()
+//        } else if !UserDefaults.standard.didShowOnboarding {
+//            Router.showOnboarding()
+//        } else {
+//            Router.showTabbar()
+//        }
     }
     
     func addOpenAd() {
