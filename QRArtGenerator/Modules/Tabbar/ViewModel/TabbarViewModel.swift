@@ -20,6 +20,7 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var isVip: Bool = UserDefaults.standard.isUserVip
     @Published var showPopupGenQR: Bool = false
     @Published var isShowChoosePhoto: Bool = false
+    @Published var isShowPopupPermission: Bool = false
     @Published var tooltipOpacity: Double = 0
     var templateSelect: Template = .init()
     var qrImage: UIImage?

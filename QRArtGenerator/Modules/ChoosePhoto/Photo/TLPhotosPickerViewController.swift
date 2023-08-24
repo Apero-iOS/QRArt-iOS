@@ -12,6 +12,7 @@ import PhotosUI
 import MobileCoreServices
 import Toast_Swift
 import Vision
+import MobileAds
 
 public protocol TLPhotosPickerViewControllerDelegate: AnyObject {
     func dismissPhotoPicker(withPHAssets: [PHAsset])
@@ -153,6 +154,7 @@ open class TLPhotosPickerViewController: UIViewController {
     @IBOutlet open var emptyImageView: UIImageView!
     @IBOutlet open var emptyMessageLabel: UILabel!
     @IBOutlet open var photosButton: UIBarButtonItem!
+    @IBOutlet weak var bannerView: UIView!
     
     public weak var delegate: TLPhotosPickerViewControllerDelegate? = nil
     public weak var logDelegate: TLPhotosPickerLogDelegate? = nil
@@ -205,6 +207,10 @@ open class TLPhotosPickerViewController: UIViewController {
     private var thumbnailSize = CGSize.zero
     private var placeholderThumbnail: UIImage? = nil
     private var cameraImage: UIImage? = nil
+    
+    private var isShowAdsBanner: Bool {
+        return RemoteConfigService.shared.bool(forKey: .banner_collabsible1) && !UserDefaults.standard.isUserVip
+    }
     
     deinit {
         //print("deinit TLPhotosPickerViewController")
@@ -285,8 +291,18 @@ open class TLPhotosPickerViewController: UIViewController {
             loadPhotos(limitMode: false)
         case .restricted, .denied:
             handleDeniedAlbumsAuthorization()
+            self.showPopupConfirm()
         @unknown default:
             break
+        }
+    }
+    
+    private func showAdsBanner() {
+        if isShowAdsBanner {
+            bannerView.isHidden = false
+            AdMobManager.shared.addAdCollapsibleBannerAdaptive(unitId: .banner_collabsible1, rootVC: self, view: bannerView, isCollapsibleBanner: true)
+        } else {
+            bannerView.isHidden = true
         }
     }
     
@@ -297,6 +313,7 @@ open class TLPhotosPickerViewController: UIViewController {
                 self?.processAuthorization(status: status)
                 if status == .denied || status == .restricted {
                     FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
+                    self?.showPopupConfirm()
                 } else {
                     FirebaseAnalytics.logEvent(type: .permission_photo_allow_click_view)
                 }
@@ -306,11 +323,19 @@ open class TLPhotosPickerViewController: UIViewController {
                 self?.processAuthorization(status: status)
                 if status == .denied || status == .restricted {
                     FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
+                    self?.showPopupConfirm()
                 } else {
                     FirebaseAnalytics.logEvent(type: .permission_photo_allow_click_view)
                 }
             }
         }
+    }
+    
+    private func showPopupConfirm() {
+        let popup = PopupConfirmVC(title: Rlocalizable.photos_access(), message: Rlocalizable.permission_photos(), cancel: { [weak self] in
+            self?.dismiss(done: false)
+        })
+        self.presentAlert(popup)
     }
     
     private func checkAuthorization() {
@@ -345,6 +370,7 @@ open class TLPhotosPickerViewController: UIViewController {
         if self.photoLibrary.delegate == nil {
             checkAuthorization()
         }
+        showAdsBanner()
     }
     
     private func findIndexAndReloadCells(phAsset: PHAsset) {

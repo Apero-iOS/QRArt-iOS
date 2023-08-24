@@ -27,7 +27,7 @@ struct InputTextView: View {
         VStack (alignment: .leading, spacing: 8) {
             Text(title)
                 .foregroundColor(R.color.color_1B232E.color)
-                .font(R.font.urbanistMedium.font(size: 14))
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
             textField
             if validInput && name.isEmptyOrWhitespace() {
                 textError(text: Rlocalizable.cannot_be_empty())

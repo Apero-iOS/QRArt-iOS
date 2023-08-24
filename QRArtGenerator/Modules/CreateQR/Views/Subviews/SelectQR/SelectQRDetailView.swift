@@ -23,13 +23,13 @@ struct SelectQRDetailView: View {
         VStack (spacing: 16) {
             VStack(alignment: .leading) {
                 Text(Rlocalizable.select_qr_type)
-                    .font(R.font.urbanistSemiBold.font(size: 16))
+                    .font(R.font.beVietnamProSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                 HStack(alignment: .center, spacing: 12) {
                     type.image
                         .shadow(color: type.shadowColor, radius: type.radiusShadow, x: type.positionShadow.x, y: type.positionShadow.y)
                     Text(type.title)
-                        .font(R.font.urbanistMedium.font(size: 16))
+                        .font(R.font.beVietnamProMedium.font(size: 16))
                         .foregroundColor(R.color.color_1B232E.color)
                     Spacer()
                     imageDropDown.rotationEffect(.degrees(rotate))

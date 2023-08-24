@@ -26,6 +26,7 @@ class CreateQRViewModel: ObservableObject {
             }
         }
     }
+    @Published var prompt: String = ""
     @Published var validInput: Bool = false
     @Published var source: CreateQRViewSource = .create
     @Published var showingSelectQRTypeView: Bool = false
@@ -58,8 +59,8 @@ class CreateQRViewModel: ObservableObject {
     var isStatusGenegate: Bool = false
     var isGenegateSuccess: Bool = false
     
-    var isShowAdsInter: Bool {
-        return RemoteConfigService.shared.bool(forKey: .inter_generator) && !UserDefaults.standard.isUserVip
+    var isShowAdsReward: Bool {
+        return RemoteConfigService.shared.bool(forKey: .reward_generator) && !UserDefaults.standard.isUserVip
     }
     
     var isShowAdsBanner: Bool {
@@ -119,16 +120,22 @@ class CreateQRViewModel: ObservableObject {
     }
     
     public func createIdAds() {
-        if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_generator)
+        if isShowAdsReward {
+            AdMobManager.shared.createAdRewardedIfNeed(unitId: .reward_generator)
         }
     }
     
-    public func showAdsInter() {
-        AdMobManager.shared.showIntertitial(unitId: .inter_generator, blockWillDismiss: { [weak self] in
-            guard let self = self else { return }
-            self.generateQR()
-        })
+    public func showAdsReward() {
+        if isShowAdsReward {
+            AdMobManager.shared.showRewarded(unitId: .reward_generator, completion: { [weak self] status in
+                guard let self else { return }
+                if status {
+                    self.generateQR()
+                }
+            })
+        } else {
+            generateQR()
+        }
     }
     
     public func onTapGenerate() {
@@ -137,9 +144,10 @@ class CreateQRViewModel: ObservableObject {
         errorInputType = getErrorInput()
      
         if errorInputType == nil {
+            let numberLimitGenerate = RemoteConfigService.shared.number(forKey: .generate_sub_times)
             if UserDefaults.standard.generateQRCount == 0 || UserDefaults.standard.isUserVip {
                 generateQR()
-            } else if RemoteConfigService.shared.bool(forKey: .inter_generator), UserDefaults.standard.generateQRCount < 7 {
+            } else if RemoteConfigService.shared.bool(forKey: .reward_generator), UserDefaults.standard.generateQRCount < numberLimitGenerate {
                 isShowPopupCreate.toggle()
             } else {
                 showSub.toggle()
@@ -238,7 +246,6 @@ class CreateQRViewModel: ObservableObject {
                 case .finished:
                     self.isStatusGenegate = false
                     self.checkShowLoading()
-                    UserDefaults.standard.generateQRCount += 1
                 case .failure(let error):
                     self.isStatusGenegate = false
                     self.checkShowLoading()
@@ -253,12 +260,13 @@ class CreateQRViewModel: ObservableObject {
                 self?.showToastError.toggle()
                 return
             }
+            UserDefaults.standard.generateQRCount += 1
             self.isGenegateSuccess = true
             self.input.qrImage = uiImage
             if UserDefaults.standard.isUserVip {
                 self.imageResult = Image(uiImage: uiImage)
             } else {
-                var newSize = CGSize(width: uiImage.size.width*0.8, height: uiImage.size.height*0.8)
+                let newSize = CGSize(width: uiImage.size.width*0.8, height: uiImage.size.height*0.8)
                 self.imageResult = Image(uiImage: uiImage.resize(newSize))
             }
             
@@ -272,8 +280,10 @@ class CreateQRViewModel: ObservableObject {
         if !isShowSub && isShowLoadingView && !isStatusGenegate {
             if UserDefaults.standard.isUserVip {
                 self.isShowLoadingView.toggle()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-                    self?.isShowExport.toggle()
+                if self.isGenegateSuccess == true {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                        self?.isShowExport.toggle()
+                    }
                 }
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in

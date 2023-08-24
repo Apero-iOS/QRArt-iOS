@@ -218,6 +218,11 @@
 "content_prompt_suggess_9" = "Castelo de Meio Ambiente Nathria em World of Warcraft";
 "content_prompt_suggess_10" = "Retrato claro de um conceito de super -herói";
 "content_prompt_suggess_11" = "Moda bonita elegante de Deus da água, vestido chique sem alças, fundo do mar tropical";
+"website_url" = "URL do site";
 "save_as_4k" = "Salve como 4K";
 "not_qr_format" = "Não formato QR";
 "unlock_pro_month" = "Desbloqueio pro com %@/mês";
+"permission_photos" = "Para usar o aplicativo, você terá que nos dar permissão para acessar fotos.";
+"whoops" = "Opa!";
+"no_internet" = "Nenhuma conexão com a Internet foi encontrada. Verifique sua conexão ou tente novamente.";
+"try_again" = "Tente novamente";

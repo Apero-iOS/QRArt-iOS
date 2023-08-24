@@ -10,11 +10,17 @@ import SwiftUI
 import MobileAds
 import SnapKit
 
+enum BannerType {
+    case adaptive
+    case collapsible
+}
+
 struct BannerView: UIViewControllerRepresentable {
     
     private let bannerView = UIView()
     var adUnitID: AdUnitID
     var fail: VoidBlock?
+    var type: BannerType = .adaptive
     
     func makeUIViewController(context: Context) -> some UIViewController {
         AdMobManager.shared.removeAd(unitId: adUnitID.rawValue)
@@ -31,7 +37,11 @@ struct BannerView: UIViewControllerRepresentable {
             make.top.equalTo(lineView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        AdMobManager.shared.addAdBannerAdaptive(unitId: adUnitID, rootVC: adViewController, view: bannerView)
+        if type == .adaptive {
+            AdMobManager.shared.addAdBannerAdaptive(unitId: adUnitID, rootVC: adViewController, view: bannerView)
+        } else {
+            AdMobManager.shared.addAdCollapsibleBannerAdaptive(unitId: adUnitID, rootVC: adViewController, view: bannerView)
+        }
         AdMobManager.shared.blockBannerFaild = { id in
             if id == adUnitID.rawValue {
                 adViewController.view.isHidden = true

@@ -9,13 +9,25 @@ import SwiftUI
 import MobileAds
 
 struct HomeView: View {
-    
+    @ObservedObject var monitor = NetworkMonitor()
     @StateObject private var viewModel = HomeViewModel()
     let cellWidth = (WIDTH_SCREEN-55)/2.0
     var generateQRBlock: ((Template) -> Void)?
     var showIAP: VoidBlock?
     
     var body: some View {
+        if monitor.isConnected {
+            homeView
+        } else {
+            VStack {
+                NoInternetView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                Spacer().frame(height: 120)
+            }
+        }
+    }
+    
+    @ViewBuilder var homeView: some View {
         let spacing: CGFloat = 15
         RefreshableScrollView {
             let count = Float(viewModel.templates.count)/2.0
@@ -54,6 +66,7 @@ struct HomeView: View {
         .onAppear {
             FirebaseAnalytics.logEvent(type: .home_view)
             AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_template)
+            viewModel.fetchTemplate()
         }
         .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
         .refreshable {
@@ -109,14 +122,14 @@ struct HomeView: View {
                 showIAP?()
                 return
             }
-            UserDefaults.standard.templateSelectCount += 1
-            if viewModel.isShowSelectInter() {
-                AdMobManager.shared.showIntertitial(unitId: .inter_template, blockDidDismiss: {
-                    generateQRBlock?(template)
-                })
-            } else {
+//            UserDefaults.standard.templateSelectCount += 1
+//            if viewModel.isShowSelectInter() {
+//                AdMobManager.shared.showIntertitial(unitId: .inter_template, blockDidDismiss: {
+//                    generateQRBlock?(template)
+//                })
+//            } else {
                 generateQRBlock?(template)
-            }
+//            }
        
         }
     }

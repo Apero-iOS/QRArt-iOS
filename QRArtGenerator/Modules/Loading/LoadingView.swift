@@ -33,9 +33,10 @@ struct LoadingView: View {
                 }
                 .frame(width: UIScreen.screenWidth - 180, height: UIScreen.screenWidth - 100)
                 .padding(.bottom, 40)
-            
-            speedUpButton
-                .padding(.bottom, 40)
+            if !UserDefaults.standard.isUserVip {
+                speedUpButton
+                    .padding(.bottom, 40)
+            }
             
         }
         .ignoresSafeArea()

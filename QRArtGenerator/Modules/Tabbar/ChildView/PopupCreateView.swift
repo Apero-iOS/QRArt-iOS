@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MobileAds
 
 struct PopupCreateView: View {
     var uploadButtonTap: VoidBlock?
@@ -13,6 +14,10 @@ struct PopupCreateView: View {
     var outsideViewTap: VoidBlock?
     @State private var opacity: Double = 0
     @State private var showBottomView: Bool = false
+    
+    var isShowAdsInter: Bool {
+        return RemoteConfigService.shared.bool(forKey: .inter_home) && !UserDefaults.standard.isUserVip
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -36,7 +41,9 @@ struct PopupCreateView: View {
                         Spacer()
                         Button {
                             FirebaseAnalytics.logEvent(type: .home_upload_qr_click)
-                            uploadButtonTap?()
+                            showAdsInter {
+                                uploadButtonTap?()
+                            }
                         } label: {
                             VStack {
                                 Image(R.image.ic_upload_your_qr.name)
@@ -72,12 +79,27 @@ struct PopupCreateView: View {
         .opacity(opacity)
         .onAppear {
             FirebaseAnalytics.logEvent(type: .home_dialog_view)
+            createIdAds()
             withAnimation(.easeOut(duration: 0.2)) {
                 opacity = 1
             }
             withAnimation(.easeOut(duration: 0.2).delay(0.1)) {
                 showBottomView = true
             }
+        }
+    }
+    
+    private func createIdAds() {
+        if isShowAdsInter {
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_home)
+        }
+    }
+    
+    private func showAdsInter(completion: VoidBlock?) {
+        if isShowAdsInter {
+            AdMobManager.shared.showIntertitial(unitId: .inter_home, blockWillDismiss: completion)
+        } else {
+            completion?()
         }
     }
 }

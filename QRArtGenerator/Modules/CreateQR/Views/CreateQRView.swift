@@ -31,7 +31,6 @@ struct CreateQRView: View {
                 FirebaseAnalytics.logEvent(type: .qr_creation_view)
             }
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
-               
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult)
                 ResultView(viewModel: resultViewModel) { template in
                     viewModel.templateSelect = template
@@ -100,7 +99,7 @@ struct CreateQRView: View {
     @ViewBuilder var popupGenerateView: some View {
         VStack(spacing: 8) {
             Button {
-                viewModel.showAdsInter()
+                viewModel.showAdsReward()
                 viewModel.isShowPopupCreate.toggle()
             } label: {
                 Text(Rlocalizable.generate_with_an_ad)
@@ -366,7 +365,7 @@ struct CreateQRView: View {
                    title: Rlocalizable.describe_qr_art_idea(),
                    subTitle: Rlocalizable.prompt_desc(),
                    typePrompt: .prompt,
-                   prompt: $viewModel.input.prompt,
+                   prompt: $viewModel.prompt,
                    validInput: $viewModel.validInput,
                    focusField: $errorFieldType,
                    textfieldType: .prompt)
@@ -381,6 +380,7 @@ struct CreateQRView: View {
                             .foregroundColor(R.color.color_6A758B.color)
                             .padding(.horizontal, 11)
                             .onTapGesture {
+                                viewModel.prompt = viewModel.listPromptSuggess[index].content
                                 viewModel.input.prompt = viewModel.listPromptSuggess[index].content
                             }
                     }
