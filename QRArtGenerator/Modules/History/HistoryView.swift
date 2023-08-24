@@ -33,6 +33,9 @@ struct HistoryView: View {
                 viewModel.items = histores
             }
         }
+        .fullScreenCover(isPresented: $viewModel.showIAP) {
+            IAPView(source: .topBar)
+        }
         .padding(.horizontal, 20)
         .hideNavigationBar(isHidden: true)
     }
@@ -84,7 +87,7 @@ struct HistoryView: View {
                     .frame(width: 48, height: 48)
                     .offset(CGSize(width: 8, height: 0))
                     .onTapGesture {
-                       // viewModel.showIAP.toggle()
+                        viewModel.showIAP.toggle()
                     }
             }
             NavigationLink(destination: SettingsView()) {
