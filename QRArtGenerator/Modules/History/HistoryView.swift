@@ -16,7 +16,6 @@ struct HistoryView: View {
     // MARK: - Body
     var body: some View {
         VStack(spacing: 20) {
-            navigationView.font(R.font.urbanistBold.font(size: 28))
             Color.clear
                 .frame(height: 0)
             
@@ -33,11 +32,10 @@ struct HistoryView: View {
                 viewModel.items = histores
             }
         }
+        .padding(.horizontal, 20)
         .fullScreenCover(isPresented: $viewModel.showIAP) {
             IAPView(source: .topBar)
         }
-        .padding(.horizontal, 20)
-        .hideNavigationBar(isHidden: true)
     }
     
     // MARK: - ViewBuilder
@@ -75,28 +73,6 @@ struct HistoryView: View {
         .padding(.horizontal, 40)
         .opacity(1)
         Spacer()
-    }
-    
-    @ViewBuilder var navigationView: some View {
-        HStack {
-            Text(Rlocalizable.my_qr())
-            
-            Spacer()
-            if !UserDefaults.standard.isUserVip {
-                LottieView(lottieFile: R.file.crownJson.name)
-                    .frame(width: 48, height: 48)
-                    .offset(CGSize(width: 8, height: 0))
-                    .onTapGesture {
-                        viewModel.showIAP.toggle()
-                    }
-            }
-            NavigationLink(destination: SettingsView()) {
-                Image(R.image.setting_ic.name)
-                    .colorMultiply(R.color.color_1B232E.color)
-            }
-        }
-        .frame(width: WIDTH_SCREEN - 32, height: 48)
-        .background(Color.clear)
     }
     
     @ViewBuilder var listView: some View {
