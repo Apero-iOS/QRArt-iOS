@@ -131,7 +131,7 @@ struct ScannerView: View {
                                 Text("")
                                     .frame(height: safeAreaInsets.bottom)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.white)
+                                    .background(Color.black)
                             }
                         }
                     
