@@ -161,7 +161,11 @@ class CreateQRViewModel: ObservableObject {
                 return .link
             }
             let valid = input.urlString.validateURL()
+          
             if valid.isValid {
+                if let baseUrl = input.type.baseUrl, !input.urlString.lowercased().contains(baseUrl) {
+                    return .link
+                }
                 input.urlString = valid.urlString
             } else {
                 return .link

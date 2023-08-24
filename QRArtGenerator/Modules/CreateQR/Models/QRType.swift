@@ -52,6 +52,27 @@ enum QRType: Int, PersistableEnum {
         }
     }
     
+    var baseUrl: String? {
+        var baseUrl: String?
+        switch self {
+        case .facebook:
+            baseUrl = "facebook.com"
+        case .instagram:
+            baseUrl = "instagram.com"
+        case .twitter:
+            baseUrl = "twitter.com"
+        case .whatsapp:
+            baseUrl = "whatsapp.com"
+        case .spotify:
+            baseUrl = "spotify.com"
+        case .youtube:
+            baseUrl = "youtube.com"
+        default:
+            break
+        }
+        return baseUrl
+    }
+    
     var image: Image {
         switch self {
         case .website:

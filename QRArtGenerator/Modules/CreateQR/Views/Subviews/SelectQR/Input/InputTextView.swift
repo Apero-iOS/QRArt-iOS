@@ -19,9 +19,10 @@ struct InputTextView: View {
     @State var type: InputTextViewType = .name
     @Binding var name: String
     @Binding var validInput: Bool
+  
     var focusField: FocusState<TextFieldType?>.Binding
     var textfieldType: TextFieldType
-    
+    var typeInput: QRType
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
             Text(title)
@@ -30,8 +31,15 @@ struct InputTextView: View {
             textField
             if validInput && name.isEmptyOrWhitespace() {
                 textError(text: Rlocalizable.cannot_be_empty())
-            } else if validInput && type == .url && !name.validateURL().isValid {
-                textError(text: Rlocalizable.invalid_url())
+            } else if validInput && type == .url {
+                if !name.validateURL().isValid {
+                    textError(text: Rlocalizable.invalid_url())
+                } else {
+                    if  let baseUrl = typeInput.baseUrl, !name.lowercased().contains(baseUrl) {
+                        textError(text: Rlocalizable.invalid_url())
+                    }
+                }
+                
             }
         }
     }
@@ -81,7 +89,7 @@ struct InputNameView_Previews: PreviewProvider {
         InputTextView(name: .constant(""),
                       validInput: .constant(true),
                       focusField: $focusState,
-                      textfieldType: .contactPhone)
+                      textfieldType: .contactPhone, typeInput: .contact)
             .previewLayout(.sizeThatFits)
     }
 }

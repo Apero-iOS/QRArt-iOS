@@ -38,13 +38,14 @@ extension String {
     func validateURL() -> (isValid: Bool, urlString: String) {
         var url = self
         
-        if !url.hasPrefix("http://") && !url.hasPrefix("https://") {
+        if !url.lowercased().hasPrefix("http://") && !url.lowercased().hasPrefix("https://") {
             url = "https://" + url
         }
         
-        let urlRegEx = "((?:http|https)://)?(?:[\\w\\d\\-_]+\\.)?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?(/(?<=/)(?:[\\w\\d\\-./_]+)?)?"
+        let urlRegEx = "(http|ftp|https):\\/\\/([\\w+?\\.\\w+])?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?+([a-zA-Z0-9\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)_\\-\\=\\+\\\\\\/\\?\\.\\:\\;\\'\\,]*)?"
         let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
-        let result = urlTest.evaluate(with: url)
+  
+        let result = urlTest.evaluate(with: url.lowercased())
         
         if result {
             return (true, url)
