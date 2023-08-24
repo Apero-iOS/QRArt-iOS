@@ -77,7 +77,7 @@ class CreateQRViewModel: ObservableObject {
         self.qrImage = qrImage
         self.templateSelect = templateSelect
         self.input.prompt = templateSelect.positivePrompt
-        self.input.negativePrompt = templateSelect.negativePrompt
+        self.input.negativePrompt = templateSelect.negativePrompt ?? ""
         self.input.templateQRName = templateSelect.name
         self.input.createType = qrImage != nil ? .normal : .custom
         self.input.baseUrl = self.baseUrl

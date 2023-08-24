@@ -22,7 +22,7 @@ struct Template: Codable, Hashable {
     var category: String = ""
     var name: String = ""
     var positivePrompt: String = ""
-    var negativePrompt: String = ""
+    var negativePrompt: String?
     var packageType: String = ""
     var key: String = ""
 }

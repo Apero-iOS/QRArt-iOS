@@ -49,7 +49,7 @@ struct CreateQRView: View {
                 ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
                     FirebaseAnalytics.logEvent(type: .qr_creation_next_style_click, params: [.style: template.name])
                     viewModel.input.prompt = template.positivePrompt
-                    viewModel.input.negativePrompt = template.negativePrompt
+                    viewModel.input.negativePrompt = template.negativePrompt ?? ""
                     viewModel.input.templateQRName = template.name
                     viewModel.templateSelect = template
                 }
