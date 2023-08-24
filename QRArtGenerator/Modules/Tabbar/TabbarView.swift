@@ -88,7 +88,7 @@ struct TabbarView: View {
                         .background(Color.clear)
                     })
                 }
-                .hideNavigationBar(isHidden: viewModel.selectedTab == .settings)
+                .hideNavigationBar(isHidden: viewModel.selectedTab == .history)
             }
             
             if viewModel.showPopupGenQR || !UserDefaults.standard.tooltipsDone {
