@@ -56,7 +56,7 @@ struct SelectQRDetailView: View {
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                     case .contact:
                         InputPhoneNumberView(type: type,
                                              phoneNumber: $input.phoneNumber,
@@ -71,7 +71,7 @@ struct SelectQRDetailView: View {
                                       name: $input.text,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .text)
+                                      textfieldType: .text, typeInput: type)
                     case .email:
                         InputEmailView(title: Rlocalizable.email_to(),
                                       placeholder: "Example@gmail.com",
@@ -84,7 +84,7 @@ struct SelectQRDetailView: View {
                                       name: $input.emailSubject,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .emailSubject)
+                                      textfieldType: .emailSubject, typeInput: type)
                         DescriptionView(title: Rlocalizable.email_desc(),
                                         placeHolder: Rlocalizable.enter_desc(),
                                         desc: $input.emailDescription,
@@ -105,46 +105,46 @@ struct SelectQRDetailView: View {
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                     case .facebook:
                         InputTextView(title: Rlocalizable.facebook_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                     case .twitter:
                         InputTextView(title: Rlocalizable.twitter_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                     case .spotify:
                         InputTextView(title: Rlocalizable.spotify_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                     case .youtube:
                         InputTextView(title: Rlocalizable.youtube_url(),
                                       placeholder: Rlocalizable.enter_link_here(),
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                     case .wifi:
                         InputTextView(title: Rlocalizable.ssid(),
                                       placeholder: Rlocalizable.enter_wifi_name(),
                                       name: $input.wfSsid, validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .wifiID)
+                                      textfieldType: .wifiID, typeInput: type)
                         InputTextView(title: Rlocalizable.password(),
                                       placeholder: Rlocalizable.enter_password(),
                                       name: $input.wfPassword, validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .wifiPass)
+                                      textfieldType: .wifiPass, typeInput: type)
                         SecurityModeView(wifiModeSelect: $input.indexWfSecurityMode)
                     case .paypal:
                         InputTextView(title: Rlocalizable.paypal_url(),
@@ -152,7 +152,7 @@ struct SelectQRDetailView: View {
                                       type: .url, name: $input.urlString,
                                       validInput: $validInput,
                                       focusField: focusTextfieldType,
-                                      textfieldType: .link)
+                                      textfieldType: .link, typeInput: type)
                         AmountView(amount: $input.paypalAmount,
                                    validInput: $validInput,
                                    focusField: focusTextfieldType,
