@@ -41,12 +41,20 @@ class ResultViewModel: ObservableObject {
     @Published var showPopupConfirm: Bool = false
     @Published var isShowIAP = false
     @Published var isShowAd = (!UserDefaults.standard.isUserVip && RemoteConfigService.shared.bool(forKey: .banner_result))
+    @Published var isShowSub: Bool = false {
+        didSet {
+            checkShowLoading()
+        }
+    }
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
     var isSaveQR = false
+    var isStatusGenegate: Bool = false
+    var isGenegateSuccess: Bool = false
     
     var isShowAdsInter: Bool {
+        print(RemoteConfigService.shared.bool(forKey: .inter_regen))
         return RemoteConfigService.shared.bool(forKey: .inter_regen) && !UserDefaults.standard.isUserVip
     }
     
@@ -145,44 +153,60 @@ class ResultViewModel: ObservableObject {
     }
     
     func checkShowSub() -> Bool {
-        !UserDefaults.standard.isUserVip && UserDefaults.standard.regeneratePerDay >= RemoteConfigService.shared.number(forKey: .subReGenerateQr)
+        return false
+//        !UserDefaults.standard.isUserVip && UserDefaults.standard.regeneratePerDay >= RemoteConfigService.shared.number(forKey: .subReGenerateQr)
     }
     
     func regenerate() {
         if checkShowSub() {
             showIAP = true
         } else {
-            isShowLoadingView.toggle()
+            isShowLoadingView = true
+            isStatusGenegate = true
+            isGenegateSuccess = false
             templateRepository.genQR(qrText: getQRText(),
                                      positivePrompt: item.prompt,
                                      negativePrompt: item.negativePrompt,
                                      guidanceScale: Int(item.guidance),
                                      numInferenceSteps: Int(item.steps))
-            .sink { comple in
+            .sink { [weak self] comple in
+                guard let self = self else { return }
                 switch comple {
                 case .finished:
-                    break
+                    self.isStatusGenegate = false
+                    self.checkShowLoading()
                 case .failure(let error):
+                    self.isStatusGenegate = false
+                    self.checkShowLoading()
                     self.showToast(message: error.message)
-                }
-                if UserDefaults.standard.isUserVip {
-                    self.isGenQRSuccess = true
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                        self.isGenQRSuccess = true
-                    })
                 }
             } receiveValue: { data in
                 guard let data = data, let uiImage = UIImage(data: data) else {
                     self.showToast(message: Rlocalizable.could_not_load_data())
                     return
                 }
+                if UserDefaults.standard.isUserVip {
+                    self.image = Image(uiImage: uiImage)
+                } else {
+                    let newSize = CGSize(width: uiImage.size.width*0.8, height: uiImage.size.height*0.8)
+                    self.image = Image(uiImage: uiImage.resize(newSize))
+                }
                 self.item.qrImage = uiImage
-                self.image = Image(uiImage: uiImage)
                 UserDefaults.standard.regeneratePerDay += 1
             }.store(in: &cancellable)
         }
-
+    }
+    
+    func checkShowLoading() {
+        if !isShowSub && isShowLoadingView && !isStatusGenegate {
+            if UserDefaults.standard.isUserVip {
+                self.isShowLoadingView.toggle()
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+                    self?.isShowLoadingView.toggle()
+                })
+            }
+        }
     }
     
     func share() {

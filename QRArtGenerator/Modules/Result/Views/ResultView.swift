@@ -121,7 +121,9 @@ struct ResultView: View {
                 IAPView(source: .download4K)
             }
             .fullScreenCover(isPresented: $viewModel.isShowLoadingView) {
-                LoadingView()
+                LoadingView { isSub in
+                    viewModel.isShowSub = isSub
+                }
             }
             .fullScreenCover(isPresented: $viewModel.isShowIAP) {
                 IAPView(source: .topBar)

@@ -95,5 +95,5 @@ extension AdUnitID {
     static let reward_generator = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatRewarded : "ca-app-pub-6530974883137971/8862386393")
     static let inter_home = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/2175072003")
     static let inter_regen = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatInterstitial : "ca-app-pub-6530974883137971/6494672533")
-    static let banner_collabsible1 = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatBanner : "ca-app-pub-6530974883137971/3775928280")
+    static let banner_collabsible1 = AdUnitID(rawValue: Constants.isDev ? SampleAdUnitID.adFormatCollapsibleBanner : "ca-app-pub-6530974883137971/3775928280")
 }
