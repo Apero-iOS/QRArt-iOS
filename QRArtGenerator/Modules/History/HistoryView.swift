@@ -18,6 +18,7 @@ struct HistoryView: View {
         VStack(spacing: 20) {
             Color.clear
                 .frame(height: 0)
+            
             if viewModel.items.isEmpty {
                 emptyView
             } else {
@@ -32,7 +33,9 @@ struct HistoryView: View {
             }
         }
         .padding(.horizontal, 20)
-        .hideNavigationBar(isHidden: true)
+        .fullScreenCover(isPresented: $viewModel.showIAP) {
+            IAPView(source: .topBar)
+        }
     }
     
     // MARK: - ViewBuilder

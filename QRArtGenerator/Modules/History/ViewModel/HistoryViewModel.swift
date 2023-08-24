@@ -13,7 +13,7 @@ class HistoryViewModel: ObservableObject {
     @Published var items: [QRItem] = []
     @Published var filteredItems: [QRItem] = []
     @Published var selectedCate: HistoryCategory?
-    
+    @Published var showIAP = false
     @Published var isActive = false
     
     init() {

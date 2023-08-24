@@ -67,9 +67,13 @@ struct TabbarView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigation, content: {
                         HStack {
-                            Image(R.image.history_logo_ic)
-                                .padding(.leading, 4)
-                            
+                            if viewModel.selectedTab == .history {
+                                Text(Rlocalizable.my_qr()).font(R.font.beVietnamProBold.font(size: 28))
+                            } else {
+                                Image(R.image.history_logo_ic)
+                                    .padding(.leading, 4)
+                            }
+
                             Spacer()
                             if !UserDefaults.standard.isUserVip {
                                 LottieView(lottieFile: R.file.crownJson.name)
@@ -88,7 +92,7 @@ struct TabbarView: View {
                         .background(Color.clear)
                     })
                 }
-                .hideNavigationBar(isHidden: viewModel.selectedTab == .settings)
+                //.hideNavigationBar(isHidden: viewModel.selectedTab == .history)
             }
             
             if viewModel.showPopupGenQR || !UserDefaults.standard.tooltipsDone {
