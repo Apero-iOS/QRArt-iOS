@@ -29,6 +29,7 @@ class IAPViewModel: ObservableObject {
     }
     
     func onTap(index: Int) {
+        selectedIndex = index
         switch iapIds[index] {
         case .week:
             FirebaseAnalytics.logEvent(type: .sub_weekly_click)

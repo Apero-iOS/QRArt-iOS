@@ -187,6 +187,7 @@ struct ResultView: View {
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess, viewModel.isShowAd {
                     viewModel.isShowAd = false
+                    
                 }
             }.store(in: &cancellable)
         }
@@ -209,8 +210,10 @@ struct ResultView: View {
                     .foregroundColor(R.color.color_653AE4.color)
                     .padding(.leading, 8)
                     .padding(.vertical, 4)
-                Image(R.image.ic_giftbox.name)
-                    .padding(.trailing, 8)
+                if !UserDefaults.standard.isUserVip {
+                    Image(R.image.ic_giftbox.name)
+                        .padding(.trailing, 8)
+                }
             }
             .border(radius: 20, color: R.color.color_653AE4.color, width: 1)
         }

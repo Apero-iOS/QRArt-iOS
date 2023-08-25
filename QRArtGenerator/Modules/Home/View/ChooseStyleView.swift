@@ -126,7 +126,7 @@ struct ChooseStyleView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            if template.packageType != "basic" {
+            if template.packageType != "basic" && !UserDefaults.standard.isUserVip {
                 Image(R.image.ic_style_sub.name)
                     .padding(.top, 13)
                     .padding(.trailing, 11)

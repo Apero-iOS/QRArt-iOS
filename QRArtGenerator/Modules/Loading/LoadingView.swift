@@ -42,7 +42,6 @@ struct LoadingView: View {
                 speedUpButton
                     .padding(.bottom, 40)
             }
-            
         }
         .ignoresSafeArea()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
