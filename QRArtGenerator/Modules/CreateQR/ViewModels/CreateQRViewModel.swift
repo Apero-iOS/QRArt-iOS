@@ -50,6 +50,7 @@ class CreateQRViewModel: ObservableObject {
         }
     }
     @Published var isShowToolTipGenerate = false
+    @Published var promptInput = ""
     
     private var needFetchTemplates: Bool = true
     
@@ -222,12 +223,6 @@ class CreateQRViewModel: ObservableObject {
                 return .link
             }
         }
-        if input.prompt.isEmptyOrWhitespace() {
-            if mode == .collapse {
-                mode = .expand
-            }
-            return .prompt
-        }
         return nil
     }
     
@@ -235,8 +230,9 @@ class CreateQRViewModel: ObservableObject {
         isShowLoadingView = true
         isStatusGenegate = true
         isGenegateSuccess = false
+        let prompt = (input.prompt + ", " + promptInput).trim
         templateRepository.genQR(qrText: getQRText(),
-                                 positivePrompt: input.prompt,
+                                 positivePrompt: prompt,
                                  negativePrompt: input.negativePrompt,
                                  guidanceScale: Int(input.guidance),
                                  numInferenceSteps: Int(input.steps))

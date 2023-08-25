@@ -31,7 +31,7 @@ let APP_ID = "6450879455"
 
 
 struct Constants {
-    static let dummyQRs = [QRDetailItem()]
+    static let dummyQRs = [QRDetailItem(qrImage: R.image.qr_basic()!)]
     
     struct APISignature {
         static let keyId = "FqipUc0wyy"

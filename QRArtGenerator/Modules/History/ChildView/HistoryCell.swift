@@ -23,16 +23,30 @@ struct HistoryCell: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(12)
-            Text(item.createdDate.toString())
-                .font(R.font.beVietnamProRegular.font(size: 12))
-                .foregroundColor(R.color.color_6A758B.color)
-                .frame(height: 16)
+            
+            HStack(spacing: 4) {
+                Text(item.createdDate.toString(format: "HH:mm"))
+                    .font(R.font.beVietnamProRegular.font(size: 12))
+                    .foregroundColor(R.color.color_6A758B.color)
+                    .frame(height: 16)
+                
+                Circle()
+                    .frame(width: 2, height: 2)
+                    .foregroundColor(R.color.color_6A758B.color)
+                
+                Text(item.createdDate.toString(format: "MMMM dd yyyy"))
+                    .font(R.font.beVietnamProRegular.font(size: 12))
+                    .foregroundColor(R.color.color_6A758B.color)
+                    .frame(height: 16)
+            }
+            
             if item.createType == .custom {
                 HStack {
                     item.type.image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 16, height: 16)
+                    
                     Text(item.type.title)
                         .font(R.font.beVietnamProRegular.font(size: 12))
                         .foregroundColor(R.color.color_6A758B.color)
