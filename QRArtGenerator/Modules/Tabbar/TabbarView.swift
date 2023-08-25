@@ -64,35 +64,6 @@ struct TabbarView: View {
                 .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
                 .ignoresSafeArea(edges: .bottom)
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigation, content: {
-                        HStack {
-                            if viewModel.selectedTab == .history {
-                                Text(Rlocalizable.my_qr()).font(R.font.beVietnamProBold.font(size: 28))
-                            } else {
-                                Image(R.image.history_logo_ic)
-                                    .padding(.leading, 4)
-                            }
-
-                            Spacer()
-                            if !UserDefaults.standard.isUserVip {
-                                LottieView(lottieFile: R.file.crownJson.name)
-                                    .frame(width: 48, height: 48)
-                                    .offset(CGSize(width: 8, height: 0))
-                                    .onTapGesture {
-                                        viewModel.showIAP.toggle()
-                                    }
-                            }
-                            NavigationLink(destination: SettingsView()) {
-                                Image(R.image.setting_ic.name)
-                                    .colorMultiply(R.color.color_1B232E.color)
-                            }
-                        }
-                        .frame(width: WIDTH_SCREEN - 32, height: 48)
-                        .background(Color.clear)
-                    })
-                }
-                //.hideNavigationBar(isHidden: viewModel.selectedTab == .history)
             }
             
             if viewModel.showPopupGenQR || !UserDefaults.standard.tooltipsDone {
@@ -133,9 +104,6 @@ struct TabbarView: View {
         .fullScreenCover(isPresented: $viewModel.showCreateQR) {
             let vm = CreateQRViewModel(source: .create, templateSelect: viewModel.templateSelect, qrImage: viewModel.qrImage, baseUrl: viewModel.qrString)
             CreateQRView(viewModel: vm)
-        }
-        .fullScreenCover(isPresented: $viewModel.showIAP) {
-            IAPView(source: .topBar)
         }
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
             if viewModel.isShowAds {

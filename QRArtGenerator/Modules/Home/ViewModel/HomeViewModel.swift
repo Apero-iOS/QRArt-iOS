@@ -16,6 +16,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
     @Published var templates: [Template] = AppHelper.templates
     @Published var isShowGenerateQR = false
     @Published var isShowToast = false
+    @Published var showIAP = false
     @Published var msgError: String = ""
     @Published var isLoadAd: Bool = (RemoteConfigService.shared.bool(forKey: .native_home) && !UserDefaults.standard.isUserVip)
     var nativeViews: [UIView] = []

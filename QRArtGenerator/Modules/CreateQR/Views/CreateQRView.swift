@@ -167,20 +167,27 @@ struct CreateQRView: View {
                                         .padding(10)
                                 }
                                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
+                                .padding(.bottom, 16)
                             }
+                            .padding(.horizontal, 20)
+                            .background(Color.white)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                            .hideSeparatorLine()
                         }
                         templateView
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
                             .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                             .hideSeparatorLine()
+                        
                         if viewModel.qrImage == nil {
                             qrDetailView
                                 .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                                 .background(Color.white)
                                 .listRowBackground(Color.clear)
-                                .listRowInsets(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                                 .hideSeparatorLine()
                         }
                    
@@ -188,7 +195,7 @@ struct CreateQRView: View {
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
                             .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+                            .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                             .hideSeparatorLine()
                         
                         if viewModel.mode == .expand {
@@ -201,7 +208,6 @@ struct CreateQRView: View {
                         }
                     }
                     .listStyle(.plain)
-                    .clipped()
                     .background(R.color.color_F7F7F7.color)
                     .clearBackgroundColorList()
                     .hideScrollIndicator()
@@ -233,7 +239,6 @@ struct CreateQRView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
            
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
@@ -365,8 +370,8 @@ struct CreateQRView: View {
                    title: Rlocalizable.describe_qr_art_idea(),
                    subTitle: Rlocalizable.prompt_desc(),
                    typePrompt: .prompt,
-                   prompt: $viewModel.prompt,
-                   validInput: $viewModel.validInput,
+                   prompt: $viewModel.promptInput,
+                   validInput: .constant(false),
                    focusField: $errorFieldType,
                    textfieldType: .prompt)
         .padding(.horizontal, 20)
@@ -380,8 +385,7 @@ struct CreateQRView: View {
                             .foregroundColor(R.color.color_6A758B.color)
                             .padding(.horizontal, 11)
                             .onTapGesture {
-                                viewModel.prompt = viewModel.listPromptSuggess[index].content
-                                viewModel.input.prompt = viewModel.listPromptSuggess[index].content
+                                viewModel.promptInput = viewModel.listPromptSuggess[index].content
                             }
                     }
                     .frame(height: 40)

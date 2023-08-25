@@ -21,7 +21,6 @@ struct DetailQRView: View {
             VStack {
                 ScrollView {
                     VStack(alignment: .leading) {
-                        
                         viewModel.image
                             .resizable()
                             .cornerRadius(24)
@@ -32,9 +31,22 @@ struct DetailQRView: View {
                                 Text(Rlocalizable.time_created() + ": ")
                                     .font(R.font.beVietnamProSemiBold.font(size: 13))
                                     .foregroundColor(R.color.color_1B232E.color)
-                                Text(viewModel.item.createdDate.toString())
-                                    .font(R.font.beVietnamProRegular.font(size: 12))
-                                    .foregroundColor(R.color.color_6A758B.color)
+                                
+                                HStack(spacing: 4) {
+                                    Text(viewModel.item.createdDate.toString(format: "HH:mm"))
+                                        .font(R.font.beVietnamProRegular.font(size: 12))
+                                        .foregroundColor(R.color.color_6A758B.color)
+                                        .frame(height: 16)
+                                    
+                                    Circle()
+                                        .frame(width: 2, height: 2)
+                                        .foregroundColor(R.color.color_6A758B.color)
+                                    
+                                    Text(viewModel.item.createdDate.toString(format: "MMMM dd yyyy"))
+                                        .font(R.font.beVietnamProRegular.font(size: 12))
+                                        .foregroundColor(R.color.color_6A758B.color)
+                                        .frame(height: 16)
+                                }
                             }
                             HStack {
                                 Text(Rlocalizable.style_name() + ": ")
@@ -50,7 +62,7 @@ struct DetailQRView: View {
                                         .font(R.font.beVietnamProSemiBold.font(size: 13))
                                         .foregroundColor(R.color.color_1B232E.color)
                                     Text(viewModel.item.baseUrl)
-                                        .font(R.font.beVietnamProMediumItalic.font(size: 12))
+                                        .font(R.font.beVietnamProLight.font(size: 13))
                                         .foregroundColor(R.color.color_6A758B.color)
                                 }
                             } else {
@@ -79,6 +91,8 @@ struct DetailQRView: View {
                         
                         download4kButton
                             .frame(height: 48)
+                            .padding(.top, 20)
+                        
                         Text(Rlocalizable.share_your_qr)
                             .font(R.font.beVietnamProSemiBold.font(size: 16))
                             .padding(.top, 25)

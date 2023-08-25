@@ -29,48 +29,75 @@ struct HomeView: View {
     
     @ViewBuilder var homeView: some View {
         let spacing: CGFloat = 15
-        RefreshableScrollView {
-            let count = Float(viewModel.templates.count)/2.0
-            HStack(alignment: .top, spacing: spacing) {
-                VStack {
-                    ForEach(0..<Int(count.rounded(.up)), id: \.self) { i in
-                        itemView(viewModel.templates[i*2])
-                        if viewModel.isLoadAd, (i+1)%3 == 0 {
-                            let index = ((i+1)/3)*2
-                            if index < viewModel.nativeViews.count {
-                                AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
-                            }
+        VStack {
+            HStack {
+                Image(R.image.history_logo_ic)
+                    .padding(.leading, 4)
+
+                Spacer()
+                if !UserDefaults.standard.isUserVip {
+                    LottieView(lottieFile: R.file.crownJson.name)
+                        .frame(width: 48, height: 48)
+                        .offset(CGSize(width: 8, height: 0))
+                        .onTapGesture {
+                            viewModel.showIAP.toggle()
                         }
-                    }
-                }.frame(maxWidth: .infinity)
-                
-                VStack {
-                    Spacer().frame(height: 40)
-                    ForEach(0..<Int(count.rounded(.down)), id: \.self) { i in
-                        itemView(viewModel.templates[i*2+1])
-                        if viewModel.isLoadAd, i%3 == 0 {
-                            let index = (i/3)*2+1
-                            if index < viewModel.nativeViews.count {
-                                AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
-                            }
-                           
-                        }
-                    }
-                }.frame(maxWidth: .infinity)
+                }
+                NavigationLink(destination: SettingsView()) {
+                    Image(R.image.setting_ic.name)
+                        .colorMultiply(R.color.color_1B232E.color)
+                }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
-            Spacer().frame(height: 120)
+            .frame(width: WIDTH_SCREEN - 32, height: 48)
+            .background(Color.clear)
+            
+            RefreshableScrollView {
+                let count = Float(viewModel.templates.count)/2.0
+                HStack(alignment: .top, spacing: spacing) {
+                    VStack {
+                        ForEach(0..<Int(count.rounded(.up)), id: \.self) { i in
+                            itemView(viewModel.templates[i*2])
+                            if viewModel.isLoadAd, (i+1)%3 == 0 {
+                                let index = ((i+1)/3)*2
+                                if index < viewModel.nativeViews.count {
+                                    AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                                }
+                            }
+                        }
+                    }.frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Spacer().frame(height: 40)
+                        ForEach(0..<Int(count.rounded(.down)), id: \.self) { i in
+                            itemView(viewModel.templates[i*2+1])
+                            if viewModel.isLoadAd, i%3 == 0 {
+                                let index = (i/3)*2+1
+                                if index < viewModel.nativeViews.count {
+                                    AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                                }
+                               
+                            }
+                        }
+                    }.frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                Spacer().frame(height: 120)
+            }
         }
         .onAppear {
             FirebaseAnalytics.logEvent(type: .home_view)
             AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_template)
             viewModel.fetchTemplate()
         }
+        .hideNavigationBar(isHidden: true)
         .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
         .refreshable {
             viewModel.fetchTemplate()
+        }
+        .fullScreenCover(isPresented: $viewModel.showIAP) {
+            IAPView(source: .topBar)
         }
     }
     
@@ -119,7 +146,7 @@ struct HomeView: View {
         .cornerRadius(30)
         .onTapGesture {
             if template.packageType != "basic" && !UserDefaults.standard.isUserVip {
-                showIAP?()
+                viewModel.showIAP.toggle()
                 return
             }
 //            UserDefaults.standard.templateSelectCount += 1

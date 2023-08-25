@@ -91,6 +91,7 @@ struct SettingsView: View {
             Text(Rlocalizable.content_setting_banner)
                 .font(R.font.beVietnamProRegular.font(size: 11))
                 .foregroundColor(.white)
+                .padding(.bottom, 6)
             if !UserDefaults.standard.isUserVip {
                 Button {
                     viewModel.isShowIAP.toggle()
@@ -100,12 +101,14 @@ struct SettingsView: View {
                             .font(R.font.beVietnamProSemiBold.font(size: 12))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.black)
+                            .padding(.leading, 8)
+                        
                         Image(R.image.ic_shine)
                             .colorMultiply(.black)
+                            .padding(EdgeInsets(top: 0, leading: -4, bottom: 0, trailing: 8))
                     }
-                    .fixedSize()
                 }
-                .frame(width: 100, height: 28)
+                .frame(maxHeight: 28)
                 .background(
                     LinearGradient(
                         stops: [

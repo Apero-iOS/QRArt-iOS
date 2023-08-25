@@ -136,7 +136,7 @@ public struct Platform {
 
 
 open class TLPhotosPickerViewController: UIViewController {
-    @IBOutlet open var navigationBar: UINavigationBar!
+    @IBOutlet open var navigationBar: UIStackView!
     @IBOutlet open var titleView: UIView!
     @IBOutlet open var titleLabel: UILabel!
     @IBOutlet open var subTitleStackView: UIStackView!
@@ -146,14 +146,13 @@ open class TLPhotosPickerViewController: UIViewController {
     @IBOutlet open var collectionView: UICollectionView!
     @IBOutlet open var indicator: UIActivityIndicatorView!
     @IBOutlet open var popArrowImageView: UIImageView!
-    @IBOutlet open var customNavItem: UINavigationItem!
-    @IBOutlet open var doneButton: UIBarButtonItem!
-    @IBOutlet open var cancelButton: UIBarButtonItem!
+    @IBOutlet open var doneButton: UIButton!
+    @IBOutlet open var cancelButton: UIButton!
     @IBOutlet open var navigationBarTopConstraint: NSLayoutConstraint!
     @IBOutlet open var emptyView: UIView!
     @IBOutlet open var emptyImageView: UIImageView!
     @IBOutlet open var emptyMessageLabel: UILabel!
-    @IBOutlet open var photosButton: UIBarButtonItem!
+    @IBOutlet open var photosButton: UIButton!
     @IBOutlet weak var bannerView: UIView!
     
     public weak var delegate: TLPhotosPickerViewControllerDelegate? = nil
@@ -459,11 +458,10 @@ extension TLPhotosPickerViewController {
         self.titleView.addGestureRecognizer(tapGesture)
         self.titleLabel.text = self.configure.customLocalizedTitle["Camera Roll"]
         self.subTitleLabel.text = self.configure.tapHereToChange
-        self.cancelButton.title = self.configure.cancelTitle
         
-        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)]
-        self.doneButton.setTitleTextAttributes(attributes, for: .normal)
-        self.doneButton.title = self.configure.doneTitle
+        self.doneButton.setTitle(configure.doneTitle, for: .normal)
+        self.doneButton.setTitle(configure.doneTitle, for: .disabled)
+        updateDoneButtonState()
         self.emptyView.isHidden = true
         self.emptyImageView.image = self.configure.emptyImage
         self.emptyMessageLabel.text = self.configure.emptyMessage
@@ -482,15 +480,14 @@ extension TLPhotosPickerViewController {
             self.allowedLivePhotos = false
         }
         self.customDataSouces?.registerSupplementView(collectionView: self.collectionView)
-        self.navigationBar.delegate = self
         updateUserInterfaceStyle()
     }
     
     private func updatePresentLimitedLibraryButton() {
         if #available(iOS 14.0, *), self.photoLibrary.limitMode && self.configure.preventAutomaticLimitedAccessAlert {
-            self.customNavItem.rightBarButtonItems = [self.doneButton, self.photosButton]
+            photosButton.isHidden = false
         } else {
-            self.customNavItem.rightBarButtonItems = [self.doneButton]
+            photosButton.isHidden = true
         }
     }
     
@@ -604,6 +601,11 @@ extension TLPhotosPickerViewController {
             return nil
         }
         return firstBarcode
+    }
+    
+    private func updateDoneButtonState() {
+        doneButton.isEnabled = !selectedAssets.isEmpty
+        doneButton.alpha = doneButton.isEnabled ? 1 : 0.2
     }
     
     @IBAction open func limitButtonTap() {
@@ -1036,6 +1038,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
         }
         
         toggleSelection(for: cell, at: indexPath)
+        updateDoneButtonState()
     }
     
     open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
