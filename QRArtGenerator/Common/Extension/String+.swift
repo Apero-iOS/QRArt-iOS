@@ -39,7 +39,7 @@ extension String {
         var url = self
         
         if !url.lowercased().hasPrefix("http://") && !url.lowercased().hasPrefix("https://") {
-            url = "https://" + url
+            url = "https://" + url.trim
         }
         
         let urlRegEx = "(http|ftp|https):\\/\\/([\\w+?\\.\\w+])?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?+([a-zA-Z0-9\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)_\\-\\=\\+\\\\\\/\\?\\.\\:\\;\\'\\,]*)?"
@@ -48,7 +48,7 @@ extension String {
         let result = urlTest.evaluate(with: url.lowercased())
         
         if result {
-            return (true, url)
+            return (true, url.trim)
         } else {
             return (false, "")
         }

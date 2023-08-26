@@ -148,7 +148,7 @@ struct ScannerView: View {
                 checkCameraPermission()
                 FirebaseAnalytics.logEvent(type: .scan_view)
                 AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_openmail)
-                AdMobManager.shared.createAdRewardedIfNeed(unitId: .inter_scanopenlink)
+                AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_scanopenlink)
                 InappManager.share.didPaymentSuccess.sink { isSuccess in
                     if isSuccess, viewModel.isShowAd {
                         viewModel.isShowAd = false
@@ -267,7 +267,7 @@ struct ScannerView: View {
     func setupCamera() {
         do {
             guard let deveice = viewModel.deveice else {
-                viewModel.presentError("Unknown error")
+                print("Unknown error")
                 return
             }
             if viewModel.zoomValue <= deveice.maxAvailableVideoZoomFactor {
@@ -278,7 +278,7 @@ struct ScannerView: View {
             let input = try AVCaptureDeviceInput(device: deveice)
             
             guard viewModel.session.canAddInput(input), viewModel.session.canAddOutput(viewModel.qrOutput) else {
-                viewModel.presentError("Unknown error")
+                print("Unknown error")
                 return
             }
             

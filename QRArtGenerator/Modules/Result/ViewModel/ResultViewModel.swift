@@ -54,8 +54,11 @@ class ResultViewModel: ObservableObject {
     var isGenegateSuccess: Bool = false
     
     var isShowAdsInter: Bool {
-        print(RemoteConfigService.shared.bool(forKey: .inter_regen))
         return RemoteConfigService.shared.bool(forKey: .inter_regen) && !UserDefaults.standard.isUserVip
+    }
+    
+    var isShowAdsBanner: Bool {
+        return RemoteConfigService.shared.bool(forKey: .banner_result) && !UserDefaults.standard.isUserVip
     }
     
     var isShowInterCreateMore: Bool {

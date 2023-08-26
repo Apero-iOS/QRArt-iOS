@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct TabbarView: View {
     
@@ -36,8 +37,7 @@ struct TabbarView: View {
                                             viewModel.showCreateQR.toggle()
                                             FirebaseAnalytics.logEvent(type: .qr_creation_click)
                                         case .ai:
-                                            viewModel.showScan.toggle()
-                                            
+                                            checkCameraPermission()
                                         default:
                                             print("Không phải view present")
                                         }
@@ -101,6 +101,18 @@ struct TabbarView: View {
             let vm = CreateQRViewModel(source: .create, templateSelect: viewModel.templateSelect, qrImage: viewModel.qrImage, baseUrl: viewModel.qrString)
             CreateQRView(viewModel: vm)
         }
+
+        .fullScreenCover(isPresented: $viewModel.showIAP) {
+            IAPView(source: .topBar)
+        }
+        .fullScreenCover(isPresented: $viewModel.showPopupAccessCamera) {
+            AccessPhotoPopup(onTapAction: {
+                FirebaseAnalytics.logEvent(type: .allow_access_click)
+            }, onTapCancel: {
+                FirebaseAnalytics.logEvent(type: .not_allow_click)
+            })
+            .background(TransparentBackground())
+        }
         .onChange(of: viewModel.countSelectTab, perform: { newValue in
             if viewModel.isShowAds {
                 viewModel.showAdsInter()
@@ -132,8 +144,7 @@ struct TabbarView: View {
                 .simultaneousGesture(DragGesture())
                 
             HistoryView(createQRBlock: {
-                viewModel.templateSelect = AppHelper.templates.first ?? .init()
-                viewModel.showPopupGenQR.toggle()
+                setSelectedTab(tab: .home)
             }).tag(TabbarEnum.history)
                 .contentShape(Rectangle())
                 .simultaneousGesture(DragGesture())
@@ -148,6 +159,30 @@ struct TabbarView: View {
     
     public func setSelectedTab(tab: TabbarEnum) {
         viewModel.selectedTab = tab
+    }
+    
+    func checkCameraPermission() {
+        Task {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    viewModel.showScan.toggle()
+                case .notDetermined:
+                    FirebaseAnalytics.logEvent(type: .permission_camera_view)
+                    if await AVCaptureDevice.requestAccess(for: .video) {
+                        /// permission granted
+                        viewModel.showScan.toggle()
+                        FirebaseAnalytics.logEvent(type: .permission_camera_allow_click)
+                    } else {
+                        /// permission Denied
+                        viewModel.showPopupAccessCamera = true
+                        FirebaseAnalytics.logEvent(type: .permission_camera_not_allow_click)
+                    }
+                case .denied, .restricted:
+                    viewModel.showPopupAccessCamera = true
+                    FirebaseAnalytics.logEvent(type: .permission_view)
+                default: break
+            }
+        }
     }
 }
 

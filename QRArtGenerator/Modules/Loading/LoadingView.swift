@@ -25,14 +25,19 @@ struct LoadingView: View {
     
     var body: some View {
         VStack {
+            ZStack {
                 ZStack(alignment: .bottom) {
                     LottieView(lottieFile: R.file.qrLoadingJson.name)
+                        .offset(CGSize(width: 0, height: -50))
                     Text(listTitle[index])
                         .font(R.font.beVietnamProMedium.font(size: 16))
                         .animation(.easeInOut)
                 }
                 .frame(width: UIScreen.screenWidth - 180, height: UIScreen.screenWidth - 100)
-                .padding(.bottom, 40)
+                LottieView(lottieFile: R.file.magicLoadingJson.name)
+            }
+            .frame(width: UIScreen.screenWidth + 180, height: UIScreen.screenWidth)
+            .padding(.top, 100)
             if !UserDefaults.standard.isUserVip {
                 speedUpButton
                     .padding(.bottom, 40)

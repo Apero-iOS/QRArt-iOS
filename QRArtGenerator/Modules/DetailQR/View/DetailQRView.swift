@@ -122,11 +122,6 @@ struct DetailQRView: View {
                     }
                     .padding(20)
                 }
-                if viewModel.isShowAd {
-                    BannerView(adUnitID: .banner_result, fail: {
-                        viewModel.isShowAd = false
-                    }).frame(height: 50).frame(maxWidth: .infinity)
-                }
             }
             .screenshotProtected(isProtected: true)
             .navigationBarTitleDisplayMode(.inline)

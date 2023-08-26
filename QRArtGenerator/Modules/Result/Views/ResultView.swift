@@ -38,8 +38,13 @@ struct ResultView: View {
         ZStack(alignment: .top) {
             VStack {
                 ScrollView {
+                    if viewModel.isShowAdsBanner {
+                        BannerView(adUnitID: .banner_result)
+                            .frame(width: UIScreen.screenWidth, height: 50)
+                            .padding(.top, 0)
+                    }
+                    
                     VStack(alignment: .leading) {
-                        
                         viewModel.image
                             .resizable()
                             .cornerRadius(24)
@@ -131,7 +136,7 @@ struct ResultView: View {
             .popup(isPresented: $viewModel.showPopupConfirm, view: {
                 PopupConfirmSaveQR(onTapOk: {
                     viewModel.showPopupConfirm.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                         viewModel.save()
                         dismiss()
                     }
@@ -250,6 +255,7 @@ struct ResultView: View {
                                 viewModel.isShowIAP.toggle()
                             } else {
                                 viewModel.showInterCreateMore {
+                                    viewModel.save()
                                     onTapOderStyle?(AppHelper.templates[index])
                                     dismiss()
                                 }
