@@ -57,10 +57,9 @@ struct CreateQRView: View {
                 ChoosePhotoView { qrString, image in
                     viewModel.qrImage = image
                     viewModel.baseUrl = qrString
-                    viewModel.isShowChoosePhoto.toggle()
                 }.ignoresSafeArea()
             })
-            .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, topBarCornerRadius: 20, showTopIndicator: false, content: {
+            .bottomSheet(isPresented: $viewModel.isShowPopupCreate, height: 200, topBarCornerRadius: 24, showTopIndicator: false, content: {
                 popupGenerateView
             })
             .onChange(of: viewModel.input.type) { newValue in

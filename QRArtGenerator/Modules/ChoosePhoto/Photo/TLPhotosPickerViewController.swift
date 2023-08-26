@@ -458,6 +458,7 @@ extension TLPhotosPickerViewController {
         self.titleView.addGestureRecognizer(tapGesture)
         self.titleLabel.text = self.configure.customLocalizedTitle["Camera Roll"]
         self.subTitleLabel.text = self.configure.tapHereToChange
+        self.cancelButton.setImage(R.image.ic_close_tl()?.withRenderingMode(.alwaysOriginal), for: .normal)
         
         self.doneButton.setTitle(configure.doneTitle, for: .normal)
         self.doneButton.setTitle(configure.doneTitle, for: .disabled)
@@ -580,13 +581,11 @@ extension TLPhotosPickerViewController {
     @IBAction open func doneButtonTap() {
         self.stopPlay()
         if configure.isChooseQRMode {
-         
             if let imageData = self.selectedAssets.first?.fullImageData, let qrString = extractQRCode(data: imageData) {
                 dismiss(done: true, qrString: qrString, sourceImage: UIImage(data: imageData))
             } else {
                 self.view.makeToast(Rlocalizable.not_qr_format(), position: .center)
             }
-           
         } else {
             self.dismiss(done: true)
         }
@@ -713,7 +712,7 @@ extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavig
             mediaTypes.append(kUTTypeImage as String)
         }
         if self.configure.allowedVideoRecording {
-            mediaTypes.append(kUTTypeMovie as String)
+//            mediaTypes.append(kUTTypeMovie as String)
             picker.videoQuality = self.configure.recordingVideoQuality
             if let duration = self.configure.maxVideoDuration {
                 picker.videoMaximumDuration = duration

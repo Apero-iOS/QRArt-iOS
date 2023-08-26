@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AccessPhotoPopup: View {
     
+    @Environment(\.dismiss) private var dismiss
     var onTapAction: (() -> Void)? = nil
     var onTapCancel: (() -> Void)? = nil
     
@@ -54,6 +55,7 @@ struct AccessPhotoPopup: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     
                     Button {
+                        dismiss()
                         onTapCancel?()
                     } label: {
                         Text(Rlocalizable.not_allow)
