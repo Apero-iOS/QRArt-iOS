@@ -46,7 +46,7 @@ struct ItemTemplateView: View {
             }
             
             Text(template.name)
-                .font(R.font.urbanistRegular.font(size: 13))
+                .font(R.font.beVietnamProRegular.font(size: 13))
         }
         .frame(maxWidth: 103, maxHeight: 124)
     } 

@@ -46,7 +46,7 @@ struct BasicItemTemplateView: View {
                     }
                 }
             Text(Rlocalizable.basic())
-                .font(R.font.urbanistMedium.font(size: 12))
+                .font(R.font.beVietnamProMedium.font(size: 12))
         }
         .frame(maxWidth: 103, maxHeight: 124)
     }

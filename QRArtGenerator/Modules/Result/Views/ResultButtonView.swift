@@ -67,7 +67,7 @@ struct ResultButtonView: View {
                     
                     Text(typeButton.title)
                         .foregroundColor((typeButton != .download4k) ? Color.black : Color.white)
-                        .font(R.font.urbanistSemiBold.font(size: 14))
+                        .font(R.font.beVietnamProSemiBold.font(size: 14))
                 }
                 .frame(height: height)
                 .frame(maxWidth: .infinity)

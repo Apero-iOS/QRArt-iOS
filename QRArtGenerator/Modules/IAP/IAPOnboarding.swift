@@ -39,12 +39,12 @@ struct IAPOnboarding: View {
                     VStack(spacing: 16) {
                         HStack(alignment: .bottom, spacing: 0) {
                             Text(Rlocalizable.go_further_with)
-                                .font(R.font.urbanistSemiBold.font(size: 22))
+                                .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
                             
                             ZStack(alignment: .trailing) {
                                 Text(Rlocalizable.pro_up)
-                                    .font(R.font.urbanistBold.font(size: 20))
+                                    .font(R.font.beVietnamProBold.font(size: 20))
                                     .foregroundStyle(
                                         .linearGradient(colors: [R.color.color_FFAC4B.color, R.color.color_F6D210.color],
                                                         startPoint: .leading,
@@ -57,7 +57,7 @@ struct IAPOnboarding: View {
                             }
                             
                             Text(Rlocalizable.version_iap)
-                                .font(R.font.urbanistSemiBold.font(size: 22))
+                                .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
                         }
                         
@@ -99,11 +99,11 @@ struct IAPOnboarding: View {
 
                         
                         Text(Rlocalizable.cancel_anytime)
-                            .font(R.font.urbanistMedium.font(size: 14))
+                            .font(R.font.beVietnamProMedium.font(size: 14))
                             .foregroundColor(R.color.color_6A758B.color)
                         
                         Text(Rlocalizable.iap_description)
-                            .font(R.font.urbanistRegular.font(size: 12))
+                            .font(R.font.beVietnamProRegular.font(size: 12))
                             .foregroundColor(R.color.color_6A758B.color)
                             .lineSpacing(3)
                         
@@ -180,7 +180,7 @@ struct IAPOnboarding: View {
     @ViewBuilder var termPrivacyView: some View {
         HStack(spacing: 16) {
             Text(Rlocalizable.terms_of_service)
-                .font(R.font.urbanistBold.font(size: 12))
+                .font(R.font.beVietnamProBold.font(size: 12))
                 .foregroundColor(R.color.color_6A758B.color)
                 .onTapGesture {
                     viewModel.showTerms.toggle()
@@ -191,7 +191,7 @@ struct IAPOnboarding: View {
                 .foregroundColor(R.color.color_6A758B.color)
             
             Text(Rlocalizable.privacy_policy)
-                .font(R.font.urbanistBold.font(size: 12))
+                .font(R.font.beVietnamProBold.font(size: 12))
                 .foregroundColor(R.color.color_6A758B.color)
                 .onTapGesture {
                     viewModel.showPolicy.toggle()
@@ -202,7 +202,7 @@ struct IAPOnboarding: View {
                 .foregroundColor(R.color.color_6A758B.color)
             
             Text(Rlocalizable.restore)
-                .font(R.font.urbanistBold.font(size: 12))
+                .font(R.font.beVietnamProBold.font(size: 12))
                 .foregroundColor(R.color.color_6A758B.color)
                 .onTapGesture {
                     InappManager.share.restorePurchases()

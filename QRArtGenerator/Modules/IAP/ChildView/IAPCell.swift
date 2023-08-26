@@ -19,13 +19,13 @@ struct IAPCell: View {
             VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 8) {
                     Text(idType.title)
-                        .font(R.font.urbanistBold.font(size: 16))
+                        .font(R.font.beVietnamProBold.font(size: 16))
                         .foregroundColor(isBestPrice ? .white : R.color.color_1B232E.color)
                     
                     if isBestPrice {
                         HStack(spacing: 4) {
                             Text(Rlocalizable.popular)
-                                .font(R.font.urbanistSemiBold.font(size: 12))
+                                .font(R.font.beVietnamProSemiBold.font(size: 12))
                                 .foregroundColor(.white)
                                 .padding(.leading, 8)
                             
@@ -44,12 +44,12 @@ struct IAPCell: View {
                 
                 if idType == .lifetime {
                     Text(Rlocalizable.onetime_payment)
-                        .font(R.font.urbanistMedium.font(size: 12))
+                        .font(R.font.beVietnamProMedium.font(size: 12))
                         .foregroundColor(isBestPrice ? .white : R.color.color_6A758B.color)
                 } else if idType.freeday > 0 {
                     HStack(spacing: 8) {
                         Text(Rlocalizable.auto_renewal)
-                            .font(R.font.urbanistMedium.font(size: 12))
+                            .font(R.font.beVietnamProMedium.font(size: 12))
                             .foregroundColor(isBestPrice ? .white : R.color.color_6A758B.color)
                         
                         Circle()
@@ -57,7 +57,7 @@ struct IAPCell: View {
                             .foregroundColor(isBestPrice ? .white : R.color.color_9EABB9.color)
                         
                         Text(Rlocalizable.free_day_trial("\(idType.freeday)"))
-                            .font(R.font.urbanistMedium.font(size: 12))
+                            .font(R.font.beVietnamProMedium.font(size: 12))
                             .foregroundColor(isBestPrice ? .white : R.color.color_6A758B.color)
                     }
                 }
@@ -67,7 +67,7 @@ struct IAPCell: View {
             Spacer()
             
             Text(idType.localizedPrice)
-                .font(R.font.urbanistBold.font(size: 16))
+                .font(R.font.beVietnamProBold.font(size: 16))
                 .foregroundColor(isBestPrice ? .white : R.color.color_1B232E.color)
                 .padding(.trailing, 16)
         }

@@ -18,7 +18,7 @@ struct HistoryCategoryListView: View {
             HStack(spacing: 9) {
                 ForEach(caterories, id: \.type) { cate in
                     Text(titleOf(cate: cate) + " (\(cate.count))")
-                        .font(R.font.urbanistSemiBold.font(size: 14))
+                        .font(R.font.beVietnamProSemiBold.font(size: 14))
                         .foregroundColor(selectedCate == cate ? .white : R.color.color_6A758B.color)
                         .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                         .background(selectedCate == cate ? R.color.color_653AE4.color : R.color.color_F7F7F7.color)

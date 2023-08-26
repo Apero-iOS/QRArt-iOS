@@ -18,7 +18,7 @@ struct SelectCountryCodeView: View {
             ZStack {
                 Spacer()
                 Text(Rlocalizable.select_country_code())
-                    .font(R.font.urbanistSemiBold.font(size: 16))
+                    .font(R.font.beVietnamProSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                     .frame(maxWidth: WIDTH_SCREEN, maxHeight: 29, alignment: .center)
                 Spacer()
@@ -30,7 +30,7 @@ struct SelectCountryCodeView: View {
                         UIApplication.shared.endEditing()
                     } label: {
                         Text(Rlocalizable.done)
-                            .font(R.font.urbanistMedium.font(size: 14))
+                            .font(R.font.beVietnamProMedium.font(size: 14))
                             .foregroundColor(R.color.color_007AFF.color)
                     }
                 }

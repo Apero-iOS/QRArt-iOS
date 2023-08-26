@@ -19,16 +19,16 @@ struct InputEmailView: View {
         VStack (alignment: .leading, spacing: 8) {
             Text(title)
                 .foregroundColor(R.color.color_1B232E.color)
-                .font(R.font.urbanistMedium.font(size: 14))
+                .font(R.font.beVietnamProMedium.font(size: 14))
             textField
             if validInput && name.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
             } else if validInput && !name.isValidEmail() {
                 Text(Rlocalizable.valid_email)
                     .foregroundColor(R.color.color_BD1E1E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
             }
         }
     }
@@ -38,7 +38,7 @@ struct InputEmailView: View {
             if name.isEmpty {
                 Text(placeholder)
                     .foregroundColor(R.color.color_6A758B.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
                     .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
             }
             TextField("", text: $name)
@@ -47,7 +47,7 @@ struct InputEmailView: View {
                 .focused(focusField, equals: textfieldType)
                 .border(radius: 12, color: getBorderColor(),
                         width: 1)
-                .font(R.font.urbanistRegular.font(size: 14))
+                .font(R.font.beVietnamProRegular.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
                 .onChange(of: name) { newValue in
                     if newValue.count > 50 {

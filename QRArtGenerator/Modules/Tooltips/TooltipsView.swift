@@ -127,7 +127,7 @@ struct TooltipsView: View {
             
             HStack {
                 Text("\(Rlocalizable.next().uppercased()) (\(type.stepString))")
-                    .font(R.font.urbanistBold.font(size: 16))
+                    .font(R.font.beVietnamProBold.font(size: 16))
                     .foregroundColor(R.color.color_653AE4.color)
                     .padding(.horizontal, 19)
                     .padding(.vertical, 8)

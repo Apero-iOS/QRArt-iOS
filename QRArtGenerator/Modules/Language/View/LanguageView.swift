@@ -55,7 +55,7 @@ struct LanguageView: View {
             language.icon
                 .frame(width: 28, height: 28)
             Text(language.title)
-                .font(R.font.urbanistMedium.font(size: 17))
+                .font(R.font.beVietnamProMedium.font(size: 17))
                 .foregroundColor(R.color.color_1B232E.color)
             Spacer()
             Image(!isSelected ? R.image.ic_unselect : R.image.ic_selected)

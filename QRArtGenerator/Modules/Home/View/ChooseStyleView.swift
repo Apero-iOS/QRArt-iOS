@@ -20,7 +20,7 @@ struct ChooseStyleView: View {
             ZStack(alignment: .center) {
                 HStack {
                     Text(Rlocalizable.create_qr_title)
-                        .font(R.font.urbanistSemiBold.font(size: 18))
+                        .font(R.font.beVietnamProSemiBold.font(size: 18))
                         .lineLimit(1)
                     
                     Image(R.image.ic_shine_ai)

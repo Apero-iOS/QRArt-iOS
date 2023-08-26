@@ -18,7 +18,7 @@ struct DescriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(R.font.urbanistSemiBold.font(size: 14))
+                .font(R.font.beVietnamProSemiBold.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
             
             ZStack {
@@ -27,7 +27,7 @@ struct DescriptionView: View {
                         .frame(height: 200, alignment: .top)
                         .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         .border(radius: 12, color: getBorderColor(), width: 1)
-                        .font(R.font.urbanistRegular.font(size: 14))
+                        .font(R.font.beVietnamProRegular.font(size: 14))
                         .foregroundColor(R.color.color_6A758B.color)
                         .disabled(true)
                         .allowsHitTesting(false)
@@ -37,7 +37,7 @@ struct DescriptionView: View {
                     .frame(height: 200, alignment: .top)
                     .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                     .border(radius: 12, color: getBorderColor(), width: 1)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
                     .opacity(desc.isEmpty ? 0.25 : 1)
             }
@@ -46,7 +46,7 @@ struct DescriptionView: View {
             if validInput && desc.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
             }
         }
     }

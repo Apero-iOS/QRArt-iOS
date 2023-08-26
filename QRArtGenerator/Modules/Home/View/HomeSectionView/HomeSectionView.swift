@@ -27,7 +27,7 @@ struct HomeSectionView: View {
     private func customHeader(with header: String, onViewMore: (() -> Void)? = nil) -> some View {
         HStack {
             Text(header)
-                .font(R.font.urbanistSemiBold.font(size: 16))
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
             Spacer()
             
             Button {
@@ -36,7 +36,7 @@ struct HomeSectionView: View {
                                            params: [.category: header])
             } label: {
                 Text(Rlocalizable.view_more())
-                    .font(R.font.urbanistMedium.font(size: 14))
+                    .font(R.font.beVietnamProMedium.font(size: 14))
                     .foregroundColor(R.color.color_653AE4.color)
             }
             .buttonStyle(.plain)
@@ -89,7 +89,7 @@ struct HomeSectionView: View {
                 }
             }
             Text(template.name)
-                .font(R.font.urbanistSemiBold.font(size: 12))
+                .font(R.font.beVietnamProSemiBold.font(size: 12))
                 .foregroundColor(R.color.color_1B232E.color)
                 .frame(height: 16)
         }.frame(width: 100, height: 121)

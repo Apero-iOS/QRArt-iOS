@@ -16,12 +16,12 @@ struct AmountView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(Rlocalizable.amount)
-                .font(R.font.urbanistSemiBold.font(size: 14))
+                .font(R.font.beVietnamProSemiBold.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
             TextField(text: $amount) {
                 Text("$")
                     .foregroundColor(R.color.color_1B232E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
             }
             .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
             .frame(height: 42)
@@ -34,7 +34,7 @@ struct AmountView: View {
             } else if validInput && !isValidNumber() {
                 Text(Rlocalizable.valid_amount)
                     .foregroundColor(R.color.color_BD1E1E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
             }
             
         }
@@ -54,7 +54,7 @@ struct AmountView: View {
     func textError(text: String) -> some View {
         Text(text)
             .foregroundColor(R.color.color_BD1E1E.color)
-            .font(R.font.urbanistRegular.font(size: 14))
+            .font(R.font.beVietnamProRegular.font(size: 14))
     }
     
     func isValidNumber() -> Bool {
