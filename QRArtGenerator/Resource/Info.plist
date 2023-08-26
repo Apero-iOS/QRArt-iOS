@@ -24,6 +24,11 @@
 	</array>
 	<key>NSAdvertisingAttributionReportEndpoint</key>
 	<string>https://adjust-skadnetwork.com</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -195,34 +200,34 @@
 		<string>Urbanist-Regular.ttf</string>
 		<string>Urbanist-SemiBold.ttf</string>
 		<string>Urbanist-Thin.ttf</string>
-        <string>BeVietnamPro-Black.ttf</string>
-        <string>BeVietnamPro-BlackItalic.ttf</string>
-        <string>BeVietnamPro-Bold.ttf</string>
-        <string>BeVietnamPro-BoldItalic.ttf</string>
-        <string>BeVietnamPro-ExtraBold.ttf</string>
-        <string>BeVietnamPro-ExtraBoldItalic.ttf</string>
-        <string>BeVietnamPro-ExtraLight.ttf</string>
-        <string>BeVietnamPro-ExtraLightItalic.ttf</string>
-        <string>BeVietnamPro-Italic.ttf</string>
-        <string>BeVietnamPro-Light.ttf</string>
-        <string>BeVietnamPro-LightItalic.ttf</string>
-        <string>BeVietnamPro-Medium.ttf</string>
-        <string>BeVietnamPro-MediumItalic.ttf</string>
-        <string>BeVietnamPro-Regular.ttf</string>
-        <string>BeVietnamPro-SemiBold.ttf</string>
-        <string>BeVietnamPro-SemiBoldItalic.ttf</string>
-        <string>BeVietnamPro-Thin.ttf</string>
-        <string>BeVietnamPro-ThinItalic.ttf</string>
-        <string>Urbanist-Black.ttf</string>
-        <string>Urbanist-Bold.ttf</string>
-        <string>Urbanist-ExtraBold.ttf</string>
-        <string>Urbanist-ExtraLight.ttf</string>
-        <string>Urbanist-Italic.ttf</string>
-        <string>Urbanist-Light.ttf</string>
-        <string>Urbanist-Medium.ttf</string>
-        <string>Urbanist-Regular.ttf</string>
-        <string>Urbanist-SemiBold.ttf</string>
-        <string>Urbanist-Thin.ttf</string>
+		<string>BeVietnamPro-Black.ttf</string>
+		<string>BeVietnamPro-BlackItalic.ttf</string>
+		<string>BeVietnamPro-Bold.ttf</string>
+		<string>BeVietnamPro-BoldItalic.ttf</string>
+		<string>BeVietnamPro-ExtraBold.ttf</string>
+		<string>BeVietnamPro-ExtraBoldItalic.ttf</string>
+		<string>BeVietnamPro-ExtraLight.ttf</string>
+		<string>BeVietnamPro-ExtraLightItalic.ttf</string>
+		<string>BeVietnamPro-Italic.ttf</string>
+		<string>BeVietnamPro-Light.ttf</string>
+		<string>BeVietnamPro-LightItalic.ttf</string>
+		<string>BeVietnamPro-Medium.ttf</string>
+		<string>BeVietnamPro-MediumItalic.ttf</string>
+		<string>BeVietnamPro-Regular.ttf</string>
+		<string>BeVietnamPro-SemiBold.ttf</string>
+		<string>BeVietnamPro-SemiBoldItalic.ttf</string>
+		<string>BeVietnamPro-Thin.ttf</string>
+		<string>BeVietnamPro-ThinItalic.ttf</string>
+		<string>Urbanist-Black.ttf</string>
+		<string>Urbanist-Bold.ttf</string>
+		<string>Urbanist-ExtraBold.ttf</string>
+		<string>Urbanist-ExtraLight.ttf</string>
+		<string>Urbanist-Italic.ttf</string>
+		<string>Urbanist-Light.ttf</string>
+		<string>Urbanist-Medium.ttf</string>
+		<string>Urbanist-Regular.ttf</string>
+		<string>Urbanist-SemiBold.ttf</string>
+		<string>Urbanist-Thin.ttf</string>
 		<string>rubber-duck-regular.ttf</string>
 	</array>
 	<key>productPubPEM</key>

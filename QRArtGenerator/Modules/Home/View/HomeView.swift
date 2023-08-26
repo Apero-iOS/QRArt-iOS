@@ -89,7 +89,7 @@ struct HomeView: View {
         .onAppear {
             FirebaseAnalytics.logEvent(type: .home_view)
             AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_template)
-            viewModel.fetchTemplate()
+            viewModel.loadAds()
         }
         .hideNavigationBar(isHidden: true)
         .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
@@ -155,7 +155,7 @@ struct HomeView: View {
 //                    generateQRBlock?(template)
 //                })
 //            } else {
-                generateQRBlock?(template)
+                 generateQRBlock?(template)
 //            }
        
         }
