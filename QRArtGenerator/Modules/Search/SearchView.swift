@@ -39,7 +39,7 @@ struct SearchView: View {
                             .frame(width: 24)
                             .padding(.leading, 12)
                         LimitedTextField(placeholder: Rlocalizable.search_qr_name(), value: $viewModel.searchKey, charLimit: 50)
-                            .font(R.font.urbanistRegular.font(size: 14))
+                            .font(R.font.beVietnamProRegular.font(size: 14))
                             .foregroundColor(R.color.color_1B232E.color)
                             .focused($isFocusSearch)
                             .padding(.trailing, 12)
@@ -54,7 +54,7 @@ struct SearchView: View {
                         isFocusSearch = false
                         dismiss()
                     }
-                    .font(R.font.urbanistMedium.font(size: 14))
+                    .font(R.font.beVietnamProMedium.font(size: 14))
                 }
                 .frame(height: 48)
             }
@@ -87,7 +87,7 @@ struct SearchView: View {
                 Image(R.image.search_empty_ic)
                 
                 Text(Rlocalizable.no_qr_found())
-                    .font(R.font.urbanistSemiBold.font(size: 17))
+                    .font(R.font.beVietnamProSemiBold.font(size: 17))
                     .foregroundColor(R.color.color_0F1B2E.color)
             }
             
@@ -98,7 +98,7 @@ struct SearchView: View {
     @ViewBuilder var listView: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(countText)
-                .font(R.font.urbanistRegular.font(size: 12))
+                .font(R.font.beVietnamProRegular.font(size: 12))
                 .foregroundColor(R.color.color_77778E.color)
             
             HistoryListView(items: $viewModel.searchItems, isInHistory: false, onDelete: nil)

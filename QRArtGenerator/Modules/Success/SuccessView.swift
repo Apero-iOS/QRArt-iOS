@@ -18,7 +18,7 @@ struct SuccessView: View {
                 VStack(spacing: 16) {
                     R.image.img_success.image
                     Text(Rlocalizable.saved_success())
-                        .font(R.font.urbanistMedium.font(size: 16))
+                        .font(R.font.beVietnamProMedium.font(size: 16))
                         .foregroundColor(R.color.color_1C1818.color)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         .multilineTextAlignment(.center)
@@ -27,7 +27,7 @@ struct SuccessView: View {
                     Router.showHistory()
                 } label: {
                     Text(Rlocalizable.back_to_home())
-                        .font(R.font.urbanistSemiBold.font(size: 16))
+                        .font(R.font.beVietnamProSemiBold.font(size: 16))
                         .foregroundColor(R.color.color_0F1B2E.color)
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }

@@ -36,7 +36,7 @@ struct PromptView: View {
                     Spacer()
                         if !prompt.isEmpty {
                             Text(Rlocalizable.reset())
-                                .font(R.font.urbanistMedium.font(size: 12))
+                                .font(R.font.beVietnamProMedium.font(size: 12))
                                 .foregroundColor(R.color.color_1B232E.color)
                                 .onTapGesture {
                                     prompt = ""
@@ -66,7 +66,7 @@ struct PromptView: View {
                         .focused(focusField, equals: textfieldType)
                         .padding(EdgeInsets(top: 1, leading: 8, bottom: 0, trailing: 8))
                         
-                        .font(R.font.urbanistRegular.font(size: 14))
+                        .font(R.font.beVietnamProRegular.font(size: 14))
                         .foregroundColor(R.color.color_1B232E.color)
                         .opacity(prompt.isEmpty ? 0.25 : 1)
                         .onChange(of: prompt) { newValue in
@@ -82,7 +82,7 @@ struct PromptView: View {
             if validInput && typePrompt == .prompt && prompt.isEmptyOrWhitespace() {
                 Text(Rlocalizable.cannot_be_empty)
                     .foregroundColor(R.color.color_BD1E1E.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
             }
         }
     }
@@ -102,10 +102,10 @@ struct PromptView: View {
     @ViewBuilder var textCountPrompt: some View {
         HStack(spacing: 0) {
             Text("\(prompt.count)/")
-                .font(R.font.urbanistMedium.font(size: 12))
+                .font(R.font.beVietnamProMedium.font(size: 12))
                 .foregroundColor(getColorCountText(type: .count))
             Text("\(maxLength)")
-                .font(R.font.urbanistMedium.font(size: 12))
+                .font(R.font.beVietnamProMedium.font(size: 12))
                 .foregroundColor(getColorCountText(type: .limit))
             Spacer()
         }

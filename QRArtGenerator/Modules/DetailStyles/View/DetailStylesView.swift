@@ -75,7 +75,7 @@ struct DetailStylesView: View {
                 }
             }
             Text(template.name)
-                .font(R.font.urbanistSemiBold.font(size: 12))
+                .font(R.font.beVietnamProSemiBold.font(size: 12))
                 .foregroundColor(R.color.color_1B232E.color)
         }
     }

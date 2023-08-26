@@ -22,7 +22,7 @@ struct CountryCodeView: View {
                 Image(R.image.ic_checked)
                     .opacity(isSelected ? 1 : 0)
                 Text("\(country.name) (\(country.dialCode))")
-                    .font(R.font.urbanistMedium.font(size: 16))
+                    .font(R.font.beVietnamProMedium.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                 Spacer()
                 AsyncImage(url: country.flagUrl)

@@ -29,10 +29,7 @@ struct ResultQRView: View {
                     }
                     HStack {
                         Text(result.title)
-                            .font(
-                                Font.custom("Urbanist", size: 14)
-                                    .weight(.medium)
-                            )
+                            .font(R.font.beVietnamProMedium.font(size: 14))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                             .padding(.horizontal, 10)
@@ -60,10 +57,7 @@ struct ResultQRView: View {
                         } label: {
                             Text(action.title)
                                 .foregroundColor(.white)
-                                .font(
-                                    Font.custom("Urbanist", size: 14)
-                                        .weight(.semibold)
-                                )
+                                .font(R.font.beVietnamProMedium.font(size: 14))
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                         .frame(height: 42)

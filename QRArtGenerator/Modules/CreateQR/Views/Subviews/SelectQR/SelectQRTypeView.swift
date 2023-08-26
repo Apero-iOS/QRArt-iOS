@@ -17,7 +17,7 @@ struct SelectQRTypeView: View {
             ZStack {
                 Spacer()
                 Text(Rlocalizable.select_qr_type)
-                    .font(R.font.urbanistSemiBold.font(size: 16))
+                    .font(R.font.beVietnamProSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                     .frame(maxWidth: WIDTH_SCREEN, maxHeight: 29, alignment: .center)
                 Spacer()
@@ -27,7 +27,7 @@ struct SelectQRTypeView: View {
                         showingSelectQRTypeView = false
                     } label: {
                         Text(Rlocalizable.done)
-                            .font(R.font.urbanistMedium.font(size: 14))
+                            .font(R.font.beVietnamProMedium.font(size: 14))
                             .foregroundColor(R.color.color_007AFF.color)
                     }
                 }
@@ -41,7 +41,7 @@ struct SelectQRTypeView: View {
                     Section(header: Text(section.title)
                         .textCase(nil)
                         .listRowInsets(EdgeInsets())
-                        .font(R.font.urbanistSemiBold.font(size: 16))
+                        .font(R.font.beVietnamProSemiBold.font(size: 16))
                         .foregroundColor(R.color.color_1B232E.color)
                         .padding(EdgeInsets())) {
                         ForEach(section.items, id: \.self) { item in

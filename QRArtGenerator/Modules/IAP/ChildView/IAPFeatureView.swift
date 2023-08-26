@@ -15,7 +15,7 @@ struct IAPFeatureView: View {
             Image(R.image.iap_feature_star_ic)
             
             Text(title)
-                .font(R.font.urbanistMedium.font(size: 14))
+                .font(R.font.beVietnamProMedium.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
         }
     }

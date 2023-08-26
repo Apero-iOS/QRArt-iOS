@@ -15,7 +15,7 @@ struct ChooseTemplateView: View {
         VStack(spacing: 16) {
             VStack(alignment: .leading) {
                 Text(Rlocalizable.choose_a_template())
-                    .font(R.font.urbanistSemiBold.font(size: 16))
+                    .font(R.font.beVietnamProSemiBold.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                     .padding(.leading, 20)
                 ScrollView(.horizontal, showsIndicators: false) {

@@ -21,13 +21,13 @@ struct AccessPhotoPopup: View {
                         .frame(width: 100, height: 100)
                     VStack(spacing: 4) {
                         Text(Rlocalizable.photos_access)
-                            .font(R.font.urbanistSemiBold.font(size: 16))
+                            .font(R.font.beVietnamProSemiBold.font(size: 16))
                             .foregroundColor(R.color.color_1B232E.color)
                             .multilineTextAlignment(.center)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                         
                         Text(Rlocalizable.photos_access_desc)
-                            .font(R.font.urbanistRegular.font(size: 14))
+                            .font(R.font.beVietnamProRegular.font(size: 14))
                             .foregroundColor(R.color.color_1B232E.color)
                             .multilineTextAlignment(.center)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
@@ -42,7 +42,7 @@ struct AccessPhotoPopup: View {
 
                     } label: {
                         Text(Rlocalizable.allow_access)
-                            .font(R.font.urbanistSemiBold.font(size: 14))
+                            .font(R.font.beVietnamProSemiBold.font(size: 14))
                             .foregroundColor(Color.white)
                             .frame(height: 34)
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -57,7 +57,7 @@ struct AccessPhotoPopup: View {
                         onTapCancel?()
                     } label: {
                         Text(Rlocalizable.not_allow)
-                            .font(R.font.urbanistSemiBold.font(size: 14))
+                            .font(R.font.beVietnamProSemiBold.font(size: 14))
                             .foregroundColor(R.color.color_0F1B2E.color)
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     }

@@ -21,7 +21,7 @@ struct TabItem: View {
                         .padding(.bottom, 16)
                     
                     Text(tab.title)
-                        .font(R.font.urbanistBold.font(size: 14))
+                        .font(R.font.beVietnamProBold.font(size: 14))
                         .foregroundStyle(
                             .linearGradient(colors: [R.color.color_6427C8.color, R.color.color_E79CB7.color],
                                             startPoint: .leading,
@@ -35,7 +35,7 @@ struct TabItem: View {
                         .padding(.top, 10)
                     
                     Text(tab.title)
-                        .font(R.font.urbanistSemiBold.font(size: 14))
+                        .font(R.font.beVietnamProSemiBold.font(size: 14))
                         .foregroundColor(tab == selectedTab ? R.color.color_653AE4.color : R.color.color_9EABB9.color)
                         .lineLimit(1)
                 }

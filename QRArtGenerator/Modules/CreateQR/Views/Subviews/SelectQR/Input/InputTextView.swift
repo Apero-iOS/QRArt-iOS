@@ -49,7 +49,7 @@ struct InputTextView: View {
             if name.isEmpty {
                 Text(placeholder)
                     .foregroundColor(R.color.color_6A758B.color)
-                    .font(R.font.urbanistRegular.font(size: 14))
+                    .font(R.font.beVietnamProRegular.font(size: 14))
                     .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
             }
             TextField("", text: $name)
@@ -58,7 +58,7 @@ struct InputTextView: View {
                 .focused(focusField, equals: textfieldType)
                 .border(radius: 12, color: getBorderColor(),
                         width: 1)
-                .font(R.font.urbanistRegular.font(size: 14))
+                .font(R.font.beVietnamProRegular.font(size: 14))
                 .foregroundColor(R.color.color_1B232E.color)
         }
     }
@@ -78,7 +78,7 @@ struct InputTextView: View {
     func textError(text: String) -> some View {
         Text(text)
             .foregroundColor(R.color.color_BD1E1E.color)
-            .font(R.font.urbanistRegular.font(size: 14))
+            .font(R.font.beVietnamProRegular.font(size: 14))
     }
 }
 
