@@ -66,7 +66,7 @@ struct TabbarView: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
             
-            if viewModel.showPopupGenQR || !UserDefaults.standard.tooltipsDone {
+            if viewModel.showPopupGenQR {
                 PopupCreateView {
                     viewModel.showPopupGenQR = false
                     viewModel.isShowChoosePhoto.toggle()
@@ -80,12 +80,8 @@ struct TabbarView: View {
                 }
             }
             
-            if !UserDefaults.standard.tooltipsDone {
+            if viewModel.showTooltip {
                 TooltipsView(type: .home) {
-                    viewModel.qrImage = nil
-                    viewModel.qrString = nil
-                    viewModel.showPopupGenQR = false
-                    viewModel.templateSelect = AppHelper.templates.first ?? .init()
                     viewModel.showCreateQR.toggle()
                 }
             }
@@ -124,6 +120,9 @@ struct TabbarView: View {
     @ViewBuilder var contentView: some View {
         TabView(selection: $viewModel.selectedTab) {
             HomeView(generateQRBlock: { template in
+                if !UserDefaults.standard.tooltipsDone {
+                    viewModel.showTooltip = true
+                }
                 viewModel.templateSelect = template
                 viewModel.showPopupGenQR.toggle()
             }, showIAP: {

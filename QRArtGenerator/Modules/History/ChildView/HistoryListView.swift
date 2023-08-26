@@ -11,6 +11,7 @@ struct HistoryListView: View {
     @Binding var items: [QRItem]
     var isInHistory: Bool
     var onDelete: ((QRItem) -> Void)?
+    var showIAP: VoidBlock?
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -18,7 +19,9 @@ struct HistoryListView: View {
                 ForEach(items, id: \.id) { item in
                     let vm = ResultViewModel(item: item as! QRDetailItem, image: Image(uiImage: item.qrImage))
                     NavigationLink {
-                        DetailQRView(viewModel: vm)
+                        DetailQRView(viewModel: vm) {
+                            showIAP?()
+                        }
                     } label: {
                         HistoryCell(item: item as! QRDetailItem, canDelete: isInHistory)
                     }

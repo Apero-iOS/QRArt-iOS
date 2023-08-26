@@ -21,7 +21,7 @@ class TabbarViewModel: ObservableObject, Identifiable {
     @Published var showPopupGenQR: Bool = false
     @Published var isShowChoosePhoto: Bool = false
     @Published var isShowPopupPermission: Bool = false
-    @Published var tooltipOpacity: Double = 0
+    @Published var showTooltip: Bool = false
     var templateSelect: Template = .init()
     var qrImage: UIImage?
     var qrString: String?

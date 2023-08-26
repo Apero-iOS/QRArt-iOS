@@ -102,6 +102,8 @@ struct HistoryView: View {
             } else {
                 viewModel.delete(item: item)
             }
+        }, showIAP: {
+            viewModel.showIAP.toggle()
         })
     }
 }

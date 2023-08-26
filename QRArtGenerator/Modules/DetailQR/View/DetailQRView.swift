@@ -11,12 +11,12 @@ struct DetailQRView: View {
     @StateObject var viewModel: ResultViewModel
     @Environment(\.dismiss) private var dismiss
     @State var cancellable = Set<AnyCancellable>()
+    var showIAP: VoidBlock?
     var body: some View {
         contentView
     }
     
     @ViewBuilder var contentView: some View {
-        
         ZStack(alignment: .top) {
             VStack {
                 ScrollView {
@@ -198,6 +198,12 @@ struct DetailQRView: View {
                 }
             }.store(in: &cancellable)
             FirebaseAnalytics.logEvent(type: .my_qr_thumnail_click)
+        }
+        .onDisappear {
+            if !showIAPDetailBack {
+                showIAP?()
+                showIAPDetailBack = true
+            }
         }
     }
     

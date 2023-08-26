@@ -107,7 +107,6 @@
 		9AD132342A6FB1C7006EAE82 /* TooltipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132332A6FB1C7006EAE82 /* TooltipsView.swift */; };
 		9AD132362A6FB5BC006EAE82 /* BackdropBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132352A6FB5BC006EAE82 /* BackdropBlurView.swift */; };
 		9AD132392A6FC3AD006EAE82 /* TooltipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD132382A6FC3AD006EAE82 /* TooltipsViewModel.swift */; };
-		9AD1323B2A6FC94A006EAE82 /* rubber-duck-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AD1323A2A6FC94A006EAE82 /* rubber-duck-regular.ttf */; };
 		9AD1323E2A6FD906006EAE82 /* TooltipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1323D2A6FD906006EAE82 /* TooltipType.swift */; };
 		9AD2B8F12A4FCAB8003B7C1F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */; };
 		9AD2B8F42A500735003B7C1F /* QRItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2B8F32A500735003B7C1F /* QRItemDB.swift */; };
@@ -136,6 +135,7 @@
 		9ADEE51E2A497E360075FCE0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE51D2A497E360075FCE0 /* Constants.swift */; };
 		9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */; };
 		9AF2E4CC2A738119001374EE /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */; };
+		9AFFB8EB2A99A29600945F88 /* DigitalStrip2BB_reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFFB8EA2A99A29600945F88 /* DigitalStrip2BB_reg.ttf */; };
 		A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E692A4ADCB20002FEF6 /* Router.swift */; };
 		A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */; };
 		A49AFCCF2A9499960097A100 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AFCCE2A9499960097A100 /* NoInternetView.swift */; };
@@ -352,7 +352,6 @@
 		9AD132332A6FB1C7006EAE82 /* TooltipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipsView.swift; sourceTree = "<group>"; };
 		9AD132352A6FB5BC006EAE82 /* BackdropBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackdropBlurView.swift; sourceTree = "<group>"; };
 		9AD132382A6FC3AD006EAE82 /* TooltipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipsViewModel.swift; sourceTree = "<group>"; };
-		9AD1323A2A6FC94A006EAE82 /* rubber-duck-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rubber-duck-regular.ttf"; sourceTree = "<group>"; };
 		9AD1323D2A6FD906006EAE82 /* TooltipType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipType.swift; sourceTree = "<group>"; };
 		9AD2B8F02A4FCAB8003B7C1F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9AD2B8F32A500735003B7C1F /* QRItemDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRItemDB.swift; sourceTree = "<group>"; };
@@ -387,6 +386,7 @@
 		9ADEE51D2A497E360075FCE0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
 		9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
+		9AFFB8EA2A99A29600945F88 /* DigitalStrip2BB_reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DigitalStrip2BB_reg.ttf; sourceTree = "<group>"; };
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A49AFCCE2A9499960097A100 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
@@ -1125,7 +1125,7 @@
 				9AD522942A4AA09200A947B5 /* Urbanist-Regular.ttf */,
 				9AD5228D2A4AA09200A947B5 /* Urbanist-SemiBold.ttf */,
 				9AD522932A4AA09200A947B5 /* Urbanist-Thin.ttf */,
-				9AD1323A2A6FC94A006EAE82 /* rubber-duck-regular.ttf */,
+				9AFFB8EA2A99A29600945F88 /* DigitalStrip2BB_reg.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -1724,7 +1724,6 @@
 				C8AA3E422A4DAF320077DCC3 /* ai_tab.json in Resources */,
 				9AD5229F2A4AA09200A947B5 /* Urbanist-SemiBold.ttf in Resources */,
 				A4BB27402A81039D00DB53B1 /* BeVietnamPro-MediumItalic.ttf in Resources */,
-				9AD1323B2A6FC94A006EAE82 /* rubber-duck-regular.ttf in Resources */,
 				A4F561942A5427A9002E19DD /* GoogleService-Info-DEV.plist in Resources */,
 				C8C72E1F2A5FFF8100E8918B /* camera-access.json in Resources */,
 				A4BB27462A81039D00DB53B1 /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */,
@@ -1733,6 +1732,7 @@
 				A4CCD71C2A8B606F0051F2C1 /* qr-loading.json in Resources */,
 				A4CE0D9D2A83953B00B41A68 /* magic-loading.json in Resources */,
 				A4BB27472A81039D00DB53B1 /* BeVietnamPro-Black.ttf in Resources */,
+				9AFFB8EB2A99A29600945F88 /* DigitalStrip2BB_reg.ttf in Resources */,
 				9AD5229D2A4AA09200A947B5 /* Urbanist-Bold.ttf in Resources */,
 				A4BB27432A81039D00DB53B1 /* BeVietnamPro-ExtraLight.ttf in Resources */,
 				592BFE7B2A7B850C00FC6C04 /* TLPhotoCollectionViewCell.xib in Resources */,

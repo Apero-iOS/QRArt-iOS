@@ -16,86 +16,80 @@ struct ChooseStyleView: View {
     
     var body: some View {
         let spacing: CGFloat = 15
-        NavigationView {
-            VStack {
-                RefreshableScrollView {
-                    let count = Float(viewModel.templates.count)/2.0
-                    HStack(alignment: .top, spacing: spacing) {
-                        VStack {
-                            ForEach(0..<Int(count.rounded(.up)), id: \.self) { i in
-                                itemView(viewModel.templates[i*2])
-                            }
-                        }.frame(maxWidth: .infinity)
-                        
-                        VStack {
-                            Spacer().frame(height: 40)
-                            ForEach(0..<Int(count.rounded(.down)), id: \.self) { i in
-                                itemView(viewModel.templates[i*2+1])
-                            }
-                        }.frame(maxWidth: .infinity)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
+        VStack {
+            ZStack(alignment: .center) {
+                HStack {
+                    Text(Rlocalizable.create_qr_title)
+                        .font(R.font.urbanistSemiBold.font(size: 18))
+                        .lineLimit(1)
                     
+                    Image(R.image.ic_shine_ai)
+                        .frame(width: 28, height: 24)
+                        .offset(x: -3, y: -3)
                 }
-                .clipped()
-                .onAppear {
-                    FirebaseAnalytics.logEvent(type: .home_view)
-                }
-                .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
-                .refreshable {
-                    viewModel.fetchTemplate()
-                }
-            }
-            .ignoresSafeArea(edges: .bottom)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(Rlocalizable.create_qr_title())
-            .toolbar {      // navigation bar when create new
-                ToolbarItem(placement: .principal) {
-                    ZStack(alignment: .center) {
-                        HStack {
-                            Text(Rlocalizable.create_qr_title)
-                                .font(R.font.urbanistSemiBold.font(size: 18))
-                                .lineLimit(1)
-                            
-                            Image(R.image.ic_shine_ai)
-                                .frame(width: 28, height: 24)
-                                .offset(x: -3, y: -3)
+                HStack {
+                    
+                    Image(R.image.ic_close_tl)
+                        .padding(.leading, 20)
+                        .onTapGesture {
+                            dismiss()
                         }
-                        HStack {
-                            
-                            Image(R.image.ic_close_tl)
-                                .padding(.leading, 4)
-                                .onTapGesture {
-                                    dismiss()
-                                }
-                            
-                            Spacer()
-                            
-                            Button {
-                                if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip {
-                                    viewModel.isShowIAP.toggle()
-                                } else {
-                                    selectQRBlock?(templateSelect)
-                                    dismiss()
-                                }
-                            } label: {
-                                Text(Rlocalizable.next)
-                                    .font(R.font.beVietnamProMedium.font(size: 14))
-                                    .foregroundColor(R.color.color_653AE4.color)
-                            }
+                    
+                    Spacer()
+                    
+                    Button {
+                        if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip {
+                            viewModel.isShowIAP.toggle()
+                        } else {
+                            selectQRBlock?(templateSelect)
+                            dismiss()
                         }
-                        .frame(height: 48)
+                    } label: {
+                        Text(Rlocalizable.next)
+                            .font(R.font.beVietnamProMedium.font(size: 14))
+                            .foregroundColor(R.color.color_653AE4.color)
                     }
+                    .padding(.trailing, 20)
                 }
+                .frame(height: 48)
             }
-            .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
-            .fullScreenCover(isPresented: $viewModel.isShowIAP) {
-                IAPView(source: .topBar)
+            
+            RefreshableScrollView {
+                let count = Float(viewModel.templates.count)/2.0
+                HStack(alignment: .top, spacing: spacing) {
+                    VStack {
+                        ForEach(0..<Int(count.rounded(.up)), id: \.self) { i in
+                            itemView(viewModel.templates[i*2])
+                        }
+                    }.frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Spacer().frame(height: 40)
+                        ForEach(0..<Int(count.rounded(.down)), id: \.self) { i in
+                            itemView(viewModel.templates[i*2+1])
+                        }
+                    }.frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
+                
             }
-          
+            .clipped()
+            .onAppear {
+                FirebaseAnalytics.logEvent(type: .home_view)
+            }
+            .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
+            .refreshable {
+                viewModel.fetchTemplate()
+            }
         }
+        .ignoresSafeArea(edges: .bottom)
+        .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
+        .fullScreenCover(isPresented: $viewModel.isShowIAP) {
+            IAPView(source: .topBar)
+        }
+        
     }
     
     private func itemView(_ template: Template) -> some View {
