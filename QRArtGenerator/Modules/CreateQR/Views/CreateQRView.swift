@@ -141,38 +141,12 @@ struct CreateQRView: View {
                 ScrollViewReader { proxy in
                     List {
                         if let qrImage = viewModel.qrImage {
-                            VStack {
-                                HStack {
-                                    Text(Rlocalizable.you_qr_code)
-                                        .foregroundColor(R.color.color_1B232E.color)
-                                        .font(R.font.beVietnamProSemiBold.font(size: 16))
-                                    Spacer()
-                                    Button {
-                                        viewModel.isShowChoosePhoto.toggle()
-                                    } label: {
-                                        Image(R.image.ic_edit.name)
-                                    }
-                                }.padding(.top, 20)
-                                HStack {
-                                    TextEditor(text: $viewModel.baseUrl)
-                                        .foregroundColor(R.color.color_6A758B.color)
-                                        .padding([.top, .leading, .bottom], 12)
-                                    Image(uiImage: qrImage)
-                                        .resizable()
-                                        .frame(width: 76, height: 76)
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipped()
-                                        .cornerRadius(8)
-                                        .padding(10)
-                                }
-                                .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
-                                .padding(.bottom, 16)
-                            }
-                            .padding(.horizontal, 20)
-                            .background(Color.white)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
-                            .hideSeparatorLine()
+                            qrCodeView(image: qrImage)
+                                .padding(.horizontal, 20)
+                                .background(Color.white)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                                .hideSeparatorLine()
                         }
                         templateView
                             .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
@@ -395,5 +369,15 @@ struct CreateQRView: View {
         }
         .background(Color.white)
     
+    }
+    
+    @ViewBuilder func qrCodeView(image: UIImage) -> some View {
+        QRCodeView(image: image,
+                   baseUrl: $viewModel.baseUrl,
+                   focusField: $errorFieldType,
+                   validInput: $viewModel.validInput) {
+            viewModel.isShowChoosePhoto.toggle()
+        }
+                   .padding(.bottom, 16)
     }
 }

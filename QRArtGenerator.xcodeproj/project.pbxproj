@@ -136,6 +136,7 @@
 		9ADEE5222A497E830075FCE0 /* LocalizationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */; };
 		9AF2E4CC2A738119001374EE /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */; };
 		9AFFB8EB2A99A29600945F88 /* DigitalStrip2BB_reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AFFB8EA2A99A29600945F88 /* DigitalStrip2BB_reg.ttf */; };
+		9AFFB8ED2A99E17600945F88 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFB8EC2A99E17600945F88 /* QRCodeView.swift */; };
 		A4766E6A2A4ADCB20002FEF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E692A4ADCB20002FEF6 /* Router.swift */; };
 		A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */; };
 		A49AFCCF2A9499960097A100 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AFCCE2A9499960097A100 /* NoInternetView.swift */; };
@@ -387,6 +388,7 @@
 		9ADEE5212A497E830075FCE0 /* LocalizationSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationSystem.swift; sourceTree = "<group>"; };
 		9AF2E4CB2A738119001374EE /* RefreshableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		9AFFB8EA2A99A29600945F88 /* DigitalStrip2BB_reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DigitalStrip2BB_reg.ttf; sourceTree = "<group>"; };
+		9AFFB8EC2A99E17600945F88 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		A4766E692A4ADCB20002FEF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A4766E772A4AE31D0002FEF6 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		A49AFCCE2A9499960097A100 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
@@ -1550,6 +1552,7 @@
 				C8109C822A518B3E0093B48A /* AmountView.swift */,
 				9AC7DCC42A4DB6C600FB3119 /* InputPhoneNumberView.swift */,
 				9AC7DCC62A4DB6C600FB3119 /* DescriptionView.swift */,
+				9AFFB8EC2A99E17600945F88 /* QRCodeView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -2088,6 +2091,7 @@
 				59286C932A4D31D300EBBEBF /* OnboardingViewModel.swift in Sources */,
 				9AD132362A6FB5BC006EAE82 /* BackdropBlurView.swift in Sources */,
 				9AB852862A5138E500A546F4 /* IAPIdType.swift in Sources */,
+				9AFFB8ED2A99E17600945F88 /* QRCodeView.swift in Sources */,
 				A4BCB9F32A936709004BFF48 /* PopupConfirmVC.swift in Sources */,
 				A4766E782A4AE31D0002FEF6 /* CircularProgressView.swift in Sources */,
 				A4CAC9742A89E4A800704A5E /* NewOnboardingView.swift in Sources */,

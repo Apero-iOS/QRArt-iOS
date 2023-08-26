@@ -47,12 +47,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pkj-at-LSw">
-                    <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                    <rect key="frame" x="10" y="50" width="355" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9I-xU-muy">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="oEQ-Iy-Bld"/>
+                                <constraint firstAttribute="width" constant="40" id="oEQ-Iy-Bld"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="ic_close_tl"/>
@@ -61,10 +61,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WvG-W2-Tvd">
-                            <rect key="frame" x="60" y="0.0" width="255" height="44"/>
+                            <rect key="frame" x="40" y="0.0" width="275" height="44"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ql8-7f-9Uk">
-                                    <rect key="frame" x="105.33333333333334" y="5.6666666666666643" width="44.333333333333343" height="32.666666666666664"/>
+                                    <rect key="frame" x="115.33333333333333" y="5.6666666666666643" width="44.333333333333329" height="32.666666666666664"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuG-bc-Oq9">
                                             <rect key="frame" x="1.6666666666666572" y="0.0" width="41.333333333333336" height="19.333333333333332"/>
@@ -107,9 +107,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsA-AV-pii">
-                            <rect key="frame" x="315" y="0.0" width="60" height="44"/>
+                            <rect key="frame" x="315" y="0.0" width="40" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="6IS-J4-xoH"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="6IS-J4-xoH"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="BeVietnamPro-Medium" family="Be Vietnam Pro" pointSize="14"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -123,7 +123,6 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="375" id="Bvz-X2-RGy"/>
                         <constraint firstAttribute="height" constant="44" id="KtG-ZQ-UBf"/>
                     </constraints>
                 </stackView>
@@ -245,7 +244,7 @@
                 <constraint firstItem="AEv-G6-dRI" firstAttribute="centerX" secondItem="Zyk-dI-msE" secondAttribute="centerX" id="44C-fd-MVc"/>
                 <constraint firstAttribute="bottom" secondItem="FaD-qi-bPs" secondAttribute="bottom" id="4VK-CY-YQv"/>
                 <constraint firstItem="5Tw-D6-ZZD" firstAttribute="top" secondItem="Pkj-at-LSw" secondAttribute="bottom" id="9hc-FD-mPk"/>
-                <constraint firstItem="Pkj-at-LSw" firstAttribute="trailing" secondItem="HLR-WT-D3I" secondAttribute="trailing" id="CYN-jA-wTl"/>
+                <constraint firstItem="Pkj-at-LSw" firstAttribute="centerX" secondItem="Zyk-dI-msE" secondAttribute="centerX" id="D1p-na-YXw"/>
                 <constraint firstItem="5Tw-D6-ZZD" firstAttribute="leading" secondItem="Zyk-dI-msE" secondAttribute="leading" id="IVQ-Xo-cB8"/>
                 <constraint firstItem="HLR-WT-D3I" firstAttribute="trailing" secondItem="Jcn-hC-Umh" secondAttribute="trailing" id="LfP-bk-44Z"/>
                 <constraint firstItem="HPm-Vc-F86" firstAttribute="leading" secondItem="HLR-WT-D3I" secondAttribute="leading" id="M3L-CU-HdQ"/>
@@ -253,7 +252,7 @@
                 <constraint firstAttribute="bottom" secondItem="Jcn-hC-Umh" secondAttribute="bottom" id="NxH-d8-b65"/>
                 <constraint firstItem="Jcn-hC-Umh" firstAttribute="top" secondItem="HPm-Vc-F86" secondAttribute="top" id="Qyl-4B-CYr"/>
                 <constraint firstItem="HLR-WT-D3I" firstAttribute="trailing" secondItem="5Tw-D6-ZZD" secondAttribute="trailing" id="Syp-Hf-plI"/>
-                <constraint firstItem="Pkj-at-LSw" firstAttribute="leading" secondItem="HLR-WT-D3I" secondAttribute="leading" id="USP-R2-Uvj"/>
+                <constraint firstItem="Pkj-at-LSw" firstAttribute="leading" secondItem="HLR-WT-D3I" secondAttribute="leading" constant="10" id="USP-R2-Uvj"/>
                 <constraint firstAttribute="bottom" secondItem="5Tw-D6-ZZD" secondAttribute="bottom" id="VFn-TZ-jM4"/>
                 <constraint firstItem="FaD-qi-bPs" firstAttribute="top" secondItem="Zyk-dI-msE" secondAttribute="top" id="VMp-Kt-nwJ"/>
                 <constraint firstItem="Jcn-hC-Umh" firstAttribute="top" secondItem="5Tw-D6-ZZD" secondAttribute="top" id="Y8m-Nq-Aek"/>
