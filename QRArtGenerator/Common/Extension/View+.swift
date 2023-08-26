@@ -92,7 +92,7 @@ extension View {
     
     @ViewBuilder func presentationDetent() -> some View {
         if #available(iOS 16, *) {
-            presentationDetents([.fraction(0.9)])
+            presentationDetents([.fraction(0.6), .fraction(1)])
                 .presentationDragIndicator(.visible)
         } else {
             onAppear()

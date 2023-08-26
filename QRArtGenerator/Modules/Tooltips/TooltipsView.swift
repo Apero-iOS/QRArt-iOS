@@ -65,7 +65,7 @@ struct TooltipsView: View {
             Rectangle()
                 .frame(height: 184)
                 .blendMode(.destinationOut)
-                .padding(.top, safeAreaInsets.top + 290)
+                .padding(.top, safeAreaInsets.top + 306)
         case .generate:
             Rectangle()
                 .frame(height: 88)
@@ -79,7 +79,7 @@ struct TooltipsView: View {
         case .home:
             VStack {
                 Text(Rlocalizable.create_your_ai_qr_code)
-                    .font(R.font.rubberDuckRegular.font(size: 24))
+                    .font(R.font.digitalStripBB.font(size: 24))
                     .foregroundColor(.white)
                     .padding(.trailing, 20)
                     .multilineTextAlignment(.center)
@@ -93,21 +93,21 @@ struct TooltipsView: View {
         case .qrType:
             VStack {
                 Text(Rlocalizable.give_input_for_qr)
-                    .font(R.font.rubberDuckRegular.font(size: 24))
+                    .font(R.font.digitalStripBB.font(size: 24))
                     .foregroundColor(.white)
                     .padding(.trailing, 20)
                     .multilineTextAlignment(.center)
                 
                 Image(R.image.tooltip_arrow_down_ic)
             }
-            .padding(EdgeInsets(top: safeAreaInsets.top + 180,
+            .padding(EdgeInsets(top: safeAreaInsets.top + 196,
                                 leading: 0,
                                 bottom: 0,
                                 trailing: 90))
         case .generate:
             VStack {
                 Text(Rlocalizable.final_step_initiate_qr_morph)
-                    .font(R.font.rubberDuckRegular.font(size: 24))
+                    .font(R.font.digitalStripBB.font(size: 24))
                     .foregroundColor(.white)
                     .padding(.trailing, 20)
                     .multilineTextAlignment(.center)
