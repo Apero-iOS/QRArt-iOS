@@ -16,7 +16,7 @@ target 'QRArtGenerator' do
 #  pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
   pod 'MobileAds' , :git => "https://github.com/AperoVN/MobileAds.git"
   pod 'SwCrypt'
-  pod 'SkeletonUI'
+  pod 'SkeletonUI', '1.0.11'
   pod 'ScreenshotPreventing/SwiftUI', '1.4.0'
   pod 'ExytePopupView'
   
