@@ -34,7 +34,11 @@ class SplashViewModel: ObservableObject {
         } else if !UserDefaults.standard.didShowOnboarding {
             Router.showOnboarding()
         } else {
-            Router.showTabbar()
+            if UserDefaults.standard.isUserVip {
+                Router.showTabbar()
+            } else {
+                Router.showIAP()
+            }
         }
     }
     

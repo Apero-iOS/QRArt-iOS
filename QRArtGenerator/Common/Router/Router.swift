@@ -30,6 +30,14 @@ final class Router {
         Router.setRootView(view: NewOnboardingView(), window: window)
     }
     
+    public static func showIAP(window: UIWindow? = nil) {
+        var iapView = IAPView()
+        iapView.onClose = {
+            showTabbar(window: window)
+        }
+        Router.setRootView(view: iapView, window: window)
+    }
+    
     public static func requestReview() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.35) {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
