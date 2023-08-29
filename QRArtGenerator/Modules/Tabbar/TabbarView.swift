@@ -80,9 +80,11 @@ struct TabbarView: View {
                 }
             }
             
-            if viewModel.showTooltip {
+            if viewModel.showTooltip, !UserDefaults.standard.tooltipsDone {
                 TooltipsView(type: .home) {
-                    viewModel.showCreateQR.toggle()
+                    viewModel.showPopupGenQR = false
+                    viewModel.showCreateQR = true
+                    viewModel.showTooltip = false
                 }
             }
 
@@ -136,7 +138,7 @@ struct TabbarView: View {
                     viewModel.showTooltip = true
                 }
                 viewModel.templateSelect = template
-                viewModel.showPopupGenQR.toggle()
+                viewModel.showPopupGenQR = true
             }, showIAP: {
                 viewModel.showIAP.toggle()
             }).tag(TabbarEnum.home)

@@ -125,21 +125,9 @@ extension ScannerViewModel {
         case .phoneCall:
             phoneCall(numberString: item.content)
         case .openMail:
-            if !UserDefaults.standard.isUserVip, RemoteConfigService.shared.bool(forKey: .inter_openmail) {
-                AdMobManager.shared.showIntertitial(unitId: .inter_openmail, blockDidDismiss:  { [weak self] in
-                    self?.openMail(item: item)
-                })
-            } else {
-                openMail(item: item)
-            }
+            openMail(item: item)
         case .openUrl:
-            if !UserDefaults.standard.isUserVip, RemoteConfigService.shared.bool(forKey: .inter_scanopenlink) {
-                AdMobManager.shared.showIntertitial(unitId: .inter_scanopenlink, blockDidDismiss:  { [weak self] in
-                    self?.openUrl(urlString: item.content)
-                })
-            } else {
-                openUrl(urlString: item.content)
-            }
+            openUrl(urlString: item.content)
         }
     }
     

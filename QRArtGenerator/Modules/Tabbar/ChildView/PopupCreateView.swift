@@ -56,7 +56,9 @@ struct PopupCreateView: View {
                         Spacer()
                         Button {
                             FirebaseAnalytics.logEvent(type: .home_create_new_qr_click)
-                            createButtonTap?()
+                            showAdsInter {
+                                createButtonTap?()
+                            }
                         } label: {
                             VStack {
                                 Image(R.image.ic_create_new_qr.name)

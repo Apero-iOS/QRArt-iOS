@@ -160,8 +160,26 @@ extension QRHelper {
         }
     }
     
-    func shareImageViaInstagram(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(shareImageInstagram(_:didFinishSavingWithError:contextInfo:)), nil)
+    func shareImageViaInstagram(image: UIImage, isDenied: VoidBlock?) {
+        let status = PHPhotoLibrary.authorizationStatus(for:  .readWrite)
+        switch status {
+        case .notDetermined:
+            requestAuthorization(image: image, isDenied: isDenied)
+        case .limited, .authorized:
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(shareImageInstagram(_:didFinishSavingWithError:contextInfo:)), nil)
+        case .restricted, .denied:
+            isDenied?()
+        @unknown default:
+            break
+        }
+    }
+    
+    private func requestAuthorization(image: UIImage, isDenied: VoidBlock?) {
+        PHPhotoLibrary.requestAuthorization(for:  .readWrite) { [weak self] status in
+            DispatchQueue.main.async {
+                self?.shareImageViaInstagram(image: image, isDenied: isDenied)
+            }
+        }
     }
     
     func shareImageViaTwitter(image: UIImage) {
@@ -169,7 +187,7 @@ extension QRHelper {
         if UIApplication.shared.canOpenURL(instagramURL!),
             let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter) {
             vc.add(image)
-            AppHelper.getRootViewController()?.present(vc, animated: true)
+            AppHelper.topViewController()?.present(vc, animated: true)
         } else {
             let urlStr = "https://apps.apple.com/us/app/twitter/id333903271"
             UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
@@ -182,7 +200,7 @@ extension QRHelper {
         photo = SharePhoto(image: image, isUserGenerated: false)
         let content = SharePhotoContent()
         content.photos = [photo]
-        let dialog = ShareDialog(viewController: AppHelper.getRootViewController(), content: content, delegate: nil)
+        let dialog = ShareDialog(viewController: AppHelper.topViewController(), content: content, delegate: nil)
         do {
             try dialog.validate()
         } catch {}

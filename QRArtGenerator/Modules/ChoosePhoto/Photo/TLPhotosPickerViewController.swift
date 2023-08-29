@@ -307,18 +307,8 @@ open class TLPhotosPickerViewController: UIViewController {
     
     private func requestAuthorization() {
         FirebaseAnalytics.logEvent(type: .permission_photo_view)
-        if #available(iOS 14.0, *) {
-            PHPhotoLibrary.requestAuthorization(for:  .readWrite) { [weak self] status in
-                self?.processAuthorization(status: status)
-                if status == .denied || status == .restricted {
-                    FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
-                    self?.showPopupConfirm()
-                } else {
-                    FirebaseAnalytics.logEvent(type: .permission_photo_allow_click_view)
-                }
-            }
-        } else {
-            PHPhotoLibrary.requestAuthorization { [weak self] status in
+        PHPhotoLibrary.requestAuthorization(for:  .readWrite) { [weak self] status in
+            DispatchQueue.main.async {
                 self?.processAuthorization(status: status)
                 if status == .denied || status == .restricted {
                     FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
@@ -369,7 +359,15 @@ open class TLPhotosPickerViewController: UIViewController {
         if self.photoLibrary.delegate == nil {
             checkAuthorization()
         }
-        showAdsBanner()
+        checkEmpty()
+    }
+    
+    private func checkEmpty() {
+        if let collection = focusedCollection, collection.getAsset(at: 1) != nil {
+            showAdsBanner()
+        } else {
+            bannerView.isHidden = true
+        }
     }
     
     private func findIndexAndReloadCells(phAsset: PHAsset) {
@@ -512,6 +510,8 @@ extension TLPhotosPickerViewController {
         }else {
             self.collectionView.reloadData()
         }
+        
+        checkEmpty()
     }
     
     private func reloadTableView() {
@@ -765,11 +765,14 @@ extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavig
                 if success, let `self` = self, let identifier = placeholderAsset?.localIdentifier {
                     guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject,
                         self.canSelect(phAsset: asset) else { return }
-                    var result = TLPHAsset(asset: asset)
-                    result.selectedOrder = self.selectedAssets.count + 1
-                    result.isSelectedFromCamera = true
-                    self.selectedAssets.append(result)
-                    self.logDelegate?.selectedPhoto(picker: self, at: 1)
+                    DispatchQueue.main.async {
+                        var result = TLPHAsset(asset: asset)
+                        result.selectedOrder = self.selectedAssets.count + 1
+                        result.isSelectedFromCamera = true
+                        self.selectedAssets.append(result)
+                        self.updateDoneButtonState()
+                        self.logDelegate?.selectedPhoto(picker: self, at: 1)
+                    }
                 }
             })
         }
