@@ -45,13 +45,11 @@ struct AdNativeViewMultiple: UIViewControllerRepresentable {
         let adViewController = AdViewController()
         adViewController.view.addSubview(nativeView)
         nativeView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(6)
-            make.bottom.equalToSuperview().offset(-6)
-            make.leading.equalToSuperview().offset(6)
-            make.trailing.equalToSuperview().offset(-6)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
-        nativeView.layer.cornerRadius = 22
-        nativeView.layer.masksToBounds = true
         return adViewController
     }
     

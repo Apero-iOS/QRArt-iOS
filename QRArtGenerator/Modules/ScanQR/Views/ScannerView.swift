@@ -106,10 +106,10 @@ struct ScannerView: View {
                             .padding(.horizontal)
                             Spacer()
                         
-                            Color.clear.frame(height: 156)
+                            Color.clear.frame(height: 136)
                            
                         }
-                        .bottomSheet(isPresented: $viewModel.showSheet, height: 156+safeAreaInsets.bottom + (viewModel.isShowAd ? 70 : 0),
+                        .bottomSheet(isPresented: $viewModel.showSheet, height: 136+safeAreaInsets.bottom + (viewModel.isShowAd ? 70 : 0),
                                      topBarHeight: 20,
                                      contentBackgroundColor: .clear,
                                      topBarBackgroundColor: .clear,

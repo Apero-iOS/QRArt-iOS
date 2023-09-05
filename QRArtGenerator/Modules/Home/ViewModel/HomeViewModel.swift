@@ -59,7 +59,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
             AdMobManager.shared.removeAd(unitId: AdUnitID.native_home.rawValue)
          
             let root = UIApplication.shared.windows.first?.rootViewController
-            AdMobManager.shared.addAdNative(unitId: .native_home, rootVC: root!, views: nativeViews, type: .freeSize)
+            AdMobManager.shared.addAdNative(unitId: .native_home, rootVC: root!, views: nativeViews, type: .collectionViewCell)
             AdMobManager.shared.blockNativeFaild = { [weak self] id in
                 if id == AdUnitID.native_home.rawValue {
                     self?.isLoadAd = false
