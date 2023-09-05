@@ -16,11 +16,33 @@ struct AppHelper {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
-    static func getRootViewController() -> UIViewController? {
-        (UIApplication.shared.connectedScenes
+    static var keyWindow: UIWindow? {
+        UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .flatMap { $0.windows }
-            .first(where: { $0.isKeyWindow }))?.rootViewController
+            .first(where: { $0.isKeyWindow })
+    }
+    
+    static func getRootViewController() -> UIViewController? {
+        keyWindow?.rootViewController
+    }
+    
+    static func topViewController(controller: UIViewController? = keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        if let child = controller?.children.first {
+            return topViewController(controller: child)
+        }
+        return controller
     }
     
     static func findTextField(in view: UIView?) -> UITextField? {

@@ -22,9 +22,12 @@ struct NewOnboardingView: View {
                     .foregroundColor(R.color.color_222222.color)
                     .padding(.bottom, 8)
                 Text(Rlocalizable.content_onboarding)
+                    .font(R.font.beVietnamProRegular.font(size: 14))
+                    .foregroundColor(R.color.color_222222.color)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
                     .padding(.bottom, 32)
+                    .opacity(0.64)
                 
                 Button {
                     FirebaseAnalytics.logEvent(type: .onboarding_click)

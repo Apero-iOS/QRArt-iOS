@@ -102,6 +102,7 @@ struct CreateQRView: View {
                 viewModel.isShowPopupCreate.toggle()
             } label: {
                 Text(Rlocalizable.generate_with_an_ad)
+                    .font(R.font.beVietnamProSemiBold.font(size: 14))
                     .foregroundColor(R.color.color_000000.color)
                     .frame(width: UIScreen.screenWidth - 40, height: 50)
                     .background(R.color.color_F7F7F7.color)
@@ -111,7 +112,6 @@ struct CreateQRView: View {
             
             Button {
                 viewModel.showSub = true
-                viewModel.isShowPopupCreate.toggle()
             } label: {
                 HStack(alignment: .center, spacing: 8) {
                     VStack {
@@ -315,11 +315,13 @@ struct CreateQRView: View {
                     }
                 }
             case .collapse:
-                withAnimation(.easeIn(duration: 0.2)) {
+                withAnimation(.easeIn(duration: 0.1)) {
                     proxy.scrollTo(advanceDescViewID, anchor: .bottom)
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    viewModel.mode = mode
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    withAnimation(.easeIn(duration: 0.1)) {
+                        viewModel.mode = mode
+                    }
                 }
             }
         }

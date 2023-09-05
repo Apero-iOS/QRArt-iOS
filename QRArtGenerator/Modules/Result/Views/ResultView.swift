@@ -58,7 +58,9 @@ struct ResultView: View {
                         HStack(spacing: 26) {
                             shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
                                 FirebaseAnalytics.logEvent(type: .result_share_click, params: [.share_type: "Instagram"])
-                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
+                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage) {
+                                    viewModel.showPopupAcessPhoto.toggle()
+                                }
                             }
                             
                             shareItem(name: "X", icon: R.image.ic_share_x.image) {
@@ -208,12 +210,8 @@ struct ResultView: View {
                 Text(Rlocalizable.regenerate)
                     .font(R.font.beVietnamProSemiBold.font(size: 12))
                     .foregroundColor(R.color.color_653AE4.color)
-                    .padding(.leading, 8)
+                    .padding(.horizontal, 8)
                     .padding(.vertical, 4)
-                if !UserDefaults.standard.isUserVip {
-                    Image(R.image.ic_giftbox.name)
-                        .padding(.trailing, 8)
-                }
             }
             .border(radius: 20, color: R.color.color_653AE4.color, width: 1)
         }
