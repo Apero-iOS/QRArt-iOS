@@ -29,10 +29,10 @@ struct IAPOnboarding: View {
             ScrollView {
                 VStack(spacing: 16) {
                     ZStack(alignment: .leading) {
-                        Image(R.image.iap_banner_ic)
+                        Image(R.image.iap_banner_onboard)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(height: 283 / 375 * WIDTH_SCREEN)
+                            .frame(height: 351 / 375 * WIDTH_SCREEN)
                             .clipped()
                     }
                     
