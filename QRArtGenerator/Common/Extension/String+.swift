@@ -45,7 +45,7 @@ extension String {
         let urlRegEx = "(http|ftp|https):\\/\\/([\\w+?\\.\\w+])?[\\w\\d\\-_]+\\.\\w{2,3}(\\.\\w{2})?+([a-zA-Z0-9\\~\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)_\\-\\=\\+\\\\\\/\\?\\.\\:\\;\\'\\,]*)?"
         let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
   
-        let result = urlTest.evaluate(with: url.lowercased())
+        let result = urlTest.evaluate(with: url.lowercased().removingPercentEncoding?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
         
         if result {
             return (true, url.trim)
