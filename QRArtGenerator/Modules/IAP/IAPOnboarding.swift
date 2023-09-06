@@ -41,24 +41,6 @@ struct IAPOnboarding: View {
                             Text(Rlocalizable.explore_exclusive_features())
                                 .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
-//
-//                            ZStack(alignment: .trailing) {
-//                                Text(Rlocalizable.pro_up)
-//                                    .font(R.font.beVietnamProBold.font(size: 20))
-//                                    .foregroundStyle(
-//                                        .linearGradient(colors: [R.color.color_FFAC4B.color, R.color.color_F6D210.color],
-//                                                        startPoint: .leading,
-//                                                        endPoint: .trailing)
-//                                    )
-//
-//                                Image(R.image.iap_pro_star_ic)
-//                                    .padding(.top, -20)
-//                                    .padding(.trailing, -8)
-//                            }
-//
-//                            Text(Rlocalizable.version_iap)
-//                                .font(R.font.beVietnamProSemiBold.font(size: 22))
-//                                .foregroundColor(R.color.color_1B232E.color)
                         }
                         
                         VStack(alignment: .leading, spacing: 12) {
@@ -66,18 +48,9 @@ struct IAPOnboarding: View {
                                 IAPFeatureView(title: title)
                             }
                         }
-                        
-//                        VStack(spacing: 12) {
-//                            ForEach(Array(viewModel.iapIds.enumerated()), id: \.offset) { index, type in
-//                                IAPCell(idType: type, index: index, selectedIndex: $viewModel.selectedIndex) {
-//                                    viewModel.onTap(index: index)
-//                                }
-//                            }
-//                        }
-//                        .padding(.top, 8)
                         Spacer().frame(height: 50)
                         VStack(spacing: 12) {
-                            Text(Rlocalizable.unlock_pro_month(IAPIdType.week.localizedPrice)).font(R.font.beVietnamProMedium.font(size: 14))
+                            Text(Rlocalizable.unlock_pro_month(IAPIdType.month.localizedPrice)).font(R.font.beVietnamProMedium.font(size: 14))
                             Text(Rlocalizable.cancel_anytime()).font(R.font.beVietnamProRegular.font(size: 12))
                             
                             Button {

@@ -63,8 +63,8 @@ extension TemplateNetworking: TargetType {
             return .requestPlainBody
         case .genQR(qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps):
             return .requestBody(body: ["qrText": qrText.trimmingCharacters(in: .whitespaces),
-                                       "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces),
-                                       "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces),
+                                       "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces) ?? "",
+                                       "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces) ?? "",
                                        "guidanceScale": guidanceScale,
                                        "numInferenceSteps": numInferenceSteps])
         }
