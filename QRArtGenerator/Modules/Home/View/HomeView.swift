@@ -14,12 +14,33 @@ struct HomeView: View {
     let cellWidth = (WIDTH_SCREEN-55)/2.0
     var generateQRBlock: ((Template) -> Void)?
     var showIAP: VoidBlock?
+    @State var isUserVip = UserDefaults.standard.isUserVip
     
     var body: some View {
         if monitor.isConnected {
             homeView
         } else {
             VStack {
+                HStack {
+                    Image(R.image.history_logo_ic)
+                        .padding(.leading, 4)
+
+                    Spacer()
+                    if !isUserVip {
+                        LottieView(lottieFile: R.file.crownJson.name)
+                            .frame(width: 48, height: 48)
+                            .offset(CGSize(width: 8, height: 0))
+                            .onTapGesture {
+                                viewModel.showIAP.toggle()
+                            }
+                    }
+                    NavigationLink(destination: SettingsView()) {
+                        Image(R.image.setting_ic.name)
+                            .colorMultiply(R.color.color_1B232E.color)
+                    }
+                }
+                .frame(width: WIDTH_SCREEN - 32, height: 48)
+                .background(Color.clear)
                 NoInternetView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 Spacer().frame(height: 120)
@@ -90,6 +111,8 @@ struct HomeView: View {
             FirebaseAnalytics.logEvent(type: .home_view)
             AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_template)
             viewModel.loadAds()
+            viewModel.fetchTemplate()
+            isUserVip = UserDefaults.standard.isUserVip
         }
         .hideNavigationBar(isHidden: true)
         .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)

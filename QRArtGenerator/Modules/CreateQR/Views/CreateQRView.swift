@@ -281,10 +281,13 @@ struct CreateQRView: View {
                     .foregroundColor(R.color.color_1B232E.color)
                 Spacer()
                 Image(R.image.ic_edit.name)
+                    .onTapGesture {
+                        viewModel.isShowViewChooseStyle.toggle()
+                    }
             }.background(Color.white)
             .onTapGesture {
                 FirebaseAnalytics.logEvent(type: .qr_creation_change_style_click)
-                viewModel.isShowViewChooseStyle.toggle()
+                
             }
             ItemTemplateView(template: $viewModel.templateSelect)
                 .padding(.vertical, 20)

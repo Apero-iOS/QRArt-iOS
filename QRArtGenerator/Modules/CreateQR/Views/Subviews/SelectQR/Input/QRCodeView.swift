@@ -34,6 +34,7 @@ struct QRCodeView: View {
                     .foregroundColor(R.color.color_6A758B.color)
                     .padding([.top, .leading, .bottom], 12)
                     .focused(focusField, equals: .baseUrl)
+                    .frame(maxHeight: 150)
                 
                 Image(uiImage: image)
                     .resizable()
