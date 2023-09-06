@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreTelephony
 
 enum CreateQRViewSource {
     case create
@@ -337,6 +338,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var countrySelectView: some View {
+
         SelectCountryCodeView(countries: $viewModel.countries,
                               selectedCountry: $viewModel.countrySelect,
                               showingSelectCountryView: $viewModel.showingSelectCountryView)

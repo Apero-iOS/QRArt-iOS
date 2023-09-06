@@ -25,9 +25,11 @@ struct InputPhoneNumberView: View {
                 .font(R.font.beVietnamProSemiBold.font(size: 16))
             HStack(alignment: .top) {
                 HStack(spacing: 8) {
-                    AsyncImage(url: country.flagUrl)
+                    
+                    Text(country.flag)
                         .frame(width: 24, height: 24)
-                        .cornerRadius(12)
+                        .font(R.font.beVietnamProRegular.font(size: 24))
+                        .multilineTextAlignment(.center)
                     Image(R.image.ic_dropdown)
                 }
                 .frame(maxHeight: 42, alignment: .center)
@@ -85,7 +87,7 @@ struct InputPhoneNumberView_Previews: PreviewProvider {
     @FocusState static var focusState: TextFieldType?
     
     static var previews: some View {
-        InputPhoneNumberView(phoneNumber: .constant(""), showingSelectCountryView: .constant(true), validInput: .constant(true), country: .constant(Country(code: "VN", dialCode: "+84")), focusField: $focusState,
+        InputPhoneNumberView(phoneNumber: .constant(""), showingSelectCountryView: .constant(true), validInput: .constant(true), country: .constant(Country(flag: "1", code: "VN", dialCode: "+84")), focusField: $focusState,
                              textfieldType: .contactPhone)
             .previewLayout(.sizeThatFits)
     }

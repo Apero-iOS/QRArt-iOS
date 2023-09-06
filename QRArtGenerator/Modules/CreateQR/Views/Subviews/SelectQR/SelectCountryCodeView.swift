@@ -78,6 +78,6 @@ struct SelectCountryCodeView: View {
 
 struct SelectCountryCodeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCountryCodeView(countries: .constant([]), selectedCountry: .constant(Country(code: "", dialCode: "")), showingSelectCountryView: .constant(true))
+        SelectCountryCodeView(countries: .constant([]), selectedCountry: .constant(Country(flag: "1", code: "", dialCode: "")), showingSelectCountryView: .constant(true))
     }
 }

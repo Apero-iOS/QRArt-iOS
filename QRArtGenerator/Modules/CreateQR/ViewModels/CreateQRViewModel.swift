@@ -12,7 +12,7 @@ import MobileAds
 
 class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
-    @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
+    @Published var countrySelect: Country
     @Published var templates: [Template] = []
     @Published var isShowPopupCreate: Bool = false
     @Published var isShowViewChooseStyle: Bool = false
@@ -78,6 +78,12 @@ class CreateQRViewModel: ObservableObject {
         self.baseUrl = baseUrl ?? ""
         self.qrImage = qrImage
         self.templateSelect = templateSelect
+        if let code = Locale.current.regionCode, let dialCode = code.getCountryCallingCode() {
+            self.countrySelect = Country(flag: String.emojiFlag(for: code), code: code, dialCode: dialCode)
+        } else {
+            self.countrySelect = Country(flag: "US", code: "US", dialCode: "+1")
+        }
+  
         self.input.prompt = templateSelect.positivePrompt
         self.input.negativePrompt = templateSelect.negativePrompt ?? ""
         self.input.templateQRName = templateSelect.name
