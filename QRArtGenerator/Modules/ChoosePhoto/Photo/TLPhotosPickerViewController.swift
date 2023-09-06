@@ -290,7 +290,7 @@ open class TLPhotosPickerViewController: UIViewController {
             loadPhotos(limitMode: false)
         case .restricted, .denied:
             handleDeniedAlbumsAuthorization()
-            self.showPopupConfirm()
+            showPopupConfirmPhotos()
         @unknown default:
             break
         }
@@ -312,7 +312,7 @@ open class TLPhotosPickerViewController: UIViewController {
                 self?.processAuthorization(status: status)
                 if status == .denied || status == .restricted {
                     FirebaseAnalytics.logEvent(type: .permission_photo_not_allow_click_view)
-                    self?.showPopupConfirm()
+                    self?.showPopupConfirmPhotos()
                 } else {
                     FirebaseAnalytics.logEvent(type: .permission_photo_allow_click_view)
                 }
@@ -320,11 +320,20 @@ open class TLPhotosPickerViewController: UIViewController {
         }
     }
     
-    private func showPopupConfirm() {
-        let popup = PopupConfirmVC(title: Rlocalizable.photos_access(), message: Rlocalizable.permission_photos(), cancel: { [weak self] in
+    private func showPopupConfirmPhotos() {
+        let popupConfirmPhotos = PopupConfirmVC(style: .permission(title: Rlocalizable.photos_access(),
+                                                                   message: Rlocalizable.permission_photos(),
+                                                                   cancel: { [weak self] in
             self?.dismiss(done: false)
-        })
-        self.presentAlert(popup)
+        }))
+        self.presentAlert(popupConfirmPhotos)
+    }
+    
+    private func showPopupConfirmCamera() {
+        let quote = Rlocalizable.message_confirm_camera()
+        let attributedString = quote.withBoldText(boldPartsOfString: [Rlocalizable.qr_ai_generator(), Rlocalizable.setting(), Rlocalizable.permissions(), Rlocalizable.camera_nomal()], font: R.font.beVietnamProLight(size: 13), boldFont: R.font.beVietnamProBold(size: 13))
+        let popupConfirm = PopupConfirmVC(style: .confirm(title: Rlocalizable.camera_access_permission(), attributedMessage: attributedString))
+        presentAlert(popupConfirm)
     }
     
     private func checkAuthorization() {
@@ -697,6 +706,7 @@ extension TLPhotosPickerViewController: UIImagePickerControllerDelegate, UINavig
                 }
             })
         case .restricted, .denied:
+            self.showPopupConfirmCamera()
             self.handleDeniedCameraAuthorization()
         @unknown default:
             break

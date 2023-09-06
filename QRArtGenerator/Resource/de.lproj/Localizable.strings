@@ -229,3 +229,9 @@
 "try_again" = "Versuchen Sie es erneut";
 "all_qr_styles" = "Alle QR -Stile";
 "explore_exclusive_features" = "Entdecken Sie exklusive Funktionen";
+"message_confirm_camera" = "Um Ihr QR zu scannen, müssen Sie QR AI Generator Erlaubnis geben, auf Ihre Kamera zuzugreifen. Bitte befolgen Sie die Einstellung> Berechtigungen> Kamera, um Zugriff zu erhalten.";
+"qr_ai_generator" = "QR AI -Generator";
+"permissions" = "Berechtigungen";
+"camera_nomal" = "Kamera";
+"setting" = "Einstellung";
+"camera_access_permission" = "Genehmigung der Kamerazugriff";

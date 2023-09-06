@@ -66,12 +66,12 @@ struct SettingsView: View {
                 .font(R.font.beVietnamProSemiBold.font(size: 16))
                 .foregroundColor(.white)
             Text(Rlocalizable.premium)
-                .font(R.font.beVietnamProSemiBold.font(size: 22))
+                .font(R.font.beVietnamProBold.font(size: 22))
                 .overlay {
                     LinearGradient(
                         stops: [
-                            Gradient.Stop(color: Color(red: 1, green: 0.68, blue: 0.3), location: 0.00),
-                            Gradient.Stop(color: Color(red: 0.97, green: 0.82, blue: 0.06), location: 1.00),
+                            Gradient.Stop(color: R.color.color_F89016.color, location: 0.00),
+                            Gradient.Stop(color: R.color.color_F6D210.color, location: 1.00),
                         ],
                         startPoint: UnitPoint(x: 0, y: 1),
                         endPoint: UnitPoint(x: 1, y: 0)

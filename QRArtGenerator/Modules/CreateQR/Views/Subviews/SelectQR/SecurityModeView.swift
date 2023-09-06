@@ -14,7 +14,7 @@ struct SecurityModeView: View {
         VStack (alignment: .leading, spacing: 8) {
             Text(Rlocalizable.security_mode())
                 .foregroundColor(R.color.color_1B232E.color)
-                .font(R.font.beVietnamProMedium.font(size: 14))
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
             Picker(selection: $wifiModeSelect, label: Text(Rlocalizable.picker())) {
                 ForEach(WifiSecurityMode.allCases, id: \.self) { mode in
                     textDesc(text: mode.title).tag(mode.rawValue)

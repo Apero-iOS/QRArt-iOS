@@ -229,3 +229,9 @@
 "try_again" = "Essayer à nouveau";
 "all_qr_styles" = "Tous les styles QR";
 "explore_exclusive_features" = "Explorez les fonctionnalités exclusives";
+"message_confirm_camera" = "Pour scanner votre QR, vous devrez donner la permission du générateur AI QR pour accéder à votre appareil photo. Veuillez suivre le paramètre> Autorisations> Appareil photo pour donner accès.";
+"qr_ai_generator" = "Générateur QR AI";
+"permissions" = "Autorisation";
+"camera_nomal" = "Caméra";
+"setting" = "Paramètre";
+"camera_access_permission" = "Autorisation d'accès à la caméra";
