@@ -139,7 +139,12 @@ struct IAPView: View {
                         FirebaseAnalytics.logEvent(type: .sub_successfull_3days_free_trial, params: [.source: source.rawValue,
                                                                                                      .package_time: package_time])
                     }
-                    isAfterOnboarding ? onClose?() : dismiss()
+                    if isAfterOnboarding {
+                        onClose?()
+                    } else {
+                        dismiss()
+                        onClose?()
+                    }
                 }
                 
             }.store(in: &cancellable)

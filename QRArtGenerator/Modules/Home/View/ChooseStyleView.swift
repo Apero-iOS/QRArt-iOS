@@ -19,13 +19,9 @@ struct ChooseStyleView: View {
         VStack {
             ZStack(alignment: .center) {
                 HStack {
-                    Text(Rlocalizable.create_qr_title)
+                    Text(Rlocalizable.all_qr_styles)
                         .font(R.font.beVietnamProSemiBold.font(size: 18))
                         .lineLimit(1)
-                    
-                    Image(R.image.ic_shine_ai)
-                        .frame(width: 28, height: 24)
-                        .offset(x: -3, y: -3)
                 }
                 HStack {
                     
