@@ -66,7 +66,7 @@ enum QRType: Int, PersistableEnum {
         case .spotify:
             baseUrl = "spotify.com"
         case .youtube:
-            baseUrl = "youtube.com"
+            baseUrl = "youtu.be"
         default:
             break
         }

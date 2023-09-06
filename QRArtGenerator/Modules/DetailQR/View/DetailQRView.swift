@@ -99,7 +99,9 @@ struct DetailQRView: View {
                         HStack(spacing: 26) {
                             shareItem(name: "Instagram", icon: R.image.ic_share_instagram.image) {
                                 FirebaseAnalytics.logEvent(type: .result_share_click, params: [.share_type: "Instagram"])
-                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage)
+                                QRHelper.share.shareImageViaInstagram(image: viewModel.item.qrImage) {
+                                    viewModel.showPopupAcessPhoto.toggle()
+                                }
                             }
                             
                             shareItem(name: "X", icon: R.image.ic_share_x.image) {

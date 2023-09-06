@@ -151,7 +151,7 @@
 "could_not_load_data" = "Không thể tải dữ liệu. Vui lòng thử lại";
 "reset" = "Cài lại";
 "cancel_anytime" = "Hủy bất cứ lúc nào";
-"you_qr_code" = "Bạn mã QR";
+"you_qr_code" = "Mã QR của bạn";
 "edit" = "Biên tập";
 "choose_style" = "Chọn phong cách";
 "upload_your_qr" = "Tải lên QR của bạn";
@@ -228,3 +228,4 @@
 "no_internet" = "Không tìm thấy kết nối internet. Kiểm tra kết nối của bạn hoặc thử lại.";
 "try_again" = "Thử lại";
 "all_qr_styles" = "Tất cả các kiểu QR";
+"explore_exclusive_features" = "Khám phá các tính năng độc quyền";
