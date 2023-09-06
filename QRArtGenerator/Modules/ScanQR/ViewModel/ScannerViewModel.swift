@@ -37,7 +37,7 @@ class ScannerViewModel: ObservableObject {
     @Published var isShowWebView: Bool = false
     @Published var isShowShareActivity: Bool = false
     @Published var showPopupAccessCamera: Bool = false
-    @Published var isShowAd: Bool = RemoteConfigService.shared.bool(forKey: .reward_generator) && !UserDefaults.standard.isUserVip
+    @Published var isShowAd: Bool = RemoteConfigService.shared.bool(forKey: .banner_scan) && !UserDefaults.standard.isUserVip
     @Published var isShowChoosePhoto: Bool = false
   
     func tourchClick() {

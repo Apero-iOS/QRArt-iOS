@@ -99,7 +99,9 @@ extension PopupConfirmVC {
 
 extension UIViewController {
     func presentAlert(_ alert: PopupConfirmVC) {
-        alert.modalPresentationStyle = .overFullScreen
-        self.present(alert, animated: false, completion: nil)
+        DispatchQueue.main.async {
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
+        }
     }
 }
