@@ -48,6 +48,7 @@ struct IAPView: View {
                             Text(Rlocalizable.go_further_with)
                                 .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
+                                .lineLimit(1)
                             
                             ZStack(alignment: .trailing) {
                                 Text(Rlocalizable.pro_up)
@@ -66,6 +67,7 @@ struct IAPView: View {
                             Text(Rlocalizable.version_iap)
                                 .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
+                                .lineLimit(1)
                         }
                         
                         VStack(alignment: .leading, spacing: 12) {
