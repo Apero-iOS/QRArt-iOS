@@ -72,7 +72,8 @@ extension String {
             boldString.addAttributes(boldFontAttribute, range: (self as NSString).range(of: boldPartsOfString[i] as String))
         }
         return boldString
-
+    }
+    
     static func emojiFlag(for countryCode: String) -> String! {
         func isLowercaseASCIIScalar(_ scalar: Unicode.Scalar) -> Bool {
             return scalar.value >= 0x61 && scalar.value <= 0x7A
