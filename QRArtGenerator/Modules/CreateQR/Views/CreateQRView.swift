@@ -34,6 +34,10 @@ struct CreateQRView: View {
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult)
                 ResultView(viewModel: resultViewModel) { template in
+                    viewModel.input.id = UUID().uuidString
+                    viewModel.input.prompt = template.positivePrompt
+                    viewModel.input.negativePrompt = template.negativePrompt ?? ""
+                    viewModel.input.templateQRName = template.name
                     viewModel.templateSelect = template
                 }
             }
@@ -102,13 +106,20 @@ struct CreateQRView: View {
                 viewModel.showAdsReward()
                 viewModel.isShowPopupCreate.toggle()
             } label: {
-                Text(Rlocalizable.generate_with_an_ad)
-                    .font(R.font.beVietnamProSemiBold.font(size: 14))
-                    .foregroundColor(R.color.color_000000.color)
-                    .frame(width: UIScreen.screenWidth - 40, height: 50)
+                HStack(spacing: 8) {
+                    Spacer()
+                    Image(R.image.ic_gift_box.name).frame(width: 24, height: 24)
+                    Text(Rlocalizable.watch_ad_to_generate)
+                        .font(R.font.beVietnamProSemiBold.font(size: 14))
+                        .foregroundColor(R.color.color_000000.color)
+                    Spacer()
+                    
+                }
+                .frame(width: UIScreen.screenWidth - 40, height: 50)
                     .background(R.color.color_F7F7F7.color)
                     .border(radius: 100, color: R.color.color_EAEAEA.color, width: 1)
                     .padding(.horizontal, 20)
+             
             }
             
             Button {

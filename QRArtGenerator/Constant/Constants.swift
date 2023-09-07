@@ -52,7 +52,7 @@ struct Constants {
     }
     
     struct GoogleService {
-        #if DEV || STG
+        #if DEV
         static let ggPlistName = "GoogleService-Info-DEV"
         #else
         static let ggPlistName = "GoogleService-Info"

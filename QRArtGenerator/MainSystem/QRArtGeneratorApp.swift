@@ -43,6 +43,9 @@ struct QRArtGeneratorApp: App {
         resetUserDefaults()
         setUpAds()
         configNavigationBar()
+        if Constants.isDev {
+            UserDefaults.standard.isUserVip = false
+        }
     }
     
     var body: some Scene {
