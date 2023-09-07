@@ -35,6 +35,7 @@ struct IAPOnboarding: View {
                             .frame(height: 351 / 375 * WIDTH_SCREEN)
                             .clipped()
                     }
+                    Spacer().frame(height: 64)
                     
                     VStack(spacing: 16) {
                         HStack(alignment: .bottom, spacing: 0) {
