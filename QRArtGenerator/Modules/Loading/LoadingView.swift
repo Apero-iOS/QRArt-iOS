@@ -37,7 +37,7 @@ struct LoadingView: View {
                 LottieView(lottieFile: R.file.magicLoadingJson.name)
             }
             .frame(width: UIScreen.screenWidth + 180, height: UIScreen.screenWidth)
-            .padding(.top, 100)
+            .padding(.top, 0)
             if !UserDefaults.standard.isUserVip {
                 speedUpButton
                     .padding(.bottom, 40)
@@ -75,7 +75,7 @@ struct LoadingView: View {
         .frame(width: 236, height: 48)
         .background(R.color.color_653AE4.color)
         .cornerRadius(100)
-        .shadow(color: R.color.color_653AE4.color.opacity(0.25), radius: 0, x: 0, y: 0)
+        .border(radius: 100, color: R.color.color_D8CEF8.color, width: 8)
 
     }
     

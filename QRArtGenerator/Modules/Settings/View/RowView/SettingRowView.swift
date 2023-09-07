@@ -15,7 +15,7 @@ struct SettingRowView: View {
         HStack {
             item.icon
             Text(item.name)
-                .font(R.font.beVietnamProMedium.font(size: 16))
+                .font(R.font.beVietnamProRegular.font(size: 14))
                 .foregroundColor(R.color.color_131318.color)
             Spacer()
             if item == .language {

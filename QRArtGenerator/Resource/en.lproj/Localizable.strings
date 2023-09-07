@@ -229,3 +229,9 @@
 "try_again" = "Try again";
 "all_qr_styles" = "All QR Styles";
 "explore_exclusive_features" = "Explore Exclusive Features";
+"message_confirm_camera" = "To scan your QR, you will have to give QR AI Generator permission to access your camera. Please follow Setting > Permissions > Camera to give access.";
+"qr_ai_generator" = "QR AI Generator";
+"permissions" = "Permissions";
+"camera_nomal" = "Camera";
+"setting" = "Setting";
+"camera_access_permission" = "Camera Access Permission";

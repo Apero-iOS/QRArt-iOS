@@ -229,3 +229,9 @@
 "try_again" = "Thử lại";
 "all_qr_styles" = "Tất cả các kiểu QR";
 "explore_exclusive_features" = "Khám phá các tính năng độc quyền";
+"message_confirm_camera" = "Để quét QR của bạn, bạn sẽ phải cho phép Trình tạo AI QR để truy cập vào máy ảnh của bạn. Vui lòng làm theo Cài đặt> Quyền> Camera để cung cấp quyền truy cập.";
+"qr_ai_generator" = "Trình tạo QR AI";
+"permissions" = "Quyền";
+"camera_nomal" = "Máy ảnh";
+"setting" = "Cài đặt";
+"camera_access_permission" = "Quyền truy cập camera";

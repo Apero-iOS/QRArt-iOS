@@ -8,6 +8,12 @@
 import UIKit
 import Lottie
 
+enum PopupStyle {
+    case permission(title: String, message: String, cancel: VoidBlock? = nil, ok: VoidBlock? = nil)
+    case confirm(title: String, attributedMessage: NSAttributedString, cancel: VoidBlock? = nil, ok: VoidBlock? = nil)
+    case normal
+}
+
 class PopupConfirmVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -24,6 +30,7 @@ class PopupConfirmVC: UIViewController {
     private var attributedMessage: NSAttributedString?
     private var cancelAction: VoidBlock?
     private var okAction: VoidBlock?
+    private var style: PopupStyle = .normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +46,23 @@ class PopupConfirmVC: UIViewController {
         lottieView.play()
     }
     
-    init(title: String, message: String, cancel: VoidBlock? = nil, ok: VoidBlock? = nil) {
-        super.init(nibName: nil, bundle: nil)
-        self.titleStr = title
-        self.message = message
-        self.cancelAction = cancel
-        self.okAction = ok
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    convenience init(style: PopupStyle) {
+        self.init(nib: R.nib.popupConfirmVC)
+        self.style = style
+        switch style {
+            case .permission(title: let title, message: let message, cancel: let cancel, ok: let ok):
+                self.titleStr = title
+                self.message = message
+                self.cancelAction = cancel
+                self.okAction = ok
+            case .confirm(title: let title, attributedMessage: let attributedMessage, cancel: let cancel, ok: let ok):
+                self.titleStr = title
+                self.attributedMessage = attributedMessage
+                self.cancelAction = cancel
+                self.okAction = ok
+            case .normal:
+                break
+        }
     }
     
     // MARK: - Functions
@@ -99,7 +113,9 @@ extension PopupConfirmVC {
 
 extension UIViewController {
     func presentAlert(_ alert: PopupConfirmVC) {
-        alert.modalPresentationStyle = .overFullScreen
-        self.present(alert, animated: false, completion: nil)
+        DispatchQueue.main.async {
+            alert.modalPresentationStyle = .overFullScreen
+            self.present(alert, animated: false, completion: nil)
+        }
     }
 }

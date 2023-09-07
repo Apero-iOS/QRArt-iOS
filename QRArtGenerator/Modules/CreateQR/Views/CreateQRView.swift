@@ -149,10 +149,10 @@ struct CreateQRView: View {
                                 .hideSeparatorLine()
                         }
                         templateView
-                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                            .listRowBackground(Color.white)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .hideSeparatorLine()
                         
                         if viewModel.qrImage == nil {

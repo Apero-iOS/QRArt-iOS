@@ -229,3 +229,9 @@
 "try_again" = "Intentar otra vez";
 "all_qr_styles" = "Todos los estilos QR";
 "explore_exclusive_features" = "Explorar características exclusivas";
+"message_confirm_camera" = "Para escanear su QR, deberá dar permiso al generador QR AI para acceder a su cámara. Siga la configuración> Permisos> cámara para dar acceso.";
+"qr_ai_generator" = "Generador QR AI";
+"permissions" = "Permisos";
+"camera_nomal" = "Cámara";
+"setting" = "Configuración";
+"camera_access_permission" = "Permiso de acceso a la cámara";

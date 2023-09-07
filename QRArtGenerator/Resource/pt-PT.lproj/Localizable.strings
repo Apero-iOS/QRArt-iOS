@@ -228,3 +228,9 @@
 "try_again" = "Tente novamente";
 "all_qr_styles" = "Todos os estilos QR";
 "explore_exclusive_features" = "Explore recursos exclusivos";
+"message_confirm_camera" = "Para digitalizar seu QR, você terá que dar à QR AI Generator permissão para acessar sua câmera. Siga a configuração> Permissões> Câmera para dar acesso.";
+"qr_ai_generator" = "Gerador QR AI";
+"permissions" = "Permissões";
+"camera_nomal" = "Câmera";
+"setting" = "Contexto";
+"camera_access_permission" = "Permissão de acesso à câmera";

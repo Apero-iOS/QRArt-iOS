@@ -50,113 +50,119 @@ struct SelectQRDetailView: View {
                 .border(radius: 12, color: R.color.color_EAEAEA.color, width: 1)
                 VStack(spacing: 12) {
                     switch type {
-                    case .website:
-                        InputTextView(title: Rlocalizable.website_link(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                    case .contact:
-                        InputPhoneNumberView(type: type,
-                                             phoneNumber: $input.phoneNumber,
-                                             showingSelectCountryView: $showingSelectCountryView,
-                                             validInput: $validInput,
-                                             country: $countrySelect,
-                                             focusField: focusTextfieldType,
-                                             textfieldType: .contactPhone)
-                    case .text:
-                        InputTextView(title: Rlocalizable.text(),
-                                      placeholder: Rlocalizable.enter_text_here(),
-                                      name: $input.text,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .text, typeInput: type)
-                    case .email:
-                        InputEmailView(title: Rlocalizable.email_to(),
-                                      placeholder: "Example@gmail.com",
-                                      name: $input.emailAddress,
-                                      validInput: $validInput,
+                        case .website:
+                            InputTextView(title: Rlocalizable.website_url(),
+                                          placeholder: Rlocalizable.enter_link_here(),
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                        case .contact:
+                            InputTextView(title: Rlocalizable.contact_name(),
+                                          placeholder: Rlocalizable.contact_name(),
+                                          type: .name, name: $input.contactName,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .contactName, typeInput: type)
+                            InputPhoneNumberView(type: type,
+                                                 phoneNumber: $input.phoneNumber,
+                                                 showingSelectCountryView: $showingSelectCountryView,
+                                                 validInput: $validInput,
+                                                 country: $countrySelect,
+                                                 focusField: focusTextfieldType,
+                                                 textfieldType: .contactPhone)
+                        case .text:
+                            InputTextView(title: Rlocalizable.text(),
+                                          placeholder: Rlocalizable.enter_text_here(),
+                                          name: $input.text,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .text, typeInput: type)
+                        case .email:
+                            InputEmailView(title: Rlocalizable.email_to(),
+                                           placeholder: "Example@gmail.com",
+                                           name: $input.emailAddress,
+                                           validInput: $validInput,
+                                           focusField: focusTextfieldType,
+                                           textfieldType: .email)
+                            InputTextView(title: Rlocalizable.subject(),
+                                          placeholder: Rlocalizable.enter_subject(),
+                                          name: $input.emailSubject,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .emailSubject, typeInput: type)
+                            DescriptionView(title: Rlocalizable.email_desc(),
+                                            placeHolder: Rlocalizable.enter_desc(),
+                                            desc: $input.emailDescription,
+                                            validInput: $validInput,
+                                            focusField: focusTextfieldType,
+                                            textfieldType: .emailDesc)
+                        case .whatsapp:
+                            InputPhoneNumberView(type: type,
+                                                 phoneNumber: $input.phoneNumber,
+                                                 showingSelectCountryView: $showingSelectCountryView,
+                                                 validInput: $validInput,
+                                                 country: $countrySelect,
+                                                 focusField: focusTextfieldType,
+                                                 textfieldType: .contactPhone)
+                        case .instagram:
+                            InputTextView(title: Rlocalizable.instagram_url(),
+                                          placeholder: Rlocalizable.enter_link_here(),
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                        case .facebook:
+                            InputTextView(title: Rlocalizable.facebook_url(),
+                                          placeholder: Rlocalizable.enter_link_here(),
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                        case .twitter:
+                            InputTextView(title: Rlocalizable.twitter_url(),
+                                          placeholder: Rlocalizable.enter_link_here(),
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                        case .spotify:
+                            InputTextView(title: Rlocalizable.spotify_url(),
+                                          placeholder: Rlocalizable.enter_link_here(),
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                        case .youtube:
+                            InputTextView(title: Rlocalizable.youtube_url(),
+                                          placeholder: Rlocalizable.enter_link_here(),
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                        case .wifi:
+                            InputTextView(title: Rlocalizable.ssid(),
+                                          placeholder: Rlocalizable.enter_wifi_name(),
+                                          name: $input.wfSsid, validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .wifiID, typeInput: type)
+                            InputTextView(title: Rlocalizable.password(),
+                                          placeholder: Rlocalizable.enter_password(),
+                                          name: $input.wfPassword, validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .wifiPass, typeInput: type)
+                            SecurityModeView(wifiModeSelect: $input.indexWfSecurityMode)
+                        case .paypal:
+                            InputTextView(title: Rlocalizable.paypal_url(),
+                                          placeholder: "https://paypal.me/",
+                                          type: .url, name: $input.urlString,
+                                          validInput: $validInput,
+                                          focusField: focusTextfieldType,
+                                          textfieldType: .link, typeInput: type)
+                            AmountView(amount: $input.paypalAmount,
+                                       validInput: $validInput,
                                        focusField: focusTextfieldType,
-                                       textfieldType: .email)
-                        InputTextView(title: Rlocalizable.subject(),
-                                      placeholder: Rlocalizable.enter_subject(),
-                                      name: $input.emailSubject,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .emailSubject, typeInput: type)
-                        DescriptionView(title: Rlocalizable.email_desc(),
-                                        placeHolder: Rlocalizable.enter_desc(),
-                                        desc: $input.emailDescription,
-                                        validInput: $validInput,
-                                        focusField: focusTextfieldType,
-                                        textfieldType: .emailDesc)
-                    case .whatsapp:
-                        InputPhoneNumberView(type: type,
-                                             phoneNumber: $input.phoneNumber,
-                                             showingSelectCountryView: $showingSelectCountryView,
-                                             validInput: $validInput,
-                                             country: $countrySelect,
-                                             focusField: focusTextfieldType,
-                                             textfieldType: .contactPhone)
-                    case .instagram:
-                        InputTextView(title: Rlocalizable.instagram_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                    case .facebook:
-                        InputTextView(title: Rlocalizable.facebook_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                    case .twitter:
-                        InputTextView(title: Rlocalizable.twitter_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                    case .spotify:
-                        InputTextView(title: Rlocalizable.spotify_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                    case .youtube:
-                        InputTextView(title: Rlocalizable.youtube_url(),
-                                      placeholder: Rlocalizable.enter_link_here(),
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                    case .wifi:
-                        InputTextView(title: Rlocalizable.ssid(),
-                                      placeholder: Rlocalizable.enter_wifi_name(),
-                                      name: $input.wfSsid, validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .wifiID, typeInput: type)
-                        InputTextView(title: Rlocalizable.password(),
-                                      placeholder: Rlocalizable.enter_password(),
-                                      name: $input.wfPassword, validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .wifiPass, typeInput: type)
-                        SecurityModeView(wifiModeSelect: $input.indexWfSecurityMode)
-                    case .paypal:
-                        InputTextView(title: Rlocalizable.paypal_url(),
-                                      placeholder: "https://paypal.me/",
-                                      type: .url, name: $input.urlString,
-                                      validInput: $validInput,
-                                      focusField: focusTextfieldType,
-                                      textfieldType: .link, typeInput: type)
-                        AmountView(amount: $input.paypalAmount,
-                                   validInput: $validInput,
-                                   focusField: focusTextfieldType,
-                                   textfieldType: .paypal)
+                                       textfieldType: .paypal)
                     }
                 }
             }
