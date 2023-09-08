@@ -258,7 +258,7 @@ struct ResultView: View {
                         .frame(width: 120, height: 120)
                         .cornerRadius(12)
                         .onTapGesture {
-                            if AppHelper.templates[index].packageType != "basic" && !UserDefaults.standard.isUserVip {
+                            if orderTemplates.packageType != "basic" && !UserDefaults.standard.isUserVip {
                                 viewModel.isShowIAP.toggle()
                             } else {
                                 viewModel.showInterCreateMore {
