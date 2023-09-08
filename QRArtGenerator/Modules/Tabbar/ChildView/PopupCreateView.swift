@@ -99,7 +99,7 @@ struct PopupCreateView: View {
     
     private func showAdsInter(completion: VoidBlock?) {
         if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_home, blockWillDismiss: completion)
+            AdMobManager.shared.showIntertitial(unitId: .inter_home, blockDidDismiss: completion)
         } else {
             completion?()
         }

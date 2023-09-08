@@ -65,7 +65,7 @@ struct TooltipsView: View {
             Rectangle()
                 .frame(height: 184)
                 .blendMode(.destinationOut)
-                .padding(.top, safeAreaInsets.top + 306)
+                .padding(.top, safeAreaInsets.top + 290)
         case .generate:
             Rectangle()
                 .frame(height: 88)

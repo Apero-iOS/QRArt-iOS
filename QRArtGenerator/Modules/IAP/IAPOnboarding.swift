@@ -102,6 +102,7 @@ struct IAPOnboarding: View {
         .onAppear {
             FirebaseAnalytics.logEvent(type: .sub_view, params: [.source: source.rawValue])
             viewModel.getInfoIAP()
+            cancellable.removeAll()
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess {
                     var package_time = ""
@@ -136,6 +137,9 @@ struct IAPOnboarding: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .onDisappear(perform: {
+            cancellable.forEach({$0.cancel()})
+        })
         .sheet(isPresented: $viewModel.showPolicy) {
             NavigationView {
                 WebView(urlString: Constants.policyUrl)

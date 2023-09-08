@@ -30,6 +30,7 @@ struct SettingsView: View {
         }
        
         .onAppear {
+            viewModel.cancellable.removeAll()
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess {
                     viewModel.isVip = UserDefaults.standard.isUserVip

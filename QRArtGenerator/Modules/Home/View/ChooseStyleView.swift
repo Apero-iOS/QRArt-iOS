@@ -117,7 +117,7 @@ struct ChooseStyleView: View {
                     .padding(.bottom, 16)
                 Spacer()
                 Text(template.name)
-                    .font(R.font.beVietnamProMediumItalic.font(size: 14))
+                    .font(R.font.beVietnamProMedium.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
                     .padding(.bottom)
                 Spacer()

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class IAPViewModel: ObservableObject {
     let featureTitles: [String] = [Rlocalizable.no_advertisements(),
@@ -16,7 +17,7 @@ class IAPViewModel: ObservableObject {
     @Published var selectedIndex: Int = 0
     @Published var showTerms = false
     @Published var showPolicy = false
-    
+  
     func getInfoIAP() {
         iapIds = IAPIdType.getOption()
         if InappManager.share.listProduct.isEmpty {

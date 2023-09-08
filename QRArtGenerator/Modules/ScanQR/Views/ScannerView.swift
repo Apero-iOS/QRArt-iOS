@@ -149,12 +149,16 @@ struct ScannerView: View {
                 FirebaseAnalytics.logEvent(type: .scan_view)
                 AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_openmail)
                 AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_scanopenlink)
+                cancellable.removeAll()
                 InappManager.share.didPaymentSuccess.sink { isSuccess in
                     if isSuccess, viewModel.isShowAd {
                         viewModel.isShowAd = false
                     }
                 }.store(in: &cancellable)
             }
+            .onDisappear(perform: {
+                cancellable.forEach({$0.cancel()})
+            })
             .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             }
             .onChange(of: viewModel.zoomValue) { newValue in

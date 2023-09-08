@@ -14,8 +14,12 @@ extension UserDefaults {
             return UserDefaults.standard.bool(forKey: Constants.Keys.KEY_USER_VIP)
         }
         set {
-            UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.KEY_USER_VIP)
-            InappManager.share.didPaymentSuccess.send(newValue)
+            if UserDefaults.standard.isUserVip != newValue {
+                UserDefaults.standard.setValue(newValue, forKey: Constants.Keys.KEY_USER_VIP)
+                print("--> send didPaymentSuccess")
+                InappManager.share.didPaymentSuccess.send(newValue)
+               
+            }
         }
     }
     var generateQRCount: Int {

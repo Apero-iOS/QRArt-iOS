@@ -29,6 +29,10 @@ class TabbarViewModel: ObservableObject, Identifiable {
     var qrString: String?
     
     var cancellable = Set<AnyCancellable>()
+    
+    deinit {
+        cancellable.forEach({$0.cancel()})
+    }
 
     var tabs: [TabbarEnum] = [.home, .ai, .history]
     
@@ -45,10 +49,6 @@ class TabbarViewModel: ObservableObject, Identifiable {
     var isShowAds: Bool {
         let numberAds = getNumberShowAds()
         return numberAds > .zero && countSelectTab%numberAds == .zero
-    }
-    
-    deinit {
-        cancellable.removeAll()
     }
     
     public func changeCountSelect() {

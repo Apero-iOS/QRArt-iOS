@@ -120,7 +120,8 @@ struct IAPView: View {
         .onAppear {
             FirebaseAnalytics.logEvent(type: .sub_view, params: [.source: source.rawValue])
             viewModel.getInfoIAP()
-            InappManager.share.didPaymentSuccess.sink { isSuccess in
+            InappManager.share.didPaymentSuccess.sink(receiveValue: { isSuccess in
+                print("--> didPaymentSuccess")
                 if isSuccess {
                     var package_time = ""
                     let subPurchase = viewModel.iapIds[viewModel.selectedIndex]
@@ -144,13 +145,19 @@ struct IAPView: View {
                     if isAfterOnboarding {
                         onClose?()
                     } else {
+                      
                         dismiss()
                         onClose?()
                     }
                 }
-                
-            }.store(in: &cancellable)
+            }).store(in: &cancellable)
         }
+        .onDisappear(perform: {
+            cancellable.forEach { can in
+                can.cancel()
+            }
+            cancellable.removeAll()
+        })
         .sheet(isPresented: $viewModel.showTerms) {
             NavigationView {
                 WebView(urlString: Constants.termUrl)

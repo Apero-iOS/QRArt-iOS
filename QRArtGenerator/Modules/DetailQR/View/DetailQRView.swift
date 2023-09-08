@@ -197,6 +197,7 @@ struct DetailQRView: View {
             FirebaseAnalytics.logEvent(type: .my_qr_thumnail_click)
         }
         .onDisappear {
+            cancellable.forEach({$0.cancel()})
             if !showIAPDetailBack && !UserDefaults.standard.isUserVip {
                 showIAP?()
                 showIAPDetailBack = true

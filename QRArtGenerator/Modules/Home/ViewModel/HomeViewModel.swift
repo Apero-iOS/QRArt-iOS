@@ -22,6 +22,9 @@ final class HomeViewModel: ObservableObject, Identifiable {
     var nativeViews: [UIView] = []
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
+    deinit {
+        cancellable.forEach({$0.cancel()})
+    }
     
     init() {
         if nativeViews.count == 0 {
@@ -50,6 +53,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
                 self.templates.append(contentsOf: templates)
                 AppHelper.templates = templates
             }
+            print("template count: \(self.templates.count)")
             
         }.store(in: &cancellable)
     }

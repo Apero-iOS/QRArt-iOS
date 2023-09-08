@@ -63,8 +63,8 @@ struct LoadingView: View {
     @ViewBuilder var speedUpButton: some View {
         HStack {
             Button {
-                isShowSub.toggle()
                 onShowSub?(true)
+                isShowSub.toggle()
             } label: {
                 Image(R.image.ic_speed_ip)
                 Text(Rlocalizable.speed_up)

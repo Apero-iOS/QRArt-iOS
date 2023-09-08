@@ -54,6 +54,11 @@ class CreateQRViewModel: ObservableObject {
     
     private var needFetchTemplates: Bool = true
     
+    deinit {
+        print("deinit CreateQRViewModel")
+        cancellable.forEach({$0.cancel()})
+    }
+    
     let listPromptSuggess = PromptSuggessType.allCases
         
     var messageError: String = ""
@@ -90,10 +95,6 @@ class CreateQRViewModel: ObservableObject {
         self.input.createType = qrImage != nil ? .normal : .custom
         self.input.baseUrl = self.baseUrl
         self.templates.insert(Template(), at: 0)
-    }
-    
-    deinit {
-        cancellable.removeAll()
     }
     
     func fetchCountry() {

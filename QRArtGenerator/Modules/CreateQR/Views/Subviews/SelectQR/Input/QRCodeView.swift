@@ -22,11 +22,11 @@ struct QRCodeView: View {
                     .foregroundColor(R.color.color_1B232E.color)
                     .font(R.font.beVietnamProSemiBold.font(size: 16))
                 Spacer()
-                Button {
+              
+                Image(R.image.ic_edit.name).frame(width: 24, height: 24).onTapGesture {
                     showChoosePhoto?()
-                } label: {
-                    Image(R.image.ic_edit.name)
                 }
+             
             }.padding(.top, 20)
             
             HStack {

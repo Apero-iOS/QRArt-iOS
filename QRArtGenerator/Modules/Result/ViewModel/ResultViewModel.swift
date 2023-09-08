@@ -70,6 +70,11 @@ class ResultViewModel: ObservableObject {
         self.image = image
     }
     
+    deinit {
+        print("deinit ResultView")
+        cancellable.forEach({$0.cancel()})
+    }
+    
     func save() {
         QRItemService.shared.saveNewQR(item, isNew: false)
         isShowSuccessView = true

@@ -18,7 +18,7 @@ struct DescriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(R.font.beVietnamProSemiBold.font(size: 14))
+                .font(R.font.beVietnamProSemiBold.font(size: 16))
                 .foregroundColor(R.color.color_1B232E.color)
             
             ZStack {
