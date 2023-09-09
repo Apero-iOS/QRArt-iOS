@@ -122,7 +122,7 @@ struct ChooseStyleView: View {
                     .padding(.bottom)
                 Spacer()
             }
-            if template.packageType != "basic" && !UserDefaults.standard.isUserVip {
+            if template.packageType != "basic" && !UserDefaults.standard.isUserVip && UserDefaults.standard.generateQRCount > 0  {
                 Image(R.image.ic_style_sub.name)
                     .padding(.top, 13)
                     .padding(.trailing, 11)

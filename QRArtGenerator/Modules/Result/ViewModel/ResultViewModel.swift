@@ -77,7 +77,6 @@ class ResultViewModel: ObservableObject {
     
     func save() {
         QRItemService.shared.saveNewQR(item, isNew: false)
-        isShowSuccessView = true
     }
     
     func scaleImage(resolutions: Resolutions) -> UIImage? {
