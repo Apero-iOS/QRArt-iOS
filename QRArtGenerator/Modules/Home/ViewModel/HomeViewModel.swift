@@ -21,7 +21,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
     @Published var isLoadAd: Bool = (RemoteConfigService.shared.bool(forKey: .native_home) && !UserDefaults.standard.isUserVip)
     var nativeViews: [UIView] = []
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
-    private var cancellable = Set<AnyCancellable>()
+    var cancellable = Set<AnyCancellable>()
     deinit {
         cancellable.forEach({$0.cancel()})
     }

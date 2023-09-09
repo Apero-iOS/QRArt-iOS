@@ -127,10 +127,10 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Tw-D6-ZZD">
-                    <rect key="frame" x="0.0" y="104" width="375" height="708"/>
+                    <rect key="frame" x="0.0" y="104" width="375" height="674"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-Bn-quP">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="658"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="624"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="VDa-Pp-VBq">
@@ -145,7 +145,7 @@
                             </connections>
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iP-T0-Ktv">
-                            <rect key="frame" x="0.0" y="658" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="624" width="375" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="1" constant="50" id="I5o-EX-R8Q"/>
@@ -253,7 +253,7 @@
                 <constraint firstItem="Jcn-hC-Umh" firstAttribute="top" secondItem="HPm-Vc-F86" secondAttribute="top" id="Qyl-4B-CYr"/>
                 <constraint firstItem="HLR-WT-D3I" firstAttribute="trailing" secondItem="5Tw-D6-ZZD" secondAttribute="trailing" id="Syp-Hf-plI"/>
                 <constraint firstItem="Pkj-at-LSw" firstAttribute="leading" secondItem="HLR-WT-D3I" secondAttribute="leading" constant="10" id="USP-R2-Uvj"/>
-                <constraint firstAttribute="bottom" secondItem="5Tw-D6-ZZD" secondAttribute="bottom" id="VFn-TZ-jM4"/>
+                <constraint firstItem="HLR-WT-D3I" firstAttribute="bottom" secondItem="5Tw-D6-ZZD" secondAttribute="bottom" id="VFn-TZ-jM4"/>
                 <constraint firstItem="FaD-qi-bPs" firstAttribute="top" secondItem="Zyk-dI-msE" secondAttribute="top" id="VMp-Kt-nwJ"/>
                 <constraint firstItem="Jcn-hC-Umh" firstAttribute="top" secondItem="5Tw-D6-ZZD" secondAttribute="top" constant="-10" id="Y8m-Nq-Aek"/>
                 <constraint firstItem="AEv-G6-dRI" firstAttribute="centerY" secondItem="Zyk-dI-msE" secondAttribute="centerY" id="aLU-u9-ALA"/>

@@ -128,7 +128,7 @@ struct ChooseStyleView: View {
                     .padding(.trailing, 11)
             }
         }
-        .frame(width: cellWidth, height: cellWidth*4/3)
+        .frame(width: cellWidth, height: cellWidth*4/3-10)
         .background(Color.white)
         .border(radius: 30, color: (template.key == templateSelect.key ? R.color.color_653AE4.color : Color.clear), width: 2)
         .onTapGesture {

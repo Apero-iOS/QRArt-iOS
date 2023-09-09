@@ -20,7 +20,7 @@ struct TooltipsView: View {
                 Color.black
                     .opacity(0.6)
                 
-                BackdropBlurView(radius: 4)
+                BackdropBlurView(radius: 2)
                 
                 highlightView
                     .onTapGesture {
