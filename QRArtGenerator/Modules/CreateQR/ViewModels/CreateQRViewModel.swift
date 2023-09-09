@@ -94,6 +94,7 @@ class CreateQRViewModel: ObservableObject {
         self.input.templateQRName = templateSelect.name
         self.input.createType = qrImage != nil ? .normal : .custom
         self.input.baseUrl = self.baseUrl
+        self.input.createdDate = Date()
         self.templates.insert(Template(), at: 0)
     }
     

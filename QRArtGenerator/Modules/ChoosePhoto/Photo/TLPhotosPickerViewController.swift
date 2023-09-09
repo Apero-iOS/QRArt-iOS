@@ -1046,6 +1046,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
         
         if isCameraRow {
             selectCameraCell(cell)
+            updateDoneButtonState()
             return
         }
         

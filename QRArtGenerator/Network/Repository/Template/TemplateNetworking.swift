@@ -46,7 +46,7 @@ extension TemplateNetworking: TargetType {
             return .requestParms(path: "/qr-styles", params: ["project": APP_NAME])
         case .genQR:
 #if DEV
-            return .plainParams(path: "/api/v1/qr")
+            return .plainParams(path: "/api/v2/qr")
 #else
             return .plainParams(path: "/api/v2/qr")
 #endif

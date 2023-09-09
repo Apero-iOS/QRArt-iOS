@@ -20,6 +20,7 @@ struct IAPView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @StateObject var viewModel = IAPViewModel()
     @State var cancellable = Set<AnyCancellable>()
+    var paySuccess: VoidBlock?
     var isAfterOnboarding: Bool = false
     var source: SourceIAPView = .setting
     var onClose: (() -> Void)? = nil
@@ -145,10 +146,10 @@ struct IAPView: View {
                     if isAfterOnboarding {
                         onClose?()
                     } else {
-                      
                         dismiss()
                         onClose?()
                     }
+                    paySuccess?()
                 }
             }).store(in: &cancellable)
         }

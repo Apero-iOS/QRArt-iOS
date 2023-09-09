@@ -38,6 +38,7 @@ struct CreateQRView: View {
                     viewModel.input.prompt = template.positivePrompt
                     viewModel.input.negativePrompt = template.negativePrompt ?? ""
                     viewModel.input.templateQRName = template.name
+                    viewModel.input.createdDate = Date()
                     viewModel.templateSelect = template
                 }
             }
@@ -55,6 +56,7 @@ struct CreateQRView: View {
                     viewModel.input.prompt = template.positivePrompt
                     viewModel.input.negativePrompt = template.negativePrompt ?? ""
                     viewModel.input.templateQRName = template.name
+                    viewModel.input.createdDate = Date()
                     viewModel.templateSelect = template
                 }
             })
