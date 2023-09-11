@@ -82,7 +82,7 @@ struct DetailQRView: View {
                                     Text(Rlocalizable.link() + ": ")
                                         .font(R.font.beVietnamProSemiBold.font(size: 13))
                                         .foregroundColor(R.color.color_1B232E.color)
-                                    Text(viewModel.item.urlString)
+                                    Text(viewModel.getQRTitle())
                                         .font(R.font.beVietnamProMediumItalic.font(size: 12))
                                         .foregroundColor(R.color.color_007AFF.color)
                                 }

@@ -24,7 +24,7 @@ var Rlocalizable: _R.string.localizable {
 }
 let HEIGHT_SCREEN = UIScreen.main.bounds.height
 let WIDTH_SCREEN = UIScreen.main.bounds.width
-let TIME_OUT: TimeInterval = 60
+let TIME_OUT: TimeInterval = 30
 let APP_NAME = "QR_Art_Generator_IOS"
 let APP_ID = "6450879455"
 var showIAPDetailBack = false

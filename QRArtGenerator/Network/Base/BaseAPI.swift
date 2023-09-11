@@ -75,7 +75,7 @@ class BaseAPI<T: TargetType> {
             
         return FutureResult<Data> { promise in
             guard let url = URL(string: urlString) else {return promise(.failure(.General))}
-            self.networking.session.upload(multipartFormData: { multipartFromData in
+            self.networking.session.upload( multipartFormData: { multipartFromData in
                 switch target.body {
                 case .requestPlainBody:
                     break
@@ -90,7 +90,7 @@ class BaseAPI<T: TargetType> {
                         }
                     }
                 }
-            }, to: url, method: method, headers: headers).response { response in
+            }, to: url, method: method, headers: headers, requestModifier:  { $0.timeoutInterval = TIME_OUT }).response { response in
                 switch response.result {
                 case .success(let data):
                     return promise(.success(data))

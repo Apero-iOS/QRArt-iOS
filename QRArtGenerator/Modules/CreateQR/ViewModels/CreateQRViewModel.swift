@@ -93,7 +93,7 @@ class CreateQRViewModel: ObservableObject {
         self.input.negativePrompt = templateSelect.negativePrompt ?? ""
         self.input.templateQRName = templateSelect.name
         self.input.createType = qrImage != nil ? .normal : .custom
-        self.input.baseUrl = self.baseUrl
+        self.input.baseUrl = baseUrl
         self.input.createdDate = Date()
         self.templates.insert(Template(), at: 0)
     }
@@ -243,13 +243,14 @@ class CreateQRViewModel: ObservableObject {
                                  positivePrompt: prompt,
                                  negativePrompt: input.negativePrompt,
                                  guidanceScale: Int(input.guidance),
-                                 numInferenceSteps: Int(input.steps))
+                                 numInferenceSteps: input.steps)
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
                 case .finished:
                     self.isStatusGenegate = false
                     self.checkShowLoading()
+                    QRItemService.shared.saveNewQR(input, isNew: false)
                 case .failure(let error):
                     self.isStatusGenegate = false
                     self.checkShowLoading()

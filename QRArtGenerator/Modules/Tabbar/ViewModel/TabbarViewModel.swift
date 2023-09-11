@@ -57,13 +57,13 @@ class TabbarViewModel: ObservableObject, Identifiable {
     
     public func createIdAds() {
         if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_change_screen)
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_home)
         }
     }
     
     public func showAdsInter() {
         if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_change_screen, blockWillDismiss: { [weak self] in
+            AdMobManager.shared.showIntertitial(unitId: .inter_home, blockWillDismiss: { [weak self] in
                 guard let self else {return}
                 self.presentScreen()
             })

@@ -10,7 +10,7 @@ import Combine
 
 protocol TemplateRepositoryProtocol {
     func fetchTemplates() -> AnyPublisher<ListTemplates?, APIError>
-    func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError>
+    func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Double) -> AnyPublisher<Data?, APIError>
 }
 
 class TemplateRepository: BaseAPI<TemplateNetworking>, TemplateRepositoryProtocol {
@@ -18,7 +18,7 @@ class TemplateRepository: BaseAPI<TemplateNetworking>, TemplateRepositoryProtoco
         fetch(target: .fetchTemplate, responseClass: ListTemplates.self)
     }
     
-    func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int) -> AnyPublisher<Data?, APIError> {
+    func genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Double) -> AnyPublisher<Data?, APIError> {
       
         uploadFile(target: .genQR(qrText: qrText, positivePrompt: positivePrompt, negativePrompt: negativePrompt, guidanceScale: guidanceScale, numInferenceSteps: numInferenceSteps))
     }

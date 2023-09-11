@@ -9,7 +9,7 @@ import Foundation
 
 enum TemplateNetworking {
     case fetchTemplate
-    case genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int)
+    case genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Double)
 }
 
 extension TemplateNetworking: TargetType {

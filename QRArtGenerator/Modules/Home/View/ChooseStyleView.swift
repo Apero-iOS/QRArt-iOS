@@ -34,7 +34,7 @@ struct ChooseStyleView: View {
                     Spacer()
                     
                     Button {
-                        if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip {
+                        if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip  && UserDefaults.standard.generateQRCount > 0 {
                             viewModel.isShowIAP.toggle()
                         } else {
                             selectQRBlock?(templateSelect)

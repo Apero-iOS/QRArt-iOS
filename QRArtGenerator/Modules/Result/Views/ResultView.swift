@@ -9,6 +9,7 @@ import SwiftUI
 import ScreenshotPreventing
 import Combine
 import ExytePopupView
+import MobileAds
 
 enum ResultViewSource {
     case history
@@ -38,7 +39,7 @@ struct ResultView: View {
         ZStack(alignment: .top) {
             VStack {
                 ScrollView {
-                    if viewModel.isShowAdsBanner {
+                    if viewModel.isShowAdsBanner, viewModel.isLoadAdBanner {
                         BannerView(adUnitID: .banner_result)
                             .frame(width: UIScreen.screenWidth, height: 50)
                             .padding(.top, 0)
@@ -137,12 +138,9 @@ struct ResultView: View {
             }
             .popup(isPresented: $viewModel.showPopupConfirm, view: {
                 PopupConfirmSaveQR(onTapOk: {
-                    viewModel.showPopupConfirm.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    viewModel.showPopupConfirm = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                         dismiss()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            viewModel.save()
-                        }
                     }
                 }, onTapNo: {
                     viewModel.showPopupConfirm.toggle()
@@ -195,6 +193,12 @@ struct ResultView: View {
                     
                 }
             }.store(in: &cancellable)
+            
+            AdMobManager.shared.blockBannerFaild = { id in
+                if id == AdUnitID.banner_result.rawValue {
+                    viewModel.isLoadAdBanner = false
+                }
+            }
         }
         .onDisappear {
             cancellable.forEach({$0.cancel()})
@@ -263,7 +267,6 @@ struct ResultView: View {
                                 viewModel.isShowIAP.toggle()
                             } else {
                                 viewModel.showInterCreateMore {
-                                    viewModel.save()
                                     onTapOderStyle?(orderTemplates[index])
                                     dismiss()
                                 }

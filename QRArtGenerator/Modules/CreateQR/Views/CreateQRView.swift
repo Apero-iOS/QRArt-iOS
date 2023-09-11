@@ -48,7 +48,9 @@ struct CreateQRView: View {
                 }
             }
             .fullScreenCover(isPresented: $viewModel.showSub) {
-                IAPView(source: .generateButton)
+                IAPView(source: .generateButton) {
+                    viewModel.isShowPopupCreate = false
+                }
             }
             .fullScreenCover(isPresented: $viewModel.isShowViewChooseStyle, content: {
                 ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
