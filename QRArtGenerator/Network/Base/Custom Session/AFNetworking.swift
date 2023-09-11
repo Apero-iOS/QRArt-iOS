@@ -12,6 +12,9 @@ final class AFNetworking {
     
     required init() {
         session = Session(eventMonitors: [AlamofireLogger()])
+        session.sessionConfiguration.timeoutIntervalForRequest = 30
+        session.sessionConfiguration.timeoutIntervalForResource = 30
+    
     }
 }
 

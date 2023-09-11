@@ -185,7 +185,7 @@
 "content_setting_banner" = "Biến mã thông thường thành \n các sáng tạo phi thường.";
 "create_now" = "Hãy tạo ngay";
 "youre_on" = "Bạn đang ở trên";
-"premium" = "Phần thưởng!";
+"premium" = "PHẦN THƯỞNG";
 "discover_wow_qr_art" = "Khám phá WOW QR Art";
 "content_onboarding" = "Bắt đầu và xem làm thế nào mã QR có thể vừa thực tế vừa truyền cảm hứng trực quan.";
 "continue" = "Tiếp tục";
@@ -235,3 +235,4 @@
 "camera_nomal" = "Máy ảnh";
 "setting" = "Cài đặt";
 "camera_access_permission" = "Quyền truy cập camera";
+"watch_ad_to_generate" = "Xem quảng cáo để tạo";

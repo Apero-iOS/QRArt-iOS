@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreTelephony
 
 enum CreateQRViewSource {
     case create
@@ -33,6 +34,11 @@ struct CreateQRView: View {
             .fullScreenCover(isPresented: $viewModel.isShowExport) {
                 let resultViewModel = ResultViewModel(item: viewModel.input, image: viewModel.imageResult)
                 ResultView(viewModel: resultViewModel) { template in
+                    viewModel.input.id = UUID().uuidString
+                    viewModel.input.prompt = template.positivePrompt
+                    viewModel.input.negativePrompt = template.negativePrompt ?? ""
+                    viewModel.input.templateQRName = template.name
+                    viewModel.input.createdDate = Date()
                     viewModel.templateSelect = template
                 }
             }
@@ -42,7 +48,9 @@ struct CreateQRView: View {
                 }
             }
             .fullScreenCover(isPresented: $viewModel.showSub) {
-                IAPView(source: .generateButton)
+                IAPView(source: .generateButton) {
+                    viewModel.isShowPopupCreate = false
+                }
             }
             .fullScreenCover(isPresented: $viewModel.isShowViewChooseStyle, content: {
                 ChooseStyleView(templateSelect: viewModel.templateSelect) { template in
@@ -50,6 +58,7 @@ struct CreateQRView: View {
                     viewModel.input.prompt = template.positivePrompt
                     viewModel.input.negativePrompt = template.negativePrompt ?? ""
                     viewModel.input.templateQRName = template.name
+                    viewModel.input.createdDate = Date()
                     viewModel.templateSelect = template
                 }
             })
@@ -101,13 +110,20 @@ struct CreateQRView: View {
                 viewModel.showAdsReward()
                 viewModel.isShowPopupCreate.toggle()
             } label: {
-                Text(Rlocalizable.generate_with_an_ad)
-                    .font(R.font.beVietnamProSemiBold.font(size: 14))
-                    .foregroundColor(R.color.color_000000.color)
-                    .frame(width: UIScreen.screenWidth - 40, height: 50)
+                HStack(spacing: 8) {
+                    Spacer()
+                    Image(R.image.ic_gift_box.name).frame(width: 24, height: 24)
+                    Text(Rlocalizable.watch_ad_to_generate)
+                        .font(R.font.beVietnamProSemiBold.font(size: 14))
+                        .foregroundColor(R.color.color_000000.color)
+                    Spacer()
+                    
+                }
+                .frame(width: UIScreen.screenWidth - 40, height: 50)
                     .background(R.color.color_F7F7F7.color)
                     .border(radius: 100, color: R.color.color_EAEAEA.color, width: 1)
                     .padding(.horizontal, 20)
+             
             }
             
             Button {
@@ -149,18 +165,18 @@ struct CreateQRView: View {
                                 .hideSeparatorLine()
                         }
                         templateView
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0))
+                            .padding(EdgeInsets(top: (viewModel.qrImage != nil) ? 0 : 16, leading: 0, bottom: 16, trailing: 0))
                             .background(Color.white)
-                            .listRowBackground(Color.white)
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .listRowBackground((viewModel.qrImage != nil) ? Color.white : Color.clear)
+                            .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
                             .hideSeparatorLine()
                         
                         if viewModel.qrImage == nil {
                             qrDetailView
                                 .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                                 .background(Color.white)
-                                .listRowBackground(Color.clear)
-                                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
+                                .listRowBackground(Color.white)
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .hideSeparatorLine()
                         }
                    
@@ -337,6 +353,7 @@ struct CreateQRView: View {
     }
     
     @ViewBuilder var countrySelectView: some View {
+
         SelectCountryCodeView(countries: $viewModel.countries,
                               selectedCountry: $viewModel.countrySelect,
                               showingSelectCountryView: $viewModel.showingSelectCountryView)

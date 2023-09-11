@@ -11,11 +11,15 @@ import SwiftUI
 class CountriesFetcher {
     
     func fetch() -> [Country] {
-        let url = Bundle.main.url(forResource: "countries", withExtension: "json")
-        let data = try! Data(contentsOf: url!)
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let countries = try! decoder.decode([Country].self, from: data)
+        var countries = [Country]()
+        for code in NSLocale.isoCountryCodes  {
+            let flag = String.emojiFlag(for: code)
+            if let number = code.getCountryCallingCode(), let flag = flag {
+                countries.append(Country(flag: flag, code: code, dialCode: number))
+            }else{
+                //"Country not found for code: \(code)"
+            }
+        }
         return countries
     }
 }

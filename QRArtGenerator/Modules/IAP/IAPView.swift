@@ -20,6 +20,7 @@ struct IAPView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @StateObject var viewModel = IAPViewModel()
     @State var cancellable = Set<AnyCancellable>()
+    var paySuccess: VoidBlock?
     var isAfterOnboarding: Bool = false
     var source: SourceIAPView = .setting
     var onClose: (() -> Void)? = nil
@@ -48,6 +49,7 @@ struct IAPView: View {
                             Text(Rlocalizable.go_further_with)
                                 .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
+                                .lineLimit(1)
                             
                             ZStack(alignment: .trailing) {
                                 Text(Rlocalizable.pro_up)
@@ -66,6 +68,7 @@ struct IAPView: View {
                             Text(Rlocalizable.version_iap)
                                 .font(R.font.beVietnamProSemiBold.font(size: 22))
                                 .foregroundColor(R.color.color_1B232E.color)
+                                .lineLimit(1)
                         }
                         
                         VStack(alignment: .leading, spacing: 12) {
@@ -118,7 +121,8 @@ struct IAPView: View {
         .onAppear {
             FirebaseAnalytics.logEvent(type: .sub_view, params: [.source: source.rawValue])
             viewModel.getInfoIAP()
-            InappManager.share.didPaymentSuccess.sink { isSuccess in
+            InappManager.share.didPaymentSuccess.sink(receiveValue: { isSuccess in
+                print("--> didPaymentSuccess")
                 if isSuccess {
                     var package_time = ""
                     let subPurchase = viewModel.iapIds[viewModel.selectedIndex]
@@ -145,10 +149,16 @@ struct IAPView: View {
                         dismiss()
                         onClose?()
                     }
+                    paySuccess?()
                 }
-                
-            }.store(in: &cancellable)
+            }).store(in: &cancellable)
         }
+        .onDisappear(perform: {
+            cancellable.forEach { can in
+                can.cancel()
+            }
+            cancellable.removeAll()
+        })
         .sheet(isPresented: $viewModel.showTerms) {
             NavigationView {
                 WebView(urlString: Constants.termUrl)

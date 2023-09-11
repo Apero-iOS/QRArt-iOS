@@ -300,6 +300,11 @@ open class TLPhotosPickerViewController: UIViewController {
         if isShowAdsBanner {
             bannerView.isHidden = false
             AdMobManager.shared.addAdCollapsibleBannerAdaptive(unitId: .banner_collabsible1, rootVC: self, view: bannerView, isCollapsibleBanner: true)
+            AdMobManager.shared.blockBannerFaild = { [weak self] id in
+                if id == AdUnitID.banner_collabsible1.rawValue {
+                    self?.bannerView.isHidden = true
+                }
+            }
         } else {
             bannerView.isHidden = true
         }
@@ -1046,6 +1051,7 @@ extension TLPhotosPickerViewController: UICollectionViewDelegate,UICollectionVie
         
         if isCameraRow {
             selectCameraCell(cell)
+            updateDoneButtonState()
             return
         }
         

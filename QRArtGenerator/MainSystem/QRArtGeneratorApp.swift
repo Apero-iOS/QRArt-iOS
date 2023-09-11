@@ -43,6 +43,9 @@ struct QRArtGeneratorApp: App {
         resetUserDefaults()
         setUpAds()
         configNavigationBar()
+        if Constants.isDev {
+            UserDefaults.standard.isUserVip = false
+        }
     }
     
     var body: some Scene {
@@ -103,6 +106,8 @@ struct QRArtGeneratorApp: App {
         AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_openmail)
         AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_scanopenlink)
         AdMobManager.shared.createAdRewardedIfNeed(unitId: .reward_regen)
+        AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_regen)
+        AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_home)
         UserDefaults.standard.templateSelectCount = 0
         
     }

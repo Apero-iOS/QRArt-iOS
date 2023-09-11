@@ -9,7 +9,7 @@ import SwiftUI
 import MobileAds
 
 struct HomeView: View {
-    @ObservedObject var monitor = NetworkMonitor()
+    @ObservedObject private var monitor = NetworkMonitor()
     @StateObject private var viewModel = HomeViewModel()
     let cellWidth = (WIDTH_SCREEN-55)/2.0
     var generateQRBlock: ((Template) -> Void)?
@@ -17,35 +17,44 @@ struct HomeView: View {
     @State var isUserVip = UserDefaults.standard.isUserVip
     
     var body: some View {
-        if monitor.isConnected {
-            homeView
-        } else {
-            VStack {
-                HStack {
-                    Image(R.image.history_logo_ic)
-                        .padding(.leading, 4)
-
-                    Spacer()
-                    if !isUserVip {
-                        LottieView(lottieFile: R.file.crownJson.name)
-                            .frame(width: 48, height: 48)
-                            .offset(CGSize(width: 8, height: 0))
-                            .onTapGesture {
-                                viewModel.showIAP.toggle()
-                            }
-                    }
-                    NavigationLink(destination: SettingsView()) {
-                        Image(R.image.setting_ic.name)
-                            .colorMultiply(R.color.color_1B232E.color)
-                    }
-                }
-                .frame(width: WIDTH_SCREEN - 32, height: 48)
-                .background(Color.clear)
-                NoInternetView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                Spacer().frame(height: 120)
+        ZStack {
+            if monitor.isConnected {
+                homeView
+            } else {
+                noDataView
             }
         }
+    }
+    
+    @ViewBuilder var noDataView: some View {
+        VStack {
+            HStack {
+                Image(R.image.history_logo_ic)
+                    .padding(.leading, 4)
+                
+                Spacer()
+                if !isUserVip {
+                    LottieView(lottieFile: R.file.crownJson.name)
+                        .frame(width: 48, height: 48)
+                        .offset(CGSize(width: 8, height: 0))
+                        .onTapGesture {
+                            viewModel.showIAP.toggle()
+                        }
+                }
+                NavigationLink(destination: SettingsView()) {
+                    Image(R.image.setting_ic.name)
+                        .colorMultiply(R.color.color_1B232E.color)
+                }
+            }
+            .frame(width: WIDTH_SCREEN - 32, height: 48)
+            .background(Color.clear)
+            NoInternetView(tryAgainBlock: {
+                viewModel.fetchTemplate()
+            })
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Spacer().frame(height: 120)
+        }
+        
     }
     
     @ViewBuilder var homeView: some View {
@@ -81,7 +90,7 @@ struct HomeView: View {
                             if viewModel.isLoadAd, (i+1)%3 == 0 {
                                 let index = ((i+1)/3)*2
                                 if index < viewModel.nativeViews.count {
-                                    AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                                    AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3-10).clipped().background(Color.white).cornerRadius(28)
                                 }
                             }
                         }
@@ -94,7 +103,7 @@ struct HomeView: View {
                             if viewModel.isLoadAd, i%3 == 0 {
                                 let index = (i/3)*2+1
                                 if index < viewModel.nativeViews.count {
-                                    AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3).clipped().background(Color.white).cornerRadius(28)
+                                    AdNativeViewMultiple(nativeView: viewModel.nativeViews[index]) .frame(width: cellWidth, height: cellWidth*4/3-10).clipped().background(Color.white).cornerRadius(28)
                                 }
                                
                             }
@@ -113,6 +122,11 @@ struct HomeView: View {
             viewModel.loadAds()
             viewModel.fetchTemplate()
             isUserVip = UserDefaults.standard.isUserVip
+            InappManager.share.didPaymentSuccess.sink { status in
+                if status {
+                    viewModel.isLoadAd = false
+                }
+            }.store(in: &viewModel.cancellable)
         }
         .hideNavigationBar(isHidden: true)
         .toast(message: viewModel.msgError, isShowing: $viewModel.isShowToast, duration: 3)
@@ -164,7 +178,7 @@ struct HomeView: View {
                     .padding(.trailing, 11)
             }
         }
-        .frame(width: cellWidth, height: cellWidth*4/3)
+        .frame(width: cellWidth, height: cellWidth*4/3-10)
         .background(Color.white.opacity(0.55))
         .cornerRadius(30)
         .onTapGesture {

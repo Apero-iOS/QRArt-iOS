@@ -25,9 +25,10 @@ struct CountryCodeView: View {
                     .font(R.font.beVietnamProMedium.font(size: 16))
                     .foregroundColor(R.color.color_1B232E.color)
                 Spacer()
-                AsyncImage(url: country.flagUrl)
-                    .frame(width: 28, height: 28)
-                    .cornerRadius(14)
+                Text(country.flag)
+                    .frame(width: 24, height: 24)
+                    .font(R.font.beVietnamProRegular.font(size: 24))
+                    .multilineTextAlignment(.center)
             }
             .frame(maxHeight: 52)
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -47,6 +48,6 @@ struct CountryCodeView: View {
 
 struct CountryCodeView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryCodeView(country: Country(code: "+93", dialCode: "AF"), selectedCountry: .constant(Country(code: "+93", dialCode: "AF")))
+        CountryCodeView(country: Country(flag: String.emojiFlag(for: "US"), code: "+93", dialCode: "AF"), selectedCountry: .constant(Country(flag: "1", code: "+93", dialCode: "AF")))
     }
 }

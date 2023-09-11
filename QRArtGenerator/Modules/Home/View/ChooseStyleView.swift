@@ -34,7 +34,7 @@ struct ChooseStyleView: View {
                     Spacer()
                     
                     Button {
-                        if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip {
+                        if templateSelect.packageType != "basic" && !UserDefaults.standard.isUserVip  && UserDefaults.standard.generateQRCount > 0 {
                             viewModel.isShowIAP.toggle()
                         } else {
                             selectQRBlock?(templateSelect)
@@ -117,18 +117,18 @@ struct ChooseStyleView: View {
                     .padding(.bottom, 16)
                 Spacer()
                 Text(template.name)
-                    .font(R.font.beVietnamProMediumItalic.font(size: 14))
+                    .font(R.font.beVietnamProMedium.font(size: 14))
                     .foregroundColor(R.color.color_1B232E.color)
                     .padding(.bottom)
                 Spacer()
             }
-            if template.packageType != "basic" && !UserDefaults.standard.isUserVip {
+            if template.packageType != "basic" && !UserDefaults.standard.isUserVip && UserDefaults.standard.generateQRCount > 0  {
                 Image(R.image.ic_style_sub.name)
                     .padding(.top, 13)
                     .padding(.trailing, 11)
             }
         }
-        .frame(width: cellWidth, height: cellWidth*4/3)
+        .frame(width: cellWidth, height: cellWidth*4/3-10)
         .background(Color.white)
         .border(radius: 30, color: (template.key == templateSelect.key ? R.color.color_653AE4.color : Color.clear), width: 2)
         .onTapGesture {

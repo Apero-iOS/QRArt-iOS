@@ -29,6 +29,10 @@ class TabbarViewModel: ObservableObject, Identifiable {
     var qrString: String?
     
     var cancellable = Set<AnyCancellable>()
+    
+    deinit {
+        cancellable.forEach({$0.cancel()})
+    }
 
     var tabs: [TabbarEnum] = [.home, .ai, .history]
     
@@ -47,23 +51,19 @@ class TabbarViewModel: ObservableObject, Identifiable {
         return numberAds > .zero && countSelectTab%numberAds == .zero
     }
     
-    deinit {
-        cancellable.removeAll()
-    }
-    
     public func changeCountSelect() {
         countSelectTab += 1
     }
     
     public func createIdAds() {
         if isShowAdsInter {
-            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_change_screen)
+            AdMobManager.shared.createAdInterstitialIfNeed(unitId: .inter_home)
         }
     }
     
     public func showAdsInter() {
         if isShowAdsInter {
-            AdMobManager.shared.showIntertitial(unitId: .inter_change_screen, blockWillDismiss: { [weak self] in
+            AdMobManager.shared.showIntertitial(unitId: .inter_home, blockWillDismiss: { [weak self] in
                 guard let self else {return}
                 self.presentScreen()
             })

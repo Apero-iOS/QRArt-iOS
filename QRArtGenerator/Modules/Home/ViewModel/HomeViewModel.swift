@@ -21,7 +21,10 @@ final class HomeViewModel: ObservableObject, Identifiable {
     @Published var isLoadAd: Bool = (RemoteConfigService.shared.bool(forKey: .native_home) && !UserDefaults.standard.isUserVip)
     var nativeViews: [UIView] = []
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
-    private var cancellable = Set<AnyCancellable>()
+    var cancellable = Set<AnyCancellable>()
+    deinit {
+        cancellable.forEach({$0.cancel()})
+    }
     
     init() {
         if nativeViews.count == 0 {
@@ -50,6 +53,7 @@ final class HomeViewModel: ObservableObject, Identifiable {
                 self.templates.append(contentsOf: templates)
                 AppHelper.templates = templates
             }
+            print("template count: \(self.templates.count)")
             
         }.store(in: &cancellable)
     }
@@ -59,12 +63,12 @@ final class HomeViewModel: ObservableObject, Identifiable {
             AdMobManager.shared.removeAd(unitId: AdUnitID.native_home.rawValue)
          
             let root = UIApplication.shared.windows.first?.rootViewController
-            AdMobManager.shared.addAdNative(unitId: .native_home, rootVC: root!, views: nativeViews, type: .collectionViewCell)
             AdMobManager.shared.blockNativeFaild = { [weak self] id in
                 if id == AdUnitID.native_home.rawValue {
                     self?.isLoadAd = false
                 }
             }
+            AdMobManager.shared.addAdNative(unitId: .native_home, rootVC: root!, views: nativeViews, type: .collectionViewCell)
         } else {
             if isLoadAd {
                 isLoadAd = false

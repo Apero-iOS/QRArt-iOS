@@ -46,6 +46,8 @@ class ResultViewModel: ObservableObject {
             checkShowLoading()
         }
     }
+    @Published var isLoadAdBanner = true
+    
     private let templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
@@ -70,9 +72,13 @@ class ResultViewModel: ObservableObject {
         self.image = image
     }
     
-    func save() {
-        QRItemService.shared.saveNewQR(item, isNew: false)
-        isShowSuccessView = true
+    deinit {
+        print("deinit ResultView")
+        cancellable.forEach({$0.cancel()})
+    }
+    
+    func save(isnew: Bool = false) {
+        QRItemService.shared.saveNewQR(item, isNew: isnew)
     }
     
     func scaleImage(resolutions: Resolutions) -> UIImage? {
@@ -167,17 +173,19 @@ class ResultViewModel: ObservableObject {
             isShowLoadingView = true
             isStatusGenegate = true
             isGenegateSuccess = false
+            item.createdDate = Date()
             templateRepository.genQR(qrText: getQRText(),
                                      positivePrompt: item.prompt,
                                      negativePrompt: item.negativePrompt,
                                      guidanceScale: Int(item.guidance),
-                                     numInferenceSteps: Int(item.steps))
+                                     numInferenceSteps: item.steps)
             .sink { [weak self] comple in
                 guard let self = self else { return }
                 switch comple {
                 case .finished:
                     self.isStatusGenegate = false
                     self.checkShowLoading()
+                    self.save(isnew: true)
                 case .failure(let error):
                     self.isStatusGenegate = false
                     self.checkShowLoading()
@@ -217,7 +225,7 @@ class ResultViewModel: ObservableObject {
     }
     
     func getQRText() -> String {
-        if let baseUrl = item.baseUrl {
+        if let baseUrl = item.baseUrl, !baseUrl.isEmpty {
             return baseUrl
         }
         switch item.type {
@@ -231,6 +239,26 @@ class ResultViewModel: ObservableObject {
             return item.text
         case .wifi:
             return "WIFI:S:\(item.wfSsid);P:\(item.wfPassword);T:\(item.wfSecurityMode.title);;"
+        case .paypal:
+            return "\(item.urlString)/\(item.paypalAmount)"
+        }
+    }
+    
+    func getQRTitle() -> String {
+        if let baseUrl = item.baseUrl, !baseUrl.isEmpty {
+            return baseUrl
+        }
+        switch item.type {
+        case .website, .instagram, .facebook, .twitter, .spotify, .youtube:
+            return item.urlString
+        case .contact, .whatsapp:
+            return item.phoneNumber
+        case .email:
+            return item.emailAddress
+        case .text:
+            return item.text
+        case .wifi:
+            return item.wfSsid
         case .paypal:
             return "\(item.urlString)/\(item.paypalAmount)"
         }

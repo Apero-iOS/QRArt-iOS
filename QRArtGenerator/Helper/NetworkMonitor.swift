@@ -10,16 +10,21 @@ import NetworkExtension
 class NetworkMonitor: ObservableObject {
     private let networkMonitor = NWPathMonitor()
     private let workerQueue = DispatchQueue(label: "Monitor")
-    var isConnected = false
+    @Published var isConnected = true
 
     init() {
         networkMonitor.pathUpdateHandler = { path in
-            self.isConnected = path.status == .satisfied
-            Task {
-                await MainActor.run {
-                    self.objectWillChange.send()
+            DispatchQueue.main.async {
+                if self.isConnected != ( path.status == .satisfied) {
+                    self.isConnected = path.status == .satisfied
+                }
+                Task {
+                    await MainActor.run {
+                        self.objectWillChange.send()
+                    }
                 }
             }
+          
         }
         networkMonitor.start(queue: workerQueue)
     }

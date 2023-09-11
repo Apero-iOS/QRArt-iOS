@@ -22,6 +22,10 @@ final class ChooseStyleViewModel: ObservableObject, Identifiable {
     private var templateRepository: TemplateRepositoryProtocol = TemplateRepository()
     private var cancellable = Set<AnyCancellable>()
     
+    deinit {
+        cancellable.forEach({$0.cancel()})
+    }
+    
     func fetchTemplate() {
         templateRepository.fetchTemplates().sink { [weak self] comple in
             guard let self = self else { return }

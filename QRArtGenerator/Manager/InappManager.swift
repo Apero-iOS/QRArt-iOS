@@ -71,6 +71,10 @@ class InappManager: NSObject {
     }
     
     func purchaseProduct(withId id: String) {
+        if Constants.isDev {
+            UserDefaults.standard.isUserVip = true
+            return
+        }
         guard let product = listProduct.first(where: { $0.productIdentifier == id }) else { return }
         if SKPaymentQueue.canMakePayments() {
             ProgressHUD.show()

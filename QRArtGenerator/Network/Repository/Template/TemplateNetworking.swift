@@ -9,7 +9,7 @@ import Foundation
 
 enum TemplateNetworking {
     case fetchTemplate
-    case genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Int)
+    case genQR(qrText: String, positivePrompt: String?, negativePrompt: String?, guidanceScale: Int, numInferenceSteps: Double)
 }
 
 extension TemplateNetworking: TargetType {
@@ -19,16 +19,12 @@ extension TemplateNetworking: TargetType {
         case .fetchTemplate:
 #if DEV
         return .dev
-#elseif STG
-        return .stg
 #else
         return .product
 #endif
         case .genQR:
 #if DEV
             return .devGenImage
-#elseif STG
-        return .stgGenImage
 #else
         return .productGenImage
 #endif
@@ -49,8 +45,8 @@ extension TemplateNetworking: TargetType {
         case .fetchTemplate:
             return .requestParms(path: "/qr-styles", params: ["project": APP_NAME])
         case .genQR:
-#if DEV || STG
-            return .plainParams(path: "/api/v1/qr")
+#if DEV
+            return .plainParams(path: "/api/v2/qr")
 #else
             return .plainParams(path: "/api/v2/qr")
 #endif
@@ -62,9 +58,10 @@ extension TemplateNetworking: TargetType {
         case .fetchTemplate:
             return .requestPlainBody
         case .genQR(qrText: let qrText, positivePrompt: let positivePrompt, negativePrompt: let negativePrompt, guidanceScale: let guidanceScale, numInferenceSteps: let numInferenceSteps):
+            print("Params: qrtext: \(qrText.trimmingCharacters(in: .whitespaces)), prompt: \(positivePrompt?.trimmingCharacters(in: .whitespaces) ?? ""), negativepromt: \(negativePrompt?.trimmingCharacters(in: .whitespaces) ?? ""), gui: \(guidanceScale), numInferenceSteps: \(numInferenceSteps)")
             return .requestBody(body: ["qrText": qrText.trimmingCharacters(in: .whitespaces),
-                                       "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces),
-                                       "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces),
+                                       "positivePrompt": positivePrompt?.trimmingCharacters(in: .whitespaces) ?? "",
+                                       "negativePrompt": negativePrompt?.trimmingCharacters(in: .whitespaces) ?? "",
                                        "guidanceScale": guidanceScale,
                                        "numInferenceSteps": numInferenceSteps])
         }

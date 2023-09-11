@@ -64,6 +64,7 @@ struct TabbarView: View {
                 .background(Image(R.image.img_bg.name).resizable().frame(maxWidth: .infinity, maxHeight: .infinity).ignoresSafeArea().scaledToFill())
                 .ignoresSafeArea(edges: .bottom)
                 .navigationBarTitleDisplayMode(.inline)
+                .hideNavigationBar(isHidden: true)
             }
             
             if viewModel.showPopupGenQR {
@@ -122,6 +123,7 @@ struct TabbarView: View {
         })
         .onAppear {
             viewModel.createIdAds()
+            viewModel.cancellable.removeAll()
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess {
                     viewModel.isVip = UserDefaults.standard.isUserVip

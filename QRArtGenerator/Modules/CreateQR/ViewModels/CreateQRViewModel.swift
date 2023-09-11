@@ -12,7 +12,7 @@ import MobileAds
 
 class CreateQRViewModel: ObservableObject {
     @Published var countries: [Country] = []
-    @Published var countrySelect: Country = Country(code: "US", dialCode: "+1")
+    @Published var countrySelect: Country
     @Published var templates: [Template] = []
     @Published var isShowPopupCreate: Bool = false
     @Published var isShowViewChooseStyle: Bool = false
@@ -54,6 +54,11 @@ class CreateQRViewModel: ObservableObject {
     
     private var needFetchTemplates: Bool = true
     
+    deinit {
+        print("deinit CreateQRViewModel")
+        cancellable.forEach({$0.cancel()})
+    }
+    
     let listPromptSuggess = PromptSuggessType.allCases
         
     var messageError: String = ""
@@ -78,16 +83,19 @@ class CreateQRViewModel: ObservableObject {
         self.baseUrl = baseUrl ?? ""
         self.qrImage = qrImage
         self.templateSelect = templateSelect
+        if let code = Locale.current.regionCode, let dialCode = code.getCountryCallingCode() {
+            self.countrySelect = Country(flag: String.emojiFlag(for: code), code: code, dialCode: dialCode)
+        } else {
+            self.countrySelect = Country(flag: "US", code: "US", dialCode: "+1")
+        }
+  
         self.input.prompt = templateSelect.positivePrompt
         self.input.negativePrompt = templateSelect.negativePrompt ?? ""
         self.input.templateQRName = templateSelect.name
         self.input.createType = qrImage != nil ? .normal : .custom
-        self.input.baseUrl = self.baseUrl
+        self.input.baseUrl = baseUrl
+        self.input.createdDate = Date()
         self.templates.insert(Template(), at: 0)
-    }
-    
-    deinit {
-        cancellable.removeAll()
     }
     
     func fetchCountry() {
@@ -235,13 +243,14 @@ class CreateQRViewModel: ObservableObject {
                                  positivePrompt: prompt,
                                  negativePrompt: input.negativePrompt,
                                  guidanceScale: Int(input.guidance),
-                                 numInferenceSteps: Int(input.steps))
+                                 numInferenceSteps: input.steps)
         .sink { [weak self] comple in
             guard let self = self else { return }
             switch comple {
                 case .finished:
                     self.isStatusGenegate = false
                     self.checkShowLoading()
+                    QRItemService.shared.saveNewQR(input, isNew: false)
                 case .failure(let error):
                     self.isStatusGenegate = false
                     self.checkShowLoading()

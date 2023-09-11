@@ -27,6 +27,9 @@ struct SplashView: View {
             setupObserver()
             viewModel.prepareData()
         }
+        .onDisappear {
+            subscriptions.forEach({$0.cancel()})
+        }
     }
     
     private func setupObserver() {

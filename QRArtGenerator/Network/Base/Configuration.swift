@@ -24,9 +24,9 @@ enum BaseURLType {
             case .product:
                 return "https://api-style-manager.apero.vn"
             case .devGenImage:
-                return "https://api-qrart.apero.vn"
+                return "https://qr-core.apero.vn"
             case .stgGenImage, .productGenImage:
-                return "https://api-qrart.apero.vn"
+                return "https://qr-core.apero.vn"
                 
         }
     }

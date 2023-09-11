@@ -9,6 +9,7 @@ import SwiftUI
 import ScreenshotPreventing
 import Combine
 import ExytePopupView
+import MobileAds
 
 enum ResultViewSource {
     case history
@@ -38,7 +39,7 @@ struct ResultView: View {
         ZStack(alignment: .top) {
             VStack {
                 ScrollView {
-                    if viewModel.isShowAdsBanner {
+                    if viewModel.isShowAdsBanner, viewModel.isLoadAdBanner {
                         BannerView(adUnitID: .banner_result)
                             .frame(width: UIScreen.screenWidth, height: 50)
                             .padding(.top, 0)
@@ -137,9 +138,8 @@ struct ResultView: View {
             }
             .popup(isPresented: $viewModel.showPopupConfirm, view: {
                 PopupConfirmSaveQR(onTapOk: {
-                    viewModel.showPopupConfirm.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                        viewModel.save()
+                    viewModel.showPopupConfirm = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                         dismiss()
                     }
                 }, onTapNo: {
@@ -186,12 +186,22 @@ struct ResultView: View {
                                                                                 .qr_type: viewModel.item.type.title,
                                                                                 .guidance_number: "\(viewModel.item.guidance)",
                                                                                 .step_number: "\(viewModel.item.steps)"])
+            cancellable.removeAll()
             InappManager.share.didPaymentSuccess.sink { isSuccess in
                 if isSuccess, viewModel.isShowAd {
                     viewModel.isShowAd = false
                     
                 }
             }.store(in: &cancellable)
+            
+            AdMobManager.shared.blockBannerFaild = { id in
+                if id == AdUnitID.banner_result.rawValue {
+                    viewModel.isLoadAdBanner = false
+                }
+            }
+        }
+        .onDisappear {
+            cancellable.forEach({$0.cancel()})
         }
     }
     
@@ -247,17 +257,17 @@ struct ResultView: View {
             .padding(.top, 20)
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                ForEach(0..<AppHelper.templates.count, id: \.self) { index in
-                    templateView(item: AppHelper.templates[index])
+                let orderTemplates = AppHelper.templates.filter({$0.name != viewModel.item.templateQRName})
+                ForEach(0..<orderTemplates.count, id: \.self) { index in
+                    templateView(item: orderTemplates[index])
                         .frame(width: 120, height: 120)
                         .cornerRadius(12)
                         .onTapGesture {
-                            if AppHelper.templates[index].packageType != "basic" && !UserDefaults.standard.isUserVip {
+                            if orderTemplates[index].packageType != "basic" && !UserDefaults.standard.isUserVip {
                                 viewModel.isShowIAP.toggle()
                             } else {
                                 viewModel.showInterCreateMore {
-                                    viewModel.save()
-                                    onTapOderStyle?(AppHelper.templates[index])
+                                    onTapOderStyle?(orderTemplates[index])
                                     dismiss()
                                 }
                             }
